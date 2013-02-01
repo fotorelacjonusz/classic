@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>935</width>
+    <height>633</height>
+   </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>-1</number>
+    </property>
+    <property name="margin">
+     <number>1</number>
+    </property>
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>891</width>
+         <height>586</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="mainLayout">
+        <property name="spacing">
+         <number>-1</number>
+        </property>
+        <property name="margin">
+         <number>1</number>
+        </property>
+        <item alignment="Qt::AlignTop">
+         <widget class="QPlainTextEdit" name="header">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Nagłówek - do pierwszego posta</string>
+          </property>
+          <property name="tabChangesFocus">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="commonMap">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="postWidget" native="true">
+          <layout class="QVBoxLayout" name="postLayout">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <property name="margin">
+            <number>1</number>
+           </property>
+          </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignBottom">
+         <widget class="QPlainTextEdit" name="footer">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Stopka - do ostatniego posta</string>
+          </property>
+          <property name="tabChangesFocus">
+           <bool>true</bool>
+          </property>
+          <property name="plainText">
+           <string>
+
+[url=&quot;http://www.skyscrapercity.com/showthread.php?t=1539539&quot;]Fotorelacja wstawiona automatycznie.[/url]</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>935</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Plik">
+    <property name="title">
+     <string>&amp;Plik</string>
+    </property>
+    <addaction name="action_open_photorelation"/>
+    <addaction name="action_save_photorelation"/>
+    <addaction name="separator"/>
+    <addaction name="action_settings"/>
+    <addaction name="separator"/>
+    <addaction name="action_close"/>
+   </widget>
+   <widget class="QMenu" name="menuPomoc">
+    <property name="title">
+     <string>Pomo&amp;c</string>
+    </property>
+    <addaction name="action_about"/>
+    <addaction name="action_Qt_information"/>
+   </widget>
+   <widget class="QMenu" name="menu_Fotorelacja">
+    <property name="title">
+     <string>&amp;Fotorelacja</string>
+    </property>
+    <addaction name="action_add_photos"/>
+    <addaction name="action_send_to_SSC"/>
+   </widget>
+   <addaction name="menu_Plik"/>
+   <addaction name="menu_Fotorelacja"/>
+   <addaction name="menuPomoc"/>
+  </widget>
+  <widget class="QToolBar" name="imageToolBar">
+   <property name="windowTitle">
+    <string>Edycja zdjęcia</string>
+   </property>
+   <property name="toolTip">
+    <string>Edycja zdjęcia</string>
+   </property>
+   <property name="statusTip">
+    <string>Edycja zdjęcia</string>
+   </property>
+   <property name="whatsThis">
+    <string>Edycja zdjęcia</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_move_top"/>
+   <addaction name="action_move_up"/>
+   <addaction name="action_move_down"/>
+   <addaction name="action_move_bottom"/>
+   <addaction name="separator"/>
+   <addaction name="action_rotate_left"/>
+   <addaction name="action_rotate_right"/>
+   <addaction name="separator"/>
+   <addaction name="action_remove_image"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="arrowToolBar">
+   <property name="windowTitle">
+    <string>Edycja strzałki</string>
+   </property>
+   <property name="toolTip">
+    <string>Edycja strzałki</string>
+   </property>
+   <property name="statusTip">
+    <string>Edycja strzałki</string>
+   </property>
+   <property name="whatsThis">
+    <string>Edycja strzałki</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_invert_colors"/>
+   <addaction name="action_choose_color"/>
+   <addaction name="action_remove_arrow"/>
+  </widget>
+  <widget class="ColorManipulationToolBar" name="colorManipulationBar">
+   <property name="windowTitle">
+    <string>Edycja kolorów zdjęcia</string>
+   </property>
+   <property name="toolTip">
+    <string>Edycja kolorów zdjęcia</string>
+   </property>
+   <property name="statusTip">
+    <string>Edycja kolorów zdjęcia</string>
+   </property>
+   <property name="whatsThis">
+    <string>Edycja kolorów zdjęcia</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>RightToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+  </widget>
+  <action name="action_add_photos">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/archive-insert.png</normaloff>:/res/archive-insert.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Dodaj zdjęcia</string>
+   </property>
+  </action>
+  <action name="action_move_top">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/arrow-up-double.png</normaloff>:/res/arrow-up-double.png</iconset>
+   </property>
+   <property name="text">
+    <string>Przenieś na górę</string>
+   </property>
+   <property name="toolTip">
+    <string>Przenieś na górę</string>
+   </property>
+   <property name="statusTip">
+    <string>Przenieś na górę</string>
+   </property>
+   <property name="whatsThis">
+    <string>Przenieś na górę</string>
+   </property>
+  </action>
+  <action name="action_move_up">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/arrow-up.png</normaloff>:/res/arrow-up.png</iconset>
+   </property>
+   <property name="text">
+    <string>Przenieś wyżej</string>
+   </property>
+   <property name="toolTip">
+    <string>Przenieś wyżej</string>
+   </property>
+   <property name="statusTip">
+    <string>Przenieś wyżej</string>
+   </property>
+   <property name="whatsThis">
+    <string>Przenieś wyżej</string>
+   </property>
+  </action>
+  <action name="action_move_down">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/arrow-down.png</normaloff>:/res/arrow-down.png</iconset>
+   </property>
+   <property name="text">
+    <string>Przenieś niżej</string>
+   </property>
+   <property name="toolTip">
+    <string>Przenieś niżej</string>
+   </property>
+   <property name="statusTip">
+    <string>Przenieś niżej</string>
+   </property>
+   <property name="whatsThis">
+    <string>Przenieś niżej</string>
+   </property>
+  </action>
+  <action name="action_move_bottom">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/arrow-down-double.png</normaloff>:/res/arrow-down-double.png</iconset>
+   </property>
+   <property name="text">
+    <string>Przenieś na spód</string>
+   </property>
+   <property name="toolTip">
+    <string>Przenieś na spód</string>
+   </property>
+   <property name="statusTip">
+    <string>Przenieś na spód</string>
+   </property>
+   <property name="whatsThis">
+    <string>Przenieś na spód</string>
+   </property>
+  </action>
+  <action name="action_rotate_left">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/object-rotate-left.png</normaloff>:/res/object-rotate-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Obróć w lewo</string>
+   </property>
+   <property name="toolTip">
+    <string>Obróć w lewo</string>
+   </property>
+   <property name="statusTip">
+    <string>Obróć w lewo</string>
+   </property>
+   <property name="whatsThis">
+    <string>Obróć w lewo</string>
+   </property>
+  </action>
+  <action name="action_rotate_right">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/object-rotate-right.png</normaloff>:/res/object-rotate-right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Obróć w prawo</string>
+   </property>
+   <property name="toolTip">
+    <string>Obróć w prawo</string>
+   </property>
+   <property name="statusTip">
+    <string>Obróć w prawo</string>
+   </property>
+   <property name="whatsThis">
+    <string>Obróć w prawo</string>
+   </property>
+  </action>
+  <action name="action_remove_image">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
+   </property>
+   <property name="text">
+    <string>Usuń z fotorelacji</string>
+   </property>
+   <property name="toolTip">
+    <string>Usuń z fotorelacji</string>
+   </property>
+   <property name="statusTip">
+    <string>Usuń z fotorelacji</string>
+   </property>
+   <property name="whatsThis">
+    <string>Usuń z fotorelacji</string>
+   </property>
+  </action>
+  <action name="action_send_to_SSC">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/internet-web-browser.png</normaloff>:/res/internet-web-browser.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Wyślij na SSC</string>
+   </property>
+  </action>
+  <action name="action_settings">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/configure.png</normaloff>:/res/configure.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Ustawienia</string>
+   </property>
+  </action>
+  <action name="action_close">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/application-exit.png</normaloff>:/res/application-exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Zamknij</string>
+   </property>
+   <property name="toolTip">
+    <string>Zamknij</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/help-about.png</normaloff>:/res/help-about.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;O programie</string>
+   </property>
+  </action>
+  <action name="action_Qt_information">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/qtcreator.png</normaloff>:/res/qtcreator.png</iconset>
+   </property>
+   <property name="text">
+    <string>Informacje o &amp;Qt</string>
+   </property>
+   <property name="toolTip">
+    <string>Informacje o Qt</string>
+   </property>
+  </action>
+  <action name="action_open_photorelation">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/document-open.png</normaloff>:/res/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Otwórz</string>
+   </property>
+  </action>
+  <action name="action_save_photorelation">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/document-save.png</normaloff>:/res/document-save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zapi&amp;sz</string>
+   </property>
+  </action>
+  <action name="action_remove_arrow">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Usuń strzałkę</string>
+   </property>
+   <property name="statusTip">
+    <string>Usuń strzałkę</string>
+   </property>
+   <property name="whatsThis">
+    <string>Usuń strzałkę</string>
+   </property>
+  </action>
+  <action name="action_invert_colors">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/invert.png</normaloff>:/res/invert.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Odwróc kolory</string>
+   </property>
+   <property name="iconText">
+    <string>Odwróć kolory</string>
+   </property>
+   <property name="toolTip">
+    <string>Odwróć kolory</string>
+   </property>
+   <property name="statusTip">
+    <string>Odwróć kolory</string>
+   </property>
+   <property name="whatsThis">
+    <string>Odwróć kolory</string>
+   </property>
+  </action>
+  <action name="action_choose_color">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/format-stroke-color.png</normaloff>:/res/format-stroke-color.png</iconset>
+   </property>
+   <property name="text">
+    <string>Wybierz kolor</string>
+   </property>
+   <property name="statusTip">
+    <string>Wybierz kolor</string>
+   </property>
+   <property name="whatsThis">
+    <string>Wybierz kolor</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ColorManipulationToolBar</class>
+   <extends>QToolBar</extends>
+   <header>colormanipulationtoolbar.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>header</tabstop>
+  <tabstop>footer</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>action_close</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/application-exit.png</file>
+        <file>res/archive-insert.png</file>
+        <file>res/object-rotate-right.png</file>
+        <file>res/archive-remove.png</file>
+        <file>res/arrow-down-double.png</file>
+        <file>res/arrow-down.png</file>
+        <file>res/arrow-up-double.png</file>
+        <file>res/arrow-up.png</file>
+        <file>res/configure.png</file>
+        <file>res/document-save.png</file>
+        <file>res/object-rotate-left.png</file>
+        <file>res/help-about.png</file>
+        <file>res/internet-web-browser.png</file>
+        <file>res/qtcreator.png</file>
+        <file>res/bottom-right.png</file>
+        <file>res/bottom-left.png</file>
+        <file>res/top-right.png</file>
+        <file>res/top-left.png</file>
+        <file>res/upload32.png</file>
+        <file>res/upload.png</file>
+        <file>res/document-open.png</file>
+        <file>res/invert.png</file>
+        <file>res/format-stroke-color.png</file>
+        <file>res/dialog-cancel.png</file>
+        <file>res/dialog-ok-apply.png</file>
+        <file>res/edit-delete.png</file>
+        <file>res/page.html</file>
+    </qresource>
+</RCC>
