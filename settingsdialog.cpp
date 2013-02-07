@@ -31,6 +31,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui->setupUi(this);
 	ui->jpgQuality->setFormat("%1 %");
 	ui->imageMapOpacity->setFormat("%1 %");
+	ui->homePageGroup->setId(ui->homeMainRadio, 0);
 	tosFormat = ui->tosLabel->text();
 
 	// earlier "logo" was wrongly called "watermark"
@@ -40,7 +41,9 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 				settings.setValue(key.repeated(1).replace("watermark/", "logo/"), settings.value(key));
 
 	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox, 0), this, &SettingsDialog::uploaderFunc);
-	homeTag             .init(makeInput("home_tag",                   ui->homeTag));
+							  makeInput("home_page/tag",              ui->homeTag);
+							  makeInput("home_page/forum_id",         ui->homeForumId);
+	homeUrl             .init(makeInput("home_page/method",           ui->homePageGroup, 0), this, &SettingsDialog::homeUrlFunc);
 	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, this, M(layoutOptionsChanged), -1), this, &SettingsDialog::captionsUnderFunc);
 	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,            this, M(layoutOptionsChanged), false));
 	numberImages        .init(makeInput("number_images",              ui->numberImages,          this, M(numberOptionsChanged), true));
@@ -124,6 +127,30 @@ QString SettingsDialog::commonMapTypeFunc()                  const { return ENUM
 QString SettingsDialog::imageMapTypeFunc()                   const { return ENUM_STR(MapType, ui->imageMapType->currentIndex()); }
 qreal SettingsDialog::imageMapOpacityFunc()                  const { return ui->imageMapOpacity->value() / 100.0; }
 SettingsDialog::Corner SettingsDialog::imageMapCornerFunc()  const { return (Corner)ui->imageMapPosition->currentIndex(); }
+
+QUrl SettingsDialog::homeUrlFunc() const
+{
+	QUrl url(SSC_HOST);
+	if (ui->homeMainRadio->isChecked())
+		return url;
+	else if (ui->homeUserCPRadio->isChecked())
+		url.setPath("/usercp.php");
+	else if (ui->homeForumRadio->isChecked())
+	{
+		url.setPath("/forumdisplay.php");
+		url.addQueryItem("f", ui->homeForumId->cleanText());
+	}
+	else if (ui->homeTagRadio->isChecked())
+	{
+		QString homeTag;
+		foreach (uint i, ui->homeTag->text().toUcs4())
+			homeTag.append(i <= 255 ? QString(QChar(i)) : QString("&#%1;").arg(i));
+
+		url.setPath("/tags.php");
+		url.addEncodedQueryItem("tag", homeTag.toLatin1().toPercentEncoding());
+	}
+	return url;
+}
 
 void SettingsDialog::accept()
 {

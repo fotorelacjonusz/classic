@@ -3,10 +3,12 @@
 
 #include <QDialog>
 #include <QSettings>
+#include <QUrl>
 #include "settingsmanager.h"
 #include "uploaderfactory.h"
 
 #define SETTINGS SettingsDialog::object()
+#define SSC_HOST "http://www.skyscrapercity.com"
 
 class AbstractUploader;
 class Overlay;
@@ -29,7 +31,7 @@ public:
 	static void copyDescriptions(QWidget *parent);
 
 	Field<AbstractUploader *> uploader;
-	Field<QString> homeTag;
+	Field<QUrl> homeUrl;
 	Field<bool> captionsUnder;
 	Field<bool> extraSpace;
 	Field<bool> numberImages;
@@ -87,6 +89,7 @@ protected:
 	QString imageMapTypeFunc() const;
 	qreal imageMapOpacityFunc() const;
 	Corner imageMapCornerFunc() const;
+	QUrl homeUrlFunc() const;
 
 protected slots:
 	void accept();

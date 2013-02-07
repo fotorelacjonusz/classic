@@ -62,6 +62,9 @@
               <property name="text">
                <string>Liczba zdjęć na post</string>
               </property>
+              <property name="buddy">
+               <cstring>imagesPerPost</cstring>
+              </property>
              </widget>
             </item>
             <item row="0" column="1">
@@ -81,6 +84,9 @@
              <widget class="QLabel" name="postSpaceLabel">
               <property name="text">
                <string>Odstęp między postami</string>
+              </property>
+              <property name="buddy">
+               <cstring>postSpace</cstring>
               </property>
              </widget>
             </item>
@@ -107,10 +113,20 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
+            <item row="6" column="0">
+             <widget class="QLabel" name="captionsPositionLabel">
+              <property name="text">
+               <string>Podpis</string>
+              </property>
+              <property name="buddy">
+               <cstring>captionsAbove</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
              <widget class="QRadioButton" name="captionsAbove">
               <property name="text">
-               <string>Podpis nad zdjęciem</string>
+               <string>nad zdjęciem</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -120,31 +136,34 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </attribute>
              </widget>
             </item>
-            <item row="4" column="1">
+            <item row="7" column="1">
              <widget class="QRadioButton" name="captionsUnder">
               <property name="text">
-               <string>Podpis pod zdjęciem</string>
+               <string>pod zdjęciem</string>
               </property>
               <attribute name="buttonGroup">
                <string notr="true">captionsPositionGroup</string>
               </attribute>
              </widget>
             </item>
-            <item row="5" column="1">
+            <item row="8" column="1">
              <widget class="QCheckBox" name="numberImages">
               <property name="text">
                <string>Numeruj zdjęcia</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
+            <item row="9" column="0">
              <widget class="QLabel" name="startingNumberLabel">
               <property name="text">
                <string>Zaczynaj numerację od</string>
               </property>
+              <property name="buddy">
+               <cstring>startingNumber</cstring>
+              </property>
              </widget>
             </item>
-            <item row="6" column="1">
+            <item row="9" column="1">
              <widget class="QSpinBox" name="startingNumber">
               <property name="minimum">
                <number>1</number>
@@ -154,35 +173,38 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="7" column="1">
+            <item row="10" column="1">
              <widget class="QCheckBox" name="addTBC">
               <property name="text">
                <string>Dodawaj &quot;Cdn ...&quot; na końcu postów</string>
               </property>
              </widget>
             </item>
-            <item row="8" column="1">
+            <item row="11" column="1">
              <widget class="QCheckBox" name="extraSpace">
               <property name="text">
                <string>Dodatkowy odstęp pomiędzy opisem, a zdjęciem</string>
               </property>
              </widget>
             </item>
-            <item row="9" column="1">
+            <item row="12" column="1">
              <widget class="QCheckBox" name="addImageBorder">
               <property name="text">
                <string>Dodawaj czarną ramkę wokół zdjęcia</string>
               </property>
              </widget>
             </item>
-            <item row="10" column="0">
+            <item row="13" column="0">
              <widget class="QLabel" name="extraTagsLabel">
               <property name="text">
                <string>Dodatkowe tagi w każdym poście</string>
               </property>
+              <property name="buddy">
+               <cstring>extraTags</cstring>
+              </property>
              </widget>
             </item>
-            <item row="10" column="1">
+            <item row="13" column="1">
              <widget class="QPlainTextEdit" name="extraTags">
               <property name="toolTip">
                <string>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</string>
@@ -192,18 +214,85 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="homeTagLabel">
-              <property name="text">
-               <string>Otwórz froum na tagu</string>
-              </property>
+            <item row="5" column="1">
+             <widget class="QWidget" name="homeForumWidget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QRadioButton" name="homeForumRadio">
+                 <property name="text">
+                  <string>forum o id</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">homePageGroup</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="homeForumId">
+                 <property name="toolTip">
+                  <string>Np. dla Forum Polskich Wieżowców wpisz 45</string>
+                 </property>
+                 <property name="maximum">
+                  <number>9999</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QWidget" name="homeTagWidget" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QRadioButton" name="homeTagRadio">
+                 <property name="text">
+                  <string>tagu</string>
+                 </property>
+                 <attribute name="buttonGroup">
+                  <string notr="true">homePageGroup</string>
+                 </attribute>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="homeTag"/>
+               </item>
+              </layout>
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="homeTag">
-              <property name="toolTip">
-               <string>Zostaw puste, aby zacząć od FPW</string>
+             <widget class="QRadioButton" name="homeMainRadio">
+              <property name="text">
+               <string>stronie głównej</string>
               </property>
+              <attribute name="buttonGroup">
+               <string notr="true">homePageGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="homePageLabel">
+              <property name="text">
+               <string>Otwórz przeglądarkę na</string>
+              </property>
+              <property name="buddy">
+               <cstring>homeMainRadio</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QRadioButton" name="homeUserCPRadio">
+              <property name="text">
+               <string>user CP</string>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">homePageGroup</string>
+              </attribute>
              </widget>
             </item>
            </layout>
@@ -241,6 +330,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="text">
              <string>Zmień</string>
             </property>
+            <property name="buddy">
+             <cstring>widthRadioButton</cstring>
+            </property>
            </widget>
           </item>
           <item row="0" column="1">
@@ -276,6 +368,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            <widget class="QLabel" name="toLabel">
             <property name="text">
              <string>na długość</string>
+            </property>
+            <property name="buddy">
+             <cstring>lengthComboBox</cstring>
             </property>
            </widget>
           </item>
@@ -336,6 +431,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="text">
              <string>Jakość JPG</string>
             </property>
+            <property name="buddy">
+             <cstring>jpgQuality</cstring>
+            </property>
            </widget>
           </item>
           <item row="5" column="1">
@@ -393,6 +491,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <property name="text">
                <string>Brak pliku</string>
               </property>
+              <property name="buddy">
+               <cstring>logoLoad</cstring>
+              </property>
              </widget>
             </item>
             <item row="1" column="1">
@@ -416,6 +517,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
              <widget class="QLabel" name="logoPositionLabel">
               <property name="text">
                <string>Umieść w rogu zdjęcia</string>
+              </property>
+              <property name="buddy">
+               <cstring>logoPosition</cstring>
               </property>
              </widget>
             </item>
@@ -470,6 +574,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <property name="text">
                <string>Odstęp od krawędzi</string>
               </property>
+              <property name="buddy">
+               <cstring>logoMargin</cstring>
+              </property>
              </widget>
             </item>
             <item row="3" column="1">
@@ -506,7 +613,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
       <attribute name="title">
        <string>Wysyłanie</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0,1">
+      <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,1,0">
        <item>
         <layout class="QFormLayout" name="formLayout_5">
          <property name="fieldGrowthPolicy">
@@ -520,19 +627,15 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            <property name="text">
             <string>Wybierz metodę wysyłania</string>
            </property>
+           <property name="buddy">
+            <cstring>uploadMethodComboBox</cstring>
+           </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="uploadMethodComboBox"/>
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="tosLabel">
-         <property name="text">
-          <string>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: %2</string>
-         </property>
-        </widget>
        </item>
        <item>
         <widget class="QGroupBox" name="uploadGroupBox">
@@ -542,63 +645,21 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
          <layout class="QVBoxLayout" name="verticalLayout_9"/>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="tosLabel">
+         <property name="text">
+          <string>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: %2</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="mapTab">
       <attribute name="title">
        <string>Mapy</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_7">
-       <item>
-        <widget class="QGroupBox" name="commonMapBox">
-         <property name="title">
-          <string>Wspólna mapa dla wszystkich zdjęć</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <layout class="QFormLayout" name="formLayout_6">
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::ExpandingFieldsGrow</enum>
-          </property>
-          <property name="labelAlignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="commonMapTypeLabel">
-            <property name="text">
-             <string>Rodzaj mapy</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="commonMapType">
-            <item>
-             <property name="text">
-              <string>Drogi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Satelita</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Hybryda</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Teren</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0,0">
+       <item row="2" column="0">
         <widget class="QGroupBox" name="imageMapBox">
          <property name="title">
           <string>Mapa na każdym zdjęciu</string>
@@ -617,6 +678,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            <widget class="QLabel" name="imageMapTypeLabel">
             <property name="text">
              <string>Rodzaj mapy</string>
+            </property>
+            <property name="buddy">
+             <cstring>imageMapType</cstring>
             </property>
            </widget>
           </item>
@@ -649,6 +713,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="text">
              <string>Kolor</string>
             </property>
+            <property name="buddy">
+             <cstring>imageMapColor</cstring>
+            </property>
            </widget>
           </item>
           <item row="1" column="1">
@@ -663,6 +730,19 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="text">
              <string>Nieprzeźroczystość</string>
             </property>
+            <property name="buddy">
+             <cstring>imageMapOpacity</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="DisplaySlider" name="imageMapOpacity">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
            </widget>
           </item>
           <item row="3" column="0">
@@ -670,23 +750,42 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="text">
              <string>Zbliżenie</string>
             </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QCheckBox" name="imageMapCircle">
-            <property name="text">
-             <string>W kółku</string>
+            <property name="buddy">
+             <cstring>imageMapZoom</cstring>
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
+          <item row="3" column="1">
+           <widget class="DisplaySlider" name="imageMapZoom">
+            <property name="maximum">
+             <number>21</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Kształt</string>
+            </property>
+            <property name="buddy">
+             <cstring>imageMapCircle</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
            <widget class="QLabel" name="imageMapPositionLabel">
             <property name="text">
              <string>Umieść w rogu zdjęcia</string>
             </property>
+            <property name="buddy">
+             <cstring>imageMapPosition</cstring>
+            </property>
            </widget>
           </item>
-          <item row="5" column="1">
+          <item row="6" column="1">
            <widget class="QComboBox" name="imageMapPosition">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -732,14 +831,17 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             </item>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item row="7" column="0">
            <widget class="QLabel" name="imageMapMarginLabel">
             <property name="text">
              <string>Odstęp od krawędzi</string>
             </property>
+            <property name="buddy">
+             <cstring>imageMapMargin</cstring>
+            </property>
            </widget>
           </item>
-          <item row="6" column="1">
+          <item row="7" column="1">
            <widget class="QSpinBox" name="imageMapMargin">
             <property name="suffix">
              <string> px</string>
@@ -749,14 +851,17 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             </property>
            </widget>
           </item>
-          <item row="7" column="0">
+          <item row="8" column="0">
            <widget class="QLabel" name="imageMapSizeLabel">
             <property name="text">
              <string>Rozmiar</string>
             </property>
+            <property name="buddy">
+             <cstring>imageMapSize</cstring>
+            </property>
            </widget>
           </item>
-          <item row="7" column="1">
+          <item row="8" column="1">
            <widget class="QSpinBox" name="imageMapSize">
             <property name="suffix">
              <string> px</string>
@@ -769,27 +874,73 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="DisplaySlider" name="imageMapZoom">
-            <property name="maximum">
-             <number>21</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="DisplaySlider" name="imageMapOpacity">
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="imageMapCircle">
+            <property name="text">
+             <string>okrągły</string>
             </property>
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="commonMapBox">
+         <property name="title">
+          <string>Wspólna mapa dla wszystkich zdjęć</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <layout class="QFormLayout" name="formLayout_6">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::ExpandingFieldsGrow</enum>
+          </property>
+          <property name="labelAlignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="commonMapTypeLabel">
+            <property name="text">
+             <string>Rodzaj mapy</string>
+            </property>
+            <property name="buddy">
+             <cstring>commonMapType</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="commonMapType">
+            <item>
+             <property name="text">
+              <string>Drogi</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Satelita</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Hybryda</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Teren</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Źródło danych: Google Maps https://developers.google.com/maps/documentation/staticmaps/</string>
+         </property>
         </widget>
        </item>
       </layout>
@@ -800,17 +951,25 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
-        <widget class="QCheckBox" name="useOverlays">
-         <property name="text">
+        <widget class="QGroupBox" name="useOverlays">
+         <property name="title">
           <string>Używaj własnych map</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="OverlayList" name="overlayList">
-         <property name="acceptDrops">
+         <property name="checkable">
           <bool>true</bool>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="margin">
+           <number>1</number>
+          </property>
+          <item>
+           <widget class="OverlayList" name="overlayList">
+            <property name="acceptDrops">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -845,9 +1004,16 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>tabWidget</tabstop>
   <tabstop>imagesPerPost</tabstop>
   <tabstop>postSpace</tabstop>
+  <tabstop>homeMainRadio</tabstop>
+  <tabstop>homeUserCPRadio</tabstop>
+  <tabstop>homeTagRadio</tabstop>
+  <tabstop>homeTag</tabstop>
+  <tabstop>homeForumRadio</tabstop>
+  <tabstop>homeForumId</tabstop>
   <tabstop>captionsAbove</tabstop>
   <tabstop>captionsUnder</tabstop>
   <tabstop>numberImages</tabstop>
+  <tabstop>startingNumber</tabstop>
   <tabstop>addTBC</tabstop>
   <tabstop>extraSpace</tabstop>
   <tabstop>addImageBorder</tabstop>
@@ -856,6 +1022,8 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>maxRadioButton</tabstop>
   <tabstop>lengthComboBox</tabstop>
   <tabstop>retainOriginalSize</tabstop>
+  <tabstop>jpgQuality</tabstop>
+  <tabstop>dontScalePanoramas</tabstop>
   <tabstop>logoGroupBox</tabstop>
   <tabstop>logoLoad</tabstop>
   <tabstop>logoPosition</tabstop>
@@ -873,6 +1041,8 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>imageMapPosition</tabstop>
   <tabstop>imageMapMargin</tabstop>
   <tabstop>imageMapSize</tabstop>
+  <tabstop>useOverlays</tabstop>
+  <tabstop>overlayList</tabstop>
   <tabstop>buttonBox</tabstop>
  </tabstops>
  <resources>
@@ -886,12 +1056,12 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>245</x>
+     <y>523</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
+     <x>148</x>
+     <y>439</y>
     </hint>
    </hints>
   </connection>
@@ -902,33 +1072,50 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>317</x>
+     <y>529</y>
     </hint>
     <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
+     <x>354</x>
+     <y>440</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>useOverlays</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>overlayList</receiver>
-   <slot>setEnabled(bool)</slot>
+   <sender>homeTag</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>homeTagRadio</receiver>
+   <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>347</x>
-     <y>39</y>
+     <x>467</x>
+     <y>149</y>
     </hint>
     <hint type="destinationlabel">
-     <x>347</x>
-     <y>272</y>
+     <x>229</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeForumId</sender>
+   <signal>valueChanged(QString)</signal>
+   <receiver>homeForumRadio</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>314</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>175</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <buttongroups>
+  <buttongroup name="homePageGroup"/>
   <buttongroup name="imageScaleMethodGroup"/>
   <buttongroup name="captionsPositionGroup"/>
  </buttongroups>

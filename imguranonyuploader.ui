@@ -36,6 +36,9 @@
      <property name="text">
       <string>Odnowienie kredytów</string>
      </property>
+     <property name="buddy">
+      <cstring>userReset</cstring>
+     </property>
     </widget>
    </item>
    <item row="2" column="1">
@@ -50,12 +53,18 @@
      <property name="text">
       <string>Kredyty na użytkownika</string>
      </property>
+     <property name="buddy">
+      <cstring>userCredits</cstring>
+     </property>
     </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="appCreditsLabel">
      <property name="text">
       <string>Kredyty na aplikację</string>
+     </property>
+     <property name="buddy">
+      <cstring>appCredits</cstring>
      </property>
     </widget>
    </item>

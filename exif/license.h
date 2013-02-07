@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012  kamil.os...
+	Copyright (C) 2012-2013  Kamil Ostaszewski
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 */
 
 static const char * LICENSE =
-		"Copyright (C) 2012  kamil.os...\n"
+		"Copyright (C) 2012-2013  Kamil Ostaszewski\n"
 		"\n"
 		"This program is free software: you can redistribute it and/or modify\n"
 		"it under the terms of the GNU General Public License as published by\n"

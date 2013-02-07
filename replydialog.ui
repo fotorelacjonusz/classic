@@ -106,8 +106,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>71</width>
-            <height>16</height>
+            <width>1093</width>
+            <height>516</height>
            </rect>
           </property>
           <attribute name="label">
@@ -163,6 +163,13 @@
    <header>QtWebKit/QWebView</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>hideInfoButton</tabstop>
+  <tabstop>webView</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -172,8 +179,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>249</x>
+     <y>690</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -188,8 +195,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>317</x>
+     <y>690</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -204,12 +211,12 @@
    <slot>hide()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1063</x>
-     <y>59</y>
+     <x>1064</x>
+     <y>61</y>
     </hint>
     <hint type="destinationlabel">
-     <x>557</x>
-     <y>59</y>
+     <x>853</x>
+     <y>51</y>
     </hint>
    </hints>
   </connection>

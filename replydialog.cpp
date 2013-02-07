@@ -14,17 +14,8 @@
 #include <QtCore/qmath.h>
 
 #define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
-#define SSC_HOST QString("http://www.skyscrapercity.com")
 
 const QString ReplyDialog::postId = "94354890"; // fotorel
-
-QString htmlEntities(QString input)
-{
-	QString output;
-	foreach (uint i, input.toUcs4())
-		output.append(i <= 255 ? QString(QChar(i)) : QString("&#%1;").arg(i));
-	return output;
-}
 
 ReplyDialog::ReplyDialog(QList<AbstractImage *> images, QWidget *parent):
 	QDialog(parent),
@@ -61,22 +52,11 @@ ReplyDialog::ReplyDialog(QList<AbstractImage *> images, QWidget *parent):
 	connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(loadProgress(int)));
 	connect(uploader, SIGNAL(uploadProgress(qint64,qint64)), this, SLOT(uploadProgress(qint64,qint64)));
 
-	QUrl url(SSC_HOST);
-	if (SETTINGS->homeTag.value().isEmpty())
-	{
-		url.setPath("/forumdisplay.php");
-		url.addQueryItem("f", "45");
-	}
-	else
-	{
-		url.setPath("/tags.php");
-		url.addEncodedQueryItem("tag", htmlEntities(SETTINGS->homeTag).toLatin1().toPercentEncoding());
-	}
 
 //	ui->webView->setPage(new WebPage());
 	frame = ui->webView->page()->mainFrame();
 	ui->webView->page()->networkAccessManager()->setCookieJar(new NetworkCookieJar());
-	ui->webView->load(url);
+	ui->webView->load(SETTINGS->homeUrl);
 
 //	likeButton = ui->buttonBox->addButton(tr("Lubię to"), QDialogButtonBox::ActionRole);
 //	connect(likeButton, SIGNAL(clicked()), this, SLOT(likeClicked()));
@@ -244,7 +224,7 @@ void ReplyDialog::parseThread(int progress)
 	}
 
 	qDebug() << "parseThread()" << "przechodzę do formularza\n";
-	QString url = SSC_HOST + "/" + imgReply.parent().attribute("href");
+	QString url = QString(SSC_HOST) + "/" + imgReply.parent().attribute("href");
 	ui->progressBar->setFormat(tr("Przechodzę do formularza... %p%"));
 	ui->webView->load(url);
 }

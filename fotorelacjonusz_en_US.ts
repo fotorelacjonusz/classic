@@ -17,7 +17,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pomoc: http://www.skyscrapercity.com/showthread.php?t=1539539&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/p/fotorelacjonusz/wiki/Home/&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <oldsource>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -26,11 +26,8 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- stworzony by pomagać wstawiać fotorelacje na forum SSC&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- autor: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pomoc:&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://www.skyscrapercity.com/showthread.php?t=1539539&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Pomoc: http://www.skyscrapercity.com/showthread.php?t=1539539&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -40,7 +37,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Author: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Help: http://www.skyscrapercity.com/showthread.php?t=1539539&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/p/fotorelacjonusz/wiki/Home/&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -94,34 +91,34 @@ p, li { white-space: pre-wrap; }
         <translation>Host</translation>
     </message>
     <message>
-        <location filename="ftpuploader.ui" line="33"/>
+        <location filename="ftpuploader.ui" line="36"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message>
-        <location filename="ftpuploader.ui" line="50"/>
+        <location filename="ftpuploader.ui" line="56"/>
         <source>Login</source>
         <translation>Login</translation>
     </message>
     <message utf8="true">
-        <location filename="ftpuploader.ui" line="60"/>
+        <location filename="ftpuploader.ui" line="69"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
     <message utf8="true">
-        <location filename="ftpuploader.ui" line="67"/>
+        <location filename="ftpuploader.ui" line="79"/>
         <source>Zapisywane w konfiguracji hasło nie jest czystym tekstem,  jednak jego kodowanie nie jest silne.
 Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</source>
         <translation>Password stored in configuration is not plain text, but encoding algorithm used is not strong.
 If you don&apos;t want your password stored leave this field empty, application will ask for your password next time you send photo relation.</translation>
     </message>
     <message utf8="true">
-        <location filename="ftpuploader.ui" line="78"/>
+        <location filename="ftpuploader.ui" line="90"/>
         <source>Adres do katalogu głównego</source>
         <translation>Top directory url</translation>
     </message>
     <message utf8="true">
-        <location filename="ftpuploader.ui" line="85"/>
+        <location filename="ftpuploader.ui" line="100"/>
         <source>Adres do katalogu głównego ftp jest częścią linku tworzonego dla każdego zdjęcia.
 Źle wpisany spowoduje, że wszystkie adresy do zdjęć będą niewłaściwe.</source>
         <translation>Top directory url becomes part of a link to each image.
@@ -201,12 +198,12 @@ Wrong url will make all links corrupted.</translation>
         <translation>Form</translation>
     </message>
     <message utf8="true">
-        <location filename="imguranonyuploader.ui" line="51"/>
+        <location filename="imguranonyuploader.ui" line="54"/>
         <source>Kredyty na użytkownika</source>
         <translation>User credits</translation>
     </message>
     <message utf8="true">
-        <location filename="imguranonyuploader.ui" line="58"/>
+        <location filename="imguranonyuploader.ui" line="64"/>
         <source>Kredyty na aplikację</source>
         <translation>Application credits</translation>
     </message>
@@ -308,19 +305,19 @@ Wrong url will make all links corrupted.</translation>
         <translation>Login</translation>
     </message>
     <message utf8="true">
-        <location filename="isloginuploader.ui" line="33"/>
+        <location filename="isloginuploader.ui" line="36"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
     <message utf8="true">
-        <location filename="isloginuploader.ui" line="40"/>
+        <location filename="isloginuploader.ui" line="46"/>
         <source>Zapisywane w konfiguracji hasło nie jest czystym tekstem,  jednak jego kodowanie nie jest silne.
 Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</source>
         <translation>Password stored in configuration is not plain text, but encoding algorithm used is not strong.
 If you don&apos;t want your password stored leave this field empty, application will ask for your password next time you send photo relation.</translation>
     </message>
     <message utf8="true">
-        <location filename="isloginuploader.ui" line="57"/>
+        <location filename="isloginuploader.ui" line="63"/>
         <source>Login i hasło są do imageshack wysyłane czystym tekstem - jest to wymuszone przez api imageshack.</source>
         <translation>Login and password will be sent in plain text - this is imageshack api requirement.</translation>
     </message>
@@ -757,101 +754,101 @@ Error at:
         <translation>Strona</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="46"/>
+        <location filename="replydialog.cpp" line="37"/>
         <source>Wszystkie obrazki: %p%</source>
         <translation>All photos: %p%</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="119"/>
-        <location filename="replydialog.cpp" line="146"/>
+        <location filename="replydialog.cpp" line="99"/>
+        <location filename="replydialog.cpp" line="126"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="119"/>
+        <location filename="replydialog.cpp" line="99"/>
         <source>Nie moÅ¼na byÅo rozpoczÄÄ wysyÅania z powodu:
 %1</source>
         <translation>Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="134"/>
+        <location filename="replydialog.cpp" line="114"/>
         <source>Post %1</source>
         <translation>Post %1</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="142"/>
+        <location filename="replydialog.cpp" line="122"/>
         <source>WysyÅam %1: %p%</source>
         <translation>Sending %1: %p%</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="146"/>
+        <location filename="replydialog.cpp" line="126"/>
         <source>Nie moÅ¼na byÅo wysÅaÄ obrazka %1 z powodu:
 %2</source>
         <translation>Photo %1 upload failed: %2</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="158"/>
+        <location filename="replydialog.cpp" line="138"/>
         <source>Cdn ...</source>
         <translation>Tbc ...</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="183"/>
+        <location filename="replydialog.cpp" line="163"/>
         <source>sekund</source>
         <comment>0</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="183"/>
+        <location filename="replydialog.cpp" line="163"/>
         <source>sekundÄ</source>
         <comment>1</comment>
         <translation>second</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="183"/>
+        <location filename="replydialog.cpp" line="163"/>
         <source>sekundy</source>
         <comment>2</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="184"/>
+        <location filename="replydialog.cpp" line="164"/>
         <source>sekundy</source>
         <comment>3</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="184"/>
+        <location filename="replydialog.cpp" line="164"/>
         <source>sekundy</source>
         <comment>4</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="184"/>
+        <location filename="replydialog.cpp" line="164"/>
         <source>sekund</source>
         <comment>5</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="185"/>
+        <location filename="replydialog.cpp" line="165"/>
         <source>Czekam %1 %2... %p%</source>
         <translation>Waiting %1 %2... %p%</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="230"/>
+        <location filename="replydialog.cpp" line="210"/>
         <source>Koniec. %p%</source>
         <translation>Done. %p%</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="234"/>
+        <location filename="replydialog.cpp" line="214"/>
         <source>LubiÄ to</source>
         <translation>Like</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="248"/>
+        <location filename="replydialog.cpp" line="228"/>
         <source>PrzechodzÄ do formularza... %p%</source>
         <translation>Navigating to form... %p%</translation>
     </message>
     <message>
-        <location filename="replydialog.cpp" line="290"/>
+        <location filename="replydialog.cpp" line="270"/>
         <source>WysyÅam posta... %p%</source>
         <translation>Sending post... %p%</translation>
     </message>
@@ -874,340 +871,397 @@ Error at:
         <translation>Photos per post</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="83"/>
+        <location filename="settingsdialog.ui" line="86"/>
         <source>Odstęp między postami</source>
         <translation>Post time space</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="96"/>
+        <location filename="settingsdialog.ui" line="102"/>
         <source>Jest to czas, przez który program czeka z wysłaniem kolejnego posta. Minimalna wartość to 30 sekund - wymuszona przez forum.
 Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejności przez forum.</source>
         <translation>Time for which application waits before sending next post. Minimum value is 30 seconds - required by the forum.
 Most probably short time favors post miximg by the forum.</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="100"/>
+        <location filename="settingsdialog.ui" line="106"/>
         <source> s</source>
         <translation> s</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="113"/>
         <source>Podpis nad zdjęciem</source>
-        <translation>Captions above photos</translation>
+        <translation type="obsolete">Captions above photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="126"/>
         <source>Podpis pod zdjęciem</source>
-        <translation>Captions under photos</translation>
+        <translation type="obsolete">Captions under photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="136"/>
+        <location filename="settingsdialog.ui" line="152"/>
         <source>Numeruj zdjęcia</source>
         <translation>Number photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="143"/>
+        <location filename="settingsdialog.ui" line="159"/>
         <source>Zaczynaj numerację od</source>
-        <translation>Start numbering with</translation>
+        <translation>Number photos from</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="160"/>
+        <location filename="settingsdialog.ui" line="179"/>
         <source>Dodawaj &quot;Cdn ...&quot; na końcu postów</source>
         <translation>Add &quot;Tbc...&quot; at the end of a post</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="167"/>
+        <location filename="settingsdialog.ui" line="186"/>
         <source>Dodatkowy odstęp pomiędzy opisem, a zdjęciem</source>
         <translation>Additional space between caption and photo</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="174"/>
+        <location filename="settingsdialog.ui" line="193"/>
         <source>Dodawaj czarną ramkę wokół zdjęcia</source>
         <translation>Add black border around photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="181"/>
+        <location filename="settingsdialog.ui" line="200"/>
         <source>Dodatkowe tagi w każdym poście</source>
         <translation>Extra tags is posts</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="188"/>
+        <location filename="settingsdialog.ui" line="210"/>
         <source>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</source>
-        <translation>Input only opening tags, they will be automaticaly closed.</translation>
+        <translation>Input only opening tags, they will be automatically closed.</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="198"/>
         <source>Otwórz froum na tagu</source>
-        <translation>Start forum with tag</translation>
+        <translation type="obsolete">Start forum with tag</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="205"/>
         <source>Zostaw puste, aby zacząć od FPW</source>
-        <translation>Leave empty to start with FPW</translation>
+        <translation type="obsolete">Leave empty to start with FPW</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="119"/>
+        <source>Podpis</source>
+        <translation>Captions</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="218"/>
+        <location filename="settingsdialog.ui" line="129"/>
+        <source>nad zdjęciem</source>
+        <translation>above photos</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="142"/>
+        <source>pod zdjęciem</source>
+        <translation>under photos</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="226"/>
+        <source>forum o id</source>
+        <translation>forum of id</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="236"/>
+        <source>Np. dla Forum Polskich Wieżowców wpisz 45</source>
+        <oldsource>Dla Forum Polskich Wieżowców wpisz 45</oldsource>
+        <translation>E.g. for Forum Polskich Wieżowców put 45</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="255"/>
+        <source>tagu</source>
+        <translation>threads tagged</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="271"/>
+        <source>stronie głównej</source>
+        <translation>main page</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="281"/>
+        <source>Otwórz przeglądarkę na</source>
+        <translation>Start browser with</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="291"/>
+        <source>user CP</source>
+        <translation>user CP</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="307"/>
         <source>Rozmiar zdjęć</source>
         <translation>Image size</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="242"/>
+        <location filename="settingsdialog.ui" line="331"/>
         <source>Zmień</source>
         <translation>Change</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="249"/>
+        <location filename="settingsdialog.ui" line="341"/>
         <source>Zdjęcia pionowe będą większe od zdjęć poziomych (ta sama szerokość, większa wysokość)</source>
         <translation>Vertical photos will be bigger than horizontal photos (the same width, higher)</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="252"/>
+        <location filename="settingsdialog.ui" line="344"/>
         <source>szerokość</source>
         <translation>width</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="265"/>
+        <location filename="settingsdialog.ui" line="357"/>
         <source>Zdjęcia pionowe będą miały taką samą wielkość jak poziome</source>
         <translation>Vertical photos will be the same size as horizontal</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="268"/>
+        <location filename="settingsdialog.ui" line="360"/>
         <source>większy z wymiarów</source>
         <translation>bigger dimension</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="278"/>
+        <location filename="settingsdialog.ui" line="370"/>
         <source>na długość</source>
         <translation>to</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="289"/>
+        <location filename="settingsdialog.ui" line="384"/>
         <source>640</source>
         <translation>640</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="294"/>
+        <location filename="settingsdialog.ui" line="389"/>
         <source>800</source>
         <translation>800</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="299"/>
+        <location filename="settingsdialog.ui" line="394"/>
         <source>1024</source>
         <translation>1024</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="304"/>
+        <location filename="settingsdialog.ui" line="399"/>
         <source>1280</source>
         <translation>1280</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="309"/>
+        <location filename="settingsdialog.ui" line="404"/>
         <source>1440</source>
         <translation>1440</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="314"/>
+        <location filename="settingsdialog.ui" line="409"/>
         <source>1600</source>
         <translation>1600</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="319"/>
+        <location filename="settingsdialog.ui" line="414"/>
         <source>1920</source>
         <translation>1920</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="327"/>
+        <location filename="settingsdialog.ui" line="422"/>
         <source>Domyślnie zdjęcia zapisywane są po przeskalowaniu do mniejszych rozmiarów.</source>
         <translation>By default.photos are scaled down before saving.</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="330"/>
+        <location filename="settingsdialog.ui" line="425"/>
         <source>Podczas zapisywania fotorelacji zachowuj oryginalny rozmiar zdjęć</source>
         <translation>Keep photos original size when saving photo relation</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="337"/>
+        <location filename="settingsdialog.ui" line="432"/>
         <source>Jakość JPG</source>
         <translation>JPG quality</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="354"/>
+        <location filename="settingsdialog.ui" line="452"/>
         <source>Nie skaluj zdjęć panoramicznych</source>
         <translation>Don&apos;t scale panoramas</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="365"/>
+        <location filename="settingsdialog.ui" line="463"/>
         <source>Logo</source>
         <translation>Logo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="371"/>
+        <location filename="settingsdialog.ui" line="469"/>
         <source>Dodawaj logo</source>
         <oldsource>Dodawaj znak wodny</oldsource>
         <translation>Add logo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="394"/>
+        <location filename="settingsdialog.ui" line="492"/>
         <source>Brak pliku</source>
         <translation>No file</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="407"/>
+        <location filename="settingsdialog.ui" line="508"/>
         <source>Wczytaj</source>
         <translation>Load</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="418"/>
-        <location filename="settingsdialog.ui" line="685"/>
+        <location filename="settingsdialog.ui" line="519"/>
+        <location filename="settingsdialog.ui" line="781"/>
         <source>Umieść w rogu zdjęcia</source>
         <translation>Place in corner</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="432"/>
-        <location filename="settingsdialog.ui" line="699"/>
+        <location filename="settingsdialog.ui" line="536"/>
+        <location filename="settingsdialog.ui" line="798"/>
         <source>Prawy dolny</source>
         <translation>Bottom right</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="441"/>
-        <location filename="settingsdialog.ui" line="708"/>
+        <location filename="settingsdialog.ui" line="545"/>
+        <location filename="settingsdialog.ui" line="807"/>
         <source>Lewy dolny</source>
         <translation>Bottom left</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="450"/>
-        <location filename="settingsdialog.ui" line="717"/>
+        <location filename="settingsdialog.ui" line="554"/>
+        <location filename="settingsdialog.ui" line="816"/>
         <source>Prawy górny</source>
         <translation>Top right</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="459"/>
-        <location filename="settingsdialog.ui" line="726"/>
+        <location filename="settingsdialog.ui" line="563"/>
+        <location filename="settingsdialog.ui" line="825"/>
         <source>Lewy górny</source>
         <translation>Top left</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="471"/>
-        <location filename="settingsdialog.ui" line="738"/>
+        <location filename="settingsdialog.ui" line="575"/>
+        <location filename="settingsdialog.ui" line="837"/>
         <source>Odstęp od krawędzi</source>
         <translation>Distance from the edge</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="484"/>
-        <location filename="settingsdialog.ui" line="745"/>
-        <location filename="settingsdialog.ui" line="762"/>
+        <location filename="settingsdialog.ui" line="591"/>
+        <location filename="settingsdialog.ui" line="847"/>
+        <location filename="settingsdialog.ui" line="867"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="494"/>
+        <location filename="settingsdialog.ui" line="601"/>
         <source>Odwróć kolory na ciemnym tle</source>
         <translation>Invert colors on dark background</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="507"/>
+        <location filename="settingsdialog.ui" line="614"/>
         <source>Wysyłanie</source>
         <translation>Upload</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="521"/>
+        <location filename="settingsdialog.ui" line="628"/>
         <source>Wybierz metodę wysyłania</source>
         <translation>Choose upload method</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="533"/>
+        <location filename="settingsdialog.ui" line="643"/>
         <source>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: %2</source>
         <oldsource>Korzystając z wybranego serwisu zgadzasz się przestrzegać jego regulaminu</oldsource>
         <translation>By using %1 you agree to comply with its regulations: %2</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="549"/>
+        <location filename="settingsdialog.ui" line="659"/>
         <source>Mapy</source>
         <translation>Maps</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="555"/>
+        <location filename="settingsdialog.ui" line="890"/>
         <source>Wspólna mapa dla wszystkich zdjęć</source>
         <translation>Common map for all photos</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="570"/>
-        <location filename="settingsdialog.ui" line="619"/>
+        <location filename="settingsdialog.ui" line="680"/>
+        <location filename="settingsdialog.ui" line="905"/>
         <source>Rodzaj mapy</source>
         <translation>Map type</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="578"/>
-        <location filename="settingsdialog.ui" line="627"/>
+        <location filename="settingsdialog.ui" line="691"/>
+        <location filename="settingsdialog.ui" line="916"/>
         <source>Drogi</source>
         <translation>Roadmap</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="583"/>
-        <location filename="settingsdialog.ui" line="632"/>
+        <location filename="settingsdialog.ui" line="696"/>
+        <location filename="settingsdialog.ui" line="921"/>
         <source>Satelita</source>
         <translation>Satellite</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="588"/>
-        <location filename="settingsdialog.ui" line="637"/>
+        <location filename="settingsdialog.ui" line="701"/>
+        <location filename="settingsdialog.ui" line="926"/>
         <source>Hybryda</source>
         <translation>Hybrid</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="593"/>
-        <location filename="settingsdialog.ui" line="642"/>
+        <location filename="settingsdialog.ui" line="706"/>
+        <location filename="settingsdialog.ui" line="931"/>
         <source>Teren</source>
         <translation>Terrain</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="604"/>
+        <location filename="settingsdialog.ui" line="665"/>
         <source>Mapa na każdym zdjęciu</source>
         <translation>Map on each photo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="650"/>
+        <location filename="settingsdialog.ui" line="714"/>
         <source>Kolor</source>
         <translation>Color</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="664"/>
+        <location filename="settingsdialog.ui" line="731"/>
         <source>Nieprzeźroczystość</source>
         <translation>Opacity</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="671"/>
+        <location filename="settingsdialog.ui" line="751"/>
         <source>Zbliżenie</source>
         <translation>Zoom</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="678"/>
+        <location filename="settingsdialog.ui" line="771"/>
+        <source>Kształt</source>
+        <translation>Shape</translation>
+    </message>
+    <message utf8="true">
         <source>W kółku</source>
-        <translation>Round</translation>
+        <translation type="obsolete">Round</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="755"/>
+        <location filename="settingsdialog.ui" line="857"/>
         <source>Rozmiar</source>
         <translation>Size</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="799"/>
+        <location filename="settingsdialog.ui" line="880"/>
+        <source>okrągły</source>
+        <translation>circular</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="942"/>
+        <source>Źródło danych: Google Maps https://developers.google.com/maps/documentation/staticmaps/</source>
+        <oldsource>Źródło danych:  Google Maps https://developers.google.com/maps/documentation/staticmaps/</oldsource>
+        <translation>Data source: Google Maps https://developers.google.com/maps/documentation/staticmaps/</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="950"/>
         <source>Własne mapy</source>
         <translation>Own maps</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="805"/>
+        <location filename="settingsdialog.ui" line="956"/>
         <source>Używaj własnych map</source>
         <translation>Use own maps</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="146"/>
+        <location filename="settingsdialog.cpp" line="173"/>
         <source>Wczytaj logo</source>
         <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="146"/>
+        <location filename="settingsdialog.cpp" line="173"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
