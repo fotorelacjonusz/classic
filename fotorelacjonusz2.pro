@@ -99,8 +99,12 @@ LIBS += \
     -L../quazip
 
 win32 {
-    LIBS += -lquazip1
+	LIBS += -lquazip1
+	INCLUDEPATH += \
+		third-party/quazip/quazip \
+		third-party/zlib
 }
+
 unix {
     LIBS += -lquazip
 }

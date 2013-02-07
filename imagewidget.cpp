@@ -21,9 +21,11 @@
 #include <QCheckBox>
 
 const qreal ImageWidget::maxAspectRatio = 17.0 / 9.0;
+int ImageWidget::currentId = 0;
 
 ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
 	QWidget(parent),
+	id(++currentId),
 	filePath(_filePath),
 	brightness(BRIGHTNESS_DEFAULT), contrast(CONTRAST_DEFAULT), gamma(GAMMA_DEFAULT),
 	gpsData(0)
@@ -63,7 +65,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), this, SLOT(updatePixmap()));
 	gpsData->downloadMap();
 
-	setObjectName(filePath.split("/").last().split(".").first());
+	setObjectName(QString("photo%1").arg(id));
 
 	connect(SETTINGS, SIGNAL(pixmapOptionsChanged()), this, SLOT(updatePixmap()));
 	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateNumber()));

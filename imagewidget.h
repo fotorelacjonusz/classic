@@ -62,6 +62,8 @@ private slots:
 private:
 	static QRect alignedRect(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin);
 	static const qreal maxAspectRatio;
+	static int currentId;
+	const int id;
 
 	QString filePath;
 	int num;

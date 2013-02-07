@@ -19,6 +19,8 @@ SOURCES += main.cpp
 
 win32 {
     LIBS += -lexiv2-11
+	INCLUDEPATH += \
+		../third-party
 }
 unix {
     LIBS += -lexiv2
