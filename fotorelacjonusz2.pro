@@ -98,11 +98,11 @@ RESOURCES += \
 LIBS += \
     -L../quazip
 
+INCLUDEPATH += third-party/quazip/quazip
+
 win32 {
 	LIBS += -lquazip1
-	INCLUDEPATH += \
-		third-party/quazip/quazip \
-		third-party/zlib
+    INCLUDEPATH += third-party/zlib
 }
 
 unix {

@@ -132,7 +132,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                <bool>true</bool>
               </property>
               <attribute name="buttonGroup">
-               <string>captionsPositionGroup</string>
+               <string notr="true">captionsPositionGroup</string>
               </attribute>
              </widget>
             </item>
@@ -142,7 +142,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                <string>pod zdjęciem</string>
               </property>
               <attribute name="buttonGroup">
-               <string>captionsPositionGroup</string>
+               <string notr="true">captionsPositionGroup</string>
               </attribute>
              </widget>
             </item>
@@ -226,7 +226,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                   <string>forum o id</string>
                  </property>
                  <attribute name="buttonGroup">
-                  <string>homePageGroup</string>
+                  <string notr="true">homePageGroup</string>
                  </attribute>
                 </widget>
                </item>
@@ -255,7 +255,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                   <string>tagu</string>
                  </property>
                  <attribute name="buttonGroup">
-                  <string>homePageGroup</string>
+                  <string notr="true">homePageGroup</string>
                  </attribute>
                 </widget>
                </item>
@@ -271,7 +271,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                <string>stronie głównej</string>
               </property>
               <attribute name="buttonGroup">
-               <string>homePageGroup</string>
+               <string notr="true">homePageGroup</string>
               </attribute>
              </widget>
             </item>
@@ -291,7 +291,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                <string>user CP</string>
               </property>
               <attribute name="buttonGroup">
-               <string>homePageGroup</string>
+               <string notr="true">homePageGroup</string>
               </attribute>
              </widget>
             </item>
@@ -347,7 +347,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
              <bool>true</bool>
             </property>
             <attribute name="buttonGroup">
-             <string>imageScaleMethodGroup</string>
+             <string notr="true">imageScaleMethodGroup</string>
             </attribute>
            </widget>
           </item>
@@ -360,7 +360,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
              <string>większy z wymiarów</string>
             </property>
             <attribute name="buttonGroup">
-             <string>imageScaleMethodGroup</string>
+             <string notr="true">imageScaleMethodGroup</string>
             </attribute>
            </widget>
           </item>
@@ -658,7 +658,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
       <attribute name="title">
        <string>Mapy</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0,0">
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0">
        <item row="0" column="0">
         <widget class="QGroupBox" name="commonMapBox">
          <property name="title">
@@ -947,13 +947,13 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
      </widget>
      <widget class="QWidget" name="overlayTab">
       <attribute name="title">
-       <string>Własne mapy</string>
+       <string>Podkłady mapowe</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
         <widget class="QGroupBox" name="useOverlays">
          <property name="title">
-          <string>Używaj własnych map</string>
+          <string>Używaj podkładów mapowych</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

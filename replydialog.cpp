@@ -36,6 +36,7 @@ ReplyDialog::ReplyDialog(QList<AbstractImage *> images, QWidget *parent):
 	ui->progressBarAllImages->setMaximum(images.count() * ALL_IMAGES_PROGRESS_MULTIPLIER);
 	ui->progressBarAllImages->setFormat(tr("Wszystkie obrazki: %p%"));
 	ui->progressBar->setMaximum(((postCount - 1) * SETTINGS->postSpace + 2 * postCount + 1) * fps);
+	ui->progressBar->setFormat(tr("Czekam na wybranie wątku..."));
 	// postSpace seconds between posts plus 2 navigations per post
 	// (reply form, thread) plus 1 navigation in the end (thread). I assumed one navigation takes 1 second.
 	// Po postSpace sekund odstępu między postami, plus na każdy post po 2 ładowania strony

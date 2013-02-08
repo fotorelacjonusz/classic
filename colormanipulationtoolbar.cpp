@@ -15,8 +15,6 @@ ColorManipulationToolBar::ColorManipulationToolBar(QWidget *parent) :
 	addWidget(contrastSlider);
 	layout()->setAlignment(contrastSlider, Qt::AlignCenter);
 	contrastSlider->setToolTip(tr("Kontrast"));
-	contrastSlider->setStatusTip(contrastSlider->toolTip());
-	contrastSlider->setWhatsThis(contrastSlider->toolTip());
 	contrastSlider->setMinimum(CONTRAST_MIN);
 	contrastSlider->setMaximum(CONTRAST_MAX);
 	contrastSlider->setValue(CONTRAST_DEFAULT);
@@ -27,8 +25,6 @@ ColorManipulationToolBar::ColorManipulationToolBar(QWidget *parent) :
 	addWidget(brightnessSlider);
 	layout()->setAlignment(brightnessSlider, Qt::AlignCenter);
 	brightnessSlider->setToolTip(tr("Jasność"));
-	brightnessSlider->setStatusTip(brightnessSlider->toolTip());
-	brightnessSlider->setWhatsThis(brightnessSlider->toolTip());
 	brightnessSlider->setMinimum(BRIGHTNESS_MIN);
 	brightnessSlider->setMaximum(BRIGHTNESS_MAX);
 	brightnessSlider->setValue(BRIGHTNESS_DEFAULT);
@@ -39,8 +35,6 @@ ColorManipulationToolBar::ColorManipulationToolBar(QWidget *parent) :
 	addWidget(gammaSlider);
 	layout()->setAlignment(gammaSlider, Qt::AlignCenter);
 	gammaSlider->setToolTip(tr("Gamma"));
-	gammaSlider->setStatusTip(gammaSlider->toolTip());
-	gammaSlider->setWhatsThis(gammaSlider->toolTip());
 	gammaSlider->setMinimum(GAMMA_MIN);
 	gammaSlider->setMaximum(GAMMA_MAX);
 	gammaSlider->setValue(GAMMA_DEFAULT);

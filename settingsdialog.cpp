@@ -102,10 +102,17 @@ void SettingsDialog::copyDescriptions(QWidget *parent)
 		{
 			QWidget *widget = (QWidget *)obj;
 			QString description = widget->whatsThis() + widget->statusTip() + widget->toolTip();
-//			qDebug() << widget->objectName() << widget->metaObject()->className() << description;
 			widget->setWhatsThis(description);
 			widget->setToolTip(description);
 			widget->setStatusTip(description);
+			if (widget->inherits("QToolBar"))
+				widget->setWindowTitle(description);
+			if (widget->inherits("QAction"))
+			{
+				QAction *action = (QAction *)widget;
+				action->setText(description);
+				action->setIconText(description);
+			}
 			copyDescriptions(widget);
 		}
 	}

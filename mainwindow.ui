@@ -155,16 +155,7 @@
    <addaction name="menuPomoc"/>
   </widget>
   <widget class="QToolBar" name="imageToolBar">
-   <property name="windowTitle">
-    <string>Edycja zdjęcia</string>
-   </property>
    <property name="toolTip">
-    <string>Edycja zdjęcia</string>
-   </property>
-   <property name="statusTip">
-    <string>Edycja zdjęcia</string>
-   </property>
-   <property name="whatsThis">
     <string>Edycja zdjęcia</string>
    </property>
    <attribute name="toolBarArea">
@@ -185,16 +176,7 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="arrowToolBar">
-   <property name="windowTitle">
-    <string>Edycja strzałki</string>
-   </property>
    <property name="toolTip">
-    <string>Edycja strzałki</string>
-   </property>
-   <property name="statusTip">
-    <string>Edycja strzałki</string>
-   </property>
-   <property name="whatsThis">
     <string>Edycja strzałki</string>
    </property>
    <attribute name="toolBarArea">
@@ -208,15 +190,6 @@
    <addaction name="action_remove_arrow"/>
   </widget>
   <widget class="ColorManipulationToolBar" name="colorManipulationBar">
-   <property name="windowTitle">
-    <string>Edycja kolorów zdjęcia</string>
-   </property>
-   <property name="toolTip">
-    <string>Edycja kolorów zdjęcia</string>
-   </property>
-   <property name="statusTip">
-    <string>Edycja kolorów zdjęcia</string>
-   </property>
    <property name="whatsThis">
     <string>Edycja kolorów zdjęcia</string>
    </property>
@@ -241,15 +214,6 @@
     <iconset resource="resource.qrc">
      <normaloff>:/res/arrow-up-double.png</normaloff>:/res/arrow-up-double.png</iconset>
    </property>
-   <property name="text">
-    <string>Przenieś na górę</string>
-   </property>
-   <property name="toolTip">
-    <string>Przenieś na górę</string>
-   </property>
-   <property name="statusTip">
-    <string>Przenieś na górę</string>
-   </property>
    <property name="whatsThis">
     <string>Przenieś na górę</string>
    </property>
@@ -258,15 +222,6 @@
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/res/arrow-up.png</normaloff>:/res/arrow-up.png</iconset>
-   </property>
-   <property name="text">
-    <string>Przenieś wyżej</string>
-   </property>
-   <property name="toolTip">
-    <string>Przenieś wyżej</string>
-   </property>
-   <property name="statusTip">
-    <string>Przenieś wyżej</string>
    </property>
    <property name="whatsThis">
     <string>Przenieś wyżej</string>
@@ -277,15 +232,6 @@
     <iconset resource="resource.qrc">
      <normaloff>:/res/arrow-down.png</normaloff>:/res/arrow-down.png</iconset>
    </property>
-   <property name="text">
-    <string>Przenieś niżej</string>
-   </property>
-   <property name="toolTip">
-    <string>Przenieś niżej</string>
-   </property>
-   <property name="statusTip">
-    <string>Przenieś niżej</string>
-   </property>
    <property name="whatsThis">
     <string>Przenieś niżej</string>
    </property>
@@ -294,15 +240,6 @@
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/res/arrow-down-double.png</normaloff>:/res/arrow-down-double.png</iconset>
-   </property>
-   <property name="text">
-    <string>Przenieś na spód</string>
-   </property>
-   <property name="toolTip">
-    <string>Przenieś na spód</string>
-   </property>
-   <property name="statusTip">
-    <string>Przenieś na spód</string>
    </property>
    <property name="whatsThis">
     <string>Przenieś na spód</string>
@@ -313,15 +250,6 @@
     <iconset resource="resource.qrc">
      <normaloff>:/res/object-rotate-left.png</normaloff>:/res/object-rotate-left.png</iconset>
    </property>
-   <property name="text">
-    <string>Obróć w lewo</string>
-   </property>
-   <property name="toolTip">
-    <string>Obróć w lewo</string>
-   </property>
-   <property name="statusTip">
-    <string>Obróć w lewo</string>
-   </property>
    <property name="whatsThis">
     <string>Obróć w lewo</string>
    </property>
@@ -331,15 +259,6 @@
     <iconset resource="resource.qrc">
      <normaloff>:/res/object-rotate-right.png</normaloff>:/res/object-rotate-right.png</iconset>
    </property>
-   <property name="text">
-    <string>Obróć w prawo</string>
-   </property>
-   <property name="toolTip">
-    <string>Obróć w prawo</string>
-   </property>
-   <property name="statusTip">
-    <string>Obróć w prawo</string>
-   </property>
    <property name="whatsThis">
     <string>Obróć w prawo</string>
    </property>
@@ -348,15 +267,6 @@
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
-   </property>
-   <property name="text">
-    <string>Usuń z fotorelacji</string>
-   </property>
-   <property name="toolTip">
-    <string>Usuń z fotorelacji</string>
-   </property>
-   <property name="statusTip">
-    <string>Usuń z fotorelacji</string>
    </property>
    <property name="whatsThis">
     <string>Usuń z fotorelacji</string>
@@ -436,12 +346,6 @@
     <iconset resource="resource.qrc">
      <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
    </property>
-   <property name="text">
-    <string>&amp;Usuń strzałkę</string>
-   </property>
-   <property name="statusTip">
-    <string>Usuń strzałkę</string>
-   </property>
    <property name="whatsThis">
     <string>Usuń strzałkę</string>
    </property>
@@ -451,18 +355,6 @@
     <iconset resource="resource.qrc">
      <normaloff>:/res/invert.png</normaloff>:/res/invert.png</iconset>
    </property>
-   <property name="text">
-    <string>&amp;Odwróc kolory</string>
-   </property>
-   <property name="iconText">
-    <string>Odwróć kolory</string>
-   </property>
-   <property name="toolTip">
-    <string>Odwróć kolory</string>
-   </property>
-   <property name="statusTip">
-    <string>Odwróć kolory</string>
-   </property>
    <property name="whatsThis">
     <string>Odwróć kolory</string>
    </property>
@@ -471,12 +363,6 @@
    <property name="icon">
     <iconset resource="resource.qrc">
      <normaloff>:/res/format-stroke-color.png</normaloff>:/res/format-stroke-color.png</iconset>
-   </property>
-   <property name="text">
-    <string>Wybierz kolor</string>
-   </property>
-   <property name="statusTip">
-    <string>Wybierz kolor</string>
    </property>
    <property name="whatsThis">
     <string>Wybierz kolor</string>
