@@ -122,8 +122,7 @@ protected:
 			wrapper(0) {}
 		virtual ~Field()
 		{
-			if (wrapper)
-				delete wrapper;
+			delete wrapper;
 		}
 		inline void init(AbstractInput *input)
 		{

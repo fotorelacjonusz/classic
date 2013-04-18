@@ -87,8 +87,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 
 ImageWidget::~ImageWidget()
 {
-	if (gpsData)
-		delete gpsData;
+	delete gpsData;
 }
 
 void ImageWidget::serialize(QDataStream &stream) const

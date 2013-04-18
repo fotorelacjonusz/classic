@@ -26,8 +26,7 @@ UploaderFactory::Wrapper<T>::Wrapper(QString name):
 template <class T>
 UploaderFactory::Wrapper<T>::~Wrapper()
 {
-	if (!object.isNull())
-		delete object;
+	delete object;
 }
 
 template <class T>

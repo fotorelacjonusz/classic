@@ -152,8 +152,7 @@ void MainWindow::on_action_send_to_SSC_triggered()
 	ReplyDialog reply(images, this);
 	reply.exec();
 
-	if (mapImage)
-		delete mapImage;
+	delete mapImage;
 }
 
 void MainWindow::on_action_about_triggered()

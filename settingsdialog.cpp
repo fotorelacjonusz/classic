@@ -89,8 +89,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 SettingsDialog::~SettingsDialog()
 {
 	objectInstance = 0;
-	if (m_uploader)
-		delete m_uploader;
+	delete m_uploader;
 	delete ui;
 }
 
