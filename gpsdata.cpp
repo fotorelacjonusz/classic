@@ -231,6 +231,7 @@ QImage GpsData::mask(QSize size)
 		return maskCache[sizeKey];
 
 	QImage mask(size, QImage::Format_ARGB32);
+	mask.fill(Qt::transparent);
 	QPainter painter(&mask);
 	painter.setRenderHint(QPainter::Antialiasing);
 	painter.setBrush(QBrush(Qt::black));
