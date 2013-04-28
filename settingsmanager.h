@@ -27,7 +27,7 @@ class QMainWindow;
 
 class SettingsManager
 {
-
+	
 	class AbstractInput
 	{
 	public:
@@ -176,7 +176,6 @@ private:
 
 // the resulting array length is the same as a1 lenght
 QByteArray operator^(const QByteArray &a1, const QByteArray &a2);
-
 
 template<>QVariant SettingsManager::Input<QButtonGroup>::toVariant() const;
 template<>void SettingsManager::Input<QButtonGroup>::fromVariant(QVariant variant);

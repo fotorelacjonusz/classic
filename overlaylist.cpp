@@ -3,6 +3,7 @@
 #include <QDropEvent>
 #include <QDragEnterEvent>
 #include <QUrl>
+#include <QDesktopServices>
 #include <QDebug>
 
 #define FOTORELACJONUSZ_DIR_CSTR ".fotorelacjonusz"
@@ -31,6 +32,11 @@ QPixmap OverlayList::makeMap(qreal lon, qreal lat) const
 		if (overlay->contains(lon, lat))
 			return overlay->makeMap(lon, lat);
 	return QPixmap();
+}
+
+void OverlayList::openFolder() const
+{
+	QDesktopServices::openUrl(QUrl("file:///" + QDir::toNativeSeparators(overlaysDir.absolutePath())));
 }
 
 bool OverlayList::isOverlayExtension(QString filePath) const

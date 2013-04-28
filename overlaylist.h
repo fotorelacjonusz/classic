@@ -9,11 +9,15 @@ class Overlay;
 class OverlayList : public QListWidget
 {
 	Q_OBJECT
+	
 public:
 	explicit OverlayList(QWidget *parent = 0);
 	virtual ~OverlayList();
 
 	QPixmap makeMap(qreal lon, qreal lat) const;
+	
+public slots:
+	void openFolder() const;
 
 protected:
 	bool isOverlayExtension(QString filePath) const;

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSettings>
 #include <QUrl>
+#include <QNetworkProxy>
 #include "settingsmanager.h"
 #include "uploaderfactory.h"
 
@@ -67,6 +68,12 @@ public:
 	Field<int> imageMapSize;
 
 	Field<bool> useOverlays;
+	
+	Field<bool> useProxy;
+	Field<QString> proxyHost;
+	Field<int> proxyPort;
+	Field<QString> proxyUser;
+	Field<QString> proxyPass;
 
 	QPixmap overlayMakeMap(qreal lon, qreal lat) const;
 	static SettingsDialog *object();
@@ -99,7 +106,8 @@ private slots:
 	void on_logoLoad_clicked();
 	void on_uploadMethodComboBox_currentIndexChanged(int index);
 	void on_imageMapColor_clicked();
-
+	void proxyOptionsChanged();
+	
 private:
 	Ui::SettingsDialog *ui;
 	AbstractUploader *m_uploader;
@@ -112,6 +120,8 @@ private:
 	UploaderFactory factory;
 
 	static SettingsDialog *objectInstance;
+	
+	QNetworkProxy proxy;
 };
 
 #endif // SETTINGSDIALOG_H

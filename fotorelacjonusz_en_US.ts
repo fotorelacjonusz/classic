@@ -170,24 +170,24 @@ Wrong url will make all links corrupted.</translation>
         <translation>Image caption</translation>
     </message>
     <message>
-        <location filename="imagewidget.cpp" line="122"/>
+        <location filename="imagewidget.cpp" line="121"/>
         <source>ObrÃ³t zdjÄcia</source>
         <translation>Rotate image</translation>
     </message>
     <message>
-        <location filename="imagewidget.cpp" line="122"/>
+        <location filename="imagewidget.cpp" line="121"/>
         <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
         <translation>Save rotated image to disk?</translation>
     </message>
     <message>
-        <location filename="imagewidget.cpp" line="146"/>
+        <location filename="imagewidget.cpp" line="145"/>
         <location filename="simpleimage.cpp" line="30"/>
         <source>Upload zdjÄcia %1 nieudany.
 </source>
         <translation>Uploading image %1 failed.</translation>
     </message>
     <message>
-        <location filename="imagewidget.cpp" line="203"/>
+        <location filename="imagewidget.cpp" line="202"/>
         <source>Nie moÅ¼na utworzyÄ pixmapy ze zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
@@ -545,7 +545,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>All photos map.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="166"/>
+        <location filename="mainwindow.cpp" line="165"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
     </message>
@@ -1208,6 +1208,41 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation>Shape</translation>
     </message>
     <message utf8="true">
+        <location filename="settingsdialog.ui" line="981"/>
+        <source>Zarządzaj podkładami</source>
+        <translation>Manage overlays</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="989"/>
+        <source>Proxy</source>
+        <translation>Proxy</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="995"/>
+        <source>Używaj proxy</source>
+        <translation>Use proxy</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="1030"/>
+        <source>Host</source>
+        <translation>Host</translation>
+    </message>
+    <message>
+        <location filename="settingsdialog.ui" line="1040"/>
+        <source>Port</source>
+        <translation>Port</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="1050"/>
+        <source>Użytkownik</source>
+        <translation>Username</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="1060"/>
+        <source>Hasło</source>
+        <translation>Password</translation>
+    </message>
+    <message utf8="true">
         <source>W kółku</source>
         <translation type="obsolete">Round</translation>
     </message>
@@ -1234,19 +1269,19 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation>Overlays</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="956"/>
+        <location filename="settingsdialog.ui" line="959"/>
         <source>Używaj podkładów mapowych</source>
         <oldsource>Używaj własnych map</oldsource>
         <translation>Use overlays</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="180"/>
+        <location filename="settingsdialog.cpp" line="186"/>
         <source>Wczytaj logo</source>
         <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="180"/>
+        <location filename="settingsdialog.cpp" line="186"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
@@ -1254,32 +1289,32 @@ Most probably short time favors post miximg by the forum.</translation>
 <context>
     <name>UploaderFactory</name>
     <message>
-        <location filename="uploaderfactory.cpp" line="43"/>
+        <location filename="uploaderfactory.cpp" line="42"/>
         <source>Imageshack anonimowo</source>
         <translation>Imageshack anonymous</translation>
     </message>
     <message>
-        <location filename="uploaderfactory.cpp" line="44"/>
+        <location filename="uploaderfactory.cpp" line="43"/>
         <source>Imageshack kod rejestracyjny</source>
         <translation>Imageshack registration code</translation>
     </message>
     <message>
-        <location filename="uploaderfactory.cpp" line="45"/>
+        <location filename="uploaderfactory.cpp" line="44"/>
         <source>Imageshack login i hasÅo</source>
         <translation>Imageshack login and password</translation>
     </message>
     <message>
-        <location filename="uploaderfactory.cpp" line="46"/>
+        <location filename="uploaderfactory.cpp" line="45"/>
         <source>WÅasne konto FTP</source>
         <translation>Own FTP account</translation>
     </message>
     <message>
-        <location filename="uploaderfactory.cpp" line="47"/>
+        <location filename="uploaderfactory.cpp" line="46"/>
         <source>Imgur anonimowo</source>
         <translation>Imgur anonymous</translation>
     </message>
     <message>
-        <location filename="uploaderfactory.cpp" line="48"/>
+        <location filename="uploaderfactory.cpp" line="47"/>
         <source>Imgur konto</source>
         <translation>Imgur account</translation>
     </message>

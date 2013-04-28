@@ -33,6 +33,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui->imageMapOpacity->setFormat("%1 %");
 	ui->homePageGroup->setId(ui->homeMainRadio, 0);
 	tosFormat = ui->tosLabel->text();
+	connect(ui->openFolderButton, SIGNAL(clicked()), ui->overlayList, SLOT(openFolder()));
 
 	// earlier "logo" was wrongly called "watermark"
 	if (settings.childGroups().contains("watermark"))
@@ -79,6 +80,12 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,     this, M(imageMapOptionsChanged), 150));
 
 	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,      this, M(imageMapOptionsChanged), true));
+	
+	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,  this, M(proxyOptionsChanged), false));
+	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost, this, M(proxyOptionsChanged)));
+	proxyPort			.init(makeInput("proxy/port",                 ui->proxyPort, this, M(proxyOptionsChanged), 8080));
+	proxyUser           .init(makeInput("proxy/user",                 ui->proxyUser, this, M(proxyOptionsChanged)));
+	proxyPass           .init(makeInput("proxy/pass",                 ui->proxyPass, this, M(proxyOptionsChanged)));
 
 	for (int i = 0; i < factory.uploaders.size(); ++i)
 		ui->uploadMethodComboBox->addItem(factory.uploaders[i]->name);
@@ -223,3 +230,16 @@ void SettingsDialog::on_imageMapColor_clicked()
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
 }
 
+void SettingsDialog::proxyOptionsChanged()
+{
+	proxy.setType(useProxy ? QNetworkProxy::Socks5Proxy : QNetworkProxy::NoProxy);
+	proxy.setHostName(proxyHost);
+	proxy.setPort(proxyPort);
+	if (!proxyUser.value().isEmpty() && !proxyPass.value().isEmpty())
+	{
+		proxy.setUser(proxyUser);
+		proxy.setPassword(proxyPass);
+	}
+	QNetworkProxy::setApplicationProxy(proxy);
+//	qDebug() << "proxy set";
+}

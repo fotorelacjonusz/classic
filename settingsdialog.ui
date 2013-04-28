@@ -818,7 +818,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            </widget>
           </item>
           <item row="4" column="0">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="imageMapShape">
             <property name="text">
              <string>Kształt</string>
             </property>
@@ -937,7 +937,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="mapSource">
          <property name="text">
           <string>Źródło danych: Google Maps https://developers.google.com/maps/documentation/staticmaps/</string>
          </property>
@@ -950,6 +950,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
        <string>Podkłady mapowe</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_10">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QGroupBox" name="useOverlays">
          <property name="title">
@@ -966,6 +969,98 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            <widget class="OverlayList" name="overlayList">
             <property name="acceptDrops">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignRight">
+        <widget class="QPushButton" name="openFolderButton">
+         <property name="text">
+          <string>Zarządzaj podkładami</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="proxyTab">
+      <attribute name="title">
+       <string>Proxy</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QGroupBox" name="useProxy">
+         <property name="title">
+          <string>Używaj proxy</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QFormLayout" name="formLayout_7">
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="proxyHost"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QSpinBox" name="proxyPort">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>65536</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="proxyUser"/>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="proxyPass">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="proxyHostLabel">
+            <property name="text">
+             <string>Host</string>
+            </property>
+            <property name="buddy">
+             <cstring>proxyHost</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="proxyPortLabel">
+            <property name="text">
+             <string>Port</string>
+            </property>
+            <property name="buddy">
+             <cstring>proxyPort</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="proxyUserLabel">
+            <property name="text">
+             <string>Użytkownik</string>
+            </property>
+            <property name="buddy">
+             <cstring>proxyUser</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="proxyPassLabel">
+            <property name="text">
+             <string>Hasło</string>
+            </property>
+            <property name="buddy">
+             <cstring>proxyPass</cstring>
             </property>
            </widget>
           </item>
@@ -1030,7 +1125,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>logoMargin</tabstop>
   <tabstop>logoInvert</tabstop>
   <tabstop>uploadMethodComboBox</tabstop>
+  <tabstop>commonMapBox</tabstop>
   <tabstop>commonMapType</tabstop>
+  <tabstop>imageMapBox</tabstop>
   <tabstop>imageMapType</tabstop>
   <tabstop>imageMapColor</tabstop>
   <tabstop>imageMapOpacity</tabstop>
@@ -1041,6 +1138,12 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>imageMapSize</tabstop>
   <tabstop>useOverlays</tabstop>
   <tabstop>overlayList</tabstop>
+  <tabstop>openFolderButton</tabstop>
+  <tabstop>useProxy</tabstop>
+  <tabstop>proxyHost</tabstop>
+  <tabstop>proxyPort</tabstop>
+  <tabstop>proxyUser</tabstop>
+  <tabstop>proxyPass</tabstop>
   <tabstop>buttonBox</tabstop>
  </tabstops>
  <resources>

@@ -61,6 +61,9 @@ void SettingsManager::load(AbstractInput *singleInput)
 
 void SettingsManager::save(AbstractInput *singleInput)
 {
+	typedef QPair<QObject *, const char *> Listener;
+	QSet<Listener> listeners; // call each listener only once when multiple options changed
+	
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
 	{
 		if (input->receiver && input->member)
@@ -68,7 +71,8 @@ void SettingsManager::save(AbstractInput *singleInput)
 			if (input->toVariant() != settings.value(input->key, input->defaultVal))
 			{
 				input->wasChanged = true;
-				QMetaObject::invokeMethod(input->receiver, input->member);
+//				QMetaObject::invokeMethod(input->receiver, input->member);
+				listeners.insert(qMakePair(input->receiver, input->member));
 			}
 			else
 			{
@@ -78,6 +82,9 @@ void SettingsManager::save(AbstractInput *singleInput)
 		}
 		settings.setValue(input->key, input->toVariant());
 	}
+	
+	foreach (Listener listener, listeners)
+		QMetaObject::invokeMethod(listener.first, listener.second);
 }
 
 QByteArray operator^(const QByteArray &a1, const QByteArray &a2)
