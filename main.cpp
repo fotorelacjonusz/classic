@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	Application a(argc, argv);
 	a.setApplicationName("fotorelacjonusz2");
 	a.setOrganizationName("Kamil Ostaszewski software");
+	a.setApplicationVersion("v2.2");
 
 	QString locale = QLocale::system().name();
 	QTranslator translator;

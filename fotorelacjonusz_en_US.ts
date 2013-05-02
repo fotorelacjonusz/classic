@@ -1410,23 +1410,23 @@ Most probably short time favors post miximg by the forum.</translation>
 <context>
     <name>TilesDownloader</name>
     <message>
-        <location filename="tilesdownloader.cpp" line="30"/>
-        <location filename="tilesdownloader.cpp" line="36"/>
+        <location filename="tilesdownloader.cpp" line="31"/>
+        <location filename="tilesdownloader.cpp" line="37"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="tilesdownloader.cpp" line="30"/>
+        <location filename="tilesdownloader.cpp" line="31"/>
         <source>Podany adres nie zawiera zmiennej %1</source>
         <translation>Url does not contain variable %1</translation>
     </message>
     <message>
-        <location filename="tilesdownloader.cpp" line="36"/>
+        <location filename="tilesdownloader.cpp" line="37"/>
         <source>Podany adres nie koÅczy siÄ na .png</source>
         <translation>Url does not end with .png</translation>
     </message>
     <message>
-        <location filename="tilesdownloader.cpp" line="202"/>
+        <location filename="tilesdownloader.cpp" line="203"/>
         <source>BÅÄd pobierania mapy: %1 %2</source>
         <translation>Error while downloading a map: %1 %2 </translation>
     </message>

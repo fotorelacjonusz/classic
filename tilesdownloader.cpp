@@ -7,6 +7,7 @@
 
 #include <QNetworkReply>
 #include <QMessageBox>
+#include <QApplication>
 #include <qmath.h>
 
 #include "settingsdialog.h"
@@ -188,7 +189,7 @@ QNetworkRequest TilesDownloader::createRequest(int zoom, int x, int y, QPoint be
 		url.replace(varNames[i], QString::number(vars[i]));
 
 	QNetworkRequest request(url);
-	request.setRawHeader("User-Agent", "fotorelacjonusz 2.1");
+	request.setRawHeader("User-Agent", (qApp->applicationName() + " " + qApp->applicationVersion()).toAscii());
 	urlToTilePos[request.url()] = (QPoint(x, y) - begin) * tileSize;
 	return request;
 }

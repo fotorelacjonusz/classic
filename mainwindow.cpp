@@ -14,7 +14,7 @@
 #include <QMessageBox>
 #include <QColorDialog>
 
-QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://www.skyscrapercity.com/showthread.php?t=1539539 Author: Kamil Ostaszewski v2.2");
+QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://www.skyscrapercity.com/showthread.php?t=1539539 Author: Kamil Ostaszewski ");
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -62,7 +62,7 @@ void MainWindow::on_action_open_photorelation_triggered()
 	qint32 count;
 	QByteArray fileHeader;
 	in >> fileHeader;
-	if (fileHeader != phrFileHeader)
+	if (fileHeader != phrFileHeader + qApp->applicationVersion().toAscii())
 	{
 		QMessageBox::critical(this, tr("Błąd"), tr("To nie jest plik fotorelacji!"));
 		return;
@@ -100,7 +100,7 @@ void MainWindow::on_action_save_photorelation_triggered()
 	QFile file(filePath);
 	file.open(QIODevice::WriteOnly);
 	QDataStream out(&file);
-	out << phrFileHeader << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count();
+	out << phrFileHeader + qApp->applicationVersion().toAscii() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count();
 
 	foreach (AbstractImage *image, imageList())
 		image->serialize(out);
