@@ -27,5 +27,6 @@
         <file>res/dialog-ok-apply.png</file>
         <file>res/edit-delete.png</file>
         <file>res/page.html</file>
+        <file>res/balloon.15-1-8.8-2.12.png</file>
     </qresource>
 </RCC>

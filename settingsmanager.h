@@ -81,6 +81,10 @@ class SettingsManager
 		{
 			return input->wasChanged;
 		}
+		inline AbstractInput *getInput() const
+		{
+			return input;
+		}
 	protected:
 		AbstractInput *input;
 	};
@@ -144,6 +148,10 @@ protected:
 		inline bool wasChanged() const
 		{
 			return wrapper->wasChanged();
+		}
+		inline AbstractInput *getInput() const
+		{
+			return wrapper->getInput();
 		}
 	private:
 		AbstractWrapper<V> *wrapper;

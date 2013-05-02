@@ -4,6 +4,10 @@
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QPixmap>
+#include <QNetworkDiskCache>
+
+#include "googlemapsdownloader.h"
+#include "tilesdownloader.h"
 
 class SettingsDialog;
 
@@ -12,34 +16,41 @@ class GpsData : public QObject
 	Q_OBJECT
 
 public:
-	GpsData(QString filePath);
+	GpsData(const int *const number, QString filePath);
 	GpsData();
-	GpsData(QDataStream &stream);
+	GpsData(const int *const number, QDataStream &stream);
 	~GpsData();
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
 
+	const int *const number;
 public slots:
 	void downloadMap();
-	QPixmap downloadCommonMap();
-
-signals:
-	void mapDownloaded(QPixmap map);
+//	QPixmap downloadCommonMap();
 
 private slots:
-	void finished(QNetworkReply *reply);
+	void mapDownloaded(QImage map);
 
-private:
-	void processMap(QImage map);
+signals:
+	void mapReady(QPixmap map);
+
+protected:
+	void init();
+	
+	void processMap(QImage &map);
 	static QImage mask(QSize size);
 
 	bool hasPosition, hasDirection, inCommonMode;
 	qreal latitude, longitude, direction;
-	QNetworkAccessManager manager;
-	QImage imageCache;
-	static QMap<int, QImage> maskCache;
-	static QMap<GpsData *, QPointF> allCoords;
+//	QNetworkAccessManager manager;
+//	QNetworkDiskCache cache;
+//	QImage imageCache;
+	static QHash<int, QImage> maskCache;
+	static QHash<GpsData *, QPointF> allCoords;
 	static QString binName;
+	
+	GoogleMapsDownloader googleDownloader;
+	TilesDownloader tilesDownloader;
 };
 
 #endif // GPSDATA_H

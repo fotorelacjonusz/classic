@@ -36,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager.load();
 
 	connect(&settingsDialog, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
+	connect(&gpsData, SIGNAL(mapReady(QPixmap)), this, SLOT(commonMapReady(QPixmap)));
+	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
 }
 
 MainWindow::~MainWindow()
@@ -267,16 +269,22 @@ void MainWindow::arrowWidgetSelected(ArrowWidget *widget)
 
 void MainWindow::updateCommonMap()
 {
-	if (!settingsDialog.addCommonMap)
-	{
+	if (settingsDialog.addCommonMap)
+		gpsData.downloadMap();
+	else
 		ui->commonMap->setPixmap(QPixmap());
-		return;
-	}
+	
+//		return;
+//	}
+//	GpsData gpsData;
+//	QPixmap map = gpsData.downloadCommonMap();
+//	if (map.isNull())
+//		return;
+//	ui->commonMap->setPixmap(map);
+}
 
-	GpsData gpsData;
-	QPixmap map = gpsData.downloadCommonMap();
-	if (map.isNull())
-		return;
+void MainWindow::commonMapReady(QPixmap map)
+{
 	ui->commonMap->setPixmap(map);
 }
 

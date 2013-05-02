@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QApplication>
+#include <QDesktopServices>
 #include <qmath.h>
 
 #ifdef Q_WS_WIN
@@ -20,14 +21,16 @@ QString GpsData::binName = "exif.exe";
 QString GpsData::binName = "./exif";
 #endif
 
-QMap<int, QImage> GpsData::maskCache;
-QMap<GpsData *, QPointF> GpsData::allCoords;
+QHash<int, QImage> GpsData::maskCache;
+QHash<GpsData *, QPointF> GpsData::allCoords;
 
-GpsData::GpsData(QString filePath):
+GpsData::GpsData(const int *const number, QString filePath):
+	number(number),
 	hasPosition(false),
 	hasDirection(false),
 	inCommonMode(false)
 {
+	init();
 	if (!QFile::exists(filePath))
 		return;
 
@@ -72,26 +75,38 @@ GpsData::GpsData(QString filePath):
 		}
 	}
 
-	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
+//	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
 
 	//	hasDirection = true;
 	//	direction = 45;
 }
 
 GpsData::GpsData():
+	number(0),
 	hasPosition(false),
 	hasDirection(false),
 	inCommonMode(true)
 {
+	init();
 }
 
-GpsData::GpsData(QDataStream &stream):
+GpsData::GpsData(const int *const number, QDataStream &stream):
+	number(number),
 	inCommonMode(false)
 {
+	init();
 	stream >> hasPosition >> hasDirection >> latitude >> longitude >> direction;
 	if (hasPosition)
 		allCoords[this] = QPointF(longitude, latitude);
-	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
+//	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
+}
+
+void GpsData::init()
+{
+//	cache.setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
+//	manager.setCache(&cache);
+	connect(&googleDownloader, SIGNAL(mapDownloaded(QImage)), this, SLOT(mapDownloaded(QImage)));
+	connect(&tilesDownloader, SIGNAL(mapDownloaded(QImage)), this, SLOT(mapDownloaded(QImage)));
 }
 
 GpsData::~GpsData()
@@ -117,91 +132,50 @@ void GpsData::serialize(QDataStream &stream) const
 void GpsData::downloadMap()
 {
 	if (inCommonMode)
-		return;
-	if (!hasPosition)
-		return;
-	if (!SETTINGS->imageMapType.wasChanged() &&
-		!SETTINGS->imageMapZoom.wasChanged() &&
-		!SETTINGS->imageMapSize.wasChanged() &&
-		!SETTINGS->useOverlays.wasChanged() &&
-		!imageCache.isNull())
-		return processMap(imageCache);
-
-	if (SETTINGS->useOverlays)
 	{
-		QPixmap overlayMap = SETTINGS->overlayMakeMap(longitude, latitude);
-		if (!overlayMap.isNull())
+		if (allCoords.isEmpty())
+			emit mapReady(QPixmap());
+		else
 		{
-			imageCache = overlayMap.toImage().convertToFormat(QImage::Format_ARGB32_Premultiplied);
-			processMap(imageCache);
-			return;
+//			AbstractMapDownloader::Points points;
+//			for (QHash<GpsData *, QPointF>::Iterator i = allCoords.begin(); i != allCoords.end() )
+			(SETTINGS->commonMapType < SETTINGS->OSMFirst ? (AbstractMapDownloader *)&googleDownloader : (AbstractMapDownloader *)&tilesDownloader)
+				->downloadMap(allCoords);
 		}
 	}
-
-	QUrl url("http://maps.googleapis.com/maps/api/staticmap");
-	url.addQueryItem("center", QString("%1,%2").arg(latitude).arg(longitude));
-	url.addQueryItem("zoom", QString("%1").arg(SETTINGS->imageMapZoom));
-	url.addQueryItem("size", QString("%1x%1").arg(SETTINGS->imageMapSize));
-	url.addQueryItem("maptype", SETTINGS->imageMapType.value().toLower());
-	url.addQueryItem("language", "pl");
-	url.addQueryItem("sensor", "false");
-	manager.get(QNetworkRequest(url));
+	else if (hasPosition)
+	{
+		if (SETTINGS->useOverlays)
+		{
+			QPixmap overlayMap = SETTINGS->overlayMakeMap(longitude, latitude);
+			if (!overlayMap.isNull())
+			{
+				mapDownloaded(overlayMap.toImage());
+				return;
+			}
+		}
+		(SETTINGS->imageMapType < SETTINGS->OSMFirst ? (AbstractMapDownloader *)&googleDownloader : (AbstractMapDownloader *)&tilesDownloader)
+			->downloadMap(QPointF(longitude, latitude));
+	}
 }
 
-QPixmap GpsData::downloadCommonMap()
+void GpsData::mapDownloaded(QImage map)
 {
-	if (!inCommonMode || allCoords.isEmpty())
-		return QPixmap();
-
-	QStringList points;
-	foreach (QPointF point, allCoords.values())
-		points << QString("%1,%2").arg(point.y()).arg(point.x());
-
-	QUrl url("http://maps.googleapis.com/maps/api/staticmap");
-	url.addQueryItem("size", "640x640");
-	url.addQueryItem("maptype", SETTINGS->commonMapType.value().toLower());
-	url.addQueryItem("language", "pl");
-	url.addQueryItem("sensor", "false");
-	url.addQueryItem("markers", points.join("|"));
-	QNetworkReply *reply = manager.get(QNetworkRequest(url));
-	QEventLoop loop;
-	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
-	loop.exec();
-
-	QPixmap map;
-	if (!map.loadFromData(reply->readAll()))
-	{
-		qDebug() << tr("Błąd otwierania mapy.");
-		return QPixmap();
-	}
-	reply->deleteLater();
-	return map;
+	if (map.isNull())
+		return;
+	if (!inCommonMode)
+		processMap(map);
+	
+	emit mapReady(QPixmap::fromImage(map));
 }
 
-void GpsData::finished(QNetworkReply *reply)
+void GpsData::processMap(QImage &map)
 {
-	if (inCommonMode)
-		return;
-	if (reply->error() != QNetworkReply::NoError)
-	{
-		qDebug() << tr("Błąd pobierania mapy: %1 %2").arg(reply->error()).arg(reply->errorString());
-		return;
-	}
-	QImage map;
-	if (!map.loadFromData(reply->readAll()))
-	{
-		qDebug() << tr("Błąd otwierania mapy.");
-		return;
-	}
-	imageCache = map.convertToFormat(QImage::Format_ARGB32_Premultiplied);
-	processMap(imageCache);
-	reply->deleteLater();
-}
-
-void GpsData::processMap(QImage map)
-{
+	if (map.format() != QImage::Format_ARGB32_Premultiplied)
+		map = map.convertToFormat(QImage::Format_ARGB32_Premultiplied);
+	
 	QColor color = SETTINGS->imageMapColor;
-	QPoint center = QPoint(map.width() / 2.0, map.height() / 2.0);
+//	QPoint center = QPoint(map.width() / 2.0, map.height() / 2.0);
 	QPainter painter(&map);
 	painter.setPen(QPen(color, 2));
 	color.setAlpha(50);
@@ -211,15 +185,13 @@ void GpsData::processMap(QImage map)
 	if (hasDirection)
 		painter.drawPie(map.rect().adjusted(-200, -200, 200, 200), -16 * (direction - 90 - 30), -16 * 60);
 	else
-		painter.drawEllipse(center, 7, 7);
+		painter.drawEllipse(map.rect().center(), 7, 7);
 	if (SETTINGS->imageMapCircle)
 	{
 		painter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
 		painter.drawImage(QPoint(0, 0), mask(map.size()));
 	}
-	painter.end();
-
-	emit mapDownloaded(QPixmap::fromImage(map));
+//	painter.end();
 }
 
 QImage GpsData::mask(QSize size)
@@ -236,8 +208,8 @@ QImage GpsData::mask(QSize size)
 	painter.setRenderHint(QPainter::Antialiasing);
 	painter.setBrush(QBrush(Qt::black));
 	painter.drawPie(mask.rect(), 0, 16 * 360);
-	painter.end();
+//	painter.end();
 
-	maskCache[sizeKey] = mask;
-	return mask;
+	return maskCache[sizeKey] = mask;
+//	return mask;
 }

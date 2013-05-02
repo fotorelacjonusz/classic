@@ -7,6 +7,7 @@
 #include "settingsdialog.h"
 #include "settingsmanager.h"
 #include "exception.h"
+#include "gpsdata.h"
 
 class AbstractImage;
 class ImageWidget;
@@ -52,6 +53,7 @@ private slots:
 	void arrowWidgetSelected(ArrowWidget *widget);
 
 	void updateCommonMap();
+	void commonMapReady(QPixmap map);
 
 protected:
 	void processEvents() const;
@@ -72,6 +74,7 @@ private:
 	ArrowWidget *currentArrow;
 	QString dirName;
 	static QByteArray phrFileHeader;
+	GpsData gpsData;
 };
 
 #endif // MAINWINDOW_H

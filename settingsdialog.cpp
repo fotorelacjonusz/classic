@@ -24,7 +24,8 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	SettingsManager(settings),
 	ui(new Ui::SettingsDialog),
 	m_uploader(0),
-	m_settings(settings)
+	m_settings(settings),
+	osmDialog(settings)
 {
 	objectInstance = this;
 
@@ -34,6 +35,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui->homePageGroup->setId(ui->homeMainRadio, 0);
 	tosFormat = ui->tosLabel->text();
 	connect(ui->openFolderButton, SIGNAL(clicked()), ui->overlayList, SLOT(openFolder()));
+	osmDialog.init(ui);
 
 	// earlier "logo" was wrongly called "watermark"
 	if (settings.childGroups().contains("watermark"))
@@ -124,22 +126,20 @@ void SettingsDialog::copyDescriptions(QWidget *parent)
 	}
 }
 
-QPixmap SettingsDialog::overlayMakeMap(qreal lon, qreal lat) const
-{
-	return ui->overlayList->makeMap(lon, lat);
-}
-
-SettingsDialog *SettingsDialog::object()                           { return objectInstance; }
-QSettings &SettingsDialog::settings()                              { return m_settings; }
-AbstractUploader *SettingsDialog::uploaderFunc()		     const { return m_uploader; }
-bool SettingsDialog::captionsUnderFunc()                     const { return ui->captionsUnder->isChecked(); }
-bool SettingsDialog::setImageWidthFunc()                     const { return ui->widthRadioButton->isChecked(); }
-int SettingsDialog::imageLengthFunc()                        const { return ui->lengthComboBox->currentText().toInt(); }
-SettingsDialog::Corner SettingsDialog::logoCornerFunc()      const { return (Corner)ui->logoPosition->currentIndex(); }
-QString SettingsDialog::commonMapTypeFunc()                  const { return ENUM_STR(MapType, ui->commonMapType->currentIndex()); }
-QString SettingsDialog::imageMapTypeFunc()                   const { return ENUM_STR(MapType, ui->imageMapType->currentIndex()); }
-qreal SettingsDialog::imageMapOpacityFunc()                  const { return ui->imageMapOpacity->value() / 100.0; }
-SettingsDialog::Corner SettingsDialog::imageMapCornerFunc()  const { return (Corner)ui->imageMapPosition->currentIndex(); }
+QPixmap SettingsDialog::overlayMakeMap(qreal lon, qreal lat)          const { return ui->overlayList->makeMap(lon, lat); }
+SettingsDialog *SettingsDialog::object()                                    { return objectInstance; }
+QSettings &SettingsDialog::settings()                                       { return m_settings; }
+QString SettingsDialog::mapTypeToString(SettingsDialog::MapType type) const { return ENUM_STR(MapType, type).toLower(); }
+QString SettingsDialog::currentOsmUrlPattern(bool common)             const { return osmDialog.currentUrlPattern(common); }
+AbstractUploader *SettingsDialog::uploaderFunc()		              const { return m_uploader; }
+bool SettingsDialog::captionsUnderFunc()                              const { return ui->captionsUnder->isChecked(); }
+bool SettingsDialog::setImageWidthFunc()                              const { return ui->widthRadioButton->isChecked(); }
+int SettingsDialog::imageLengthFunc()                                 const { return ui->lengthComboBox->currentText().toInt(); }
+SettingsDialog::Corner SettingsDialog::logoCornerFunc()               const { return (Corner)ui->logoPosition->currentIndex(); }
+SettingsDialog::MapType SettingsDialog::commonMapTypeFunc()           const { return (MapType)ui->commonMapType->currentIndex(); }
+SettingsDialog::MapType SettingsDialog::imageMapTypeFunc()            const { return (MapType)ui->imageMapType->currentIndex(); }
+qreal SettingsDialog::imageMapOpacityFunc()                           const { return ui->imageMapOpacity->value() / 100.0; }
+SettingsDialog::Corner SettingsDialog::imageMapCornerFunc()           const { return (Corner)ui->imageMapPosition->currentIndex(); }
 
 QUrl SettingsDialog::homeUrlFunc() const
 {
@@ -167,6 +167,10 @@ QUrl SettingsDialog::homeUrlFunc() const
 
 void SettingsDialog::accept()
 {
+	if (ui->imageMapType->currentText().isEmpty())
+		ui->imageMapType->setCurrentIndex(0);
+	if (ui->commonMapType->currentText().isEmpty())
+		ui->commonMapType->setCurrentIndex(0);
 	save();
 	m_uploader->save();
 	QDialog::accept();
@@ -177,6 +181,14 @@ void SettingsDialog::reject()
 	load();
 	ui->logoLabel->setPixmap(logo);
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
+	
+	if (ui->imageMapType->currentText().isEmpty())
+		ui->imageMapType->setCurrentIndex(0);
+	if (ui->commonMapType->currentText().isEmpty())
+		ui->commonMapType->setCurrentIndex(0);
+	save(imageMapType.getInput());
+	save(commonMapType.getInput());
+	
 	QDialog::reject();
 }
 

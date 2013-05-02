@@ -44,7 +44,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 		*stream >> filePath >> num >> caption >> sourceFile >> *imageLabel;
 		captionEdit->setText(caption);
 
-		gpsData = new GpsData(*stream);
+		gpsData = new GpsData(&num, *stream);
 	}
 	else
 	{
@@ -57,10 +57,10 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 		if (sourceFile.size() != ba)
 			THROW(tr("Nie można załadować zdjęcia do pamięci. Pamięć wyczerpana?"));
 
-		gpsData = new GpsData(filePath);
+		gpsData = new GpsData(&num, filePath);
 	}
 
-	connect(gpsData, SIGNAL(mapDownloaded(QPixmap)), this, SLOT(mapDownloaded(QPixmap)));
+	connect(gpsData, SIGNAL(mapReady(QPixmap)), this, SLOT(mapDownloaded(QPixmap)));
 	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), gpsData, SLOT(downloadMap()));
 	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), this, SLOT(updatePixmap()));
 	gpsData->downloadMap();

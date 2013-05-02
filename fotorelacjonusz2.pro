@@ -44,7 +44,13 @@ SOURCES += main.cpp\
     networktransactionquery.cpp \
     networktransactionmultipart.cpp \
     overlaylist.cpp \
-    uploaderfactory.cpp
+    uploaderfactory.cpp \
+    osmlayerdialog.cpp \
+    tilesdownloader.cpp \
+    textballoon.cpp \
+    googlemapsdownloader.cpp \
+    throttlednetworkmanager.cpp \
+    abstractmapdownloader.cpp
 
 HEADERS  += mainwindow.h \
     imagewidget.h \
@@ -78,7 +84,13 @@ HEADERS  += mainwindow.h \
     networktransactionmultipart.h \
     overlaylist.h \
     uploaderfactory.h \
-    secrets.h
+    secrets.h \
+    osmlayerdialog.h \
+    tilesdownloader.h \
+    textballoon.h \
+    googlemapsdownloader.h \
+    throttlednetworkmanager.h \
+    abstractmapdownloader.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui \
@@ -90,7 +102,8 @@ FORMS    += mainwindow.ui \
     isloginuploader.ui \
     ftpuploader.ui \
     imguranonyuploader.ui \
-    imgurloginuploader.ui
+    imgurloginuploader.ui \
+    osmlayerdialog.ui
 
 RESOURCES += \
     resource.qrc

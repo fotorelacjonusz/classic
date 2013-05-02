@@ -19,6 +19,54 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aplikacja wykorzystuje:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qt (LGPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;exiv2 (GPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QuaZIP (LGPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oxygen theme (LGPL)&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <oldsource>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aplikacja wykorzystuje:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qt (LGPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;exiv2 (GPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QuaZIP (LGPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oxygen theme (LGPL)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Author: Kamil Ostaszewski&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Application uses:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qt (LGPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;exiv2 (GPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QuaZIP (LGPL2)&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oxygen theme (LGPL)&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <oldsource>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -30,7 +78,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/p/fotorelacjonusz/wiki/Home/&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -133,28 +181,38 @@ Wrong url will make all links corrupted.</translation>
     </message>
 </context>
 <context>
+    <name>GoogleMapsDownloader</name>
+    <message>
+        <location filename="googlemapsdownloader.cpp" line="59"/>
+        <source>BÅÄd pobierania mapy: %1 %2</source>
+        <translation>Error while downloading a map: %1 %2 </translation>
+    </message>
+    <message>
+        <location filename="googlemapsdownloader.cpp" line="65"/>
+        <source>BÅÄd otwierania mapy.</source>
+        <translation>Error while loading map data.</translation>
+    </message>
+</context>
+<context>
     <name>GpsData</name>
     <message>
-        <location filename="gpsdata.cpp" line="41"/>
-        <location filename="gpsdata.cpp" line="56"/>
+        <location filename="gpsdata.cpp" line="44"/>
+        <location filename="gpsdata.cpp" line="59"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="gpsdata.cpp" line="41"/>
+        <location filename="gpsdata.cpp" line="44"/>
         <source>Brak pliku %1. Ponowna instalacja aplikacji moÅ¼e rozwiÄzaÄ problem.</source>
         <translation>File %1 doesn&apos;t exist. Try reinstalling the application.</translation>
     </message>
     <message>
-        <location filename="gpsdata.cpp" line="174"/>
-        <location filename="gpsdata.cpp" line="193"/>
         <source>BÅÄd otwierania mapy.</source>
-        <translation>Error while loading map data.</translation>
+        <translation type="obsolete">Error while loading map data.</translation>
     </message>
     <message>
-        <location filename="gpsdata.cpp" line="187"/>
         <source>BÅÄd pobierania mapy: %1 %2</source>
-        <translation>Error while downloading a map: %1 %2 </translation>
+        <translation type="obsolete">Error while downloading a map: %1 %2 </translation>
     </message>
 </context>
 <context>
@@ -496,58 +554,91 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Choose color</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="48"/>
+        <location filename="mainwindow.cpp" line="50"/>
         <source>OtwÃ³rz fotorelacjÄ</source>
         <translation>Open photo report</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="65"/>
-        <location filename="mainwindow.cpp" line="90"/>
-        <location filename="mainwindow.cpp" line="137"/>
+        <location filename="mainwindow.cpp" line="67"/>
+        <location filename="mainwindow.cpp" line="92"/>
+        <location filename="mainwindow.cpp" line="139"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="65"/>
+        <location filename="mainwindow.cpp" line="67"/>
         <source>To nie jest plik fotorelacji!</source>
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="90"/>
-        <location filename="mainwindow.cpp" line="137"/>
+        <location filename="mainwindow.cpp" line="92"/>
+        <location filename="mainwindow.cpp" line="139"/>
         <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
         <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="95"/>
         <source>Zapisz fotorelacjÄ</source>
         <translation>Save photo report</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="48"/>
-        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="50"/>
+        <location filename="mainwindow.cpp" line="95"/>
         <source>Fotorelacje (*.phr)</source>
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="110"/>
+        <location filename="mainwindow.cpp" line="112"/>
         <source>Wybierz zdjÄcia</source>
         <translation>Choose photos</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="110"/>
+        <location filename="mainwindow.cpp" line="112"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="145"/>
+        <location filename="mainwindow.cpp" line="147"/>
         <source>Mapa dla wszystkich zdjÄÄ.</source>
         <translation>All photos map.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="165"/>
+        <location filename="mainwindow.cpp" line="167"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
+    </message>
+</context>
+<context>
+    <name>OSMLayerDialog</name>
+    <message utf8="true">
+        <location filename="osmlayerdialog.ui" line="14"/>
+        <source>Dodaj warstwę w formacie OSM</source>
+        <translation>Add OSM-format layer</translation>
+    </message>
+    <message utf8="true">
+        <location filename="osmlayerdialog.ui" line="20"/>
+        <source>Nazwa wyświetlana</source>
+        <translation>Display name</translation>
+    </message>
+    <message>
+        <location filename="osmlayerdialog.ui" line="33"/>
+        <source>Adres</source>
+        <translation>Url</translation>
+    </message>
+    <message>
+        <location filename="osmlayerdialog.ui" line="46"/>
+        <source>Maksmalny zoom</source>
+        <translation>Maximum zoom</translation>
+    </message>
+    <message>
+        <location filename="osmlayerdialog.cpp" line="88"/>
+        <source>KtÃ³rÄ warstwÄ usunÄÄ?</source>
+        <translation>Which layer to remove?</translation>
+    </message>
+    <message>
+        <location filename="osmlayerdialog.cpp" line="88"/>
+        <source>Warstwy OSM</source>
+        <translation>OSM layers</translation>
     </message>
 </context>
 <context>
@@ -1080,44 +1171,44 @@ Most probably short time favors post miximg by the forum.</translation>
     </message>
     <message utf8="true">
         <location filename="settingsdialog.ui" line="519"/>
-        <location filename="settingsdialog.ui" line="833"/>
+        <location filename="settingsdialog.ui" line="863"/>
         <source>Umieść w rogu zdjęcia</source>
         <translation>Place in corner</translation>
     </message>
     <message>
         <location filename="settingsdialog.ui" line="536"/>
-        <location filename="settingsdialog.ui" line="850"/>
+        <location filename="settingsdialog.ui" line="880"/>
         <source>Prawy dolny</source>
         <translation>Bottom right</translation>
     </message>
     <message>
         <location filename="settingsdialog.ui" line="545"/>
-        <location filename="settingsdialog.ui" line="859"/>
+        <location filename="settingsdialog.ui" line="889"/>
         <source>Lewy dolny</source>
         <translation>Bottom left</translation>
     </message>
     <message utf8="true">
         <location filename="settingsdialog.ui" line="554"/>
-        <location filename="settingsdialog.ui" line="868"/>
+        <location filename="settingsdialog.ui" line="898"/>
         <source>Prawy górny</source>
         <translation>Top right</translation>
     </message>
     <message utf8="true">
         <location filename="settingsdialog.ui" line="563"/>
-        <location filename="settingsdialog.ui" line="877"/>
+        <location filename="settingsdialog.ui" line="907"/>
         <source>Lewy górny</source>
         <translation>Top left</translation>
     </message>
     <message utf8="true">
         <location filename="settingsdialog.ui" line="575"/>
-        <location filename="settingsdialog.ui" line="889"/>
+        <location filename="settingsdialog.ui" line="919"/>
         <source>Odstęp od krawędzi</source>
         <translation>Distance from the edge</translation>
     </message>
     <message>
         <location filename="settingsdialog.ui" line="591"/>
-        <location filename="settingsdialog.ui" line="899"/>
-        <location filename="settingsdialog.ui" line="919"/>
+        <location filename="settingsdialog.ui" line="929"/>
+        <location filename="settingsdialog.ui" line="949"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -1148,97 +1239,128 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation>Maps</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="665"/>
+        <location filename="settingsdialog.ui" line="671"/>
+        <source>Dodaj warstwę OSM</source>
+        <translation>Add OSM layer</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="678"/>
+        <source>Usuń warstwę OSM</source>
+        <translation>Remove OSM layer</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="688"/>
         <source>Wspólna mapa dla wszystkich zdjęć</source>
         <translation>Common map for all photos</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="680"/>
-        <location filename="settingsdialog.ui" line="732"/>
+        <location filename="settingsdialog.ui" line="703"/>
+        <location filename="settingsdialog.ui" line="762"/>
         <source>Rodzaj mapy</source>
         <translation>Map type</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="691"/>
-        <location filename="settingsdialog.ui" line="743"/>
-        <source>Drogi</source>
-        <translation>Roadmap</translation>
+        <location filename="settingsdialog.ui" line="714"/>
+        <location filename="settingsdialog.ui" line="773"/>
+        <source>Google Drogi</source>
+        <translation>Google Roadmap</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="696"/>
-        <location filename="settingsdialog.ui" line="748"/>
-        <source>Satelita</source>
-        <translation>Satellite</translation>
+        <location filename="settingsdialog.ui" line="719"/>
+        <location filename="settingsdialog.ui" line="778"/>
+        <source>Google Satelita</source>
+        <translation>Google Satellite</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="701"/>
-        <location filename="settingsdialog.ui" line="753"/>
-        <source>Hybryda</source>
-        <translation>Hybrid</translation>
+        <location filename="settingsdialog.ui" line="724"/>
+        <location filename="settingsdialog.ui" line="783"/>
+        <source>Google Hybryda</source>
+        <translation>Google Hybrid</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="706"/>
-        <location filename="settingsdialog.ui" line="758"/>
-        <source>Teren</source>
-        <translation>Terrain</translation>
+        <location filename="settingsdialog.ui" line="729"/>
+        <location filename="settingsdialog.ui" line="788"/>
+        <source>Google Teren</source>
+        <translation>Google Terrain</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="717"/>
+        <location filename="settingsdialog.ui" line="740"/>
+        <source>Źródło danych Google Maps: https://developers.google.com/maps/documentation/staticmaps/</source>
+        <translation>Google Maps data source: https://developers.google.com/maps/documentation/staticmaps/</translation>
+    </message>
+    <message>
+        <source>Drogi</source>
+        <translation type="obsolete">Roadmap</translation>
+    </message>
+    <message>
+        <source>Satelita</source>
+        <translation type="obsolete">Satellite</translation>
+    </message>
+    <message>
+        <source>Hybryda</source>
+        <translation type="obsolete">Hybrid</translation>
+    </message>
+    <message>
+        <source>Teren</source>
+        <translation type="obsolete">Terrain</translation>
+    </message>
+    <message utf8="true">
+        <location filename="settingsdialog.ui" line="747"/>
         <source>Mapa na każdym zdjęciu</source>
         <translation>Map on each photo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="766"/>
+        <location filename="settingsdialog.ui" line="796"/>
         <source>Kolor</source>
         <translation>Color</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="783"/>
+        <location filename="settingsdialog.ui" line="813"/>
         <source>Nieprzeźroczystość</source>
         <translation>Opacity</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="803"/>
+        <location filename="settingsdialog.ui" line="833"/>
         <source>Zbliżenie</source>
         <translation>Zoom</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="823"/>
+        <location filename="settingsdialog.ui" line="853"/>
         <source>Kształt</source>
         <translation>Shape</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="981"/>
+        <location filename="settingsdialog.ui" line="1004"/>
         <source>Zarządzaj podkładami</source>
         <translation>Manage overlays</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="989"/>
+        <location filename="settingsdialog.ui" line="1012"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="995"/>
+        <location filename="settingsdialog.ui" line="1018"/>
         <source>Używaj proxy</source>
         <translation>Use proxy</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="1030"/>
+        <location filename="settingsdialog.ui" line="1053"/>
         <source>Host</source>
         <translation>Host</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="1040"/>
+        <location filename="settingsdialog.ui" line="1063"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="1050"/>
+        <location filename="settingsdialog.ui" line="1073"/>
         <source>Użytkownik</source>
         <translation>Username</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="1060"/>
+        <location filename="settingsdialog.ui" line="1083"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
@@ -1247,43 +1369,66 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">Round</translation>
     </message>
     <message>
-        <location filename="settingsdialog.ui" line="909"/>
+        <location filename="settingsdialog.ui" line="939"/>
         <source>Rozmiar</source>
         <translation>Size</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="932"/>
+        <location filename="settingsdialog.ui" line="962"/>
         <source>okrągły</source>
         <translation>circular</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="942"/>
         <source>Źródło danych: Google Maps https://developers.google.com/maps/documentation/staticmaps/</source>
         <oldsource>Źródło danych:  Google Maps https://developers.google.com/maps/documentation/staticmaps/</oldsource>
-        <translation>Data source: Google Maps https://developers.google.com/maps/documentation/staticmaps/</translation>
+        <translation type="obsolete">Data source: Google Maps https://developers.google.com/maps/documentation/staticmaps/</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="950"/>
+        <location filename="settingsdialog.ui" line="973"/>
         <source>Podkłady mapowe</source>
         <oldsource>Własne mapy</oldsource>
         <translation>Overlays</translation>
     </message>
     <message utf8="true">
-        <location filename="settingsdialog.ui" line="959"/>
+        <location filename="settingsdialog.ui" line="982"/>
         <source>Używaj podkładów mapowych</source>
         <oldsource>Używaj własnych map</oldsource>
         <translation>Use overlays</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="186"/>
+        <location filename="settingsdialog.cpp" line="198"/>
         <source>Wczytaj logo</source>
         <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="settingsdialog.cpp" line="186"/>
+        <location filename="settingsdialog.cpp" line="198"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
+    </message>
+</context>
+<context>
+    <name>TilesDownloader</name>
+    <message>
+        <location filename="tilesdownloader.cpp" line="30"/>
+        <location filename="tilesdownloader.cpp" line="36"/>
+        <source>BÅÄd</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="tilesdownloader.cpp" line="30"/>
+        <source>Podany adres nie zawiera zmiennej %1</source>
+        <translation>Url does not contain variable %1</translation>
+    </message>
+    <message>
+        <location filename="tilesdownloader.cpp" line="36"/>
+        <source>Podany adres nie koÅczy siÄ na .png</source>
+        <translation>Url does not end with .png</translation>
+    </message>
+    <message>
+        <location filename="tilesdownloader.cpp" line="202"/>
+        <source>BÅÄd pobierania mapy: %1 %2</source>
+        <translation>Error while downloading a map: %1 %2 </translation>
     </message>
 </context>
 <context>

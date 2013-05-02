@@ -658,7 +658,30 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
       <attribute name="title">
        <string>Mapy</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0">
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0,0">
+       <item row="2" column="0" alignment="Qt::AlignRight">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="addOSMLayer">
+            <property name="text">
+             <string>Dodaj warstwę OSM</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="removeOSMLayer">
+            <property name="text">
+             <string>Usuń warstwę OSM</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QGroupBox" name="commonMapBox">
          <property name="title">
@@ -688,27 +711,34 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            <widget class="QComboBox" name="commonMapType">
             <item>
              <property name="text">
-              <string>Drogi</string>
+              <string>Google Drogi</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Satelita</string>
+              <string>Google Satelita</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Hybryda</string>
+              <string>Google Hybryda</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Teren</string>
+              <string>Google Teren</string>
              </property>
             </item>
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="mapSource">
+         <property name="text">
+          <string>Źródło danych Google Maps: https://developers.google.com/maps/documentation/staticmaps/</string>
+         </property>
         </widget>
        </item>
        <item row="1" column="0">
@@ -740,22 +770,22 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            <widget class="QComboBox" name="imageMapType">
             <item>
              <property name="text">
-              <string>Drogi</string>
+              <string>Google Drogi</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Satelita</string>
+              <string>Google Satelita</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Hybryda</string>
+              <string>Google Hybryda</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Teren</string>
+              <string>Google Teren</string>
              </property>
             </item>
            </widget>
@@ -934,13 +964,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="mapSource">
-         <property name="text">
-          <string>Źródło danych: Google Maps https://developers.google.com/maps/documentation/staticmaps/</string>
-         </property>
         </widget>
        </item>
       </layout>
@@ -1136,6 +1159,8 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>imageMapPosition</tabstop>
   <tabstop>imageMapMargin</tabstop>
   <tabstop>imageMapSize</tabstop>
+  <tabstop>addOSMLayer</tabstop>
+  <tabstop>removeOSMLayer</tabstop>
   <tabstop>useOverlays</tabstop>
   <tabstop>overlayList</tabstop>
   <tabstop>openFolderButton</tabstop>

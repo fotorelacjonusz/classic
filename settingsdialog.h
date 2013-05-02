@@ -7,6 +7,7 @@
 #include <QNetworkProxy>
 #include "settingsmanager.h"
 #include "uploaderfactory.h"
+#include "osmlayerdialog.h"
 
 #define SETTINGS SettingsDialog::object()
 #define SSC_HOST "http://www.skyscrapercity.com"
@@ -24,7 +25,7 @@ class SettingsDialog : public QDialog, public SettingsManager
 
 public:
 	enum Corner { BottomRight, BottomLeft, TopRight, TopLeft };
-	enum MapType { Roadmap, Satellite, Hybrid, Terrain };
+	enum MapType { Roadmap, Satellite, Hybrid, Terrain, OSMFirst };
 	Q_ENUMS(MapType)
 
 	explicit SettingsDialog(QWidget *parent, QSettings &m_settings);
@@ -56,9 +57,9 @@ public:
 	Field<bool> logoInvert;
 	Field<bool> addCommonMap;
 
-	Field<QString> commonMapType;
+	Field<MapType> commonMapType;
 	Field<bool> addImageMap;
-	Field<QString> imageMapType;
+	Field<MapType> imageMapType;
 	Field<QColor> imageMapColor;
 	Field<qreal> imageMapOpacity;
 	Field<int> imageMapZoom;
@@ -78,6 +79,8 @@ public:
 	QPixmap overlayMakeMap(qreal lon, qreal lat) const;
 	static SettingsDialog *object();
 	QSettings &settings();
+	QString mapTypeToString(MapType type) const;
+	QString currentOsmUrlPattern(bool common) const;
 
 signals:
 	void pixmapOptionsChanged();
@@ -87,15 +90,15 @@ signals:
 	void imageMapOptionsChanged();
 
 protected:
-	AbstractUploader *uploaderFunc() const;
-	bool captionsUnderFunc() const;
-	bool setImageWidthFunc() const;
-	int imageLengthFunc() const;
-	Corner logoCornerFunc() const;
-	QString commonMapTypeFunc() const;
-	QString imageMapTypeFunc() const;
-	qreal imageMapOpacityFunc() const;
-	Corner imageMapCornerFunc() const;
+	inline AbstractUploader *uploaderFunc() const;
+	inline bool captionsUnderFunc() const;
+	inline bool setImageWidthFunc() const;
+	inline int imageLengthFunc() const;
+	inline Corner logoCornerFunc() const;
+	inline MapType commonMapTypeFunc() const;
+	inline MapType imageMapTypeFunc() const;
+	inline qreal imageMapOpacityFunc() const;
+	inline Corner imageMapCornerFunc() const;
 	QUrl homeUrlFunc() const;
 
 protected slots:
@@ -106,6 +109,7 @@ private slots:
 	void on_logoLoad_clicked();
 	void on_uploadMethodComboBox_currentIndexChanged(int index);
 	void on_imageMapColor_clicked();
+	
 	void proxyOptionsChanged();
 	
 private:
@@ -122,6 +126,7 @@ private:
 	static SettingsDialog *objectInstance;
 	
 	QNetworkProxy proxy;
+	OSMLayerDialog osmDialog;
 };
 
 #endif // SETTINGSDIALOG_H
