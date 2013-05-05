@@ -291,6 +291,11 @@ Wrong url will make all links corrupted.</translation>
         <translation>about:blank</translation>
     </message>
     <message>
+        <location filename="imgurloginuploader.cpp" line="60"/>
+        <source>Fotorelacja_</source>
+        <translation>Photo_report_</translation>
+    </message>
+    <message>
         <location filename="imgurloginuploader.cpp" line="163"/>
         <source>Autoryzacja udana</source>
         <translation>Authorized</translation>

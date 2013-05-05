@@ -55,15 +55,15 @@ bool ImgurLoginUploader::init(int imageNumber)
 	if (!checkCredits(imageNumber, 1))
 		return false;
 
-	NetworkTransactionQuery tr(this, "https://api.imgur.com/3/album/");
-	setAuthorization(&tr);
-	tr.addQueryItem("title", "Fotorelacja_" + QDateTime::currentDateTime().toString(Qt::ISODate));
-	tr.post();
-	JsonObject json(tr);
+	NetworkTransactionQuery transaction(this, "https://api.imgur.com/3/album/");
+	setAuthorization(&transaction);
+	transaction.addQueryItem("title", tr("Fotorelacja_") + QDateTime::currentDateTime().toString(Qt::ISODate));
+	transaction.post();
+	JsonObject json(transaction);
 	error = json.mergedError;
-	if (tr.success)
+	if (transaction.success)
 		albumId = json.data["id"];
-	return tr.success;
+	return transaction.success;
 }
 
 QString ImgurLoginUploader::uploadImage(QString filePath, QIODevice *image)
@@ -88,15 +88,15 @@ bool ImgurLoginUploader::checkToken()
 		return false;
 	}
 
-	NetworkTransactionQuery tr(this, "https://api.imgur.com/oauth2/token");
-	tr.addQueryItem(REFRESH_TOKEN_CSTR, refreshToken);
-	tr.addQueryItem(CLIENT_ID_CSTR, IMGUR_CLIENT_ID);
-	tr.addQueryItem(CLIENT_SECRET_CSTR, IMGUR_CLIENT_SECRET);
-	tr.addQueryItem(GRANT_TYPE_CSTR, REFRESH_TOKEN_CSTR);
-	tr.post();
+	NetworkTransactionQuery transaction(this, "https://api.imgur.com/oauth2/token");
+	transaction.addQueryItem(REFRESH_TOKEN_CSTR, refreshToken);
+	transaction.addQueryItem(CLIENT_ID_CSTR, IMGUR_CLIENT_ID);
+	transaction.addQueryItem(CLIENT_SECRET_CSTR, IMGUR_CLIENT_SECRET);
+	transaction.addQueryItem(GRANT_TYPE_CSTR, REFRESH_TOKEN_CSTR);
+	transaction.post();
 
-	error = tr.error;
-	JsonObject json(tr);
+	error = transaction.error;
+	JsonObject json(transaction);
 //	json.debug();
 
 	if (json.contains(ACCESS_TOKEN_CSTR) && json.contains(REFRESH_TOKEN_CSTR) && json.contains(EXPIRES_IN_CSTR))
