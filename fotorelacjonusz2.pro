@@ -19,6 +19,7 @@ SOURCES += main.cpp \
     widgets/simpleimage.cpp \
     widgets/selectablewidget.cpp \
     widgets/replydialog.cpp \
+    widgets/recentthreadsmenu.cpp \
     widgets/postwidget.cpp \
     widgets/mainwindow.cpp \
     widgets/lineedit.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     widgets/simpleimage.h \
     widgets/selectablewidget.h \
     widgets/replydialog.h \
+    widgets/recentthreadsmenu.h \
     widgets/postwidget.h \
     widgets/mainwindow.h \
     widgets/lineedit.h \

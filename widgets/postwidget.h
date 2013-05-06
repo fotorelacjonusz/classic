@@ -18,6 +18,8 @@ public:
 	~PostWidget();
 
 	void append(QString text, bool ready = false);
+	int imageNumber() const;
+	void setImageNumber(int number);
 	QString text() const;
 	bool isReady() const;
 
@@ -27,6 +29,7 @@ signals:
 private:
 	Ui::PostWidget *ui;
 	bool m_ready;
+	int m_imageNumber;
 };
 
 #endif // POSTWIDGET_H

@@ -15,6 +15,7 @@ public:
 	virtual QString toForumCode() const = 0;
 
 	QString getUrl() const;
+	virtual int getNumber() const;
 	virtual void serialize(QDataStream &stream) const;
 
 	void prepend(QString text);

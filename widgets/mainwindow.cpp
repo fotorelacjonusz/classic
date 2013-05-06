@@ -7,7 +7,7 @@
 #include "aboutdialog.h"
 #include "replydialog.h"
 #include "downloaders/gpsdata.h"
-#include "arrowwidget.h"
+//#include "recentthreadsmenu.h"
 
 #include <QUrl>
 #include <QDebug>
@@ -23,12 +23,14 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager(settings),
 	settingsDialog(this, settings),
 	selectedImage(0),
-	selectedArrow(0)
+	selectedArrow(0),
+	recentThreads(settings, this)
 {
 	ui->setupUi(this);
 	ui->imageToolBar->setEnabled(false);
 	ui->arrowToolBar->setEnabled(false);
 	ui->colorManipulationBar->setEnabled(false);
+	ui->menu_Fotorelacja->addMenu(&recentThreads);
 	settingsDialog.copyDescriptions(this);
 
 	manager.makeInput("geometry", (QWidget *)this);
@@ -155,7 +157,9 @@ void MainWindow::on_action_send_to_SSC_triggered()
 	images.first()->prepend(ui->header->toPlainText());
 	images.last()->append(ui->footer->toPlainText());
 
-	ReplyDialog reply(images, this);
+	ReplyDialog reply(settings, images, this);
+	connect(&reply, SIGNAL(imagePosted(QString,QString,int)), &recentThreads, SLOT(imagePosted(QString,QString,int)));
+//	connect(&reply, SIGNAL(finished(int)), &recentThreads, SLOT(postingFinished()));
 	reply.exec();
 
 	delete mapImage;

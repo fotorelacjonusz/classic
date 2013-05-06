@@ -14,6 +14,11 @@ QString AbstractImage::getUrl() const
 	return url;
 }
 
+int AbstractImage::getNumber() const
+{
+	return 0;
+}
+
 void AbstractImage::prepend(QString text)
 {
 	prependedText = text.trimmed();

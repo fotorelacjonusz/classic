@@ -8,6 +8,7 @@
 #include "settings/settingsmanager.h"
 #include "exception.h"
 #include "downloaders/gpsdata.h"
+#include "recentthreadsmenu.h"
 
 class AbstractImage;
 class ImageWidget;
@@ -51,8 +52,6 @@ private slots:
 
 	void imageWidgetSelected(QWidget *widget);
 	void arrowWidgetSelected(QWidget *widget);
-//	void imageWidgetSelected(ImageWidget *widget);
-//	void arrowWidgetSelected(ArrowWidget *widget);
 
 	void updateCommonMap();
 	void commonMapReady(QPixmap map);
@@ -77,6 +76,7 @@ private:
 	QString dirName;
 	static QByteArray phrFileHeader;
 	GpsData gpsData;
+	RecentThreadsMenu recentThreads;
 };
 
 #endif // MAINWINDOW_H

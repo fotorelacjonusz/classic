@@ -23,6 +23,16 @@ void PostWidget::append(QString text, bool ready)
 	emit appended(100);
 }
 
+int PostWidget::imageNumber() const
+{
+	return m_imageNumber;
+}
+
+void PostWidget::setImageNumber(int number)
+{
+	m_imageNumber = number;
+}
+
 QString PostWidget::text() const
 {
 	return ui->plainTextEdit->toPlainText();

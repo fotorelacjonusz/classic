@@ -76,6 +76,8 @@ public:
 	Field<QString> proxyUser;
 	Field<QString> proxyPass;
 
+	void setSelectedThread(QString threadId = QString(), int number = 0);
+	bool isSelectedThread() const;
 	QPixmap overlayMakeMap(qreal lon, qreal lat) const;
 	static SettingsDialog *object();
 	QSettings &settings();
@@ -92,6 +94,7 @@ signals:
 protected:
 	inline AbstractUploader *uploaderFunc() const;
 	inline bool captionsUnderFunc() const;
+	inline int startingNumberFunc() const;
 	inline bool setImageWidthFunc() const;
 	inline int imageLengthFunc() const;
 	inline Corner logoCornerFunc() const;
@@ -122,6 +125,8 @@ private:
 	QColor m_imageMapColor;
 	QString tosFormat;
 	UploaderFactory factory;
+	QString selectedThreadId;
+	int selectedThreadImageNumber;
 
 	static SettingsDialog *objectInstance;
 	

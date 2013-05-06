@@ -123,7 +123,11 @@ public:
 			selectedWidget->unselect(false);
 		selectedWidget = this;
 		lineEdit->setFocus();
-		setStyleSheet(QString("QWidget#%1 { border: 3px dashed %2 }").arg(objectName()).arg(borderColor.name()));
+		
+		setStyleSheet(QString("QWidget#%1 { border-width: 2px; border-style: dashed; border-color: %2; border-radius: 8px; }").arg(objectName()).arg(borderColor.name()));
+//		setStyleSheet(QString("QWidget#%1 { border: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 white, stop: 0.4 gray, stop:1 green);}").arg(objectName()));
+//		setStyleSheet(QString("QWidget#%1 { border-width: 3px; border-style: dashed; border-color: %2; }").arg(objectName()).arg(borderColor.name()));
+//		setStyleSheet(QString("QWidget#%1 { box-shadow: 3px 3px 4px %2; -moz-box-shadow: 3px 3px 4px %2; -webkit-box-shadow: 3px 3px 4px %2; }").arg(objectName()).arg(borderColor.name()));
 		Listener::tellAllWidgetSelected(this);
 		selectEvent();
 	}

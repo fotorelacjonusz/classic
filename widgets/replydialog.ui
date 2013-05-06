@@ -41,16 +41,29 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="hideInfoButton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Ukryj info</string>
-            </property>
+           <widget class="QWidget" name="widget" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item alignment="Qt::AlignRight">
+              <widget class="QPushButton" name="hideInfoButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Ukryj info</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight">
+              <widget class="QCheckBox" name="dontShowAgain">
+               <property name="text">
+                <string>Nie pokazuj więcej</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -165,7 +178,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>hideInfoButton</tabstop>
   <tabstop>webView</tabstop>
   <tabstop>tableWidget</tabstop>
   <tabstop>buttonBox</tabstop>
@@ -201,22 +213,6 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>hideInfoButton</sender>
-   <signal>clicked()</signal>
-   <receiver>infoWidget</receiver>
-   <slot>hide()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1064</x>
-     <y>61</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>853</x>
-     <y>51</y>
     </hint>
    </hints>
   </connection>

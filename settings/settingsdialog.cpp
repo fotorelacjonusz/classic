@@ -50,7 +50,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, this, M(layoutOptionsChanged), -1), this, &SettingsDialog::captionsUnderFunc);
 	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,            this, M(layoutOptionsChanged), false));
 	numberImages        .init(makeInput("number_images",              ui->numberImages,          this, M(numberOptionsChanged), true));
-	startingNumber      .init(makeInput("starting_number",            ui->startingNumber,        this, M(numberOptionsChanged), 1));
+	startingNumber      .init(makeInput("starting_number",            ui->startingNumber,        this, M(numberOptionsChanged), 1), this, &SettingsDialog::startingNumberFunc);
 	addImageBorder      .init(makeInput("image_add_border",           ui->addImageBorder,        this, M(pixmapOptionsChanged), false));
 	addTBC              .init(makeInput("add_tbc",                    ui->addTBC, true));
 	imagesPerPost       .init(makeInput("images_per_post",            ui->imagesPerPost, 5));
@@ -126,6 +126,15 @@ void SettingsDialog::copyDescriptions(QWidget *parent)
 	}
 }
 
+void SettingsDialog::setSelectedThread(QString threadId, int number)
+{
+	selectedThreadId = threadId;
+	selectedThreadImageNumber = number;
+//	ui->startingNumber->setValue(number);
+	emit numberOptionsChanged();
+}
+
+bool SettingsDialog::isSelectedThread()                               const { return !selectedThreadId.isEmpty(); }
 QPixmap SettingsDialog::overlayMakeMap(qreal lon, qreal lat)          const { return ui->overlayList->makeMap(lon, lat); }
 SettingsDialog *SettingsDialog::object()                                    { return objectInstance; }
 QSettings &SettingsDialog::settings()                                       { return m_settings; }
@@ -133,6 +142,7 @@ QString SettingsDialog::mapTypeToString(SettingsDialog::MapType type) const { re
 QString SettingsDialog::currentOsmUrlPattern(bool common)             const { return osmDialog.currentUrlPattern(common); }
 AbstractUploader *SettingsDialog::uploaderFunc()		              const { return m_uploader; }
 bool SettingsDialog::captionsUnderFunc()                              const { return ui->captionsUnder->isChecked(); }
+int SettingsDialog::startingNumberFunc()                              const { return selectedThreadId.isEmpty() ? ui->startingNumber->value() : selectedThreadImageNumber; }
 bool SettingsDialog::setImageWidthFunc()                              const { return ui->widthRadioButton->isChecked(); }
 int SettingsDialog::imageLengthFunc()                                 const { return ui->lengthComboBox->currentText().toInt(); }
 SettingsDialog::Corner SettingsDialog::logoCornerFunc()               const { return (Corner)ui->logoPosition->currentIndex(); }
@@ -144,7 +154,12 @@ SettingsDialog::Corner SettingsDialog::imageMapCornerFunc()           const { re
 QUrl SettingsDialog::homeUrlFunc() const
 {
 	QUrl url(SSC_HOST);
-	if (ui->homeMainRadio->isChecked())
+	if (!selectedThreadId.isEmpty())
+	{
+		url.setPath("/showthread.php");
+		url.addQueryItem("t", selectedThreadId);
+	}
+	else if (ui->homeMainRadio->isChecked())
 		return url;
 	else if (ui->homeUserCPRadio->isChecked())
 		url.setPath("/usercp.php");
