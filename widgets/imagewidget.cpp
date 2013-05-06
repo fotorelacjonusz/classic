@@ -1,10 +1,10 @@
 #include "imagewidget.h"
-#include "settingsdialog.h"
-#include "abstractuploader.h"
+#include "settings/settingsdialog.h"
+#include "uploaders/abstractuploader.h"
 
 #include "arrowwidget.h"
 #include "imagelabel.h"
-#include "gpsdata.h"
+#include "downloaders/gpsdata.h"
 #include "imagemanipulation.h"
 
 #include <QPixmapCache>

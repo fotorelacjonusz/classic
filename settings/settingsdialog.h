@@ -6,7 +6,7 @@
 #include <QUrl>
 #include <QNetworkProxy>
 #include "settingsmanager.h"
-#include "uploaderfactory.h"
+#include "uploaders/uploaderfactory.h"
 #include "osmlayerdialog.h"
 
 #define SETTINGS SettingsDialog::object()

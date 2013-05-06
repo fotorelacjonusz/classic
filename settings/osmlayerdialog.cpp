@@ -1,8 +1,8 @@
 #include "osmlayerdialog.h"
 #include "ui_osmlayerdialog.h"
 #include "ui_settingsdialog.h"
-#include "tilesdownloader.h"
-#include "settingsdialog.h"
+#include "downloaders/tilesdownloader.h"
+#include "settings/settingsdialog.h"
 
 #include <QComboBox>
 #include <QPushButton>

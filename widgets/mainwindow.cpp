@@ -6,7 +6,7 @@
 #include "arrowwidget.h"
 #include "aboutdialog.h"
 #include "replydialog.h"
-#include "gpsdata.h"
+#include "downloaders/gpsdata.h"
 #include "arrowwidget.h"
 
 #include <QUrl>

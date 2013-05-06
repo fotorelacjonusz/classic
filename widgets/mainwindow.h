@@ -4,10 +4,10 @@
 #include <QMainWindow>
 #include <QSettings>
 
-#include "settingsdialog.h"
-#include "settingsmanager.h"
+#include "settings/settingsdialog.h"
+#include "settings/settingsmanager.h"
 #include "exception.h"
-#include "gpsdata.h"
+#include "downloaders/gpsdata.h"
 
 class AbstractImage;
 class ImageWidget;

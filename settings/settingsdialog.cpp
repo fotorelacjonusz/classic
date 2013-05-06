@@ -1,10 +1,10 @@
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
-#include "abstractuploader.h"
-#include "isanonyuploader.h"
-#include "iscodeuploader.h"
-#include "isloginuploader.h"
-#include "ftpuploader.h"
+#include "uploaders/abstractuploader.h"
+//#include "isanonyuploader.h"
+//#include "iscodeuploader.h"
+//#include "isloginuploader.h"
+//#include "ftpuploader.h"
 
 #include <QDebug>
 #include <QFileDialog>

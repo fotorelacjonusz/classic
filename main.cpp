@@ -2,7 +2,7 @@
 #include <QTextCodec>
 #include <QTranslator>
 #include <QLocale>
-#include "mainwindow.h"
+#include "widgets/mainwindow.h"
 
 
 int main(int argc, char *argv[])

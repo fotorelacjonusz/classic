@@ -202,7 +202,7 @@
   </widget>
   <action name="action_add_photos">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/archive-insert.png</normaloff>:/res/archive-insert.png</iconset>
    </property>
    <property name="text">
@@ -211,7 +211,7 @@
   </action>
   <action name="action_move_top">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-up-double.png</normaloff>:/res/arrow-up-double.png</iconset>
    </property>
    <property name="whatsThis">
@@ -220,7 +220,7 @@
   </action>
   <action name="action_move_up">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-up.png</normaloff>:/res/arrow-up.png</iconset>
    </property>
    <property name="whatsThis">
@@ -229,7 +229,7 @@
   </action>
   <action name="action_move_down">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-down.png</normaloff>:/res/arrow-down.png</iconset>
    </property>
    <property name="whatsThis">
@@ -238,7 +238,7 @@
   </action>
   <action name="action_move_bottom">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-down-double.png</normaloff>:/res/arrow-down-double.png</iconset>
    </property>
    <property name="whatsThis">
@@ -247,7 +247,7 @@
   </action>
   <action name="action_rotate_left">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/object-rotate-left.png</normaloff>:/res/object-rotate-left.png</iconset>
    </property>
    <property name="whatsThis">
@@ -256,7 +256,7 @@
   </action>
   <action name="action_rotate_right">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/object-rotate-right.png</normaloff>:/res/object-rotate-right.png</iconset>
    </property>
    <property name="whatsThis">
@@ -265,7 +265,7 @@
   </action>
   <action name="action_remove_image">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
    </property>
    <property name="whatsThis">
@@ -274,7 +274,7 @@
   </action>
   <action name="action_send_to_SSC">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/internet-web-browser.png</normaloff>:/res/internet-web-browser.png</iconset>
    </property>
    <property name="text">
@@ -283,7 +283,7 @@
   </action>
   <action name="action_settings">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/configure.png</normaloff>:/res/configure.png</iconset>
    </property>
    <property name="text">
@@ -292,7 +292,7 @@
   </action>
   <action name="action_close">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/application-exit.png</normaloff>:/res/application-exit.png</iconset>
    </property>
    <property name="text">
@@ -304,7 +304,7 @@
   </action>
   <action name="action_about">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/help-about.png</normaloff>:/res/help-about.png</iconset>
    </property>
    <property name="text">
@@ -313,7 +313,7 @@
   </action>
   <action name="action_Qt_information">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/qtcreator.png</normaloff>:/res/qtcreator.png</iconset>
    </property>
    <property name="text">
@@ -325,7 +325,7 @@
   </action>
   <action name="action_open_photorelation">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/document-open.png</normaloff>:/res/document-open.png</iconset>
    </property>
    <property name="text">
@@ -334,7 +334,7 @@
   </action>
   <action name="action_save_photorelation">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/document-save.png</normaloff>:/res/document-save.png</iconset>
    </property>
    <property name="text">
@@ -343,7 +343,7 @@
   </action>
   <action name="action_remove_arrow">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
    </property>
    <property name="whatsThis">
@@ -352,7 +352,7 @@
   </action>
   <action name="action_invert_colors">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/invert.png</normaloff>:/res/invert.png</iconset>
    </property>
    <property name="whatsThis">
@@ -361,7 +361,7 @@
   </action>
   <action name="action_choose_color">
    <property name="icon">
-    <iconset resource="resource.qrc">
+    <iconset resource="../resource.qrc">
      <normaloff>:/res/format-stroke-color.png</normaloff>:/res/format-stroke-color.png</iconset>
    </property>
    <property name="whatsThis">
@@ -374,7 +374,7 @@
   <customwidget>
    <class>ColorManipulationToolBar</class>
    <extends>QToolBar</extends>
-   <header>colormanipulationtoolbar.h</header>
+   <header>widgets/colormanipulationtoolbar.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -383,7 +383,7 @@
   <tabstop>footer</tabstop>
  </tabstops>
  <resources>
-  <include location="resource.qrc"/>
+  <include location="../resource.qrc"/>
  </resources>
  <connections>
   <connection>

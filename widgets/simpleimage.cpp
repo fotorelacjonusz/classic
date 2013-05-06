@@ -1,5 +1,5 @@
 #include "simpleimage.h"
-#include "abstractuploader.h"
+#include "uploaders/abstractuploader.h"
 #include "imagewidget.h"
 #include <QBuffer>
 

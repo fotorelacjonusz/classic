@@ -1,7 +1,7 @@
 #ifndef ABSTRACTUPLOADER_H
 #define ABSTRACTUPLOADER_H
 
-#include "settingsmanager.h"
+#include "settings/settingsmanager.h"
 #include <QWidget>
 #include <QHttpPart>
 #include <QMap>

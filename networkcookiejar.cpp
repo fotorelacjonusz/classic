@@ -1,5 +1,5 @@
 #include "networkcookiejar.h"
-#include "settingsdialog.h"
+#include "settings/settingsdialog.h"
 
 NetworkCookieJar::NetworkCookieJar(QString key) :
 	QNetworkCookieJar(),

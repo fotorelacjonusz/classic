@@ -1,5 +1,5 @@
 #include "gpsdata.h"
-#include "settingsdialog.h"
+#include "settings/settingsdialog.h"
 
 #include <QFile>
 #include <QUrl>

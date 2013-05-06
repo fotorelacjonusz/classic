@@ -5,7 +5,7 @@
 #include <QBuffer>
 
 #include "abstractimage.h"
-#include "settingsdialog.h"
+#include "settings/settingsdialog.h"
 #include "exception.h"
 #include "selectablewidget.h"
 

@@ -10,7 +10,7 @@
 #include <QApplication>
 #include <qmath.h>
 
-#include "settingsdialog.h"
+#include "settings/settingsdialog.h"
 #include "gpsdata.h"
 
 const QStringList TilesDownloader::varNames = QStringList() << "${z}" << "${x}" << "${y}";

@@ -1,9 +1,9 @@
 #include "replydialog.h"
 #include "ui_replydialog.h"
-#include "settingsdialog.h"
+#include "settings/settingsdialog.h"
 #include "abstractimage.h"
 #include "postwidget.h"
-#include "abstractuploader.h"
+#include "uploaders/abstractuploader.h"
 #include "networkcookiejar.h"
 
 #include <QWebFrame>
