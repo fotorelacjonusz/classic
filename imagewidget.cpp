@@ -21,18 +21,20 @@
 #include <QCheckBox>
 
 const qreal ImageWidget::maxAspectRatio = 17.0 / 9.0;
-int ImageWidget::currentId = 0;
+//int ImageWidget::currentId = 0;
 
-ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
-	QWidget(parent),
-	id(++currentId),
+ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
+	SelectableWidget<ImageWidget>(parent),
+//	QWidget(parent),
+//	id(++currentId),
 	filePath(_filePath),
 	brightness(BRIGHTNESS_DEFAULT), contrast(CONTRAST_DEFAULT), gamma(GAMMA_DEFAULT),
 	gpsData(0)
 {
 	numberLabel = new QLabel(this);
-	captionEdit = new QLineEdit(this);
-	imageLabel = new ImageLabel(this);
+//	captionEdit = new QLineEdit(this);
+	captionEdit = lineEdit;
+	imageLabel = new ImageLabel(this, captionEdit);
 
 	gridLayout = new QGridLayout(this);
 	gridLayout->setSpacing(1);
@@ -65,12 +67,12 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), this, SLOT(updatePixmap()));
 	gpsData->downloadMap();
 
-	setObjectName(QString("photo%1").arg(id));
+//	setObjectName(QString("photo%1").arg(id));
 
 	connect(SETTINGS, SIGNAL(pixmapOptionsChanged()), this, SLOT(updatePixmap()));
 	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateNumber()));
 	connect(SETTINGS, SIGNAL(layoutOptionsChanged()), this, SLOT(updateLayout()));
-	connect(imageLabel, SIGNAL(selected(ArrowWidget*)), this, SIGNAL(selected(ArrowWidget*)));
+//	connect(imageLabel, SIGNAL(selected(ArrowWidget*)), this, SIGNAL(selected(ArrowWidget*)));
 
 	setFocusPolicy(Qt::NoFocus);
 
@@ -106,9 +108,15 @@ QString ImageWidget::getFileName() const
 	return filePath.section(QDir::separator(), -1);
 }
 
-QWidget *ImageWidget::getCaptionEdit() const
+QWidget *ImageWidget::getFirstWidget() const
 {
 	return captionEdit;
+}
+
+QWidget *ImageWidget::getLastWidget() const
+{
+	QWidget *widget = imageLabel->getLastArrow();
+	return widget ? widget : captionEdit;
 }
 
 void ImageWidget::rotate(bool left)
@@ -281,9 +289,9 @@ void ImageWidget::updateLayout()
 	gridLayout->setVerticalSpacing(SETTINGS->extraSpace ? 20 : 1);
 }
 
-void ImageWidget::unselected()
+void ImageWidget::unselectEvent()
 {
-	setStyleSheet(QString("QWidget#%1 { }").arg(objectName()));
+//	setStyleSheet(QString("QWidget#%1 { }").arg(objectName()));
 	QPixmapCache::remove(filePath);
 }
 
@@ -320,13 +328,13 @@ int ImageWidget::getGamma() const
 	return gamma;
 }
 
-void ImageWidget::mouseReleaseEvent(QMouseEvent *event)
-{
-	setStyleSheet(QString("QWidget#%1 { background: rgba(20, 80, 200, 50); border: 3px dashed rgba(20, 80, 200, 250) }").arg(objectName()));
-	emit selected(this);
+//void ImageWidget::mouseReleaseEvent(QMouseEvent *event)
+//{
+//	setStyleSheet(QString("QWidget#%1 { background: rgba(20, 80, 200, 50); border: 3px dashed rgba(20, 80, 200, 250) }").arg(objectName()));
+//	emit selected(this);
 
-	QWidget::mouseReleaseEvent(event);
-}
+//	QWidget::mouseReleaseEvent(event);
+//}
 
 void ImageWidget::paintEvent(QPaintEvent *event)
 {

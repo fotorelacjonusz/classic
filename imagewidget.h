@@ -7,6 +7,7 @@
 #include "abstractimage.h"
 #include "settingsdialog.h"
 #include "exception.h"
+#include "selectablewidget.h"
 
 class QGridLayout;
 class QLabel;
@@ -17,7 +18,7 @@ class AbstractUploader;
 class GpsData;
 class QCheckBox;
 
-class ImageWidget : public QWidget, public AbstractImage
+class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage // public QWidget, public AbstractImage
 {
 	Q_OBJECT
 
@@ -27,7 +28,8 @@ public:
 	void serialize(QDataStream &stream) const;
 	int getNumber() const;
 	QString getFileName() const;
-	QWidget *getCaptionEdit() const;
+	QWidget *getFirstWidget() const;
+	QWidget *getLastWidget() const;
 	void rotate(bool left);
 	bool upload(AbstractUploader *uploader);
 	QString toForumCode() const;
@@ -39,7 +41,7 @@ public slots:
 	void updatePixmap(bool makeCache = false);
 	void updateNumber(int now = -1);
 	void updateLayout();
-	void unselected();
+	void unselectEvent();
 
 	void setBrightness(int value);
 	void setContrast(int value);
@@ -49,11 +51,11 @@ public slots:
 	int getGamma() const;
 
 signals:
-	void selected(ImageWidget *widget);
-	void selected(ArrowWidget *widget);
+//	void selected(ImageWidget *widget);
+//	void selected(ArrowWidget *widget);
 
 protected:
-	void mouseReleaseEvent(QMouseEvent *event);
+//	void mouseReleaseEvent(QMouseEvent *event);
 	void paintEvent(QPaintEvent *event);
 
 private slots:
@@ -62,8 +64,8 @@ private slots:
 private:
 	static QRect alignedRect(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin);
 	static const qreal maxAspectRatio;
-	static int currentId;
-	const int id;
+//	static int currentId;
+//	const int id;
 
 	QString filePath;
 	int num;

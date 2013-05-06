@@ -14,9 +14,9 @@ public:
 	explicit ColorManipulationToolBar(QWidget *parent = 0);
 	~ColorManipulationToolBar();
 	
-	void imageSelected(ImageWidget *widget);
-	void imageUnselected();
-
+public slots:
+	void setWidget(ImageWidget *widget);
+	
 private slots:
 	void on_colorManipulationBar_orientationChanged(Qt::Orientation orientation);
 

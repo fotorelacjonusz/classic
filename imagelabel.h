@@ -8,11 +8,12 @@ class ImageLabel : public QLabel
 {
 	Q_OBJECT
 public:
-	explicit ImageLabel(QWidget *parent);
+	explicit ImageLabel(QWidget *parent, QWidget *firstWidget);
 	
 	QPixmap mergedPixmap() const;
+	QWidget *getLastArrow() const;
 signals:
-	void selected(ArrowWidget *widget);
+//	void selected(ArrowWidget *widget);
 	
 protected:
 	void mousePressEvent(QMouseEvent *event);
@@ -26,6 +27,7 @@ private:
 	QPoint start;
 	QList<ArrowWidget *> arrows;
 	ArrowWidget *grabbedArrow;
+	QWidget *firstWidget;
 
 	friend QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel);
 	friend QDataStream &operator << (QDataStream &stream, const ImageLabel &imageLabel);

@@ -2,11 +2,12 @@
 #define ARROWWIDGET_H
 
 #include <QWidget>
+#include "selectablewidget.h"
 
-class QLineEdit;
+class LineEdit;
 class ImageLabel;
 
-class ArrowWidget : public QWidget
+class ArrowWidget : public SelectableWidget<ArrowWidget> // QWidget
 {
 	Q_OBJECT
 public:
@@ -14,17 +15,19 @@ public:
 	void invert();
 	void setColor(QColor newColor);
 	
-signals:
-	void selected(ArrowWidget *widget);
+//signals:
+//	void selected(ArrowWidget *widget);
 	
 public slots:
 	void setEnd(QPoint _end);
 	void showEdit(QString text = QString());
-	void unselected();
+//	void unselected();
 
 protected:
-	void mouseReleaseEvent(QMouseEvent *event);
+//	void mouseReleaseEvent(QMouseEvent *event);
 	void paintEvent(QPaintEvent *event);
+	
+//	void focusOutEvent(QFocusEvent *e);
 
 private slots:
 	void updateGeometries();
@@ -33,9 +36,8 @@ private:
 	QColor color;
 	QPoint start, end;
 	QSize arrowSize;
-	QLineEdit *lineEdit;
+//	LineEdit *lineEdit;
 	bool inverted;
-	static int instanceCount;
 	static const int margin;
 
 	friend QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel);

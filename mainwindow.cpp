@@ -7,6 +7,7 @@
 #include "aboutdialog.h"
 #include "replydialog.h"
 #include "gpsdata.h"
+#include "arrowwidget.h"
 
 #include <QUrl>
 #include <QDebug>
@@ -21,8 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow),
 	manager(settings),
 	settingsDialog(this, settings),
-	currentImage(0),
-	currentArrow(0)
+	selectedImage(0),
+	selectedArrow(0)
 {
 	ui->setupUi(this);
 	ui->imageToolBar->setEnabled(false);
@@ -38,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(&settingsDialog, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
 	connect(&gpsData, SIGNAL(mapReady(QPixmap)), this, SLOT(commonMapReady(QPixmap)));
 	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
+	
+	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
+	connect(new SelectableWidget<ImageWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(imageWidgetSelected(QWidget*)));
 }
 
 MainWindow::~MainWindow()
@@ -173,13 +177,13 @@ void MainWindow::moveImage(int number)
 		return;
 
 	ui->scrollArea->ensureWidgetVisible(ui->postLayout->itemAt(number)->widget(), 0, 0);
-	ui->postLayout->removeWidget(currentImage);
-	ui->postLayout->insertWidget(number, currentImage);
-	for (int i = qMin(number, currentImage->getNumber()), j = qMax(number, currentImage->getNumber()); i <= j; ++i)
+	ui->postLayout->removeWidget(selectedImage);
+	ui->postLayout->insertWidget(number, selectedImage);
+	for (int i = qMin(number, selectedImage->getNumber()), j = qMax(number, selectedImage->getNumber()); i <= j; ++i)
 		static_cast<ImageWidget *>(ui->postLayout->itemAt(i)->widget())->updateNumber(i);
 
-	setTabOrder(number > 0 ? imageAt(number - 1)->getCaptionEdit() : ui->header, currentImage->getCaptionEdit());
-	setTabOrder(currentImage->getCaptionEdit(), number + 1 < ui->postLayout->count() ? imageAt(number + 1)->getCaptionEdit() : ui->footer);
+	setTabOrder(number > 0 ? imageAt(number - 1)->getLastWidget() : ui->header, selectedImage->getFirstWidget());
+	setTabOrder(selectedImage->getLastWidget(), number + 1 < ui->postLayout->count() ? imageAt(number + 1)->getFirstWidget() : ui->footer);
 }
 
 void MainWindow::on_action_move_top_triggered()
@@ -189,12 +193,12 @@ void MainWindow::on_action_move_top_triggered()
 
 void MainWindow::on_action_move_up_triggered()
 {
-	moveImage(currentImage->getNumber() - 1);
+	moveImage(selectedImage->getNumber() - 1);
 }
 
 void MainWindow::on_action_move_down_triggered()
 {
-	moveImage(currentImage->getNumber() + 1);
+	moveImage(selectedImage->getNumber() + 1);
 }
 
 void MainWindow::on_action_move_bottom_triggered()
@@ -204,67 +208,63 @@ void MainWindow::on_action_move_bottom_triggered()
 
 void MainWindow::on_action_rotate_left_triggered()
 {
-	currentImage->rotate(true);
+	selectedImage->rotate(true);
 }
 
 void MainWindow::on_action_rotate_right_triggered()
 {
-	currentImage->rotate(false);
+	selectedImage->rotate(false);
 }
 
 void MainWindow::on_action_remove_image_triggered()
 {
 	ui->imageToolBar->setEnabled(false);
-	ui->postLayout->removeWidget(currentImage);
-	for (int i = currentImage->getNumber(); i < ui->postLayout->count(); ++i)
+	ui->postLayout->removeWidget(selectedImage);
+	for (int i = selectedImage->getNumber(); i < ui->postLayout->count(); ++i)
 		imageAt(i)->updateNumber(i);
-	delete currentImage;
-	currentImage = 0;
+	delete selectedImage;
+	selectedImage = 0;
 	updateCommonMap();
 }
 
 void MainWindow::on_action_invert_colors_triggered()
 {
-	currentArrow->invert();
+	selectedArrow->invert();
 }
 
 void MainWindow::on_action_choose_color_triggered()
 {
-	currentArrow->setColor(QColorDialog::getColor(Qt::black, this));
+	selectedArrow->setColor(QColorDialog::getColor(Qt::black, this));
 }
 
 void MainWindow::on_action_remove_arrow_triggered()
 {
 	ui->arrowToolBar->setEnabled(false);
-	delete currentArrow;
-	currentArrow = 0;
+	delete selectedArrow;
+	selectedArrow = 0;
 }
 
-void MainWindow::imageWidgetSelected(ImageWidget *widget)
+void MainWindow::imageWidgetSelected(QWidget *widget)
 {
-	if (currentImage)
-	{
-		currentImage->unselected();
-		ui->colorManipulationBar->imageUnselected();
-	}
-	currentImage = currentImage != widget ? widget : 0;
-	ui->imageToolBar->setEnabled(currentImage);
-	ui->colorManipulationBar->setEnabled(currentImage);
-	if (widget)
-	{
-		arrowWidgetSelected(0);
-		ui->colorManipulationBar->imageSelected(widget);
-	}
+	ImageWidget *image = qobject_cast<ImageWidget *>(widget);
+//	qDebug() << "imageWidgetSelected" << widget << image;
+	selectedImage = image;
+	ui->imageToolBar->setEnabled(selectedImage);
+	ui->colorManipulationBar->setWidget(selectedImage);
+	
+	if (selectedArrow && selectedImage)
+		selectedArrow->unselect();
 }
 
-void MainWindow::arrowWidgetSelected(ArrowWidget *widget)
+void MainWindow::arrowWidgetSelected(QWidget *widget)
 {
-	if (currentArrow)
-		currentArrow->unselected();
-	currentArrow = currentArrow != widget ? widget : 0;
-	ui->arrowToolBar->setEnabled(currentArrow);
-	if (widget)
-		imageWidgetSelected(0);
+	ArrowWidget *arrow = qobject_cast<ArrowWidget *>(widget);
+//	qDebug() << "arrowWidgetSelected" << widget << arrow;
+	selectedArrow = arrow;
+	ui->arrowToolBar->setEnabled(selectedArrow);
+	
+	if (selectedImage && selectedArrow)
+		selectedImage->unselect();
 }
 
 void MainWindow::updateCommonMap()
@@ -303,9 +303,9 @@ ImageWidget *MainWindow::newImage(QString filePath, QDataStream *stream) throw(E
 {
 	ImageWidget *widget = new ImageWidget(ui->postWidget, filePath, stream);
 	ui->postLayout->addWidget(widget);
-	connect(widget, SIGNAL(selected(ImageWidget*)), this, SLOT(imageWidgetSelected(ImageWidget*)));
-	connect(widget, SIGNAL(selected(ArrowWidget*)), this, SLOT(arrowWidgetSelected(ArrowWidget*)));
-	setTabOrder(widget->getCaptionEdit(), ui->footer);
+//	connect(widget, SIGNAL(selected(ImageWidget*)), this, SLOT(imageWidgetSelected(ImageWidget*)));
+//	connect(widget, SIGNAL(selected(ArrowWidget*)), this, SLOT(arrowWidgetSelected(ArrowWidget*)));
+	setTabOrder(widget->getLastWidget(), ui->footer);
 	processEvents();
 	return widget;
 }
@@ -339,10 +339,7 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
 	foreach (QUrl url, event->mimeData()->urls())
 		if (url.scheme() == "file" && isImageExtension(url.toLocalFile()))
-		{
-			event->acceptProposedAction();
-			return;
-		}
+			return event->acceptProposedAction();
 }
 
 void MainWindow::dropEvent(QDropEvent *event)

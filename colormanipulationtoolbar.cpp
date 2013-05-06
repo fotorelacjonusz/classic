@@ -52,22 +52,30 @@ ColorManipulationToolBar::~ColorManipulationToolBar()
 	delete gammaSlider;
 }
 
-void ColorManipulationToolBar::imageSelected(ImageWidget *widget)
+void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 {
-	brightnessSlider->setValue(widget->getBrightness());
-	contrastSlider->setValue(widget->getContrast());
-	gammaSlider->setValue(widget->getGamma());
-	connect(brightnessSlider, SIGNAL(valueChanged(int)), widget, SLOT(setBrightness(int)));
-	connect(contrastSlider, SIGNAL(valueChanged(int)), widget, SLOT(setContrast(int)));
-	connect(gammaSlider, SIGNAL(valueChanged(int)), widget, SLOT(setGamma(int)));
+	setEnabled(widget);
+	if (widget)
+	{
+		brightnessSlider->setValue(widget->getBrightness());
+		contrastSlider->setValue(widget->getContrast());
+		gammaSlider->setValue(widget->getGamma());
+		connect(brightnessSlider, SIGNAL(valueChanged(int)), widget, SLOT(setBrightness(int)));
+		connect(contrastSlider, SIGNAL(valueChanged(int)), widget, SLOT(setContrast(int)));
+		connect(gammaSlider, SIGNAL(valueChanged(int)), widget, SLOT(setGamma(int)));
+	}
+	else
+	{
+		disconnect(brightnessSlider, SIGNAL(valueChanged(int)), 0, 0);
+		disconnect(contrastSlider, SIGNAL(valueChanged(int)), 0, 0);
+		disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);	
+	}
 }
 
-void ColorManipulationToolBar::imageUnselected()
-{
-	disconnect(brightnessSlider, SIGNAL(valueChanged(int)), 0, 0);
-	disconnect(contrastSlider, SIGNAL(valueChanged(int)), 0, 0);
-	disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);
-}
+//void ColorManipulationToolBar::imageUnselected()
+//{
+	
+//}
 
 void ColorManipulationToolBar::on_colorManipulationBar_orientationChanged(Qt::Orientation orientation)
 {

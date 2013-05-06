@@ -1,13 +1,14 @@
 #include "imagelabel.h"
 #include "arrowwidget.h"
-#include <QLineEdit>
+#include "lineedit.h"
 #include <QMouseEvent>
 #include <QVector2D>
 #include <QDebug>
 
-ImageLabel::ImageLabel(QWidget *parent) :
+ImageLabel::ImageLabel(QWidget *parent, QWidget *firstWidget) :
 	QLabel(parent),
-	grabbedArrow(0)
+	grabbedArrow(0),
+	firstWidget(firstWidget)
 {
 }
 
@@ -17,10 +18,15 @@ QPixmap ImageLabel::mergedPixmap() const
 	foreach (ArrowWidget *arrow, arrows)
 	{
 		arrow->clearFocus();
-		arrow->unselected();
+		arrow->unselect();
 		arrow->render(&background, arrow->geometry().topLeft(), QRegion(), QWidget::DrawChildren);
 	}
 	return background;
+}
+
+QWidget *ImageLabel::getLastArrow() const
+{
+	return arrows.isEmpty() ? 0 : arrows.last();
 }
 
 void ImageLabel::mousePressEvent(QMouseEvent *event)
@@ -41,6 +47,7 @@ void ImageLabel::mouseMoveEvent(QMouseEvent *event)
 		{
 			grabbedArrow = new ArrowWidget(start, end, this);
 			grabbedArrow->show();
+			setTabOrder(arrows.isEmpty() ? firstWidget : arrows.last(), grabbedArrow);
 			start = QPoint();
 		}
 		return event->accept();
@@ -56,12 +63,13 @@ void ImageLabel::mouseMoveEvent(QMouseEvent *event)
 
 void ImageLabel::mouseReleaseEvent(QMouseEvent *event)
 {
+//	qDebug() << "mouserelease" << grabbedArrow;
 	if (grabbedArrow)
 	{
-		connect(grabbedArrow, SIGNAL(selected(ArrowWidget*)), this, SIGNAL(selected(ArrowWidget*)));
+//		connect(grabbedArrow, SIGNAL(selected(ArrowWidget*)), this, SIGNAL(selected(ArrowWidget*)));
 		connect(grabbedArrow, SIGNAL(destroyed(QObject*)), this, SLOT(remove(QObject*)));
-		grabbedArrow->showEdit();
 		arrows << grabbedArrow;
+		grabbedArrow->showEdit();
 		grabbedArrow = 0;
 		return event->accept();
 	}
@@ -85,7 +93,6 @@ QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel)
 	{
 		stream >> start >> end >> text >> color;
 		ArrowWidget *arrow = new ArrowWidget(start, end, &imageLabel);
-		QObject::connect(arrow, SIGNAL(selected(ArrowWidget*)), &imageLabel, SIGNAL(selected(ArrowWidget*)));
 		QObject::connect(arrow, SIGNAL(destroyed(QObject*)), &imageLabel, SLOT(remove(QObject*)));
 		imageLabel.arrows << arrow;
 		arrow->color = color;

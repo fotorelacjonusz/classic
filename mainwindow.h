@@ -49,8 +49,10 @@ private slots:
 	void on_action_choose_color_triggered();
 	void on_action_remove_arrow_triggered();
 
-	void imageWidgetSelected(ImageWidget *widget);
-	void arrowWidgetSelected(ArrowWidget *widget);
+	void imageWidgetSelected(QWidget *widget);
+	void arrowWidgetSelected(QWidget *widget);
+//	void imageWidgetSelected(ImageWidget *widget);
+//	void arrowWidgetSelected(ArrowWidget *widget);
 
 	void updateCommonMap();
 	void commonMapReady(QPixmap map);
@@ -70,8 +72,8 @@ private:
 	QSettings settings;
 	SettingsManager manager;
 	SettingsDialog settingsDialog;
-	ImageWidget *currentImage;
-	ArrowWidget *currentArrow;
+	ImageWidget *selectedImage;
+	ArrowWidget *selectedArrow;
 	QString dirName;
 	static QByteArray phrFileHeader;
 	GpsData gpsData;

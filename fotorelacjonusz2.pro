@@ -50,7 +50,9 @@ SOURCES += main.cpp\
     textballoon.cpp \
     googlemapsdownloader.cpp \
     throttlednetworkmanager.cpp \
-    abstractmapdownloader.cpp
+    abstractmapdownloader.cpp \
+    lineedit.cpp \
+    selectablewidget.cpp
 
 HEADERS  += mainwindow.h \
     imagewidget.h \
@@ -90,7 +92,9 @@ HEADERS  += mainwindow.h \
     textballoon.h \
     googlemapsdownloader.h \
     throttlednetworkmanager.h \
-    abstractmapdownloader.h
+    abstractmapdownloader.h \
+    lineedit.h \
+    selectablewidget.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui \
