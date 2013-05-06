@@ -65,6 +65,7 @@ private:
 	QString threadId, threadTitle;
 	PostWidget *lastSentPost;
 	int latestPostedImageNumber;
+	QString userName;
 
 	void (ReplyDialog::*delegate)(int);
 

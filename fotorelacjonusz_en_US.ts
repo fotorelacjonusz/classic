@@ -923,26 +923,32 @@ Error at:
         <translation>Waiting %1 %2... %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="240"/>
+        <location filename="widgets/replydialog.cpp" line="247"/>
         <source>Koniec. %p%</source>
         <translation>Done. %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="244"/>
+        <location filename="widgets/replydialog.cpp" line="251"/>
+        <location filename="widgets/replydialog.cpp" line="347"/>
         <source>LubiÄ ten program</source>
         <translation>Like this app</translation>
+    </message>
+    <message>
+        <location filename="widgets/replydialog.cpp" line="347"/>
+        <source>WyglÄda na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
+        <translation>It seems you have already liked this app.</translation>
     </message>
     <message>
         <source>LubiÄ to</source>
         <translation type="obsolete">Like</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="261"/>
+        <location filename="widgets/replydialog.cpp" line="268"/>
         <source>PrzechodzÄ do formularza... %p%</source>
         <translation>Navigating to form... %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="304"/>
+        <location filename="widgets/replydialog.cpp" line="311"/>
         <source>WysyÅam posta... %p%</source>
         <translation>Sending post... %p%</translation>
     </message>

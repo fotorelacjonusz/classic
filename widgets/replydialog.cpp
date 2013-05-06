@@ -197,6 +197,15 @@ void ReplyDialog::parseThread(int progress)
 {
 	Q_UNUSED(progress);
 	
+	if (userName.isEmpty())
+	{
+		QWebElement link = frame->findFirstElement("html > body > center > div > div.page > div > table.tborder > tbody > tr > td.alt2 > div.smallfont > strong > a");
+		if (link.isNull())
+			return;
+		userName = link.toPlainText();
+		qDebug() << "parseThread()" << "jest userName" << userName;
+	}
+	
 	// extract imgReply button with link to reply, so we know we are ia a thread actually, not on the forum
 	QWebElement imgReply = frame->findFirstElement("html > body > center > div > div.page > div > table > tbody > tr > td > a > img[alt=Reply]");
 	if (imgReply.isNull())
@@ -209,7 +218,6 @@ void ReplyDialog::parseThread(int progress)
 		QWebElement titleElement = frame->findFirstElement("html > head > title");
 		if (titleElement.isNull())
 			return;
-		
 		threadTitle = titleElement.toPlainText().remove(QRegExp("(- Page [0-9]+ )?- SkyscraperCity")).trimmed();
 		qDebug() << "jest threadTitle" << threadTitle;
 	}
@@ -220,7 +228,6 @@ void ReplyDialog::parseThread(int progress)
 		QWebElement subscribeLink = frame->findFirstElement("div#threadtools_menu img[alt=\"Subscription\"] + a");
 		if (subscribeLink.isNull())
 			return;
-		
 		threadId = subscribeLink.attribute("href").remove(QRegExp("[^0-9]+")).trimmed();
 		qDebug() << "jest threadId" << threadId;
 	}
@@ -331,14 +338,22 @@ void ReplyDialog::likeProgress(int progress)
 	if (progress == 100)
 	{
 		QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
+		ui->webView->setEnabled(true);
+		delegate = 0;
+		
+		foreach (QWebElement href, frame->findFirstElement(QString("td[id=\"dbtech_thanks_entries_%1\"]").arg(likePostId)).findAll("a"))
+			if (href.toPlainText() == userName)
+			{
+				QMessageBox::information(this, tr("Lubię ten program"), tr("Wygląda na to, że już polubiłeś program."));
+				return;
+			}
+		
 		QWebElement likeLink = frame->findFirstElement(QString("a[data-postid=\"%1\"]").arg(likePostId));
 //		if (!likeLink.isNull())
 		likeLink.evaluateJavaScript("var evObj = document.createEvent('MouseEvents'); evObj.initEvent('click', true, true); this.dispatchEvent(evObj);");
 
 		qDebug() << "likeProgress(100) likeLink:" << !likeLink.isNull();
-		likeButton->setEnabled(true);
-		ui->webView->setEnabled(true);
-		delegate = 0;
+		likeButton->setEnabled(true);		
 	}
 }
 
@@ -358,14 +373,6 @@ void ReplyDialog::on_hideInfoButton_clicked()
 
 /*
  
-if (userName.isEmpty())
-	{
-		QWebElement link = frame->findFirstElement("html > body > center > div > div.page > div > table.tborder > tbody > tr > td.alt2 > div.smallfont > strong > a");
-		if (link.isNull())
-			return;
-		userName = link.toPlainText();
-		qDebug() << "jest userName" << userName;
-	}
  
 userName = "takiego loginu na pewno nikt nie ma";
 ui->webView->load(QString("http://www.skyscrapercity.com/thanks.php?do=list&perpage=20&varname=likes&contentid=%1&page=1").arg(likePostId));
