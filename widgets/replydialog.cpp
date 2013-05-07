@@ -50,6 +50,12 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> images, QWi
 	// (reply form, thread) plus 1 navigation in the end (thread). I assumed one navigation takes 1 second.
 	// Po postSpace sekund odstępu między postami, plus na każdy post po 2 ładowania strony
 	// (formularz odpowiedzi, wątek) plus na koniec jedno (wątek). Ładowanie ~= 1 sekunda.
+			
+#ifdef Q_OS_WIN
+	ui->progressBar->setStyleSheet("QProgressBar { color: black; }");
+	ui->progressBarImage->setStyleSheet("QProgressBar { color: black; }");
+	ui->progressBarAllImages->setStyleSheet("QProgressBar { color: black; }");
+#endif
 
 	ui->tableWidget->setColumnWidth(0, 200);
 	ui->tableWidget->setColumnWidth(1, 500);
