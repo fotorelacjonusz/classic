@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>414</width>
+    <width>420</width>
     <height>235</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>O programie</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resource.qrc">
+   <iconset resource="../resource.qrc">
     <normaloff>:/res/help-about.png</normaloff>:/res/help-about.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -59,7 +59,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="resource.qrc"/>
+  <include location="../resource.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -54,6 +54,10 @@ ColorManipulationToolBar::~ColorManipulationToolBar()
 
 void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 {
+	disconnect(brightnessSlider, SIGNAL(valueChanged(int)), 0, 0);
+	disconnect(contrastSlider, SIGNAL(valueChanged(int)), 0, 0);
+	disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);	
+	
 	setEnabled(widget);
 	if (widget)
 	{
@@ -64,18 +68,7 @@ void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 		connect(contrastSlider, SIGNAL(valueChanged(int)), widget, SLOT(setContrast(int)));
 		connect(gammaSlider, SIGNAL(valueChanged(int)), widget, SLOT(setGamma(int)));
 	}
-	else
-	{
-		disconnect(brightnessSlider, SIGNAL(valueChanged(int)), 0, 0);
-		disconnect(contrastSlider, SIGNAL(valueChanged(int)), 0, 0);
-		disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);	
-	}
 }
-
-//void ColorManipulationToolBar::imageUnselected()
-//{
-	
-//}
 
 void ColorManipulationToolBar::on_colorManipulationBar_orientationChanged(Qt::Orientation orientation)
 {

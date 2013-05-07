@@ -59,6 +59,8 @@ QAction *RecentThreadsMenu::addUpdateAction(QString threadId)
 
 void RecentThreadsMenu::imagePosted(QString threadId, QString threadTitle, int imageNumber)
 {
+	if (!SETTINGS->numberImages)
+		return;
 	threadTitles[threadId] = threadTitle;
 	imageNumbers[threadId] = imageNumber + SETTINGS->startingNumber + 1;
 	addUpdateAction(threadId);

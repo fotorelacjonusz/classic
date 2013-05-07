@@ -11,6 +11,8 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QNetworkCookieJar>
+#include <QNetworkDiskCache>
+#include <QDesktopServices>
 #include <QtCore/qmath.h>
 
 #define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
@@ -64,6 +66,9 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> images, QWi
 
 //	ui->webView->setPage(new WebPage());
 	frame = ui->webView->page()->mainFrame();
+	QNetworkDiskCache *cache = new QNetworkDiskCache();
+	cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
+	ui->webView->page()->networkAccessManager()->setCache(cache);
 	ui->webView->page()->networkAccessManager()->setCookieJar(new NetworkCookieJar());
 	ui->webView->load(SETTINGS->homeUrl);
 
