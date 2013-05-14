@@ -14,7 +14,8 @@ GeoMap::GeoMap(QPointF coord, bool hasDirection, qreal direction, QSize size):
 	isCommon(false), hasDirection(hasDirection), direction(direction), size(size),
 	coords(QList<QPointF>() << coord),
 	distinctCoords(coords.toSet().toList()),
-	coordBox(QPolygonF(coords.toVector()).boundingRect())
+	coordBox(QPolygonF(coords.toVector()).boundingRect()),
+	isSingle(distinctCoords.size() == 1)
 {
 }
 
@@ -22,20 +23,28 @@ GeoMap::GeoMap(QList<QPointF> coords):
 	isCommon(true), hasDirection(false), direction(0), 
 	coords(coords),
 	distinctCoords(coords.toSet().toList()),
-	coordBox(QPolygonF(coords.toVector()).boundingRect())
+	coordBox(QPolygonF(coords.toVector()).boundingRect()),
+	isSingle(distinctCoords.size() == 1)
 {
+	Q_ASSERT(!coords.isEmpty());
 }
 
-void GeoMap::setImage(QImage image)
+void GeoMap::setImage(QImage image, QSize size)
 {
 	if (!image.isNull())
-	{
+	{		
 		if (image.format() != QImage::Format_ARGB32 &&
 			image.format() != QImage::Format_ARGB32_Premultiplied)
 			image = image.convertToFormat(QImage::Format_ARGB32);
 		
 		if (isCommon)
-			processCommonMap(image);
+		{
+			if (size.isValid())
+			{
+				mapBox = centered(image.rect().center(), size);
+				processCommonMap(image);
+			}
+		}
 		else
 			processMap(image);
 	}
@@ -82,6 +91,9 @@ void GeoMap::textBaloon(QPainter *painter, QPoint pos, QString text)
 	path |= roundedRect;
 	path.translate(pos - QPoint(0, path.boundingRect().height()));
 
+	QColor color = SETTINGS->imageMapColor;
+	color.setAlpha(140);
+	painter->strokePath(path, QPen(color, 4.0));
 	painter->fillPath(path, QBrush(Qt::white));
 	painter->strokePath(path, QPen(Qt::black));
 	painter->drawText(bounding.translated(path.boundingRect().topLeft()), text, Qt::AlignHCenter | Qt::AlignVCenter);

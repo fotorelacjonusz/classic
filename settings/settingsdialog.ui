@@ -1019,12 +1019,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
         <number>0</number>
        </property>
        <item>
-        <widget class="QGroupBox" name="useOverlays">
+        <widget class="QGroupBox" name="overlays">
          <property name="title">
-          <string>Używaj podkładów mapowych</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
+          <string>Podkłady mapowe</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <property name="margin">
@@ -1033,10 +1030,20 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <item>
            <widget class="QCheckBox" name="useOverlayCommonMap">
             <property name="toolTip">
-             <string>Jeśli nie ma podkładu zawierającego wszystkie punkty użyte będzie źródło określone w zakładce mapy</string>
+             <string>Jeśli nie ma podkładu zawierającego pozycje wszystkich zdjęć użyte będzie źródło określone w zakładce mapy</string>
             </property>
             <property name="text">
-             <string>Próbuj użyć podkładów również na mapie wspólnej</string>
+             <string>Używaj na mapie wspólnej</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="useOverlays">
+            <property name="toolTip">
+             <string>Jeśli nie ma podkładu zawierającego pozycję zdjęcia użyte będzie źródło określone w zakładce mapy</string>
+            </property>
+            <property name="text">
+             <string>Używaj na zdjęciach</string>
             </property>
            </widget>
           </item>
@@ -1213,7 +1220,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
   <tabstop>imageMapSize</tabstop>
   <tabstop>addOSMLayer</tabstop>
   <tabstop>removeOSMLayer</tabstop>
-  <tabstop>useOverlays</tabstop>
+  <tabstop>overlays</tabstop>
   <tabstop>overlayList</tabstop>
   <tabstop>openFolderButton</tabstop>
   <tabstop>useProxy</tabstop>

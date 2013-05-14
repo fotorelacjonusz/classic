@@ -38,9 +38,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager.makeInput("dir_name", &dirName);
 	manager.load();
 
-	connect(&settingsDialog, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
 	connect(&gpsData, SIGNAL(mapReady(QImage)), this, SLOT(commonMapReady(QImage)));
 	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
+	connect(SETTINGS, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
 	
 	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
 	connect(new SelectableWidget<ImageWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(imageWidgetSelected(QWidget*)));
@@ -358,7 +358,7 @@ void MainWindow::dropEvent(QDropEvent *event)
 		e.showMessage(this);
 	}
 
-	qDebug() << time.msecsTo(QDateTime::currentDateTime());
+//	qDebug() << time.msecsTo(QDateTime::currentDateTime());
 	
 	event->acceptProposedAction();
 	updateCommonMap();

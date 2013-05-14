@@ -4,6 +4,13 @@
 
 #include <QMetaType>
 
+//	const int maxWidth = SETTINGS->imageLength + (SETTINGS->imageMapCorner >= SettingsDialog::Expand ? SETTINGS->imageMapSize : 0), 
+//			maxHeight = maxWidth * 0.75, margin = 50;
+
+// common map options:
+const QSize AbstractMapDownloader::maxSize(800, 600);
+const int AbstractMapDownloader::margin(50);
+
 AbstractMapDownloader::AbstractMapDownloader()
 {
 	static bool registered = false;
@@ -21,6 +28,17 @@ AbstractMapDownloader::~AbstractMapDownloader()
 void AbstractMapDownloader::finished(QNetworkReply *reply)
 {
 	Q_UNUSED(reply);
+}
+
+AsyncMapDownloader::AsyncMapDownloader()
+{
+	connect(this, SIGNAL(makeMapSignal(GeoMap*)), this, SLOT(makeMapSlot(GeoMap*)));
+}
+
+bool AsyncMapDownloader::makeMap(GeoMap *map)
+{
+	emit makeMapSignal(map);
+	return true;
 }
 
 QRect centered(const QPoint &center, const QSize &size)
@@ -44,3 +62,5 @@ QRect resized(const QRect &rect, QSize size)
 {
 	return centered(rect.center(), size);
 }
+
+

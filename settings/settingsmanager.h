@@ -26,6 +26,7 @@ class QMainWindow;
 
 class SettingsManager
 {
+//	typedef QPair<QObject *, QByteArray> Receiver;
 	
 	class AbstractInput
 	{
@@ -136,7 +137,7 @@ protected:
 		{
 			wrapper = new DelegateWrapper<V, O>(input, object, method);
 		}
-		inline V value() const
+		inline V v() const
 		{
 			return wrapper->value();
 		}

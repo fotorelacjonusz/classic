@@ -267,7 +267,7 @@ void SettingsDialog::proxyOptionsChanged()
 	proxy.setType(useProxy ? QNetworkProxy::Socks5Proxy : QNetworkProxy::NoProxy);
 	proxy.setHostName(proxyHost);
 	proxy.setPort(proxyPort);
-	if (!proxyUser.value().isEmpty() && !proxyPass.value().isEmpty())
+	if (!proxyUser.v().isEmpty() && !proxyPass.v().isEmpty())
 	{
 		proxy.setUser(proxyUser);
 		proxy.setPassword(proxyPass);

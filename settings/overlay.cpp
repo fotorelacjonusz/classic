@@ -17,7 +17,7 @@
 #define TR(x) QObject::tr(x)
 #define ERROR(msg) setError(msg); if (!error.isEmpty()) return;
 
-const qreal Overlay::R = 6371000; // radius of the earth [m]
+const qreal Overlay::R = 6371000;
 
 Overlay::Overlay(QString absoluteFilePath)
 {
@@ -113,35 +113,42 @@ bool Overlay::makeMap(GeoMap *map)
 		if (!poly.containsPoint(orthoProjection(coord), Qt::OddEvenFill))
 			return false;
 	
-	if (map->isCommon)
-	{
-		// TODO: common map
-	}
+	if (!map->isCommon)
+		map->setImage(render(coordToPoint(map->coords.first()), map->size, 22 - SETTINGS->imageMapZoom));
+	else if (map->isSingle)
+		map->setImage(render(coordToPoint(map->coords.first()), maxSize, 4), QSize(0, 0));
 	else
 	{
-		QPointF pos = orthoProjection(map->coords.first());
-		pos.setY(pos.y() * -1);
-		if (!box.contains(pos))
-			return false;
-	
-		pos -= box.topLeft();
-		pos.rx() *= overlayImage.width() / box.width();
-		pos.ry() *= overlayImage.height() / box.height();
-	
-		QRect copyRect = centered(pos.toPoint(), map->size * (22 - SETTINGS->imageMapZoom));
-		QImage mapCopy(copyRect.size(), QImage::Format_ARGB32);
-		mapCopy.fill(Qt::black);
-		QPainter(&mapCopy).drawImage(QPoint(0, 0), overlayImage, copyRect);
-			
-		map->setImage(mapCopy.scaled(map->size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+		QRect rect(coordToPoint(map->coordBox.bottomLeft()), coordToPoint(map->coordBox.topRight()));
+		qreal scale = qMax((rect.width() / (maxSize.width() - 2.0 * margin)), (rect.height() / (maxSize.height() - 2.0 * margin)));
+		map->setImage(render(rect.center(), maxSize, scale), rect.size() / scale);
 	}
-	
 	return true;
 }
 
 QString Overlay::toString() const
 {
 	return name + "\t" + error;
+}
+
+QImage Overlay::render(QPoint center, QSize size, qreal scale) const
+{
+	QImage mapCopy(size * scale, QImage::Format_ARGB32);
+	mapCopy.fill(Qt::black);
+	QPainter(&mapCopy).drawImage(QPoint(0, 0), overlayImage, centered(center, size * scale));
+	return mapCopy.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+}
+
+QPoint Overlay::coordToPoint(QPointF coord) const
+{
+	QPointF point = orthoProjection(coord);
+	point.setY(point.y() * -1);
+	Q_ASSERT(box.contains(point));
+	
+	point -= box.topLeft();
+	point.rx() *= overlayImage.width() / box.width();
+	point.ry() *= overlayImage.height() / box.height();
+	return point.toPoint();
 }
 
 QPointF Overlay::rotate(QPointF point) const
@@ -152,10 +159,10 @@ QPointF Overlay::rotate(QPointF point) const
 	return QPointF(cos(beta) * r, sin(beta) * r);
 }
 
-QPointF Overlay::orthoProjection(QPointF coords) const
+QPointF Overlay::orthoProjection(QPointF coord) const
 {
-	qreal lon = coords.x() * M_PI / 180;
-	qreal lat = coords.y() * M_PI / 180;
+	qreal lon = coord.x() * M_PI / 180;
+	qreal lat = coord.y() * M_PI / 180;
 	qreal x = R * cos(lat) * sin(lon - lon0);
 	qreal y = R * (cos(lat0) * sin(lat) - sin(lat0) * cos(lat) * cos(lon - lon0));
 	return QPointF(x, y);
@@ -179,6 +186,3 @@ bool Overlay::setError(QString error)
 	this->error = error;
 	return true;
 }
-
-
-

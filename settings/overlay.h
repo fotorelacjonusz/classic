@@ -8,6 +8,13 @@
 #include <QPolygonF>
 #include <QImage>
 
+/* 
+ * This class has three coordinate systems:
+ * 1. Geographic coordinates (longitude, latitude), aka coordinates, coord    (positive y points up)
+ * 2. Position in meters with center (0, 0) at image center aka position, pos (positive y points up)
+ * 3. Pixel position in image, same as Qt's pixel coordinate system aka point (positive y points down)
+ * Thus coord(lon0, lat0), pos(0, 0), and point(overlayImage.rect().center) are the same center point
+ */
 class Overlay : public AbstractMapDownloader
 {
 public:
@@ -16,24 +23,32 @@ public:
 	bool makeMap(GeoMap *map);
 	QString toString() const;
 
-private:
-	// rotate point around (lon0, lat0) point - i.e. (0, 0), by _rotation_ degrees (obrót wokół punktu lon0, lat0, czyli 0, 0 o rotation stopni)
+protected:
+	QImage render(QPoint center, QSize size, qreal scale) const;
+	// map (coord -> point)
+	QPoint coordToPoint(QPointF coord) const;	
+	// rotate pos around (lon0, lat0) coord - i.e. (0, 0), by rotation degrees (meters -> meters)
 	QPointF rotate(QPointF point) const;
-	// orthographic projection (rzut prostokątny)
-	QPointF orthoProjection(QPointF coords) const;
-	// inverse orthographic projection (odwrotny rzut prostokątny)
+	// orthographic projection (coord -> meters) - pl_PL"rzut prostokątny"
+	QPointF orthoProjection(QPointF coord) const;
+	// inverse orthographic projection (meters -> coord) - pl_PL"odwrotny rzut prostokątny"
 	QPointF inverseOrthoProjection(QPointF point) const;
 
+private:
 	bool setError(QString error);
 
 	QString name, href, error;
-	// map rectangle (including unused black areas)
+	// map rectangle (including unused black areas) in meters with center (0, 0) at image center corresponding to image.rect()
 	QRectF box;
-	// actuall map area
+	// actuall map area (excluding unused black areas) in meters with center (0, 0) at image center
 	QPolygonF poly;
+	// overlayImage rotation in degrees around center
 	qreal rotation;
+	// center
 	qreal lat0, lon0;
-	static const qreal R; // radius of the earth [m]
+	// radius of the earth [m]
+	static const qreal R; 
+	// whole overlay image loaded from file
 	QImage overlayImage;
 };
 

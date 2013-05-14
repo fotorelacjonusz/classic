@@ -15,7 +15,9 @@ public:
 	explicit GeoMap(QPointF coord, bool hasDirection, qreal direction, QSize size);
 	explicit GeoMap(QList<QPointF> coords);
 	
-	void setImage(QImage image = QImage());
+	// set map image where rectangle centered on image center of size size coresponds to coordBox for common map
+	// for single position maps size is ignored
+	void setImage(QImage image = QImage(), QSize size = QSize());
 	QPoint coordToPoint(QPointF coord) const;
 	
 signals:
@@ -37,9 +39,10 @@ public:
 	const QList<QPointF> coords;
 	const QList<QPointF> distinctCoords;
 	const QRectF coordBox;
-	QRect mapBox;
+	const bool isSingle;
 	
 private:
+	QRect mapBox;
 	static QHash<int, QImage> maskCache;
 };
 

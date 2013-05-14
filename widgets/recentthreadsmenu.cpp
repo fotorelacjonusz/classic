@@ -67,7 +67,7 @@ void RecentThreadsMenu::imagePosted(QString threadId, QString threadTitle, int i
 	addUpdateAction(threadId);
 	
 	SETTINGS->setSelectedThread(threadId, imageNumbers[threadId].toInt());
-	qDebug() << "RecentThreadsMenu: nowe zdjęcia w wątku zaczną się od" << SETTINGS->startingNumber.value();
+	qDebug() << "RecentThreadsMenu: nowe zdjęcia w wątku zaczną się od" << SETTINGS->startingNumber.v();
 }
 
 void RecentThreadsMenu::noneTriggered()

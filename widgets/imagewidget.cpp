@@ -230,7 +230,7 @@ void ImageWidget::updatePixmap(bool makeCache)
 
 	if (SETTINGS->addLogo)
 	{
-		QImage logo = SettingsDialog::object()->logoPixmap.value().toImage();
+		QImage logo = SettingsDialog::object()->logoPixmap.v().toImage();
 		QRect logoRect = alignedRectangle(logo.size(), photo.rect(), SETTINGS->logoCorner, SETTINGS->logoMargin);
 
 		if (SETTINGS->logoInvert)
@@ -293,7 +293,7 @@ void ImageWidget::updatePixmap(bool makeCache)
 	setMaximumWidth(photo.width() + 6);
 
 	url = QString();
-	qDebug() << objectName() << time.msecsTo(QDateTime::currentDateTime()) << "total" << QPixmapCache::totalUsed();
+//	qDebug() << objectName() << time.msecsTo(QDateTime::currentDateTime()) << "total" << QPixmapCache::totalUsed();
 }
 
 void ImageWidget::updateNumber(int now)

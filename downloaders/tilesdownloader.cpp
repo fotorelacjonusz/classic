@@ -19,6 +19,7 @@ const int TilesDownloader::tileSize = 256;
 TilesDownloader::TilesDownloader(QString urlPattern):
 	urlPattern(urlPattern), painter(0)
 {
+	connect(this, SIGNAL(makeMapSignal(GeoMap*)), this, SLOT(makeMapSlot(GeoMap*)));
 }
 
 bool TilesDownloader::validateUrlPattern(QWidget *parent, QString urlPattern)
@@ -39,66 +40,47 @@ bool TilesDownloader::validateUrlPattern(QWidget *parent, QString urlPattern)
 	return true;
 }
 
-bool TilesDownloader::makeMap(GeoMap *map)
+void TilesDownloader::makeMapSlot(GeoMap *map)
 {
 	urlPattern = SETTINGS->currentOsmLayer(map->isCommon).urlPattern;
-	QMetaObject::invokeMethod(this, "render", Qt::QueuedConnection, Q_ARG(GeoMap *, map));
-	return true;
-}
-
-void TilesDownloader::render(GeoMap *map)
-{
-//	const int maxWidth = SETTINGS->imageLength + (SETTINGS->imageMapCorner >= SettingsDialog::Expand ? SETTINGS->imageMapSize : 0), 
-//			maxHeight = maxWidth * 0.75, margin = 50;
-	static const int maxWidth = 800, maxHeight = 600, margin = 50;
 	
-	if (map->coords.isEmpty())
-		map->setImage();
-	else if (!map->isCommon)
-		map->setImage(render(map->coords.first(), SETTINGS->imageMapZoom, map->size.width(), map->size.height()));
-	else if (map->distinctCoords.size() == 1)
-	{
-		// render map with maximum size with default zoom
-		map->mapBox = QRect(maxWidth * 0.5, maxHeight * 0.5, 0, 0);
-		map->setImage(render(map->distinctCoords.first(), 17, maxWidth, maxHeight));
-	}
-	else // if (distinctPoints.size() > 1)
+	if (!map->isCommon)
+		map->setImage(render(map->coords.first(), SETTINGS->imageMapZoom, map->size));
+	else if (map->isSingle)
+		map->setImage(render(map->distinctCoords.first(), 17, maxSize), QSize(0, 0));
+	else
 	{
 		// calculate maximum integer zoom for which width and height are less than their maximums including margins
-		const int zx = qFloor(log2((maxWidth  - 2 * margin) / (tileSize * qAbs(lon2tilex(map->coordBox.right())  - lon2tilex(map->coordBox.left())))));
-		const int zy = qFloor(log2((maxHeight - 2 * margin) / (tileSize * qAbs(lat2tiley(map->coordBox.bottom()) - lat2tiley(map->coordBox.top())))));
+		const int zx = qFloor(log2((maxSize.width()  - 2 * margin) / (tileSize * qAbs(lon2tilex(map->coordBox.right())  - lon2tilex(map->coordBox.left())))));
+		const int zy = qFloor(log2((maxSize.height() - 2 * margin) / (tileSize * qAbs(lat2tiley(map->coordBox.bottom()) - lat2tiley(map->coordBox.top())))));
 		const int zoom = qMin(qMin(zx, zy), SETTINGS->currentOsmLayer(true).maxZoom);
 		const int width =  qAbs(lon2tilex(map->coordBox.right(),  zoom) - lon2tilex(map->coordBox.left(), zoom)) * tileSize;
-		const int height = qAbs(lat2tiley(map->coordBox.bottom(), zoom) - lat2tiley(map->coordBox.top(),  zoom)) * tileSize;
-//		qDebug() << zx << zy << zoom << width << height;
-		
-		QImage image = render(map->coordBox.center(), zoom, maxWidth, maxHeight);
-		map->mapBox = centered(image.rect().center(), QSize(width, height));
-		map->setImage(image);
+		const int height = qAbs(lat2tiley(map->coordBox.bottom(), zoom) - lat2tiley(map->coordBox.top(),  zoom)) * tileSize;		
+		map->setImage(render(map->coordBox.center(), zoom, maxSize), QSize(width, height));
 	}
 }
 
-QImage TilesDownloader::render(QPointF coord, int zoom, int width, int height)
+QImage TilesDownloader::render(QPointF coord, int zoom, QSize size)
 {
-	QPoint begin; 
-	QSize size;
+	QPoint tileTopLeft; 
+	QSize tileCount;
 	QPointF cropBegin;
 
 	// calculate which tiles we need and how to crop them later
-	calculateDimension(lon2tilex(coord.x(), zoom), width  * 0.5, begin.rx(), size.rwidth(),  cropBegin.rx());
-	calculateDimension(lat2tiley(coord.y(), zoom), height * 0.5, begin.ry(), size.rheight(), cropBegin.ry());
+	calculateDimension(lon2tilex(coord.x(), zoom), size.width()  * 0.5, tileTopLeft.rx(), tileCount.rwidth(),  cropBegin.rx());
+	calculateDimension(lat2tiley(coord.y(), zoom), size.height() * 0.5, tileTopLeft.ry(), tileCount.rheight(), cropBegin.ry());
 	
-	QRect tileRect(begin, size);
-	QImage image(size * tileSize, QImage::Format_RGB32);
+	QRect tileRect(tileTopLeft, tileCount);
+	QImage image(tileCount * tileSize, QImage::Format_RGB32);
 	painter = new QPainter(&image);
 	painter->setCompositionMode(QPainter::CompositionMode_SourceOver);
 	
 	// enqueue all tiles and start two
 	static ThrottledNetworkManager manager(2);
-	downloadCount = size.width() * size.height();
+	downloadCount = tileCount.width() * tileCount.height();
 	for (int x = tileRect.left(); x <= tileRect.right(); ++x)
 		for (int y = tileRect.top(); y <= tileRect.bottom(); ++y)
-			manager.get(createRequest(zoom, x, y, begin), this);
+			manager.get(createRequest(zoom, x, y, tileTopLeft), this);
 	
 	// wait for all tiles being downloaded and painted with painter
 	loop.exec();
@@ -107,7 +89,7 @@ QImage TilesDownloader::render(QPointF coord, int zoom, int width, int height)
 	painter = 0;
 	
 	// crop
-	QRect cropRect(cropBegin.toPoint(), QSize(width, height));
+	QRect cropRect(cropBegin.toPoint(), size);
 	return image.copy(cropRect);
 }
 

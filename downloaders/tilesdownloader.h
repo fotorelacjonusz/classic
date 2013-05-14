@@ -10,20 +10,16 @@
 
 class QPainter;
 
-class TilesDownloader : public QObject, public AbstractMapDownloader
+class TilesDownloader : public AsyncMapDownloader 
 {
-	Q_OBJECT
-	
 public:
 	TilesDownloader(QString urlPattern = QString());
 	static bool validateUrlPattern(QWidget *parent, QString urlPattern);
-	bool makeMap(GeoMap *map);
+	void makeMapSlot(GeoMap *map);
 	
-protected slots:
-	void render(GeoMap *map);
-	QImage render(QPointF coord, int zoom, int width, int height);
+protected:	
+	QImage render(QPointF coord, int zoom, QSize size);
 	
-protected:
 	static inline qreal lon2tilex(qreal lon);
 	static inline qreal lon2tilex(qreal lon, int z);
 	static inline qreal lat2tiley(qreal lat);

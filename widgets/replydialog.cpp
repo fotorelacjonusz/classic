@@ -120,7 +120,7 @@ void ReplyDialog::setVisible(bool visible)
 			return;
 		}
 
-		QString openingTags = SETTINGS->extraTags.value().remove('\n');
+		QString openingTags = SETTINGS->extraTags.v().remove('\n');
 		QString closingTags;
 		QRegExp tagExp("\\[([^=\\]]+)(=.+)?\\]");
 		tagExp.setMinimal(true);
