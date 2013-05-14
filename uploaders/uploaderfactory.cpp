@@ -1,5 +1,4 @@
 #include "uploaderfactory.h"
-#include "abstractuploader.h"
 
 #include "isanonyuploader.h"
 #include "iscodeuploader.h"
@@ -8,32 +7,36 @@
 #include "imguranonyuploader.h"
 #include "imgurloginuploader.h"
 
-UploaderFactory::AbstarctWrapper::AbstarctWrapper(QString name):
+UploaderFactory::AbstractWrapper::AbstractWrapper(QString name):
 	name(name)
 {
 }
 
-UploaderFactory::AbstarctWrapper::~AbstarctWrapper()
+UploaderFactory::AbstractWrapper::~AbstractWrapper()
 {
 }
 
 template <class T>
-UploaderFactory::Wrapper<T>::Wrapper(QString name):
-	AbstarctWrapper(name)
+class Wrapper : public UploaderFactory::AbstractWrapper
 {
-}
+public:
+	Wrapper(QString name):
+		AbstractWrapper(name)
+	{}
+	
+	virtual ~Wrapper()
+	{
+		delete object;
+	}
 
-template <class T>
-UploaderFactory::Wrapper<T>::~Wrapper()
-{
-	delete object;
-}
+	AbstractUploader *make(QWidget *w, QSettings &s)
+	{
+		return !object.isNull() ? object : object = new T(w, s);
+	}
 
-template <class T>
-AbstractUploader *UploaderFactory::Wrapper<T>::make(QWidget *w, QSettings &s)
-{
-	return !object.isNull() ? object : object = new T(w, s);
-}
+private:
+	QPointer<T> object;
+};
 
 #define UPLOADER(T, S) uploaders.append(new Wrapper<T>(S));
 
@@ -51,10 +54,5 @@ UploaderFactory::~UploaderFactory()
 {
 	qDeleteAll(uploaders);
 }
-
-
-
-
-
 
 

@@ -1,5 +1,6 @@
 #include "overlay.h"
 #include "settingsdialog.h"
+#include "downloaders/geomap.h"
 
 #include "quazip/quazip.h"
 #include "quazip/quazipfile.h"
@@ -61,35 +62,35 @@ Overlay::Overlay(QString absoluteFilePath)
 
 	rotation = latLonBox.firstChildElement("rotation").text().toDouble();// / 180.0 * M_PI;
 
-	poly << rotate(orthoProjection(left, top)) << rotate(orthoProjection(right, top))
-		 << rotate(orthoProjection(right, bottom)) << rotate(orthoProjection(left, bottom));
+	poly << rotate(orthoProjection(QPointF(left, top))) << rotate(orthoProjection(QPointF(right, top)))
+		 << rotate(orthoProjection(QPointF(right, bottom))) << rotate(orthoProjection(QPointF(left, bottom)));
 	box = poly.boundingRect();
 
 //	qDebug() << box;
 
 //	box.isValid() or ERROR(TR("Niepoprawne koordynaty"));
 	files.contains(href) or ERROR(TR("Brak pliku %1 w archiwum kmz"));
-	map.loadFromData(files[href]) or ERROR(TR("Nieudane ładowanie pliku z mapą"));
+	overlayImage.loadFromData(files[href]) or ERROR(TR("Nieudane ładowanie pliku z mapą"));
 	if (absoluteFilePath.endsWith(".kmr"))
 		return;
 
 	QTransform transform;
 	transform.rotate(-rotation);
-	map = map.transformed(transform, Qt::SmoothTransformation);
+	overlayImage = overlayImage.transformed(transform, Qt::SmoothTransformation);
 	{
 		QString kmrFilePath = absoluteFilePath.section(".", 0, -2) + ".kmr";
 		QuaZip kmr(kmrFilePath);
 		kmr.open(QuaZip::mdCreate) or ERROR(TR("kmr.open(): %1").arg(kmr.getZipError()));
 
 		QuaZipFile outFileKml(&kmr);
-		outFileKml.open(QIODevice::WriteOnly, QuaZipNewInfo(DOC_KML)) or ERROR(TR("outFileKml.open(): %1").arg(outFileKml.getZipError()));
+		outFileKml.open(QIODevice::WriteOnly, QuaZipNewInfo(DOC_KML, absoluteFilePath)) or ERROR(TR("outFileKml.open(): %1").arg(outFileKml.getZipError()));
 		outFileKml.write(doc.toByteArray());
 		outFileKml.close();
 		outFileKml.getZipError() == UNZ_OK or ERROR(TR("outFileKml.close(): %1").arg(outFileKml.getZipError()));
 
 		QuaZipFile outFileMap(&kmr);
-		outFileMap.open(QIODevice::WriteOnly, QuaZipNewInfo(href)) or ERROR(TR("outFileMap.open(): %1").arg(outFileMap.getZipError()));
-		map.save(&outFileMap, "jpg") or ERROR(TR("map.save(): Błąd zapisu pixmapy do archiwum"));
+		outFileMap.open(QIODevice::WriteOnly, QuaZipNewInfo(href, absoluteFilePath)) or ERROR(TR("outFileMap.open(): %1").arg(outFileMap.getZipError()));
+		overlayImage.save(&outFileMap, "jpg") or ERROR(TR("map.save(): Błąd zapisu pixmapy do archiwum"));
 		outFileMap.close();
 		outFileMap.getZipError() == UNZ_OK or ERROR(TR("outFileMap.close(): %1").arg(outFileMap.getZipError()));
 
@@ -104,35 +105,43 @@ bool Overlay::isValid() const
 	return error.isEmpty();
 }
 
-bool Overlay::contains(qreal lon, qreal lat) const
+bool Overlay::makeMap(GeoMap *map)
 {
-	return isValid() && poly.containsPoint(orthoProjection(lon, lat), Qt::OddEvenFill);
+	if (!isValid())
+		return false;
+	foreach (QPointF coord, map->distinctCoords)
+		if (!poly.containsPoint(orthoProjection(coord), Qt::OddEvenFill))
+			return false;
+	
+	if (map->isCommon)
+	{
+		// TODO: common map
+	}
+	else
+	{
+		QPointF pos = orthoProjection(map->coords.first());
+		pos.setY(pos.y() * -1);
+		if (!box.contains(pos))
+			return false;
+	
+		pos -= box.topLeft();
+		pos.rx() *= overlayImage.width() / box.width();
+		pos.ry() *= overlayImage.height() / box.height();
+	
+		QRect copyRect = centered(pos.toPoint(), map->size * (22 - SETTINGS->imageMapZoom));
+		QImage mapCopy(copyRect.size(), QImage::Format_ARGB32);
+		mapCopy.fill(Qt::black);
+		QPainter(&mapCopy).drawImage(QPoint(0, 0), overlayImage, copyRect);
+			
+		map->setImage(mapCopy.scaled(map->size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	}
+	
+	return true;
 }
 
-QPixmap Overlay::makeMap(qreal lon, qreal lat) const
+QString Overlay::toString() const
 {
-	QPointF pos = orthoProjection(lon, lat);
-	pos.setY(pos.y() * -1);
-	if (!box.contains(pos))
-		return QPixmap();
-
-	pos -= box.topLeft();
-	pos.setX(pos.x() * map.width() / box.width());
-	pos.setY(pos.y() * map.height() / box.height());
-
-	int zoom = 22 - SETTINGS->imageMapZoom; // 1 - 22
-	int size = zoom * SETTINGS->imageMapSize;
-
-	QRect copyRect(pos.x() - size / 2, pos.y() - size / 2, size, size);
-	QPixmap mapCopy(size, size);
-
-	QPainter painter(&mapCopy);
-	painter.fillRect(mapCopy.rect(), QColor(Qt::black));
-	painter.drawPixmap(QPoint(copyRect.left() < 0 ? size - mapCopy.width()  : 0,
-							  copyRect.top()  < 0 ? size - mapCopy.height() : 0), map, copyRect);
-	painter.end();
-
-	return mapCopy.scaledToWidth(SETTINGS->imageMapSize, Qt::SmoothTransformation);
+	return name + "\t" + error;
 }
 
 QPointF Overlay::rotate(QPointF point) const
@@ -143,10 +152,10 @@ QPointF Overlay::rotate(QPointF point) const
 	return QPointF(cos(beta) * r, sin(beta) * r);
 }
 
-QPointF Overlay::orthoProjection(qreal lon, qreal lat) const
+QPointF Overlay::orthoProjection(QPointF coords) const
 {
-	lon *= M_PI / 180;
-	lat *= M_PI / 180;
+	qreal lon = coords.x() * M_PI / 180;
+	qreal lat = coords.y() * M_PI / 180;
 	qreal x = R * cos(lat) * sin(lon - lon0);
 	qreal y = R * (cos(lat0) * sin(lat) - sin(lat0) * cos(lat) * cos(lon - lon0));
 	return QPointF(x, y);

@@ -2,7 +2,7 @@
 #define RECENTTHREADSMENU_H
 
 #include <QMenu>
-#include <QSettings>
+class QSettings;
 class QActionGroup;
 class QAction;
 
@@ -13,15 +13,11 @@ public:
 	explicit RecentThreadsMenu(QSettings &settings, QWidget *parent = 0);
 	virtual ~RecentThreadsMenu();
 	
-//	QString selectedThread() const;
-//	QPair<QString, int> selectedThread() const;
-	
 protected:
 	QAction *addUpdateAction(QString threadId);
 	
 public slots:
 	void imagePosted(QString threadId, QString threadTitle, int imageNumber);
-//	void postingFinished();
 	
 private slots:
 	void noneTriggered();

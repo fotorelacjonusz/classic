@@ -271,6 +271,9 @@
    <property name="whatsThis">
     <string>Usuń z fotorelacji</string>
    </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
   </action>
   <action name="action_send_to_SSC">
    <property name="icon">
@@ -348,6 +351,9 @@
    </property>
    <property name="whatsThis">
     <string>Usuń strzałkę</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
   <action name="action_invert_colors">

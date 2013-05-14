@@ -6,6 +6,7 @@
 #include <QUrl>
 #include <QNetworkProxy>
 #include "settingsmanager.h"
+#include "downloaders/abstractmapdownloader.h"
 #include "uploaders/uploaderfactory.h"
 #include "osmlayerdialog.h"
 
@@ -19,12 +20,12 @@ namespace Ui {
 class SettingsDialog;
 }
 
-class SettingsDialog : public QDialog, public SettingsManager
+class SettingsDialog : public QDialog, public SettingsManager, public AbstractMapDownloader
 {
 	Q_OBJECT
 
 public:
-	enum Corner { BottomRight, BottomLeft, TopRight, TopLeft };
+	enum Corner { BottomRight, BottomLeft, TopRight, TopLeft, ExpandLeft, ExpandRight, ExpandTop, ExpandBottom, Expand = ExpandLeft };
 	enum MapType { Roadmap, Satellite, Hybrid, Terrain, OSMFirst };
 	Q_ENUMS(MapType)
 
@@ -69,6 +70,7 @@ public:
 	Field<int> imageMapSize;
 
 	Field<bool> useOverlays;
+	Field<bool> useOverlayCommonMap;
 	
 	Field<bool> useProxy;
 	Field<QString> proxyHost;
@@ -78,11 +80,11 @@ public:
 
 	void setSelectedThread(QString threadId = QString(), int number = 0);
 	bool isSelectedThread() const;
-	QPixmap overlayMakeMap(qreal lon, qreal lat) const;
+	bool makeMap(GeoMap *map);
 	static SettingsDialog *object();
 	QSettings &settings();
 	QString mapTypeToString(MapType type) const;
-	QString currentOsmUrlPattern(bool common) const;
+	OSMLayer currentOsmLayer(bool common) const;
 
 signals:
 	void pixmapOptionsChanged();
@@ -112,6 +114,7 @@ private slots:
 	void on_logoLoad_clicked();
 	void on_uploadMethodComboBox_currentIndexChanged(int index);
 	void on_imageMapColor_clicked();
+	void on_imageMapPosition_currentIndexChanged(int index);
 	
 	void proxyOptionsChanged();
 	
@@ -127,6 +130,7 @@ private:
 	UploaderFactory factory;
 	QString selectedThreadId;
 	int selectedThreadImageNumber;
+	QList<QWidget *> cornerSpecyficImageMapOptions;
 
 	static SettingsDialog *objectInstance;
 	

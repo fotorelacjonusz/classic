@@ -1,5 +1,6 @@
 #include "isloginuploader.h"
 #include "ui_isloginuploader.h"
+#include "networktransactionmultipart.h"
 #include <QSettings>
 
 IsLoginUploader::IsLoginUploader(QWidget *parent, QSettings &settings) :

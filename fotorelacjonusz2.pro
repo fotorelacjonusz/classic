@@ -29,7 +29,6 @@ SOURCES += main.cpp \
     widgets/colormanipulationtoolbar.cpp \
     widgets/arrowwidget.cpp \
     widgets/abstractimage.cpp \
-    widgets/aboutdialog.cpp \
     settings/settingsmanager.cpp \
     settings/settingsdialog.cpp \
     settings/overlaylist.cpp \
@@ -38,9 +37,9 @@ SOURCES += main.cpp \
     settings/displayslider.cpp \
     downloaders/tilesdownloader.cpp \
     downloaders/throttlednetworkmanager.cpp \
-    downloaders/textballoon.cpp \
     downloaders/gpsdata.cpp \
     downloaders/googlemapsdownloader.cpp \
+    downloaders/geomap.cpp \
     downloaders/abstractmapdownloader.cpp \
     uploaders/uploaderfactory.cpp \
     uploaders/networktransactionquery.cpp \
@@ -72,7 +71,6 @@ HEADERS += \
     widgets/colormanipulationtoolbar.h \
     widgets/arrowwidget.h \
     widgets/abstractimage.h \
-    widgets/aboutdialog.h \
     settings/settingsmanager.h \
     settings/settingsdialog.h \
     settings/overlaylist.h \
@@ -81,9 +79,9 @@ HEADERS += \
     settings/displayslider.h \
     downloaders/tilesdownloader.h \
     downloaders/throttlednetworkmanager.h \
-    downloaders/textballoon.h \
     downloaders/gpsdata.h \
     downloaders/googlemapsdownloader.h \
+    downloaders/geomap.h \
     downloaders/abstractmapdownloader.h \
     uploaders/uploaderfactory.h \
     uploaders/networktransactionquery.h \
@@ -102,7 +100,6 @@ FORMS += \
     widgets/replydialog.ui \
     widgets/postwidget.ui \
     widgets/mainwindow.ui \
-    widgets/aboutdialog.ui \
     settings/settingsdialog.ui \
     settings/osmlayerdialog.ui \
     uploaders/isloginuploader.ui \
@@ -111,8 +108,6 @@ FORMS += \
     uploaders/imgurloginuploader.ui \
     uploaders/imguranonyuploader.ui \
     uploaders/ftpuploader.ui
-
-
 
 RESOURCES += \
     resource.qrc

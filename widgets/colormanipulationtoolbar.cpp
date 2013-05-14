@@ -2,6 +2,7 @@
 #include "imagewidget.h"
 #include "imagemanipulation.h"
 #include <QLayout>
+#include <QSlider>
 
 ColorManipulationToolBar::ColorManipulationToolBar(QWidget *parent) :
 	QToolBar(parent)

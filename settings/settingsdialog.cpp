@@ -1,10 +1,6 @@
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
 #include "uploaders/abstractuploader.h"
-//#include "isanonyuploader.h"
-//#include "iscodeuploader.h"
-//#include "isloginuploader.h"
-//#include "ftpuploader.h"
 
 #include <QDebug>
 #include <QFileDialog>
@@ -36,6 +32,8 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	tosFormat = ui->tosLabel->text();
 	connect(ui->openFolderButton, SIGNAL(clicked()), ui->overlayList, SLOT(openFolder()));
 	osmDialog.init(ui);
+	cornerSpecyficImageMapOptions << ui->imageMapCircle << ui->imageMapCircleLabel << ui->imageMapOpacity << ui->imageMapOpacityLabel
+								  << ui->imageMapMargin << ui->imageMapMarginLabel;
 
 	// earlier "logo" was wrongly called "watermark"
 	if (settings.childGroups().contains("watermark"))
@@ -81,7 +79,8 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,   this, M(imageMapOptionsChanged), 10));
 	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,     this, M(imageMapOptionsChanged), 150));
 
-	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,      this, M(imageMapOptionsChanged), true));
+	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,         this, M(imageMapOptionsChanged), true));
+	useOverlayCommonMap .init(makeInput("overlays/use_on_common",	  ui->useOverlayCommonMap, this, M(commonMapOptionsChanged), true));
 	
 	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,  this, M(proxyOptionsChanged), false));
 	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost, this, M(proxyOptionsChanged)));
@@ -130,16 +129,15 @@ void SettingsDialog::setSelectedThread(QString threadId, int number)
 {
 	selectedThreadId = threadId;
 	selectedThreadImageNumber = number;
-//	ui->startingNumber->setValue(number);
 	emit numberOptionsChanged();
 }
 
 bool SettingsDialog::isSelectedThread()                               const { return !selectedThreadId.isEmpty(); }
-QPixmap SettingsDialog::overlayMakeMap(qreal lon, qreal lat)          const { return ui->overlayList->makeMap(lon, lat); }
+bool SettingsDialog::makeMap(GeoMap *map)                                   { return ui->overlayList->makeMap(map); }
 SettingsDialog *SettingsDialog::object()                                    { return objectInstance; }
 QSettings &SettingsDialog::settings()                                       { return m_settings; }
 QString SettingsDialog::mapTypeToString(SettingsDialog::MapType type) const { return ENUM_STR(MapType, type).toLower(); }
-QString SettingsDialog::currentOsmUrlPattern(bool common)             const { return osmDialog.currentUrlPattern(common); }
+OSMLayer SettingsDialog::currentOsmLayer(bool common)                 const { return osmDialog.currentLayer(common); }
 AbstractUploader *SettingsDialog::uploaderFunc()		              const { return m_uploader; }
 bool SettingsDialog::captionsUnderFunc()                              const { return ui->captionsUnder->isChecked(); }
 int SettingsDialog::startingNumberFunc()                              const { return selectedThreadId.isEmpty() ? ui->startingNumber->value() : selectedThreadImageNumber; }
@@ -255,6 +253,13 @@ void SettingsDialog::on_imageMapColor_clicked()
 
 	m_imageMapColor = color;
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
+}
+
+void SettingsDialog::on_imageMapPosition_currentIndexChanged(int index)
+{
+	bool expand = index >= Expand;
+	foreach (QWidget *widget, cornerSpecyficImageMapOptions)
+		widget->setEnabled(!expand);
 }
 
 void SettingsDialog::proxyOptionsChanged()

@@ -2,8 +2,6 @@
 #define REPLYDIALOG_H
 
 #include <QDialog>
-#include <QEventLoop>
-#include <QWebElement>
 #include <QTimer>
 
 class QWebFrame;

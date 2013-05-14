@@ -15,19 +15,12 @@ public:
 	void invert();
 	void setColor(QColor newColor);
 	
-//signals:
-//	void selected(ArrowWidget *widget);
-	
 public slots:
 	void setEnd(QPoint _end);
 	void showEdit(QString text = QString());
-//	void unselected();
 
 protected:
-//	void mouseReleaseEvent(QMouseEvent *event);
 	void paintEvent(QPaintEvent *event);
-	
-//	void focusOutEvent(QFocusEvent *e);
 
 private slots:
 	void updateGeometries();
@@ -36,8 +29,8 @@ private:
 	QColor color;
 	QPoint start, end;
 	QSize arrowSize;
-//	LineEdit *lineEdit;
 	bool inverted;
+	bool left, top;
 	static const int margin;
 
 	friend QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel);

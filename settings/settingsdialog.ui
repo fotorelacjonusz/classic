@@ -648,7 +648,10 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
        <item>
         <widget class="QLabel" name="tosLabel">
          <property name="text">
-          <string>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: %2</string>
+          <string>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: &lt;a href='%2'&gt;%2&lt;/a&gt;</string>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -737,7 +740,10 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
        <item row="3" column="0">
         <widget class="QLabel" name="mapSource">
          <property name="text">
-          <string>Źródło danych Google Maps: https://developers.google.com/maps/documentation/staticmaps/</string>
+          <string>Źródło danych Google Maps: &lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</string>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -848,7 +854,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
            </widget>
           </item>
           <item row="4" column="0">
-           <widget class="QLabel" name="imageMapShape">
+           <widget class="QLabel" name="imageMapCircleLabel">
             <property name="text">
              <string>Kształt</string>
             </property>
@@ -857,60 +863,21 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             </property>
            </widget>
           </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="imageMapCircle">
+            <property name="text">
+             <string>okrągły</string>
+            </property>
+           </widget>
+          </item>
           <item row="6" column="0">
            <widget class="QLabel" name="imageMapPositionLabel">
             <property name="text">
-             <string>Umieść w rogu zdjęcia</string>
+             <string>Umieść na zdjęciu</string>
             </property>
             <property name="buddy">
              <cstring>imageMapPosition</cstring>
             </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QComboBox" name="imageMapPosition">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <item>
-             <property name="text">
-              <string>Prawy dolny</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../resource.qrc">
-               <normaloff>:/res/bottom-right.png</normaloff>:/res/bottom-right.png</iconset>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Lewy dolny</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../resource.qrc">
-               <normaloff>:/res/bottom-left.png</normaloff>:/res/bottom-left.png</iconset>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Prawy górny</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../resource.qrc">
-               <normaloff>:/res/top-right.png</normaloff>:/res/top-right.png</iconset>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Lewy górny</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../resource.qrc">
-               <normaloff>:/res/top-left.png</normaloff>:/res/top-left.png</iconset>
-             </property>
-            </item>
            </widget>
           </item>
           <item row="7" column="0">
@@ -956,11 +923,86 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QCheckBox" name="imageMapCircle">
-            <property name="text">
-             <string>okrągły</string>
+          <item row="6" column="1">
+           <widget class="QComboBox" name="imageMapPosition">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
+            <item>
+             <property name="text">
+              <string>Prawy dolny róg</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/bottom-right.png</normaloff>:/res/bottom-right.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Lewy dolny róg</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/bottom-left.png</normaloff>:/res/bottom-left.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Prawy górny róg</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/top-right.png</normaloff>:/res/top-right.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Lewy górny róg</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/top-left.png</normaloff>:/res/top-left.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Rozszerz z lewej</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/expand-left.png</normaloff>:/res/expand-left.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Rozszerz z prawej</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/expand-right.png</normaloff>:/res/expand-right.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Rozszerz u góry</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/expand-top.png</normaloff>:/res/expand-top.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Rozszerz u dołu</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource.qrc">
+               <normaloff>:/res/expand-bottom.png</normaloff>:/res/expand-bottom.png</iconset>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
@@ -984,10 +1026,20 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
          <property name="checkable">
           <bool>true</bool>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QVBoxLayout" name="verticalLayout_7">
           <property name="margin">
            <number>1</number>
           </property>
+          <item>
+           <widget class="QCheckBox" name="useOverlayCommonMap">
+            <property name="toolTip">
+             <string>Jeśli nie ma podkładu zawierającego wszystkie punkty użyte będzie źródło określone w zakładce mapy</string>
+            </property>
+            <property name="text">
+             <string>Próbuj użyć podkładów również na mapie wspólnej</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="OverlayList" name="overlayList">
             <property name="acceptDrops">

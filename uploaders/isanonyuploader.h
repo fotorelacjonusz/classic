@@ -2,7 +2,8 @@
 #define ISANONYUPLOADER_H
 
 #include "abstractuploader.h"
-#include "networktransactionmultipart.h"
+
+class NetworkTransactionMultiPart;
 
 namespace Ui {
 class IsAnonyUploader;

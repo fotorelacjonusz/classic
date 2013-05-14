@@ -12,8 +12,6 @@ public:
 	
 	QPixmap mergedPixmap() const;
 	QWidget *getLastArrow() const;
-signals:
-//	void selected(ArrowWidget *widget);
 	
 protected:
 	void mousePressEvent(QMouseEvent *event);

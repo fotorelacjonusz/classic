@@ -2,8 +2,9 @@
 #define OSMLAYERDIALOG_H
 
 #include <QDialog>
-#include <QSettings>
+#include <QMetaType>
 
+class QSettings;
 class QComboBox;
 class QSlider;
 
@@ -28,7 +29,7 @@ public:
 	explicit OSMLayerDialog(QSettings &settings, QWidget *parent = 0);
 	~OSMLayerDialog();
 	void init(Ui::SettingsDialog *settingsUi);
-	QString currentUrlPattern(bool common) const;
+	OSMLayer currentLayer(bool common) const;
 	
 protected slots:
 	void comboBox2Changed(int currentIndex);

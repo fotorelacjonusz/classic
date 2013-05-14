@@ -7,13 +7,10 @@
 class DisplaySlider : public QSlider
 {
 	Q_OBJECT
+	
 public:
 	explicit DisplaySlider(QWidget *parent = 0);
 	void setFormat(QString format);
-
-signals:
-	
-public slots:
 
 protected:
 	void mousePressEvent(QMouseEvent *ev);

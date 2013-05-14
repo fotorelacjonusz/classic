@@ -7,6 +7,7 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QInputDialog>
+#include <QSettings>
 
 bool OSMLayer::operator ==(const OSMLayer &other)
 {
@@ -47,11 +48,10 @@ OSMLayerDialog::~OSMLayerDialog()
 	delete ui;
 }
 
-void OSMLayerDialog::init(Ui::SettingsDialog *settingsUi)//QComboBox *comboBox, QPushButton *addButton, QPushButton *removeButton, QSlider *slider)
+void OSMLayerDialog::init(Ui::SettingsDialog *settingsUi)
 {
 	comboBox1 = settingsUi->commonMapType;
 	comboBox2 = settingsUi->imageMapType;
-//	addButton = ;
 	removeButton = settingsUi->removeOSMLayer;
 	slider = settingsUi->imageMapZoom;
 	sliderMaxBak = slider->maximum();
@@ -66,11 +66,12 @@ void OSMLayerDialog::init(Ui::SettingsDialog *settingsUi)//QComboBox *comboBox, 
 	removeButton->setEnabled(!layers.isEmpty());
 }
 
-QString OSMLayerDialog::currentUrlPattern(bool common) const
+OSMLayer OSMLayerDialog::currentLayer(bool common) const
 {
 	QComboBox *box = common ? comboBox1 : comboBox2;
 	QVariant data = box->itemData(box->currentIndex());
-	return (data.canConvert<OSMLayer>() ? data.value<OSMLayer>().urlPattern : QString());
+	Q_ASSERT(data.canConvert<OSMLayer>());
+	return data.value<OSMLayer>();
 }
 
 void OSMLayerDialog::comboBox2Changed(int currentIndex)

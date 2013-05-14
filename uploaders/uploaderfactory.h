@@ -2,8 +2,7 @@
 #define UPLOADERFACTORY_H
 
 #include <QString>
-#include <QPair>
-#include <QMap>
+#include <QList>
 #include <QPointer>
 
 class AbstractUploader;
@@ -15,34 +14,20 @@ class UploaderFactory : public QObject
 	Q_OBJECT
 
 public:
-	class AbstarctWrapper
+	class AbstractWrapper
 	{
 	public:
-		AbstarctWrapper(QString name);
-		virtual ~AbstarctWrapper();
+		AbstractWrapper(QString name);
+		virtual ~AbstractWrapper();
 		virtual AbstractUploader *make(QWidget *w, QSettings &s) = 0;
 		const QString name;
 	};
-
-	template <class T>
-	class Wrapper : public AbstarctWrapper
-	{
-	public:
-		Wrapper(QString name);
-		virtual ~Wrapper();
-		AbstractUploader *make(QWidget *w, QSettings &s);
-
-	private:
-		QPointer<T> object;
-	};
-
 
 public:
 	UploaderFactory();
 	virtual ~UploaderFactory();
 
-	QList <AbstarctWrapper *> uploaders;
-private:
+	QList <AbstractWrapper *> uploaders;
 
 };
 

@@ -88,9 +88,9 @@ protected:
 		SelectableWidgetParent(parent),
 		borderColor(20, 80, 200)
 	{
+		lineEdit = new LineEdit(this);
 		static int objectNumber = 0;
 		setObjectName(Type::staticMetaObject.className() + QString::number(++objectNumber));
-		lineEdit = new LineEdit(this);
 		connect(lineEdit, SIGNAL(focusIn()), this, SLOT(select()));
 //		connect(lineEdit, SIGNAL(focusOut()), this, SLOT(unselect()));
 	}
@@ -101,9 +101,15 @@ protected:
 			unselect();
 	}
 	
+	void mousePressEvent(QMouseEvent *event)
+	{
+		pressPos = event->pos();
+		QWidget::mousePressEvent(event);
+	}
+	
 	void mouseReleaseEvent(QMouseEvent *event)
 	{
-		if (rect().contains(event->pos()))
+		if (pressPos == event->pos())
 			!isSelected() ? select() : unselect();
 		else
 			QWidget::mouseReleaseEvent(event);
@@ -150,6 +156,7 @@ protected:
 	
 	LineEdit *lineEdit;
 	QColor borderColor;
+	QPoint pressPos;
 	
 private:
 	static SelectableWidget<Type> *selectedWidget;

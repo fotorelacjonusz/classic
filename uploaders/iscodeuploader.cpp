@@ -1,5 +1,6 @@
 #include "iscodeuploader.h"
 #include "ui_iscodeuploader.h"
+#include "networktransactionmultipart.h"
 #include <QSettings>
 
 IsCodeUploader::IsCodeUploader(QWidget *parent, QSettings &settings) :

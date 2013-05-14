@@ -1,5 +1,6 @@
 #include <QAction>
 #include <QActionGroup>
+#include <QSettings>
 
 #include "recentthreadsmenu.h"
 #include "settings/settingsdialog.h"
@@ -85,23 +86,3 @@ void RecentThreadsMenu::actionTriggered(bool checked)
 		SETTINGS->setSelectedThread(threadId, imageNumbers[threadId].toInt());
 	}
 }
-
-//		(QVariantHash::Iterator i = threads.begin(); i != threads.end(); ++i)
-
-//QString RecentThreadsMenu::selectedThread() const
-//{
-//	return actions.key(actionGroup->checkedAction());
-//}
-
-//QPair<QString, int> RecentThreadsMenu::selectedThread() const
-//{
-//	QString threadId = actions.key(actionGroup->checkedAction());
-//	return threadId.isEmpty() ? qMakePair(QString(), 0) : qMakePair(threadTitles[threadId].toString(), imageNumbers[threadId].toInt());
-//}
-
-//void RecentThreadsMenu::postingFinished()
-//{
-//	QString threadId = actions.key(actionGroup->checkedAction());
-//	SETTINGS->setSelectedThread(threadId, imageNumbers[threadId].toInt());
-//	qDebug() << "RecentThreadsMenu: posting finished";
-//}

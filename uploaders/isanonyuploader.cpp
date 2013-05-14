@@ -1,6 +1,7 @@
 #include "isanonyuploader.h"
 #include "ui_isanonyuploader.h"
 #include "networktransaction.h"
+#include "networktransactionmultipart.h"
 #include "secrets.h"
 
 #include <QDebug>

@@ -2,9 +2,9 @@
 #define COLORMANIPULATIONTOOLBAR_H
 
 #include <QToolBar>
-#include <QSlider>
 
 class ImageWidget;
+class QSlider;
 
 class ColorManipulationToolBar : public QToolBar
 {

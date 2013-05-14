@@ -9,17 +9,12 @@
 
 class GoogleMapsDownloader : public AbstractMapDownloader
 {
-	Q_OBJECT
-	
 public:
-	GoogleMapsDownloader();
-	
-	void downloadMap(QPointF point);
-	void downloadMap(Points points);
+	bool makeMap(GeoMap *map);
 	void finished(QNetworkReply *reply);
 	
 protected:
-	void get(QUrl url);
+	QHash<QUrl, GeoMap *> maps;
 };
 
 #endif // GOOGLEMAPSDOWNLOADER_H

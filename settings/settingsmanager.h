@@ -5,7 +5,6 @@
 #include <QVariant>
 
 class QSettings;
-
 class QButtonGroup;
 class QCalendarWidget;
 class QCheckBox;

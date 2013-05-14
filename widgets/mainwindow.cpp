@@ -4,16 +4,16 @@
 #include "abstractimage.h"
 #include "simpleimage.h"
 #include "arrowwidget.h"
-#include "aboutdialog.h"
 #include "replydialog.h"
 #include "downloaders/gpsdata.h"
-//#include "recentthreadsmenu.h"
+#include "exif/license.h"
 
 #include <QUrl>
 #include <QDebug>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QColorDialog>
+#include <QDateTime>
 
 QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://www.skyscrapercity.com/showthread.php?t=1539539 Author: Kamil Ostaszewski ");
 
@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager.load();
 
 	connect(&settingsDialog, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
-	connect(&gpsData, SIGNAL(mapReady(QPixmap)), this, SLOT(commonMapReady(QPixmap)));
+	connect(&gpsData, SIGNAL(mapReady(QImage)), this, SLOT(commonMapReady(QImage)));
 	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
 	
 	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
@@ -167,7 +167,14 @@ void MainWindow::on_action_send_to_SSC_triggered()
 
 void MainWindow::on_action_about_triggered()
 {
-	AboutDialog().exec();
+	setWindowIcon(QIcon(":/res/help-about.png"));
+	QMessageBox::about(this, tr("O programie"), tr(
+						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>"
+						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
+						   "Aplikacja wykorzystuje:<br/>Qt (LGPL2)<br/>exiv2 (GPL2)<br/>QuaZIP (LGPL2)<br/>Oxygen theme (LGPL)<br/><br/>%1")
+					   .arg(QString(LICENSE).replace("\n", "<br/>")).replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
+	setWindowIcon(QIcon());
+//	AboutDialog().exec();
 }
 
 void MainWindow::on_action_Qt_information_triggered()
@@ -188,6 +195,7 @@ void MainWindow::moveImage(int number)
 
 	setTabOrder(number > 0 ? imageAt(number - 1)->getLastWidget() : ui->header, selectedImage->getFirstWidget());
 	setTabOrder(selectedImage->getLastWidget(), number + 1 < ui->postLayout->count() ? imageAt(number + 1)->getFirstWidget() : ui->footer);
+	updateCommonMap();
 }
 
 void MainWindow::on_action_move_top_triggered()
@@ -277,19 +285,11 @@ void MainWindow::updateCommonMap()
 		gpsData.downloadMap();
 	else
 		ui->commonMap->setPixmap(QPixmap());
-	
-//		return;
-//	}
-//	GpsData gpsData;
-//	QPixmap map = gpsData.downloadCommonMap();
-//	if (map.isNull())
-//		return;
-//	ui->commonMap->setPixmap(map);
 }
 
-void MainWindow::commonMapReady(QPixmap map)
+void MainWindow::commonMapReady(QImage map)
 {
-	ui->commonMap->setPixmap(map);
+	ui->commonMap->setPixmap(QPixmap::fromImage(map));
 }
 
 void MainWindow::processEvents() const
@@ -307,8 +307,6 @@ ImageWidget *MainWindow::newImage(QString filePath, QDataStream *stream) throw(E
 {
 	ImageWidget *widget = new ImageWidget(ui->postWidget, filePath, stream);
 	ui->postLayout->addWidget(widget);
-//	connect(widget, SIGNAL(selected(ImageWidget*)), this, SLOT(imageWidgetSelected(ImageWidget*)));
-//	connect(widget, SIGNAL(selected(ArrowWidget*)), this, SLOT(arrowWidgetSelected(ArrowWidget*)));
 	setTabOrder(widget->getLastWidget(), ui->footer);
 	processEvents();
 	return widget;
@@ -348,6 +346,7 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 
 void MainWindow::dropEvent(QDropEvent *event)
 {
+	QDateTime time = QDateTime::currentDateTime();
 	try
 	{
 		foreach (QUrl url, event->mimeData()->urls())
@@ -359,13 +358,10 @@ void MainWindow::dropEvent(QDropEvent *event)
 		e.showMessage(this);
 	}
 
+	qDebug() << time.msecsTo(QDateTime::currentDateTime());
+	
 	event->acceptProposedAction();
 	updateCommonMap();
 }
-
-
-
-
-
 
 

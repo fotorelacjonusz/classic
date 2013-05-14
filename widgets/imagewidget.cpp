@@ -7,6 +7,8 @@
 #include "downloaders/gpsdata.h"
 #include "imagemanipulation.h"
 
+#define Q_TEST_QPIXMAPCACHE
+
 #include <QPixmapCache>
 #include <QGridLayout>
 #include <QLabel>
@@ -19,20 +21,17 @@
 #include <QDir>
 #include <QCryptographicHash>
 #include <QCheckBox>
+#include <QDateTime>
 
 const qreal ImageWidget::maxAspectRatio = 17.0 / 9.0;
-//int ImageWidget::currentId = 0;
 
 ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
 	SelectableWidget<ImageWidget>(parent),
-//	QWidget(parent),
-//	id(++currentId),
 	filePath(_filePath),
 	brightness(BRIGHTNESS_DEFAULT), contrast(CONTRAST_DEFAULT), gamma(GAMMA_DEFAULT),
 	gpsData(0)
 {
 	numberLabel = new QLabel(this);
-//	captionEdit = new QLineEdit(this);
 	captionEdit = lineEdit;
 	imageLabel = new ImageLabel(this, captionEdit);
 
@@ -62,17 +61,12 @@ ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *strea
 		gpsData = new GpsData(&num, filePath);
 	}
 
-	connect(gpsData, SIGNAL(mapReady(QPixmap)), this, SLOT(mapDownloaded(QPixmap)));
+	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
 	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), gpsData, SLOT(downloadMap()));
-	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), this, SLOT(updatePixmap()));
-	gpsData->downloadMap();
-
-//	setObjectName(QString("photo%1").arg(id));
 
 	connect(SETTINGS, SIGNAL(pixmapOptionsChanged()), this, SLOT(updatePixmap()));
 	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateNumber()));
 	connect(SETTINGS, SIGNAL(layoutOptionsChanged()), this, SLOT(updateLayout()));
-//	connect(imageLabel, SIGNAL(selected(ArrowWidget*)), this, SIGNAL(selected(ArrowWidget*)));
 
 	setFocusPolicy(Qt::NoFocus);
 
@@ -85,6 +79,9 @@ ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *strea
 	updatePixmap();
 	updateNumber();
 	updateLayout();
+	
+//	if (SETTINGS->addImageMap)
+//		gpsData->downloadMap();
 }
 
 ImageWidget::~ImageWidget()
@@ -126,6 +123,7 @@ void ImageWidget::rotate(bool left)
 	buffer.open(QIODevice::WriteOnly);
 	pixmap.save(&buffer, "JPG");
 	buffer.close();
+	QPixmapCache::remove(filePath);
 	if (QFile::exists(filePath) && QMessageBox::question(this, tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 		pixmap.save(filePath, "JPG");
 	updatePixmap();
@@ -202,17 +200,24 @@ QByteArray ImageWidget::scaledSourceFile() const
 
 void ImageWidget::updatePixmap(bool makeCache)
 {
+	QDateTime time = QDateTime::currentDateTime();
+//	qDebug() << objectName() << "start";
+	if (SETTINGS->imageLength.wasChanged() || SETTINGS->setImageWidth.wasChanged())
+		QPixmapCache::remove(filePath);
 	QPixmap photo;
 	if (!QPixmapCache::find(filePath, &photo))
 	{
 		photo = scaledSourcePixmap();
+		gpsData->setPhotoSize(photo.size());
 		if (photo.isNull())
 			THROW(tr("Nie można utworzyć pixmapy ze zdjęcia. Pamięć wyczerpana?"));
 
-		if (makeCache)
+		Q_UNUSED(makeCache);
+//		if (makeCache)
 			QPixmapCache::insert(filePath, photo);
+//		qDebug() << "after makecache" << time.msecsTo(QDateTime::currentDateTime());
 	}
-
+	
 	if (brightness != BRIGHTNESS_DEFAULT || contrast != CONTRAST_DEFAULT || gamma != GAMMA_DEFAULT)
 	{
 		QImage img = photo.toImage();
@@ -220,12 +225,13 @@ void ImageWidget::updatePixmap(bool makeCache)
 		ImageManipulation::changeContrast(img, contrast);
 		ImageManipulation::changeGamma(img, gamma);
 		photo = QPixmap::fromImage(img);
+//		qDebug() << "after color reg" << time.msecsTo(QDateTime::currentDateTime());
 	}
 
 	if (SETTINGS->addLogo)
 	{
 		QImage logo = SettingsDialog::object()->logoPixmap.value().toImage();
-		QRect logoRect = alignedRect(logo.size(), photo.rect(), SETTINGS->logoCorner, SETTINGS->logoMargin);
+		QRect logoRect = alignedRectangle(logo.size(), photo.rect(), SETTINGS->logoCorner, SETTINGS->logoMargin);
 
 		if (SETTINGS->logoInvert)
 		{
@@ -244,15 +250,34 @@ void ImageWidget::updatePixmap(bool makeCache)
 		QPainter painter(&photo);
 		painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 		painter.drawImage(logoRect, logo);
+//		qDebug() << "after add logo" << time.msecsTo(QDateTime::currentDateTime());
 	}
 
 	if (SETTINGS->addImageMap && !gpsMap.isNull())
 	{
-		QRect mapRect = alignedRect(gpsMap.size(), photo.rect(), SETTINGS->imageMapCorner, SETTINGS->imageMapMargin);
-		QPainter painter(&photo);
-		painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-		painter.setOpacity(SETTINGS->imageMapOpacity);
-		painter.drawPixmap(mapRect, gpsMap);
+		if (SETTINGS->imageMapCorner >= SettingsDialog::Expand)
+		{
+			QRect photoRect = photo.rect();
+			QRect mapRect = gpsMap.rect();
+			QRect expandedRect = expandedRectangle(photoRect, mapRect, SETTINGS->imageMapCorner, 0); // SETTINGS->imageMapMargin
+			QPixmap expanded(expandedRect.size());
+//			expanded.fill(Qt::white);
+			
+			QPainter painter(&expanded);
+			painter.drawPixmap(photoRect, photo);
+			painter.drawImage(mapRect, gpsMap);
+			painter.end();
+			photo = expanded;
+		} 
+		else
+		{
+			QRect mapRect = alignedRectangle(gpsMap.size(), photo.rect(), SETTINGS->imageMapCorner, SETTINGS->imageMapMargin);
+			QPainter painter(&photo);
+			painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+			painter.setOpacity(SETTINGS->imageMapOpacity);
+			painter.drawImage(mapRect, gpsMap);
+		}
+//		qDebug() << "after add map" << time.msecsTo(QDateTime::currentDateTime());
 	}
 
 	if (SETTINGS->addImageBorder)
@@ -260,12 +285,15 @@ void ImageWidget::updatePixmap(bool makeCache)
 		QPainter painter(&photo);
 		painter.setPen(QPen(Qt::black, 3));
 		painter.drawRect(photo.rect().adjusted(1, 1, -2, -2));
+//		qDebug() << "after add border" << time.msecsTo(QDateTime::currentDateTime());
 	}
 
+//	qDebug() << "after conditions" << time.msecsTo(QDateTime::currentDateTime());
 	imageLabel->setPixmap(photo);
 	setMaximumWidth(photo.width() + 6);
 
 	url = QString();
+	qDebug() << objectName() << time.msecsTo(QDateTime::currentDateTime()) << "total" << QPixmapCache::totalUsed();
 }
 
 void ImageWidget::updateNumber(int now)
@@ -289,11 +317,14 @@ void ImageWidget::updateLayout()
 	gridLayout->setVerticalSpacing(SETTINGS->extraSpace ? 20 : 1);
 }
 
+/*
 void ImageWidget::unselectEvent()
 {
 //	setStyleSheet(QString("QWidget#%1 { }").arg(objectName()));
+	
 	QPixmapCache::remove(filePath);
 }
+*/
 
 void ImageWidget::setBrightness(int value)
 {
@@ -328,14 +359,6 @@ int ImageWidget::getGamma() const
 	return gamma;
 }
 
-//void ImageWidget::mouseReleaseEvent(QMouseEvent *event)
-//{
-//	setStyleSheet(QString("QWidget#%1 { background: rgba(20, 80, 200, 50); border: 3px dashed rgba(20, 80, 200, 250) }").arg(objectName()));
-//	emit selected(this);
-
-//	QWidget::mouseReleaseEvent(event);
-//}
-
 void ImageWidget::paintEvent(QPaintEvent *event)
 {
 	Q_UNUSED(event)
@@ -345,13 +368,13 @@ void ImageWidget::paintEvent(QPaintEvent *event)
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
-void ImageWidget::mapDownloaded(QPixmap map)
+void ImageWidget::mapDownloaded(QImage map)
 {
 	gpsMap = map;
 	updatePixmap();
 }
 
-QRect ImageWidget::alignedRect(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin)
+QRect ImageWidget::alignedRectangle(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin)
 {
 	QRect rect(QPoint(0, 0), size);
 	outerRect.adjust(margin, margin, -margin, -margin);
@@ -361,11 +384,20 @@ QRect ImageWidget::alignedRect(QSize size, QRect outerRect, SettingsDialog::Corn
 		case SettingsDialog::BottomLeft:  rect.moveBottomLeft (outerRect.bottomLeft());  break;
 		case SettingsDialog::TopRight:    rect.moveTopRight   (outerRect.topRight());    break;
 		case SettingsDialog::TopLeft:     rect.moveTopLeft    (outerRect.topLeft());     break;
+		default: Q_ASSERT(false);
 	}
 	return rect;
 }
 
-
-
-
-
+QRect ImageWidget::expandedRectangle(QRect &photo, QRect &map, SettingsDialog::Corner corner, int margin)
+{
+	switch (corner)
+	{
+		case SettingsDialog::ExpandLeft:   photo.moveLeft(map.width() + margin); break;
+		case SettingsDialog::ExpandRight:  map.moveLeft(photo.width() + margin); break;
+		case SettingsDialog::ExpandTop:    photo.moveTop(map.height() + margin); break;
+		case SettingsDialog::ExpandBottom: map.moveTop(photo.height() + margin); break;
+		default: Q_ASSERT(false);
+	}
+	return photo | map;
+}

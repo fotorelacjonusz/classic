@@ -10,17 +10,13 @@
 const int ArrowWidget::margin = 7;
 
 ArrowWidget::ArrowWidget(QPoint start, QPoint end, QWidget *parent) :
-//	QWidget(parent),
 	SelectableWidget<ArrowWidget>(parent),
 	color(Qt::black),
 	start(start),
-//	lineEdit(new LineEdit(this)),
 	inverted(false)
 {
 	lineEdit->hide();
 	setEnd(end);
-//	static int instanceCount = 0;
-//	setObjectName(QString("arrow%1").arg(instanceCount++));
 }
 
 void ArrowWidget::invert()
@@ -46,19 +42,18 @@ void ArrowWidget::setEnd(QPoint _end)
 	arrowSize = QSize(qAbs(end.x() - start.x()), qAbs(end.y() - start.y()));
 	QRect rect(qMin(start.x(), end.x()), qMin(start.y(), end.y()), arrowSize.width(), arrowSize.height());
 	rect.adjust(-margin, -margin, margin, margin);
+	left = end.x() > start.x();
+	top = end.y() > start.y();
 	setGeometry(rect);
 }
 
 void ArrowWidget::showEdit(QString text)
 {
-//	if (!lineEdit)
-//	qDebug() << "showEdit";
 	if (!lineEdit->isVisible())
 	{
 		bool left = end.x() > start.x();
-//		lineEdit = new LineEdit(this);
 		lineEdit->show();
-		lineEdit->setFont(QFont("Arial", 16));
+		lineEdit->setFont(QFont("Arial", 14));
 		lineEdit->setAlignment(left ? Qt::AlignRight : Qt::AlignLeft);
 		lineEdit->setMinimumWidth(20);
 		if (!text.isNull())
@@ -68,7 +63,6 @@ void ArrowWidget::showEdit(QString text)
 			lineEdit->setText("...");
 			lineEdit->selectAll();
 			lineEdit->setFocus();
-//			mouseReleaseEvent(0);
 		}
 		select();
 		connect(lineEdit, SIGNAL(textEdited(QString)), this, SLOT(updateGeometries()));
@@ -79,25 +73,6 @@ void ArrowWidget::showEdit(QString text)
 	lineEdit->setStyleSheet(QString("background: %2; border: transparent; color: %1").arg(color.name()).arg(background));
 }
 
-//void ArrowWidget::unselected()
-//{
-//	setStyleSheet(QString("QWidget#%1 { }").arg(objectName()));
-//}
-
-//void ArrowWidget::mouseReleaseEvent(QMouseEvent *event)
-//{
-//	setStyleSheet(QString("QWidget#%1 { background: rgba(20, 80, 200, 50); border: 3px dashed rgba(20, 80, 200, 250) }").arg(objectName()));
-//	if (lineEdit)
-//	{
-//		lineEdit->setFocus();
-//		lineEdit->selectAll();
-//	}
-//	emit selected(this);
-
-//	if (event)
-//		event->accept();
-//}
-
 void ArrowWidget::paintEvent(QPaintEvent *event)
 {
 	Q_UNUSED(event)
@@ -106,40 +81,33 @@ void ArrowWidget::paintEvent(QPaintEvent *event)
 	QPainter p(this);
 	// draw applied stylesheet
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+	
+	p.setRenderHint(QPainter::Antialiasing);
 
 	QPen pen(color, 2, Qt::SolidLine, Qt::RoundCap, Qt::MiterJoin);
-
+//	p.setBrush(Qt::red);
 	p.setPen(pen);
-	p.setBrush(Qt::red);
-	p.setRenderHint(QPainter::Antialiasing);
-	p.drawLine(mapFromParent(start), mapFromParent(end));
+	
+	qreal angle = atan2(end.y() - start.y(), end.x() - start.x());
+	qreal r = 20, da = 7 * M_PI / 180, a1 = angle + da, a2 = angle - da;
+	QPointF arrowTip = mapFromParent(end);
+	
+	QPolygonF polygon;
+	
 
 	if (lineEdit->isVisible())
-		p.drawLine(lineEdit->geometry().bottomLeft() + QPoint(0, 1), lineEdit->geometry().bottomRight() + QPoint(0, 1));
-
-	pen.setCapStyle(Qt::SquareCap);
-	p.setPen(pen);
-
-	qreal angle = atan2(end.y() - start.y(), end.x() - start.x());
-	qreal r = 20, da = 15 * M_PI / 180,	a1 = angle + da, a2 = angle - da;
-
-	QPointF point = mapFromParent(end);
-	QPolygonF polygon = QPolygonF() << point - QPointF(r * cos(a1), r * sin(a1)) << point << point - QPointF(r * cos(a2), r * sin(a2));
+		polygon << QPoint(0, 3) + (left ? lineEdit->geometry().bottomLeft() : lineEdit->geometry().bottomRight());
+	
+//		p.drawLine(lineEdit->geometry().bottomLeft() + QPoint(0, 3), lineEdit->geometry().bottomRight() + QPoint(0, 3));
+//	p.drawLine(mapFromParent(start + QPoint(0, 2)), mapFromParent(end));
+	polygon << mapFromParent(start + QPoint(0, 2)) << arrowTip;
+	polygon << arrowTip - QPointF(r * cos(a1), r * sin(a1)) << arrowTip - QPointF(r * cos(a2), r * sin(a2)) << arrowTip;
 	p.drawPolyline(polygon);
-	//	p.drawPolygon(polygon);
+//	p.drawPolygon(polygon);
 }
-
-//void ArrowWidget::focusOutEvent(QFocusEvent *e)
-//{
-//	qDebug() << objectName() << "focus out";
-//	QWidget::focusOutEvent(e);
-//}
 
 void ArrowWidget::updateGeometries()
 {
-	const bool left = end.x() > start.x();
-	const bool top = end.y() > start.y();
-
 	QFontMetrics metrics(lineEdit->font());
 	const int width = qMax(metrics.boundingRect(lineEdit->text()).width() + 10, lineEdit->minimumWidth());
 

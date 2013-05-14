@@ -1,17 +1,19 @@
 #include "gpsdata.h"
 #include "settings/settingsdialog.h"
+#include "geomap.h"
+#include "googlemapsdownloader.h"
+#include "tilesdownloader.h"
 
 #include <QFile>
 #include <QUrl>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QPainter>
 #include <QEventLoop>
 #include <QDebug>
 #include <QMessageBox>
 #include <QProcess>
 #include <QApplication>
-#include <QDesktopServices>
+
 #include <qmath.h>
 
 #ifdef Q_WS_WIN
@@ -21,16 +23,15 @@ QString GpsData::binName = "exif.exe";
 QString GpsData::binName = "./exif";
 #endif
 
-QHash<int, QImage> GpsData::maskCache;
-QHash<GpsData *, QPointF> GpsData::allCoords;
+GpsData::Points GpsData::allCoords;
 
 GpsData::GpsData(const int *const number, QString filePath):
 	number(number),
 	hasPosition(false),
 	hasDirection(false),
-	inCommonMode(false)
+	isCommon(false)
 {
-	init();
+	initDownloaders();
 	if (!QFile::exists(filePath))
 		return;
 
@@ -75,8 +76,6 @@ GpsData::GpsData(const int *const number, QString filePath):
 		}
 	}
 
-//	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
-
 	//	hasDirection = true;
 	//	direction = 45;
 }
@@ -85,33 +84,32 @@ GpsData::GpsData():
 	number(0),
 	hasPosition(false),
 	hasDirection(false),
-	inCommonMode(true)
+	isCommon(true)
 {
-	init();
+	initDownloaders();
 }
 
 GpsData::GpsData(const int *const number, QDataStream &stream):
 	number(number),
-	inCommonMode(false)
+	isCommon(false)
 {
-	init();
+	initDownloaders();
 	stream >> hasPosition >> hasDirection >> latitude >> longitude >> direction;
 	if (hasPosition)
 		allCoords[this] = QPointF(longitude, latitude);
-//	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
 }
 
-void GpsData::init()
+void GpsData::initDownloaders()
 {
-//	cache.setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
-//	manager.setCache(&cache);
-	connect(&googleDownloader, SIGNAL(mapDownloaded(QImage)), this, SLOT(mapDownloaded(QImage)));
-	connect(&tilesDownloader, SIGNAL(mapDownloaded(QImage)), this, SLOT(mapDownloaded(QImage)));
+	googleDownloader = new GoogleMapsDownloader();
+	tilesDownloader = new TilesDownloader();
 }
 
 GpsData::~GpsData()
 {
 	allCoords.remove(this);
+	delete googleDownloader;
+	delete tilesDownloader;
 }
 
 QString GpsData::toString() const
@@ -129,87 +127,55 @@ void GpsData::serialize(QDataStream &stream) const
 	stream << hasPosition << hasDirection << latitude << longitude << direction;
 }
 
+void GpsData::setPhotoSize(QSize size)
+{
+	photoSize = size;
+	const QSize mapSizePrev = mapSize;
+	updateMapSize();
+	if ((mapSizePrev.isEmpty() || mapSize != mapSizePrev) && SETTINGS->addImageMap)
+		downloadMap();
+}
+
+void GpsData::updateMapSize()
+{
+	switch (SETTINGS->imageMapCorner)
+	{
+		case SettingsDialog::ExpandLeft:
+		case SettingsDialog::ExpandRight:
+			mapSize = QSize(SETTINGS->imageMapSize, photoSize.height());
+			break;
+		case SettingsDialog::ExpandTop:
+		case SettingsDialog::ExpandBottom:
+			mapSize = QSize(photoSize.width(), SETTINGS->imageMapSize);
+			break;
+		default:
+			mapSize = QSize(SETTINGS->imageMapSize, SETTINGS->imageMapSize);
+	}	
+}
+
 void GpsData::downloadMap()
 {
-	if (inCommonMode)
+	updateMapSize();
+	
+	if (isCommon)
 	{
 		if (allCoords.isEmpty())
-			emit mapReady(QPixmap());
-		else
-		{
-//			AbstractMapDownloader::Points points;
-//			for (QHash<GpsData *, QPointF>::Iterator i = allCoords.begin(); i != allCoords.end() )
-			(SETTINGS->commonMapType < SETTINGS->OSMFirst ? (AbstractMapDownloader *)&googleDownloader : (AbstractMapDownloader *)&tilesDownloader)
-				->downloadMap(allCoords);
-		}
+			return mapReady(QImage());
+		
+		QList<QPointF> coords = allCoords.values(); // populate only
+		for (QHash<GpsData *, QPointF>::Iterator i = allCoords.begin(); i != allCoords.end(); ++i)
+			coords[*i.key()->number] = i.value(); // QList with indexes same as images' numbers
+		
+		GeoMap *map = new GeoMap(coords);
+		connect(map, SIGNAL(ready(QImage)), this, SIGNAL(mapReady(QImage)));
+		if (!(SETTINGS->useOverlayCommonMap && SETTINGS->makeMap(map)))
+			(SETTINGS->commonMapType < SettingsDialog::OSMFirst ? googleDownloader : tilesDownloader)->makeMap(map);
 	}
 	else if (hasPosition)
 	{
-		if (SETTINGS->useOverlays)
-		{
-			QPixmap overlayMap = SETTINGS->overlayMakeMap(longitude, latitude);
-			if (!overlayMap.isNull())
-			{
-				mapDownloaded(overlayMap.toImage());
-				return;
-			}
-		}
-		(SETTINGS->imageMapType < SETTINGS->OSMFirst ? (AbstractMapDownloader *)&googleDownloader : (AbstractMapDownloader *)&tilesDownloader)
-			->downloadMap(QPointF(longitude, latitude));
+		GeoMap *map = new GeoMap(QPointF(longitude, latitude), hasDirection, direction, mapSize);
+		connect(map, SIGNAL(ready(QImage)), this, SIGNAL(mapReady(QImage)));
+		if (!(SETTINGS->useOverlays && SETTINGS->makeMap(map)))
+			(SETTINGS->imageMapType < SettingsDialog::OSMFirst ? googleDownloader : tilesDownloader)->makeMap(map);
 	}
-}
-
-void GpsData::mapDownloaded(QImage map)
-{
-	if (map.isNull())
-		return;
-	if (!inCommonMode)
-		processMap(map);
-	
-	emit mapReady(QPixmap::fromImage(map));
-}
-
-void GpsData::processMap(QImage &map)
-{
-	if (map.format() != QImage::Format_ARGB32_Premultiplied)
-		map = map.convertToFormat(QImage::Format_ARGB32_Premultiplied);
-	
-	QColor color = SETTINGS->imageMapColor;
-//	QPoint center = QPoint(map.width() / 2.0, map.height() / 2.0);
-	QPainter painter(&map);
-	painter.setPen(QPen(color, 2));
-	color.setAlpha(50);
-	painter.setBrush(QBrush(color));
-	painter.setRenderHint(QPainter::Antialiasing);
-
-	if (hasDirection)
-		painter.drawPie(map.rect().adjusted(-200, -200, 200, 200), -16 * (direction - 90 - 30), -16 * 60);
-	else
-		painter.drawEllipse(map.rect().center(), 7, 7);
-	if (SETTINGS->imageMapCircle)
-	{
-		painter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-		painter.drawImage(QPoint(0, 0), mask(map.size()));
-	}
-//	painter.end();
-}
-
-QImage GpsData::mask(QSize size)
-{
-	Q_ASSERT(size.width() == size.height());
-	int sizeKey = size.width();
-
-	if (maskCache.contains(sizeKey))
-		return maskCache[sizeKey];
-
-	QImage mask(size, QImage::Format_ARGB32);
-	mask.fill(Qt::transparent);
-	QPainter painter(&mask);
-	painter.setRenderHint(QPainter::Antialiasing);
-	painter.setBrush(QBrush(Qt::black));
-	painter.drawPie(mask.rect(), 0, 16 * 360);
-//	painter.end();
-
-	return maskCache[sizeKey] = mask;
-//	return mask;
 }

@@ -26,12 +26,12 @@ OverlayList::~OverlayList()
 	qDeleteAll(overlays);
 }
 
-QPixmap OverlayList::makeMap(qreal lon, qreal lat) const
+bool OverlayList::makeMap(GeoMap *map)
 {
 	foreach (Overlay *overlay, overlays)
-		if (overlay->contains(lon, lat))
-			return overlay->makeMap(lon, lat);
-	return QPixmap();
+		if (overlay->makeMap(map))
+			return true;
+	return false;
 }
 
 void OverlayList::openFolder() const
@@ -51,7 +51,7 @@ bool OverlayList::addOverlayFile(QString filePath)
 
 	Overlay *overlay = new Overlay(filePath);
 	overlays.append(overlay);
-	addItem(new QListWidgetItem(overlay->isValid() ? ok : noOk, overlay->name + "\t" + overlay->error, this));
+	addItem(new QListWidgetItem(overlay->isValid() ? ok : noOk, overlay->toString(), this));
 	return overlay->isValid();
 }
 

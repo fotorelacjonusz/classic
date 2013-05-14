@@ -1,33 +1,27 @@
 #ifndef TILESDOWNLOADER_H
 #define TILESDOWNLOADER_H
 
-#include "textballoon.h"
-#include "throttlednetworkmanager.h"
 #include "abstractmapdownloader.h"
 
-#include <QPoint>
 #include <QNetworkRequest>
 #include <QEventLoop>
-#include <QQueue>
 #include <QHash>
+#include <QImage>
 
 class QPainter;
 
-class TilesDownloader : public AbstractMapDownloader
+class TilesDownloader : public QObject, public AbstractMapDownloader
 {
 	Q_OBJECT
 	
 public:
 	TilesDownloader(QString urlPattern = QString());
 	static bool validateUrlPattern(QWidget *parent, QString urlPattern);
-	
-	void downloadMap(QPointF point);
-	void downloadMap(Points points);
+	bool makeMap(GeoMap *map);
 	
 protected slots:
-	void render(QPointF point);
-	void render(Points points);
-	QImage render(qreal lon, qreal lat, int zoom, int width, int height);
+	void render(GeoMap *map);
+	QImage render(QPointF coord, int zoom, int width, int height);
 	
 protected:
 	static inline qreal lon2tilex(qreal lon);
@@ -37,8 +31,6 @@ protected:
 	static void calculateDimension(qreal value, qreal halfDimension, int &begin, int &size, qreal &cropBegin);
 	
 	QNetworkRequest createRequest(int zoom, int x, int y, QPoint begin);
-	
-protected slots:
 	void finished(QNetworkReply *reply);
 	
 private:	
@@ -51,8 +43,6 @@ private:
 		
 	static const int tileSize;
 	static const QStringList varNames;
-	
-	TextBalloon balloon;
 };
 
 #endif // TILESDOWNLOADER_H

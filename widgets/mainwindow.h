@@ -54,7 +54,7 @@ private slots:
 	void arrowWidgetSelected(QWidget *widget);
 
 	void updateCommonMap();
-	void commonMapReady(QPixmap map);
+	void commonMapReady(QImage map);
 
 protected:
 	void processEvents() const;

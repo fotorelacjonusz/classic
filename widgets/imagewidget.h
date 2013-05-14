@@ -18,7 +18,7 @@ class AbstractUploader;
 class GpsData;
 class QCheckBox;
 
-class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage // public QWidget, public AbstractImage
+class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage
 {
 	Q_OBJECT
 
@@ -41,7 +41,7 @@ public slots:
 	void updatePixmap(bool makeCache = false);
 	void updateNumber(int now = -1);
 	void updateLayout();
-	void unselectEvent();
+//	void unselectEvent();
 
 	void setBrightness(int value);
 	void setContrast(int value);
@@ -50,22 +50,16 @@ public slots:
 	int getContrast() const;
 	int getGamma() const;
 
-signals:
-//	void selected(ImageWidget *widget);
-//	void selected(ArrowWidget *widget);
-
 protected:
-//	void mouseReleaseEvent(QMouseEvent *event);
 	void paintEvent(QPaintEvent *event);
 
 private slots:
-	void mapDownloaded(QPixmap map);
+	void mapDownloaded(QImage map);
 
 private:
-	static QRect alignedRect(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin);
+	static QRect alignedRectangle(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin);
+	static QRect expandedRectangle(QRect &photo, QRect &map, SettingsDialog::Corner corner, int margin);
 	static const qreal maxAspectRatio;
-//	static int currentId;
-//	const int id;
 
 	QString filePath;
 	int num;
@@ -77,9 +71,8 @@ private:
 
 	int brightness, contrast, gamma;
 	QByteArray sourceFile;
-	QPixmap gpsMap;
+	QImage gpsMap;
 	GpsData *gpsData;
 };
-
 
 #endif // IMAGEWIDGET_H

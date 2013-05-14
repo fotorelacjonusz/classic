@@ -2,12 +2,10 @@
 #define THROTTLEDNETWORKMANAGER_H
 
 #include <QQueue>
-#include <QPair>
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
 
-class QNetworkAccessManager;
 class AbstractMapDownloader;
 class QNetworkReply;
 
@@ -18,8 +16,6 @@ class ThrottledNetworkManager : public QObject
 public:
 	explicit ThrottledNetworkManager(int limit, QObject *parent = 0);
 	void get(QNetworkRequest request, AbstractMapDownloader *downloader);
-	
-signals:
 	
 public slots:
 	void finished(QNetworkReply *reply);
@@ -32,8 +28,7 @@ private:
 	QNetworkDiskCache cache;
 	const int limit;
 	int running;
-	QHash<QNetworkReply *, AbstractMapDownloader *> listeners;
-	QQueue<QPair<QNetworkRequest, AbstractMapDownloader *> > requests;
+	QQueue<QNetworkRequest> requests;
 };
 
 #endif // THROTTLEDNETWORKMANAGER_H
