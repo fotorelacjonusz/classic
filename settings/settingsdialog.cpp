@@ -42,6 +42,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 			if (key.startsWith("watermark"))
 				settings.setValue(key.repeated(1).replace("watermark/", "logo/"), settings.value(key));
 	
+	// fix alignment between two form layouts in two group boxes
 	int maxWidth = 0;
 	foreach (QObject *object, ui->commonMapBox->children() + ui->imageMapBox->children())
 	{
@@ -51,7 +52,6 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	}
 	ui->commonMapTypeLabel->setMinimumWidth(maxWidth);	
 	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment());
-	//	qDebug() << qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment();
 	
 
 	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox,  0),   this, &SettingsDialog::uploaderFunc);
@@ -293,59 +293,5 @@ void SettingsDialog::proxyOptionsChanged()
 		proxy.setPassword(proxyPass);
 	}
 	QNetworkProxy::setApplicationProxy(proxy);
-	qDebug() << "proxy set";
+//	qDebug() << "proxy set";
 }
-
-
-/*
-
-  
-	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox, 0), this, &SettingsDialog::uploaderFunc);
-							  makeInput("home_page/tag",              ui->homeTag);
-							  makeInput("home_page/forum_id",         ui->homeForumId);
-	homeUrl             .init(makeInput("home_page/method",           ui->homePageGroup, 0), this, &SettingsDialog::homeUrlFunc);
-	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, this, M(layoutOptionsChanged), -1), this, &SettingsDialog::captionsUnderFunc);
-	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,            this, M(layoutOptionsChanged), false));
-	numberImages        .init(makeInput("number_images",              ui->numberImages,          this, M(numberOptionsChanged), true));
-	startingNumber      .init(makeInput("starting_number",            ui->startingNumber,        this, M(numberOptionsChanged), 1), this, &SettingsDialog::startingNumberFunc);
-	addImageBorder      .init(makeInput("image_add_border",           ui->addImageBorder,        this, M(pixmapOptionsChanged), false));
-	addTBC              .init(makeInput("add_tbc",                    ui->addTBC, true));
-	imagesPerPost       .init(makeInput("images_per_post",            ui->imagesPerPost, 5));
-	postSpace			.init(makeInput("post_space",                 ui->postSpace, 60));
-	extraTags           .init(makeInput("post_extra_tags",            ui->extraTags));
-
-	setImageWidth       .init(makeInput("image_size/set_width",       ui->imageScaleMethodGroup, this, M(pixmapOptionsChanged), -1), this, &SettingsDialog::setImageWidthFunc);
-	imageLength         .init(makeInput("image_size/lenght",          ui->lengthComboBox,        this, M(pixmapOptionsChanged), 2), this, &SettingsDialog::imageLengthFunc);
-	retainOriginalSize  .init(makeInput("image_size/retain_size",     ui->retainOriginalSize, false));
-	jpgQuality          .init(makeInput("image_size/jpg_quality",     ui->jpgQuality, 70));
-	dontScalePanoramas  .init(makeInput("image/dont_scale_panoramas", ui->dontScalePanoramas, this, M(pixmapOptionsChanged), true));
-
-	addLogo             .init(makeInput("logo/add",                   ui->logoGroupBox, this, M(pixmapOptionsChanged), false));
-	logoPixmap			.init(makeInput("logo/data",				  &logo,            this, M(pixmapOptionsChanged)));
-	logoCorner			.init(makeInput("logo/position",              ui->logoPosition, this, M(pixmapOptionsChanged), 0), this, &SettingsDialog::logoCornerFunc);
-	logoMargin			.init(makeInput("logo/margin",                ui->logoMargin,   this, M(pixmapOptionsChanged), 0));
-	logoInvert			.init(makeInput("logo/invert",				  ui->logoInvert,   this, M(pixmapOptionsChanged), false));
-
-	addCommonMap        .init(makeInput("common_map/add",	          ui->commonMapBox,     this, M(commonMapOptionsChanged), true));
-	commonMapType       .init(makeInput("common_map/type",            ui->commonMapType,    this, M(commonMapOptionsChanged), 2), this, &SettingsDialog::commonMapTypeFunc);
-	addImageMap         .init(makeInput("image_map/add",              ui->imageMapBox,      this, M(imageMapOptionsChanged), true));
-	imageMapType        .init(makeInput("image_map/type",             ui->imageMapType,     this, M(imageMapOptionsChanged), 2), this, &SettingsDialog::imageMapTypeFunc);
-	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,     this, M(imageMapOptionsChanged), Qt::black));
-	imageMapOpacity     .init(makeInput("image_map/opacity",          ui->imageMapOpacity,  this, M(imageMapOptionsChanged), 100), this, &SettingsDialog::imageMapOpacityFunc);
-	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,     this, M(imageMapOptionsChanged), 10));
-	imageMapCircle      .init(makeInput("image_map/circle",           ui->imageMapCircle,   this, M(imageMapOptionsChanged), false));
-	imageMapCorner      .init(makeInput("image_map/position",         ui->imageMapPosition, this, M(imageMapOptionsChanged), 2), this, &SettingsDialog::imageMapCornerFunc);
-	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,   this, M(imageMapOptionsChanged), 10));
-	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,     this, M(imageMapOptionsChanged), 150));
-
-	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,         this, M(imageMapOptionsChanged), true));
-	useOverlayCommonMap .init(makeInput("overlays/use_on_common",	  ui->useOverlayCommonMap, this, M(commonMapOptionsChanged), true));
-	
-	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,  this, M(proxyOptionsChanged), false));
-	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost, this, M(proxyOptionsChanged)));
-	proxyPort			.init(makeInput("proxy/port",                 ui->proxyPort, this, M(proxyOptionsChanged), 8080));
-	proxyUser           .init(makeInput("proxy/user",                 ui->proxyUser, this, M(proxyOptionsChanged)));
-	proxyPass           .init(makeInput("proxy/pass",                 ui->proxyPass, this, M(proxyOptionsChanged)));
-
-	*/
-

@@ -48,9 +48,6 @@
             <property name="fieldGrowthPolicy">
              <enum>QFormLayout::ExpandingFieldsGrow</enum>
             </property>
-            <property name="labelAlignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
             <property name="horizontalSpacing">
              <number>5</number>
             </property>
@@ -316,9 +313,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
           </property>
-          <property name="labelAlignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
           <property name="horizontalSpacing">
            <number>5</number>
           </property>
@@ -477,9 +471,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="fieldGrowthPolicy">
              <enum>QFormLayout::ExpandingFieldsGrow</enum>
             </property>
-            <property name="labelAlignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
             <property name="horizontalSpacing">
              <number>5</number>
             </property>
@@ -619,9 +610,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
          <property name="fieldGrowthPolicy">
           <enum>QFormLayout::ExpandingFieldsGrow</enum>
          </property>
-         <property name="labelAlignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
          <item row="0" column="0">
           <widget class="QLabel" name="uploadMethodLabel">
            <property name="text">
@@ -697,9 +685,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
           </property>
-          <property name="labelAlignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
           <item row="0" column="0">
            <widget class="QLabel" name="commonMapTypeLabel">
             <property name="text">
@@ -758,9 +743,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
          <layout class="QFormLayout" name="formLayout_4">
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
-          </property>
-          <property name="labelAlignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="imageMapTypeLabel">
