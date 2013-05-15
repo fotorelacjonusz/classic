@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->arrowToolBar->setEnabled(false);
 	ui->colorManipulationBar->setEnabled(false);
 	ui->menu_Fotorelacja->addMenu(&recentThreads);
+	ui->commonMap->setFirstWidget(ui->header);
 	settingsDialog.copyDescriptions(this);
 
 	manager.makeInput("geometry", (QWidget *)this);
@@ -39,8 +40,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager.load();
 
 	connect(&gpsData, SIGNAL(mapReady(QImage)), this, SLOT(commonMapReady(QImage)));
-	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
-	connect(SETTINGS, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
+//	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
+//	connect(SETTINGS, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
+	
+	SETTINGS->addCommonMap.connect(this, SLOT(updateCommonMap()));
 	
 	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
 	connect(new SelectableWidget<ImageWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(imageWidgetSelected(QWidget*)));
@@ -70,10 +73,12 @@ void MainWindow::on_action_open_photorelation_triggered()
 	in >> fileHeader;
 	if (fileHeader != phrFileHeader + qApp->applicationVersion().toAscii())
 	{
-		QMessageBox::critical(this, tr("Błąd"), tr("To nie jest plik fotorelacji!"));
+		QMessageBox::critical(this, tr("Błąd"), fileHeader.startsWith(phrFileHeader) ? 
+								  tr("Nie można otworzyć. Tę fotorelację zapisano inną wersją programu.") :
+								  tr("To nie jest plik fotorelacji!"));
 		return;
 	}
-	in >> head >> foot >> count;
+	in >> head >> foot >> count >> *ui->commonMap;
 
 	try
 	{
@@ -106,7 +111,7 @@ void MainWindow::on_action_save_photorelation_triggered()
 	QFile file(filePath);
 	file.open(QIODevice::WriteOnly);
 	QDataStream out(&file);
-	out << phrFileHeader + qApp->applicationVersion().toAscii() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count();
+	out << phrFileHeader + qApp->applicationVersion().toAscii() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
 
 	foreach (AbstractImage *image, imageList())
 		image->serialize(out);
@@ -150,7 +155,7 @@ void MainWindow::on_action_send_to_SSC_triggered()
 	SimpleImage *mapImage = 0;
 	if (ui->commonMap->pixmap() && !ui->commonMap->pixmap()->isNull())
 	{
-		mapImage = new SimpleImage(ui->commonMap->pixmap(), tr("Mapa dla wszystkich zdjęć."));
+		mapImage = new SimpleImage(ui->commonMap->mergedPixmap(), tr("Mapa dla wszystkich zdjęć."));
 		images.prepend(mapImage);
 	}
 

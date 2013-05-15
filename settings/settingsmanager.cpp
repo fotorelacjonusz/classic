@@ -23,14 +23,29 @@
 #include <QMainWindow>
 #include <QDebug>
 
-SettingsManager::AbstractInput::AbstractInput(QString name, QObject *receiver, const char *member, QVariant defaultVal):
-	key(name), receiver(receiver), member(member), defaultVal(defaultVal),
+SettingsManager::AbstractInput::AbstractInput(QString name, QVariant defaultVal): //QObject *receiver, const char *member, 
+	key(name), defaultVal(defaultVal), //receiver(receiver), member(member), 
 	pasKey(QByteArray::fromHex(PASSWORD_RAW_KEY))
 {
 }
 
 SettingsManager::AbstractInput::~AbstractInput()
 {
+}
+
+void SettingsManager::AbstractInput::connect(QObject *receiver, const char *member)
+{
+	QString string(member);
+	string.remove(QRegExp("^[0-9]+"));
+	string.remove(QRegExp("\\(\\)$"));
+	
+	listeners.insert(qMakePair(receiver, string.toAscii()));
+}
+
+void SettingsManager::AbstractInput::changedRemotely() const
+{
+	foreach (Listener listener, listeners)
+		QMetaObject::invokeMethod(listener.first, listener.second);
 }
 
 QByteArray SettingsManager::AbstractInput::encode(QString pass) const
@@ -53,6 +68,22 @@ SettingsManager::~SettingsManager()
 	qDeleteAll(inputs);
 }
 
+void SettingsManager::connectMany(QObject *receiver, const char *member, AbstractField *f0, AbstractField *f1,
+								  AbstractField *f2, AbstractField *f3, AbstractField *f4, AbstractField *f5,
+								  AbstractField *f6, AbstractField *f7, AbstractField *f8, AbstractField *f9)
+{
+	if (f0)	f0->connect(receiver, member);
+	if (f1)	f1->connect(receiver, member);
+	if (f2)	f2->connect(receiver, member);
+	if (f3)	f3->connect(receiver, member);
+	if (f4)	f4->connect(receiver, member);
+	if (f5)	f5->connect(receiver, member);
+	if (f6)	f6->connect(receiver, member);
+	if (f7)	f7->connect(receiver, member);
+	if (f8)	f8->connect(receiver, member);
+	if (f9)	f9->connect(receiver, member);
+}
+
 void SettingsManager::load(AbstractInput *singleInput)
 {
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
@@ -61,30 +92,35 @@ void SettingsManager::load(AbstractInput *singleInput)
 
 void SettingsManager::save(AbstractInput *singleInput)
 {
-	typedef QPair<QObject *, const char *> Listener;
+//	typedef QPair<QObject *, const char *> Listener;
 	QSet<Listener> listeners; // call each listener only once when multiple options changed
 	
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
 	{
-		if (input->receiver && input->member)
-		{
+//		if (input->receiver && input->member)
+//		{
 			if (input->toVariant() != settings.value(input->key, input->defaultVal))
 			{
 				input->wasChanged = true;
 //				QMetaObject::invokeMethod(input->receiver, input->member);
-				listeners.insert(qMakePair(input->receiver, input->member));
+//				listeners.insert(qMakePair(input->receiver, input->member));
+				listeners.unite(input->listeners);
 			}
 			else
 			{
 				input->wasChanged = false;
 				continue;
 			}
-		}
+//		}
 		settings.setValue(input->key, input->toVariant());
 	}
 	
+//	qDebug() << "save";
 	foreach (Listener listener, listeners)
-		QMetaObject::invokeMethod(listener.first, listener.second);
+//	{
+//		qDebug() << "calling" << listener.first->metaObject()->className() << "::" << listener.second;
+		QMetaObject::invokeMethod(listener.first, listener.second.constData());
+//	}
 }
 
 QByteArray operator^(const QByteArray &a1, const QByteArray &a2)

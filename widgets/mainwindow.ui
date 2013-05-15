@@ -68,7 +68,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="commonMap">
+         <widget class="ImageLabel" name="commonMap">
           <property name="text">
            <string/>
           </property>
@@ -381,6 +381,11 @@
    <class>ColorManipulationToolBar</class>
    <extends>QToolBar</extends>
    <header>widgets/colormanipulationtoolbar.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ImageLabel</class>
+   <extends>QLabel</extends>
+   <header>widgets/imagelabel.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

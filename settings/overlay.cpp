@@ -116,12 +116,12 @@ bool Overlay::makeMap(GeoMap *map)
 	if (!map->isCommon)
 		map->setImage(render(coordToPoint(map->coords.first()), map->size, 22 - SETTINGS->imageMapZoom));
 	else if (map->isSingle)
-		map->setImage(render(coordToPoint(map->coords.first()), maxSize, 4), QSize(0, 0));
+		map->setImage(render(coordToPoint(map->coords.first()), maxSize(), 4), QSize(0, 0));
 	else
 	{
 		QRect rect(coordToPoint(map->coordBox.bottomLeft()), coordToPoint(map->coordBox.topRight()));
-		qreal scale = qMax((rect.width() / (maxSize.width() - 2.0 * margin)), (rect.height() / (maxSize.height() - 2.0 * margin)));
-		map->setImage(render(rect.center(), maxSize, scale), rect.size() / scale);
+		qreal scale = qMax((rect.width() / (maxSize().width() - 2.0 * margin)), (rect.height() / (maxSize().height() - 2.0 * margin)));
+		map->setImage(render(rect.center(), maxSize(), scale), rect.size() / scale);
 	}
 	return true;
 }

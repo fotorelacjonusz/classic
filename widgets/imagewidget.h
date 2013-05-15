@@ -38,7 +38,7 @@ public:
 	QByteArray scaledSourceFile() const;
 
 public slots:
-	void updatePixmap(bool makeCache = false);
+	void updatePixmap();
 	void updateNumber(int now = -1);
 	void updateLayout();
 //	void unselectEvent();

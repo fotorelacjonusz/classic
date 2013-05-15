@@ -31,7 +31,7 @@ GpsData::GpsData(const int *const number, QString filePath):
 	hasDirection(false),
 	isCommon(false)
 {
-	initDownloaders();
+	init();
 	if (!QFile::exists(filePath))
 		return;
 
@@ -86,23 +86,31 @@ GpsData::GpsData():
 	hasDirection(false),
 	isCommon(true)
 {
-	initDownloaders();
+	init();
 }
 
 GpsData::GpsData(const int *const number, QDataStream &stream):
 	number(number),
 	isCommon(false)
 {
-	initDownloaders();
+	init();
 	stream >> hasPosition >> hasDirection >> latitude >> longitude >> direction;
 	if (hasPosition)
 		allCoords[this] = QPointF(longitude, latitude);
 }
 
-void GpsData::initDownloaders()
+void GpsData::init()
 {
 	googleDownloader = new GoogleMapsDownloader();
 	tilesDownloader = new TilesDownloader();
+	if (isCommon)
+		SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->numberImages, &SETTINGS->startingNumber, &SETTINGS->addCommonMap, 
+							  &SETTINGS->commonMapType, &SETTINGS->imageMapColor, &SETTINGS->useOverlayCommonMap, &SETTINGS->imageLength,
+							  &SETTINGS->imageMapCorner, &SETTINGS->imageMapSize);
+	else
+		SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->addImageMap, &SETTINGS->imageMapType, &SETTINGS->imageMapColor,
+							  &SETTINGS->imageMapOpacity, &SETTINGS->imageMapZoom, &SETTINGS->imageMapCircle, &SETTINGS->imageMapCorner,
+							  &SETTINGS->imageMapMargin, &SETTINGS->imageMapSize, &SETTINGS->useOverlays);
 }
 
 GpsData::~GpsData()
@@ -159,7 +167,7 @@ void GpsData::downloadMap()
 	
 	if (isCommon)
 	{
-		if (allCoords.isEmpty())
+		if (!SETTINGS->addCommonMap || allCoords.isEmpty())
 			return mapReady(QImage());
 		
 		QList<QPointF> coords = allCoords.values(); // populate only
@@ -173,6 +181,9 @@ void GpsData::downloadMap()
 	}
 	else if (hasPosition)
 	{
+		if (!SETTINGS->addImageMap)
+			return mapReady(QImage());
+		
 		GeoMap *map = new GeoMap(QPointF(longitude, latitude), hasDirection, direction, mapSize);
 		connect(map, SIGNAL(ready(QImage)), this, SIGNAL(mapReady(QImage)));
 		if (!(SETTINGS->useOverlays && SETTINGS->makeMap(map)))

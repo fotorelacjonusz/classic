@@ -8,7 +8,7 @@
 class SimpleImage : public AbstractImage
 {
 public:
-	SimpleImage(const QPixmap *pixmap, QString desc);
+	SimpleImage(const QPixmap pixmap, QString desc);
 
 	QString getFileName() const;
 	bool upload(AbstractUploader *uploader);
@@ -17,7 +17,7 @@ public:
 	bool isSelectedForSending() const;
 
 private:
-	const QPixmap *pixmap;
+	const QPixmap pixmap;
 	QString desc;
 };
 

@@ -8,10 +8,11 @@ class ImageLabel : public QLabel
 {
 	Q_OBJECT
 public:
-	explicit ImageLabel(QWidget *parent, QWidget *firstWidget);
+	explicit ImageLabel(QWidget *parent, QWidget *firstWidget = 0);
 	
 	QPixmap mergedPixmap() const;
 	QWidget *getLastArrow() const;
+	void setFirstWidget(QWidget *widget);
 	
 protected:
 	void mousePressEvent(QMouseEvent *event);

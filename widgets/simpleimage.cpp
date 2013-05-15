@@ -3,7 +3,7 @@
 #include "imagewidget.h"
 #include <QBuffer>
 
-SimpleImage::SimpleImage(const QPixmap *pixmap, QString desc):
+SimpleImage::SimpleImage(const QPixmap pixmap, QString desc):
 	pixmap(pixmap),
 	desc(desc)
 {
@@ -18,7 +18,7 @@ bool SimpleImage::upload(AbstractUploader *uploader)
 {
 	QBuffer buffer;
 	buffer.open(QIODevice::WriteOnly);
-	pixmap->save(&buffer, "JPG");
+	pixmap.save(&buffer, "JPG");
 	buffer.close();
 
 	url = uploader->uploadImage(desc, &buffer);

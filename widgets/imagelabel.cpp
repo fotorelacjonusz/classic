@@ -14,6 +14,8 @@ ImageLabel::ImageLabel(QWidget *parent, QWidget *firstWidget) :
 
 QPixmap ImageLabel::mergedPixmap() const
 {
+	if (!pixmap() || pixmap()->isNull())
+		return QPixmap();
 	QPixmap background = pixmap()->copy();
 	foreach (ArrowWidget *arrow, arrows)
 	{
@@ -27,6 +29,11 @@ QPixmap ImageLabel::mergedPixmap() const
 QWidget *ImageLabel::getLastArrow() const
 {
 	return arrows.isEmpty() ? 0 : arrows.last();
+}
+
+void ImageLabel::setFirstWidget(QWidget *widget)
+{
+	firstWidget = widget;
 }
 
 void ImageLabel::mousePressEvent(QMouseEvent *event)

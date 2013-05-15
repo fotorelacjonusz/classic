@@ -86,13 +86,6 @@ public:
 	QString mapTypeToString(MapType type) const;
 	OSMLayer currentOsmLayer(bool common) const;
 
-signals:
-	void pixmapOptionsChanged();
-	void numberOptionsChanged();
-	void layoutOptionsChanged();
-	void commonMapOptionsChanged();
-	void imageMapOptionsChanged();
-
 protected:
 	inline AbstractUploader *uploaderFunc() const;
 	inline bool captionsUnderFunc() const;
@@ -117,7 +110,7 @@ private slots:
 	void on_imageMapPosition_currentIndexChanged(int index);
 	
 	void proxyOptionsChanged();
-	
+		
 private:
 	Ui::SettingsDialog *ui;
 	AbstractUploader *m_uploader;

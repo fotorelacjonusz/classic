@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVariant>
+#include <QSet>
 
 class QSettings;
 class QButtonGroup;
@@ -26,19 +27,25 @@ class QMainWindow;
 
 class SettingsManager
 {
-//	typedef QPair<QObject *, QByteArray> Receiver;
+	typedef QPair<QObject *, QByteArray> Listener;
 	
 	class AbstractInput
 	{
+	protected:
+		AbstractInput(QString name, QVariant defaultVal); //QObject *receiver, const char *member, 
+		
 	public:
-		AbstractInput(QString name, QObject *receiver, const char *member, QVariant defaultVal);
 		virtual ~AbstractInput();
 		virtual QVariant toVariant() const = 0;
 		virtual void fromVariant(QVariant variant) = 0;
+		
+		void connect(QObject *receiver, const char *member);
+		void changedRemotely() const;
 
 		const QString key;
-		QObject *const receiver;
-		const char *const member;
+		QSet<Listener> listeners;
+//		QObject *const receiver;
+//		const char *const member;
 		const QVariant defaultVal;
 		bool wasChanged;
 
@@ -54,8 +61,8 @@ class SettingsManager
 	class Input : public AbstractInput
 	{
 	public:
-		Input(QString key, T *object, QObject *receiver, const char *member, QVariant defaultVal):
-			AbstractInput(key, receiver, member, defaultVal), object(object) {}
+		Input(QString key, T *object, QVariant defaultVal): //QObject *receiver, const char *member, 
+			AbstractInput(key, defaultVal), object(object) {} // receiver, member, 
 		inline QVariant toVariant() const
 		{
 			return *object;
@@ -118,8 +125,14 @@ class SettingsManager
 
 protected:
 
+	class AbstractField
+	{
+	public:
+		virtual void connect(QObject *receiver, const char *member) = 0;
+	};
+	
 	template <typename V>
-	class Field
+	class Field : public AbstractField
 	{
 	public:
 		Field():
@@ -145,6 +158,14 @@ protected:
 		{
 			return wrapper->value();
 		}
+		inline void connect(QObject *receiver, const char *member)
+		{
+			wrapper->getInput()->connect(receiver, member);
+		}
+		inline void changedRemotely() const
+		{
+			wrapper->getInput()->changedRemotely();
+		}
 		inline bool wasChanged() const
 		{
 			return wrapper->wasChanged();
@@ -161,17 +182,23 @@ public:
 	SettingsManager(QSettings &settings);
 	~SettingsManager();
 
+	/*
 	template <typename T>
 	inline AbstractInput *makeInput(QString key, T *object, QObject *receiver, const char *member, QVariant defaultVal = QVariant())
 	{
 		return (inputs << new Input<T>(key, object, receiver, member, defaultVal)).last();
 	}
+	*/
 
 	template <typename T>
 	inline AbstractInput *makeInput(QString key, T *object, QVariant defaultVal = QVariant())
 	{
-		return (inputs << new Input<T>(key, object, 0, 0, defaultVal)).last();
+		return (inputs << new Input<T>(key, object, defaultVal)).last(); // 0, 0, 
 	}
+	
+	void connectMany(QObject *receiver, const char *member, AbstractField *f0, AbstractField *f1 = 0, 
+					 AbstractField *f2 = 0, AbstractField *f3 = 0, AbstractField *f4 = 0, AbstractField *f5 = 0, 
+					 AbstractField *f6 = 0, AbstractField *f7 = 0, AbstractField *f8 = 0, AbstractField *f9 = 0);
 
 public:
 	void load(AbstractInput *singleInput = 0);

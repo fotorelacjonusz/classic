@@ -1,6 +1,7 @@
 #include "abstractmapdownloader.h"
 #include "gpsdata.h"
 #include "geomap.h"
+#include "settings/settingsdialog.h"
 
 #include <QMetaType>
 
@@ -8,7 +9,7 @@
 //			maxHeight = maxWidth * 0.75, margin = 50;
 
 // common map options:
-const QSize AbstractMapDownloader::maxSize(800, 600);
+//const QSize AbstractMapDownloader::maxSize(800, 600);
 const int AbstractMapDownloader::margin(50);
 
 AbstractMapDownloader::AbstractMapDownloader()
@@ -28,6 +29,15 @@ AbstractMapDownloader::~AbstractMapDownloader()
 void AbstractMapDownloader::finished(QNetworkReply *reply)
 {
 	Q_UNUSED(reply);
+}
+
+QSize AbstractMapDownloader::maxSize() const
+{
+	int width = SETTINGS->imageLength;
+	if (SETTINGS->imageMapCorner == SettingsDialog::ExpandLeft || 
+		SETTINGS->imageMapCorner == SettingsDialog::ExpandRight)
+		width += SETTINGS->imageMapSize;
+	return QSize(width, width * 0.6);
 }
 
 AsyncMapDownloader::AsyncMapDownloader()

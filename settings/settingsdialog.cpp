@@ -9,6 +9,7 @@
 #include <QMetaEnum>
 #include <QFontDialog>
 #include <QTimer>
+#include <QMessageBox>
 
 #define ENUM_STR(Enum, Var) QString(metaObject()->enumerator(metaObject()->indexOfEnumerator(#Enum)).valueToKey(Var))
 #define M(x) #x
@@ -21,7 +22,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui(new Ui::SettingsDialog),
 	m_uploader(0),
 	m_settings(settings),
-	osmDialog(settings)
+	osmDialog(settings, this)
 {
 	objectInstance = this;
 
@@ -40,53 +41,67 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 		foreach (QString key, settings.allKeys())
 			if (key.startsWith("watermark"))
 				settings.setValue(key.repeated(1).replace("watermark/", "logo/"), settings.value(key));
+	
+	int maxWidth = 0;
+	foreach (QObject *object, ui->commonMapBox->children() + ui->imageMapBox->children())
+	{
+		QLabel *label = qobject_cast<QLabel *>(object);
+		if (label)
+			maxWidth = qMax(maxWidth, label->sizeHint().width());
+	}
+	ui->commonMapTypeLabel->setMinimumWidth(maxWidth);	
+	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment());
+	//	qDebug() << qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment();
+	
 
-	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox, 0), this, &SettingsDialog::uploaderFunc);
+	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox,  0),   this, &SettingsDialog::uploaderFunc);
 							  makeInput("home_page/tag",              ui->homeTag);
 							  makeInput("home_page/forum_id",         ui->homeForumId);
-	homeUrl             .init(makeInput("home_page/method",           ui->homePageGroup, 0), this, &SettingsDialog::homeUrlFunc);
-	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, this, M(layoutOptionsChanged), -1), this, &SettingsDialog::captionsUnderFunc);
-	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,            this, M(layoutOptionsChanged), false));
-	numberImages        .init(makeInput("number_images",              ui->numberImages,          this, M(numberOptionsChanged), true));
-	startingNumber      .init(makeInput("starting_number",            ui->startingNumber,        this, M(numberOptionsChanged), 1), this, &SettingsDialog::startingNumberFunc);
-	addImageBorder      .init(makeInput("image_add_border",           ui->addImageBorder,        this, M(pixmapOptionsChanged), false));
-	addTBC              .init(makeInput("add_tbc",                    ui->addTBC, true));
-	imagesPerPost       .init(makeInput("images_per_post",            ui->imagesPerPost, 5));
-	postSpace			.init(makeInput("post_space",                 ui->postSpace, 60));
+	homeUrl             .init(makeInput("home_page/method",           ui->homePageGroup,         0),   this, &SettingsDialog::homeUrlFunc);
+	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, -1),  this, &SettingsDialog::captionsUnderFunc);
+	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,			 false));
+	numberImages        .init(makeInput("number_images",              ui->numberImages,	         true));
+	startingNumber      .init(makeInput("starting_number",            ui->startingNumber,        1),   this, &SettingsDialog::startingNumberFunc);
+	addImageBorder      .init(makeInput("image_add_border",           ui->addImageBorder,		 false));
+	addTBC              .init(makeInput("add_tbc",                    ui->addTBC,                true));
+	imagesPerPost       .init(makeInput("images_per_post",            ui->imagesPerPost,         5));
+	postSpace			.init(makeInput("post_space",                 ui->postSpace,             60));
 	extraTags           .init(makeInput("post_extra_tags",            ui->extraTags));
 
-	setImageWidth       .init(makeInput("image_size/set_width",       ui->imageScaleMethodGroup, this, M(pixmapOptionsChanged), -1), this, &SettingsDialog::setImageWidthFunc);
-	imageLength         .init(makeInput("image_size/lenght",          ui->lengthComboBox,        this, M(pixmapOptionsChanged), 2), this, &SettingsDialog::imageLengthFunc);
-	retainOriginalSize  .init(makeInput("image_size/retain_size",     ui->retainOriginalSize, false));
-	jpgQuality          .init(makeInput("image_size/jpg_quality",     ui->jpgQuality, 70));
-	dontScalePanoramas  .init(makeInput("image/dont_scale_panoramas", ui->dontScalePanoramas, this, M(pixmapOptionsChanged), true));
+	setImageWidth       .init(makeInput("image_size/set_width",       ui->imageScaleMethodGroup, -1),  this, &SettingsDialog::setImageWidthFunc);
+	imageLength         .init(makeInput("image_size/lenght",          ui->lengthComboBox,        2),   this, &SettingsDialog::imageLengthFunc);
+	retainOriginalSize  .init(makeInput("image_size/retain_size",     ui->retainOriginalSize,    false));
+	jpgQuality          .init(makeInput("image_size/jpg_quality",     ui->jpgQuality,            70));
+	dontScalePanoramas  .init(makeInput("image/dont_scale_panoramas", ui->dontScalePanoramas,    true));
 
-	addLogo             .init(makeInput("logo/add",                   ui->logoGroupBox, this, M(pixmapOptionsChanged), false));
-	logoPixmap			.init(makeInput("logo/data",				  &logo,            this, M(pixmapOptionsChanged)));
-	logoCorner			.init(makeInput("logo/position",              ui->logoPosition, this, M(pixmapOptionsChanged), 0), this, &SettingsDialog::logoCornerFunc);
-	logoMargin			.init(makeInput("logo/margin",                ui->logoMargin,   this, M(pixmapOptionsChanged), 0));
-	logoInvert			.init(makeInput("logo/invert",				  ui->logoInvert,   this, M(pixmapOptionsChanged), false));
+	addLogo             .init(makeInput("logo/add",                   ui->logoGroupBox,          false));
+	logoPixmap			.init(makeInput("logo/data",				  &logo));
+	logoCorner			.init(makeInput("logo/position",              ui->logoPosition,          0),   this, &SettingsDialog::logoCornerFunc);
+	logoMargin			.init(makeInput("logo/margin",                ui->logoMargin,            0));
+	logoInvert			.init(makeInput("logo/invert",				  ui->logoInvert,            false));
 
-	addCommonMap        .init(makeInput("common_map/add",	          ui->commonMapBox,     this, M(commonMapOptionsChanged), true));
-	commonMapType       .init(makeInput("common_map/type",            ui->commonMapType,    this, M(commonMapOptionsChanged), 2), this, &SettingsDialog::commonMapTypeFunc);
-	addImageMap         .init(makeInput("image_map/add",              ui->imageMapBox,      this, M(imageMapOptionsChanged), true));
-	imageMapType        .init(makeInput("image_map/type",             ui->imageMapType,     this, M(imageMapOptionsChanged), 2), this, &SettingsDialog::imageMapTypeFunc);
-	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,     this, M(imageMapOptionsChanged), Qt::black));
-	imageMapOpacity     .init(makeInput("image_map/opacity",          ui->imageMapOpacity,  this, M(imageMapOptionsChanged), 100), this, &SettingsDialog::imageMapOpacityFunc);
-	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,     this, M(imageMapOptionsChanged), 10));
-	imageMapCircle      .init(makeInput("image_map/circle",           ui->imageMapCircle,   this, M(imageMapOptionsChanged), false));
-	imageMapCorner      .init(makeInput("image_map/position",         ui->imageMapPosition, this, M(imageMapOptionsChanged), 2), this, &SettingsDialog::imageMapCornerFunc);
-	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,   this, M(imageMapOptionsChanged), 10));
-	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,     this, M(imageMapOptionsChanged), 150));
+	addCommonMap        .init(makeInput("common_map/add",	          ui->commonMapBox,          true));
+	addImageMap         .init(makeInput("image_map/add",              ui->imageMapBox,           true));
+	commonMapType       .init(makeInput("common_map/type",            ui->commonMapType,         2),   this, &SettingsDialog::commonMapTypeFunc);
+	imageMapType        .init(makeInput("image_map/type",             ui->imageMapType,          2),   this, &SettingsDialog::imageMapTypeFunc);
+	imageMapOpacity     .init(makeInput("image_map/opacity",          ui->imageMapOpacity,       100), this, &SettingsDialog::imageMapOpacityFunc);
+	imageMapCorner      .init(makeInput("image_map/position",         ui->imageMapPosition,      2),   this, &SettingsDialog::imageMapCornerFunc);
+	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,          Qt::red));
+	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,          10));
+	imageMapCircle      .init(makeInput("image_map/circle",           ui->imageMapCircle,        false));
+	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,        10));
+	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,          150));
 
-	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,         this, M(imageMapOptionsChanged), true));
-	useOverlayCommonMap .init(makeInput("overlays/use_on_common",	  ui->useOverlayCommonMap, this, M(commonMapOptionsChanged), true));
+	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,           true));
+	useOverlayCommonMap .init(makeInput("overlays/use_on_common",	  ui->useOverlayCommonMap,   true));
 	
-	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,  this, M(proxyOptionsChanged), false));
-	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost, this, M(proxyOptionsChanged)));
-	proxyPort			.init(makeInput("proxy/port",                 ui->proxyPort, this, M(proxyOptionsChanged), 8080));
-	proxyUser           .init(makeInput("proxy/user",                 ui->proxyUser, this, M(proxyOptionsChanged)));
-	proxyPass           .init(makeInput("proxy/pass",                 ui->proxyPass, this, M(proxyOptionsChanged)));
+	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,              false));
+	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost));
+	proxyPort			.init(makeInput("proxy/port",                 ui->proxyPort,			 8080));
+	proxyUser           .init(makeInput("proxy/user",                 ui->proxyUser));
+	proxyPass           .init(makeInput("proxy/pass",                 ui->proxyPass));
+	
+	connectMany(this, SLOT(proxyOptionsChanged()), &useProxy, &proxyHost, &proxyPort, &proxyUser, &proxyPass);
 
 	for (int i = 0; i < factory.uploaders.size(); ++i)
 		ui->uploadMethodComboBox->addItem(factory.uploaders[i]->name);
@@ -129,7 +144,8 @@ void SettingsDialog::setSelectedThread(QString threadId, int number)
 {
 	selectedThreadId = threadId;
 	selectedThreadImageNumber = number;
-	emit numberOptionsChanged();
+	startingNumber.changedRemotely();
+//	emit numberOptionsChanged();
 }
 
 bool SettingsDialog::isSelectedThread()                               const { return !selectedThreadId.isEmpty(); }
@@ -196,11 +212,15 @@ void SettingsDialog::reject()
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
 	
 	if (ui->imageMapType->currentText().isEmpty())
+	{
 		ui->imageMapType->setCurrentIndex(0);
+		save(imageMapType.getInput());
+	}
 	if (ui->commonMapType->currentText().isEmpty())
+	{
 		ui->commonMapType->setCurrentIndex(0);
-	save(imageMapType.getInput());
-	save(commonMapType.getInput());
+		save(commonMapType.getInput());
+	}
 	
 	QDialog::reject();
 }
@@ -273,5 +293,59 @@ void SettingsDialog::proxyOptionsChanged()
 		proxy.setPassword(proxyPass);
 	}
 	QNetworkProxy::setApplicationProxy(proxy);
-//	qDebug() << "proxy set";
+	qDebug() << "proxy set";
 }
+
+
+/*
+
+  
+	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox, 0), this, &SettingsDialog::uploaderFunc);
+							  makeInput("home_page/tag",              ui->homeTag);
+							  makeInput("home_page/forum_id",         ui->homeForumId);
+	homeUrl             .init(makeInput("home_page/method",           ui->homePageGroup, 0), this, &SettingsDialog::homeUrlFunc);
+	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, this, M(layoutOptionsChanged), -1), this, &SettingsDialog::captionsUnderFunc);
+	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,            this, M(layoutOptionsChanged), false));
+	numberImages        .init(makeInput("number_images",              ui->numberImages,          this, M(numberOptionsChanged), true));
+	startingNumber      .init(makeInput("starting_number",            ui->startingNumber,        this, M(numberOptionsChanged), 1), this, &SettingsDialog::startingNumberFunc);
+	addImageBorder      .init(makeInput("image_add_border",           ui->addImageBorder,        this, M(pixmapOptionsChanged), false));
+	addTBC              .init(makeInput("add_tbc",                    ui->addTBC, true));
+	imagesPerPost       .init(makeInput("images_per_post",            ui->imagesPerPost, 5));
+	postSpace			.init(makeInput("post_space",                 ui->postSpace, 60));
+	extraTags           .init(makeInput("post_extra_tags",            ui->extraTags));
+
+	setImageWidth       .init(makeInput("image_size/set_width",       ui->imageScaleMethodGroup, this, M(pixmapOptionsChanged), -1), this, &SettingsDialog::setImageWidthFunc);
+	imageLength         .init(makeInput("image_size/lenght",          ui->lengthComboBox,        this, M(pixmapOptionsChanged), 2), this, &SettingsDialog::imageLengthFunc);
+	retainOriginalSize  .init(makeInput("image_size/retain_size",     ui->retainOriginalSize, false));
+	jpgQuality          .init(makeInput("image_size/jpg_quality",     ui->jpgQuality, 70));
+	dontScalePanoramas  .init(makeInput("image/dont_scale_panoramas", ui->dontScalePanoramas, this, M(pixmapOptionsChanged), true));
+
+	addLogo             .init(makeInput("logo/add",                   ui->logoGroupBox, this, M(pixmapOptionsChanged), false));
+	logoPixmap			.init(makeInput("logo/data",				  &logo,            this, M(pixmapOptionsChanged)));
+	logoCorner			.init(makeInput("logo/position",              ui->logoPosition, this, M(pixmapOptionsChanged), 0), this, &SettingsDialog::logoCornerFunc);
+	logoMargin			.init(makeInput("logo/margin",                ui->logoMargin,   this, M(pixmapOptionsChanged), 0));
+	logoInvert			.init(makeInput("logo/invert",				  ui->logoInvert,   this, M(pixmapOptionsChanged), false));
+
+	addCommonMap        .init(makeInput("common_map/add",	          ui->commonMapBox,     this, M(commonMapOptionsChanged), true));
+	commonMapType       .init(makeInput("common_map/type",            ui->commonMapType,    this, M(commonMapOptionsChanged), 2), this, &SettingsDialog::commonMapTypeFunc);
+	addImageMap         .init(makeInput("image_map/add",              ui->imageMapBox,      this, M(imageMapOptionsChanged), true));
+	imageMapType        .init(makeInput("image_map/type",             ui->imageMapType,     this, M(imageMapOptionsChanged), 2), this, &SettingsDialog::imageMapTypeFunc);
+	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,     this, M(imageMapOptionsChanged), Qt::black));
+	imageMapOpacity     .init(makeInput("image_map/opacity",          ui->imageMapOpacity,  this, M(imageMapOptionsChanged), 100), this, &SettingsDialog::imageMapOpacityFunc);
+	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,     this, M(imageMapOptionsChanged), 10));
+	imageMapCircle      .init(makeInput("image_map/circle",           ui->imageMapCircle,   this, M(imageMapOptionsChanged), false));
+	imageMapCorner      .init(makeInput("image_map/position",         ui->imageMapPosition, this, M(imageMapOptionsChanged), 2), this, &SettingsDialog::imageMapCornerFunc);
+	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,   this, M(imageMapOptionsChanged), 10));
+	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,     this, M(imageMapOptionsChanged), 150));
+
+	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,         this, M(imageMapOptionsChanged), true));
+	useOverlayCommonMap .init(makeInput("overlays/use_on_common",	  ui->useOverlayCommonMap, this, M(commonMapOptionsChanged), true));
+	
+	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,  this, M(proxyOptionsChanged), false));
+	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost, this, M(proxyOptionsChanged)));
+	proxyPort			.init(makeInput("proxy/port",                 ui->proxyPort, this, M(proxyOptionsChanged), 8080));
+	proxyUser           .init(makeInput("proxy/user",                 ui->proxyUser, this, M(proxyOptionsChanged)));
+	proxyPass           .init(makeInput("proxy/pass",                 ui->proxyPass, this, M(proxyOptionsChanged)));
+
+	*/
+

@@ -62,11 +62,21 @@ ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *strea
 	}
 
 	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
-	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), gpsData, SLOT(downloadMap()));
-
-	connect(SETTINGS, SIGNAL(pixmapOptionsChanged()), this, SLOT(updatePixmap()));
-	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateNumber()));
-	connect(SETTINGS, SIGNAL(layoutOptionsChanged()), this, SLOT(updateLayout()));
+	
+//	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), gpsData, SLOT(downloadMap()));
+	
+	
+//	connect(SETTINGS, SIGNAL(pixmapOptionsChanged()), this, SLOT(updatePixmap()));
+	SETTINGS->connectMany(this, SLOT(updatePixmap()), &SETTINGS->addImageBorder, &SETTINGS->setImageWidth, &SETTINGS->imageLength,
+						  &SETTINGS->dontScalePanoramas, &SETTINGS->addLogo, &SETTINGS->logoPixmap, &SETTINGS->logoCorner,
+						  &SETTINGS->logoMargin, &SETTINGS->logoInvert);
+	
+//	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateNumber()));
+	SETTINGS->connectMany(this, SLOT(updateNumber()), &SETTINGS->numberImages, &SETTINGS->startingNumber);
+	
+//	connect(SETTINGS, SIGNAL(layoutOptionsChanged()), this, SLOT(updateLayout()));
+	SETTINGS->connectMany(this, SLOT(updateLayout()), &SETTINGS->captionsUnder, &SETTINGS->extraSpace);
+		
 
 	setFocusPolicy(Qt::NoFocus);
 
@@ -124,7 +134,8 @@ void ImageWidget::rotate(bool left)
 	pixmap.save(&buffer, "JPG");
 	buffer.close();
 	QPixmapCache::remove(filePath);
-	if (QFile::exists(filePath) && QMessageBox::question(this, tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+	if (QFile::exists(filePath) && QMessageBox::question(this, tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), 
+														 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 		pixmap.save(filePath, "JPG");
 	updatePixmap();
 }
@@ -198,7 +209,7 @@ QByteArray ImageWidget::scaledSourceFile() const
 	return byteArray;
 }
 
-void ImageWidget::updatePixmap(bool makeCache)
+void ImageWidget::updatePixmap()
 {
 	QDateTime time = QDateTime::currentDateTime();
 //	qDebug() << objectName() << "start";
@@ -212,7 +223,7 @@ void ImageWidget::updatePixmap(bool makeCache)
 		if (photo.isNull())
 			THROW(tr("Nie można utworzyć pixmapy ze zdjęcia. Pamięć wyczerpana?"));
 
-		Q_UNUSED(makeCache);
+//		Q_UNUSED(makeCache);
 //		if (makeCache)
 			QPixmapCache::insert(filePath, photo);
 //		qDebug() << "after makecache" << time.msecsTo(QDateTime::currentDateTime());
@@ -329,19 +340,19 @@ void ImageWidget::unselectEvent()
 void ImageWidget::setBrightness(int value)
 {
 	brightness = value;
-	updatePixmap(true);
+	updatePixmap();
 }
 
 void ImageWidget::setContrast(int value)
 {
 	contrast = value;
-	updatePixmap(true);
+	updatePixmap();
 }
 
 void ImageWidget::setGamma(int value)
 {
 	gamma = value;
-	updatePixmap(true);
+	updatePixmap();
 }
 
 int ImageWidget::getBrightness() const

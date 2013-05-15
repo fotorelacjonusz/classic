@@ -20,7 +20,7 @@ public:
 	virtual bool makeMap(GeoMap *map) = 0;
 	
 protected:
-	static const QSize maxSize;
+	QSize maxSize() const;
 	static const int margin;
 };
 

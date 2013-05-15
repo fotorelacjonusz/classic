@@ -19,8 +19,6 @@ public:
 	~GpsData();
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
-
-	const int *const number;
 	
 public slots:
 	void setPhotoSize(QSize size);
@@ -31,8 +29,9 @@ signals:
 	void mapReady(QImage map);
 
 private:
-	void initDownloaders();
+	void init();
 
+	const int *const number;
 	bool hasPosition, hasDirection, isCommon;
 	qreal latitude, longitude, direction;
 	QSize photoSize;

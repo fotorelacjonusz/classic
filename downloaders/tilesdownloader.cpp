@@ -47,16 +47,16 @@ void TilesDownloader::makeMapSlot(GeoMap *map)
 	if (!map->isCommon)
 		map->setImage(render(map->coords.first(), SETTINGS->imageMapZoom, map->size));
 	else if (map->isSingle)
-		map->setImage(render(map->distinctCoords.first(), 17, maxSize), QSize(0, 0));
+		map->setImage(render(map->distinctCoords.first(), 17, maxSize()), QSize(0, 0));
 	else
 	{
 		// calculate maximum integer zoom for which width and height are less than their maximums including margins
-		const int zx = qFloor(log2((maxSize.width()  - 2 * margin) / (tileSize * qAbs(lon2tilex(map->coordBox.right())  - lon2tilex(map->coordBox.left())))));
-		const int zy = qFloor(log2((maxSize.height() - 2 * margin) / (tileSize * qAbs(lat2tiley(map->coordBox.bottom()) - lat2tiley(map->coordBox.top())))));
+		const int zx = qFloor(log2((maxSize().width()  - 2 * margin) / (tileSize * qAbs(lon2tilex(map->coordBox.right())  - lon2tilex(map->coordBox.left())))));
+		const int zy = qFloor(log2((maxSize().height() - 2 * margin) / (tileSize * qAbs(lat2tiley(map->coordBox.bottom()) - lat2tiley(map->coordBox.top())))));
 		const int zoom = qMin(qMin(zx, zy), SETTINGS->currentOsmLayer(true).maxZoom);
 		const int width =  qAbs(lon2tilex(map->coordBox.right(),  zoom) - lon2tilex(map->coordBox.left(), zoom)) * tileSize;
 		const int height = qAbs(lat2tiley(map->coordBox.bottom(), zoom) - lat2tiley(map->coordBox.top(),  zoom)) * tileSize;		
-		map->setImage(render(map->coordBox.center(), zoom, maxSize), QSize(width, height));
+		map->setImage(render(map->coordBox.center(), zoom, maxSize()), QSize(width, height));
 	}
 }
 
