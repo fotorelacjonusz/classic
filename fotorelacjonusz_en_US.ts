@@ -132,27 +132,27 @@ p, li { white-space: pre-wrap; }
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="uploaders/ftpuploader.ui" line="23"/>
+        <location filename="uploaders/ftpuploader.ui" line="26"/>
         <source>Host</source>
         <translation>Host</translation>
     </message>
     <message>
-        <location filename="uploaders/ftpuploader.ui" line="36"/>
+        <location filename="uploaders/ftpuploader.ui" line="39"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message>
-        <location filename="uploaders/ftpuploader.ui" line="56"/>
+        <location filename="uploaders/ftpuploader.ui" line="59"/>
         <source>Login</source>
         <translation>Login</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/ftpuploader.ui" line="69"/>
+        <location filename="uploaders/ftpuploader.ui" line="72"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/ftpuploader.ui" line="79"/>
+        <location filename="uploaders/ftpuploader.ui" line="82"/>
         <source>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie jest słabe.
 Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</source>
         <oldsource>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie nie jest silne.
@@ -161,12 +161,12 @@ Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie
 If you don&apos;t want your password stored leave this field empty, application will ask you for your password next time you post photo report.</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/ftpuploader.ui" line="90"/>
+        <location filename="uploaders/ftpuploader.ui" line="93"/>
         <source>Adres do katalogu głównego</source>
         <translation>Top directory url</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/ftpuploader.ui" line="100"/>
+        <location filename="uploaders/ftpuploader.ui" line="103"/>
         <source>Adres do katalogu głównego ftp jest częścią linku tworzonego dla każdego zdjęcia.
 Źle wpisany spowoduje, że wszystkie adresy do zdjęć będą niewłaściwe.</source>
         <translation>Top directory url becomes part of a link to each image.
@@ -254,17 +254,17 @@ Wrong url will make all links corrupted.</translation>
         <translation>Form</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/imguranonyuploader.ui" line="54"/>
+        <location filename="uploaders/imguranonyuploader.ui" line="57"/>
         <source>Kredyty na użytkownika</source>
         <translation>User credits</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/imguranonyuploader.ui" line="64"/>
+        <location filename="uploaders/imguranonyuploader.ui" line="67"/>
         <source>Kredyty na aplikację</source>
         <translation>Application credits</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/imguranonyuploader.ui" line="37"/>
+        <location filename="uploaders/imguranonyuploader.ui" line="40"/>
         <source>Odnowienie kredytów</source>
         <translation>Credits reset</translation>
     </message>
@@ -348,7 +348,7 @@ Wrong url will make all links corrupted.</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="uploaders/iscodeuploader.ui" line="20"/>
+        <location filename="uploaders/iscodeuploader.ui" line="23"/>
         <source>Kod</source>
         <translation>Code</translation>
     </message>
@@ -361,17 +361,17 @@ Wrong url will make all links corrupted.</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="uploaders/isloginuploader.ui" line="23"/>
+        <location filename="uploaders/isloginuploader.ui" line="26"/>
         <source>Login</source>
         <translation>Login</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/isloginuploader.ui" line="36"/>
+        <location filename="uploaders/isloginuploader.ui" line="39"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/isloginuploader.ui" line="46"/>
+        <location filename="uploaders/isloginuploader.ui" line="49"/>
         <source>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie jest słabe.
 Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</source>
         <oldsource>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie nie jest silne.
@@ -380,7 +380,7 @@ Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie
 If you don&apos;t want your password stored leave this field empty, application will ask you for your password next time you post photo report.</translation>
     </message>
     <message utf8="true">
-        <location filename="uploaders/isloginuploader.ui" line="63"/>
+        <location filename="uploaders/isloginuploader.ui" line="66"/>
         <source>Login i hasło są do imageshack wysyłane czystym tekstem - jest to wymuszone przez api imageshack.</source>
         <translation>Login and password will be sent in plain text - this is imageshack api requirement.</translation>
     </message>
@@ -484,7 +484,7 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message utf8="true">
         <location filename="widgets/mainwindow.ui" line="272"/>
         <source>Usuń z fotorelacji</source>
-        <translation>Delete from photo report</translation>
+        <translation>Delete photo</translation>
     </message>
     <message>
         <location filename="widgets/mainwindow.ui" line="275"/>
@@ -638,22 +638,22 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Add OSM-format layer</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/osmlayerdialog.ui" line="20"/>
+        <location filename="settings/osmlayerdialog.ui" line="26"/>
         <source>Nazwa wyświetlana</source>
         <translation>Display name</translation>
     </message>
     <message>
-        <location filename="settings/osmlayerdialog.ui" line="33"/>
+        <location filename="settings/osmlayerdialog.ui" line="39"/>
         <source>Adres</source>
         <translation>Url</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/osmlayerdialog.ui" line="43"/>
+        <location filename="settings/osmlayerdialog.ui" line="49"/>
         <source>Adres musi zawierać zmienne ${x}, ${y}, ${z} oraz kończyć się na .png</source>
         <translation>Addres has to contain variables ${x}, ${y}, ${z} and it has to end with .png </translation>
     </message>
     <message>
-        <location filename="settings/osmlayerdialog.ui" line="50"/>
+        <location filename="settings/osmlayerdialog.ui" line="56"/>
         <source>Maksmalny zoom</source>
         <translation>Maximum zoom</translation>
     </message>
@@ -998,24 +998,24 @@ Error at:
         <translation>General</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="63"/>
+        <location filename="settings/settingsdialog.ui" line="57"/>
         <source>Liczba zdjęć na post</source>
         <translation>Photos per post</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="86"/>
+        <location filename="settings/settingsdialog.ui" line="80"/>
         <source>Odstęp między postami</source>
         <translation>Post time space</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="102"/>
+        <location filename="settings/settingsdialog.ui" line="96"/>
         <source>Jest to czas, przez który program czeka z wysłaniem kolejnego posta. Minimalna wartość to 30 sekund - wymuszona przez forum.
 Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejności przez forum.</source>
         <translation>Time for which application waits before sending next post. Minimum value is 30 seconds - required by the forum.
 Most probably short time favors post miximg by the forum.</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="106"/>
+        <location filename="settings/settingsdialog.ui" line="100"/>
         <source> s</source>
         <translation> s</translation>
     </message>
@@ -1028,38 +1028,38 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">Captions under photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="152"/>
+        <location filename="settings/settingsdialog.ui" line="146"/>
         <source>Numeruj zdjęcia</source>
         <translation>Number photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="159"/>
+        <location filename="settings/settingsdialog.ui" line="153"/>
         <source>Zaczynaj numerację od</source>
         <translation>Number photos from</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="179"/>
+        <location filename="settings/settingsdialog.ui" line="173"/>
         <source>Dodawaj &quot;Cdn ...&quot; na końcu postów</source>
         <translation>Add &quot;Tbc...&quot; at the end of a post</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="186"/>
+        <location filename="settings/settingsdialog.ui" line="180"/>
         <source>Dodatkowy odstęp pomiędzy opisem, a zdjęciem</source>
         <translation>Additional space between caption and photo</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="193"/>
+        <location filename="settings/settingsdialog.ui" line="187"/>
         <source>Dodawaj czarną ramkę wokół zdjęcia</source>
         <translation>Add black border around photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="200"/>
+        <location filename="settings/settingsdialog.ui" line="194"/>
         <source>Dodatkowe tagi w poście</source>
         <oldsource>Dodatkowe tagi w każdym poście</oldsource>
         <translation>Extra tags is posts</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="210"/>
+        <location filename="settings/settingsdialog.ui" line="204"/>
         <source>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</source>
         <translation>Input only opening tags, they will be automatically closed.</translation>
     </message>
@@ -1072,12 +1072,12 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">Leave empty to start with FPW</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="119"/>
+        <location filename="settings/settingsdialog.ui" line="113"/>
         <source>Podpis</source>
         <translation>Captions</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="129"/>
+        <location filename="settings/settingsdialog.ui" line="123"/>
         <source>nad zdjęciem</source>
         <translation>above photos</translation>
     </message>
@@ -1086,12 +1086,12 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">captionsPositionGroup</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="142"/>
+        <location filename="settings/settingsdialog.ui" line="136"/>
         <source>pod zdjęciem</source>
         <translation>under photos</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="226"/>
+        <location filename="settings/settingsdialog.ui" line="220"/>
         <source>forum o id</source>
         <translation>forum of id</translation>
     </message>
@@ -1100,48 +1100,47 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">homePageGroup</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="236"/>
+        <location filename="settings/settingsdialog.ui" line="230"/>
         <source>Np. dla Forum Polskich Wieżowców wpisz 45</source>
         <oldsource>Dla Forum Polskich Wieżowców wpisz 45</oldsource>
         <translation>E.g. for Forum Polskich Wieżowców put 45</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="255"/>
+        <location filename="settings/settingsdialog.ui" line="249"/>
         <source>tagu</source>
         <translation>threads tagged</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="271"/>
         <source>stronie głównej</source>
-        <translation>main page</translation>
+        <translation type="obsolete">main page</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="281"/>
+        <location filename="settings/settingsdialog.ui" line="275"/>
         <source>Otwórz przeglądarkę na</source>
         <translation>Start browser with</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="291"/>
+        <location filename="settings/settingsdialog.ui" line="285"/>
         <source>user CP</source>
         <translation>user CP</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="307"/>
+        <location filename="settings/settingsdialog.ui" line="301"/>
         <source>Rozmiar zdjęć</source>
         <translation>Image size</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="331"/>
+        <location filename="settings/settingsdialog.ui" line="319"/>
         <source>Zmień</source>
         <translation>Change</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="341"/>
+        <location filename="settings/settingsdialog.ui" line="329"/>
         <source>Zdjęcia pionowe będą większe od zdjęć poziomych (ta sama szerokość, większa wysokość)</source>
         <translation>Vertical photos will be bigger than horizontal photos (the same width, higher)</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="344"/>
+        <location filename="settings/settingsdialog.ui" line="332"/>
         <source>szerokość</source>
         <translation>width</translation>
     </message>
@@ -1149,209 +1148,214 @@ Most probably short time favors post miximg by the forum.</translation>
         <source>imageScaleMethodGroup</source>
         <translation type="obsolete">imageScaleMethodGroup</translation>
     </message>
+    <message>
+        <location filename="settings/settingsdialog.ui" line="265"/>
+        <source>skyscrapercity.com</source>
+        <translation>skyscrapercity.com</translation>
+    </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="357"/>
+        <location filename="settings/settingsdialog.ui" line="345"/>
         <source>Zdjęcia pionowe będą miały taką samą wielkość jak poziome</source>
         <translation>Vertical photos will be the same size as horizontal</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="360"/>
+        <location filename="settings/settingsdialog.ui" line="348"/>
         <source>większy z wymiarów</source>
         <translation>bigger dimension</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="370"/>
+        <location filename="settings/settingsdialog.ui" line="358"/>
         <source>na długość</source>
         <translation>to</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="384"/>
+        <location filename="settings/settingsdialog.ui" line="375"/>
         <source>640</source>
         <translation>640</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="389"/>
+        <location filename="settings/settingsdialog.ui" line="380"/>
         <source>800</source>
         <translation>800</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="394"/>
+        <location filename="settings/settingsdialog.ui" line="385"/>
         <source>1024</source>
         <translation>1024</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="399"/>
+        <location filename="settings/settingsdialog.ui" line="390"/>
         <source>1280</source>
         <translation>1280</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="404"/>
+        <location filename="settings/settingsdialog.ui" line="395"/>
         <source>1440</source>
         <translation>1440</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="409"/>
+        <location filename="settings/settingsdialog.ui" line="400"/>
         <source>1600</source>
         <translation>1600</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="414"/>
+        <location filename="settings/settingsdialog.ui" line="405"/>
         <source>1920</source>
         <translation>1920</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="422"/>
+        <location filename="settings/settingsdialog.ui" line="413"/>
         <source>Domyślnie zdjęcia zapisywane są po przeskalowaniu do mniejszych rozmiarów.</source>
         <translation>By default.photos are scaled down before saving.</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="425"/>
+        <location filename="settings/settingsdialog.ui" line="416"/>
         <source>Podczas zapisywania fotorelacji do pliku zachowuj oryginalny rozmiar zdjęć</source>
         <oldsource>Podczas zapisywania fotorelacji zachowuj oryginalny rozmiar zdjęć</oldsource>
         <translation>Keep photos&apos; original size when saving photo report to file</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="432"/>
+        <location filename="settings/settingsdialog.ui" line="423"/>
         <source>Jakość JPG</source>
         <translation>JPG quality</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="452"/>
+        <location filename="settings/settingsdialog.ui" line="443"/>
         <source>Nie skaluj zdjęć panoramicznych</source>
         <translation>Don&apos;t scale panoramas</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="463"/>
+        <location filename="settings/settingsdialog.ui" line="454"/>
         <source>Logo</source>
         <translation>Logo</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="469"/>
+        <location filename="settings/settingsdialog.ui" line="460"/>
         <source>Dodawaj logo</source>
         <oldsource>Dodawaj znak wodny</oldsource>
         <translation>Add logo</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="492"/>
+        <location filename="settings/settingsdialog.ui" line="477"/>
         <source>Brak pliku</source>
         <translation>No file</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="508"/>
+        <location filename="settings/settingsdialog.ui" line="493"/>
         <source>Wczytaj</source>
         <translation>Load</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="519"/>
+        <location filename="settings/settingsdialog.ui" line="504"/>
         <source>Umieść w rogu zdjęcia</source>
         <translation>Place in corner</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="536"/>
+        <location filename="settings/settingsdialog.ui" line="521"/>
         <source>Prawy dolny</source>
         <translation>Bottom right</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="545"/>
+        <location filename="settings/settingsdialog.ui" line="530"/>
         <source>Lewy dolny</source>
         <translation>Bottom left</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="554"/>
+        <location filename="settings/settingsdialog.ui" line="539"/>
         <source>Prawy górny</source>
         <translation>Top right</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="563"/>
+        <location filename="settings/settingsdialog.ui" line="548"/>
         <source>Lewy górny</source>
         <translation>Top left</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="575"/>
-        <location filename="settings/settingsdialog.ui" line="886"/>
+        <location filename="settings/settingsdialog.ui" line="560"/>
+        <location filename="settings/settingsdialog.ui" line="877"/>
         <source>Odstęp od krawędzi</source>
         <translation>Distance from the edge</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="591"/>
-        <location filename="settings/settingsdialog.ui" line="896"/>
-        <location filename="settings/settingsdialog.ui" line="916"/>
+        <location filename="settings/settingsdialog.ui" line="576"/>
+        <location filename="settings/settingsdialog.ui" line="887"/>
+        <location filename="settings/settingsdialog.ui" line="907"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="601"/>
+        <location filename="settings/settingsdialog.ui" line="586"/>
         <source>Odwróć kolory na ciemnym tle</source>
         <translation>Invert colors on dark background</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="614"/>
+        <location filename="settings/settingsdialog.ui" line="599"/>
         <source>Wysyłanie</source>
         <translation>Upload</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="628"/>
+        <location filename="settings/settingsdialog.ui" line="613"/>
         <source>Wybierz metodę wysyłania</source>
         <translation>Choose upload method</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="651"/>
+        <location filename="settings/settingsdialog.ui" line="636"/>
         <source>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt;</source>
         <oldsource>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: %2</oldsource>
         <translation>By using %1 you agree to comply with its regulations: &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="662"/>
+        <location filename="settings/settingsdialog.ui" line="647"/>
         <source>Mapy</source>
         <translation>Maps</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="674"/>
+        <location filename="settings/settingsdialog.ui" line="659"/>
         <source>Dodaj warstwę OSM</source>
         <translation>Add OSM layer</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="681"/>
+        <location filename="settings/settingsdialog.ui" line="666"/>
         <source>Usuń warstwę OSM</source>
         <translation>Remove OSM layer</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="691"/>
+        <location filename="settings/settingsdialog.ui" line="676"/>
         <source>Wspólna mapa dla wszystkich zdjęć</source>
         <translation>Common map for all photos</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="706"/>
-        <location filename="settings/settingsdialog.ui" line="768"/>
+        <location filename="settings/settingsdialog.ui" line="694"/>
+        <location filename="settings/settingsdialog.ui" line="759"/>
         <source>Rodzaj mapy</source>
         <translation>Map type</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="717"/>
-        <location filename="settings/settingsdialog.ui" line="779"/>
+        <location filename="settings/settingsdialog.ui" line="705"/>
+        <location filename="settings/settingsdialog.ui" line="770"/>
         <source>Google Drogi</source>
         <translation>Google Roadmap</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="722"/>
-        <location filename="settings/settingsdialog.ui" line="784"/>
+        <location filename="settings/settingsdialog.ui" line="710"/>
+        <location filename="settings/settingsdialog.ui" line="775"/>
         <source>Google Satelita</source>
         <translation>Google Satellite</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="727"/>
-        <location filename="settings/settingsdialog.ui" line="789"/>
+        <location filename="settings/settingsdialog.ui" line="715"/>
+        <location filename="settings/settingsdialog.ui" line="780"/>
         <source>Google Hybryda</source>
         <translation>Google Hybrid</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="732"/>
-        <location filename="settings/settingsdialog.ui" line="794"/>
+        <location filename="settings/settingsdialog.ui" line="720"/>
+        <location filename="settings/settingsdialog.ui" line="785"/>
         <source>Google Teren</source>
         <translation>Google Terrain</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="743"/>
+        <location filename="settings/settingsdialog.ui" line="731"/>
         <source>Źródło danych Google Maps: &lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</source>
         <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt; </translation>
     </message>
@@ -1376,134 +1380,134 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">Terrain</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="753"/>
+        <location filename="settings/settingsdialog.ui" line="741"/>
         <source>Mapa na każdym zdjęciu</source>
         <translation>Map on each photo</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="802"/>
+        <location filename="settings/settingsdialog.ui" line="793"/>
         <source>Kolor</source>
         <translation>Color</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="819"/>
+        <location filename="settings/settingsdialog.ui" line="810"/>
         <source>Nieprzeźroczystość</source>
         <translation>Opacity</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="839"/>
+        <location filename="settings/settingsdialog.ui" line="830"/>
         <source>Zbliżenie</source>
         <translation>Zoom</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="859"/>
+        <location filename="settings/settingsdialog.ui" line="850"/>
         <source>Kształt</source>
         <translation>Shape</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="876"/>
+        <location filename="settings/settingsdialog.ui" line="867"/>
         <source>Umieść na zdjęciu</source>
         <translation>Placement</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="936"/>
+        <location filename="settings/settingsdialog.ui" line="927"/>
         <source>Prawy dolny róg</source>
         <translation>Bottom right corner</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="945"/>
+        <location filename="settings/settingsdialog.ui" line="936"/>
         <source>Lewy dolny róg</source>
         <translation>Bottom left corner</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="954"/>
+        <location filename="settings/settingsdialog.ui" line="945"/>
         <source>Prawy górny róg</source>
         <translation>Top right corner</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="963"/>
+        <location filename="settings/settingsdialog.ui" line="954"/>
         <source>Lewy górny róg</source>
         <translation>Top left corner</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="972"/>
+        <location filename="settings/settingsdialog.ui" line="963"/>
         <source>Rozszerz z lewej</source>
         <translation>Expand to the left</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="981"/>
+        <location filename="settings/settingsdialog.ui" line="972"/>
         <source>Rozszerz z prawej</source>
         <translation>Expand to the right</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="990"/>
+        <location filename="settings/settingsdialog.ui" line="981"/>
         <source>Rozszerz u góry</source>
         <translation>Expand to the top</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="999"/>
+        <location filename="settings/settingsdialog.ui" line="990"/>
         <source>Rozszerz u dołu</source>
         <translation>Expand to the bottom</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1048"/>
+        <location filename="settings/settingsdialog.ui" line="1030"/>
         <source>Jeśli nie ma podkładu zawierającego pozycje wszystkich zdjęć użyte będzie źródło określone w zakładce mapy</source>
         <translation>If there is no overlay containing all photos&apos; positions, map source specyfied in the &quot;Maps&quot; tab will be used</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1051"/>
+        <location filename="settings/settingsdialog.ui" line="1033"/>
         <source>Używaj na mapie wspólnej</source>
         <translation>Use on common map</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1058"/>
+        <location filename="settings/settingsdialog.ui" line="1040"/>
         <source>Jeśli nie ma podkładu zawierającego pozycję zdjęcia użyte będzie źródło określone w zakładce mapy</source>
         <translation>If there is no overlay containing photo&apos;s position, map source specyfied in the &quot;Maps&quot; tab will be used</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1061"/>
+        <location filename="settings/settingsdialog.ui" line="1043"/>
         <source>Używaj na zdjęciach</source>
         <translation>Use on photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1087"/>
+        <location filename="settings/settingsdialog.ui" line="1069"/>
         <source>Przycisk prowadzi do folderu, w którym przechowywane są podkłady. 
 Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczne po ponownym uruchomieniu programu.</source>
         <translation>This button opens directory where overlays are stored.
 You can add and remove files from this directory, changes will become visible after application restart.</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1091"/>
+        <location filename="settings/settingsdialog.ui" line="1073"/>
         <source>Zarządzaj podkładami</source>
         <translation>Manage overlays</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="1102"/>
+        <location filename="settings/settingsdialog.ui" line="1084"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1108"/>
+        <location filename="settings/settingsdialog.ui" line="1090"/>
         <source>Używaj proxy</source>
         <translation>Use proxy</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="1143"/>
+        <location filename="settings/settingsdialog.ui" line="1128"/>
         <source>Host</source>
         <translation>Host</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="1153"/>
+        <location filename="settings/settingsdialog.ui" line="1138"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1163"/>
+        <location filename="settings/settingsdialog.ui" line="1148"/>
         <source>Użytkownik</source>
         <translation>Username</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1173"/>
+        <location filename="settings/settingsdialog.ui" line="1158"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
@@ -1512,12 +1516,12 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="obsolete">Round</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="906"/>
+        <location filename="settings/settingsdialog.ui" line="897"/>
         <source>Rozmiar</source>
         <translation>Size</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="869"/>
+        <location filename="settings/settingsdialog.ui" line="860"/>
         <source>okrągły</source>
         <translation>circular</translation>
     </message>
@@ -1527,8 +1531,8 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="obsolete">Data source: Google Maps https://developers.google.com/maps/documentation/staticmaps/</translation>
     </message>
     <message utf8="true">
+        <location filename="settings/settingsdialog.ui" line="1006"/>
         <location filename="settings/settingsdialog.ui" line="1015"/>
-        <location filename="settings/settingsdialog.ui" line="1024"/>
         <source>Podkłady mapowe</source>
         <oldsource>Własne mapy</oldsource>
         <translation>Overlays</translation>
@@ -1539,13 +1543,13 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="obsolete">Use overlays</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.cpp" line="231"/>
+        <location filename="settings/settingsdialog.cpp" line="246"/>
         <source>Wczytaj logo</source>
         <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.cpp" line="231"/>
+        <location filename="settings/settingsdialog.cpp" line="246"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>

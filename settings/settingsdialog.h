@@ -98,6 +98,8 @@ protected:
 	inline qreal imageMapOpacityFunc() const;
 	inline Corner imageMapCornerFunc() const;
 	QUrl homeUrlFunc() const;
+	
+	void fixLengthComboBox();
 
 protected slots:
 	void accept();
@@ -110,7 +112,7 @@ private slots:
 	void on_imageMapPosition_currentIndexChanged(int index);
 	
 	void proxyOptionsChanged();
-		
+
 private:
 	Ui::SettingsDialog *ui;
 	AbstractUploader *m_uploader;

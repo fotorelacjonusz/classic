@@ -164,12 +164,21 @@ template<>void SettingsManager::Input<QCheckBox>::fromVariant(QVariant variant)
 
 template<>QVariant SettingsManager::Input<QComboBox>::toVariant() const
 {
-	return object->currentIndex();
+	if (object->isEditable())
+		return object->currentText();
+	else 
+		return object->currentIndex();
 }
 
 template<>void SettingsManager::Input<QComboBox>::fromVariant(QVariant variant)
 {
-	object->setCurrentIndex(variant.toInt());
+	int i = variant.toInt();
+	if (object->isEditable() && object->lineEdit())
+		object->lineEdit()->setText(variant.toString());
+	else if (0 <= i && i < object->count())
+		object->setCurrentIndex(i);
+	else
+		object->setCurrentIndex(0);
 }
 
 template<>QVariant SettingsManager::Input<QDateEdit>::toVariant() const

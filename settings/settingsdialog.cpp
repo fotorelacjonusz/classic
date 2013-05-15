@@ -10,6 +10,7 @@
 #include <QFontDialog>
 #include <QTimer>
 #include <QMessageBox>
+#include <QIntValidator>
 
 #define ENUM_STR(Enum, Var) QString(metaObject()->enumerator(metaObject()->indexOfEnumerator(#Enum)).valueToKey(Var))
 #define M(x) #x
@@ -30,6 +31,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui->jpgQuality->setFormat("%1 %");
 	ui->imageMapOpacity->setFormat("%1 %");
 	ui->homePageGroup->setId(ui->homeMainRadio, 0);
+	ui->lengthComboBox->setValidator(new QIntValidator(300, 1920, this));
 	tosFormat = ui->tosLabel->text();
 	connect(ui->openFolderButton, SIGNAL(clicked()), ui->overlayList, SLOT(openFolder()));
 	osmDialog.init(ui);
@@ -51,7 +53,8 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 			maxWidth = qMax(maxWidth, label->sizeHint().width());
 	}
 	ui->commonMapTypeLabel->setMinimumWidth(maxWidth);	
-	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment());
+	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment() | 
+										 (ui->imageMapTypeLabel->alignment() & 0x00f0));
 	
 
 	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox,  0),   this, &SettingsDialog::uploaderFunc);
@@ -194,8 +197,17 @@ QUrl SettingsDialog::homeUrlFunc() const
 	return url;
 }
 
+void SettingsDialog::fixLengthComboBox()
+{
+	int min = qobject_cast<const QIntValidator *>(ui->lengthComboBox->validator())->bottom();
+	if (ui->lengthComboBox->currentText().toInt() < min)
+		ui->lengthComboBox->setCurrentIndex(0);
+}
+
 void SettingsDialog::accept()
 {
+	fixLengthComboBox();
+	
 	if (ui->imageMapType->currentText().isEmpty())
 		ui->imageMapType->setCurrentIndex(0);
 	if (ui->commonMapType->currentText().isEmpty())
@@ -208,6 +220,9 @@ void SettingsDialog::accept()
 void SettingsDialog::reject()
 {
 	load();
+	
+	fixLengthComboBox();
+	
 	ui->logoLabel->setPixmap(logo);
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
 	

@@ -14,6 +14,12 @@
    <string>Dodaj warstwę w formacie OSM</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
+   <property name="horizontalSpacing">
+    <number>5</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
    <item row="0" column="0">
     <widget class="QLabel" name="nameLabel">
      <property name="text">

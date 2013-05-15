@@ -85,7 +85,7 @@ void ArrowWidget::paintEvent(QPaintEvent *event)
 	p.setRenderHint(QPainter::Antialiasing);
 
 	QPen pen(color, 2, Qt::SolidLine, Qt::RoundCap, Qt::MiterJoin);
-//	p.setBrush(Qt::red);
+	p.setBrush(color);
 	p.setPen(pen);
 	
 	qreal angle = atan2(end.y() - start.y(), end.x() - start.x());
@@ -101,9 +101,10 @@ void ArrowWidget::paintEvent(QPaintEvent *event)
 //		p.drawLine(lineEdit->geometry().bottomLeft() + QPoint(0, 3), lineEdit->geometry().bottomRight() + QPoint(0, 3));
 //	p.drawLine(mapFromParent(start + QPoint(0, 2)), mapFromParent(end));
 	polygon << mapFromParent(start + QPoint(0, 2)) << arrowTip;
-	polygon << arrowTip - QPointF(r * cos(a1), r * sin(a1)) << arrowTip - QPointF(r * cos(a2), r * sin(a2)) << arrowTip;
 	p.drawPolyline(polygon);
-//	p.drawPolygon(polygon);
+	polygon.clear();
+	polygon << arrowTip - QPointF(r * cos(a1), r * sin(a1)) << arrowTip - QPointF(r * cos(a2), r * sin(a2)) << arrowTip;
+	p.drawPolygon(polygon);
 }
 
 void ArrowWidget::updateGeometries()

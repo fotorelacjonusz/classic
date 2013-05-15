@@ -213,46 +213,46 @@ private:
 QByteArray operator^(const QByteArray &a1, const QByteArray &a2);
 
 template<>QVariant SettingsManager::Input<QButtonGroup>::toVariant() const;
-template<>void SettingsManager::Input<QButtonGroup>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QButtonGroup>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QCalendarWidget>::toVariant() const;
-template<>void SettingsManager::Input<QCalendarWidget>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QCalendarWidget>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QCheckBox>::toVariant() const;
-template<>void SettingsManager::Input<QCheckBox>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QCheckBox>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QComboBox>::toVariant() const;
-template<>void SettingsManager::Input<QComboBox>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QComboBox>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QDateEdit>::toVariant() const;
-template<>void SettingsManager::Input<QDateEdit>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QDateEdit>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QDateTimeEdit>::toVariant() const;
-template<>void SettingsManager::Input<QDateTimeEdit>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QDateTimeEdit>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QDial>::toVariant() const;
-template<>void SettingsManager::Input<QDial>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QDial>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QDoubleSpinBox>::toVariant() const;
-template<>void SettingsManager::Input<QDoubleSpinBox>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QDoubleSpinBox>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QFontComboBox>::toVariant() const;
-template<>void SettingsManager::Input<QFontComboBox>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QFontComboBox>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QGroupBox>::toVariant() const;
-template<>void SettingsManager::Input<QGroupBox>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QGroupBox>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QLineEdit>::toVariant() const;
-template<>void SettingsManager::Input<QLineEdit>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QLineEdit>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QPlainTextEdit>::toVariant() const;
-template<>void SettingsManager::Input<QPlainTextEdit>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QPlainTextEdit>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QSlider>::toVariant() const;
-template<>void SettingsManager::Input<QSlider>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QSlider>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QSpinBox>::toVariant() const;
-template<>void SettingsManager::Input<QSpinBox>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QSpinBox>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QTextEdit>::toVariant() const;
-template<>void SettingsManager::Input<QTextEdit>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QTextEdit>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QTimeEdit>::toVariant() const;
-template<>void SettingsManager::Input<QTimeEdit>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QTimeEdit>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QWidget>::toVariant() const;
-template<>void SettingsManager::Input<QWidget>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QWidget>::fromVariant(QVariant variant);
 template<>QVariant SettingsManager::Input<QMainWindow>::toVariant() const;
-template<>void SettingsManager::Input<QMainWindow>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Input<QMainWindow>::fromVariant(QVariant variant);
 
 
 /*
 template<>QVariant SettingsManager::Field<>::toVariant() const;
-template<>void SettingsManager::Field<>::fromVariant(QVariant variant);
+template<>void     SettingsManager::Field<>::fromVariant(QVariant variant);
 */
 
 

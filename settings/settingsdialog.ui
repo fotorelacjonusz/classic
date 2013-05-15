@@ -48,11 +48,8 @@
             <property name="fieldGrowthPolicy">
              <enum>QFormLayout::ExpandingFieldsGrow</enum>
             </property>
-            <property name="horizontalSpacing">
-             <number>5</number>
-            </property>
             <property name="leftMargin">
-             <number>10</number>
+             <number>6</number>
             </property>
             <item row="0" column="0">
              <widget class="QLabel" name="imagesPerPostLabel">
@@ -265,7 +262,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <item row="2" column="1">
              <widget class="QRadioButton" name="homeMainRadio">
               <property name="text">
-               <string>stronie głównej</string>
+               <string>skyscrapercity.com</string>
               </property>
               <attribute name="buttonGroup">
                <string notr="true">homePageGroup</string>
@@ -313,11 +310,8 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
           </property>
-          <property name="horizontalSpacing">
-           <number>5</number>
-          </property>
           <property name="leftMargin">
-           <number>10</number>
+           <number>6</number>
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="setLabel">
@@ -370,6 +364,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           </item>
           <item row="2" column="1">
            <widget class="QComboBox" name="lengthComboBox">
+            <property name="editable">
+             <bool>true</bool>
+            </property>
             <property name="currentIndex">
              <number>3</number>
             </property>
@@ -471,11 +468,8 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <property name="fieldGrowthPolicy">
              <enum>QFormLayout::ExpandingFieldsGrow</enum>
             </property>
-            <property name="horizontalSpacing">
-             <number>5</number>
-            </property>
             <property name="leftMargin">
-             <number>10</number>
+             <number>6</number>
             </property>
             <item row="1" column="0">
              <widget class="QLabel" name="logoLabel">
@@ -610,6 +604,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
          <property name="fieldGrowthPolicy">
           <enum>QFormLayout::ExpandingFieldsGrow</enum>
          </property>
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
          <item row="0" column="0">
           <widget class="QLabel" name="uploadMethodLabel">
            <property name="text">
@@ -685,6 +682,12 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
           </property>
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item row="0" column="0">
            <widget class="QLabel" name="commonMapTypeLabel">
             <property name="text">
@@ -743,6 +746,12 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
          <layout class="QFormLayout" name="formLayout_4">
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
+          </property>
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="imageMapTypeLabel">
@@ -1012,17 +1021,8 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <item>
            <widget class="QWidget" name="widget_2" native="true">
             <layout class="QFormLayout" name="formLayout_8">
-             <property name="leftMargin">
-              <number>1</number>
-             </property>
-             <property name="topMargin">
+             <property name="margin">
               <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>1</number>
-             </property>
-             <property name="bottomMargin">
-              <number>1</number>
              </property>
              <item row="1" column="1">
               <widget class="QCheckBox" name="useOverlayCommonMap">
@@ -1096,6 +1096,9 @@ Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczn
           <bool>false</bool>
          </property>
          <layout class="QFormLayout" name="formLayout_7">
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
           <item row="1" column="1">
            <widget class="QLineEdit" name="proxyHost"/>
           </item>
