@@ -6,6 +6,8 @@
 
 class SettingsDialog;
 class AbstractMapDownloader;
+class ExifValue;
+class ExifImageHeader;
 
 class GpsData : public QObject
 {
@@ -13,12 +15,13 @@ class GpsData : public QObject
 	typedef QHash<GpsData *, QPointF> Points;
 
 public:
-	GpsData(const int *const number, QString filePath);
+	GpsData(QIODevice *image, const int *const number);
 	GpsData();
-	GpsData(const int *const number, QDataStream &stream);
 	~GpsData();
+	void saveExif(QIODevice *device) const;
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
+	static qreal dmsToReal(const ExifValue &dms, const ExifValue &ref);
 	
 public slots:
 	void setPhotoSize(QSize size);
@@ -29,10 +32,9 @@ signals:
 	void mapReady(QImage map);
 
 private:
-	void init();
-
 	const int *const number;
-	bool hasPosition, hasDirection, isCommon;
+	bool hasPosition, hasDirection;
+	const bool isCommon;
 	qreal latitude, longitude, direction;
 	QSize photoSize;
 	QSize mapSize;
@@ -41,6 +43,7 @@ private:
 	static QString binName;
 	
 	AbstractMapDownloader *googleDownloader, *tilesDownloader;
+	ExifImageHeader *exifHeader;
 };
 
 #endif // GPSDATA_H

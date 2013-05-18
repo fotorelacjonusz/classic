@@ -3,6 +3,7 @@
 #include "geomap.h"
 #include "googlemapsdownloader.h"
 #include "tilesdownloader.h"
+#include "myexif/exifimageheader.h"
 
 #include <QFile>
 #include <QUrl>
@@ -16,65 +17,38 @@
 
 #include <qmath.h>
 
-#ifdef Q_WS_WIN
-QString GpsData::binName = "exif.exe";
-//#define binName "exif.exe"
-#else
-QString GpsData::binName = "./exif";
-#endif
-
 GpsData::Points GpsData::allCoords;
 
-GpsData::GpsData(const int *const number, QString filePath):
+GpsData::GpsData(QIODevice *image, const int *const number):
 	number(number),
 	hasPosition(false),
 	hasDirection(false),
-	isCommon(false)
+	isCommon(false),
+	googleDownloader(new GoogleMapsDownloader()),
+	tilesDownloader(new TilesDownloader()),
+	exifHeader(new ExifImageHeader())
 {
-	init();
-	if (!QFile::exists(filePath))
+	if (!exifHeader->loadFromJpeg(image))
 		return;
-
-#ifndef Q_WS_WIN
-	if (!QFile::exists(binName))
-		binName = "/usr/bin/fotorelacjonusz-exif";
-#endif
-
-	if (!QFile::exists(binName))
-	{
-		QMessageBox::critical(0, tr("Błąd"), tr("Brak pliku %1. Ponowna instalacja aplikacji może rozwiązać problem.").arg(binName));
-		qApp->quit();
-		return;
-	}
-
-	QProcess process;
-	QStringList arguments;
-	arguments << filePath;
-	process.start(binName, arguments);
-	process.waitForFinished(5000);
-	QString output = process.readAll();
-
-	if (process.exitCode() != 0 || process.exitStatus() != QProcess::NormalExit)
-	{
-		if (!output.isEmpty())
-			QMessageBox::critical(0, tr("Błąd"), output);
-		return;
-	}
-
-	QStringList list = output.split(",");
-	if (list.size() >= 2)
+	
+	if (exifHeader->contains(ExifImageHeader::GpsLatitude)  && exifHeader->contains(ExifImageHeader::GpsLatitudeRef) &&
+		exifHeader->contains(ExifImageHeader::GpsLongitude) && exifHeader->contains(ExifImageHeader::GpsLongitudeRef))
 	{
 		hasPosition = true;
-		latitude = list.takeFirst().toDouble();
-		longitude = list.takeFirst().toDouble();
+		latitude =  dmsToReal(exifHeader->value(ExifImageHeader::GpsLatitude),  exifHeader->value(ExifImageHeader::GpsLatitudeRef));
+		longitude = dmsToReal(exifHeader->value(ExifImageHeader::GpsLongitude), exifHeader->value(ExifImageHeader::GpsLongitudeRef));
 		allCoords[this] = QPointF(longitude, latitude);
-
-		if (list.size() >= 1)
-		{
-			hasDirection = true;
-			direction = list.takeFirst().toDouble();
-		}
 	}
+	if (exifHeader->contains(ExifImageHeader::GpsImageDirection) && exifHeader->contains(ExifImageHeader::GpsImageDirectionRef))
+	{
+		hasDirection = true;
+		direction = exifHeader->value(ExifImageHeader::GpsImageDirection).toRational().toReal();
+	}
+	exifHeader->setValue(ExifImageHeader::Software, qApp->applicationName());
+
+	SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->addImageMap, &SETTINGS->imageMapType, &SETTINGS->imageMapColor,
+						  &SETTINGS->imageMapOpacity, &SETTINGS->imageMapZoom, &SETTINGS->imageMapCircle, &SETTINGS->imageMapCorner,
+						  &SETTINGS->imageMapMargin, &SETTINGS->imageMapSize, &SETTINGS->useOverlays);
 
 	//	hasDirection = true;
 	//	direction = 45;
@@ -84,33 +58,14 @@ GpsData::GpsData():
 	number(0),
 	hasPosition(false),
 	hasDirection(false),
-	isCommon(true)
+	isCommon(true),
+	googleDownloader(new GoogleMapsDownloader()),
+	tilesDownloader(new TilesDownloader()),
+	exifHeader(new ExifImageHeader())
 {
-	init();
-}
-
-GpsData::GpsData(const int *const number, QDataStream &stream):
-	number(number),
-	isCommon(false)
-{
-	init();
-	stream >> hasPosition >> hasDirection >> latitude >> longitude >> direction;
-	if (hasPosition)
-		allCoords[this] = QPointF(longitude, latitude);
-}
-
-void GpsData::init()
-{
-	googleDownloader = new GoogleMapsDownloader();
-	tilesDownloader = new TilesDownloader();
-	if (isCommon)
-		SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->numberImages, &SETTINGS->startingNumber, &SETTINGS->addCommonMap, 
-							  &SETTINGS->commonMapType, &SETTINGS->imageMapColor, &SETTINGS->useOverlayCommonMap, &SETTINGS->imageLength,
-							  &SETTINGS->imageMapCorner, &SETTINGS->imageMapSize);
-	else
-		SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->addImageMap, &SETTINGS->imageMapType, &SETTINGS->imageMapColor,
-							  &SETTINGS->imageMapOpacity, &SETTINGS->imageMapZoom, &SETTINGS->imageMapCircle, &SETTINGS->imageMapCorner,
-							  &SETTINGS->imageMapMargin, &SETTINGS->imageMapSize, &SETTINGS->useOverlays);
+	SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->numberImages, &SETTINGS->startingNumber, &SETTINGS->addCommonMap, 
+						  &SETTINGS->commonMapType, &SETTINGS->imageMapColor, &SETTINGS->useOverlayCommonMap, &SETTINGS->imageLength,
+						  &SETTINGS->imageMapCorner, &SETTINGS->imageMapSize);
 }
 
 GpsData::~GpsData()
@@ -118,6 +73,12 @@ GpsData::~GpsData()
 	allCoords.remove(this);
 	delete googleDownloader;
 	delete tilesDownloader;
+	delete exifHeader;
+}
+
+void GpsData::saveExif(QIODevice *device) const
+{
+	exifHeader->saveToJpeg(device);
 }
 
 QString GpsData::toString() const
@@ -128,6 +89,13 @@ QString GpsData::toString() const
 	if (hasDirection)
 		res += QString(" @%1").arg(direction);
 	return res;
+}
+
+qreal GpsData::dmsToReal(const ExifValue &dms, const ExifValue &ref)
+{
+	char c = ref.toString().toAscii()[0];
+	const QVector<ExifURational> vector = dms.toRationalVector();
+	return (vector[0].toReal() + vector[1].toReal() / 60 + vector[2].toReal() / 3600) * ((c == 'S' || c == 'W') ? -1 : 1);
 }
 
 void GpsData::serialize(QDataStream &stream) const

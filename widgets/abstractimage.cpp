@@ -1,10 +1,11 @@
 #include "abstractimage.h"
+#include <QDebug>
 
 AbstractImage::~AbstractImage()
 {
 }
 
-void AbstractImage::serialize(QDataStream &stream) const
+void AbstractImage::serialize(QDataStream &stream)
 {
 	Q_UNUSED(stream);
 }

@@ -52,7 +52,13 @@ SOURCES += main.cpp \
     uploaders/imgurloginuploader.cpp \
     uploaders/imguranonyuploader.cpp \
     uploaders/ftpuploader.cpp \
-    uploaders/abstractuploader.cpp
+    uploaders/abstractuploader.cpp \
+    myexif/exifimageheader.cpp \
+    myexif/exifrational.cpp \
+    myexif/exifvalue.cpp \
+    myexif/exififd.cpp \
+    myexif/exifmarker.cpp \
+    myexif/exifexception.cpp
 
 HEADERS += \
     networkcookiejar.h \
@@ -94,7 +100,13 @@ HEADERS += \
     uploaders/imgurloginuploader.h \
     uploaders/imguranonyuploader.h \
     uploaders/ftpuploader.h \
-    uploaders/abstractuploader.h
+    uploaders/abstractuploader.h \
+    myexif/exifrational.h \
+    myexif/exififd.h \
+    myexif/exifvalue.h \
+    myexif/exifmarker.h \
+    myexif/exifimageheader.h \
+    myexif/exifexception.h
 
 FORMS += \
     widgets/replydialog.ui \

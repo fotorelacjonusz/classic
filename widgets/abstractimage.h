@@ -16,7 +16,7 @@ public:
 
 	QString getUrl() const;
 	virtual int getNumber() const;
-	virtual void serialize(QDataStream &stream) const;
+	virtual void serialize(QDataStream &stream);
 
 	void prepend(QString text);
 	void append(QString text);

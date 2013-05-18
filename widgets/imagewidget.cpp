@@ -44,8 +44,6 @@ ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *strea
 		QString caption;
 		*stream >> filePath >> num >> caption >> sourceFile >> *imageLabel;
 		captionEdit->setText(caption);
-
-		gpsData = new GpsData(&num, *stream);
 	}
 	else
 	{
@@ -57,26 +55,21 @@ ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *strea
 		file.close();
 		if (sourceFile.size() != ba)
 			THROW(tr("Nie można załadować zdjęcia do pamięci. Pamięć wyczerpana?"));
-
-		gpsData = new GpsData(&num, filePath);
 	}
+	
+	QBuffer buff(&sourceFile);
+	buff.open(QIODevice::ReadOnly);
+	gpsData = new GpsData(&buff, &num);
+	buff.close();
 
 	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
 	
-//	connect(SETTINGS, SIGNAL(imageMapOptionsChanged()), gpsData, SLOT(downloadMap()));
-	
-	
-//	connect(SETTINGS, SIGNAL(pixmapOptionsChanged()), this, SLOT(updatePixmap()));
 	SETTINGS->connectMany(this, SLOT(updatePixmap()), &SETTINGS->addImageBorder, &SETTINGS->setImageWidth, &SETTINGS->imageLength,
 						  &SETTINGS->dontScalePanoramas, &SETTINGS->addLogo, &SETTINGS->logoPixmap, &SETTINGS->logoCorner,
 						  &SETTINGS->logoMargin, &SETTINGS->logoInvert);
 	
-//	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateNumber()));
 	SETTINGS->connectMany(this, SLOT(updateNumber()), &SETTINGS->numberImages, &SETTINGS->startingNumber);
-	
-//	connect(SETTINGS, SIGNAL(layoutOptionsChanged()), this, SLOT(updateLayout()));
 	SETTINGS->connectMany(this, SLOT(updateLayout()), &SETTINGS->captionsUnder, &SETTINGS->extraSpace);
-		
 
 	setFocusPolicy(Qt::NoFocus);
 
@@ -99,10 +92,14 @@ ImageWidget::~ImageWidget()
 	delete gpsData;
 }
 
-void ImageWidget::serialize(QDataStream &stream) const
+void ImageWidget::serialize(QDataStream &stream)
 {
-	stream << filePath << num << captionEdit->text() << (SETTINGS->retainOriginalSize ? sourceFile : scaledSourceFile()) << *imageLabel;
-	gpsData->serialize(stream);
+	QBuffer buffer(&sourceFile);
+	buffer.open(QIODevice::ReadWrite);
+	gpsData->saveExif(&buffer);
+	buffer.close();
+	
+	stream << filePath << num << captionEdit->text() << sourceFile << *imageLabel;
 }
 
 int ImageWidget::getNumber() const
@@ -149,8 +146,10 @@ bool ImageWidget::upload(AbstractUploader *uploader)
 	QPixmap pixmap = imageLabel->mergedPixmap();
 
 	QBuffer buffer;
-	buffer.open(QIODevice::WriteOnly);
+	buffer.open(QIODevice::ReadWrite);
 	pixmap.save(&buffer, "JPG", SETTINGS->jpgQuality);
+	buffer.seek(0);
+	gpsData->saveExif(&buffer);
 	buffer.close();
 
 	url = uploader->uploadImage(filePath, &buffer);
@@ -172,8 +171,9 @@ QString ImageWidget::toForumCode() const
 QPixmap ImageWidget::sourcePixmap() const
 {
 	QPixmap pixmap;
-	if (!pixmap.loadFromData(sourceFile))
-		return QPixmap();
+	Q_ASSERT(pixmap.loadFromData(sourceFile));
+//	if (!pixmap.loadFromData(sourceFile))
+//		return QPixmap();
 
 	return pixmap;
 }
@@ -327,15 +327,6 @@ void ImageWidget::updateLayout()
 
 	gridLayout->setVerticalSpacing(SETTINGS->extraSpace ? 20 : 1);
 }
-
-/*
-void ImageWidget::unselectEvent()
-{
-//	setStyleSheet(QString("QWidget#%1 { }").arg(objectName()));
-	
-	QPixmapCache::remove(filePath);
-}
-*/
 
 void ImageWidget::setBrightness(int value)
 {

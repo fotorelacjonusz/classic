@@ -25,7 +25,7 @@ class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage
 public:
 	explicit ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream = 0) throw (Exception);
 	~ImageWidget();
-	void serialize(QDataStream &stream) const;
+	void serialize(QDataStream &stream);
 	int getNumber() const;
 	QString getFileName() const;
 	QWidget *getFirstWidget() const;

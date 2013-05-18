@@ -6,7 +6,7 @@
 #include "arrowwidget.h"
 #include "replydialog.h"
 #include "downloaders/gpsdata.h"
-#include "exif/license.h"
+#include "license.h"
 
 #include <QUrl>
 #include <QDebug>
