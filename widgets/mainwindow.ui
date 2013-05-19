@@ -49,7 +49,7 @@
          <number>1</number>
         </property>
         <item alignment="Qt::AlignTop">
-         <widget class="QPlainTextEdit" name="header">
+         <widget class="PlainTextEdit" name="header">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -87,7 +87,7 @@
          </widget>
         </item>
         <item alignment="Qt::AlignBottom">
-         <widget class="QPlainTextEdit" name="footer">
+         <widget class="PlainTextEdit" name="footer">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -386,6 +386,11 @@
    <class>ImageLabel</class>
    <extends>QLabel</extends>
    <header>widgets/imagelabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PlainTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>widgets/lineedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

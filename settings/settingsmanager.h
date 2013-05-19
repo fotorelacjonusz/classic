@@ -4,6 +4,7 @@
 #include <QString>
 #include <QVariant>
 #include <QSet>
+#include <QPointer>
 
 class QSettings;
 class QButtonGroup;
@@ -27,7 +28,7 @@ class QMainWindow;
 
 class SettingsManager
 {
-	typedef QPair<QObject *, QByteArray> Listener;
+	typedef QPair<QPointer<QObject>, QByteArray> Listener;
 	
 	class AbstractInput
 	{

@@ -23,8 +23,14 @@
 #include <QMainWindow>
 #include <QDebug>
 
+uint qHash(const QPointer<QObject> &pointer)
+{
+	return qHash(pointer.data());
+}
+
 SettingsManager::AbstractInput::AbstractInput(QString name, QVariant defaultVal): //QObject *receiver, const char *member, 
 	key(name), defaultVal(defaultVal), //receiver(receiver), member(member), 
+	wasChanged(false),
 	pasKey(QByteArray::fromHex(PASSWORD_RAW_KEY))
 {
 }
@@ -39,7 +45,7 @@ void SettingsManager::AbstractInput::connect(QObject *receiver, const char *memb
 	string.remove(QRegExp("^[0-9]+"));
 	string.remove(QRegExp("\\(\\)$"));
 	
-	listeners.insert(qMakePair(receiver, string.toAscii()));
+	listeners.insert(qMakePair(QPointer<QObject>(receiver), string.toAscii()));
 }
 
 void SettingsManager::AbstractInput::changedRemotely() const
@@ -119,7 +125,8 @@ void SettingsManager::save(AbstractInput *singleInput)
 	foreach (Listener listener, listeners)
 //	{
 //		qDebug() << "calling" << listener.first->metaObject()->className() << "::" << listener.second;
-		QMetaObject::invokeMethod(listener.first, listener.second.constData());
+		if (listener.first)
+			QMetaObject::invokeMethod(listener.first, listener.second.constData());
 //	}
 }
 

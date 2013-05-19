@@ -50,6 +50,7 @@ private slots:
 	void on_action_choose_color_triggered();
 	void on_action_remove_arrow_triggered();
 
+	void unselectWidgets();
 	void imageWidgetSelected(QWidget *widget);
 	void arrowWidgetSelected(QWidget *widget);
 

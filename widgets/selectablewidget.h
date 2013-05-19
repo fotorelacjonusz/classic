@@ -27,7 +27,7 @@ signals:
  * Typedefed as SelectableWidget<YourType>::Listener
  */
 template <class Type>
-class SelectableWidgetListener	: public SelectableWidgetListenerParent
+class SelectableWidgetListener : public SelectableWidgetListenerParent
 {		
 public:
 	SelectableWidgetListener(QObject *parent = 0):
@@ -41,7 +41,7 @@ public:
 		listeners.remove(this);
 	}
 
-protected:	
+protected:
 	static void tellAllWidgetSelected(QWidget *widget)
 	{
 		foreach (SelectableWidgetListener<Type> *listener, listeners)

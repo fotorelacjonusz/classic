@@ -47,6 +47,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	
 	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
 	connect(new SelectableWidget<ImageWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(imageWidgetSelected(QWidget*)));
+	
+	connect(ui->header, SIGNAL(focusIn()), this, SLOT(unselectWidgets()));
+	connect(ui->footer, SIGNAL(focusIn()), this, SLOT(unselectWidgets()));
 }
 
 MainWindow::~MainWindow()
@@ -259,6 +262,14 @@ void MainWindow::on_action_remove_arrow_triggered()
 	ui->arrowToolBar->setEnabled(false);
 	delete selectedArrow;
 	selectedArrow = 0;
+}
+
+void MainWindow::unselectWidgets()
+{
+	if (selectedImage)
+		selectedImage->unselect();
+	if (selectedArrow)
+		selectedArrow->unselect();
 }
 
 void MainWindow::imageWidgetSelected(QWidget *widget)
