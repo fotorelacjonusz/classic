@@ -23,7 +23,7 @@
 #include <QCheckBox>
 #include <QDateTime>
 
-const qreal ImageWidget::maxAspectRatio = 17.0 / 9.0;
+//const qreal ImageWidget::maxAspectRatio = 17.0 / 9.0;
 
 ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
 	SelectableWidget<ImageWidget>(parent),
@@ -64,12 +64,11 @@ ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *strea
 
 	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
 	
-	SETTINGS->connectMany(this, SLOT(updatePixmap()), &SETTINGS->addImageBorder, &SETTINGS->setImageWidth, &SETTINGS->imageLength,
-						  &SETTINGS->dontScalePanoramas, &SETTINGS->addLogo, &SETTINGS->logoPixmap, &SETTINGS->logoCorner,
-						  &SETTINGS->logoMargin, &SETTINGS->logoInvert);
-	
+	SETTINGS->connectMany(this, SLOT(imageSizeChanged()), &SETTINGS->setImageWidth, &SETTINGS->imageLength, &SETTINGS->dontScalePanoramas);
 	SETTINGS->connectMany(this, SLOT(updateNumber()), &SETTINGS->numberImages, &SETTINGS->startingNumber);
 	SETTINGS->connectMany(this, SLOT(updateLayout()), &SETTINGS->captionsUnder, &SETTINGS->extraSpace);
+	SETTINGS->connectMany(this, SLOT(updatePixmap()), &SETTINGS->addImageBorder, &SETTINGS->addLogo, &SETTINGS->logoPixmap, 
+						  &SETTINGS->logoCorner, &SETTINGS->logoMargin, &SETTINGS->logoInvert);
 
 	setFocusPolicy(Qt::NoFocus);
 
@@ -181,7 +180,7 @@ QPixmap ImageWidget::sourcePixmap() const
 QPixmap ImageWidget::scaledSourcePixmap() const
 {
 	QPixmap pixmap = sourcePixmap();
-	if (SETTINGS->dontScalePanoramas && pixmap.width() / (qreal)pixmap.height() > maxAspectRatio)
+	if (SETTINGS->dontScalePanoramas && isPanoramic(pixmap.size()))
 		return pixmap;
 	if (SETTINGS->setImageWidth)
 	{
@@ -209,12 +208,18 @@ QByteArray ImageWidget::scaledSourceFile() const
 	return byteArray;
 }
 
+void ImageWidget::imageSizeChanged()
+{
+	QPixmapCache::remove(filePath);
+	updatePixmap();
+}
+
 void ImageWidget::updatePixmap()
 {
-	QDateTime time = QDateTime::currentDateTime();
+//	QDateTime time = QDateTime::currentDateTime();
 //	qDebug() << objectName() << "start";
-	if (SETTINGS->imageLength.wasChanged() || SETTINGS->setImageWidth.wasChanged())
-		QPixmapCache::remove(filePath);
+//	if (SETTINGS->imageLength.wasChanged() || SETTINGS->setImageWidth.wasChanged())
+//		QPixmapCache::remove(filePath);
 	QPixmap photo;
 	if (!QPixmapCache::find(filePath, &photo))
 	{
@@ -225,7 +230,7 @@ void ImageWidget::updatePixmap()
 
 //		Q_UNUSED(makeCache);
 //		if (makeCache)
-			QPixmapCache::insert(filePath, photo);
+		QPixmapCache::insert(filePath, photo);
 //		qDebug() << "after makecache" << time.msecsTo(QDateTime::currentDateTime());
 	}
 	
@@ -359,6 +364,12 @@ int ImageWidget::getContrast() const
 int ImageWidget::getGamma() const
 {
 	return gamma;
+}
+
+bool ImageWidget::isPanoramic(QSize size)
+{
+	static const qreal maxAspectRatio = 17.0 / 9.0;
+	return size.width() / (qreal)size.height() > maxAspectRatio;
 }
 
 void ImageWidget::paintEvent(QPaintEvent *event)

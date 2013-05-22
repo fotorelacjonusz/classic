@@ -165,10 +165,28 @@ void MainWindow::on_action_send_to_SSC_triggered()
 	images.first()->prepend(ui->header->toPlainText());
 	images.last()->append(ui->footer->toPlainText());
 
-	ReplyDialog reply(settings, images, this);
-	connect(&reply, SIGNAL(imagePosted(QString,QString,int)), &recentThreads, SLOT(imagePosted(QString,QString,int)));
+	do
+	{
+		ReplyDialog reply(settings, images, this);
+//	connect(&reply, SIGNAL(imagePosted(QString,QString,int)), &recentThreads, SLOT(imagePosted(QString,QString,int)));
 //	connect(&reply, SIGNAL(finished(int)), &recentThreads, SLOT(postingFinished()));
-	reply.exec();
+//		int code = reply.exec();
+//		qDebug() << code;
+		
+		if (reply.exec() == QDialog::Accepted || 
+			QMessageBox::question(this, tr("Jeszcze raz"), tr("Czy chcesz spróbować jeszcze raz kontynuując od ostatniego niewysłanego posta?"), 
+								  QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
+		{
+			recentThreads.imagePosted(reply.getThreadId(), reply.getThreadTitle(), reply.getLatestPostedImageNumber());
+			break;
+		}
+		
+		while (!images.isEmpty() && images.first()->getNumber() <= reply.getLatestPostedImageNumber())
+			images.removeFirst();
+//			if (reply.getLatestPostedImageNumber() >= 0 && images
+		
+	} while(true);
+	
 
 	delete mapImage;
 }

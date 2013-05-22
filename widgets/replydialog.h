@@ -23,18 +23,29 @@ public:
 	explicit ReplyDialog(QSettings &settings, QList<AbstractImage *> images, QWidget *parent);
 	virtual ~ReplyDialog();
 	
+	int getLatestPostedImageNumber() const;
+	QString getThreadId() const;
+	QString getThreadTitle() const;
+	
 public slots:
 	void uploadProgress(qint64 bytesSent, qint64 bytesTotal);
 	
-signals:
-	void imagePosted(QString threadId, QString threadTitle, int imageNumber);
+//signals:
+//	void imagePosted(QString threadId, QString threadTitle, int imageNumber);
 
 protected:
 	void appendTable(QString cell0, QString cell1);
 
 	void setVisible(bool visible);
+	
+protected slots:
+	void upload();
 	void accept();
 	void reject();
+	
+private:
+	bool isElement(QString query, QString *variable = 0, int up = 0, QString attr = QString()) const;
+	bool isElementRemove(QString query, QString *variable, QString pattern, QString attr = QString()) const;
 
 private slots:
 	void tick();
@@ -58,10 +69,10 @@ private:
 	QWebFrame *frame;
 	AbstractUploader *const uploader;
 	QList<AbstractImage *> images;
-	QList<PostWidget *> posts;
+	QList<PostWidget *> posts, sentPosts;
 	QPushButton *likeButton;
 	QString threadId, threadTitle;
-	PostWidget *lastSentPost;
+//	PostWidget *lastSentPost;
 	int latestPostedImageNumber;
 	QString userName;
 

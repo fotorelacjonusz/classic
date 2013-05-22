@@ -38,6 +38,7 @@ public:
 	QByteArray scaledSourceFile() const;
 
 public slots:
+	void imageSizeChanged();
 	void updatePixmap();
 	void updateNumber(int now = -1);
 	void updateLayout();
@@ -50,6 +51,7 @@ public slots:
 	int getContrast() const;
 	int getGamma() const;
 
+	static bool isPanoramic(QSize size);
 protected:
 	void paintEvent(QPaintEvent *event);
 
@@ -59,7 +61,6 @@ private slots:
 private:
 	static QRect alignedRectangle(QSize size, QRect outerRect, SettingsDialog::Corner corner, int margin);
 	static QRect expandedRectangle(QRect &photo, QRect &map, SettingsDialog::Corner corner, int margin);
-	static const qreal maxAspectRatio;
 
 	QString filePath;
 	int num;

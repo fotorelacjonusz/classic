@@ -28,7 +28,7 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> images, QWi
 	uploader(SETTINGS->uploader),
 	images(images),
 	likeButton(0),
-	lastSentPost(0),
+//	lastSentPost(0),
 	latestPostedImageNumber(-1),
 	delegate(&ReplyDialog::parseThread),
 	imagesUploaded(0),
@@ -87,6 +87,21 @@ ReplyDialog::~ReplyDialog()
 	delete ui;
 }
 
+int ReplyDialog::getLatestPostedImageNumber() const
+{
+	return latestPostedImageNumber;
+}
+
+QString ReplyDialog::getThreadId() const
+{
+	return threadId;
+}
+
+QString ReplyDialog::getThreadTitle() const
+{
+	return threadTitle;
+}
+
 void ReplyDialog::uploadProgress(qint64 bytesSent, qint64 bytesTotal)
 {
 	ui->progressBarImage->setMaximum(bytesTotal);
@@ -113,75 +128,112 @@ void ReplyDialog::setVisible(bool visible)
 	QDialog::setVisible(visible);
 	if (visible)
 	{
-		if (!uploader->init(images.count()))
+		QTimer::singleShot(0, this, SLOT(upload()));
+	}
+}
+
+void ReplyDialog::upload()
+{
+	if (!uploader->init(images.count()))
+	{
+		reject();
+		QMessageBox::critical(this, tr("Błąd"), tr("Nie można było rozpocząć wysyłania z powodu:\n%1").arg(uploader->lastError()));
+		return;
+	}
+
+	QString openingTags = SETTINGS->extraTags.v().remove('\n');
+	QString closingTags = openingTags;
+	QRegExp tagExp("\\[([^=\\]]+)(=.+)?\\]");
+	tagExp.setMinimal(true);
+	closingTags.replace(tagExp, "[/\\1]");
+//		for (int pos = 0; (pos = tagExp.indexIn(openingTags, pos)) != -1; pos += tagExp.matchedLength())
+//			closingTags.prepend("[/" + tagExp.cap(1) + "]");
+
+	for (int postNumber = 0; !images.isEmpty(); ++postNumber)
+	{
+		PostWidget *post = new PostWidget(ui->toolBox);
+		connect(post, SIGNAL(appended(int)), this, SLOT(loadProgress(int)));
+		ui->toolBox->addItem(post, tr("Post %1").arg(postNumber + 1));
+		posts << post;
+		post->append(openingTags);
+
+		for (int i = 0; i < SETTINGS->imagesPerPost && !images.isEmpty(); ++i)
 		{
-			reject();
-			QMessageBox::critical(this, tr("Błąd"), tr("Nie można było rozpocząć wysyłania z powodu:\n%1").arg(uploader->lastError()));
-			return;
-		}
-
-		QString openingTags = SETTINGS->extraTags.v().remove('\n');
-		QString closingTags;
-		QRegExp tagExp("\\[([^=\\]]+)(=.+)?\\]");
-		tagExp.setMinimal(true);
-		for (int pos = 0; (pos = tagExp.indexIn(openingTags, pos)) != -1; pos += tagExp.matchedLength())
-			closingTags.prepend("[/" + tagExp.cap(1) + "]");
-
-		for (int postNumber = 0; !images.isEmpty(); ++postNumber)
-		{
-			PostWidget *post = new PostWidget(ui->toolBox);
-			connect(post, SIGNAL(appended(int)), this, SLOT(loadProgress(int)));
-			ui->toolBox->addItem(post, tr("Post %1").arg(postNumber + 1));
-			posts << post;
-			post->append(openingTags);
-
-			for (int i = 0; i < SETTINGS->imagesPerPost && !images.isEmpty(); ++i)
+			AbstractImage *image = images.takeFirst();
+			ui->progressBarImage->reset();
+			ui->progressBarImage->setFormat(tr("Wysyłam %1: %p%").arg(image->getFileName()));
+			if (!image->upload(uploader))
 			{
-				AbstractImage *image = images.takeFirst();
-				ui->progressBarImage->reset();
-				ui->progressBarImage->setFormat(tr("Wysyłam %1: %p%").arg(image->getFileName()));
-				if (!image->upload(uploader))
-				{
+//				qDebug() << "calling reject";
+				if (delegate)
 					reject();
-					QMessageBox::critical(this, tr("Błąd"), tr("Nie można było wysłać obrazka %1 z powodu:\n%2").arg(image->getFileName()).arg(uploader->lastError()));
-					return;
-				}
-
-				ui->progressBarAllImages->setValue(++imagesUploaded * ALL_IMAGES_PROGRESS_MULTIPLIER);
-
-				appendTable(image->getFileName(), image->getUrl());
-				post->append(image->toForumCode());
-				post->setImageNumber(image->getNumber());
+//				qDebug() << "called reject";
+				QMessageBox::critical(this, tr("Błąd"), tr("Nie można było wysłać obrazka %1 z powodu:\n%2").arg(image->getFileName()).arg(uploader->lastError()));
+//				qDebug() << "after mbox";
+				return;
 			}
 
-			if (SETTINGS->addTBC && !images.isEmpty())
-				post->append(tr("Cdn ..."));
+			ui->progressBarAllImages->setValue(++imagesUploaded * ALL_IMAGES_PROGRESS_MULTIPLIER);
 
-			post->append(closingTags, true);
+			appendTable(image->getFileName(), image->getUrl());
+			post->append(image->toForumCode());
+			post->setImageNumber(image->getNumber());
 		}
 
-		uploader->finalize();
-		allImagesUploaded = true;
+		if (SETTINGS->addTBC && !images.isEmpty())
+			post->append(tr("Cdn ..."));
+
+		post->append(closingTags, true);
 	}
+
+	uploader->finalize();
+	allImagesUploaded = true;
+	
 }
 
 void ReplyDialog::accept()
 {
-	if (latestPostedImageNumber >= 0)
-		emit imagePosted(threadId, threadTitle, latestPostedImageNumber);
-	QDialog::accept();
+//	if (latestPostedImageNumber >= 0)
+//		emit imagePosted(threadId, threadTitle, latestPostedImageNumber);
+//	QDialog::accept();
+	done(Accepted);
 }
 
 void ReplyDialog::reject()
 {
+//	qDebug() << "reject1";
+	delegate = 0;
 	images.clear();
 	posts.clear();
 	uploader->abort();
 	ui->webView->stop();
 	timer.stop();
-	if (latestPostedImageNumber >= 0)
-		emit imagePosted(threadId, threadTitle, latestPostedImageNumber);
-	QDialog::reject();
+//	if (latestPostedImageNumber >= 0)
+//		emit imagePosted(threadId, threadTitle, latestPostedImageNumber);
+//	qDebug() << "calling done";
+	done(Rejected);
+//	qDebug() << "called done";
+//	QDialog::reject();
+}
+
+bool ReplyDialog::isElement(QString query, QString *variable, int up, QString attr) const
+{
+	if (variable && !variable->isEmpty())
+		return true;
+	QWebElement element = frame->findFirstElement(query);
+	if (element.isNull())
+		return false;
+	for (int i = 0; i < up; ++i)
+		element = element.parent();
+	if (variable)
+		*variable = attr.isEmpty() ? element.toPlainText() : element.attribute(attr);
+	qDebug() << "jest element" << (variable ? *variable : 0);
+	return true;
+}
+
+bool ReplyDialog::isElementRemove(QString query, QString *variable, QString pattern, QString attr) const
+{
+	return isElement(query, variable, 0, attr) && !(*variable = variable->remove(QRegExp(pattern)).trimmed()).isEmpty();
 }
 
 void ReplyDialog::tick()
@@ -207,49 +259,46 @@ void ReplyDialog::loadProgress(int progress)
 void ReplyDialog::parseThread(int progress)
 {
 	Q_UNUSED(progress);
+//	qDebug() << "parseThread()" << ui->webView->url() << progress;
 	
-	if (userName.isEmpty())
+	if (ui->webView->url().path().startsWith("/newreply.php"))
 	{
-		QWebElement link = frame->findFirstElement("html > body > center > div > div.page > div > table.tborder > tbody > tr > td.alt2 > div.smallfont > strong > a");
-		if (link.isNull())
+		// error occurred?
+		QRegExp errorExp("Please try again in ([0-9]+) seconds.");		
+		QWebElement errorElement = frame->findFirstElement("html > body > center > div > div.page > div > script + table > tbody > tr + tr > td > ol > li");
+		if (!errorElement.isNull() && errorElement.toPlainText().contains(errorExp))
+		{
+			// rollback
+			delegate = &ReplyDialog::sendPost;
+			int secs = errorExp.cap(1).toInt();
+			qDebug() << "parseThread()" << "za wcześnie o" << secs << "sekund";
+			increaseProgress(-fps * (secs + 1));
+			posts.prepend(sentPosts.takeLast());
+			timerCounter = secs * fps;
+			timer.start();
+			errorElement.removeFromDocument();
 			return;
-		userName = link.toPlainText();
-		qDebug() << "parseThread()" << "jest userName" << userName;
-	}
-	
-	// extract imgReply button with link to reply, so we know we are ia a thread actually, not on the forum
-	QWebElement imgReply = frame->findFirstElement("html > body > center > div > div.page > div > table > tbody > tr > td > a > img[alt=Reply]");
-	if (imgReply.isNull())
+		}
+	}	
+
+	// extract userName
+	if (!isElement("html > body > center > div > div.page > div > table.tborder > tbody > tr > td.alt2 > div.smallfont > strong > a", &userName))
 		return;
-	qDebug() << "parseThread()" << "jest reply button";
-	
+	// extract imgReply button with link to reply, so we know we are ia a thread actually, not on the forum
+	QString replyLink;
+	if (!isElement("html > body > center > div > div.page > div > table > tbody > tr > td > a > img[alt=Reply]", &replyLink, 1, "href"))
+		return;
 	// extract thread title, this must be done after extracting imgReply
-	if (threadTitle.isEmpty())
-	{
-		QWebElement titleElement = frame->findFirstElement("html > head > title");
-		if (titleElement.isNull())
-			return;
-		threadTitle = titleElement.toPlainText().remove(QRegExp("(- Page [0-9]+ )?- SkyscraperCity")).trimmed();
-		qDebug() << "jest threadTitle" << threadTitle;
-	}
-	
+	if (!isElementRemove("html > head > title", &threadTitle, "(- Page [0-9]+ )?- SkyscraperCity"))
+		return;
 	// extract thread id, this must be done after extracting imgReply
-	if (threadId.isEmpty())
-	{
-		QWebElement subscribeLink = frame->findFirstElement("div#threadtools_menu img[alt=\"Subscription\"] + a");
-		if (subscribeLink.isNull())
-			return;
-		threadId = subscribeLink.attribute("href").remove(QRegExp("[^0-9]+")).trimmed();
-		qDebug() << "jest threadId" << threadId;
-	}
-	
-	if (lastSentPost && !threadId.isEmpty() && !threadTitle.isEmpty())
-		latestPostedImageNumber = lastSentPost->imageNumber();
-	
-	qDebug() << (lastSentPost && !threadId.isEmpty() && !threadTitle.isEmpty()) << latestPostedImageNumber;
-//		emit imagePosted(threadId, threadTitle, postBeingSent->imageNumber());
-	
-	delegate = &ReplyDialog::sendPost;
+	if (!isElementRemove("div#threadtools_menu img[alt=\"Subscription\"] + a", &threadId, "[^0-9]+", "href"))
+		return;
+
+	if (!sentPosts.isEmpty())
+		latestPostedImageNumber = sentPosts.last()->imageNumber();
+
+	delegate = &ReplyDialog::sendPost;	
 	increaseProgress(fps);
 	
 	if (allImagesUploaded && posts.isEmpty())
@@ -267,7 +316,8 @@ void ReplyDialog::parseThread(int progress)
 	ui->webView->setEnabled(false);
 	ui->webView->stop();
 
-	if (lastSentPost)
+//	if (lastSentPost)
+	if (!sentPosts.isEmpty())
 	{
 		qDebug() << "parseThread()" << "odpalam timer";
 		timerCounter = SETTINGS->postSpace * fps;
@@ -275,7 +325,8 @@ void ReplyDialog::parseThread(int progress)
 	}
 
 	qDebug() << "parseThread()" << "przechodzę do formularza\n";
-	QString url = QString(SSC_HOST) + "/" + imgReply.parent().attribute("href");
+//	QString url = QString(SSC_HOST) + "/" + imgReply.parent().attribute("href");
+	QString url = QString(SSC_HOST) + "/" + replyLink;
 	ui->progressBar->setFormat(tr("Przechodzę do formularza... %p%"));
 	ui->webView->load(url);
 }
@@ -316,7 +367,8 @@ void ReplyDialog::sendPost(int progress)
 	qDebug() << "sendPost()   " << "wysyłam posta\n";
 	delegate = &ReplyDialog::parseThread;
 	increaseProgress(fps);
-	lastSentPost = posts.takeFirst();
+	sentPosts << posts.takeFirst();
+//	lastSentPost = posts.takeFirst();
 //	posts.removeFirst();
 //	firstPostSent = true;
 	ui->progressBar->setFormat(tr("Wysyłam posta... %p%"));
