@@ -192,15 +192,12 @@ Wrong url will make all links corrupted.</translation>
 <context>
     <name>GpsData</name>
     <message>
-        <location filename="downloaders/gpsdata.cpp" line="45"/>
-        <location filename="downloaders/gpsdata.cpp" line="60"/>
         <source>BÅÄd</source>
-        <translation>Error</translation>
+        <translation type="obsolete">Error</translation>
     </message>
     <message>
-        <location filename="downloaders/gpsdata.cpp" line="45"/>
         <source>Brak pliku %1. Ponowna instalacja aplikacji moÅ¼e rozwiÄzaÄ problem.</source>
-        <translation>File %1 doesn&apos;t exist. Try reinstalling the application.</translation>
+        <translation type="obsolete">File %1 doesn&apos;t exist. Try reinstalling the application.</translation>
     </message>
     <message>
         <source>BÅÄd otwierania mapy.</source>
@@ -214,34 +211,32 @@ Wrong url will make all links corrupted.</translation>
 <context>
     <name>ImageWidget</name>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="59"/>
+        <location filename="widgets/imagewidget.cpp" line="55"/>
         <source>Nie moÅ¼na zaÅadowaÄ zdjÄcia do pamiÄci. PamiÄÄ wyczerpana?</source>
         <translation>Unable to load an image to the memory. Out of memory?</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="85"/>
+        <location filename="widgets/imagewidget.cpp" line="75"/>
         <source>Podpis zdjÄcia</source>
         <translation>Image caption</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="137"/>
+        <location filename="widgets/imagewidget.cpp" line="149"/>
         <source>ObrÃ³t zdjÄcia</source>
         <translation>Rotate image</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="137"/>
+        <location filename="widgets/imagewidget.cpp" line="149"/>
         <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
         <translation>Save rotated image to disk?</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="162"/>
-        <location filename="widgets/simpleimage.cpp" line="30"/>
         <source>Upload zdjÄcia %1 nieudany.
 </source>
-        <translation>Uploading image %1 failed.</translation>
+        <translation type="obsolete">Uploading image %1 failed.</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="224"/>
+        <location filename="widgets/imagewidget.cpp" line="214"/>
         <source>Nie moÅ¼na utworzyÄ pixmapy ze zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
@@ -561,71 +556,84 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Choose color</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="59"/>
+        <location filename="widgets/mainwindow.cpp" line="61"/>
         <source>OtwÃ³rz fotorelacjÄ</source>
         <translation>Open photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="76"/>
-        <location filename="widgets/mainwindow.cpp" line="103"/>
-        <location filename="widgets/mainwindow.cpp" line="150"/>
+        <location filename="widgets/mainwindow.cpp" line="78"/>
+        <location filename="widgets/mainwindow.cpp" line="105"/>
+        <location filename="widgets/mainwindow.cpp" line="152"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="77"/>
+        <location filename="widgets/mainwindow.cpp" line="79"/>
         <source>Nie moÅ¼na otworzyÄ. TÄ fotorelacjÄ zapisano innÄ wersjÄ programu.</source>
         <translation>Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="78"/>
+        <location filename="widgets/mainwindow.cpp" line="80"/>
         <source>To nie jest plik fotorelacji!</source>
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="103"/>
-        <location filename="widgets/mainwindow.cpp" line="150"/>
+        <location filename="widgets/mainwindow.cpp" line="105"/>
+        <location filename="widgets/mainwindow.cpp" line="152"/>
         <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
         <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="106"/>
+        <location filename="widgets/mainwindow.cpp" line="108"/>
         <source>Zapisz fotorelacjÄ</source>
         <translation>Save photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="59"/>
-        <location filename="widgets/mainwindow.cpp" line="106"/>
+        <location filename="widgets/mainwindow.cpp" line="167"/>
+        <source>Jeszcze raz</source>
+        <translation>Once more</translation>
+    </message>
+    <message>
+        <location filename="widgets/mainwindow.cpp" line="167"/>
+        <source>Czy sprÃ³bowaÄ dokoÅczyÄ wysyÅanie fotorelacji?</source>
+        <translation>Try finishing photo report upload?</translation>
+    </message>
+    <message>
+        <location filename="widgets/mainwindow.cpp" line="180"/>
+        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
+        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+    </message>
+    <message>
+        <location filename="widgets/mainwindow.cpp" line="61"/>
+        <location filename="widgets/mainwindow.cpp" line="108"/>
         <source>Fotorelacje (*.phr)</source>
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="123"/>
+        <location filename="widgets/mainwindow.cpp" line="125"/>
         <source>Wybierz zdjÄcia</source>
         <translation>Choose photos</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="123"/>
+        <location filename="widgets/mainwindow.cpp" line="125"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="158"/>
         <source>Mapa dla wszystkich zdjÄÄ.</source>
-        <translation>All photos map.</translation>
+        <translation type="obsolete">All photos map.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="176"/>
+        <location filename="widgets/mainwindow.cpp" line="180"/>
         <source>O programie</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="176"/>
         <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;exiv2 (GPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;exiv2 (GPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+        <translation type="obsolete">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;exiv2 (GPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="187"/>
+        <location filename="widgets/mainwindow.cpp" line="190"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
     </message>
@@ -759,6 +767,16 @@ If you don&apos;t want your password stored leave this field empty, application 
         <source>Form</source>
         <translation>Form</translation>
     </message>
+    <message>
+        <location filename="widgets/postwidget.cpp" line="21"/>
+        <source>Post %1</source>
+        <translation>Post %1</translation>
+    </message>
+    <message>
+        <location filename="widgets/postwidget.cpp" line="38"/>
+        <source>Cdn ...</source>
+        <translation>Tbc ...</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -787,6 +805,11 @@ Error at:
         <location filename="downloaders/googlemapsdownloader.cpp" line="48"/>
         <source>BÅÄd otwierania mapy.</source>
         <translation>Error while loading map data.</translation>
+    </message>
+    <message>
+        <location filename="widgets/abstractimage.cpp" line="11"/>
+        <source>Mapa dla wszystkich zdjÄÄ.</source>
+        <translation>Common map.</translation>
     </message>
 </context>
 <context>
@@ -866,107 +889,105 @@ Error at:
         <translation>Strona</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="44"/>
+        <location filename="widgets/replydialog.cpp" line="36"/>
         <source>Wszystkie obrazki: %p%</source>
         <translation>All photos: %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="46"/>
+        <location filename="widgets/replydialog.cpp" line="38"/>
         <source>Czekam na wybranie wÄtku...</source>
         <translation>Waiting for thread selection...</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="46"/>
+        <location filename="widgets/replydialog.cpp" line="38"/>
         <source>PrzechodzÄ do wÄtku...</source>
         <translation>Navigating to thread...</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="119"/>
-        <location filename="widgets/replydialog.cpp" line="146"/>
+        <location filename="widgets/replydialog.cpp" line="128"/>
+        <location filename="widgets/replydialog.cpp" line="150"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="119"/>
+        <location filename="widgets/replydialog.cpp" line="128"/>
         <source>Nie moÅ¼na byÅo rozpoczÄÄ wysyÅania z powodu:
 %1</source>
         <translation>Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="134"/>
         <source>Post %1</source>
-        <translation>Post %1</translation>
+        <translation type="obsolete">Post %1</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="142"/>
+        <location filename="widgets/replydialog.cpp" line="136"/>
         <source>WysyÅam %1: %p%</source>
         <translation>Sending %1: %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="146"/>
+        <location filename="widgets/replydialog.cpp" line="150"/>
         <source>Nie moÅ¼na byÅo wysÅaÄ obrazka %1 z powodu:
 %2</source>
         <translation>Photo %1 upload failed: %2</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="158"/>
         <source>Cdn ...</source>
-        <translation>Tbc ...</translation>
+        <translation type="obsolete">Tbc ...</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="192"/>
+        <location filename="widgets/replydialog.cpp" line="226"/>
         <source>sekund</source>
         <comment>0</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="192"/>
+        <location filename="widgets/replydialog.cpp" line="226"/>
         <source>sekundÄ</source>
         <comment>1</comment>
         <translation>second</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="192"/>
+        <location filename="widgets/replydialog.cpp" line="226"/>
         <source>sekundy</source>
         <comment>2</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="193"/>
+        <location filename="widgets/replydialog.cpp" line="227"/>
         <source>sekundy</source>
         <comment>3</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="193"/>
+        <location filename="widgets/replydialog.cpp" line="227"/>
         <source>sekundy</source>
         <comment>4</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="193"/>
+        <location filename="widgets/replydialog.cpp" line="227"/>
         <source>sekund</source>
         <comment>5</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="194"/>
+        <location filename="widgets/replydialog.cpp" line="228"/>
         <source>Czekam %1 %2... %p%</source>
         <translation>Waiting %1 %2... %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="258"/>
+        <location filename="widgets/replydialog.cpp" line="295"/>
         <source>Koniec. %p%</source>
         <translation>Done. %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="262"/>
-        <location filename="widgets/replydialog.cpp" line="358"/>
+        <location filename="widgets/replydialog.cpp" line="299"/>
+        <location filename="widgets/replydialog.cpp" line="393"/>
         <source>LubiÄ ten program</source>
         <translation>Like this app</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="358"/>
+        <location filename="widgets/replydialog.cpp" line="393"/>
         <source>WyglÄda na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
         <translation>It seems you have already liked this app.</translation>
     </message>
@@ -975,12 +996,12 @@ Error at:
         <translation type="obsolete">Like</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="279"/>
+        <location filename="widgets/replydialog.cpp" line="316"/>
         <source>PrzechodzÄ do formularza... %p%</source>
         <translation>Navigating to form... %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="322"/>
+        <location filename="widgets/replydialog.cpp" line="357"/>
         <source>WysyÅam posta... %p%</source>
         <translation>Sending post... %p%</translation>
     </message>
@@ -1272,14 +1293,14 @@ Most probably short time favors post miximg by the forum.</translation>
     </message>
     <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="560"/>
-        <location filename="settings/settingsdialog.ui" line="877"/>
+        <location filename="settings/settingsdialog.ui" line="874"/>
         <source>Odstęp od krawędzi</source>
         <translation>Distance from the edge</translation>
     </message>
     <message>
         <location filename="settings/settingsdialog.ui" line="576"/>
-        <location filename="settings/settingsdialog.ui" line="887"/>
-        <location filename="settings/settingsdialog.ui" line="907"/>
+        <location filename="settings/settingsdialog.ui" line="884"/>
+        <location filename="settings/settingsdialog.ui" line="904"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -1325,37 +1346,37 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation>Common map for all photos</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="694"/>
-        <location filename="settings/settingsdialog.ui" line="759"/>
+        <location filename="settings/settingsdialog.ui" line="691"/>
+        <location filename="settings/settingsdialog.ui" line="756"/>
         <source>Rodzaj mapy</source>
         <translation>Map type</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="705"/>
-        <location filename="settings/settingsdialog.ui" line="770"/>
+        <location filename="settings/settingsdialog.ui" line="702"/>
+        <location filename="settings/settingsdialog.ui" line="767"/>
         <source>Google Drogi</source>
         <translation>Google Roadmap</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="710"/>
-        <location filename="settings/settingsdialog.ui" line="775"/>
+        <location filename="settings/settingsdialog.ui" line="707"/>
+        <location filename="settings/settingsdialog.ui" line="772"/>
         <source>Google Satelita</source>
         <translation>Google Satellite</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="715"/>
-        <location filename="settings/settingsdialog.ui" line="780"/>
+        <location filename="settings/settingsdialog.ui" line="712"/>
+        <location filename="settings/settingsdialog.ui" line="777"/>
         <source>Google Hybryda</source>
         <translation>Google Hybrid</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="720"/>
-        <location filename="settings/settingsdialog.ui" line="785"/>
+        <location filename="settings/settingsdialog.ui" line="717"/>
+        <location filename="settings/settingsdialog.ui" line="782"/>
         <source>Google Teren</source>
         <translation>Google Terrain</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="731"/>
+        <location filename="settings/settingsdialog.ui" line="728"/>
         <source>Źródło danych Google Maps: &lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</source>
         <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt; </translation>
     </message>
@@ -1380,134 +1401,134 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation type="obsolete">Terrain</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="741"/>
+        <location filename="settings/settingsdialog.ui" line="738"/>
         <source>Mapa na każdym zdjęciu</source>
         <translation>Map on each photo</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="793"/>
+        <location filename="settings/settingsdialog.ui" line="790"/>
         <source>Kolor</source>
         <translation>Color</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="810"/>
+        <location filename="settings/settingsdialog.ui" line="807"/>
         <source>Nieprzeźroczystość</source>
         <translation>Opacity</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="830"/>
+        <location filename="settings/settingsdialog.ui" line="827"/>
         <source>Zbliżenie</source>
         <translation>Zoom</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="850"/>
+        <location filename="settings/settingsdialog.ui" line="847"/>
         <source>Kształt</source>
         <translation>Shape</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="867"/>
+        <location filename="settings/settingsdialog.ui" line="864"/>
         <source>Umieść na zdjęciu</source>
         <translation>Placement</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="927"/>
+        <location filename="settings/settingsdialog.ui" line="924"/>
         <source>Prawy dolny róg</source>
         <translation>Bottom right corner</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="936"/>
+        <location filename="settings/settingsdialog.ui" line="933"/>
         <source>Lewy dolny róg</source>
         <translation>Bottom left corner</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="945"/>
+        <location filename="settings/settingsdialog.ui" line="942"/>
         <source>Prawy górny róg</source>
         <translation>Top right corner</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="954"/>
+        <location filename="settings/settingsdialog.ui" line="951"/>
         <source>Lewy górny róg</source>
         <translation>Top left corner</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="963"/>
+        <location filename="settings/settingsdialog.ui" line="960"/>
         <source>Rozszerz z lewej</source>
         <translation>Expand to the left</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="972"/>
+        <location filename="settings/settingsdialog.ui" line="969"/>
         <source>Rozszerz z prawej</source>
         <translation>Expand to the right</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="981"/>
+        <location filename="settings/settingsdialog.ui" line="978"/>
         <source>Rozszerz u góry</source>
         <translation>Expand to the top</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="990"/>
+        <location filename="settings/settingsdialog.ui" line="987"/>
         <source>Rozszerz u dołu</source>
         <translation>Expand to the bottom</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1030"/>
+        <location filename="settings/settingsdialog.ui" line="1027"/>
         <source>Jeśli nie ma podkładu zawierającego pozycje wszystkich zdjęć użyte będzie źródło określone w zakładce mapy</source>
         <translation>If there is no overlay containing all photos&apos; positions, map source specyfied in the &quot;Maps&quot; tab will be used</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1033"/>
+        <location filename="settings/settingsdialog.ui" line="1030"/>
         <source>Używaj na mapie wspólnej</source>
         <translation>Use on common map</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1040"/>
+        <location filename="settings/settingsdialog.ui" line="1037"/>
         <source>Jeśli nie ma podkładu zawierającego pozycję zdjęcia użyte będzie źródło określone w zakładce mapy</source>
         <translation>If there is no overlay containing photo&apos;s position, map source specyfied in the &quot;Maps&quot; tab will be used</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1043"/>
+        <location filename="settings/settingsdialog.ui" line="1040"/>
         <source>Używaj na zdjęciach</source>
         <translation>Use on photos</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1069"/>
+        <location filename="settings/settingsdialog.ui" line="1066"/>
         <source>Przycisk prowadzi do folderu, w którym przechowywane są podkłady. 
 Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczne po ponownym uruchomieniu programu.</source>
         <translation>This button opens directory where overlays are stored.
 You can add and remove files from this directory, changes will become visible after application restart.</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1073"/>
+        <location filename="settings/settingsdialog.ui" line="1070"/>
         <source>Zarządzaj podkładami</source>
         <translation>Manage overlays</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="1084"/>
+        <location filename="settings/settingsdialog.ui" line="1081"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1090"/>
+        <location filename="settings/settingsdialog.ui" line="1087"/>
         <source>Używaj proxy</source>
         <translation>Use proxy</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="1128"/>
+        <location filename="settings/settingsdialog.ui" line="1125"/>
         <source>Host</source>
         <translation>Host</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="1138"/>
+        <location filename="settings/settingsdialog.ui" line="1135"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1148"/>
+        <location filename="settings/settingsdialog.ui" line="1145"/>
         <source>Użytkownik</source>
         <translation>Username</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1158"/>
+        <location filename="settings/settingsdialog.ui" line="1155"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
@@ -1516,12 +1537,12 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="obsolete">Round</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.ui" line="897"/>
+        <location filename="settings/settingsdialog.ui" line="894"/>
         <source>Rozmiar</source>
         <translation>Size</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="860"/>
+        <location filename="settings/settingsdialog.ui" line="857"/>
         <source>okrągły</source>
         <translation>circular</translation>
     </message>
@@ -1531,8 +1552,8 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="obsolete">Data source: Google Maps https://developers.google.com/maps/documentation/staticmaps/</translation>
     </message>
     <message utf8="true">
-        <location filename="settings/settingsdialog.ui" line="1006"/>
-        <location filename="settings/settingsdialog.ui" line="1015"/>
+        <location filename="settings/settingsdialog.ui" line="1003"/>
+        <location filename="settings/settingsdialog.ui" line="1012"/>
         <source>Podkłady mapowe</source>
         <oldsource>Własne mapy</oldsource>
         <translation>Overlays</translation>
