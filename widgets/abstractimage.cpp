@@ -1,40 +1,64 @@
 #include "abstractimage.h"
+#include "settings/settingsdialog.h"
 #include <QDebug>
 
 AbstractImage::~AbstractImage()
 {
 }
 
-void AbstractImage::serialize(QDataStream &stream)
+QString AbstractImage::fileName() const
 {
-	Q_UNUSED(stream);
+	return QObject::tr("Mapa dla wszystkich zdjęć.");
 }
 
-QString AbstractImage::getUrl() const
+QString AbstractImage::caption() const
 {
-	return url;
+	return "";
 }
 
-int AbstractImage::getNumber() const
+int AbstractImage::number() const
 {
 	return 0;
 }
 
-void AbstractImage::prepend(QString text)
+void AbstractImage::serialize(QDataStream &stream) const
 {
-	prependedText = text.trimmed();
+	Q_UNUSED(stream);
 }
 
-void AbstractImage::append(QString text)
+QString AbstractImage::url() const
 {
-	appendedText = text.trimmed();
+	return m_url;
 }
 
-QString AbstractImage::appendPrepend(QString text) const
+void AbstractImage::setUrl(QString url)
 {
-	if (!prependedText.isEmpty())
-		text.prepend(prependedText + "\n\n");
-	if (!appendedText.isEmpty())
-		text.append("\n" + appendedText + "\n");
-	return text;
+	m_url = url;
 }
+
+QString AbstractImage::toBBCode() const
+{
+	AddFunc add = (SETTINGS->captionsUnder ? (AddFunc)&QString::append : (AddFunc)&QString::prepend);
+	
+	QString code = QString("[img]%1[/img]").arg(m_url);
+		
+	(code.*add)("\n");
+	if (SETTINGS->extraSpace)
+		(code.*add)("\n");
+	(code.*add)(caption().trimmed());
+	
+	code.prepend(header + "\n\n");
+	code.append("\n\n" + footer);
+	return code.trimmed();
+}
+
+void AbstractImage::setHeader(QString text)
+{
+	header = text.trimmed();
+}
+
+void AbstractImage::setFooter(QString text)
+{
+	footer = text.trimmed();
+}
+

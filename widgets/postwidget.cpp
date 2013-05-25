@@ -1,13 +1,24 @@
 #include "postwidget.h"
 #include "ui_postwidget.h"
+#include "abstractimage.h"
+#include "settings/settingsdialog.h"
 #include <QToolBox>
 
 PostWidget::PostWidget(QToolBox *parent) :
 	QWidget(parent),
 	ui(new Ui::PostWidget),
-	m_ready(false)
+	isLast(false)
 {
 	ui->setupUi(this);
+	
+	openingTags = SETTINGS->extraTags.v().remove('\n');
+	QRegExp tagExp("\\[([^=\\]]+)(=.+)?\\]");
+	tagExp.setMinimal(true);
+//	closingTags.replace(tagExp, "[/\\1]");
+	for (int pos = 0; (pos = tagExp.indexIn(openingTags, pos)) != -1; pos += tagExp.matchedLength())
+		closingTags.prepend("[/" + tagExp.cap(1) + "]");
+	
+	parent->addItem(this, tr("Post %1").arg(parent->count() + 1));
 }
 
 PostWidget::~PostWidget()
@@ -15,22 +26,23 @@ PostWidget::~PostWidget()
 	delete ui;
 }
 
-void PostWidget::append(QString text, bool ready)
+void PostWidget::appendImage(AbstractImage *image)
 {
-	ui->plainTextEdit->setPlainText(ui->plainTextEdit->toPlainText() + text);
-	if (ready)
-		m_ready = true;
-	emit appended(100);
+	images.append(image);
+	
+	QString text;
+	text += openingTags;
+	foreach (AbstractImage *image, images)
+		text += image->toBBCode() + "\n\n";
+	if (SETTINGS->addTBC && !isLast)
+		text += tr("Cdn ...");
+	text += closingTags;
+	ui->plainTextEdit->setPlainText(text);
 }
 
-int PostWidget::imageNumber() const
+int PostWidget::lastImageNumber() const
 {
-	return m_imageNumber;
-}
-
-void PostWidget::setImageNumber(int number)
-{
-	m_imageNumber = number;
+	return images.last()->number();
 }
 
 QString PostWidget::text() const
@@ -38,8 +50,13 @@ QString PostWidget::text() const
 	return ui->plainTextEdit->toPlainText();
 }
 
-bool PostWidget::isReady() const
+void PostWidget::setLast(bool last)
 {
-	return m_ready;
+	isLast = last;
+}
+
+bool PostWidget::isFull() const
+{
+	return images.size() == SETTINGS->imagesPerPost;
 }
 

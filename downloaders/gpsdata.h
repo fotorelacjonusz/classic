@@ -18,7 +18,7 @@ public:
 	GpsData(QIODevice *image, const int *const number);
 	GpsData();
 	~GpsData();
-	void saveExif(QIODevice *device) const;
+	void writeExif(QIODevice *device) const;
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
 	static qreal dmsToReal(const ExifValue &dms, const ExifValue &ref);

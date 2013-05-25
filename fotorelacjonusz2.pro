@@ -16,10 +16,10 @@ SOURCES += main.cpp \
     networkcookiejar.cpp \
     exception.cpp \
     application.cpp \
-    widgets/simpleimage.cpp \
     widgets/selectablewidget.cpp \
     widgets/replydialog.cpp \
     widgets/recentthreadsmenu.cpp \
+    widgets/progresscontainer.cpp \
     widgets/postwidget.cpp \
     widgets/mainwindow.cpp \
     widgets/lineedit.cpp \
@@ -64,10 +64,10 @@ HEADERS += \
     networkcookiejar.h \
     exception.h \
     application.h \
-    widgets/simpleimage.h \
     widgets/selectablewidget.h \
     widgets/replydialog.h \
     widgets/recentthreadsmenu.h \
+    widgets/progresscontainer.h \
     widgets/postwidget.h \
     widgets/mainwindow.h \
     widgets/lineedit.h \

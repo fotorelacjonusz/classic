@@ -1,6 +1,7 @@
 #include "imagelabel.h"
 #include "arrowwidget.h"
 #include "lineedit.h"
+#include "settings/settingsdialog.h"
 #include <QMouseEvent>
 #include <QVector2D>
 #include <QDebug>
@@ -12,9 +13,14 @@ ImageLabel::ImageLabel(QWidget *parent, QWidget *firstWidget) :
 {
 }
 
+bool ImageLabel::isNull() const
+{
+	return !pixmap() || pixmap()->isNull();
+}
+
 QPixmap ImageLabel::mergedPixmap() const
 {
-	if (!pixmap() || pixmap()->isNull())
+	if (isNull())
 		return QPixmap();
 	QPixmap background = pixmap()->copy();
 	foreach (ArrowWidget *arrow, arrows)
@@ -26,7 +32,7 @@ QPixmap ImageLabel::mergedPixmap() const
 	return background;
 }
 
-QWidget *ImageLabel::getLastArrow() const
+QWidget *ImageLabel::lastArrow() const
 {
 	return arrows.isEmpty() ? 0 : arrows.last();
 }
@@ -34,6 +40,11 @@ QWidget *ImageLabel::getLastArrow() const
 void ImageLabel::setFirstWidget(QWidget *widget)
 {
 	firstWidget = widget;
+}
+
+void ImageLabel::write(QIODevice *device) const
+{
+	mergedPixmap().save(device, "JPG", SETTINGS->jpgQuality);
 }
 
 void ImageLabel::mousePressEvent(QMouseEvent *event)

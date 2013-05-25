@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "imagewidget.h"
 #include "abstractimage.h"
-#include "simpleimage.h"
 #include "arrowwidget.h"
 #include "replydialog.h"
 #include "downloaders/gpsdata.h"
@@ -155,40 +154,24 @@ void MainWindow::on_action_send_to_SSC_triggered()
 	}
 
 	QList<AbstractImage *> images = imageList();
-	SimpleImage *mapImage = 0;
-	if (ui->commonMap->pixmap() && !ui->commonMap->pixmap()->isNull())
-	{
-		mapImage = new SimpleImage(ui->commonMap->mergedPixmap(), tr("Mapa dla wszystkich zdjęć."));
-		images.prepend(mapImage);
-	}
+	if (!ui->commonMap->isNull())
+		images.prepend(ui->commonMap);
 
-	images.first()->prepend(ui->header->toPlainText());
-	images.last()->append(ui->footer->toPlainText());
+	images.first()->setHeader(ui->header->toPlainText());
+	images.last()->setFooter(ui->footer->toPlainText());
 
-	do
-	{
-		ReplyDialog reply(settings, images, this);
-//	connect(&reply, SIGNAL(imagePosted(QString,QString,int)), &recentThreads, SLOT(imagePosted(QString,QString,int)));
-//	connect(&reply, SIGNAL(finished(int)), &recentThreads, SLOT(postingFinished()));
-//		int code = reply.exec();
-//		qDebug() << code;
-		
-		if (reply.exec() == QDialog::Accepted || 
-			QMessageBox::question(this, tr("Jeszcze raz"), tr("Czy chcesz spróbować jeszcze raz kontynuując od ostatniego niewysłanego posta?"), 
-								  QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
-		{
-			recentThreads.imagePosted(reply.getThreadId(), reply.getThreadTitle(), reply.getLatestPostedImageNumber());
-			break;
-		}
-		
-		while (!images.isEmpty() && images.first()->getNumber() <= reply.getLatestPostedImageNumber())
-			images.removeFirst();
-//			if (reply.getLatestPostedImageNumber() >= 0 && images
-		
-	} while(true);
+	ReplyDialog reply(settings, images, this);
 	
-
-	delete mapImage;
+exec_reply:
+	if (reply.exec() == QDialog::Rejected)
+		if (QMessageBox::question(this, tr("Jeszcze raz"), tr("Czy spróbować dokończyć wysyłanie fotorelacji?"),
+								  QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes)
+			goto exec_reply;
+	
+	// update thread numbering 
+	recentThreads.threadPosted(reply.threadId(), reply.threadTitle(), reply.latestPostedImageNumber());
+	//		if (code == QDialog::Accepted)
+	recentThreads.unselect();
 }
 
 void MainWindow::on_action_about_triggered()
@@ -197,10 +180,9 @@ void MainWindow::on_action_about_triggered()
 	QMessageBox::about(this, tr("O programie"), tr(
 						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>"
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
-						   "Aplikacja wykorzystuje:<br/>Qt (LGPL2)<br/>exiv2 (GPL2)<br/>QuaZIP (LGPL2)<br/>Oxygen theme (LGPL)<br/><br/>%1")
+						   "Aplikacja wykorzystuje:<br/>Qt (LGPL2)<br/>QuaZIP (LGPL2)<br/>Oxygen theme (LGPL)<br/><br/>%1")
 					   .arg(QString(LICENSE).replace("\n", "<br/>")).replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
 	setWindowIcon(QIcon());
-//	AboutDialog().exec();
 }
 
 void MainWindow::on_action_Qt_information_triggered()
@@ -216,11 +198,11 @@ void MainWindow::moveImage(int number)
 	ui->scrollArea->ensureWidgetVisible(ui->postLayout->itemAt(number)->widget(), 0, 0);
 	ui->postLayout->removeWidget(selectedImage);
 	ui->postLayout->insertWidget(number, selectedImage);
-	for (int i = qMin(number, selectedImage->getNumber()), j = qMax(number, selectedImage->getNumber()); i <= j; ++i)
+	for (int i = qMin(number, selectedImage->number()), j = qMax(number, selectedImage->number()); i <= j; ++i)
 		static_cast<ImageWidget *>(ui->postLayout->itemAt(i)->widget())->updateNumber(i);
 
-	setTabOrder(number > 0 ? imageAt(number - 1)->getLastWidget() : ui->header, selectedImage->getFirstWidget());
-	setTabOrder(selectedImage->getLastWidget(), number + 1 < ui->postLayout->count() ? imageAt(number + 1)->getFirstWidget() : ui->footer);
+	setTabOrder(number > 0 ? imageAt(number - 1)->lastWidget() : ui->header, selectedImage->firstWidget());
+	setTabOrder(selectedImage->lastWidget(), number + 1 < ui->postLayout->count() ? imageAt(number + 1)->firstWidget() : ui->footer);
 	updateCommonMap();
 }
 
@@ -231,12 +213,12 @@ void MainWindow::on_action_move_top_triggered()
 
 void MainWindow::on_action_move_up_triggered()
 {
-	moveImage(selectedImage->getNumber() - 1);
+	moveImage(selectedImage->number() - 1);
 }
 
 void MainWindow::on_action_move_down_triggered()
 {
-	moveImage(selectedImage->getNumber() + 1);
+	moveImage(selectedImage->number() + 1);
 }
 
 void MainWindow::on_action_move_bottom_triggered()
@@ -258,7 +240,7 @@ void MainWindow::on_action_remove_image_triggered()
 {
 	ui->imageToolBar->setEnabled(false);
 	ui->postLayout->removeWidget(selectedImage);
-	for (int i = selectedImage->getNumber(); i < ui->postLayout->count(); ++i)
+	for (int i = selectedImage->number(); i < ui->postLayout->count(); ++i)
 		imageAt(i)->updateNumber(i);
 	delete selectedImage;
 	selectedImage = 0;
@@ -341,7 +323,7 @@ ImageWidget *MainWindow::newImage(QString filePath, QDataStream *stream) throw(E
 {
 	ImageWidget *widget = new ImageWidget(ui->postWidget, filePath, stream);
 	ui->postLayout->addWidget(widget);
-	setTabOrder(widget->getLastWidget(), ui->footer);
+	setTabOrder(widget->lastWidget(), ui->footer);
 	processEvents();
 	return widget;
 }

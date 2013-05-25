@@ -27,7 +27,7 @@ RecentThreadsMenu::RecentThreadsMenu(QSettings &settings, QWidget *parent):
 	actionGroup = new QActionGroup(this);
 	actionGroup->setExclusive(true);
 	actions["none"] = new QAction(tr("Żaden"), this);
-	connect(actions["none"], SIGNAL(triggered()), this, SLOT(noneTriggered()));
+	connect(actions["none"], SIGNAL(triggered()), this, SLOT(unselect()));
 	addAction(actions["none"]);
 	
 	foreach (QString threadId, threadTitles.keys())
@@ -58,7 +58,7 @@ QAction *RecentThreadsMenu::addUpdateAction(QString threadId)
 	return action;
 }
 
-void RecentThreadsMenu::imagePosted(QString threadId, QString threadTitle, int imageNumber)
+void RecentThreadsMenu::threadPosted(QString threadId, QString threadTitle, int imageNumber)
 {
 	if (!SETTINGS->numberImages || imageNumber < 0)
 		return;
@@ -70,7 +70,7 @@ void RecentThreadsMenu::imagePosted(QString threadId, QString threadTitle, int i
 	qDebug() << "RecentThreadsMenu: nowe zdjęcia w wątku zaczną się od" << SETTINGS->startingNumber.v();
 }
 
-void RecentThreadsMenu::noneTriggered()
+void RecentThreadsMenu::unselect()
 {
 	if (actionGroup->checkedAction())
 		actionGroup->checkedAction()->setChecked(false);

@@ -25,14 +25,17 @@ class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage
 public:
 	explicit ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream = 0) throw (Exception);
 	~ImageWidget();
-	void serialize(QDataStream &stream);
-	int getNumber() const;
-	QString getFileName() const;
-	QWidget *getFirstWidget() const;
-	QWidget *getLastWidget() const;
+	
+	virtual QString fileName() const;
+	virtual QString caption() const;
+	virtual int number() const;
+	virtual void serialize(QDataStream &stream) const;
+	virtual	void write(QIODevice *device) const;
+	
+	QWidget *firstWidget() const;
+	QWidget *lastWidget() const;
 	void rotate(bool left);
-	bool upload(AbstractUploader *uploader);
-	QString toForumCode() const;
+	
 	QPixmap sourcePixmap() const;
 	QPixmap scaledSourcePixmap() const;
 	QByteArray scaledSourceFile() const;
@@ -47,11 +50,12 @@ public slots:
 	void setBrightness(int value);
 	void setContrast(int value);
 	void setGamma(int value);
-	int getBrightness() const;
-	int getContrast() const;
-	int getGamma() const;
+	int brightness() const;
+	int contrast() const;
+	int gamma() const;
 
 	static bool isPanoramic(QSize size);
+	
 protected:
 	void paintEvent(QPaintEvent *event);
 
@@ -70,7 +74,7 @@ private:
 	QLineEdit *captionEdit;
 	ImageLabel *imageLabel;
 
-	int brightness, contrast, gamma;
+	int m_brightness, m_contrast, m_gamma;
 	QByteArray sourceFile;
 	QImage gpsMap;
 	GpsData *gpsData;

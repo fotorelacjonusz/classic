@@ -76,7 +76,7 @@ GpsData::~GpsData()
 	delete exifHeader;
 }
 
-void GpsData::saveExif(QIODevice *device) const
+void GpsData::writeExif(QIODevice *device) const
 {
 	exifHeader->saveToJpeg(device);
 }

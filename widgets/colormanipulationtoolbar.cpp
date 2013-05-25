@@ -62,9 +62,9 @@ void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 	setEnabled(widget);
 	if (widget)
 	{
-		brightnessSlider->setValue(widget->getBrightness());
-		contrastSlider->setValue(widget->getContrast());
-		gammaSlider->setValue(widget->getGamma());
+		brightnessSlider->setValue(widget->brightness());
+		contrastSlider->setValue(widget->contrast());
+		gammaSlider->setValue(widget->gamma());
 		connect(brightnessSlider, SIGNAL(valueChanged(int)), widget, SLOT(setBrightness(int)));
 		connect(contrastSlider, SIGNAL(valueChanged(int)), widget, SLOT(setContrast(int)));
 		connect(gammaSlider, SIGNAL(valueChanged(int)), widget, SLOT(setGamma(int)));

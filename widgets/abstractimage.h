@@ -3,32 +3,35 @@
 
 #include <QString>
 
-class AbstractUploader;
+class QIODevice;
 
 class AbstractImage
 {
 public:
+	enum State { Ready, Uploaded, Assigned };
+	typedef QString &(QString::*AddFunc)(const QString &);
+	
 	virtual ~AbstractImage();
 
-	virtual QString getFileName() const = 0;
-	virtual bool upload(AbstractUploader *uploader) = 0;
-	virtual QString toForumCode() const = 0;
-
-	QString getUrl() const;
-	virtual int getNumber() const;
-	virtual void serialize(QDataStream &stream);
-
-	void prepend(QString text);
-	void append(QString text);
+	virtual QString fileName() const;
+	virtual QString caption() const;
+	virtual int number() const;
+	virtual void serialize(QDataStream &stream) const;
+	virtual void write(QIODevice *device) const = 0;
+	
+	QString url() const;
+	void setUrl(QString url);
+	QString toBBCode() const;
+	
+	void setHeader(QString text);
+	void setFooter(QString text);
 
 protected:
-	QString appendPrepend(QString text) const;
-
-	QString url;
+	QString m_url;
 
 private:
-	QString prependedText;
-	QString appendedText;
+	QString header;
+	QString footer;
 };
 
 #endif // ABSTRACTIMAGE_H

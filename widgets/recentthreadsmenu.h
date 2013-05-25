@@ -17,10 +17,10 @@ protected:
 	QAction *addUpdateAction(QString threadId);
 	
 public slots:
-	void imagePosted(QString threadId, QString threadTitle, int imageNumber);
+	void threadPosted(QString threadId, QString threadTitle, int imageNumber);
+	void unselect();
 	
 private slots:
-	void noneTriggered();
 	void actionTriggered(bool checked);
 	
 protected:

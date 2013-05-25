@@ -21,14 +21,12 @@
 #include <QDir>
 #include <QCryptographicHash>
 #include <QCheckBox>
-#include <QDateTime>
+#include <QTime>
 
-//const qreal ImageWidget::maxAspectRatio = 17.0 / 9.0;
-
-ImageWidget ::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
+ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
 	SelectableWidget<ImageWidget>(parent),
 	filePath(_filePath),
-	brightness(BRIGHTNESS_DEFAULT), contrast(CONTRAST_DEFAULT), gamma(GAMMA_DEFAULT),
+	m_brightness(BRIGHTNESS_DEFAULT), m_contrast(CONTRAST_DEFAULT), m_gamma(GAMMA_DEFAULT),
 	gpsData(0)
 {
 	numberLabel = new QLabel(this);
@@ -91,34 +89,52 @@ ImageWidget::~ImageWidget()
 	delete gpsData;
 }
 
-void ImageWidget::serialize(QDataStream &stream)
+QString ImageWidget::fileName() const
 {
-	QBuffer buffer(&sourceFile);
-	buffer.open(QIODevice::ReadWrite);
-	gpsData->saveExif(&buffer);
-	buffer.close();
-	
-	stream << filePath << num << captionEdit->text() << sourceFile << *imageLabel;
+	return filePath; //.section(QDir::separator(), -1);
 }
 
-int ImageWidget::getNumber() const
+QString ImageWidget::caption() const
+{
+	QString caption = captionEdit->text();
+	if (SETTINGS->numberImages)
+		caption.prepend(numberLabel->text());
+	return caption;
+}
+
+int ImageWidget::number() const
 {
 	return num;
 }
 
-QString ImageWidget::getFileName() const
+void ImageWidget::serialize(QDataStream &stream) const
 {
-	return filePath.section(QDir::separator(), -1);
+	QBuffer buffer; //(&sourceFile);
+	buffer.buffer() = sourceFile;
+	buffer.open(QIODevice::ReadWrite);
+	gpsData->writeExif(&buffer);
+	buffer.close();
+	
+	stream << filePath << num << captionEdit->text() << buffer.buffer() << *imageLabel;
 }
 
-QWidget *ImageWidget::getFirstWidget() const
+void ImageWidget::write(QIODevice *device) const
+{
+//	captionEdit->setFocus();
+
+	imageLabel->write(device);
+	device->seek(0);
+	gpsData->writeExif(device);
+}
+
+QWidget *ImageWidget::firstWidget() const
 {
 	return captionEdit;
 }
 
-QWidget *ImageWidget::getLastWidget() const
+QWidget *ImageWidget::lastWidget() const
 {
-	QWidget *widget = imageLabel->getLastArrow();
+	QWidget *widget = imageLabel->lastArrow();
 	return widget ? widget : captionEdit;
 }
 
@@ -134,37 +150,6 @@ void ImageWidget::rotate(bool left)
 														 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 		pixmap.save(filePath, "JPG");
 	updatePixmap();
-}
-
-bool ImageWidget::upload(AbstractUploader *uploader)
-{
-	if (!url.isEmpty())
-		return true;
-
-	captionEdit->setFocus();
-	QPixmap pixmap = imageLabel->mergedPixmap();
-
-	QBuffer buffer;
-	buffer.open(QIODevice::ReadWrite);
-	pixmap.save(&buffer, "JPG", SETTINGS->jpgQuality);
-	buffer.seek(0);
-	gpsData->saveExif(&buffer);
-	buffer.close();
-
-	url = uploader->uploadImage(filePath, &buffer);
-	return !url.isEmpty();
-}
-
-QString ImageWidget::toForumCode() const
-{
-	QString link = url.isEmpty() ? tr("Upload zdjęcia %1 nieudany.\n").arg(filePath) : QString("[img]%1[/img]\n").arg(url);
-	QString caption = captionEdit->text() + "\n";
-	if (SETTINGS->numberImages)
-		caption.prepend(numberLabel->text());
-
-	QString space = SETTINGS->extraSpace ? "\n" : "";
-	QString text = SETTINGS->captionsUnder ? link + space + caption : caption + space + link;
-	return appendPrepend(text) + "\n";
 }
 
 QPixmap ImageWidget::sourcePixmap() const
@@ -216,10 +201,10 @@ void ImageWidget::imageSizeChanged()
 
 void ImageWidget::updatePixmap()
 {
-//	QDateTime time = QDateTime::currentDateTime();
+//	QTime time;
+//	time.start();
 //	qDebug() << objectName() << "start";
-//	if (SETTINGS->imageLength.wasChanged() || SETTINGS->setImageWidth.wasChanged())
-//		QPixmapCache::remove(filePath);
+
 	QPixmap photo;
 	if (!QPixmapCache::find(filePath, &photo))
 	{
@@ -228,20 +213,18 @@ void ImageWidget::updatePixmap()
 		if (photo.isNull())
 			THROW(tr("Nie można utworzyć pixmapy ze zdjęcia. Pamięć wyczerpana?"));
 
-//		Q_UNUSED(makeCache);
-//		if (makeCache)
 		QPixmapCache::insert(filePath, photo);
-//		qDebug() << "after makecache" << time.msecsTo(QDateTime::currentDateTime());
+//		qDebug() << "after makecache" << time.elapsed();
 	}
 	
-	if (brightness != BRIGHTNESS_DEFAULT || contrast != CONTRAST_DEFAULT || gamma != GAMMA_DEFAULT)
+	if (m_brightness != BRIGHTNESS_DEFAULT || m_contrast != CONTRAST_DEFAULT || m_gamma != GAMMA_DEFAULT)
 	{
 		QImage img = photo.toImage();
-		ImageManipulation::changeBrightness(img, brightness);
-		ImageManipulation::changeContrast(img, contrast);
-		ImageManipulation::changeGamma(img, gamma);
+		ImageManipulation::changeBrightness(img, m_brightness);
+		ImageManipulation::changeContrast(img, m_contrast);
+		ImageManipulation::changeGamma(img, m_gamma);
 		photo = QPixmap::fromImage(img);
-//		qDebug() << "after color reg" << time.msecsTo(QDateTime::currentDateTime());
+//		qDebug() << "after color reg" << time.elapsed();
 	}
 
 	if (SETTINGS->addLogo)
@@ -266,7 +249,7 @@ void ImageWidget::updatePixmap()
 		QPainter painter(&photo);
 		painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 		painter.drawImage(logoRect, logo);
-//		qDebug() << "after add logo" << time.msecsTo(QDateTime::currentDateTime());
+//		qDebug() << "after add logo" << time.elapsed();
 	}
 
 	if (SETTINGS->addImageMap && !gpsMap.isNull())
@@ -293,7 +276,7 @@ void ImageWidget::updatePixmap()
 			painter.setOpacity(SETTINGS->imageMapOpacity);
 			painter.drawImage(mapRect, gpsMap);
 		}
-//		qDebug() << "after add map" << time.msecsTo(QDateTime::currentDateTime());
+//		qDebug() << "after add map" << time.elapsed();
 	}
 
 	if (SETTINGS->addImageBorder)
@@ -301,15 +284,15 @@ void ImageWidget::updatePixmap()
 		QPainter painter(&photo);
 		painter.setPen(QPen(Qt::black, 3));
 		painter.drawRect(photo.rect().adjusted(1, 1, -2, -2));
-//		qDebug() << "after add border" << time.msecsTo(QDateTime::currentDateTime());
+//		qDebug() << "after add border" << time.elapsed();
 	}
 
-//	qDebug() << "after conditions" << time.msecsTo(QDateTime::currentDateTime());
+//	qDebug() << "after conditions" << time.elapsed();
 	imageLabel->setPixmap(photo);
 	setMaximumWidth(photo.width() + 6);
 
-	url = QString();
-//	qDebug() << objectName() << time.msecsTo(QDateTime::currentDateTime()) << "total" << QPixmapCache::totalUsed();
+	m_url = QString();
+//	qDebug() << objectName() << time.elapsed() << "total" << QPixmapCache::totalUsed();
 }
 
 void ImageWidget::updateNumber(int now)
@@ -335,35 +318,35 @@ void ImageWidget::updateLayout()
 
 void ImageWidget::setBrightness(int value)
 {
-	brightness = value;
+	m_brightness = value;
 	updatePixmap();
 }
 
 void ImageWidget::setContrast(int value)
 {
-	contrast = value;
+	m_contrast = value;
 	updatePixmap();
 }
 
 void ImageWidget::setGamma(int value)
 {
-	gamma = value;
+	m_gamma = value;
 	updatePixmap();
 }
 
-int ImageWidget::getBrightness() const
+int ImageWidget::brightness() const
 {
-	return brightness;
+	return m_brightness;
 }
 
-int ImageWidget::getContrast() const
+int ImageWidget::contrast() const
 {
-	return contrast;
+	return m_contrast;
 }
 
-int ImageWidget::getGamma() const
+int ImageWidget::gamma() const
 {
-	return gamma;
+	return m_gamma;
 }
 
 bool ImageWidget::isPanoramic(QSize size)

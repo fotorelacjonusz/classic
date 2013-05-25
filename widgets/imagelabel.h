@@ -1,18 +1,22 @@
 #ifndef IMAGELABEL_H
 #define IMAGELABEL_H
 
+#include "abstractimage.h"
 #include <QLabel>
 class ArrowWidget;
 
-class ImageLabel : public QLabel
+class ImageLabel : public QLabel, public AbstractImage
 {
 	Q_OBJECT
 public:
 	explicit ImageLabel(QWidget *parent, QWidget *firstWidget = 0);
 	
+	bool isNull() const;
 	QPixmap mergedPixmap() const;
-	QWidget *getLastArrow() const;
+	QWidget *lastArrow() const;
 	void setFirstWidget(QWidget *widget);
+	
+	virtual void write(QIODevice *device) const;
 	
 protected:
 	void mousePressEvent(QMouseEvent *event);
