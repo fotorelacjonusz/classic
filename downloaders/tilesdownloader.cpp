@@ -45,9 +45,9 @@ void TilesDownloader::makeMapSlot(GeoMap *map)
 	urlPattern = SETTINGS->currentOsmLayer(map->isCommon).urlPattern;
 	
 	if (!map->isCommon)
-		map->setImage(render(map->coords.first(), SETTINGS->imageMapZoom, map->size));
+		map->setImage(render(map->first(), SETTINGS->imageMapZoom, map->size));
 	else if (map->isSingle)
-		map->setImage(render(map->distinctCoords.first(), 17, maxSize()), QSize(0, 0));
+		map->setImage(render(map->first(), 17, maxSize()), QSize(0, 0));
 	else
 	{
 		// calculate maximum integer zoom for which width and height are less than their maximums including margins

@@ -114,9 +114,9 @@ bool Overlay::makeMap(GeoMap *map)
 			return false;
 	
 	if (!map->isCommon)
-		map->setImage(render(coordToPoint(map->coords.first()), map->size, 22 - SETTINGS->imageMapZoom));
+		map->setImage(render(coordToPoint(map->first()), map->size, 22 - SETTINGS->imageMapZoom));
 	else if (map->isSingle)
-		map->setImage(render(coordToPoint(map->coords.first()), maxSize(), 4), QSize(0, 0));
+		map->setImage(render(coordToPoint(map->first()), maxSize(), 4), QSize(0, 0));
 	else
 	{
 		QRect rect(coordToPoint(map->coordBox.bottomLeft()), coordToPoint(map->coordBox.topRight()));

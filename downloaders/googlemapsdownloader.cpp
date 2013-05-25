@@ -9,7 +9,7 @@
 bool GoogleMapsDownloader::makeMap(GeoMap *map)
 {
 	QStringList markers;
-	foreach (QPointF point, map->coords)
+	foreach (QPointF point, map->coords.values())
 		markers << QString("%1,%2").arg(point.y()).arg(point.x());
 	
 	QUrl url("http://maps.googleapis.com/maps/api/staticmap");

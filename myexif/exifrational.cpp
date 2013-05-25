@@ -5,7 +5,7 @@ ExifURational::ExifURational():
 {
 }
 
-ExifURational::ExifURational(QPair::first_type f, QPair::second_type s):
+ExifURational::ExifURational(first_type f, second_type s):
 	QPair<first_type, second_type>(f, s)
 {
 }
@@ -20,7 +20,7 @@ ExifSRational::ExifSRational():
 {
 }
 
-ExifSRational::ExifSRational(QPair::first_type f, QPair::second_type s):
+ExifSRational::ExifSRational(first_type f, second_type s):
 	QPair<first_type, second_type>(f, s)
 {
 }

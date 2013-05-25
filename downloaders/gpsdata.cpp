@@ -138,7 +138,7 @@ void GpsData::downloadMap()
 		if (!SETTINGS->addCommonMap || allCoords.isEmpty())
 			return mapReady(QImage());
 		
-		QList<QPointF> coords = allCoords.values(); // populate only
+		GeoMap::CoordMap coords;
 		for (QHash<GpsData *, QPointF>::Iterator i = allCoords.begin(); i != allCoords.end(); ++i)
 			coords[*i.key()->number] = i.value(); // QList with indexes same as images' numbers
 		

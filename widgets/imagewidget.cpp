@@ -155,7 +155,8 @@ void ImageWidget::rotate(bool left)
 QPixmap ImageWidget::sourcePixmap() const
 {
 	QPixmap pixmap;
-	Q_ASSERT(pixmap.loadFromData(sourceFile));
+	if (!pixmap.loadFromData(sourceFile))
+		THROW(tr("Nie można załadować zdjęcia. Pamięć wyczerpana?"));
 //	if (!pixmap.loadFromData(sourceFile))
 //		return QPixmap();
 

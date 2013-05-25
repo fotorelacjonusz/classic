@@ -231,12 +231,17 @@ Wrong url will make all links corrupted.</translation>
         <translation>Save rotated image to disk?</translation>
     </message>
     <message>
+        <location filename="widgets/imagewidget.cpp" line="159"/>
+        <source>Nie moÅ¼na zaÅadowaÄ zdjÄcia. PamiÄÄ wyczerpana?</source>
+        <translation>Can&apos;t load photo.Out of memory? </translation>
+    </message>
+    <message>
         <source>Upload zdjÄcia %1 nieudany.
 </source>
         <translation type="obsolete">Uploading image %1 failed.</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="214"/>
+        <location filename="widgets/imagewidget.cpp" line="215"/>
         <source>Nie moÅ¼na utworzyÄ pixmapy ze zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
@@ -781,12 +786,12 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>QObject</name>
     <message>
-        <location filename="exception.cpp" line="12"/>
+        <location filename="exception.cpp" line="13"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="exception.cpp" line="12"/>
+        <location filename="exception.cpp" line="13"/>
         <source>%1
 
 Miejsce bÅÄdu:

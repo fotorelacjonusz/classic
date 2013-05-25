@@ -259,9 +259,7 @@ QVector<T> ExifValue::readVector(QDataStream &stream)
 		quint32 backup = stream.device()->pos();
 		stream.device()->seek(offset);
 		for (uint i = 0; i < count; ++i)
-		{
 			stream >> vector[i];
-		}
 		stream.device()->seek(backup);
 	}
 	return vector;

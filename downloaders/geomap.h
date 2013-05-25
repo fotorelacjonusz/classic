@@ -6,14 +6,20 @@
 #include <QSize>
 #include <QRect>
 #include <QImage>
+#include <QMap>
 
 class GeoMap : public QObject
 {
 	Q_OBJECT
 	
 public:
+	typedef QMap<int, QPointF> CoordMap;
+	
 	explicit GeoMap(QPointF coord, bool hasDirection, qreal direction, QSize size);
-	explicit GeoMap(QList<QPointF> coords);
+	explicit GeoMap(CoordMap coords);
+	
+	static CoordMap makeMap(const QPointF &point);
+	QPointF first() const;
 	
 	// set map image where rectangle centered on image center of size size coresponds to coordBox for common map
 	// for single position maps size is ignored
@@ -36,7 +42,7 @@ public:
 	const bool hasDirection;
 	const qreal direction;
 	const QSize size;
-	const QList<QPointF> coords;
+	const CoordMap coords;
 	const QList<QPointF> distinctCoords;
 	const QRectF coordBox;
 	const bool isSingle;

@@ -12,21 +12,33 @@ QHash<int, QImage> GeoMap::maskCache;
 
 GeoMap::GeoMap(QPointF coord, bool hasDirection, qreal direction, QSize size):
 	isCommon(false), hasDirection(hasDirection), direction(direction), size(size),
-	coords(QList<QPointF>() << coord),
-	distinctCoords(coords.toSet().toList()),
-	coordBox(QPolygonF(coords.toVector()).boundingRect()),
+	coords(makeMap(coord)),
+	distinctCoords(coords.values().toSet().toList()),
+	coordBox(QPolygonF(coords.values().toVector()).boundingRect()),
 	isSingle(distinctCoords.size() == 1)
 {
 }
 
-GeoMap::GeoMap(QList<QPointF> coords):
+GeoMap::GeoMap(CoordMap coords):
 	isCommon(true), hasDirection(false), direction(0), 
 	coords(coords),
-	distinctCoords(coords.toSet().toList()),
-	coordBox(QPolygonF(coords.toVector()).boundingRect()),
+	distinctCoords(coords.values().toSet().toList()),
+	coordBox(QPolygonF(coords.values().toVector()).boundingRect()),
 	isSingle(distinctCoords.size() == 1)
 {
 	Q_ASSERT(!coords.isEmpty());
+}
+
+GeoMap::CoordMap GeoMap::makeMap(const QPointF &point)
+{
+	QMap<int, QPointF> map;
+	map.insert(-1, point);
+	return map;
+}
+
+QPointF GeoMap::first() const
+{
+	return coords.constBegin().value();
 }
 
 void GeoMap::setImage(QImage image, QSize size)
@@ -69,9 +81,11 @@ void GeoMap::processCommonMap(QImage &map) const
 	painter.setFont(QFont("Arial", 12));
 
 	QHash<QPointF, QStringList> merged;
-	for (int i = 0; i < coords.size(); ++i)
-		merged[coords[i]].append(QString::number(i + SETTINGS->startingNumber));
+//	for (int i = 0; i < coords.size(); ++i)
+//		merged[coords[i]].append(QString::number(i + SETTINGS->startingNumber));
 	
+	for (CoordMap::ConstIterator i = coords.constBegin(); i != coords.constEnd(); ++i)
+		merged[i.value()].append(QString::number(i.key() + SETTINGS->startingNumber));
 	for (QHash<QPointF, QStringList>::Iterator i = merged.begin(); i != merged.end(); ++i)
 		textBaloon(&painter, coordToPoint(i.key()), SETTINGS->numberImages ? i.value().join(", ") : "✖"); ; // "●"
 }
