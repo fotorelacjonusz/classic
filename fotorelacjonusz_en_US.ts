@@ -209,29 +209,72 @@ Wrong url will make all links corrupted.</translation>
     </message>
 </context>
 <context>
+    <name>GpxDialog</name>
+    <message>
+        <location filename="widgets/gpxdialog.ui" line="14"/>
+        <source>Importuj track</source>
+        <translation>Import track</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.ui" line="23"/>
+        <source>Plik gpx</source>
+        <translation>GPX file</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/gpxdialog.ui" line="43"/>
+        <source>Otwórz</source>
+        <translation>Open</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.ui" line="57"/>
+        <source>Aktualny czas w aparacie</source>
+        <translation>Current camera time</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.ui" line="67"/>
+        <source>Aktualny czas w odbiorniku GPS</source>
+        <translation>Current GPS device time</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.ui" line="77"/>
+        <source>Zaktualizuj pliki</source>
+        <translation>Update files</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.cpp" line="130"/>
+        <source>Wybierz plik</source>
+        <translation>Select file</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.cpp" line="130"/>
+        <source>Track (*.gpx)</source>
+        <translation>Track (*.gpx)</translation>
+    </message>
+</context>
+<context>
     <name>ImageWidget</name>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="55"/>
+        <location filename="widgets/imagewidget.cpp" line="56"/>
         <source>Nie moÅ¼na zaÅadowaÄ zdjÄcia do pamiÄci. PamiÄÄ wyczerpana?</source>
         <translation>Unable to load an image to the memory. Out of memory?</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="75"/>
+        <location filename="widgets/imagewidget.cpp" line="76"/>
         <source>Podpis zdjÄcia</source>
         <translation>Image caption</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="149"/>
+        <location filename="widgets/imagewidget.cpp" line="160"/>
         <source>ObrÃ³t zdjÄcia</source>
         <translation>Rotate image</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="149"/>
+        <location filename="widgets/imagewidget.cpp" line="160"/>
         <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
         <translation>Save rotated image to disk?</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="159"/>
+        <location filename="widgets/imagewidget.cpp" line="170"/>
         <source>Nie moÅ¼na zaÅadowaÄ zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t load photo.Out of memory? </translation>
     </message>
@@ -241,7 +284,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="obsolete">Uploading image %1 failed.</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="215"/>
+        <location filename="widgets/imagewidget.cpp" line="226"/>
         <source>Nie moÅ¼na utworzyÄ pixmapy ze zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
@@ -432,117 +475,122 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>&amp;Photo report</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="159"/>
+        <location filename="widgets/mainwindow.ui" line="161"/>
         <source>Edycja zdjęcia</source>
         <translation>Image edition</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="180"/>
+        <location filename="widgets/mainwindow.ui" line="182"/>
         <source>Edycja strzałki</source>
         <translation>Arrow edition</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="194"/>
+        <location filename="widgets/mainwindow.ui" line="196"/>
         <source>Edycja kolorów zdjęcia</source>
         <translation>Image colors edition</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="209"/>
+        <location filename="widgets/mainwindow.ui" line="211"/>
         <source>&amp;Dodaj zdjęcia</source>
         <translation>&amp;Add photo</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="218"/>
+        <location filename="widgets/mainwindow.ui" line="220"/>
         <source>Przenieś na górę</source>
         <translation>Move top</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="227"/>
+        <location filename="widgets/mainwindow.ui" line="229"/>
         <source>Przenieś wyżej</source>
         <translation>Move up</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="236"/>
+        <location filename="widgets/mainwindow.ui" line="238"/>
         <source>Przenieś niżej</source>
         <translation>Move down</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="245"/>
+        <location filename="widgets/mainwindow.ui" line="247"/>
         <source>Przenieś na spód</source>
         <translation>Move bottom</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="254"/>
+        <location filename="widgets/mainwindow.ui" line="256"/>
         <source>Obróć w lewo</source>
         <translation>Rotate left</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="263"/>
+        <location filename="widgets/mainwindow.ui" line="265"/>
         <source>Obróć w prawo</source>
         <translation>Rotate right</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="272"/>
+        <location filename="widgets/mainwindow.ui" line="274"/>
         <source>Usuń z fotorelacji</source>
         <translation>Delete photo</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="275"/>
-        <location filename="widgets/mainwindow.ui" line="356"/>
+        <location filename="widgets/mainwindow.ui" line="277"/>
+        <location filename="widgets/mainwindow.ui" line="358"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="284"/>
+        <location filename="widgets/mainwindow.ui" line="286"/>
         <source>&amp;Wyślij na SSC</source>
         <translation>&amp;Post on SSC</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="293"/>
+        <location filename="widgets/mainwindow.ui" line="295"/>
         <source>&amp;Ustawienia</source>
         <translation>Se&amp;ttings</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="302"/>
+        <location filename="widgets/mainwindow.ui" line="304"/>
         <source>&amp;Zamknij</source>
         <translation>&amp;Close</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="305"/>
+        <location filename="widgets/mainwindow.ui" line="307"/>
         <source>Zamknij</source>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="314"/>
+        <location filename="widgets/mainwindow.ui" line="316"/>
         <source>&amp;O programie</source>
         <translation>&amp;About</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="323"/>
+        <location filename="widgets/mainwindow.ui" line="325"/>
         <source>Informacje o &amp;Qt</source>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="326"/>
+        <location filename="widgets/mainwindow.ui" line="328"/>
         <source>Informacje o Qt</source>
         <translation>About Qt</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="335"/>
+        <location filename="widgets/mainwindow.ui" line="337"/>
         <source>&amp;Otwórz</source>
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="344"/>
+        <location filename="widgets/mainwindow.ui" line="346"/>
         <source>Zapi&amp;sz</source>
         <translation>&amp;Save</translation>
+    </message>
+    <message>
+        <location filename="widgets/mainwindow.ui" line="385"/>
+        <source>Importuj track &amp;GPX</source>
+        <translation>Import &amp;GPX track</translation>
     </message>
     <message utf8="true">
         <source>&amp;Usuń strzałkę</source>
         <translation type="obsolete">&amp;Delete arrow</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="353"/>
+        <location filename="widgets/mainwindow.ui" line="355"/>
         <source>Usuń strzałkę</source>
         <translation>Delete arrow</translation>
     </message>
@@ -551,76 +599,76 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">&amp;Invert colors</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="365"/>
+        <location filename="widgets/mainwindow.ui" line="367"/>
         <source>Odwróć kolory</source>
         <translation>Invert colors</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="374"/>
+        <location filename="widgets/mainwindow.ui" line="376"/>
         <source>Wybierz kolor</source>
         <translation>Choose color</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="61"/>
+        <location filename="widgets/mainwindow.cpp" line="59"/>
         <source>OtwÃ³rz fotorelacjÄ</source>
         <translation>Open photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="78"/>
-        <location filename="widgets/mainwindow.cpp" line="105"/>
-        <location filename="widgets/mainwindow.cpp" line="152"/>
+        <location filename="widgets/mainwindow.cpp" line="76"/>
+        <location filename="widgets/mainwindow.cpp" line="103"/>
+        <location filename="widgets/mainwindow.cpp" line="158"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="79"/>
+        <location filename="widgets/mainwindow.cpp" line="77"/>
         <source>Nie moÅ¼na otworzyÄ. TÄ fotorelacjÄ zapisano innÄ wersjÄ programu.</source>
         <translation>Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="80"/>
+        <location filename="widgets/mainwindow.cpp" line="78"/>
         <source>To nie jest plik fotorelacji!</source>
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="105"/>
-        <location filename="widgets/mainwindow.cpp" line="152"/>
+        <location filename="widgets/mainwindow.cpp" line="103"/>
+        <location filename="widgets/mainwindow.cpp" line="158"/>
         <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
         <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="108"/>
+        <location filename="widgets/mainwindow.cpp" line="106"/>
         <source>Zapisz fotorelacjÄ</source>
         <translation>Save photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="167"/>
+        <location filename="widgets/mainwindow.cpp" line="173"/>
         <source>Jeszcze raz</source>
         <translation>Once more</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="167"/>
+        <location filename="widgets/mainwindow.cpp" line="173"/>
         <source>Czy sprÃ³bowaÄ dokoÅczyÄ wysyÅanie fotorelacji?</source>
         <translation>Try finishing photo report upload?</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="180"/>
+        <location filename="widgets/mainwindow.cpp" line="186"/>
         <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
         <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="61"/>
-        <location filename="widgets/mainwindow.cpp" line="108"/>
+        <location filename="widgets/mainwindow.cpp" line="59"/>
+        <location filename="widgets/mainwindow.cpp" line="106"/>
         <source>Fotorelacje (*.phr)</source>
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="125"/>
+        <location filename="widgets/mainwindow.cpp" line="123"/>
         <source>Wybierz zdjÄcia</source>
         <translation>Choose photos</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="125"/>
+        <location filename="widgets/mainwindow.cpp" line="123"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
@@ -629,7 +677,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">All photos map.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="180"/>
+        <location filename="widgets/mainwindow.cpp" line="186"/>
         <source>O programie</source>
         <translation>About</translation>
     </message>
@@ -638,9 +686,22 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;exiv2 (GPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="190"/>
+        <location filename="widgets/mainwindow.cpp" line="196"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
+    </message>
+</context>
+<context>
+    <name>MessageHandler</name>
+    <message>
+        <location filename="widgets/gpxdialog.cpp" line="26"/>
+        <source>BÅÄd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
+        <translation>Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.cpp" line="29"/>
+        <source>BÅÄd</source>
+        <translation>Error</translation>
     </message>
 </context>
 <context>
