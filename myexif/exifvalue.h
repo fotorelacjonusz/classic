@@ -53,7 +53,7 @@ public:
 	ExifValue(const QVector<quint16> &value);
 	ExifValue(quint32 value);
 	ExifValue(const QVector<quint32> &value);
-	ExifValue(const ExifURational &value );
+	ExifValue(const ExifURational &value);
 	ExifValue(const QVector<ExifURational> &value);
 	ExifValue(const QByteArray &value);
 	ExifValue(qint32 value);

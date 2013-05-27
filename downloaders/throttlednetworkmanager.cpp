@@ -21,8 +21,8 @@ ThrottledNetworkManager::ThrottledNetworkManager(int limit, QObject *parent) :
 	QObject(parent), limit(limit), running(0)
 {
 	cache.setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
-	manager.setCache(&cache);
-	connect(&manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
+	m_manager.setCache(&cache);
+	connect(&m_manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
 }
 
 void ThrottledNetworkManager::get(QNetworkRequest request, AbstractMapDownloader *downloader)
@@ -32,11 +32,17 @@ void ThrottledNetworkManager::get(QNetworkRequest request, AbstractMapDownloader
 	start();
 }
 
+QNetworkAccessManager *ThrottledNetworkManager::manager()
+{
+	return &m_manager;
+}
+
 void ThrottledNetworkManager::finished(QNetworkReply *reply)
 {
-	--running;
 	Wrapper *wrapper = qobject_cast<Wrapper *>(reply->request().originatingObject());
-	Q_ASSERT(wrapper);
+	if (!wrapper) // request sent directly on manager
+		return;
+	--running;
 	wrapper->downloader->finished(reply);
 	wrapper->deleteLater();
 	reply->deleteLater();
@@ -46,5 +52,5 @@ void ThrottledNetworkManager::finished(QNetworkReply *reply)
 void ThrottledNetworkManager::start()
 {
 	for (; running < limit && !requests.isEmpty(); ++running)
-		manager.get(requests.dequeue());
+		m_manager.get(requests.dequeue());
 }

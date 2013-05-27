@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network webkit script xml
+QT       += core gui network webkit script xml xmlpatterns
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,6 +26,7 @@ SOURCES += main.cpp \
     widgets/imagewidget.cpp \
     widgets/imagemanipulation.cpp \
     widgets/imagelabel.cpp \
+    widgets/gpxdialog.cpp \
     widgets/colormanipulationtoolbar.cpp \
     widgets/arrowwidget.cpp \
     widgets/abstractimage.cpp \
@@ -74,6 +75,7 @@ HEADERS += \
     widgets/imagewidget.h \
     widgets/imagemanipulation.h \
     widgets/imagelabel.h \
+    widgets/gpxdialog.h \
     widgets/colormanipulationtoolbar.h \
     widgets/arrowwidget.h \
     widgets/abstractimage.h \
@@ -112,6 +114,7 @@ FORMS += \
     widgets/replydialog.ui \
     widgets/postwidget.ui \
     widgets/mainwindow.ui \
+    widgets/gpxdialog.ui \
     settings/settingsdialog.ui \
     settings/osmlayerdialog.ui \
     uploaders/isloginuploader.ui \

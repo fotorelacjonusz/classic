@@ -17,6 +17,7 @@ class ImageLabel;
 class AbstractUploader;
 class GpsData;
 class QCheckBox;
+class GpxDialog;
 
 class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage
 {
@@ -31,6 +32,8 @@ public:
 	virtual int number() const;
 	virtual void serialize(QDataStream &stream) const;
 	virtual	void write(QIODevice *device) const;
+	
+	void setPosition(GpxDialog *gpxDialog);
 	
 	QWidget *firstWidget() const;
 	QWidget *lastWidget() const;

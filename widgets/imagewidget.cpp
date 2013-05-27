@@ -6,6 +6,7 @@
 #include "imagelabel.h"
 #include "downloaders/gpsdata.h"
 #include "imagemanipulation.h"
+#include "gpxdialog.h"
 
 #define Q_TEST_QPIXMAPCACHE
 
@@ -125,6 +126,16 @@ void ImageWidget::write(QIODevice *device) const
 	imageLabel->write(device);
 	device->seek(0);
 	gpsData->writeExif(device);
+}
+
+void ImageWidget::setPosition(GpxDialog *gpxDialog)
+{
+	if (gpsData->setPosition(gpxDialog) && gpxDialog->updateFiles() && QFile::exists(filePath))
+	{
+		QFile image(filePath);
+		image.open(QIODevice::ReadWrite);
+		gpsData->writeExif(&image);
+	}
 }
 
 QWidget *ImageWidget::firstWidget() const

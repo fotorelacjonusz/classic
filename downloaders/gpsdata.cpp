@@ -4,6 +4,7 @@
 #include "googlemapsdownloader.h"
 #include "tilesdownloader.h"
 #include "myexif/exifimageheader.h"
+#include "widgets/gpxdialog.h"
 
 #include <QFile>
 #include <QUrl>
@@ -96,6 +97,49 @@ qreal GpsData::dmsToReal(const ExifValue &dms, const ExifValue &ref)
 	char c = ref.toString().toAscii()[0];
 	const QVector<ExifURational> vector = dms.toRationalVector();
 	return (vector[0].toReal() + vector[1].toReal() / 60 + vector[2].toReal() / 3600) * ((c == 'S' || c == 'W') ? -1 : 1);
+}
+
+ExifValue GpsData::realToDms(qreal real)
+{
+	real = qAbs(real);
+	QVector<ExifURational> vector(3);
+	vector[0] = ExifURational(qFloor(real), 1);
+	vector[1] = ExifURational(qFloor((real -= vector[0].first) *= 60), 1);
+	vector[2] = ExifURational(qFloor((real -= vector[1].first) *= 60 * 1000), 1000);
+	return vector;
+}
+
+ExifValue GpsData::realtoRef(qreal real, bool lon)
+{
+	return lon ? (real < 0 ? 'W' : 'E') : (real < 0 ? 'S' : 'N');
+}
+
+bool GpsData::setPosition(GpxDialog *gpxDialog)
+{
+	if (hasPosition)
+		return false;
+	QDateTime dt;
+	if (exifHeader->contains(ExifImageHeader::DateTimeOriginal))
+		dt = exifHeader->value(ExifImageHeader::DateTimeOriginal).toDateTime();
+	else if (exifHeader->contains(ExifImageHeader::DateTime))
+		dt = exifHeader->value(ExifImageHeader::DateTime).toDateTime();
+	else
+		return false;
+	QPointF position = gpxDialog->position(dt);
+	if (position.isNull())
+		return false;
+	
+	hasPosition = true;
+	longitude = position.x();
+	latitude = position.y();
+	allCoords[this] = position;
+	
+	exifHeader->setValue(ExifImageHeader::GpsLatitude, realToDms(latitude));
+	exifHeader->setValue(ExifImageHeader::GpsLatitudeRef, realtoRef(latitude, false));
+	exifHeader->setValue(ExifImageHeader::GpsLongitude, realToDms(longitude));
+	exifHeader->setValue(ExifImageHeader::GpsLongitudeRef, realtoRef(longitude, true));
+	downloadMap();
+	return true;
 }
 
 void GpsData::serialize(QDataStream &stream) const

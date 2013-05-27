@@ -9,6 +9,7 @@
 #include "exception.h"
 #include "downloaders/gpsdata.h"
 #include "recentthreadsmenu.h"
+#include "gpxdialog.h"
 
 class AbstractImage;
 class ImageWidget;
@@ -31,6 +32,7 @@ private slots:
 	void on_action_save_photorelation_triggered();
 	void on_action_add_photos_triggered();
 	void on_action_settings_triggered();
+	void on_action_import_gpx_triggered();
 	void on_action_send_to_SSC_triggered();
 
 	void on_action_about_triggered();
@@ -56,7 +58,7 @@ private slots:
 
 	void updateCommonMap();
 	void commonMapReady(QImage map);
-
+	
 protected:
 	void processEvents() const;
 	ImageWidget *newImage(QString filePath, QDataStream *stream) throw(Exception);
@@ -78,6 +80,7 @@ private:
 	static QByteArray phrFileHeader;
 	GpsData gpsData;
 	RecentThreadsMenu recentThreads;
+	GpxDialog gpxDialog;
 };
 
 #endif // MAINWINDOW_H

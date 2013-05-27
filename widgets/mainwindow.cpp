@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->imageToolBar->setEnabled(false);
 	ui->arrowToolBar->setEnabled(false);
 	ui->colorManipulationBar->setEnabled(false);
-	ui->menu_Fotorelacja->addMenu(&recentThreads);
+	ui->menu_Fotorelacja->insertMenu(ui->menu_Fotorelacja->actions()[2], &recentThreads);
 	ui->commonMap->setFirstWidget(ui->header);
 	settingsDialog.copyDescriptions(this);
 
@@ -39,8 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager.load();
 
 	connect(&gpsData, SIGNAL(mapReady(QImage)), this, SLOT(commonMapReady(QImage)));
-//	connect(SETTINGS, SIGNAL(numberOptionsChanged()), this, SLOT(updateCommonMap()));
-//	connect(SETTINGS, SIGNAL(commonMapOptionsChanged()), this, SLOT(updateCommonMap()));
 	
 	SETTINGS->addCommonMap.connect(this, SLOT(updateCommonMap()));
 	
@@ -143,6 +141,14 @@ void MainWindow::on_action_add_photos_triggered()
 void MainWindow::on_action_settings_triggered()
 {
 	settingsDialog.exec();
+}
+
+void MainWindow::on_action_import_gpx_triggered()
+{
+    if (gpxDialog.exec() == QDialog::Accepted)
+		for (int i = 0; i < ui->postLayout->count(); ++i)
+			static_cast<ImageWidget *>(ui->postLayout->itemAt(i)->widget())->setPosition(&gpxDialog);
+	updateCommonMap();
 }
 
 void MainWindow::on_action_send_to_SSC_triggered()
@@ -324,6 +330,7 @@ ImageWidget *MainWindow::newImage(QString filePath, QDataStream *stream) throw(E
 	ImageWidget *widget = new ImageWidget(ui->postWidget, filePath, stream);
 	ui->postLayout->addWidget(widget);
 	setTabOrder(widget->lastWidget(), ui->footer);
+	widget->setPosition(&gpxDialog);
 	processEvents();
 	return widget;
 }
@@ -379,5 +386,3 @@ void MainWindow::dropEvent(QDropEvent *event)
 	event->acceptProposedAction();
 	updateCommonMap();
 }
-
-

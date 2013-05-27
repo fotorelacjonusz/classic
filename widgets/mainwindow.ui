@@ -148,6 +148,8 @@
      <string>&amp;Fotorelacja</string>
     </property>
     <addaction name="action_add_photos"/>
+    <addaction name="action_import_gpx"/>
+    <addaction name="separator"/>
     <addaction name="action_send_to_SSC"/>
    </widget>
    <addaction name="menu_Plik"/>
@@ -372,6 +374,15 @@
    </property>
    <property name="whatsThis">
     <string>Wybierz kolor</string>
+   </property>
+  </action>
+  <action name="action_import_gpx">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/res/gpx_icon.png</normaloff>:/res/gpx_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Importuj track &amp;GPX</string>
    </property>
   </action>
  </widget>

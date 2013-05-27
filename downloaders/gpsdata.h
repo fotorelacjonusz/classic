@@ -8,6 +8,7 @@ class SettingsDialog;
 class AbstractMapDownloader;
 class ExifValue;
 class ExifImageHeader;
+class GpxDialog;
 
 class GpsData : public QObject
 {
@@ -22,7 +23,10 @@ public:
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
 	static qreal dmsToReal(const ExifValue &dms, const ExifValue &ref);
+	static ExifValue realToDms(qreal real);
+	static ExifValue realtoRef(qreal real, bool lon);
 	
+	bool setPosition(GpxDialog *gpxDialog);
 public slots:
 	void setPhotoSize(QSize size);
 	void updateMapSize();
