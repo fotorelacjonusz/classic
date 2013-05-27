@@ -13,6 +13,8 @@
 #include <QMessageBox>
 #include <QColorDialog>
 #include <QDateTime>
+#include <QShortcut>
+#include <QScrollBar>
 
 QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://www.skyscrapercity.com/showthread.php?t=1539539 Author: Kamil Ostaszewski ");
 
@@ -47,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	
 	connect(ui->header, SIGNAL(focusIn()), this, SLOT(unselectWidgets()));
 	connect(ui->footer, SIGNAL(focusIn()), this, SLOT(unselectWidgets()));
+	
+	new QShortcut(Qt::Key_PageUp, this, SLOT(scrollUp()));
+	new QShortcut(Qt::Key_PageDown, this, SLOT(scrollDown()));
+	new QShortcut(Qt::ALT + Qt::Key_Delete, this, SLOT(removeBoth()));
 }
 
 MainWindow::~MainWindow()
@@ -244,6 +250,8 @@ void MainWindow::on_action_rotate_right_triggered()
 
 void MainWindow::on_action_remove_image_triggered()
 {
+	if (!selectedImage)
+		return;
 	ui->imageToolBar->setEnabled(false);
 	ui->postLayout->removeWidget(selectedImage);
 	for (int i = selectedImage->number(); i < ui->postLayout->count(); ++i)
@@ -265,6 +273,8 @@ void MainWindow::on_action_choose_color_triggered()
 
 void MainWindow::on_action_remove_arrow_triggered()
 {
+	if (!selectedArrow)
+		return;
 	ui->arrowToolBar->setEnabled(false);
 	delete selectedArrow;
 	selectedArrow = 0;
@@ -312,6 +322,25 @@ void MainWindow::updateCommonMap()
 void MainWindow::commonMapReady(QImage map)
 {
 	ui->commonMap->setPixmap(QPixmap::fromImage(map));
+}
+
+void MainWindow::scrollUp()
+{
+	QScrollBar *bar = ui->scrollArea->verticalScrollBar();
+	bar->setValue(bar->value() - bar->pageStep());
+	
+}
+
+void MainWindow::scrollDown()
+{
+	QScrollBar *bar = ui->scrollArea->verticalScrollBar();
+	bar->setValue(bar->value() + bar->pageStep());
+}
+
+void MainWindow::removeBoth()
+{
+	on_action_remove_image_triggered();
+	on_action_remove_arrow_triggered();
 }
 
 void MainWindow::processEvents() const

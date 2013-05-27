@@ -274,7 +274,7 @@
     <string>Usuń z fotorelacji</string>
    </property>
    <property name="shortcut">
-    <string>Del</string>
+    <string>Shift+Del</string>
    </property>
   </action>
   <action name="action_send_to_SSC">
@@ -355,7 +355,7 @@
     <string>Usuń strzałkę</string>
    </property>
    <property name="shortcut">
-    <string>Del</string>
+    <string>Shift+Del</string>
    </property>
   </action>
   <action name="action_invert_colors">

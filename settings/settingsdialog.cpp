@@ -72,7 +72,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	extraTags           .init(makeInput("post_extra_tags",            ui->extraTags));
 
 	setImageWidth       .init(makeInput("image_size/set_width",       ui->imageScaleMethodGroup, -1),  this, &SettingsDialog::setImageWidthFunc);
-	imageLength         .init(makeInput("image_size/lenght",          ui->lengthComboBox,        2),   this, &SettingsDialog::imageLengthFunc);
+	imageLength         .init(makeInput("image_size/lenght",          ui->lengthComboBox,        1024),   this, &SettingsDialog::imageLengthFunc);
 	retainOriginalSize  .init(makeInput("image_size/retain_size",     ui->retainOriginalSize,    false));
 	jpgQuality          .init(makeInput("image_size/jpg_quality",     ui->jpgQuality,            70));
 	dontScalePanoramas  .init(makeInput("image/dont_scale_panoramas", ui->dontScalePanoramas,    true));

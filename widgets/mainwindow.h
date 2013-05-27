@@ -59,6 +59,10 @@ private slots:
 	void updateCommonMap();
 	void commonMapReady(QImage map);
 	
+	void scrollUp();
+	void scrollDown();
+	void removeBoth();
+	
 protected:
 	void processEvents() const;
 	ImageWidget *newImage(QString filePath, QDataStream *stream) throw(Exception);
