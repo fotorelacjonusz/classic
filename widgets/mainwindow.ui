@@ -174,6 +174,7 @@
    <addaction name="action_rotate_left"/>
    <addaction name="action_rotate_right"/>
    <addaction name="separator"/>
+   <addaction name="action_remove_location"/>
    <addaction name="action_remove_image"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -216,7 +217,10 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-up-double.png</normaloff>:/res/arrow-up-double.png</iconset>
    </property>
-   <property name="whatsThis">
+   <property name="text">
+    <string>Przenieś na &amp;górę</string>
+   </property>
+   <property name="toolTip">
     <string>Przenieś na górę</string>
    </property>
   </action>
@@ -225,7 +229,10 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-up.png</normaloff>:/res/arrow-up.png</iconset>
    </property>
-   <property name="whatsThis">
+   <property name="text">
+    <string>Przenieś &amp;wyżej</string>
+   </property>
+   <property name="toolTip">
     <string>Przenieś wyżej</string>
    </property>
   </action>
@@ -234,7 +241,10 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-down.png</normaloff>:/res/arrow-down.png</iconset>
    </property>
-   <property name="whatsThis">
+   <property name="text">
+    <string>Przenieś &amp;niżej</string>
+   </property>
+   <property name="toolTip">
     <string>Przenieś niżej</string>
    </property>
   </action>
@@ -243,7 +253,10 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/arrow-down-double.png</normaloff>:/res/arrow-down-double.png</iconset>
    </property>
-   <property name="whatsThis">
+   <property name="text">
+    <string>Przenieś na &amp;spód</string>
+   </property>
+   <property name="toolTip">
     <string>Przenieś na spód</string>
    </property>
   </action>
@@ -252,7 +265,10 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/object-rotate-left.png</normaloff>:/res/object-rotate-left.png</iconset>
    </property>
-   <property name="whatsThis">
+   <property name="text">
+    <string>Obróć w &amp;lewo</string>
+   </property>
+   <property name="toolTip">
     <string>Obróć w lewo</string>
    </property>
   </action>
@@ -261,7 +277,10 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/object-rotate-right.png</normaloff>:/res/object-rotate-right.png</iconset>
    </property>
-   <property name="whatsThis">
+   <property name="text">
+    <string>Obróć w &amp;prawo</string>
+   </property>
+   <property name="toolTip">
     <string>Obróć w prawo</string>
    </property>
   </action>
@@ -270,11 +289,11 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
    </property>
-   <property name="whatsThis">
-    <string>Usuń z fotorelacji</string>
+   <property name="text">
+    <string>&amp;Usuń z fotorelacji</string>
    </property>
-   <property name="shortcut">
-    <string>Shift+Del</string>
+   <property name="toolTip">
+    <string>Usuń z fotorelacji</string>
    </property>
   </action>
   <action name="action_send_to_SSC">
@@ -351,11 +370,11 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/archive-remove.png</normaloff>:/res/archive-remove.png</iconset>
    </property>
-   <property name="whatsThis">
-    <string>Usuń strzałkę</string>
+   <property name="text">
+    <string>&amp;Usuń strzałkę</string>
    </property>
-   <property name="shortcut">
-    <string>Shift+Del</string>
+   <property name="toolTip">
+    <string>Usuń strzałkę</string>
    </property>
   </action>
   <action name="action_invert_colors">
@@ -363,8 +382,8 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/invert.png</normaloff>:/res/invert.png</iconset>
    </property>
-   <property name="whatsThis">
-    <string>Odwróć kolory</string>
+   <property name="text">
+    <string>&amp;Odwróć kolory</string>
    </property>
   </action>
   <action name="action_choose_color">
@@ -372,8 +391,8 @@
     <iconset resource="../resource.qrc">
      <normaloff>:/res/format-stroke-color.png</normaloff>:/res/format-stroke-color.png</iconset>
    </property>
-   <property name="whatsThis">
-    <string>Wybierz kolor</string>
+   <property name="text">
+    <string>Wybierz &amp;kolor</string>
    </property>
   </action>
   <action name="action_import_gpx">
@@ -383,6 +402,15 @@
    </property>
    <property name="text">
     <string>Importuj track &amp;GPX</string>
+   </property>
+  </action>
+  <action name="action_remove_location">
+   <property name="icon">
+    <iconset resource="../resource.qrc">
+     <normaloff>:/res/remove-location.png</normaloff>:/res/remove-location.png</iconset>
+   </property>
+   <property name="text">
+    <string>Usuń &amp;położenie</string>
    </property>
   </action>
  </widget>

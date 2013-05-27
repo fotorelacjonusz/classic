@@ -27,6 +27,7 @@ public:
 	static ExifValue realtoRef(qreal real, bool lon);
 	
 	bool setPosition(GpxDialog *gpxDialog);
+	void removePosition();
 public slots:
 	void setPhotoSize(QSize size);
 	void updateMapSize();

@@ -138,6 +138,11 @@ void ImageWidget::setPosition(GpxDialog *gpxDialog)
 	}
 }
 
+void ImageWidget::removePosition()
+{
+	gpsData->removePosition();
+}
+
 QWidget *ImageWidget::firstWidget() const
 {
 	return captionEdit;

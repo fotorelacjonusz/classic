@@ -34,6 +34,7 @@ public:
 	virtual	void write(QIODevice *device) const;
 	
 	void setPosition(GpxDialog *gpxDialog);
+	void removePosition();
 	
 	QWidget *firstWidget() const;
 	QWidget *lastWidget() const;

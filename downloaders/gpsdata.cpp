@@ -142,6 +142,19 @@ bool GpsData::setPosition(GpxDialog *gpxDialog)
 	return true;
 }
 
+void GpsData::removePosition()
+{
+	exifHeader->remove(ExifImageHeader::GpsLatitude);
+	exifHeader->remove(ExifImageHeader::GpsLatitudeRef);
+	exifHeader->remove(ExifImageHeader::GpsLongitude);
+	exifHeader->remove(ExifImageHeader::GpsLongitudeRef);
+	
+	hasPosition = false;
+	hasDirection = false;
+	allCoords.remove(this);
+	downloadMap();
+}
+
 void GpsData::serialize(QDataStream &stream) const
 {
 	stream << hasPosition << hasDirection << latitude << longitude << direction;
@@ -201,4 +214,6 @@ void GpsData::downloadMap()
 		if (!(SETTINGS->useOverlays && SETTINGS->makeMap(map)))
 			(SETTINGS->imageMapType < SettingsDialog::OSMFirst ? googleDownloader : tilesDownloader)->makeMap(map);
 	}
+	else
+		return mapReady(QImage());
 }

@@ -40,7 +40,7 @@ ColorManipulationToolBar::ColorManipulationToolBar(QWidget *parent) :
 	gammaSlider->setMaximum(GAMMA_MAX);
 	gammaSlider->setValue(GAMMA_DEFAULT);
 	gammaSlider->setStyleSheet("QSlider::groove:vertical   { background: qconicalgradient(cx:0.5, cy:0.5, angle:270, stop:0 white, stop:0.5 white, stop:1 black); }"
-							   "QSlider::groove:horizontal { background: qconicalgradient(cx:0.5, cy:0.5, angle:270, stop:0 white, stop:0.5 white, stop:1 black); }");
+							   "QSlider::groove:horizontal { background: qconicalgradient(cx:0.5, cy:0.5, angle:180, stop:0 white, stop:0.5 white, stop:1 black); }");
 
 	connect(this, SIGNAL(orientationChanged(Qt::Orientation)), this, SLOT(on_colorManipulationBar_orientationChanged(Qt::Orientation)));
 	on_colorManipulationBar_orientationChanged(orientation());

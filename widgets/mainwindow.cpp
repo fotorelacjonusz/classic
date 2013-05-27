@@ -248,10 +248,14 @@ void MainWindow::on_action_rotate_right_triggered()
 	selectedImage->rotate(false);
 }
 
+void MainWindow::on_action_remove_location_triggered()
+{
+	selectedImage->removePosition();
+	updateCommonMap();
+}
+
 void MainWindow::on_action_remove_image_triggered()
 {
-	if (!selectedImage)
-		return;
 	ui->imageToolBar->setEnabled(false);
 	ui->postLayout->removeWidget(selectedImage);
 	for (int i = selectedImage->number(); i < ui->postLayout->count(); ++i)
@@ -273,8 +277,6 @@ void MainWindow::on_action_choose_color_triggered()
 
 void MainWindow::on_action_remove_arrow_triggered()
 {
-	if (!selectedArrow)
-		return;
 	ui->arrowToolBar->setEnabled(false);
 	delete selectedArrow;
 	selectedArrow = 0;
@@ -339,8 +341,10 @@ void MainWindow::scrollDown()
 
 void MainWindow::removeBoth()
 {
-	on_action_remove_image_triggered();
-	on_action_remove_arrow_triggered();
+	if (selectedImage)
+		on_action_remove_image_triggered();
+	else if (selectedArrow)
+		on_action_remove_arrow_triggered();
 }
 
 void MainWindow::processEvents() const

@@ -46,6 +46,7 @@ private slots:
 
 	void on_action_rotate_left_triggered();
 	void on_action_rotate_right_triggered();
+	void on_action_remove_location_triggered();
 	void on_action_remove_image_triggered();
 
 	void on_action_invert_colors_triggered();

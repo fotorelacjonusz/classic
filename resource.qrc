@@ -32,5 +32,6 @@
         <file>res/expand-right.png</file>
         <file>res/expand-top.png</file>
         <file>res/gpx_icon.png</file>
+        <file>res/remove-location.png</file>
     </qresource>
 </RCC>
