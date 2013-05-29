@@ -16,7 +16,7 @@
 #include <QProcess>
 #include <QApplication>
 
-#include <qmath.h>
+//#include <qmath.h>
 
 GpsData::Points GpsData::allCoords;
 
@@ -32,13 +32,13 @@ GpsData::GpsData(QIODevice *image, const int *const number):
 	if (!exifHeader->loadFromJpeg(image))
 		return;
 	
-	if (exifHeader->contains(ExifImageHeader::GpsLatitude)  && exifHeader->contains(ExifImageHeader::GpsLatitudeRef) &&
-		exifHeader->contains(ExifImageHeader::GpsLongitude) && exifHeader->contains(ExifImageHeader::GpsLongitudeRef))
+	QPointF position = exifHeader->gpsPosition();
+	if (!position.isNull())
 	{
 		hasPosition = true;
-		latitude =  dmsToReal(exifHeader->value(ExifImageHeader::GpsLatitude),  exifHeader->value(ExifImageHeader::GpsLatitudeRef));
-		longitude = dmsToReal(exifHeader->value(ExifImageHeader::GpsLongitude), exifHeader->value(ExifImageHeader::GpsLongitudeRef));
-		allCoords[this] = QPointF(longitude, latitude);
+		longitude = position.x();
+		latitude = position.y();
+		allCoords[this] = position;
 	}
 	if (exifHeader->contains(ExifImageHeader::GpsImageDirection) && exifHeader->contains(ExifImageHeader::GpsImageDirectionRef))
 	{
@@ -79,6 +79,7 @@ GpsData::~GpsData()
 
 void GpsData::writeExif(QIODevice *device) const
 {
+	exifHeader->setOrientation();
 	exifHeader->saveToJpeg(device);
 }
 
@@ -90,28 +91,6 @@ QString GpsData::toString() const
 	if (hasDirection)
 		res += QString(" @%1").arg(direction);
 	return res;
-}
-
-qreal GpsData::dmsToReal(const ExifValue &dms, const ExifValue &ref)
-{
-	char c = ref.toString().toAscii()[0];
-	const QVector<ExifURational> vector = dms.toRationalVector();
-	return (vector[0].toReal() + vector[1].toReal() / 60 + vector[2].toReal() / 3600) * ((c == 'S' || c == 'W') ? -1 : 1);
-}
-
-ExifValue GpsData::realToDms(qreal real)
-{
-	real = qAbs(real);
-	QVector<ExifURational> vector(3);
-	vector[0] = ExifURational(qFloor(real), 1);
-	vector[1] = ExifURational(qFloor((real -= vector[0].first) *= 60), 1);
-	vector[2] = ExifURational(qFloor((real -= vector[1].first) *= 60 * 1000), 1000);
-	return vector;
-}
-
-ExifValue GpsData::realtoRef(qreal real, bool lon)
-{
-	return lon ? (real < 0 ? 'W' : 'E') : (real < 0 ? 'S' : 'N');
 }
 
 bool GpsData::setPosition(GpxDialog *gpxDialog)
@@ -134,25 +113,23 @@ bool GpsData::setPosition(GpxDialog *gpxDialog)
 	latitude = position.y();
 	allCoords[this] = position;
 	
-	exifHeader->setValue(ExifImageHeader::GpsLatitude, realToDms(latitude));
-	exifHeader->setValue(ExifImageHeader::GpsLatitudeRef, realtoRef(latitude, false));
-	exifHeader->setValue(ExifImageHeader::GpsLongitude, realToDms(longitude));
-	exifHeader->setValue(ExifImageHeader::GpsLongitudeRef, realtoRef(longitude, true));
+	exifHeader->setGpsPosition(position);
 	downloadMap();
 	return true;
 }
 
 void GpsData::removePosition()
 {
-	exifHeader->remove(ExifImageHeader::GpsLatitude);
-	exifHeader->remove(ExifImageHeader::GpsLatitudeRef);
-	exifHeader->remove(ExifImageHeader::GpsLongitude);
-	exifHeader->remove(ExifImageHeader::GpsLongitudeRef);
-	
+	exifHeader->setGpsPosition(QPointF());
 	hasPosition = false;
 	hasDirection = false;
 	allCoords.remove(this);
 	downloadMap();
+}
+
+QMatrix GpsData::reverseMatrixForOrientation() const
+{
+	return exifHeader->reverseMatrixForOrientation();
 }
 
 void GpsData::serialize(QDataStream &stream) const

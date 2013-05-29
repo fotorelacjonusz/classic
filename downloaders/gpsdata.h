@@ -22,12 +22,11 @@ public:
 	void writeExif(QIODevice *device) const;
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
-	static qreal dmsToReal(const ExifValue &dms, const ExifValue &ref);
-	static ExifValue realToDms(qreal real);
-	static ExifValue realtoRef(qreal real, bool lon);
-	
+		
 	bool setPosition(GpxDialog *gpxDialog);
 	void removePosition();
+	
+	QMatrix reverseMatrixForOrientation() const;
 public slots:
 	void setPhotoSize(QSize size);
 	void updateMapSize();

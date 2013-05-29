@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QBuffer>
 #include <QIODevice>
+#include <qmath.h>
 
 const QByteArray ExifImageHeader::exifHeader("Exif\0\0", 6);
 
@@ -169,6 +170,83 @@ void ExifImageHeader::setThumbnail(const QImage &thumbnail)
 {
 	ifds[1].setThumbnail(thumbnail);
 }
+
+ExifImageHeader::OrientationTag ExifImageHeader::orientation() const
+{
+	return contains(Orientation) ? OrientationTag(value(Orientation).toShort()) : Horizontal;
+}
+
+void ExifImageHeader::setOrientation(ExifImageHeader::OrientationTag orientation)
+{
+	setValue(Orientation, exifshort(orientation));
+}
+
+QMatrix ExifImageHeader::reverseMatrixForOrientation() const
+{
+	static const int matrices[8][4] = 
+	{
+		{ 1, 0, 0, 1}, // identity
+		{-1, 0, 0, 1}, // horizontal mirror
+		{-1, 0, 0,-1}, // rotation 180
+		{ 1, 0, 0,-1}, // vertical mirror 
+		{ 0, 1, 1, 0}, // diagonal mirror 
+		{ 0,-1, 1, 0}, // rotation 90 left
+		{ 0,-1,-1, 0}, // antidiagonal mirror
+		{ 0, 1,-1, 0}  // rotation 90 right
+	};
+	
+	const int *matrix = matrices[orientation() - 1];
+	return QMatrix(matrix[0], matrix[1], matrix[2], matrix[3], 0, 0);
+}
+
+QPointF ExifImageHeader::gpsPosition() const
+{
+	if (contains(GpsLatitude)  && contains(GpsLatitudeRef) && 
+		contains(GpsLongitude) && contains(GpsLongitudeRef))
+		return QPointF(dmsToReal(value(GpsLongitude), value(GpsLongitudeRef)),
+					   dmsToReal(value(GpsLatitude),  value(GpsLatitudeRef)));
+	return QPointF();	
+}
+
+void ExifImageHeader::setGpsPosition(QPointF position)
+{
+	if (position.isNull())
+	{
+		remove(GpsLongitude);
+		remove(GpsLongitudeRef);
+		remove(GpsLatitude);
+		remove(GpsLatitudeRef);
+	}
+	else
+	{
+		setValue(GpsLongitude,    realToDms(position.x()));
+		setValue(GpsLongitudeRef, position.x() < 0 ? 'W' : 'E');
+		setValue(GpsLatitude,     realToDms(position.y()));
+		setValue(GpsLatitudeRef,  position.y() < 0 ? 'S' : 'N');
+	}
+}
+
+qreal ExifImageHeader::dmsToReal(const ExifValue &dms, const ExifValue &ref)
+{
+	char c = ref.toString().toAscii()[0];
+	const QVector<ExifURational> vector = dms.toRationalVector();
+	return (vector[0].toReal() + vector[1].toReal() / 60 + vector[2].toReal() / 3600) * ((c == 'S' || c == 'W') ? -1 : 1);
+}
+
+ExifValue ExifImageHeader::realToDms(qreal real)
+{
+	real = qAbs(real);
+	QVector<ExifURational> vector(3);
+	vector[0] = ExifURational(qFloor(real), 1);
+	vector[1] = ExifURational(qFloor((real -= vector[0].first) *= 60), 1);
+	vector[2] = ExifURational(qFloor((real -= vector[1].first) *= 60 * 1000), 1000);
+	return vector;
+}
+
+//ExifValue ExifImageHeader::realtoRef(qreal real, bool lon)
+//{
+//	return lon ? (real < 0 ? 'W' : 'E') : (real < 0 ? 'S' : 'N');
+//}
 
 const ExifIfd ExifImageHeader::exifIFD() const
 {

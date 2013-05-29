@@ -139,6 +139,17 @@ public:
         GpsDateStamp         = 0x001D,
         GpsDifferential      = 0x001E
     };
+	enum OrientationTag
+	{
+		Horizontal = 1,
+		MirroredHorizontally = 2,
+		Rotated180 = 3,
+		MirroredVertically = 4,
+		MirroredDiagonally = 5,
+		RotatedRight = 6,
+		MirroredAntidiagonally = 7,
+		RotatedLeft = 8
+	};
 	
 	ExifImageHeader();
 	explicit ExifImageHeader(const QString &filePath);
@@ -173,7 +184,18 @@ public:
     QImage thumbnail() const;
     void setThumbnail(const QImage &thumbnail);
 	
-private:	
+	OrientationTag orientation() const;
+	void setOrientation(OrientationTag orientation = Horizontal);
+	QMatrix reverseMatrixForOrientation() const;
+	
+	QPointF gpsPosition() const;
+	void setGpsPosition(QPointF position);
+	
+private:
+	static qreal dmsToReal(const ExifValue &dms, const ExifValue &ref);
+	static ExifValue realToDms(qreal real);
+//	static ExifValue realtoRef(qreal real, bool lon);
+	
 	const ExifIfd exifIFD() const;
 	const ExifIfd gpsIFD() const;
 	ExifIfd &exifIFD();

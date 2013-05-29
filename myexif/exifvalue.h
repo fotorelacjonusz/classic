@@ -5,12 +5,17 @@
 #include <QVector>
 #include <QDateTime>
 
+typedef quint8 exifbyte;
+typedef quint16 exifshort;
+typedef quint32 exiflong;
+typedef qint32 exifslong;
+
 class ExifValueBase
 {
 public:
-	ExifValueBase(quint32 type = 0);
+	ExifValueBase(quint16 type = 0);
 	virtual ~ExifValueBase();
-	virtual quint32 count() const = 0;
+	virtual exiflong count() const = 0;
 	
 protected:
 	quint16 type;
@@ -45,35 +50,35 @@ public:
 	int type() const;
 	int count() const;
 	
-	ExifValue(quint8 value);
-	ExifValue(const QVector<quint8> &value);
+	ExifValue(exifbyte value);
+	ExifValue(const QVector<exifbyte> &value);
 	ExifValue(const QString &value);
 	ExifValue(const char *str);
-	ExifValue(quint16 value);
-	ExifValue(const QVector<quint16> &value);
-	ExifValue(quint32 value);
-	ExifValue(const QVector<quint32> &value);
+	ExifValue(exifshort value);
+	ExifValue(const QVector<exifshort> &value);
+	ExifValue(exiflong value);
+	ExifValue(const QVector<exiflong> &value);
 	ExifValue(const ExifURational &value);
 	ExifValue(const QVector<ExifURational> &value);
 	ExifValue(const QByteArray &value);
-	ExifValue(qint32 value);
-	ExifValue(const QVector<qint32> &value);
+	ExifValue(exifslong value);
+	ExifValue(const QVector<exifslong> &value);
 	ExifValue(const ExifSRational &value);
 	ExifValue(const QVector<ExifSRational> &value);
 	ExifValue(const QDateTime &dateTime);
 	
-	quint8 toByte() const;
-	QVector<quint8> toByteVector() const;
+	exifbyte toByte() const;
+	QVector<exifbyte> toByteVector() const;
 	QString toString() const;
-	quint16 toShort() const;
-	QVector<quint16> toShortVector() const;
-	quint32 toLong() const;
-	QVector<quint32> toLongVector() const;
+	exifshort toShort() const;
+	QVector<exifshort> toShortVector() const;
+	exiflong toLong() const;
+	QVector<exiflong> toLongVector() const;
 	ExifURational toRational() const;
 	QVector<ExifURational> toRationalVector() const;
 	QByteArray toByteArray() const;
-	qint32 toSignedLong() const;
-	QVector<qint32> toSignedLongVector() const;
+	exifslong toSignedLong() const;
+	QVector<exifslong> toSignedLongVector() const;
 	ExifSRational toSignedRational() const;
 	QVector<ExifSRational> toSignedRationalVector() const;
 	QDateTime toDateTime() const;
@@ -82,9 +87,9 @@ private:
 	template <class T>
 	QVector<T> readVector(QDataStream &stream);
 	template <class T>
-	void readValue(QDataStream &stream, quint32 type);
-	void readString(QDataStream &stream, quint32 type);
-	void readUndefined(QDataStream &stream, quint32 type);
+	void readValue(QDataStream &stream, quint16 type);
+	void readString(QDataStream &stream, quint16 type);
+	void readUndefined(QDataStream &stream, quint16 type);
 	
 	template <class T>
 	void writeVector(QDataStream &stream, QDataStream &valueStream, QVector<T> vector) const;
@@ -93,8 +98,7 @@ private:
 	void writeString(QDataStream &stream, QDataStream &valueStream) const;
 	void writeUndefined(QDataStream &stream, QDataStream &valueStream) const;
 	
-	
-	QSharedPointer<ExifValueBase> value;	
+	QSharedPointer<ExifValueBase> value;
 };
 
 #endif // EXIFVALUE_H

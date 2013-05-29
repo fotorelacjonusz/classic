@@ -60,7 +60,18 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 	buff.open(QIODevice::ReadOnly);
 	gpsData = new GpsData(&buff, &num);
 	buff.close();
-
+	
+	QMatrix reverse = gpsData->reverseMatrixForOrientation();
+	if (reverse != QMatrix())
+	{
+		QImage image;
+		image.loadFromData(sourceFile);
+		image = image.transformed(reverse);
+		buff.open(QIODevice::WriteOnly | QIODevice::Truncate);
+		image.save(&buff);
+		buff.close();
+	}
+	
 	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
 	
 	SETTINGS->connectMany(this, SLOT(imageSizeChanged()), &SETTINGS->setImageWidth, &SETTINGS->imageLength, &SETTINGS->dontScalePanoramas);

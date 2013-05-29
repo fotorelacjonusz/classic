@@ -2,7 +2,7 @@
 
 #include <QVariant>
 
-ExifValueBase::ExifValueBase(quint32 type):
+ExifValueBase::ExifValueBase(quint16 type):
 	type(type)
 {
 }
@@ -18,7 +18,7 @@ public:
 	typedef T Type;
 	typedef TInner TypeInner;
 	
-	ExifValueTemplate(const T &values, quint32 type):
+	ExifValueTemplate(const T &values, quint16 type):
 		ExifValueBase(type),
 		values(values)
 	{
@@ -35,10 +35,10 @@ private:
 	friend class ExifValue;
 };
 
-typedef ExifValueTemplate<QVector<quint8>,			quint8>			ExifValueByte;
-typedef ExifValueTemplate<QVector<quint16>,			quint16>		ExifValueShort;
-typedef ExifValueTemplate<QVector<quint32>,			quint32>		ExifValueLong;
-typedef ExifValueTemplate<QVector<qint32>,			qint32>			ExifValueSLong;
+typedef ExifValueTemplate<QVector<exifbyte>,		exifbyte>		ExifValueByte;
+typedef ExifValueTemplate<QVector<exifshort>,		exifshort>		ExifValueShort;
+typedef ExifValueTemplate<QVector<exiflong>,		exiflong>		ExifValueLong;
+typedef ExifValueTemplate<QVector<exifslong>,		exifslong>		ExifValueSLong;
 typedef ExifValueTemplate<QString,					void>			ExifValueAscii;
 typedef ExifValueTemplate<QByteArray,				void>			ExifValueUndefined;
 typedef ExifValueTemplate<QVector<ExifURational>,	ExifURational>	ExifValueRational;
@@ -103,11 +103,11 @@ void ExifValue::write(QDataStream &stream, QDataStream &valueStream) const
 #define FROM_SINGLE(ENUM) this->value = QSharedPointer<ExifValueBase>(new ExifValue##ENUM(ExifValue##ENUM::Type() << value, ENUM));
 #define FROM_VECTOR(ENUM) this->value = QSharedPointer<ExifValueBase>(new ExifValue##ENUM(value, ENUM));
 
-ExifValue::ExifValue(quint8 value)
+ExifValue::ExifValue(exifbyte value)
 {
 	FROM_SINGLE(Byte);
 }
-ExifValue::ExifValue(const QVector<quint8> &value)
+ExifValue::ExifValue(const QVector<exifbyte> &value)
 {
 	FROM_VECTOR(Byte);
 }
@@ -120,19 +120,19 @@ ExifValue::ExifValue(const char *str)
 	QString value(str);
 	FROM_VECTOR(Ascii);
 }
-ExifValue::ExifValue(quint16 value)
+ExifValue::ExifValue(exifshort value)
 {
 	FROM_SINGLE(Short);
 }
-ExifValue::ExifValue(const QVector<quint16> &value)
+ExifValue::ExifValue(const QVector<exifshort> &value)
 {
 	FROM_VECTOR(Short);
 }
-ExifValue::ExifValue(quint32 value)
+ExifValue::ExifValue(exiflong value)
 {
 	FROM_SINGLE(Long);
 }
-ExifValue::ExifValue(const QVector<quint32> &value)
+ExifValue::ExifValue(const QVector<exiflong> &value)
 {
 	FROM_VECTOR(Long);
 }
@@ -148,11 +148,11 @@ ExifValue::ExifValue(const QByteArray &value)
 {
 	FROM_VECTOR(Undefined);
 }
-ExifValue::ExifValue(qint32 value)
+ExifValue::ExifValue(exifslong value)
 {
 	FROM_SINGLE(SLong);
 }
-ExifValue::ExifValue(const QVector<qint32> &value)
+ExifValue::ExifValue(const QVector<exifslong> &value)
 {
 	FROM_VECTOR(SLong);
 }
@@ -175,11 +175,11 @@ ExifValue::ExifValue(const QDateTime &dateTime)
 #define TO_VECTOR(ENUM)					return value && value->type == ENUM ?                        static_cast<const ExifValue##ENUM *>(value.data())->values : ExifValue##ENUM::Type();
 #define TO_VECTOR_DEF(ENUM, DEFAULT)	return value && value->type == ENUM ?                        static_cast<const ExifValue##ENUM *>(value.data())->values : DEFAULT();
 
-quint8 ExifValue::toByte() const
+exifbyte ExifValue::toByte() const
 {
 	TO_SINGLE(Byte);
 }
-QVector<quint8> ExifValue::toByteVector() const
+QVector<exifbyte> ExifValue::toByteVector() const
 {
 	TO_VECTOR(Byte);
 }
@@ -187,19 +187,19 @@ QString ExifValue::toString() const
 {
 	TO_VECTOR_DEF(Ascii, QString);
 }
-quint16 ExifValue::toShort() const
+exifshort ExifValue::toShort() const
 {
 	TO_SINGLE(Short);
 }
-QVector<quint16> ExifValue::toShortVector() const
+QVector<exifshort> ExifValue::toShortVector() const
 {
 	TO_VECTOR(Short);
 }
-quint32 ExifValue::toLong() const
+exiflong ExifValue::toLong() const
 {
 	TO_SINGLE(Long);
 }
-QVector<quint32> ExifValue::toLongVector() const
+QVector<exiflong> ExifValue::toLongVector() const
 {
 	TO_VECTOR(Long);
 }
@@ -215,11 +215,11 @@ QByteArray ExifValue::toByteArray() const
 {
 	TO_VECTOR_DEF(Undefined, QByteArray);
 }
-qint32 ExifValue::toSignedLong() const
+exifslong ExifValue::toSignedLong() const
 {
 	TO_SINGLE(SLong);
 }
-QVector<qint32> ExifValue::toSignedLongVector() const
+QVector<exifslong> ExifValue::toSignedLongVector() const
 {
 	TO_VECTOR(SLong);
 }
@@ -266,19 +266,19 @@ QVector<T> ExifValue::readVector(QDataStream &stream)
 }
 
 template <class T>
-void ExifValue::readValue(QDataStream &stream, quint32 type)
+void ExifValue::readValue(QDataStream &stream, quint16 type)
 {
 	value = QSharedPointer<ExifValueBase>(new T(readVector<typename T::TypeInner>(stream), type));
 }
 
-void ExifValue::readString(QDataStream &stream, quint32 type)
+void ExifValue::readString(QDataStream &stream, quint16 type)
 {
 	QVector<qint8> vector = readVector<qint8>(stream);
 	QString string = QString::fromAscii((const char *)vector.constData(), vector.count() - 1);
 	value = QSharedPointer<ExifValueBase>(new ExifValueAscii(string, type));
 }
 
-void ExifValue::readUndefined(QDataStream &stream, quint32 type)
+void ExifValue::readUndefined(QDataStream &stream, quint16 type)
 {
 	QVector<quint8> vector = readVector<quint8>(stream);
 	QByteArray byteArray((const char *)vector.constData(), vector.count());
