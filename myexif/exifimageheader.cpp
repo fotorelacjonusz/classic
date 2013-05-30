@@ -173,7 +173,15 @@ void ExifImageHeader::setThumbnail(const QImage &thumbnail)
 
 ExifImageHeader::OrientationTag ExifImageHeader::orientation() const
 {
-	return contains(Orientation) ? OrientationTag(value(Orientation).toShort()) : Horizontal;
+	if (!contains(Orientation))
+		return Horizontal;
+	
+	OrientationTag orientation = OrientationTag(value(Orientation).toShort());
+	if (Horizontal <= orientation && orientation <= RotatedLeft)
+		return orientation;
+	
+	qDebug() << "Exif header Orientation has invalid value:" << orientation << "Defaulting to Horizontal";
+	return Horizontal;
 }
 
 void ExifImageHeader::setOrientation(ExifImageHeader::OrientationTag orientation)

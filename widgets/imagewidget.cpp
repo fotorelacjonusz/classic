@@ -175,7 +175,14 @@ void ImageWidget::rotate(bool left)
 	QPixmapCache::remove(filePath);
 	if (QFile::exists(filePath) && QMessageBox::question(this, tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), 
 														 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
-		pixmap.save(filePath, "JPG");
+	{
+		QFile file(filePath);
+		file.open(QIODevice::ReadWrite);
+		pixmap.save(&file, "JPG");
+		file.seek(0);
+		gpsData->writeExif(&file);
+		file.close();
+	}
 	updatePixmap();
 }
 
