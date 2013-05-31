@@ -19,8 +19,11 @@ SOURCES += main.cpp \
     widgets/selectablewidget.cpp \
     widgets/replydialog.cpp \
     widgets/recentthreadsmenu.cpp \
+    widgets/questionbox.cpp \
     widgets/progresscontainer.cpp \
     widgets/postwidget.cpp \
+    widgets/ntppacket.cpp \
+    widgets/ntpclient.cpp \
     widgets/mainwindow.cpp \
     widgets/lineedit.cpp \
     widgets/imagewidget.cpp \
@@ -68,8 +71,11 @@ HEADERS += \
     widgets/selectablewidget.h \
     widgets/replydialog.h \
     widgets/recentthreadsmenu.h \
+    widgets/questionbox.h \
     widgets/progresscontainer.h \
     widgets/postwidget.h \
+    widgets/ntppacket.h \
+    widgets/ntpclient.h \
     widgets/mainwindow.h \
     widgets/lineedit.h \
     widgets/imagewidget.h \

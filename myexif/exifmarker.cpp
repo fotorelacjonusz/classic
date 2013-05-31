@@ -14,6 +14,7 @@ ExifMarker::ExifMarker(QDataStream &stream):
 		throw ExifException("Marker not beginning with FF");
 	
 	stream >> number;
+//	qDebug() << QString::number(number, 16);
 	if (isSOI())
 		return;
 
@@ -46,6 +47,11 @@ bool ExifMarker::isAPP1() const
 bool ExifMarker::isSOI() const
 {
 	return number == SOI;
+}
+
+bool ExifMarker::isSOS() const
+{
+	return number == SOS;
 }
 
 QByteArray ExifMarker::readData(const QByteArray &header) const

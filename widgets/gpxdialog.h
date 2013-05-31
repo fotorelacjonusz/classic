@@ -1,6 +1,8 @@
 #ifndef GPXDIALOG_H
 #define GPXDIALOG_H
 
+#include "ntpclient.h"
+
 #include <QDialog>
 #include <QTimer>
 #include <QDateTime>
@@ -38,8 +40,8 @@ private:
 	
 	typedef QMap<QDateTime, QPointF> Segment;
 	QList<Segment> track;
-//	typedef QList<Segment> Track;
-//	Track track;
+
+	NtpClient ntpClient;
 };
 
 #endif // GPXDIALOG_H

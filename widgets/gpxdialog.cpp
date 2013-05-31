@@ -43,6 +43,7 @@ GpxDialog::GpxDialog(QWidget *parent) :
 	ui->setupUi(this);
 	timer.setInterval(1000);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+	connect(&ntpClient, SIGNAL(utcTimeFound(QDateTime)), ui->gpsTime, SLOT(setDateTime(QDateTime)));
 }
 
 GpxDialog::~GpxDialog()
@@ -56,14 +57,15 @@ void GpxDialog::setVisible(bool visible)
 	if (visible)
 	{
 		ui->cameraTime->setDateTime(QDateTime::currentDateTime());
-		ui->gpsTime->setDateTime(QDateTime::currentDateTime());
-		timer.start();		
+//		ui->gpsTime->setDateTime(QDateTime::currentDateTime());
+		ntpClient.updateTime();
+		timer.start();
 	}
 }
 
 void GpxDialog::accept()
 {
-	qint64 diff = ui->gpsTime->dateTime().msecsTo(ui->cameraTime->dateTime()); // camera - gps
+	qint64 diff = ntpClient.utcTime().msecsTo(ui->cameraTime->dateTime().toUTC()); // camera - gps
 	
 	track.clear();
 	

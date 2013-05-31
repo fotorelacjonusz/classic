@@ -311,6 +311,8 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream)
 			while (ifds[ifds.size() - 1].hasNext());
 			break;
 		}
+		else if (marker.isSOS())
+			return;
 	}
 	if (fileStream.atEnd())
 		throw ExifException("APP1 marker not found");

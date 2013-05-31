@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	
 	new QShortcut(Qt::Key_PageUp, this, SLOT(scrollUp()));
 	new QShortcut(Qt::Key_PageDown, this, SLOT(scrollDown()));
-	new QShortcut(Qt::ALT + Qt::Key_Delete, this, SLOT(removeBoth()));
+//	new QShortcut(Qt::ALT + Qt::Key_Delete, this, SLOT(removeBoth()));
 }
 
 MainWindow::~MainWindow()

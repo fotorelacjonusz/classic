@@ -295,6 +295,9 @@
    <property name="toolTip">
     <string>Usuń z fotorelacji</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+Del</string>
+   </property>
   </action>
   <action name="action_send_to_SSC">
    <property name="icon">
@@ -376,6 +379,9 @@
    <property name="toolTip">
     <string>Usuń strzałkę</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+Del</string>
+   </property>
   </action>
   <action name="action_invert_colors">
    <property name="icon">
@@ -401,7 +407,7 @@
      <normaloff>:/res/gpx_icon.png</normaloff>:/res/gpx_icon.png</iconset>
    </property>
    <property name="text">
-    <string>Importuj track &amp;GPX</string>
+    <string>Importuj ślad &amp;GPX</string>
    </property>
   </action>
   <action name="action_remove_location">

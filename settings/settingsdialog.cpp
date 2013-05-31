@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QIntValidator>
+#include <QToolButton>
 
 #define ENUM_STR(Enum, Var) QString(metaObject()->enumerator(metaObject()->indexOfEnumerator(#Enum)).valueToKey(Var))
 #define M(x) #x
@@ -125,19 +126,20 @@ void SettingsDialog::copyDescriptions(QWidget *parent)
 	{
 		if (obj->isWidgetType())
 		{
-			QWidget *widget = (QWidget *)obj;
+			QWidget *widget = static_cast<QWidget *>(obj);
 			QString description = widget->whatsThis() + widget->statusTip() + widget->toolTip();
+			if (widget->inherits("QToolBar"))
+				widget->setWindowTitle(description);
+			if (widget->inherits("QToolButton"))
+			{
+				QToolButton *button = static_cast<QToolButton *>(widget);
+				if (button->defaultAction() && !button->defaultAction()->shortcut().isEmpty())
+					description += QString(" [%1]").arg(button->defaultAction()->shortcut().toString());
+//				qDebug() << button << description;
+			}
 			widget->setWhatsThis(description);
 			widget->setToolTip(description);
 			widget->setStatusTip(description);
-			if (widget->inherits("QToolBar"))
-				widget->setWindowTitle(description);
-			if (widget->inherits("QAction"))
-			{
-				QAction *action = (QAction *)widget;
-				action->setText(description);
-				action->setIconText(description);
-			}
 			copyDescriptions(widget);
 		}
 	}

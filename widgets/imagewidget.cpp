@@ -7,6 +7,7 @@
 #include "downloaders/gpsdata.h"
 #include "imagemanipulation.h"
 #include "gpxdialog.h"
+#include "questionbox.h"
 
 #define Q_TEST_QPIXMAPCACHE
 
@@ -61,15 +62,29 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 	gpsData = new GpsData(&buff, &num);
 	buff.close();
 	
-	QMatrix reverse = gpsData->reverseMatrixForOrientation();
-	if (reverse != QMatrix())
+	if (!stream)
 	{
-		QImage image;
-		image.loadFromData(sourceFile);
-		image = image.transformed(reverse);
-		buff.open(QIODevice::WriteOnly | QIODevice::Truncate);
-		image.save(&buff);
-		buff.close();
+		QMatrix reverse = gpsData->reverseMatrixForOrientation();
+		//	qDebug() << reverse;
+		if (reverse != QMatrix())
+		{
+			QPixmap pixmap = sourcePixmap().transformed(reverse);
+			buff.open(QIODevice::WriteOnly | QIODevice::Truncate);
+			pixmap.save(&buff, "JPG");
+			buff.close();
+			
+			QuestionBox question(tr("Orientacja zdjęcia"), tr("Program automatycznie obrócił zdjęcie %1 zgodnie z jego orientacją zapisaną w nagłówku exif.<br>"
+															  "Czy chcesz obrócić również oryginalne zdjęcie na dysku?").arg(filePath), "orientate_horizontally_and_save", this);
+			if (question.exec() == QMessageBox::Yes)
+			{
+				QFile file(filePath);
+				file.open(QIODevice::ReadWrite);
+				pixmap.save(&file, "JPG");
+				file.seek(0);
+				gpsData->writeExif(&file);
+				file.close();
+			}
+		}
 	}
 	
 	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
@@ -169,19 +184,22 @@ void ImageWidget::rotate(bool left)
 {
 	QPixmap pixmap = sourcePixmap().transformed(QMatrix().rotate(left ? -90 : 90));
 	QBuffer buffer(&sourceFile);
-	buffer.open(QIODevice::WriteOnly);
+	buffer.open(QIODevice::WriteOnly | QIODevice::Truncate);
 	pixmap.save(&buffer, "JPG");
 	buffer.close();
 	QPixmapCache::remove(filePath);
-	if (QFile::exists(filePath) && QMessageBox::question(this, tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), 
-														 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+	if (QFile::exists(filePath))
 	{
-		QFile file(filePath);
-		file.open(QIODevice::ReadWrite);
-		pixmap.save(&file, "JPG");
-		file.seek(0);
-		gpsData->writeExif(&file);
-		file.close();
+		QuestionBox question(tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), "rotate_and_save");
+		if (question.exec() == QuestionBox::Yes)
+		{
+			QFile file(filePath);
+			file.open(QIODevice::ReadWrite);
+			pixmap.save(&file, "JPG");
+			file.seek(0);
+			gpsData->writeExif(&file);
+			file.close();
+		}
 	}
 	updatePixmap();
 }
