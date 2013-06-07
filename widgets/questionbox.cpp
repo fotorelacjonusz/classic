@@ -10,8 +10,8 @@
 
 QMap<QString, bool> QuestionBox::answers;
 
-QuestionBox::QuestionBox(QString title, QString question, QString settingsKey, QWidget *parent) :
-	QMessageBox(QMessageBox::Question, title, question, QMessageBox::Yes | QMessageBox::No, parent),
+QuestionBox::QuestionBox(const QString &title, const QString &question, const QString &settingsKey, QWidget *parent) :
+	QMessageBox(Question, title, question, Yes | No, parent),
 	settingsKey(settingsKey)
 {
 	QGridLayout *gridLayout = qobject_cast<QGridLayout *>(layout());
@@ -37,6 +37,11 @@ QuestionBox::QuestionBox(QString title, QString question, QString settingsKey, Q
 	connect(this, SIGNAL(finished(int)), this, SLOT(setAnswer(int)));
 }
 
+bool QuestionBox::question(QWidget *parent, const QString &title, const QString &question, const QString &settingsKey)
+{
+	return QuestionBox(title, question, settingsKey, parent).exec() == Yes;
+}
+
 void QuestionBox::setVisible(bool visible)
 {
 	QMessageBox::setVisible(visible);
@@ -47,15 +52,15 @@ void QuestionBox::setVisible(bool visible)
 void QuestionBox::checkAnswer()
 {
 	if (SETTINGS->settings().contains(settingsKey))
-		done(SETTINGS->settings().value(settingsKey).toBool() ? QMessageBox::Yes : QMessageBox::No);
+		done(SETTINGS->settings().value(settingsKey).toBool() ? Yes : No);
 	else if (answers.contains(settingsKey))
-		done(answers[settingsKey] ? QMessageBox::Yes : QMessageBox::No);
+		done(answers[settingsKey] ? Yes : No);
 }
 
 void QuestionBox::setAnswer(int result)
 {
 	if (checkBoxForever->isChecked())
-		SETTINGS->settings().setValue(settingsKey, result == QMessageBox::Yes);
+		SETTINGS->settings().setValue(settingsKey, result == Yes);
 	else if (checkBoxSession->isChecked())
-		answers[settingsKey] = result == QMessageBox::Yes;
+		answers[settingsKey] = result == Yes;
 }

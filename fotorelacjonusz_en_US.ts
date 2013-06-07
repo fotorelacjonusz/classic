@@ -1,93 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
-<context>
-    <name>AboutDialog</name>
-    <message>
-        <source>O programie</source>
-        <translation type="obsolete">About</translation>
-    </message>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aplikacja wykorzystuje:&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qt (LGPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;exiv2 (GPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QuaZIP (LGPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oxygen theme (LGPL)&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <oldsource>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aplikacja wykorzystuje:&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qt (LGPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;exiv2 (GPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QuaZIP (LGPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oxygen theme (LGPL)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
-        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Author: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Application uses:&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qt (LGPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;exiv2 (GPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QuaZIP (LGPL2)&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oxygen theme (LGPL)&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <oldsource>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Autor: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/p/fotorelacjonusz/wiki/Home/&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
-        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Fotorelacjonusz 2&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Author: Kamil Ostaszewski&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;http://sourceforge.net/projects/fotorelacjonusz/&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-</context>
+<TS version="2.0" language="en_US" sourcelanguage="pl_PL">
 <context>
     <name>AbstractUploader</name>
     <message>
@@ -179,36 +92,6 @@ Wrong url will make all links corrupted.</translation>
     </message>
 </context>
 <context>
-    <name>GoogleMapsDownloader</name>
-    <message>
-        <source>BÅÄd pobierania mapy: %1 %2</source>
-        <translation type="obsolete">Error while downloading a map: %1 %2 </translation>
-    </message>
-    <message>
-        <source>BÅÄd otwierania mapy.</source>
-        <translation type="obsolete">Error while loading map data.</translation>
-    </message>
-</context>
-<context>
-    <name>GpsData</name>
-    <message>
-        <source>BÅÄd</source>
-        <translation type="obsolete">Error</translation>
-    </message>
-    <message>
-        <source>Brak pliku %1. Ponowna instalacja aplikacji moÅ¼e rozwiÄzaÄ problem.</source>
-        <translation type="obsolete">File %1 doesn&apos;t exist. Try reinstalling the application.</translation>
-    </message>
-    <message>
-        <source>BÅÄd otwierania mapy.</source>
-        <translation type="obsolete">Error while loading map data.</translation>
-    </message>
-    <message>
-        <source>BÅÄd pobierania mapy: %1 %2</source>
-        <translation type="obsolete">Error while downloading a map: %1 %2 </translation>
-    </message>
-</context>
-<context>
     <name>GpxDialog</name>
     <message>
         <location filename="widgets/gpxdialog.ui" line="14"/>
@@ -232,21 +115,32 @@ Wrong url will make all links corrupted.</translation>
     </message>
     <message>
         <location filename="widgets/gpxdialog.ui" line="67"/>
-        <source>Aktualny czas w odbiorniku GPS</source>
-        <translation>Current GPS device time</translation>
+        <source>Aktualny czas UTC</source>
+        <oldsource>Aktualny czas w odbiorniku GPS</oldsource>
+        <translation>Current UTC time</translation>
     </message>
     <message>
-        <location filename="widgets/gpxdialog.ui" line="77"/>
+        <location filename="widgets/gpxdialog.ui" line="81"/>
         <source>Zaktualizuj pliki</source>
         <translation>Update files</translation>
     </message>
     <message>
-        <location filename="widgets/gpxdialog.cpp" line="130"/>
+        <location filename="widgets/gpxdialog.cpp" line="71"/>
+        <source>BÅÄd</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.cpp" line="71"/>
+        <source>Nie udaÅo siÄ ustaliÄ czasu UTC poprzez protokÃ³Å NTP.</source>
+        <translation>Quering UTC time with NTP protocol failed.</translation>
+    </message>
+    <message>
+        <location filename="widgets/gpxdialog.cpp" line="140"/>
         <source>Wybierz plik</source>
         <translation>Select file</translation>
     </message>
     <message>
-        <location filename="widgets/gpxdialog.cpp" line="130"/>
+        <location filename="widgets/gpxdialog.cpp" line="140"/>
         <source>Track (*.gpx)</source>
         <translation>Track (*.gpx)</translation>
     </message>
@@ -254,37 +148,52 @@ Wrong url will make all links corrupted.</translation>
 <context>
     <name>ImageWidget</name>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="56"/>
+        <location filename="widgets/imagewidget.cpp" line="57"/>
         <source>Nie moÅ¼na zaÅadowaÄ zdjÄcia do pamiÄci. PamiÄÄ wyczerpana?</source>
         <translation>Unable to load an image to the memory. Out of memory?</translation>
     </message>
     <message>
         <location filename="widgets/imagewidget.cpp" line="76"/>
+        <source>Orientacja zdjÄcia</source>
+        <translation>Photo orientation</translation>
+    </message>
+    <message>
+        <location filename="widgets/imagewidget.cpp" line="76"/>
+        <source>ZdjÄcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ zapisanÄ w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
+        <translation>Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
+    </message>
+    <message>
+        <location filename="widgets/imagewidget.cpp" line="101"/>
         <source>Podpis zdjÄcia</source>
         <translation>Image caption</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="160"/>
+        <location filename="widgets/imagewidget.cpp" line="169"/>
+        <source>UsuniÄcie pozycji</source>
+        <translation>Removing position</translation>
+    </message>
+    <message>
+        <location filename="widgets/imagewidget.cpp" line="169"/>
+        <source>Czy usunÄÄ pozycjÄ rÃ³wnieÅ¼ z pliku na dysku?</source>
+        <translation>Do you want to remove position from the original file as well?</translation>
+    </message>
+    <message>
+        <location filename="widgets/imagewidget.cpp" line="197"/>
         <source>ObrÃ³t zdjÄcia</source>
         <translation>Rotate image</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="160"/>
+        <location filename="widgets/imagewidget.cpp" line="197"/>
         <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
-        <translation>Save rotated image to disk?</translation>
+        <translation>Do you want to rotate the original file as well?</translation>
     </message>
     <message>
-        <location filename="widgets/imagewidget.cpp" line="170"/>
+        <location filename="widgets/imagewidget.cpp" line="213"/>
         <source>Nie moÅ¼na zaÅadowaÄ zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t load photo.Out of memory? </translation>
     </message>
     <message>
-        <source>Upload zdjÄcia %1 nieudany.
-</source>
-        <translation type="obsolete">Uploading image %1 failed.</translation>
-    </message>
-    <message>
-        <location filename="widgets/imagewidget.cpp" line="226"/>
+        <location filename="widgets/imagewidget.cpp" line="269"/>
         <source>Nie moÅ¼na utworzyÄ pixmapy ze zdjÄcia. PamiÄÄ wyczerpana?</source>
         <translation>Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
@@ -480,213 +389,242 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Image edition</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="182"/>
+        <location filename="widgets/mainwindow.ui" line="183"/>
         <source>Edycja strzałki</source>
         <translation>Arrow edition</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="196"/>
+        <location filename="widgets/mainwindow.ui" line="197"/>
         <source>Edycja kolorów zdjęcia</source>
         <translation>Image colors edition</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="211"/>
+        <location filename="widgets/mainwindow.ui" line="212"/>
         <source>&amp;Dodaj zdjęcia</source>
         <translation>&amp;Add photo</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="220"/>
+        <location filename="widgets/mainwindow.ui" line="221"/>
+        <source>Przenieś na &amp;górę</source>
+        <translation>Move &amp;top</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="224"/>
         <source>Przenieś na górę</source>
         <translation>Move top</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="229"/>
+        <location filename="widgets/mainwindow.ui" line="233"/>
+        <source>Przenieś &amp;wyżej</source>
+        <translation>Move &amp;up</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="236"/>
         <source>Przenieś wyżej</source>
         <translation>Move up</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="238"/>
+        <location filename="widgets/mainwindow.ui" line="245"/>
+        <source>Przenieś &amp;niżej</source>
+        <translation>Move &amp;down</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="248"/>
         <source>Przenieś niżej</source>
         <translation>Move down</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="247"/>
+        <location filename="widgets/mainwindow.ui" line="257"/>
+        <source>Przenieś na &amp;spód</source>
+        <translation>Move &amp;bottom</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="260"/>
         <source>Przenieś na spód</source>
         <translation>Move bottom</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="256"/>
+        <location filename="widgets/mainwindow.ui" line="269"/>
+        <source>Obróć w &amp;lewo</source>
+        <translation>Rotate &amp;left</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="272"/>
         <source>Obróć w lewo</source>
         <translation>Rotate left</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="265"/>
+        <location filename="widgets/mainwindow.ui" line="281"/>
+        <source>Obróć w &amp;prawo</source>
+        <translation>Rotate &amp;right</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="284"/>
         <source>Obróć w prawo</source>
         <translation>Rotate right</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="274"/>
+        <location filename="widgets/mainwindow.ui" line="293"/>
+        <source>&amp;Usuń z fotorelacji</source>
+        <translation>&amp;Remove from photo report</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="296"/>
         <source>Usuń z fotorelacji</source>
         <translation>Delete photo</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="277"/>
-        <location filename="widgets/mainwindow.ui" line="358"/>
-        <source>Del</source>
-        <translation>Del</translation>
+        <location filename="widgets/mainwindow.ui" line="299"/>
+        <location filename="widgets/mainwindow.ui" line="383"/>
+        <source>Alt+Del</source>
+        <translation>Alt+Del</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="286"/>
+        <location filename="widgets/mainwindow.ui" line="392"/>
+        <source>&amp;Odwróć kolory</source>
+        <translation>&amp;Inverse colors</translation>
+    </message>
+    <message>
+        <location filename="widgets/mainwindow.ui" line="401"/>
+        <source>Wybierz &amp;kolor</source>
+        <translation>Choose &amp;color</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="410"/>
+        <source>Importuj ślad &amp;GPX</source>
+        <translation>Import &amp;GPX track</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="419"/>
+        <source>Usuń &amp;położenie</source>
+        <translation>Remove &amp;position</translation>
+    </message>
+    <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="308"/>
         <source>&amp;Wyślij na SSC</source>
         <translation>&amp;Post on SSC</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="295"/>
+        <location filename="widgets/mainwindow.ui" line="317"/>
         <source>&amp;Ustawienia</source>
         <translation>Se&amp;ttings</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="304"/>
+        <location filename="widgets/mainwindow.ui" line="326"/>
         <source>&amp;Zamknij</source>
         <translation>&amp;Close</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="307"/>
+        <location filename="widgets/mainwindow.ui" line="329"/>
         <source>Zamknij</source>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="316"/>
+        <location filename="widgets/mainwindow.ui" line="338"/>
         <source>&amp;O programie</source>
         <translation>&amp;About</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="325"/>
+        <location filename="widgets/mainwindow.ui" line="347"/>
         <source>Informacje o &amp;Qt</source>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="328"/>
+        <location filename="widgets/mainwindow.ui" line="350"/>
         <source>Informacje o Qt</source>
         <translation>About Qt</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="337"/>
+        <location filename="widgets/mainwindow.ui" line="359"/>
         <source>&amp;Otwórz</source>
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="346"/>
+        <location filename="widgets/mainwindow.ui" line="368"/>
         <source>Zapi&amp;sz</source>
         <translation>&amp;Save</translation>
     </message>
-    <message>
-        <location filename="widgets/mainwindow.ui" line="385"/>
-        <source>Importuj track &amp;GPX</source>
-        <translation>Import &amp;GPX track</translation>
-    </message>
     <message utf8="true">
+        <location filename="widgets/mainwindow.ui" line="377"/>
         <source>&amp;Usuń strzałkę</source>
-        <translation type="obsolete">&amp;Delete arrow</translation>
+        <translation>&amp;Delete arrow</translation>
     </message>
     <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="355"/>
+        <location filename="widgets/mainwindow.ui" line="380"/>
         <source>Usuń strzałkę</source>
         <translation>Delete arrow</translation>
     </message>
-    <message utf8="true">
-        <source>&amp;Odwróc kolory</source>
-        <translation type="obsolete">&amp;Invert colors</translation>
-    </message>
-    <message utf8="true">
-        <location filename="widgets/mainwindow.ui" line="367"/>
-        <source>Odwróć kolory</source>
-        <translation>Invert colors</translation>
-    </message>
     <message>
-        <location filename="widgets/mainwindow.ui" line="376"/>
-        <source>Wybierz kolor</source>
-        <translation>Choose color</translation>
-    </message>
-    <message>
-        <location filename="widgets/mainwindow.cpp" line="59"/>
+        <location filename="widgets/mainwindow.cpp" line="65"/>
         <source>OtwÃ³rz fotorelacjÄ</source>
         <translation>Open photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="76"/>
-        <location filename="widgets/mainwindow.cpp" line="103"/>
-        <location filename="widgets/mainwindow.cpp" line="158"/>
+        <location filename="widgets/mainwindow.cpp" line="82"/>
+        <location filename="widgets/mainwindow.cpp" line="109"/>
+        <location filename="widgets/mainwindow.cpp" line="164"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="77"/>
+        <location filename="widgets/mainwindow.cpp" line="83"/>
         <source>Nie moÅ¼na otworzyÄ. TÄ fotorelacjÄ zapisano innÄ wersjÄ programu.</source>
         <translation>Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="78"/>
+        <location filename="widgets/mainwindow.cpp" line="84"/>
         <source>To nie jest plik fotorelacji!</source>
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="103"/>
-        <location filename="widgets/mainwindow.cpp" line="158"/>
+        <location filename="widgets/mainwindow.cpp" line="109"/>
+        <location filename="widgets/mainwindow.cpp" line="164"/>
         <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
         <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="106"/>
+        <location filename="widgets/mainwindow.cpp" line="112"/>
         <source>Zapisz fotorelacjÄ</source>
         <translation>Save photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="173"/>
+        <location filename="widgets/mainwindow.cpp" line="179"/>
         <source>Jeszcze raz</source>
         <translation>Once more</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="173"/>
+        <location filename="widgets/mainwindow.cpp" line="179"/>
         <source>Czy sprÃ³bowaÄ dokoÅczyÄ wysyÅanie fotorelacji?</source>
         <translation>Try finishing photo report upload?</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="186"/>
+        <location filename="widgets/mainwindow.cpp" line="192"/>
         <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
         <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="59"/>
-        <location filename="widgets/mainwindow.cpp" line="106"/>
+        <location filename="widgets/mainwindow.cpp" line="65"/>
+        <location filename="widgets/mainwindow.cpp" line="112"/>
         <source>Fotorelacje (*.phr)</source>
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="123"/>
+        <location filename="widgets/mainwindow.cpp" line="129"/>
         <source>Wybierz zdjÄcia</source>
         <translation>Choose photos</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="123"/>
+        <location filename="widgets/mainwindow.cpp" line="129"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
-        <source>Mapa dla wszystkich zdjÄÄ.</source>
-        <translation type="obsolete">All photos map.</translation>
-    </message>
-    <message>
-        <location filename="widgets/mainwindow.cpp" line="186"/>
+        <location filename="widgets/mainwindow.cpp" line="192"/>
         <source>O programie</source>
         <translation>About</translation>
     </message>
     <message>
-        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;exiv2 (GPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation type="obsolete">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;exiv2 (GPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
-    </message>
-    <message>
-        <location filename="widgets/mainwindow.cpp" line="196"/>
+        <location filename="widgets/mainwindow.cpp" line="202"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
     </message>
@@ -879,6 +817,19 @@ Error at:
     </message>
 </context>
 <context>
+    <name>QuestionBox</name>
+    <message>
+        <location filename="widgets/questionbox.cpp" line="25"/>
+        <source>ZapamiÄtaj na zawsze</source>
+        <translation>Remember always</translation>
+    </message>
+    <message>
+        <location filename="widgets/questionbox.cpp" line="26"/>
+        <source>ZapamiÄtaj w tej sesji</source>
+        <translation>Remember during this session</translation>
+    </message>
+</context>
+<context>
     <name>RecentThreadsMenu</name>
     <message>
         <location filename="widgets/recentthreadsmenu.cpp" line="25"/>
@@ -982,10 +933,6 @@ Error at:
         <translation>Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <source>Post %1</source>
-        <translation type="obsolete">Post %1</translation>
-    </message>
-    <message>
         <location filename="widgets/replydialog.cpp" line="136"/>
         <source>WysyÅam %1: %p%</source>
         <translation>Sending %1: %p%</translation>
@@ -995,10 +942,6 @@ Error at:
         <source>Nie moÅ¼na byÅo wysÅaÄ obrazka %1 z powodu:
 %2</source>
         <translation>Photo %1 upload failed: %2</translation>
-    </message>
-    <message>
-        <source>Cdn ...</source>
-        <translation type="obsolete">Tbc ...</translation>
     </message>
     <message>
         <location filename="widgets/replydialog.cpp" line="226"/>
@@ -1058,10 +1001,6 @@ Error at:
         <translation>It seems you have already liked this app.</translation>
     </message>
     <message>
-        <source>LubiÄ to</source>
-        <translation type="obsolete">Like</translation>
-    </message>
-    <message>
         <location filename="widgets/replydialog.cpp" line="316"/>
         <source>PrzechodzÄ do formularza... %p%</source>
         <translation>Navigating to form... %p%</translation>
@@ -1107,14 +1046,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation> s</translation>
     </message>
     <message utf8="true">
-        <source>Podpis nad zdjęciem</source>
-        <translation type="obsolete">Captions above photos</translation>
-    </message>
-    <message utf8="true">
-        <source>Podpis pod zdjęciem</source>
-        <translation type="obsolete">Captions under photos</translation>
-    </message>
-    <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="146"/>
         <source>Numeruj zdjęcia</source>
         <translation>Number photos</translation>
@@ -1150,14 +1081,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <source>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</source>
         <translation>Input only opening tags, they will be automatically closed.</translation>
     </message>
-    <message utf8="true">
-        <source>Otwórz froum na tagu</source>
-        <translation type="obsolete">Start forum with tag</translation>
-    </message>
-    <message utf8="true">
-        <source>Zostaw puste, aby zacząć od FPW</source>
-        <translation type="obsolete">Leave empty to start with FPW</translation>
-    </message>
     <message>
         <location filename="settings/settingsdialog.ui" line="113"/>
         <source>Podpis</source>
@@ -1167,10 +1090,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <location filename="settings/settingsdialog.ui" line="123"/>
         <source>nad zdjęciem</source>
         <translation>above photos</translation>
-    </message>
-    <message>
-        <source>captionsPositionGroup</source>
-        <translation type="obsolete">captionsPositionGroup</translation>
     </message>
     <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="136"/>
@@ -1182,10 +1101,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <source>forum o id</source>
         <translation>forum of id</translation>
     </message>
-    <message>
-        <source>homePageGroup</source>
-        <translation type="obsolete">homePageGroup</translation>
-    </message>
     <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="230"/>
         <source>Np. dla Forum Polskich Wieżowców wpisz 45</source>
@@ -1196,10 +1111,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <location filename="settings/settingsdialog.ui" line="249"/>
         <source>tagu</source>
         <translation>threads tagged</translation>
-    </message>
-    <message utf8="true">
-        <source>stronie głównej</source>
-        <translation type="obsolete">main page</translation>
     </message>
     <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="275"/>
@@ -1230,10 +1141,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <location filename="settings/settingsdialog.ui" line="332"/>
         <source>szerokość</source>
         <translation>width</translation>
-    </message>
-    <message>
-        <source>imageScaleMethodGroup</source>
-        <translation type="obsolete">imageScaleMethodGroup</translation>
     </message>
     <message>
         <location filename="settings/settingsdialog.ui" line="265"/>
@@ -1447,26 +1354,6 @@ Most probably short time favors post miximg by the forum.</translation>
         <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt; </translation>
     </message>
     <message utf8="true">
-        <source>Źródło danych Google Maps: https://developers.google.com/maps/documentation/staticmaps/</source>
-        <translation type="obsolete">Google Maps data source: https://developers.google.com/maps/documentation/staticmaps/</translation>
-    </message>
-    <message>
-        <source>Drogi</source>
-        <translation type="obsolete">Roadmap</translation>
-    </message>
-    <message>
-        <source>Satelita</source>
-        <translation type="obsolete">Satellite</translation>
-    </message>
-    <message>
-        <source>Hybryda</source>
-        <translation type="obsolete">Hybrid</translation>
-    </message>
-    <message>
-        <source>Teren</source>
-        <translation type="obsolete">Terrain</translation>
-    </message>
-    <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="738"/>
         <source>Mapa na każdym zdjęciu</source>
         <translation>Map on each photo</translation>
@@ -1598,10 +1485,6 @@ You can add and remove files from this directory, changes will become visible af
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
-    <message utf8="true">
-        <source>W kółku</source>
-        <translation type="obsolete">Round</translation>
-    </message>
     <message>
         <location filename="settings/settingsdialog.ui" line="894"/>
         <source>Rozmiar</source>
@@ -1613,30 +1496,20 @@ You can add and remove files from this directory, changes will become visible af
         <translation>circular</translation>
     </message>
     <message utf8="true">
-        <source>Źródło danych: Google Maps https://developers.google.com/maps/documentation/staticmaps/</source>
-        <oldsource>Źródło danych:  Google Maps https://developers.google.com/maps/documentation/staticmaps/</oldsource>
-        <translation type="obsolete">Data source: Google Maps https://developers.google.com/maps/documentation/staticmaps/</translation>
-    </message>
-    <message utf8="true">
         <location filename="settings/settingsdialog.ui" line="1003"/>
         <location filename="settings/settingsdialog.ui" line="1012"/>
         <source>Podkłady mapowe</source>
         <oldsource>Własne mapy</oldsource>
         <translation>Overlays</translation>
     </message>
-    <message utf8="true">
-        <source>Używaj podkładów mapowych</source>
-        <oldsource>Używaj własnych map</oldsource>
-        <translation type="obsolete">Use overlays</translation>
-    </message>
     <message>
-        <location filename="settings/settingsdialog.cpp" line="246"/>
+        <location filename="settings/settingsdialog.cpp" line="248"/>
         <source>Wczytaj logo</source>
         <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="settings/settingsdialog.cpp" line="246"/>
+        <location filename="settings/settingsdialog.cpp" line="248"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>

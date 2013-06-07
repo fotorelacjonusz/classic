@@ -3,9 +3,11 @@
 #include <QDebug>
 #include <QLocale>
 #include <QStringList>
+#include <limits>
 
 NtpClient::NtpClient(QObject *parent) :
-	QObject(parent)
+	QObject(parent),
+	msCurrentToNtp(std::numeric_limits<qint64>::max())
 {
 	connect(&socket, SIGNAL(readyRead()), this, SLOT(readPendingDatagrams()));
 	connect(&retryTimer, SIGNAL(timeout()), this, SLOT(updateTime()));
@@ -16,7 +18,7 @@ NtpClient::NtpClient(QObject *parent) :
 
 QDateTime NtpClient::utcTime() const
 {
-	return retryTimer.isActive() ? QDateTime() : QDateTime::currentDateTimeUtc().toUTC().addMSecs(msCurrentToNtp);
+	return msCurrentToNtp == std::numeric_limits<qint64>::max() ? QDateTime() : QDateTime::currentDateTimeUtc().toUTC().addMSecs(msCurrentToNtp);
 }
 
 void NtpClient::updateTime()
@@ -56,7 +58,7 @@ void NtpClient::readPendingDatagrams()
 			continue;		
 		msCurrentToNtp = QDateTime::currentDateTimeUtc().msecsTo(ntpHeader.transmit.dateTime()) + requestReplyTime.elapsed() / 2;
 		retryTimer.stop();
-		qDebug() << QString("Current UTC time is %1, off by %2 ms from this system time").arg(utcTime().toString("hh:mm:ss.zzz")).arg(msCurrentToNtp);
+		qDebug() << QString("Current UTC time is %1, off by %2 ms from current system time").arg(utcTime().toString("hh:mm:ss.zzz")).arg(msCurrentToNtp);
 		emit utcTimeFound(utcTime());
 	}
 }

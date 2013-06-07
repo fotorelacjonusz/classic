@@ -44,6 +44,7 @@ GpxDialog::GpxDialog(QWidget *parent) :
 	timer.setInterval(1000);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 	connect(&ntpClient, SIGNAL(utcTimeFound(QDateTime)), ui->gpsTime, SLOT(setDateTime(QDateTime)));
+	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 GpxDialog::~GpxDialog()
@@ -65,6 +66,13 @@ void GpxDialog::setVisible(bool visible)
 
 void GpxDialog::accept()
 {
+	if (ntpClient.utcTime().isNull())
+	{
+		QMessageBox::critical(this, tr("Błąd"), tr("Nie udało się ustalić czasu UTC poprzez protokół NTP."));
+		done(Rejected);
+		return;
+	}
+	
 	qint64 diff = ntpClient.utcTime().msecsTo(ui->cameraTime->dateTime().toUTC()); // camera - gps
 	
 	track.clear();
@@ -90,12 +98,12 @@ void GpxDialog::accept()
 		}
 //	qDebug() << track;
 	
-	QDialog::done(Accepted);
+	done(Accepted);
 }
 
 void GpxDialog::reject()
 {
-	QDialog::done(Rejected);
+	done(Rejected);
 }
 
 QPointF GpxDialog::position(QDateTime dateTime) const
@@ -129,7 +137,7 @@ void GpxDialog::updateTime()
 
 void GpxDialog::on_loadButton_clicked()
 {
-	QString filePath = QFileDialog::getOpenFileName(this, tr("Wybierz plik"), "../", tr("Track (*.gpx)"));
+	QString filePath = QFileDialog::getOpenFileName(this, tr("Wybierz plik"), ".", tr("Track (*.gpx)"));
 	static ThrottledNetworkManager manager;
 	QXmlSchema schema;
 	schema.setNetworkAccessManager(manager.manager());
@@ -141,5 +149,6 @@ void GpxDialog::on_loadButton_clicked()
 		return;
 
 	ui->gpxFile->setText(filePath);
-	ui->buttonBox->addButton(QDialogButtonBox::Ok);
+//	ui->buttonBox->addButton(QDialogButtonBox::Ok);
+	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }

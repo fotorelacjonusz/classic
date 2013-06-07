@@ -73,9 +73,8 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 			pixmap.save(&buff, "JPG");
 			buff.close();
 			
-			QuestionBox question(tr("Orientacja zdjęcia"), tr("Program automatycznie obrócił zdjęcie %1 zgodnie z jego orientacją zapisaną w nagłówku exif.<br>"
-															  "Czy chcesz obrócić również oryginalne zdjęcie na dysku?").arg(filePath), "orientate_horizontally_and_save", this);
-			if (question.exec() == QMessageBox::Yes)
+			if (QuestionBox::question(this, tr("Orientacja zdjęcia"), tr("Zdjęcie %1 zostało obrócone zgodnie z jego orientacją zapisaną w nagłówku exif.<br>"
+																		 "Czy chcesz obrócić również oryginalne zdjęcie na dysku?").arg(filePath), "original_file/orientate_horizontally"))
 			{
 				QFile file(filePath);
 				file.open(QIODevice::ReadWrite);
@@ -167,6 +166,13 @@ void ImageWidget::setPosition(GpxDialog *gpxDialog)
 void ImageWidget::removePosition()
 {
 	gpsData->removePosition();
+	if (QFile::exists(filePath) && QuestionBox::question(this, tr("Usunięcie pozycji"), tr("Czy usunąć pozycję również z pliku na dysku?"), "original_file/remove_position"))
+	{
+		QFile file(filePath);
+		file.open(QIODevice::ReadWrite);
+		gpsData->writeExif(&file);
+		file.close();
+	}
 }
 
 QWidget *ImageWidget::firstWidget() const
@@ -188,18 +194,14 @@ void ImageWidget::rotate(bool left)
 	pixmap.save(&buffer, "JPG");
 	buffer.close();
 	QPixmapCache::remove(filePath);
-	if (QFile::exists(filePath))
+	if (QFile::exists(filePath) && QuestionBox::question(this, tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), "original_file/rotate"))
 	{
-		QuestionBox question(tr("Obrót zdjęcia"), tr("Czy obrócić również oryginalne zdjęcie na dysku?"), "rotate_and_save");
-		if (question.exec() == QuestionBox::Yes)
-		{
-			QFile file(filePath);
-			file.open(QIODevice::ReadWrite);
-			pixmap.save(&file, "JPG");
-			file.seek(0);
-			gpsData->writeExif(&file);
-			file.close();
-		}
+		QFile file(filePath);
+		file.open(QIODevice::ReadWrite);
+		pixmap.save(&file, "JPG");
+		file.seek(0);
+		gpsData->writeExif(&file);
+		file.close();
 	}
 	updatePixmap();
 }
