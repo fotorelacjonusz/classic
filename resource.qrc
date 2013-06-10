@@ -33,5 +33,6 @@
         <file>res/expand-top.png</file>
         <file>res/gpx_icon.png</file>
         <file>res/remove-location.png</file>
+        <file>res/ssc_logo.png</file>
     </qresource>
 </RCC>

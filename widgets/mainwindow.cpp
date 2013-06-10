@@ -188,13 +188,11 @@ exec_reply:
 
 void MainWindow::on_action_about_triggered()
 {
-	setWindowIcon(QIcon(":/res/help-about.png"));
 	QMessageBox::about(this, tr("O programie"), tr(
 						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>"
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
 						   "Aplikacja wykorzystuje:<br/>Qt (LGPL2)<br/>QuaZIP (LGPL2)<br/>Oxygen theme (LGPL)<br/><br/>%1")
 					   .arg(QString(LICENSE).replace("\n", "<br/>")).replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
-	setWindowIcon(QIcon());
 }
 
 void MainWindow::on_action_Qt_information_triggered()
