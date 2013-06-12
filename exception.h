@@ -3,8 +3,6 @@
 
 #include <QString>
 
-#define THROW(x) throw Exception(__FILE__, __LINE__, __PRETTY_FUNCTION__, x);
-
 class QWidget;
 
 class Exception
@@ -12,10 +10,22 @@ class Exception
 public:
 	Exception(const char *file, int line, const char *func, QString what);
 	void showMessage(QWidget *parent) const;
-	void debug() const;
+	QString message() const;
 
 private:
-	const QString where, what;
+	const QString file, func, what;
+	const int line;
 };
+
+static inline bool throw_func(const char *file, int line, const char *func, QString what)
+{
+	throw Exception(file, line, func, what);
+}
+
+
+#define THROW(x)  throw Exception(__FILE__, __LINE__, __PRETTY_FUNCTION__, x);
+#define OR_THROW(x)	or throw_func(__FILE__, __LINE__, __PRETTY_FUNCTION__, x);
+#define TR(x) QObject::tr(x)
+
 
 #endif // EXCEPTION_H

@@ -36,6 +36,7 @@ SOURCES += main.cpp \
     settings/settingsmanager.cpp \
     settings/settingsdialog.cpp \
     settings/overlaylist.cpp \
+    settings/overlayimage.cpp \
     settings/overlay.cpp \
     settings/osmlayerdialog.cpp \
     settings/displayslider.cpp \
@@ -88,6 +89,7 @@ HEADERS += \
     settings/settingsmanager.h \
     settings/settingsdialog.h \
     settings/overlaylist.h \
+    settings/overlayimage.h \
     settings/overlay.h \
     settings/osmlayerdialog.h \
     settings/displayslider.h \

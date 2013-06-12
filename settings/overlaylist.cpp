@@ -1,5 +1,6 @@
 #include "overlaylist.h"
 #include "overlay.h"
+//#include "exception.h"
 #include <QDropEvent>
 #include <QDragEnterEvent>
 #include <QUrl>
@@ -46,13 +47,23 @@ bool OverlayList::isOverlayExtension(QString filePath) const
 
 bool OverlayList::addOverlayFile(QString filePath)
 {
-	static const QIcon ok = QIcon(":res/dialog-ok-apply.png");
-	static const QIcon noOk = QIcon(":res/edit-delete.png");
-
-	Overlay *overlay = new Overlay(filePath);
-	overlays.append(overlay);
-	addItem(new QListWidgetItem(overlay->isValid() ? ok : noOk, overlay->toString(), this));
-	return overlay->isValid();
+//	static const QIcon ok = QIcon(":res/dialog-ok-apply.png");
+//	static const QIcon noOk = QIcon(":res/edit-delete.png");
+	
+//	QString error;
+//	Overlay *overlay;
+	try
+	{
+		Overlay *overlay = new Overlay(filePath);
+		overlays.append(overlay);
+		addItem(new QListWidgetItem(QIcon(":res/dialog-ok-apply.png"), overlay->toString(), this));
+		return true;
+	}
+	catch (const Exception &e)
+	{
+		addItem(new QListWidgetItem(QIcon(":res/edit-delete.png"), filePath.split('/').last() + '\t' + e.message(), this));
+		return false;
+	}
 }
 
 void OverlayList::dragEnterEvent(QDragEnterEvent *event)

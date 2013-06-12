@@ -182,6 +182,8 @@ QUrl SettingsDialog::homeUrlFunc() const
 		return url;
 	else if (ui->homeUserCPRadio->isChecked())
 		url.setPath("/usercp.php");
+	else if (ui->homeSubscriptionList->isChecked())
+		url.setPath("/subscription.php");
 	else if (ui->homeForumRadio->isChecked())
 	{
 		url.setPath("/forumdisplay.php");

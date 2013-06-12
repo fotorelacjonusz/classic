@@ -107,7 +107,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="6" column="0">
+            <item row="7" column="0">
              <widget class="QLabel" name="captionsPositionLabel">
               <property name="text">
                <string>Podpis</string>
@@ -117,7 +117,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="6" column="1">
+            <item row="7" column="1">
              <widget class="QRadioButton" name="captionsAbove">
               <property name="text">
                <string>nad zdjęciem</string>
@@ -130,7 +130,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </attribute>
              </widget>
             </item>
-            <item row="7" column="1">
+            <item row="8" column="1">
              <widget class="QRadioButton" name="captionsUnder">
               <property name="text">
                <string>pod zdjęciem</string>
@@ -140,14 +140,14 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </attribute>
              </widget>
             </item>
-            <item row="8" column="1">
+            <item row="9" column="1">
              <widget class="QCheckBox" name="numberImages">
               <property name="text">
                <string>Numeruj zdjęcia</string>
               </property>
              </widget>
             </item>
-            <item row="9" column="0">
+            <item row="10" column="0">
              <widget class="QLabel" name="startingNumberLabel">
               <property name="text">
                <string>Zaczynaj numerację od</string>
@@ -157,7 +157,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="9" column="1">
+            <item row="10" column="1">
              <widget class="QSpinBox" name="startingNumber">
               <property name="minimum">
                <number>1</number>
@@ -167,28 +167,28 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="10" column="1">
+            <item row="11" column="1">
              <widget class="QCheckBox" name="addTBC">
               <property name="text">
                <string>Dodawaj &quot;Cdn ...&quot; na końcu postów</string>
               </property>
              </widget>
             </item>
-            <item row="11" column="1">
+            <item row="12" column="1">
              <widget class="QCheckBox" name="extraSpace">
               <property name="text">
                <string>Dodatkowy odstęp pomiędzy opisem, a zdjęciem</string>
               </property>
              </widget>
             </item>
-            <item row="12" column="1">
+            <item row="13" column="1">
              <widget class="QCheckBox" name="addImageBorder">
               <property name="text">
                <string>Dodawaj czarną ramkę wokół zdjęcia</string>
               </property>
              </widget>
             </item>
-            <item row="13" column="0">
+            <item row="14" column="0">
              <widget class="QLabel" name="extraTagsLabel">
               <property name="text">
                <string>Dodatkowe tagi w poście</string>
@@ -198,7 +198,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="13" column="1">
+            <item row="14" column="1">
              <widget class="QPlainTextEdit" name="extraTags">
               <property name="toolTip">
                <string>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</string>
@@ -208,7 +208,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="5" column="1">
+            <item row="6" column="1">
              <widget class="QWidget" name="homeForumWidget" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout">
                <property name="margin">
@@ -237,7 +237,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </layout>
              </widget>
             </item>
-            <item row="4" column="1">
+            <item row="5" column="1">
              <widget class="QWidget" name="homeTagWidget" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_2">
                <property name="margin">
@@ -287,6 +287,13 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <attribute name="buttonGroup">
                <string notr="true">homePageGroup</string>
               </attribute>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QRadioButton" name="homeSubscriptionList">
+              <property name="text">
+               <string>liście subskrypcji</string>
+              </property>
              </widget>
             </item>
            </layout>
