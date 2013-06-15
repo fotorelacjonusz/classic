@@ -16,6 +16,7 @@ SOURCES += main.cpp \
     networkcookiejar.cpp \
     exception.cpp \
     application.cpp \
+    widgets/threadedvalidator.cpp \
     widgets/selectablewidget.cpp \
     widgets/replydialog.cpp \
     widgets/recentthreadsmenu.cpp \
@@ -69,6 +70,7 @@ HEADERS += \
     networkcookiejar.h \
     exception.h \
     application.h \
+    widgets/threadedvalidator.h \
     widgets/selectablewidget.h \
     widgets/replydialog.h \
     widgets/recentthreadsmenu.h \

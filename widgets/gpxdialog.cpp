@@ -1,55 +1,38 @@
 #include "gpxdialog.h"
 #include "ui_gpxdialog.h"
-#include "downloaders/throttlednetworkmanager.h"
+#include "settings/settingsdialog.h"
+#include "threadedvalidator.h"
 #include <QFile>
 #include <QDomDocument>
 #include <QFileDialog>
-#include <QXmlSchema>
-#include <QXmlSchemaValidator>
-#include <QAbstractMessageHandler>
+#include <QTime>
 #include <QMessageBox>
-#include <QDebug>
+#include <QSourceLocation>
 
 #define QDomFor(Var, Tag, Parent) (QDomElement Var = Parent.firstChildElement(Tag); !Var.isNull(); Var = Var.nextSiblingElement(Tag))
-
-class MessageHandler : public QAbstractMessageHandler
-{
-public:
-	MessageHandler(QWidget *parent):
-		QAbstractMessageHandler(parent),
-		parent(parent)
-	{
-	}
-	
-	virtual void handleMessage(QtMsgType type, const QString &description, const QUrl &identifier, const QSourceLocation &sourceLocation)
-	{
-		QString text = tr("Błąd %1 w %2<br/>Wiersz %3, kolumna %4:%5").arg(identifier.fragment()).arg(sourceLocation.uri().toString())
-					   .arg(sourceLocation.line()).arg(sourceLocation.column()).arg(description);
-		if (type == QtCriticalMsg || type == QtFatalMsg)
-			QMessageBox::critical(parent, tr("Błąd"), text);
-		else
-			qDebug() << text;
-	}
-	
-private:
-	QWidget * const parent;
-};
 
 GpxDialog::GpxDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::GpxDialog),
-	handler(new MessageHandler(this))
+	validator(new ThreadedValidator(QUrl("http://www.topografix.com/GPX/1/1/gpx.xsd")))
 {
 	ui->setupUi(this);
 	timer.setInterval(1000);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 	connect(&ntpClient, SIGNAL(utcTimeFound(QDateTime)), ui->gpsTime, SLOT(setDateTime(QDateTime)));
 	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+	
+	qRegisterMetaType<QtMsgType>("QtMsgType");
+	qRegisterMetaType<QSourceLocation>("QSourceLocation");
+	
+	connect(validator, SIGNAL(validated(bool)), this, SLOT(validated(bool)));
+	connect(validator, SIGNAL(message(QtMsgType,QString,QUrl,QSourceLocation)), this, SLOT(message(QtMsgType,QString,QUrl,QSourceLocation)));
 }
 
 GpxDialog::~GpxDialog()
 {
 	delete ui;
+	delete validator;
 }
 
 void GpxDialog::setVisible(bool visible)
@@ -129,6 +112,23 @@ bool GpxDialog::updateFiles() const
 	return ui->updateFiles->isChecked();
 }
 
+void GpxDialog::message(QtMsgType type, const QString &description, const QUrl &identifier, const QSourceLocation &sourceLocation)
+{
+	QString text = tr("Błąd %1 w %2<br/>Wiersz %3, kolumna %4:%5").arg(identifier.fragment()).arg(sourceLocation.uri().toString())
+				   .arg(sourceLocation.line()).arg(sourceLocation.column()).arg(description);
+	if (type == QtCriticalMsg || type == QtFatalMsg)
+		QMessageBox::critical(this, tr("Błąd"), text);
+	else
+		qDebug() << text;
+}
+
+void GpxDialog::validated(bool valid)
+{
+	ui->loadButton->setEnabled(true);
+	if (valid)
+		ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+}
+
 void GpxDialog::updateTime()
 {
 	ui->cameraTime->setDateTime(ui->cameraTime->dateTime().addSecs(1));
@@ -137,18 +137,15 @@ void GpxDialog::updateTime()
 
 void GpxDialog::on_loadButton_clicked()
 {
-	QString filePath = QFileDialog::getOpenFileName(this, tr("Wybierz plik"), ".", tr("Track (*.gpx)"));
-	static ThrottledNetworkManager manager;
-	QXmlSchema schema;
-	schema.setNetworkAccessManager(manager.manager());
-	schema.load(QUrl("http://www.topografix.com/GPX/1/1/gpx.xsd"));
-	Q_ASSERT(schema.isValid());
-	QXmlSchemaValidator validator(schema);
-	validator.setMessageHandler(handler);
-	if (!validator.validate(QUrl::fromLocalFile(filePath)))
+	QString dirPath = SETTINGS->settings().value("gpx_dir").toString();
+	QString filePath = QFileDialog::getOpenFileName(this, tr("Wybierz plik"), dirPath, tr("Track (*.gpx)"));
+	if (filePath.isEmpty())
 		return;
-
+	
+	SETTINGS->settings().setValue("gpx_dir", filePath.section('/', 0, -2));
+		
 	ui->gpxFile->setText(filePath);
-//	ui->buttonBox->addButton(QDialogButtonBox::Ok);
-	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+	ui->loadButton->setEnabled(false);
+		
+	validator->validate(QUrl::fromLocalFile(filePath));
 }

@@ -7,6 +7,7 @@
 #include <QPainter>
 #include <QLabel>
 #include <QGraphicsBlurEffect>
+#include <QVector2D>
 
 QHash<int, QImage> GeoMap::maskCache;
 
@@ -26,6 +27,7 @@ GeoMap::GeoMap(CoordMap coords):
 	coordBox(QPolygonF(coords.values().toVector()).boundingRect()),
 	isSingle(distinctCoords.size() == 1)
 {
+	qDebug() << coords;
 	Q_ASSERT(!coords.isEmpty());
 }
 
@@ -78,16 +80,40 @@ void GeoMap::processCommonMap(QImage &map) const
 	QPainter painter(&map);
 	painter.setRenderHint(QPainter::Antialiasing);
 	painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-	painter.setFont(QFont("Arial", 12));
+	painter.setFont(QFont("Arial", 10));
 
-	QHash<QPointF, QStringList> merged;
-//	for (int i = 0; i < coords.size(); ++i)
-//		merged[coords[i]].append(QString::number(i + SETTINGS->startingNumber));
+	//	for (int i = 0; i < coords.size(); ++i)
+	//		merged[coords[i]].append(QString::number(i + SETTINGS->startingNumber));
 	
+	// group near points
+	QHash<QPoint, QList<int> > grouped;
 	for (CoordMap::ConstIterator i = coords.constBegin(); i != coords.constEnd(); ++i)
-		merged[i.value()].append(QString::number(i.key() + SETTINGS->startingNumber));
-	for (QHash<QPointF, QStringList>::Iterator i = merged.begin(); i != merged.end(); ++i)
-		textBaloon(&painter, coordToPoint(i.key()), SETTINGS->numberImages ? i.value().join(", ") : "✖"); ; // "●"
+	{
+		QPoint thisPoint = coordToPoint(i.value());
+		foreach (QPoint point, grouped.keys())
+			if (QVector2D(thisPoint - point).length() < 10.0)
+			{
+				thisPoint = point;
+				break;
+			}
+		grouped[thisPoint].append(i.key() + SETTINGS->startingNumber);
+	}
+	
+	// change incrementing numbers to ranges ("1, 2, 3, 4" becomes "1-4")
+	QHash<QPoint, QStringList> ranged;
+	for (QHash<QPoint, QList<int> >::Iterator i = grouped.begin(); i != grouped.end(); ++i)
+	{
+		const QList<int> &l = i.value();
+		for (int j = 0; j < l.size(); ++j)
+		{
+			const int _j = j;
+			for (++j; j < l.size() && l[j - 1] == l[j] - 1; ++j);
+			ranged[i.key()] << (--j > _j + 1 ? QString("%1-%2").arg(l[_j]).arg(l[j]) : QString::number(l[j]));
+		}
+	}
+	
+	for (QHash<QPoint, QStringList>::Iterator i = ranged.begin(); i != ranged.end(); ++i)
+		textBaloon(&painter, i.key(), SETTINGS->numberImages ? i.value().join(", ") : "✖"); ; // "●"
 }
 
 void GeoMap::textBaloon(QPainter *painter, QPoint pos, QString text)

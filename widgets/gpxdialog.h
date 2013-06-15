@@ -12,6 +12,8 @@ class GpxDialog;
 }
 
 class QAbstractMessageHandler;
+class QSourceLocation;
+class ThreadedValidator;
 
 class GpxDialog : public QDialog
 {
@@ -28,6 +30,10 @@ public:
 	QPointF position(QDateTime dateTime) const;
 	bool updateFiles() const;
 	
+public slots:
+	void message(QtMsgType type, const QString &description, const QUrl &identifier, const QSourceLocation &sourceLocation);
+	void validated(bool valid);
+	
 private slots:
 	void updateTime();
 	
@@ -36,12 +42,12 @@ private slots:
 private:
 	Ui::GpxDialog *ui;
 	QTimer timer;
-	QAbstractMessageHandler * const handler;
 	
 	typedef QMap<QDateTime, QPointF> Segment;
 	QList<Segment> track;
 
 	NtpClient ntpClient;
+	ThreadedValidator *validator;
 };
 
 #endif // GPXDIALOG_H
