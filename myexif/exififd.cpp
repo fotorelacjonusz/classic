@@ -46,6 +46,7 @@ void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const
 	stream << quint16(size());
 	
 	QDataStream valueStream(&data, QIODevice::WriteOnly);
+	valueStream.setByteOrder(stream.byteOrder());
 	valueStream.device()->seek(stream.device()->pos() + 12 * size() + sizeof(nextIFD));
 	quint32 imageLength = 0;
 	
