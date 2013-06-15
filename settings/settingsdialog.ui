@@ -294,6 +294,9 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <property name="text">
                <string>liście subskrypcji</string>
               </property>
+              <attribute name="buttonGroup">
+               <string notr="true">homePageGroup</string>
+              </attribute>
              </widget>
             </item>
            </layout>
