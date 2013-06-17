@@ -27,7 +27,7 @@ GeoMap::GeoMap(CoordMap coords):
 	coordBox(QPolygonF(coords.values().toVector()).boundingRect()),
 	isSingle(distinctCoords.size() == 1)
 {
-	qDebug() << coords;
+//	qDebug() << coords;
 	Q_ASSERT(!coords.isEmpty());
 }
 
@@ -108,7 +108,12 @@ void GeoMap::processCommonMap(QImage &map) const
 		{
 			const int _j = j;
 			for (++j; j < l.size() && l[j - 1] == l[j] - 1; ++j);
-			ranged[i.key()] << (--j > _j + 1 ? QString("%1-%2").arg(l[_j]).arg(l[j]) : QString::number(l[j]));
+			if (--j == _j)
+				ranged[i.key()] << QString::number(l[j]);
+			else if (j == _j + 1)
+				ranged[i.key()] << QString::number(l[_j]) << QString::number(l[j]);
+			else if (j > _j + 1)
+				ranged[i.key()] << QString("%1-%2").arg(l[_j]).arg(l[j]);
 		}
 	}
 	

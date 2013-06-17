@@ -23,6 +23,7 @@ QDateTime NtpClient::utcTime() const
 
 void NtpClient::updateTime()
 {
+	socket.disconnectFromHost();
 	retryTimer.start(200);
 	qDebug() << QString("Resolving pool %1").arg(pool);
 	QHostInfo::lookupHost(pool, this, SLOT(sendRequest(QHostInfo)));
