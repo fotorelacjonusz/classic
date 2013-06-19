@@ -15,6 +15,7 @@ public:
 	explicit OverlayList(QWidget *parent = 0);
 	virtual ~OverlayList();
 	bool makeMap(GeoMap *map);
+	DistancePair bestDistance(GeoMap *map) const;
 	
 public slots:
 	void openFolder() const;

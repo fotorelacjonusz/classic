@@ -1,5 +1,6 @@
 #include "overlaylist.h"
 #include "overlay.h"
+#include "downloaders/geomap.h"
 //#include "exception.h"
 #include <QDropEvent>
 #include <QDragEnterEvent>
@@ -18,8 +19,8 @@ OverlayList::OverlayList(QWidget *parent) :
 		overlaysDir.mkdir(FOTORELACJONUSZ_DIR_CSTR);
 		overlaysDir.cd(FOTORELACJONUSZ_DIR_CSTR);
 	}
-	foreach (QFileInfo kmzInfo, overlaysDir.entryInfoList(QStringList() << "*.kmz" << "*.kmr", QDir::Readable | QDir::Files, QDir::Time | QDir::Reversed))
-		addOverlayFile(kmzInfo.absoluteFilePath());
+	foreach (QFileInfo fileInfo, overlaysDir.entryInfoList(QStringList() << "*.kmz" << "*.kmr", QDir::Readable | QDir::Files, QDir::Time | QDir::Reversed))
+		addOverlayFile(fileInfo.absoluteFilePath());
 }
 
 OverlayList::~OverlayList()
@@ -29,10 +30,29 @@ OverlayList::~OverlayList()
 
 bool OverlayList::makeMap(GeoMap *map)
 {
+	if (!map->isCommon)
+	{
+		DistancePair best = bestDistance(map);
+		if (best.first && best.first->makeMap(map))
+			return true;
+	}
+	
 	foreach (Overlay *overlay, overlays)
 		if (overlay->makeMap(map))
 			return true;
 	return false;
+}
+
+OverlayList::DistancePair OverlayList::bestDistance(GeoMap *map) const
+{
+	DistancePair best = qMakePair((OverlayImage *)0, 10000.0);
+	foreach (Overlay *overlay, overlays)
+	{
+		DistancePair current = overlay->bestDistance(map);
+		if (current.second < best.second)
+			best = current;
+	}
+	return best;
 }
 
 void OverlayList::openFolder() const

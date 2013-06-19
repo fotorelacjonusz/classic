@@ -13,6 +13,7 @@ public:
 
 	QString toString() const;
 	bool makeMap(GeoMap *map);
+	DistancePair bestDistance(GeoMap *map) const;
 	
 private:
 	QString name;

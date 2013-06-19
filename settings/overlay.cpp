@@ -72,7 +72,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 		{
 			QuaZipFile outFileMap(&kmr);
 			outFileMap.open(QIODevice::WriteOnly, QuaZipNewInfo(image->href(), absoluteFilePath)) OR_THROW(TR("outFileMap.open(): %1").arg(outFileMap.getZipError()));
-			image->image().save(&outFileMap, "jpg") OR_THROW(TR("map.save(): Błąd zapisu pixmapy do archiwum"));
+			outFileMap.write(image->data()) == image->data().size() OR_THROW(TR("outFileMap.write(): Błąd zapisu danych do archiwum"));
 			outFileMap.close();
 			outFileMap.getZipError() == UNZ_OK OR_THROW(TR("outFileMap.close(): %1").arg(outFileMap.getZipError()));
 		}
@@ -91,7 +91,14 @@ Overlay::~Overlay()
 
 QString Overlay::toString() const
 {
-	return name;
+	QStringList names;
+	foreach (OverlayImage *image, images)
+		names << image->toString();
+	
+	if (names.size() == 1)
+		return names.first();
+	else
+		return QString("%1 (%2)").arg(name).arg(names.join(", "));
 }
 
 bool Overlay::makeMap(GeoMap *map)
@@ -100,4 +107,16 @@ bool Overlay::makeMap(GeoMap *map)
 		if (image->makeMap(map))		
 			return true;
 	return false;
+}
+
+Overlay::DistancePair Overlay::bestDistance(GeoMap *map) const
+{
+	DistancePair best = qMakePair((OverlayImage *)0, 10000.0);
+	foreach (OverlayImage *image, images)
+	{
+		qreal current = image->distance(map);
+		if (current < best.second)
+			best = qMakePair(image, current);
+	}
+	return best;
 }

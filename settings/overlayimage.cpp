@@ -3,14 +3,24 @@
 #include "settingsdialog.h"
 #include <QMap>
 #include <QPainter>
+#include <QBuffer>
+#include <QImageReader>
+#include <QVector2D>
 #include <math.h>
 
 const qreal OverlayImage::R = 6371000;
+
+template <class T> 
+int sgn(T v)
+{
+    return (T(0) < v) - (v < T(0));
+}
 
 OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) throw (Exception)
 {
 	QDomElement icon = groundOverlay.firstChildElement("Icon");
 	QDomElement latLonBox = groundOverlay.firstChildElement("LatLonBox");
+	name = groundOverlay.firstChildElement("name").text();
 
 	(!icon.isNull() && !latLonBox.isNull()) OR_THROW(TR("Brak tagu w pliku kml"));
 	m_href = icon.firstChildElement("href").text();
@@ -23,30 +33,38 @@ OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteA
 	lon0 = (left + right) / 2 * M_PI / 180;
 	lat0 = (top + bottom) / 2 * M_PI / 180;
 
-	rotation = latLonBox.firstChildElement("rotation").text().toDouble();// / 180.0 * M_PI;
+	rotation = latLonBox.firstChildElement("rotation").text().toDouble();
 
 	poly << rotate(orthoProjection(QPointF(left, top))) << rotate(orthoProjection(QPointF(right, top)))
-		 << rotate(orthoProjection(QPointF(right, bottom))) << rotate(orthoProjection(QPointF(left, bottom)));
+		 << rotate(orthoProjection(QPointF(right, bottom))) << rotate(orthoProjection(QPointF(left, bottom))); // clockwise
+	poly << poly.first(); // close
 	box = poly.boundingRect();
 
-//	qDebug() << box;
-
-//	box.isValid() OR_THROW(TR("Niepoprawne koordynaty"));
 	files.contains(m_href) OR_THROW(TR("Brak pliku '%1' w archiwum kmz").arg(m_href));
-	overlayImage.loadFromData(files[m_href]) OR_THROW(TR("Nieudane ładowanie pliku z mapą"));
+	imageData = files.value(m_href);
 	
-	if (isKmz)
+	if (isKmz) // rotate imageData
 	{
+		QImage image;
+		image.loadFromData(imageData) OR_THROW(TR("Nieudane ładowanie pliku z mapą, pamięć wyczerpana?"));
+		
 		QTransform transform;
 		transform.rotate(-rotation);
-		overlayImage = overlayImage.transformed(transform, Qt::SmoothTransformation);
+		image = image.transformed(transform, Qt::SmoothTransformation);
+		
+		QBuffer buffer(&imageData);
+		buffer.open(QIODevice::WriteOnly | QIODevice::Truncate);
+		image.save(&buffer, "jpg") OR_THROW(TR("Nieudane zapisanie mapy do bufora, pamięć wyczerpana?"));
 	}
+	
+	QBuffer buffer(&imageData);
+	buffer.open(QIODevice::ReadOnly);
+	QImageReader reader(&buffer);
+	imageSize = reader.size();
 }
 
 bool OverlayImage::makeMap(GeoMap *map)
 {
-//	if (!isValid())
-//		return false;
 	foreach (QPointF coord, map->distinctCoords)
 		if (!poly.containsPoint(orthoProjection(coord), Qt::OddEvenFill))
 			return false;
@@ -64,9 +82,9 @@ bool OverlayImage::makeMap(GeoMap *map)
 	return true;
 }
 
-const QImage &OverlayImage::image() const
+const QByteArray &OverlayImage::data() const
 {
-	return overlayImage;
+	return imageData;
 }
 
 const QString &OverlayImage::href() const
@@ -74,12 +92,38 @@ const QString &OverlayImage::href() const
 	return m_href;
 }
 
+const QString OverlayImage::toString() const
+{
+	return name;
+}
+
+qreal OverlayImage::distance(const GeoMap *map) const
+{
+	return distance(orthoProjection(map->first()), poly);
+}
+
 QImage OverlayImage::render(QPoint center, QSize size, qreal scale) const
 {
-	QImage mapCopy(size * scale, QImage::Format_ARGB32);
-	mapCopy.fill(Qt::black);
-	QPainter(&mapCopy).drawImage(QPoint(0, 0), overlayImage, centered(center, size * scale));
-	return mapCopy.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+	const QRect oversizeRect = centered(center, size * scale);
+	const QRect clipRect = QRect(QPoint(), imageSize) & oversizeRect;
+	const QSize scaledSize = clipRect.size() / scale;
+	const QPoint rectTr = (clipRect.topLeft() - oversizeRect.topLeft()) / scale;
+		
+	QBuffer buffer(const_cast<QByteArray *>(&imageData));
+	buffer.open(QIODevice::ReadOnly);
+	QImageReader reader(&buffer);
+	reader.setScaledSize(scaledSize);
+	reader.setClipRect(clipRect);
+	if (!reader.canRead())
+	{
+		qDebug() << "Can't read ImageReader";
+		return QImage();
+	}
+	
+	QImage result(size, QImage::Format_ARGB32);
+	result.fill(Qt::black);
+	QPainter(&result).drawImage(rectTr, reader.read());
+	return result;
 }
 
 QPoint OverlayImage::coordToPoint(QPointF coord) const
@@ -89,8 +133,8 @@ QPoint OverlayImage::coordToPoint(QPointF coord) const
 	Q_ASSERT(box.contains(point));
 	
 	point -= box.topLeft();
-	point.rx() *= overlayImage.width() / box.width();
-	point.ry() *= overlayImage.height() / box.height();
+	point.rx() *= imageSize.width() / box.width();
+	point.ry() *= imageSize.height() / box.height();
 	return point.toPoint();
 }
 
@@ -122,4 +166,34 @@ QPointF OverlayImage::inverseOrthoProjection(QPointF point) const
 	lon *= 180 / M_PI;
 	lat *= 180 / M_PI;
 	return QPointF(lon, lat);
+}
+
+qreal OverlayImage::distance(QPointF p, QPointF a, QPointF b)
+{
+	const QPointF diff = b - a;
+	const qreal A = -diff.y();
+	const qreal B = diff.x();
+	const qreal C = a.x() * diff.y() - a.y() * diff.x();
+	const qreal lineDist = (A * p.x() + B * p.y() + C) / sqrt(A * A + B * B); // no abs, positive - left, negative - right
+	const qreal pa = QVector2D(p - a).lengthSquared();
+	const qreal pb = QVector2D(p - b).lengthSquared();
+	const qreal ab = QVector2D(a - b).lengthSquared();
+	
+	if (pb > pa + ab) // point a is the nearest
+		return sqrt(pa) * sgn(lineDist);
+	else if (pa > pb + ab) // point b is the nearest
+		return sqrt(pb) * sgn(lineDist);
+	else // line strech is the nearest
+		return lineDist;
+}
+
+qreal OverlayImage::distance(QPointF p, QPolygonF poly)
+{
+	if (!poly.isClosed() || poly.size() < 3)
+		return 10000;
+	QList<QPointF> list = poly.toList();
+	qreal max = -10000;
+	for (; list.size() >= 2; list.removeFirst())
+		max = qMax(max, distance(p, list[0], list[1]));
+	return max;
 }

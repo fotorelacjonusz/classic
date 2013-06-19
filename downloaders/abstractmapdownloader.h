@@ -4,14 +4,17 @@
 #include <QObject>
 #include <QPointF>
 #include <QRect>
+#include <QPair>
 
 class QNetworkReply;
 class GpsData;
 class GeoMap;
+class OverlayImage;
 
 class AbstractMapDownloader 
 {
 protected:
+	typedef QPair<OverlayImage *, qreal> DistancePair;
 	AbstractMapDownloader();
 	
 public:
