@@ -132,26 +132,35 @@ void ReplyDialog::upload()
 	for (ImageItem *item; (item = images.first(AbstractImage::Ready));)
 	{
 		QString fileName = item->object()->fileName();
-//		qDebug() << "wysyłam" << fileName;
-		item->setFormat(tr("Wysyłam %1: %p%").arg(fileName));
 		
-		connect(uploader, SIGNAL(uploadProgress(qint64,qint64)), item, SLOT(setProgressScaleToOne(qint64,qint64)));
-		QBuffer buffer;
-		buffer.open(QIODevice::ReadWrite);
-		item->object()->write(&buffer);
-		buffer.seek(0);
-		const QString url = uploader->uploadImage(fileName, &buffer);
-		buffer.close();
-		disconnect(uploader, SIGNAL(uploadProgress(qint64,qint64)), 0, 0);
-		
-		if (url.isEmpty())
+		if (!item->object()->url().isEmpty())
 		{
-			reject();
-			QMessageBox::critical(this, tr("Błąd"), tr("Nie można było wysłać obrazka %1 z powodu:\n%2").arg(fileName).arg(uploader->lastError()));
-			return;
+			item->setFormat(tr("Zdjęcie %1 już wysłane").arg(fileName));
+			item->setProgress(1.0);
 		}
-		
-		item->object()->setUrl(url);
+		else
+		{
+			//		qDebug() << "wysyłam" << fileName;
+			item->setFormat(tr("Wysyłam %1: %p%").arg(fileName));
+			
+			connect(uploader, SIGNAL(uploadProgress(qint64,qint64)), item, SLOT(setProgressScaleToOne(qint64,qint64)));
+			QBuffer buffer;
+			buffer.open(QIODevice::ReadWrite);
+			item->object()->write(&buffer);
+			buffer.seek(0);
+			const QString url = uploader->uploadImage(fileName, &buffer);
+			buffer.close();
+			disconnect(uploader, SIGNAL(uploadProgress(qint64,qint64)), 0, 0);
+			
+			if (url.isEmpty())
+			{
+				reject();
+				QMessageBox::critical(this, tr("Błąd"), tr("Nie można było wysłać obrazka %1 z powodu:\n%2").arg(fileName).arg(uploader->lastError()));
+				return;
+			}
+			
+			item->object()->setUrl(url);
+		}
 		item->state = AbstractImage::Uploaded;
 		
 		appendTable(fileName, item->object()->url());

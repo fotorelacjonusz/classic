@@ -54,6 +54,8 @@ QString IsAnonyUploader::postTransaction(NetworkTransactionMultiPart *tr, QIODev
 		error = errorExp.cap(1);
 
 	QString result = tr->data.section(QRegExp("</?image_link>"), 1, 1);
+	if (result.isEmpty())
+		qDebug() << "Unknown imageshack reply:\n" << tr->data;
 	delete tr;
 	image->close();
 	return result;
