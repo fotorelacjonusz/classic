@@ -1,12 +1,14 @@
 #include "overlaylist.h"
 #include "overlay.h"
 #include "downloaders/geomap.h"
+#include "application.h"
 //#include "exception.h"
 #include <QDropEvent>
 #include <QDragEnterEvent>
 #include <QUrl>
 #include <QDesktopServices>
 #include <QDebug>
+#include <QTime>
 
 #define FOTORELACJONUSZ_DIR_CSTR ".fotorelacjonusz"
 
@@ -69,13 +71,16 @@ bool OverlayList::addOverlayFile(QString filePath)
 {
 	try
 	{
+		Application::busy();
 		Overlay *overlay = new Overlay(filePath);
+		Application::idle();
 		overlays.append(overlay);
 		addItem(new QListWidgetItem(QIcon(":res/dialog-ok-apply.png"), overlay->toString(), this));
 		return true;
 	}
 	catch (const Exception &e)
 	{
+		Application::idle();
 		addItem(new QListWidgetItem(QIcon(":res/edit-delete.png"), filePath.split('/').last() + '\t' + e.message(), this));
 		return false;
 	}

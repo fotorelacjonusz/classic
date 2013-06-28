@@ -1,5 +1,6 @@
 #include "settingsmanager.h"
 #include "secrets.h"
+#include "application.h"
 
 #include <QSettings>
 
@@ -98,36 +99,29 @@ void SettingsManager::load(AbstractInput *singleInput)
 
 void SettingsManager::save(AbstractInput *singleInput)
 {
-//	typedef QPair<QObject *, const char *> Listener;
-	QSet<Listener> listeners; // call each listener only once when multiple options changed
+	Application::busy();
 	
+	QSet<Listener> listeners; // call each listener only once when multiple options changed
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
-	{
-//		if (input->receiver && input->member)
-//		{
-			if (input->toVariant() != settings.value(input->key, input->defaultVal))
-			{
-				input->wasChanged = true;
-//				QMetaObject::invokeMethod(input->receiver, input->member);
-//				listeners.insert(qMakePair(input->receiver, input->member));
-				listeners.unite(input->listeners);
-			}
-			else
-			{
-				input->wasChanged = false;
-				continue;
-			}
-//		}
+	{		
+		if (input->toVariant() != settings.value(input->key, input->defaultVal))
+		{
+			input->wasChanged = true;
+			listeners.unite(input->listeners);
+		}
+		else
+		{
+			input->wasChanged = false;
+			continue;
+		}
 		settings.setValue(input->key, input->toVariant());
 	}
-	
-//	qDebug() << "save";
+
 	foreach (Listener listener, listeners)
-//	{
-//		qDebug() << "calling" << listener.first->metaObject()->className() << "::" << listener.second;
 		if (listener.first)
 			QMetaObject::invokeMethod(listener.first, listener.second.constData());
-//	}
+	
+	Application::idle();
 }
 
 QByteArray operator^(const QByteArray &a1, const QByteArray &a2)

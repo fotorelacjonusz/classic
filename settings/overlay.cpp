@@ -298,7 +298,7 @@ void Overlay::writeThumbnail(QIODevice *device) const
 	exifHeader.setValue(ExifImageHeader::ImageDescription, QString("%1, %2, %3, %4")
 						.arg(coordBox.left(), 0, 'f', 8).arg(coordBox.top(), 0, 'f', 8)
 						.arg(coordBox.right(), 0, 'f', 8).arg(coordBox.bottom(), 0, 'f', 8));
-	exifHeader.setThumbnail(result.scaled(QSize(160, 120), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	exifHeader.setThumbnail(result.scaledToWidth(400, Qt::SmoothTransformation));
 	exifHeader.saveToJpeg(device);
 }
 

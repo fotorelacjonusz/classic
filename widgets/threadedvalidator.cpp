@@ -1,5 +1,6 @@
 #include "threadedvalidator.h"
 #include "downloaders/throttlednetworkmanager.h"
+#include "application.h"
 #include <QMessageBox>
 #include <QDebug>
 #include <QAbstractMessageHandler>
@@ -45,5 +46,7 @@ void ThreadedValidator::validate(QUrl fileUrl)
 
 void ThreadedValidator::run()
 {
+	Application::busy();
 	emit validated(validator.validate(fileUrl));
+	Application::idle();
 }

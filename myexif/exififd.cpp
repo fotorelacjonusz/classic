@@ -110,8 +110,8 @@ void ExifIfd::setThumbnail(QImage image)
 	insert(JpegInterchangeFormat, ExifValue(exiflong(0)));
 	insert(JpegInterchangeFormatLength, ExifValue(exiflong(0)));
 	
-	if (image.width() > 160 || image.height() > 120)
-		image = image.scaled(QSize(160, 120), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+//	if (image.width() > 160 || image.height() > 120)
+//		image = image.scaled(QSize(160, 120), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	
 	thumbnailImage = image;
 }

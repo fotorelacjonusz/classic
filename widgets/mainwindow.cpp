@@ -6,6 +6,7 @@
 #include "replydialog.h"
 #include "downloaders/gpsdata.h"
 #include "license.h"
+#include "application.h"
 
 #include <QUrl>
 #include <QDebug>
@@ -16,11 +17,12 @@
 #include <QShortcut>
 #include <QScrollBar>
 
-QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://www.skyscrapercity.com/showthread.php?t=1539539 Author: Kamil Ostaszewski ");
+QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://sourceforge.net/projects/fotorelacjonusz/ Author: Kamil Ostaszewski");
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
+	settings(Application::organizationName(), Application::applicationSettingsName()),
 	manager(settings),
 	settingsDialog(this, settings),
 	selectedImage(0),
@@ -76,16 +78,23 @@ void MainWindow::on_action_open_photorelation_triggered()
 	QString head, foot;
 	qint32 count;
 	QByteArray fileHeader;
+	QString version;
 	in >> fileHeader;
-	if (fileHeader != phrFileHeader + qApp->applicationVersion().toAscii())
+	if (fileHeader != phrFileHeader)
 	{
-		QMessageBox::critical(this, tr("Błąd"), fileHeader.startsWith(phrFileHeader) ? 
-								  tr("Nie można otworzyć. Tę fotorelację zapisano inną wersją programu.") :
-								  tr("To nie jest plik fotorelacji!"));
+		QMessageBox::critical(this, tr("Błąd"), tr("To nie jest plik fotorelacji!"));
 		return;
 	}
+	in >> version;
+	if (!Version(qApp->applicationVersion()).isPhrCompatible(version))
+	{
+		QMessageBox::critical(this, tr("Błąd"), tr("Nie można otworzyć. Tę fotorelację zapisano inną wersją programu."));
+		return;
+	}
+	
 	in >> head >> foot >> count >> *ui->commonMap;
 
+	Application::busy();
 	try
 	{
 		for (int i = 0; i < count; ++i)
@@ -95,6 +104,7 @@ void MainWindow::on_action_open_photorelation_triggered()
 	{
 		e.showMessage(this);
 	}
+	Application::idle();
 
 	ui->header->setPlainText(head);
 	ui->footer->setPlainText(foot);
@@ -117,10 +127,12 @@ void MainWindow::on_action_save_photorelation_triggered()
 	QFile file(filePath);
 	file.open(QIODevice::WriteOnly);
 	QDataStream out(&file);
-	out << phrFileHeader + qApp->applicationVersion().toAscii() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
+	out << phrFileHeader << qApp->applicationVersion() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
 
+	Application::busy();
 	foreach (AbstractImage *image, imageList())
 		image->serialize(out);
+	Application::idle();
 	file.close();
 }
 
@@ -131,6 +143,7 @@ void MainWindow::on_action_add_photos_triggered()
 		return;
 	dirName = files.first().section(QDir::separator(), 0, -2);
 
+	Application::busy();
 	try
 	{
 		foreach (QString file, files)
@@ -140,6 +153,7 @@ void MainWindow::on_action_add_photos_triggered()
 	{
 		e.showMessage(this);
 	}
+	Application::idle();
 
 	updateCommonMap();
 }
@@ -152,8 +166,12 @@ void MainWindow::on_action_settings_triggered()
 void MainWindow::on_action_import_gpx_triggered()
 {
     if (gpxDialog.exec() == QDialog::Accepted)
+	{
+		Application::busy();
 		for (int i = 0; i < ui->postLayout->count(); ++i)
 			static_cast<ImageWidget *>(ui->postLayout->itemAt(i)->widget())->setPosition(&gpxDialog);
+		Application::idle();
+	}
 	updateCommonMap();
 }
 
@@ -189,10 +207,11 @@ exec_reply:
 void MainWindow::on_action_about_triggered()
 {
 	QMessageBox::about(this, tr("O programie"), tr(
-						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>"
+						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>Wersja: %2<br/>"
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
 						   "Aplikacja wykorzystuje:<br/>Qt (LGPL2)<br/>QuaZIP (LGPL2)<br/>Oxygen theme (LGPL)<br/><br/>%1")
-					   .arg(QString(LICENSE).replace("\n", "<br/>")).replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
+					   .arg(QString(LICENSE).replace("\n", "<br/>")).arg(QApplication::applicationVersion())
+					   .replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
 }
 
 void MainWindow::on_action_Qt_information_triggered()
@@ -328,7 +347,6 @@ void MainWindow::scrollUp()
 {
 	QScrollBar *bar = ui->scrollArea->verticalScrollBar();
 	bar->setValue(bar->value() - bar->pageStep());
-	
 }
 
 void MainWindow::scrollDown()
@@ -400,7 +418,8 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 
 void MainWindow::dropEvent(QDropEvent *event)
 {
-	QDateTime time = QDateTime::currentDateTime();
+//	QDateTime time = QDateTime::currentDateTime();
+	Application::busy();
 	try
 	{
 		foreach (QUrl url, event->mimeData()->urls())
@@ -411,6 +430,7 @@ void MainWindow::dropEvent(QDropEvent *event)
 	{
 		e.showMessage(this);
 	}
+	Application::idle();
 
 //	qDebug() << time.msecsTo(QDateTime::currentDateTime());
 	

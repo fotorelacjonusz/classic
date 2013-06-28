@@ -8,7 +8,7 @@ QT       += core gui network webkit script xml xmlpatterns
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = fotorelacjonusz2
+TARGET = fotorelacjonusz
 TEMPLATE = app
 
 SOURCES += main.cpp \
