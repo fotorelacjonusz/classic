@@ -4,10 +4,12 @@
 #include <QLocale>
 #include <QPixmapCache>
 #include "widgets/mainwindow.h"
-
+#include "messagehandler.h"
 
 int main(int argc, char *argv[])
 {
+	qInstallMsgHandler(messageHandler);
+	
 	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 	QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 	

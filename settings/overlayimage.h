@@ -19,33 +19,49 @@
 class OverlayImage : public AbstractMapDownloader
 {
 public:
+	// the overlay
 	OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) throw (Exception);
+	// dummy overlay for calculations only
+	OverlayImage(QRectF latLongBox, QSize maxSize);
 	bool makeMap(GeoMap *map);
+	
 	const QByteArray &data() const;
 	const QString &href() const;
-	const QString toString() const;
+	static inline QString megaToString(qreal number);
+	QString name() const;
+	QString tech() const;
+	QSize size() const;
 	
-	// distance from first point to the overlay (nearest edge or corner) in meters, negative numbers are inside
-	qreal distance(const GeoMap *map) const;
-	
-protected:
+	// coord polygon
+	QPolygonF coordPolygon() const;
+	// coord center
+	QPointF coordCenter() const;
 	// render part of the overlay with given size and center point, covering size * scale area
-	QImage render(QPoint center, QSize size, qreal scale) const;
+	QImage render(QPoint center, QSize size, qreal scale, bool includePpm = false) const;
+	// render whole visible overlay to given size
+	QImage render(QSize scaledSize);
+	// map (pos -> point)
+	QPointF posToPointF(QPointF pos) const;
 	// map (coord -> point)
 	QPoint coordToPoint(QPointF coord) const;
 	// rotate pos around (lon0, lat0) coord - i.e. (0, 0), by rotation degrees (meters -> meters)
 	QPointF rotate(QPointF point) const;
-	// orthographic projection (coord -> meters) - pl_PL"rzut prostokątny"
+	// orthographic projection (coord -> pos) - pl_PL"rzut prostokątny"
 	QPointF orthoProjection(QPointF coord) const;
-	// inverse orthographic projection (meters -> coord) - pl_PL"odwrotny rzut prostokątny"
-	QPointF inverseOrthoProjection(QPointF point) const;
-	// distance from point p to line strech between a and b, positive - left, negative - right
-	static qreal distance(QPointF p, QPointF a, QPointF b);
+	// inverse orthographic projection (pos -> coord) - pl_PL"odwrotny rzut prostokątny"
+	QPointF inverseOrthoProjection(QPointF pos) const;
+	// distance from point p to line strech l, positive + left, negative - right
+	static qreal distance(QPointF p, QLineF l);
 	// distance from point p to lines of the polygon, the less, the more inside the polygon (clockwise), returns the worst (max)
 	static qreal distance(QPointF p, QPolygonF poly);
+	// distance from first point to the overlay (nearest edge or corner) in meters, negative numbers are inside
+	qreal distance(const GeoMap *map) const;
+	// apply transform and return distance between points
+	template <typename T> inline qreal distance(qreal x1, qreal y1, qreal x2, qreal y2, T transform) const;
 
 private:
-	QString name, m_href;
+	// overlay name, href
+	QString m_name, m_href;
 	// map rectangle (including unused black areas) in meters with center (0, 0) at image center corresponding to image.rect()
 	QRectF box;
 	// actuall map area (excluding unused black areas) in meters with center (0, 0) at image center
@@ -58,8 +74,10 @@ private:
 	static const qreal R; 
 	// image data for QImageReader
 	QByteArray imageData;
-	// image size
-	QSize imageSize;
+	// image size in px
+	QSize imageSize;	
+	// pixels per meter
+	qreal ppm;
 };
 
 #endif // OVERLAYIMAGE_H

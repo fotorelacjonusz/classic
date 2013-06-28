@@ -11,9 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = fotorelacjonusz2
 TEMPLATE = app
 
-
 SOURCES += main.cpp \
     networkcookiejar.cpp \
+    messagehandler.cpp \
     exception.cpp \
     application.cpp \
     widgets/threadedvalidator.cpp \
@@ -68,6 +68,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     networkcookiejar.h \
+    messagehandler.h \
     exception.h \
     application.h \
     widgets/threadedvalidator.h \

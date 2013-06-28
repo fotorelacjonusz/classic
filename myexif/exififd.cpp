@@ -48,8 +48,8 @@ void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const
 	QDataStream valueStream(&data, QIODevice::WriteOnly);
 	valueStream.setByteOrder(stream.byteOrder());
 	valueStream.device()->seek(stream.device()->pos() + 12 * size() + sizeof(nextIFD));
-	quint32 imageLength = 0;
-	
+	exiflong imageLength = 0;
+		
 	for (ValueMap::ConstIterator i = constBegin(); i != constEnd(); ++i)
 	{
 		quint16 tag = i.key();
@@ -61,13 +61,13 @@ void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const
 		}
 		else if (tag == JpegInterchangeFormat)
 		{
-			ExifValue(quint32(valueStream.device()->pos())).write(stream, valueStream);
-			quint32 before = valueStream.device()->pos();
+			ExifValue(exiflong(valueStream.device()->pos())).write(stream, valueStream);
+			exiflong before = valueStream.device()->pos();
 			thumbnailImage.save(valueStream.device(), "JPG");
 			imageLength = valueStream.device()->pos() - before;
 		}
 		else if (tag == JpegInterchangeFormatLength)
-			ExifValue(quint32(imageLength)).write(stream, valueStream);
+			ExifValue(exiflong(imageLength)).write(stream, valueStream);
 		else
 			i.value().write(stream, valueStream);	
 	}
@@ -101,9 +101,17 @@ QImage ExifIfd::thumbnail() const
 
 void ExifIfd::setThumbnail(QImage image)
 {
+	if (image.isNull())
+	{
+		remove(JpegInterchangeFormat);
+		remove(JpegInterchangeFormatLength);
+		return;
+	}
+	insert(JpegInterchangeFormat, ExifValue(exiflong(0)));
+	insert(JpegInterchangeFormatLength, ExifValue(exiflong(0)));
+	
 	if (image.width() > 160 || image.height() > 120)
 		image = image.scaled(QSize(160, 120), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-	if (thumbnailImage.isNull())
-		insert(JpegInterchangeFormat, ExifValue(quint32(0)));
+	
 	thumbnailImage = image;
 }

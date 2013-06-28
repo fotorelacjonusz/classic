@@ -182,7 +182,7 @@ public:
     void setValue(GpsTag tag, const ExifValue &value);
 
     QImage thumbnail() const;
-    void setThumbnail(const QImage &thumbnail);
+	void setThumbnail(const QImage &thumbnail = QImage());
 	
 	OrientationTag orientation() const;
 	void setOrientation(OrientationTag orientation = Horizontal);

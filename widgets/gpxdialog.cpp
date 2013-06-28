@@ -38,7 +38,7 @@ GpxDialog::~GpxDialog()
 void GpxDialog::setVisible(bool visible)
 {
 	QDialog::setVisible(visible);
-	if (visible)
+	if (visible && !timer.isActive())
 	{
 		ui->cameraTime->setDateTime(QDateTime::currentDateTime());
 //		ui->gpsTime->setDateTime(QDateTime::currentDateTime());

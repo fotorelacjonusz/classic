@@ -19,7 +19,7 @@ OverlayList::OverlayList(QWidget *parent) :
 		overlaysDir.mkdir(FOTORELACJONUSZ_DIR_CSTR);
 		overlaysDir.cd(FOTORELACJONUSZ_DIR_CSTR);
 	}
-	foreach (QFileInfo fileInfo, overlaysDir.entryInfoList(QStringList() << "*.kmz" << "*.kmr", QDir::Readable | QDir::Files, QDir::Time | QDir::Reversed))
+	foreach (QFileInfo fileInfo, overlaysDir.entryInfoList(QStringList() << "*.kmz" << "*.kmr" << "*.jpg", QDir::Readable | QDir::Files, QDir::Time | QDir::Reversed))
 		addOverlayFile(fileInfo.absoluteFilePath());
 }
 
@@ -62,16 +62,11 @@ void OverlayList::openFolder() const
 
 bool OverlayList::isOverlayExtension(QString filePath) const
 {
-	return (QStringList() << "kmz" << "kmr").contains(filePath.section(".", -1).toLower());
+	return (QStringList() << "kmz" << "kmr" << "jpg").contains(filePath.section(".", -1).toLower());
 }
 
 bool OverlayList::addOverlayFile(QString filePath)
 {
-//	static const QIcon ok = QIcon(":res/dialog-ok-apply.png");
-//	static const QIcon noOk = QIcon(":res/edit-delete.png");
-	
-//	QString error;
-//	Overlay *overlay;
 	try
 	{
 		Overlay *overlay = new Overlay(filePath);
