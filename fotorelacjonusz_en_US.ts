@@ -561,76 +561,81 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Delete arrow</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="65"/>
+        <location filename="widgets/mainwindow.cpp" line="67"/>
         <source>OtwÃ³rz fotorelacjÄ</source>
         <translation>Open photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="82"/>
-        <location filename="widgets/mainwindow.cpp" line="109"/>
-        <location filename="widgets/mainwindow.cpp" line="164"/>
+        <location filename="widgets/mainwindow.cpp" line="85"/>
+        <location filename="widgets/mainwindow.cpp" line="91"/>
+        <location filename="widgets/mainwindow.cpp" line="119"/>
+        <location filename="widgets/mainwindow.cpp" line="182"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="83"/>
+        <location filename="widgets/mainwindow.cpp" line="91"/>
         <source>Nie moÅ¼na otworzyÄ. TÄ fotorelacjÄ zapisano innÄ wersjÄ programu.</source>
         <translation>Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="84"/>
+        <location filename="widgets/mainwindow.cpp" line="85"/>
         <source>To nie jest plik fotorelacji!</source>
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="109"/>
-        <location filename="widgets/mainwindow.cpp" line="164"/>
+        <location filename="widgets/mainwindow.cpp" line="119"/>
+        <location filename="widgets/mainwindow.cpp" line="182"/>
         <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
         <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="112"/>
+        <location filename="widgets/mainwindow.cpp" line="122"/>
         <source>Zapisz fotorelacjÄ</source>
         <translation>Save photo report</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="179"/>
+        <location filename="widgets/mainwindow.cpp" line="197"/>
         <source>Jeszcze raz</source>
         <translation>Once more</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="179"/>
+        <location filename="widgets/mainwindow.cpp" line="197"/>
         <source>Czy sprÃ³bowaÄ dokoÅczyÄ wysyÅanie fotorelacji?</source>
         <translation>Try finishing photo report upload?</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="191"/>
         <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+        <translation type="obsolete">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="65"/>
-        <location filename="widgets/mainwindow.cpp" line="112"/>
+        <location filename="widgets/mainwindow.cpp" line="67"/>
+        <location filename="widgets/mainwindow.cpp" line="122"/>
         <source>Fotorelacje (*.phr)</source>
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="129"/>
+        <location filename="widgets/mainwindow.cpp" line="141"/>
         <source>Wybierz zdjÄcia</source>
         <translation>Choose photos</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="129"/>
+        <location filename="widgets/mainwindow.cpp" line="141"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="191"/>
+        <location filename="widgets/mainwindow.cpp" line="210"/>
         <source>O programie</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="widgets/mainwindow.cpp" line="200"/>
+        <location filename="widgets/mainwindow.cpp" line="210"/>
+        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;Wersja: %2 (kompilacja %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
+        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;Version: %2 (compilation %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+    </message>
+    <message>
+        <location filename="widgets/mainwindow.cpp" line="220"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
     </message>
@@ -687,22 +692,22 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>Overlay</name>
     <message>
-        <location filename="settings/overlay.cpp" line="21"/>
+        <location filename="settings/overlay.cpp" line="42"/>
         <source>kmz.open(): %1</source>
         <translation>kmz.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="26"/>
+        <location filename="settings/overlay.cpp" line="47"/>
         <source>file.open(): %1</source>
         <translation>file.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="29"/>
+        <location filename="settings/overlay.cpp" line="50"/>
         <source>file.close(): %1</source>
         <translation>file.close(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="33"/>
+        <location filename="settings/overlay.cpp" line="54"/>
         <source>kmz.close(): %1</source>
         <translation>kmz.close(): %1</translation>
     </message>
@@ -712,7 +717,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="41"/>
+        <location filename="settings/overlay.cpp" line="62"/>
         <source>Niepoprawna skÅadnia kml</source>
         <translation>Kml syntax error</translation>
     </message>
@@ -729,42 +734,47 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="37"/>
+        <location filename="settings/overlay.cpp" line="33"/>
+        <source>To nie jest plik podkÅadu mapowego.</source>
+        <translation>This is not an overlay file.</translation>
+    </message>
+    <message>
+        <location filename="settings/overlay.cpp" line="58"/>
         <source>Brak pliku &apos;%1&apos;</source>
         <translation>No &apos;%1&apos; file</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="44"/>
+        <location filename="settings/overlay.cpp" line="65"/>
         <source>Brak tagu kml i/lub podrzÄdnego w pliku kml</source>
         <translation>No kml and/or child tag in kml file</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="57"/>
+        <location filename="settings/overlay.cpp" line="80"/>
         <source>Brak tagu Folder lub GroundOverlay</source>
         <translation>No Folder nor GroundOverlay tag</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="63"/>
+        <location filename="settings/overlay.cpp" line="92"/>
         <source>kmr.open(): %1</source>
         <translation>kmr.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="66"/>
+        <location filename="settings/overlay.cpp" line="95"/>
         <source>outFileKml.open(): %1</source>
         <translation>outFileKml.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="69"/>
+        <location filename="settings/overlay.cpp" line="98"/>
         <source>outFileKml.close(): %1</source>
         <translation>outFileKml.close(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="74"/>
+        <location filename="settings/overlay.cpp" line="103"/>
         <source>outFileMap.open(): %1</source>
         <translation>outFileMap.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="75"/>
+        <location filename="settings/overlay.cpp" line="104"/>
         <source>outFileMap.write(): BÅÄd zapisu danych do archiwum</source>
         <translation>outFileMap.write(): Error while writing data to archive</translation>
     </message>
@@ -773,12 +783,12 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="77"/>
+        <location filename="settings/overlay.cpp" line="106"/>
         <source>outFileMap.close(): %1</source>
         <translation>outFileMap.close(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="81"/>
+        <location filename="settings/overlay.cpp" line="110"/>
         <source>kmr.close(): %1</source>
         <translation>kmr.close(): %1</translation>
     </message>
@@ -996,7 +1006,7 @@ Error at:
     </message>
     <message>
         <location filename="widgets/replydialog.cpp" line="128"/>
-        <location filename="widgets/replydialog.cpp" line="150"/>
+        <location filename="widgets/replydialog.cpp" line="158"/>
         <source>BÅÄd</source>
         <translation>Error</translation>
     </message>
@@ -1007,80 +1017,85 @@ Error at:
         <translation>Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="136"/>
+        <location filename="widgets/replydialog.cpp" line="138"/>
+        <source>ZdjÄcie %1 juÅ¼ wysÅane</source>
+        <translation>Photo %1 already uploaded</translation>
+    </message>
+    <message>
+        <location filename="widgets/replydialog.cpp" line="144"/>
         <source>WysyÅam %1: %p%</source>
         <translation>Sending %1: %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="150"/>
+        <location filename="widgets/replydialog.cpp" line="158"/>
         <source>Nie moÅ¼na byÅo wysÅaÄ obrazka %1 z powodu:
 %2</source>
         <translation>Photo %1 upload failed: %2</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="226"/>
+        <location filename="widgets/replydialog.cpp" line="235"/>
         <source>sekund</source>
         <comment>0</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="226"/>
+        <location filename="widgets/replydialog.cpp" line="235"/>
         <source>sekundÄ</source>
         <comment>1</comment>
         <translation>second</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="226"/>
+        <location filename="widgets/replydialog.cpp" line="235"/>
         <source>sekundy</source>
         <comment>2</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="227"/>
+        <location filename="widgets/replydialog.cpp" line="236"/>
         <source>sekundy</source>
         <comment>3</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="227"/>
+        <location filename="widgets/replydialog.cpp" line="236"/>
         <source>sekundy</source>
         <comment>4</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="227"/>
+        <location filename="widgets/replydialog.cpp" line="236"/>
         <source>sekund</source>
         <comment>5</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="228"/>
+        <location filename="widgets/replydialog.cpp" line="237"/>
         <source>Czekam %1 %2... %p%</source>
         <translation>Waiting %1 %2... %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="295"/>
+        <location filename="widgets/replydialog.cpp" line="304"/>
         <source>Koniec. %p%</source>
         <translation>Done. %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="299"/>
-        <location filename="widgets/replydialog.cpp" line="393"/>
+        <location filename="widgets/replydialog.cpp" line="308"/>
+        <location filename="widgets/replydialog.cpp" line="402"/>
         <source>LubiÄ ten program</source>
         <translation>Like this app</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="393"/>
+        <location filename="widgets/replydialog.cpp" line="402"/>
         <source>WyglÄda na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
         <translation>It seems you have already liked this app.</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="316"/>
+        <location filename="widgets/replydialog.cpp" line="325"/>
         <source>PrzechodzÄ do formularza... %p%</source>
         <translation>Navigating to form... %p%</translation>
     </message>
     <message>
-        <location filename="widgets/replydialog.cpp" line="357"/>
+        <location filename="widgets/replydialog.cpp" line="366"/>
         <source>WysyÅam posta... %p%</source>
         <translation>Sending post... %p%</translation>
     </message>
