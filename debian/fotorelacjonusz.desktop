@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=x.x.x
+Name=Fotorelacjonusz
+Comment=skyscrapercity.com photo upload
+Exec=fotorelacjonusz
+Terminal=false
+Icon=fotorelacjonusz_ssc_logo.png
+Type=Application
+Categories=Application;Network
