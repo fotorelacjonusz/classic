@@ -692,22 +692,22 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>Overlay</name>
     <message>
-        <location filename="settings/overlay.cpp" line="42"/>
+        <location filename="settings/overlay.cpp" line="43"/>
         <source>kmz.open(): %1</source>
         <translation>kmz.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="47"/>
+        <location filename="settings/overlay.cpp" line="48"/>
         <source>file.open(): %1</source>
         <translation>file.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="50"/>
+        <location filename="settings/overlay.cpp" line="51"/>
         <source>file.close(): %1</source>
         <translation>file.close(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="54"/>
+        <location filename="settings/overlay.cpp" line="55"/>
         <source>kmz.close(): %1</source>
         <translation>kmz.close(): %1</translation>
     </message>
@@ -717,7 +717,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="62"/>
+        <location filename="settings/overlay.cpp" line="63"/>
         <source>Niepoprawna skÅadnia kml</source>
         <translation>Kml syntax error</translation>
     </message>
@@ -734,47 +734,47 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="33"/>
+        <location filename="settings/overlay.cpp" line="34"/>
         <source>To nie jest plik podkÅadu mapowego.</source>
         <translation>This is not an overlay file.</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="58"/>
+        <location filename="settings/overlay.cpp" line="59"/>
         <source>Brak pliku &apos;%1&apos;</source>
         <translation>No &apos;%1&apos; file</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="65"/>
+        <location filename="settings/overlay.cpp" line="66"/>
         <source>Brak tagu kml i/lub podrzÄdnego w pliku kml</source>
         <translation>No kml and/or child tag in kml file</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="80"/>
+        <location filename="settings/overlay.cpp" line="81"/>
         <source>Brak tagu Folder lub GroundOverlay</source>
         <translation>No Folder nor GroundOverlay tag</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="92"/>
+        <location filename="settings/overlay.cpp" line="93"/>
         <source>kmr.open(): %1</source>
         <translation>kmr.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="95"/>
+        <location filename="settings/overlay.cpp" line="96"/>
         <source>outFileKml.open(): %1</source>
         <translation>outFileKml.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="98"/>
+        <location filename="settings/overlay.cpp" line="99"/>
         <source>outFileKml.close(): %1</source>
         <translation>outFileKml.close(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="103"/>
+        <location filename="settings/overlay.cpp" line="104"/>
         <source>outFileMap.open(): %1</source>
         <translation>outFileMap.open(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="104"/>
+        <location filename="settings/overlay.cpp" line="105"/>
         <source>outFileMap.write(): BÅÄd zapisu danych do archiwum</source>
         <translation>outFileMap.write(): Error while writing data to archive</translation>
     </message>
@@ -783,12 +783,12 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="106"/>
+        <location filename="settings/overlay.cpp" line="107"/>
         <source>outFileMap.close(): %1</source>
         <translation>outFileMap.close(): %1</translation>
     </message>
     <message>
-        <location filename="settings/overlay.cpp" line="110"/>
+        <location filename="settings/overlay.cpp" line="111"/>
         <source>kmr.close(): %1</source>
         <translation>kmr.close(): %1</translation>
     </message>

@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	if (locale == "pl_PL")
 		translator.load("qt_pl", "/usr/share/qt4/translations") or translator.load("qt_pl");
 	else
-		translator.load("fotorelacjonusz_en_US");
+		translator.load(":/fotorelacjonusz_en_US");
 
 	a.installTranslator(&translator);
 
