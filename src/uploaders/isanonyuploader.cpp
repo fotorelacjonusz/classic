@@ -53,10 +53,10 @@ QString IsAnonyUploader::postTransaction(NetworkTransactionMultiPart *tr, QIODev
 	if (tr->data.contains(errorExp))
 		error = errorExp.cap(1);
 
-	QString result = tr->data.section(QRegExp("</?image_link>"), 1, 1);
-	if (result.isEmpty())
-		qDebug() << "Unknown imageshack reply:\n" << tr->data;
+	QString link = tr->data.section(QRegExp("</?image_link>"), 1, 1);
+	if (link.isEmpty() && error.isEmpty())
+		error = "No error.\nImageshack reply:\n" + tr->data;
 	delete tr;
 	image->close();
-	return result;
+	return link;
 }
