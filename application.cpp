@@ -15,6 +15,11 @@ QString Application::applicationSettingsName()
 	return applicationName() + QString::number(Version(applicationVersion()).major);
 }
 
+QString Application::applicationNameAndVersion()
+{
+	return applicationName() + " " + applicationVersion();
+}
+
 void Application::busy()
 {
 	qApp->processEvents();

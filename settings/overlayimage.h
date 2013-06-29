@@ -54,7 +54,7 @@ public:
 	static qreal distance(QPointF p, QLineF l);
 	// distance from point p to lines of the polygon, the less, the more inside the polygon (clockwise), returns the worst (max)
 	static qreal distance(QPointF p, QPolygonF poly);
-	// distance from first point to the overlay (nearest edge or corner) in meters, negative numbers are inside
+	// distance from first point to the overlay (nearest edge or corner) in pixels, negative numbers are inside
 	qreal distance(const GeoMap *map) const;
 	// apply transform and return distance between points
 	template <typename T> inline qreal distance(qreal x1, qreal y1, qreal x2, qreal y2, T transform) const;

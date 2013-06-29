@@ -3,11 +3,19 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QPixmapCache>
+#include <cstdio>
 #include "widgets/mainwindow.h"
 #include "messagehandler.h"
 
 int main(int argc, char *argv[])
 {
+	const char *version = "2.5.1";
+	if (argc >= 2 && QString(argv[1]) == "-v")
+	{
+		fprintf(stdout, "%s\n", version);
+		return 0;
+	}
+	
 	qInstallMsgHandler(messageHandler);
 	
 	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
@@ -18,7 +26,7 @@ int main(int argc, char *argv[])
 	Application a(argc, argv);
 	a.setApplicationName("fotorelacjonusz");
 	a.setOrganizationName("Kamil Ostaszewski software");
-	a.setApplicationVersion("2.5.1");
+	a.setApplicationVersion(version);
 
 	QString locale = QLocale::system().name();
 	QTranslator translator;

@@ -33,7 +33,7 @@ OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteA
 	lon0 = (left + right) / 2 * M_PI / 180;
 	lat0 = (top + bottom) / 2 * M_PI / 180;
 
-	rotation = latLonBox.firstChildElement("rotation").text().toDouble();
+	rotation = latLonBox.firstChildElement("rotation").text().toDouble(); // if "rotation" tag doesn't exist, 0 is ok
 
 	poly << rotate(orthoProjection(QPointF(left, top))) << rotate(orthoProjection(QPointF(right, top)))
 		 << rotate(orthoProjection(QPointF(right, bottom))) << rotate(orthoProjection(QPointF(left, bottom))); // clockwise
@@ -272,7 +272,7 @@ qreal OverlayImage::distance(QPointF p, QPolygonF poly)
 
 qreal OverlayImage::distance(const GeoMap *map) const
 {
-	return distance(orthoProjection(map->first()), poly);
+	return distance(orthoProjection(map->first()), poly) * ppm;
 }
 
 template <typename T> 

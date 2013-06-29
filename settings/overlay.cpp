@@ -1,4 +1,5 @@
 #include "overlay.h"
+#include "application.h"
 
 #include "quazip/quazip.h"
 #include "quazip/quazipfile.h"
@@ -22,13 +23,13 @@
 
 Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 {
+	quint32 thumbnailSize;
 	QFile file(absoluteFilePath);
 	file.open(QIODevice::ReadOnly);
 	if (absoluteFilePath.endsWith(".jpg")) // skip thumbnail
 	{
-		qint64 thumbnailSize;
 		file.seek(file.size() - sizeof(thumbnailSize));
-		QDataStream(&file) >> thumbnailSize;
+		QDataStream(&file) >> thumbnailSize; // BigEndian by default
 		if (file.size() < thumbnailSize)
 			THROW(TR("To nie jest plik podkładu mapowego."));
 		file.seek(thumbnailSize);
@@ -85,7 +86,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 		QFile jpg(jpgFilePath);
 		jpg.open(QIODevice::ReadWrite);
 		writeThumbnail(&jpg);		
-		const qint64 thumbnailSize = jpg.size();
+		thumbnailSize = jpg.size();
 		
 		{
 			QuaZip kmr(&jpg);
@@ -111,7 +112,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 		}
 		jpg.open(QIODevice::Append);
 		jpg.seek(jpg.size());
-		QDataStream(&jpg) << thumbnailSize;
+		QDataStream(&jpg) << thumbnailSize; // BigEndian by default
 		jpg.close();
 		
 		QFile::remove(absoluteFilePath);
@@ -244,7 +245,8 @@ void Overlay::writeThumbnail(QIODevice *device) const
 			parts = parts.transformed(QMatrix().rotate(angle), Qt::SmoothTransformation).copy(partsClipRect);
 		}
 	
-		const QRect innerPartsRect = QRect(partsRect.topLeft(), parts.size());
+		QRect innerPartsRect = centered(partsRect.center(), parts.size());
+		innerPartsRect.moveTop(partsRect.top());
 		painter.drawImage(innerPartsRect, parts);
 		
 		painter.setPen(Qt::white);
@@ -262,7 +264,7 @@ void Overlay::writeThumbnail(QIODevice *device) const
 			for (int i = 0; i < images.size(); ++i)
 				techs << images[i]->tech();
 			
-			QRectF footer = QRect(innerPartsRect.bottomLeft(), thumbnailRect.bottomRight()).adjusted(0, 10, -10, -10);
+			QRectF footer = QRect(QPoint(0, innerPartsRect.bottom()), thumbnailRect.bottomRight()).adjusted(10, 10, -10, -10);
 			QRectF bounding;
 			painter.setFont(QFont(fontFamily, 10));
 			painter.drawText(footer, Qt::AlignLeft | Qt::AlignTop, names.join("\n"), &bounding);
@@ -294,7 +296,7 @@ void Overlay::writeThumbnail(QIODevice *device) const
 	
 	ExifImageHeader exifHeader;
 	exifHeader.setGpsPosition(coordBox.center());
-	exifHeader.setValue(ExifImageHeader::Software, qApp->applicationName());
+	exifHeader.setValue(ExifImageHeader::Software, Application::applicationNameAndVersion());
 	exifHeader.setValue(ExifImageHeader::ImageDescription, QString("%1, %2, %3, %4")
 						.arg(coordBox.left(), 0, 'f', 8).arg(coordBox.top(), 0, 'f', 8)
 						.arg(coordBox.right(), 0, 'f', 8).arg(coordBox.bottom(), 0, 'f', 8));
@@ -334,35 +336,32 @@ QPolygonF Overlay::minimumBoundingBox(QList<QPointF> points) //, QPainter *paint
 	points = points.toSet().toList();
 	qSort(points);
 	
-	QList<QPointF> left; // left contour
+	QList<QPointF> left; // left (left top) contour
 	{
 		left << points.first();
 		for (int i = 1; i < points.size(); ++i)
 		{
-			if (points[i].y() > left.first().y())
+			if (points[i].y() >= left.first().y())
 				left.prepend(points[i]);
 			else if (points[i].y() < left.last().y())
 				left.append(points[i]);
 		}
 	}
 	
-	QList<QPointF> right; // right contour
+	QList<QPointF> right; // right (right bottom) contour
 	{
 		right << points.last();
 		for (int i = points.size() - 2; i >= 0; --i)
 		{
-			if (points[i].y() < right.first().y())
+			if (points[i].y() <= right.first().y())
 				right.prepend(points[i]);
 			else if (points[i].y() > right.last().y())
 				right.append(points[i]);
 		}
 	}
 	
-	if (!(left.last() == right.first() && left.first() == right.last()))
-	{
-		qCritical() << "left and right not met" << left << right << "points" << points;
-		return QPolygonF();
-	}
+	Q_ASSERT(left.last() == right.first() && left.first() == right.last());
+	
 	left.takeLast();
 	
 	QPolygonF convexPolygon = (left + right).toVector();
@@ -396,7 +395,7 @@ QPolygonF Overlay::minimumBoundingBox(QList<QPointF> points) //, QPainter *paint
 		const QRectF rect = QMatrix().rotate(line.angle()).map(convexPolygon).boundingRect();
 		const QPolygonF polygon = QMatrix().rotate(-line.angle()).map(QPolygonF(rect));
 		rectangles[rect] = polygon;
-	}	
+	}
 	return rectangles.begin().value();
 }
 

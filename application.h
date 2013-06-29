@@ -9,6 +9,7 @@ class Application : public QApplication
 public:
 	explicit Application(int &argc, char **argv);
 	static QString applicationSettingsName();
+	static QString applicationNameAndVersion();
 	
 	static void busy();
 	static void idle();

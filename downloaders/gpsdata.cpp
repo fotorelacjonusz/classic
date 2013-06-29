@@ -5,6 +5,7 @@
 #include "tilesdownloader.h"
 #include "myexif/exifimageheader.h"
 #include "widgets/gpxdialog.h"
+#include "application.h"
 
 #include <QFile>
 #include <QUrl>
@@ -45,7 +46,7 @@ GpsData::GpsData(QIODevice *image, const int *const number):
 		hasDirection = true;
 		direction = exifHeader->value(ExifImageHeader::GpsImageDirection).toRational().toReal();
 	}
-	exifHeader->setValue(ExifImageHeader::Software, qApp->applicationName());
+	exifHeader->setValue(ExifImageHeader::Software, Application::applicationNameAndVersion());
 
 	SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->addImageMap, &SETTINGS->imageMapType, &SETTINGS->imageMapColor,
 						  &SETTINGS->imageMapOpacity, &SETTINGS->imageMapZoom, &SETTINGS->imageMapCircle, &SETTINGS->imageMapCorner,
