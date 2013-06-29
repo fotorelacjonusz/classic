@@ -29,17 +29,12 @@ version=`debian/usr/bin/fotorelacjonusz -v`
 sed control -e "s/^Version:.*$/Version: $version/" > debian/DEBIAN/control
 sed fotorelacjonusz.desktop -e "s/^Version=.*$/Version=$version/" > debian/usr/share/applications/fotorelacjonusz.desktop
 
-#cp control debian/DEBIAN
-#cp fotorelacjonusz.desktop debian/usr/share/applications/
-
 gzip -f --best debian/usr/share/doc/fotorelacjonusz/changelog
 gzip -f --best debian/usr/share/doc/fotorelacjonusz/changelog.Debian
 
-find ./debian -type d | xargs chmod 755
+find ./debian -type d | xargs chmod 0755
+find ./debian -type f | xargs chmod 0644
 chmod 0755 debian/usr/bin/fotorelacjonusz
-chmod 0644 debian/usr/share/icons/fotorelacjonusz*
-chmod 0644 debian/usr/share/applications/fotorelacjonusz*
-chmod 0644 debian/usr/share/doc/fotorelacjonusz/*
 
 fakeroot dpkg-deb --build debian .
 

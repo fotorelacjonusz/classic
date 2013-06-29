@@ -1,6 +1,11 @@
 fotorelacjonusz (2.5.1)
 
-  * Made Debian package
+  * Added debian packaging script
+  * Added overlay thumbnail generation (new format)
+  * Added pixels per meter property for overlays
+  * Overlay choice based also on ppm
+  * Photo report file format changed
+  * Version number and compilation time printing
 
  -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>
 
