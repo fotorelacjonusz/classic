@@ -42,3 +42,5 @@ lintian *.deb
 
 rm -r debian
 
+fakeroot alien -r fotorelacjonusz_${version}*.deb
+
