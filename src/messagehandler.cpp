@@ -38,4 +38,7 @@ void messageHandler(QtMsgType type, const char *msg)
 			fprintf(stderr, "%s\n", msg);
 			abort();
 	}
+#ifdef Q_OS_WIN32
+	fflush(stderr);
+#endif
 }
