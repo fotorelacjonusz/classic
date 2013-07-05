@@ -91,7 +91,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	imageMapOpacity     .init(makeInput("image_map/opacity",          ui->imageMapOpacity,       100), this, &SettingsDialog::imageMapOpacityFunc);
 	imageMapCorner      .init(makeInput("image_map/position",         ui->imageMapPosition,      2),   this, &SettingsDialog::imageMapCornerFunc);
 	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,          Qt::red));
-	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,          10));
+	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,          14));
 	imageMapCircle      .init(makeInput("image_map/circle",           ui->imageMapCircle,        false));
 	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,        10));
 	imageMapSize        .init(makeInput("image_map/size",             ui->imageMapSize,          150));
