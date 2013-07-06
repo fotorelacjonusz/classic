@@ -4,7 +4,7 @@ cd ${0%/*}
 
 build_dir='/absolute/path/to/build/dir'
 trunk_dir=`readlink -f ..`
-drobpox_dir='/absolute/path/to/dropbox/folder/fotorelacjonusz'
+dropbox_dir='/absolute/path/to/dropbox/folder/fotorelacjonusz'
 
 cd $trunk_dir
 svn update
@@ -22,6 +22,11 @@ version=`./MacOS/fotorelacjonusz -v`
 
 xmlstarlet ed -L -s '/plist/dict' -t elem -n 'key' -v 'CFBundleShortVersionString' Info.plist
 xmlstarlet ed -L -s '/plist/dict' -t elem -n 'string' -v "$version" Info.plist
+
+xmlstarlet ed -L -s '/plist/dict' -t elem -n 'key' -v 'CFBundleIdentifier' Info.plist
+xmlstarlet ed -L -s '/plist/dict' -t elem -n 'string' -v 'com.skyscrapercity.fotorelacjonusz' Info.plist
+
+cp $trunk_dir/debian/copyright .
 
 #icons:
 icon_512=$trunk_dir/res/ssc_logo_fotorelacjonusz_512.png
