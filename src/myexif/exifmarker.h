@@ -2,6 +2,7 @@
 #define EXIFMARKER_H
 
 #include <QDataStream>
+#include "exception.h"
 
 class ExifMarker
 {
@@ -14,14 +15,14 @@ public:
 		SOS  = 0xda
 	};
 	
-	ExifMarker(QDataStream &stream);
+	ExifMarker(QDataStream &stream) throw (Exception);
 	ExifMarker(const ExifMarker &other, MarkerNumber number); // insert before
 	bool isAPP0() const;
 	bool isAPP1() const;
 	bool isSOI() const;
 	bool isSOS() const;
 	
-	QByteArray readData(const QByteArray &header = QByteArray()) const;
+	QByteArray readData(const QByteArray &header = QByteArray()) const throw (Exception);
 	void writeData(const QByteArray &data, const QByteArray &header = QByteArray());
 
 private:

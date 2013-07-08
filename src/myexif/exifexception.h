@@ -3,6 +3,9 @@
 
 #include <QString>
 
+#define SEEK_ERROR(x) ExifException(QString("Wrong offset: %1").arg(x))
+
+/*
 class ExifException
 {
 public:
@@ -12,5 +15,6 @@ public:
 private:
 	const QString reason;
 };
+*/
 
 #endif // EXIFEXCEPTION_H

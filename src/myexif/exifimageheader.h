@@ -2,6 +2,7 @@
 #define EXIFIMAGEHEADER_H
 
 #include "exifvalue.h"
+#include "exception.h"
 #include <QImage>
 #include <QMap>
 #include <QList>
@@ -9,7 +10,7 @@
 class QString;
 class QIODevice;
 class ExifIfd;
-class ExifException;
+//class ExifException;
 class ExifMarker;
 
 class ExifImageHeader
@@ -201,9 +202,9 @@ private:
 	ExifIfd &exifIFD();
 	ExifIfd &gpsIFD();
 	
-	void loadFromJpeg(QDataStream &fileStream); // throw(ExifException)
-	void saveToJpeg(QDataStream &fileStream) const; // throw(ExifException)
-	void saveToJpeg(ExifMarker app1) const; // throw(ExifException)
+	void loadFromJpeg(QDataStream &fileStream) throw (Exception);
+	void saveToJpeg(QDataStream &fileStream) const throw (Exception);
+	void saveToJpeg(ExifMarker app1) const throw (Exception);
 	
 	typedef QMap<int, ExifIfd> ExifIfdMap;
 	ExifIfdMap ifds;

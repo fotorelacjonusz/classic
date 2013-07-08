@@ -1,5 +1,4 @@
 #include "exififd.h"
-#include "exifexception.h"
 #include <QBuffer>
 
 const QList<ExifIfd::EmbedOffset> ExifIfd::allPointers = 
@@ -10,7 +9,7 @@ ExifIfd::ExifIfd():
 {
 }
 
-ExifIfd::ExifIfd(QDataStream &stream):
+ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
 	nextIFD(0)
 {
 	quint16 size;
@@ -27,18 +26,17 @@ ExifIfd::ExifIfd(QDataStream &stream):
 	foreach (EmbedOffset pointerTag, allPointers)
 		if (contains(pointerTag))
 		{
-			stream.device()->seek(value(pointerTag).toLong());
+			stream.device()->seek(value(pointerTag).toLong()) OR_THROW(SEEK_ERROR(value(pointerTag).toLong()));
 			ifds[pointerTag] = ExifIfd(stream);
 		}
 	if (contains(JpegInterchangeFormat) && contains(JpegInterchangeFormatLength))
 	{
 		quint32 thumbnailOffset = value(JpegInterchangeFormat).toLong();
 		quint32 thumbnailSize = value(JpegInterchangeFormatLength).toLong();
-		stream.device()->seek(thumbnailOffset);
-		if (!thumbnailImage.loadFromData(stream.device()->read(thumbnailSize)))
-			throw ExifException("Unable to load thumbnail");
+		stream.device()->seek(thumbnailOffset) OR_THROW(SEEK_ERROR(thumbnailOffset));
+		thumbnailImage.loadFromData(stream.device()->read(thumbnailSize)) OR_THROW("Unable to load thumbnail");
 	}
-	stream.device()->seek(nextIFD);
+	stream.device()->seek(nextIFD) OR_THROW(SEEK_ERROR(nextIFD));
 }
 
 void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const

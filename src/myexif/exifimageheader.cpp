@@ -1,6 +1,5 @@
 #include "exifimageheader.h"
 #include "exififd.h"
-#include "exifexception.h"
 #include "exifmarker.h"
 
 #include <QFile>
@@ -43,12 +42,12 @@ bool ExifImageHeader::loadFromJpeg(QIODevice *device)
 		QDataStream stream(device);
 		loadFromJpeg(stream);
 	}
-	catch (ExifException &e)
+	catch (Exception &e)
 	{
-		qDebug() << "Loading exif data failed:" << e.what();
+		QTextStream(stderr) << "Loading exif data failed:\n" << e.message() << "\n";
 		return false;
 	}
-	return true;	
+	return true;
 }
 
 bool ExifImageHeader::saveToJpeg(const QString &filePath) const
@@ -69,12 +68,12 @@ bool ExifImageHeader::saveToJpeg(QIODevice *device) const
 		QDataStream stream(device);
 		saveToJpeg(stream);
 	}
-	catch (ExifException &e)
+	catch (Exception &e)
 	{
-		qDebug() << "Saving exif data failed:" << e.what();
+		QTextStream(stderr) << "Saving exif data failed:\n" << e.message() << "\n";
 		return false;
 	}
-	return true;	
+	return true;
 }
 
 QList<ExifImageHeader::ImageTag> ExifImageHeader::imageTags() const
@@ -276,11 +275,10 @@ ExifIfd &ExifImageHeader::gpsIFD()
 	return ifds[0].embededIfd(ExifIfd::GpsInfoIfdPointer);
 }
 
-void ExifImageHeader::loadFromJpeg(QDataStream &fileStream)
+void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
 {
 	fileStream.setByteOrder(QDataStream::BigEndian);
-	if (!ExifMarker(fileStream).isSOI())
-		throw ExifException("First marker is not SOI");
+	ExifMarker(fileStream).isSOI() OR_THROW("First marker is not SOI");
 	
 	while (!fileStream.atEnd())
 	{
@@ -296,16 +294,14 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream)
 			else if (align == "MM")
 				byteOrder = QDataStream::BigEndian;
 			else
-				throw ExifException("Unknown align");
+				THROW("Unknown align");
 			
 			stream.setByteOrder(byteOrder);
 			quint16 id;
 		    quint32 offset;
 			stream >> id >> offset;
-			if (id != 0x002a)
-				throw ExifException("Bad TIFF header");
-			stream.device()->seek(offset);
-			
+			id == 0x002a OR_THROW("Bad TIFF header");
+			stream.device()->seek(offset) OR_THROW(SEEK_ERROR(offset));
 			do
 				ifds.insert(ifds.size(), ExifIfd(stream));
 			while (ifds[ifds.size() - 1].hasNext());
@@ -314,15 +310,13 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream)
 		else if (marker.isSOS())
 			return;
 	}
-	if (fileStream.atEnd())
-		throw ExifException("APP1 marker not found");
+	!fileStream.atEnd() OR_THROW("APP1 marker not found");
 }
 
-void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const
+void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const throw (Exception)
 {
 	fileStream.setByteOrder(QDataStream::BigEndian);
-	if (!ExifMarker(fileStream).isSOI())
-		throw ExifException("First marker is not SOI");
+	ExifMarker(fileStream).isSOI() OR_THROW("First marker is not SOI");
 	
 	ExifMarker m1(fileStream);
 	ExifMarker m2(fileStream);
@@ -337,7 +331,7 @@ void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const
 		saveToJpeg(ExifMarker(m1, ExifMarker::APP1));
 }
 
-void ExifImageHeader::saveToJpeg(ExifMarker app1) const
+void ExifImageHeader::saveToJpeg(ExifMarker app1) const throw (Exception)
 {
 	QByteArray data;
 	QDataStream stream(&data, QIODevice::WriteOnly);

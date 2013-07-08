@@ -239,7 +239,7 @@ QDateTime ExifValue::toDateTime() const
 #pragma GCC diagnostic ignored "-Wtype-limits"
 
 template <class T>
-QVector<T> ExifValue::readVector(QDataStream &stream)
+QVector<T> ExifValue::readVector(QDataStream &stream) throw (Exception)
 {
 	quint32 count;
 	quint32 offset;
@@ -257,7 +257,7 @@ QVector<T> ExifValue::readVector(QDataStream &stream)
 	{
 		stream >> offset;
 		quint32 backup = stream.device()->pos();
-		stream.device()->seek(offset);
+		stream.device()->seek(offset) OR_THROW(SEEK_ERROR(offset));
 		for (uint i = 0; i < count; ++i)
 			stream >> vector[i];
 		stream.device()->seek(backup);

@@ -18,7 +18,6 @@ void Exception::showMessage(QWidget *parent) const
 
 QString Exception::message() const
 {
-//	return QString("%1:%2,\t%3:\t%4").arg(file).arg(line).arg(func).arg(what);
-	return what;
+	return QString("%1:%2,\t%3:\t%4").arg(file).arg(line).arg(func).arg(what);
+//	return what;
 }
-

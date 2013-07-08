@@ -206,7 +206,14 @@ exec_reply:
 
 void MainWindow::on_action_about_triggered()
 {
-	static const QString dateTime = QLocale(QLocale::C).toDateTime(__DATE__ " " __TIME__, "MMM d yyyy HH:mm:ss").toString("dd.MM.yy, HH:mm");
+	static QString dateTime;
+	if (dateTime.isNull())
+	{
+		QString dateString = __DATE__ " " __TIME__;
+		if (dateString[4] == ' ')
+			dateString[4] = '0';
+		dateTime = QLocale(QLocale::C).toDateTime(dateString, "MMM dd yyyy HH:mm:ss").toString("dd.MM.yy, HH:mm");
+	}
 	QMessageBox::about(this, tr("O programie"), tr(
 						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>Wersja: %2 (kompilacja %3)<br/>"
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"

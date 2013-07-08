@@ -2,6 +2,7 @@
 #define EXIFIFD_H
 
 #include "exifvalue.h"
+#include "exception.h"
 
 #include <QMap>
 #include <QImage>
@@ -20,7 +21,7 @@ public:
     };
 	
 	ExifIfd();
-	ExifIfd(QDataStream &stream);
+	ExifIfd(QDataStream &stream) throw (Exception);
 	void write(QDataStream &stream, QByteArray &data, bool hasNext) const;
 	
 	bool hasNext() const;

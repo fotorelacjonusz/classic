@@ -1,17 +1,15 @@
 #include "exifmarker.h"
-#include "exifexception.h"
 #include <QBuffer>
 #include <QFile>
 #include <QDebug>
 
-ExifMarker::ExifMarker(QDataStream &stream):
+ExifMarker::ExifMarker(QDataStream &stream) throw (Exception):
 	stream(stream),
 	start(stream.device()->pos()),
 	size(0)
 {
 	stream >> ff;
-	if (ff != 0xff)
-		throw ExifException("Marker not beginning with FF");
+	ff == 0xff OR_THROW("Marker not beginning with FF");
 	
 	stream >> number;
 //	qDebug() << QString::number(number, 16);
@@ -21,7 +19,7 @@ ExifMarker::ExifMarker(QDataStream &stream):
 	stream >> size;
 	
 	end	= stream.device()->pos() + size - sizeof(size);
-	stream.device()->seek(end);
+	stream.device()->seek(end) OR_THROW(SEEK_ERROR(end));
 }
 
 ExifMarker::ExifMarker(const ExifMarker &other, MarkerNumber number):
@@ -54,17 +52,15 @@ bool ExifMarker::isSOS() const
 	return number == SOS;
 }
 
-QByteArray ExifMarker::readData(const QByteArray &header) const
+QByteArray ExifMarker::readData(const QByteArray &header) const throw (Exception)
 {
 	const int pos = stream.device()->pos();
 	stream.device()->seek(start + sizeof(ff) + sizeof(number) + sizeof(size));
 	
-	if (header != stream.device()->read(header.size()))
-		throw ExifException("Header not found");
+	header == stream.device()->read(header.size()) OR_THROW("Header not found");
 	
 	QByteArray data = stream.device()->read(size - sizeof(size));
-	if (quint32(data.length()) != size - sizeof(size))
-		throw ExifException("Marker early end");
+	quint32(data.length()) == size - sizeof(size) OR_THROW("Marker early end");
 	
 	stream.device()->seek(pos);
 	return data;
