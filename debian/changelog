@@ -9,3 +9,10 @@ fotorelacjonusz (2.5.1)
 
  -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>
 
+fotorelacjonusz (2.5.2)
+
+  * Windows output stream flushed
+  * Compilation date time parsing bug fixed
+  * Better exception handling in myexif
+
+ -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>
