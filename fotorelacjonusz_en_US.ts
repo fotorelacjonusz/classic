@@ -9,17 +9,17 @@
         <translation>Photo_report_</translation>
     </message>
     <message>
-        <location filename="src/uploaders/abstractuploader.cpp" line="75"/>
+        <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasÅo</source>
         <translation>Input password</translation>
     </message>
     <message>
-        <location filename="src/uploaders/abstractuploader.cpp" line="75"/>
+        <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasÅo do %1</source>
         <translation>Input password for %1</translation>
     </message>
     <message>
-        <location filename="src/uploaders/abstractuploader.cpp" line="83"/>
+        <location filename="src/uploaders/abstractuploader.cpp" line="112"/>
         <source>Parent layout nie jest typu QFormLayout</source>
         <translation>Parent layout is not of type QFormLayout</translation>
     </message>
