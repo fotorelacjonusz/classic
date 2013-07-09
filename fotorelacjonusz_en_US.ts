@@ -909,9 +909,13 @@ Error at:
         <translation>Error while loading map data.</translation>
     </message>
     <message>
-        <location filename="src/widgets/abstractimage.cpp" line="11"/>
         <source>Mapa dla wszystkich zdjÄÄ.</source>
-        <translation>Common map.</translation>
+        <translation type="obsolete">Common map.</translation>
+    </message>
+    <message>
+        <location filename="src/widgets/abstractimage.cpp" line="11"/>
+        <source>mapa.jpg</source>
+        <translation>map.jpg</translation>
     </message>
 </context>
 <context>
