@@ -47,7 +47,7 @@ QString AbstractImage::toBBCode() const
 		(code.*add)("\n");
 	(code.*add)(caption().trimmed());
 	
-	code.prepend(header + "\n\n");
+	code.prepend(header + "\n");
 	code.append("\n\n" + footer);
 	return code.trimmed();
 }
