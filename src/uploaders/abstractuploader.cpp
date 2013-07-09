@@ -63,9 +63,38 @@ QString AbstractUploader::tosUrl() const
 	return "";
 }
 
-QString AbstractUploader::generateFolderName() const
+QString AbstractUploader::generateFolderName()
 {
 	return tr("Fotorelacja_") + QDateTime::currentDateTime().toString(Qt::ISODate);
+}
+
+QString AbstractUploader::removeAccents(QString diacritical)
+{
+	static const QString diacriticals = "ŧþðđŋħĸÐŁØ¥łøðßμŒ œ Æ æ ";
+	static const QString replacements = "tbodnnkDLOYloosuOEoeAEae";
+	
+	QString result;
+	foreach (QChar c, diacritical.normalized(QString::NormalizationForm_KD))
+	{
+		if (c.category() > QChar::Mark_Enclosing)
+		{
+			if ((int)c.toAscii() >= 0)
+				result.append(c);
+			else
+			{
+//				qDebug() << c << c.cell() << c.row() << c.unicode() << (int)c.toAscii() << (int)c.toLatin1() << c.decomposition().length();
+				int pos = diacriticals.indexOf(c);
+				if (pos >= 0)
+				{
+					result.append(replacements[pos]);
+					if (diacriticals[pos + 1] == ' ')
+						result.append(replacements[pos + 1]);
+				}
+			}				
+		}
+	}
+		
+	return result;
 }
 
 QString AbstractUploader::queryPassword(QString sourceDsc, bool *ok)

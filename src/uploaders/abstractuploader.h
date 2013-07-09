@@ -41,7 +41,9 @@ signals:
 	void abortRequested();
 
 protected:
-	QString generateFolderName() const;
+	static QString generateFolderName();
+	static QString removeAccents(QString diacritical);
+	
 	QString queryPassword(QString sourceDsc, bool *ok = 0);
 
 //	void fixLayout(QBoxLayout *child);

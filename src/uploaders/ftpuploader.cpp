@@ -56,7 +56,7 @@ bool FtpUploader::init(int imageNumber)
 
 QString FtpUploader::uploadImage(QString filePath, QIODevice *image)
 {
-	QString fileName = filePath.split('/').last();
+	QString fileName = removeAccents(filePath.split('/').last());
 
 	image->open(QIODevice::ReadOnly);
 	ftp.put(image, fileName);
