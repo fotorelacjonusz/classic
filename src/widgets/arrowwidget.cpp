@@ -9,14 +9,16 @@
 
 const int ArrowWidget::margin = 7;
 
-ArrowWidget::ArrowWidget(QPoint start, QPoint end, QWidget *parent) :
+ArrowWidget::ArrowWidget(QPoint start, QPoint end, QWidget *parent, QString initialText) :
 	SelectableWidget<ArrowWidget>(parent),
 	color(Qt::black),
 	start(start),
-	inverted(false)
+	inverted(false),
+	initialText(initialText)
 {
 	lineEdit->hide();
 	setEnd(end);
+	connect(lineEdit, SIGNAL(focusOut()), this, SLOT(lineEditFocusOut()));
 }
 
 void ArrowWidget::invert()
@@ -60,7 +62,7 @@ void ArrowWidget::showEdit(QString text)
 			lineEdit->setText(text);
 		else
 		{
-			lineEdit->setText("...");
+			lineEdit->setText(initialText);
 			lineEdit->selectAll();
 			lineEdit->setFocus();
 		}
@@ -127,3 +129,7 @@ void ArrowWidget::updateGeometries()
 	lineEdit->setGeometry(lineEditGeometry);
 }
 
+void ArrowWidget::lineEditFocusOut()
+{
+	lineEdit->setVisible(!lineEdit->text().isEmpty());
+}

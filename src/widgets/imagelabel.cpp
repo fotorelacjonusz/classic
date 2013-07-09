@@ -49,6 +49,9 @@ void ImageLabel::write(QIODevice *device) const
 
 void ImageLabel::mousePressEvent(QMouseEvent *event)
 {
+	if (isNull())
+		return QLabel::mousePressEvent(event);
+	
 	start = event->pos();
 	event->accept();
 
@@ -63,7 +66,18 @@ void ImageLabel::mouseMoveEvent(QMouseEvent *event)
 		qreal length = QVector2D(end - start).length();
 		if (length > 20)
 		{
-			grabbedArrow = new ArrowWidget(start, end, this);
+			foreach (ArrowWidget *arrow, arrows)
+				if (QVector2D(arrow->start - start).length() < 10.0)
+				{
+					grabbedArrow = new ArrowWidget(arrow->start, end, this, "");
+					grabbedArrow->show();
+					setTabOrder(grabbedArrow->lineEdit, arrow->lineEdit);
+					start = QPoint();
+					return event->accept();
+					break;
+				}
+
+			grabbedArrow = new ArrowWidget(start, end, this, "...");
 			grabbedArrow->show();
 			setTabOrder(arrows.isEmpty() ? firstWidget : arrows.last(), grabbedArrow);
 			start = QPoint();
@@ -110,7 +124,7 @@ QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel)
 	for (int i = 0; i < count; ++i)
 	{
 		stream >> start >> end >> text >> color;
-		ArrowWidget *arrow = new ArrowWidget(start, end, &imageLabel);
+		ArrowWidget *arrow = new ArrowWidget(start, end, &imageLabel, "");
 		QObject::connect(arrow, SIGNAL(destroyed(QObject*)), &imageLabel, SLOT(remove(QObject*)));
 		imageLabel.arrows << arrow;
 		arrow->color = color;

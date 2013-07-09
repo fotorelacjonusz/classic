@@ -38,7 +38,7 @@ chmod 0755 debian/usr/bin/fotorelacjonusz
 
 fakeroot dpkg-deb --build debian .
 
-lintian *.deb
+lintian fotorelacjonusz_${version}*.deb
 
 rm -r debian
 

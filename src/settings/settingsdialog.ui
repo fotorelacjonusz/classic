@@ -14,7 +14,7 @@
    <string>Ustawienia</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resource.qrc">
+   <iconset resource="../../resource.qrc">
     <normaloff>:/res/configure.png</normaloff>:/res/configure.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -503,7 +503,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                <string>Wczytaj</string>
               </property>
               <property name="icon">
-               <iconset resource="../resource.qrc">
+               <iconset resource="../../resource.qrc">
                 <normaloff>:/res/document-open.png</normaloff>:/res/document-open.png</iconset>
               </property>
              </widget>
@@ -531,7 +531,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                 <string>Prawy dolny</string>
                </property>
                <property name="icon">
-                <iconset resource="../resource.qrc">
+                <iconset resource="../../resource.qrc">
                  <normaloff>:/res/bottom-right.png</normaloff>:/res/bottom-right.png</iconset>
                </property>
               </item>
@@ -540,7 +540,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                 <string>Lewy dolny</string>
                </property>
                <property name="icon">
-                <iconset resource="../resource.qrc">
+                <iconset resource="../../resource.qrc">
                  <normaloff>:/res/bottom-left.png</normaloff>:/res/bottom-left.png</iconset>
                </property>
               </item>
@@ -549,7 +549,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                 <string>Prawy górny</string>
                </property>
                <property name="icon">
-                <iconset resource="../resource.qrc">
+                <iconset resource="../../resource.qrc">
                  <normaloff>:/res/top-right.png</normaloff>:/res/top-right.png</iconset>
                </property>
               </item>
@@ -558,7 +558,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
                 <string>Lewy górny</string>
                </property>
                <property name="icon">
-                <iconset resource="../resource.qrc">
+                <iconset resource="../../resource.qrc">
                  <normaloff>:/res/top-left.png</normaloff>:/res/top-left.png</iconset>
                </property>
               </item>
@@ -934,7 +934,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Prawy dolny róg</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/bottom-right.png</normaloff>:/res/bottom-right.png</iconset>
              </property>
             </item>
@@ -943,7 +943,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Lewy dolny róg</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/bottom-left.png</normaloff>:/res/bottom-left.png</iconset>
              </property>
             </item>
@@ -952,7 +952,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Prawy górny róg</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/top-right.png</normaloff>:/res/top-right.png</iconset>
              </property>
             </item>
@@ -961,7 +961,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Lewy górny róg</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/top-left.png</normaloff>:/res/top-left.png</iconset>
              </property>
             </item>
@@ -970,7 +970,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Rozszerz z lewej</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/expand-left.png</normaloff>:/res/expand-left.png</iconset>
              </property>
             </item>
@@ -979,7 +979,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Rozszerz z prawej</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/expand-right.png</normaloff>:/res/expand-right.png</iconset>
              </property>
             </item>
@@ -988,7 +988,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Rozszerz u góry</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/expand-top.png</normaloff>:/res/expand-top.png</iconset>
              </property>
             </item>
@@ -997,7 +997,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <string>Rozszerz u dołu</string>
              </property>
              <property name="icon">
-              <iconset resource="../resource.qrc">
+              <iconset resource="../../resource.qrc">
                <normaloff>:/res/expand-bottom.png</normaloff>:/res/expand-bottom.png</iconset>
              </property>
             </item>
@@ -1255,7 +1255,7 @@ Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczn
   <tabstop>buttonBox</tabstop>
  </tabstops>
  <resources>
-  <include location="../resource.qrc"/>
+  <include location="../../resource.qrc"/>
  </resources>
  <connections>
   <connection>

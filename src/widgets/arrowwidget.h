@@ -11,7 +11,7 @@ class ArrowWidget : public SelectableWidget<ArrowWidget> // QWidget
 {
 	Q_OBJECT
 public:
-	explicit ArrowWidget(QPoint start, QPoint end, QWidget *parent);
+	explicit ArrowWidget(QPoint start, QPoint end, QWidget *parent, QString initialText);
 	void invert();
 	void setColor(QColor newColor);
 	
@@ -24,6 +24,7 @@ protected:
 
 private slots:
 	void updateGeometries();
+	void lineEditFocusOut();
 
 private:
 	QColor color;
@@ -31,10 +32,12 @@ private:
 	QSize arrowSize;
 	bool inverted;
 	bool left, top;
+	const QString initialText;
 	static const int margin;
 
 	friend QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel);
 	friend QDataStream &operator << (QDataStream &stream, const ImageLabel &imageLabel);
+	friend class ImageLabel;
 };
 
 #endif // ARROWWIDGET_H
