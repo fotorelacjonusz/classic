@@ -16,3 +16,11 @@ fotorelacjonusz (2.5.2)
   * Better exception handling in myexif
 
  -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>
+
+fotorelacjonusz (2.5.3)
+
+  * Ftp upload bug on windows fixed
+  * Ftp name folder option added
+  * Multiple ui field description copy fixed
+
+ -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>

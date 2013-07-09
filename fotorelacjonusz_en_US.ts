@@ -4,17 +4,22 @@
 <context>
     <name>AbstractUploader</name>
     <message>
-        <location filename="src/uploaders/abstractuploader.cpp" line="70"/>
+        <location filename="src/uploaders/abstractuploader.cpp" line="68"/>
+        <source>Fotorelacja_</source>
+        <translation>Photo_report_</translation>
+    </message>
+    <message>
+        <location filename="src/uploaders/abstractuploader.cpp" line="75"/>
         <source>Podaj hasÅo</source>
         <translation>Input password</translation>
     </message>
     <message>
-        <location filename="src/uploaders/abstractuploader.cpp" line="70"/>
+        <location filename="src/uploaders/abstractuploader.cpp" line="75"/>
         <source>Podaj hasÅo do %1</source>
         <translation>Input password for %1</translation>
     </message>
     <message>
-        <location filename="src/uploaders/abstractuploader.cpp" line="78"/>
+        <location filename="src/uploaders/abstractuploader.cpp" line="83"/>
         <source>Parent layout nie jest typu QFormLayout</source>
         <translation>Parent layout is not of type QFormLayout</translation>
     </message>
@@ -85,8 +90,18 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Top directory url becomes part of a link to each image.
 Wrong url will make all links corrupted.</translation>
     </message>
+    <message utf8="true">
+        <location filename="src/uploaders/ftpuploader.ui" line="111"/>
+        <source>Wygeneruj nazwę folderu</source>
+        <translation>Generate folder name</translation>
+    </message>
+    <message utf8="true">
+        <location filename="src/uploaders/ftpuploader.ui" line="124"/>
+        <source>Użyj poniższego folderu</source>
+        <translation>Use following folder</translation>
+    </message>
     <message>
-        <location filename="src/uploaders/ftpuploader.cpp" line="32"/>
+        <location filename="src/uploaders/ftpuploader.cpp" line="34"/>
         <source>%1 na %2</source>
         <translation>%1 at %2</translation>
     </message>
@@ -245,9 +260,8 @@ Wrong url will make all links corrupted.</translation>
         <translation>about:blank</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="60"/>
         <source>Fotorelacja_</source>
-        <translation>Photo_report_</translation>
+        <translation type="obsolete">Photo_report_</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="163"/>
@@ -625,17 +639,17 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="210"/>
+        <location filename="src/widgets/mainwindow.cpp" line="217"/>
         <source>O programie</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="210"/>
+        <location filename="src/widgets/mainwindow.cpp" line="217"/>
         <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;Wersja: %2 (kompilacja %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
         <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;Version: %2 (compilation %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="220"/>
+        <location filename="src/widgets/mainwindow.cpp" line="227"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
     </message>
@@ -1597,13 +1611,13 @@ You can add and remove files from this directory, changes will become visible af
         <translation>Overlays</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.cpp" line="250"/>
+        <location filename="src/settings/settingsdialog.cpp" line="253"/>
         <source>Wczytaj logo</source>
         <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.cpp" line="250"/>
+        <location filename="src/settings/settingsdialog.cpp" line="253"/>
         <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>

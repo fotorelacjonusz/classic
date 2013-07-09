@@ -5,7 +5,7 @@
 #include <QLayout>
 #include <QFormLayout>
 #include <QDebug>
-
+#include <QDateTime>
 
 AbstractUploader::AbstractUploader(QWidget *parent, QSettings &settings):
 	QWidget(parent),
@@ -63,6 +63,11 @@ QString AbstractUploader::tosUrl() const
 	return "";
 }
 
+QString AbstractUploader::generateFolderName() const
+{
+	return tr("Fotorelacja_") + QDateTime::currentDateTime().toString(Qt::ISODate);
+}
+
 QString AbstractUploader::queryPassword(QString sourceDsc, bool *ok)
 {
 	if (!tempPassword.isEmpty())
@@ -86,3 +91,4 @@ void AbstractUploader::fixLayout(QFormLayout *child)
 				parent->setWidget(parentRows + row, role, child->itemAt(row, role)->widget());
 	}
 }
+

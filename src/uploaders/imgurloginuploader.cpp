@@ -57,7 +57,7 @@ bool ImgurLoginUploader::init(int imageNumber)
 
 	NetworkTransactionQuery transaction(this, "https://api.imgur.com/3/album/");
 	setAuthorization(&transaction);
-	transaction.addQueryItem("title", tr("Fotorelacja_") + QDateTime::currentDateTime().toString(Qt::ISODate));
+	transaction.addQueryItem("title", generateFolderName());
 	transaction.post();
 	JsonObject json(transaction);
 	error = json.mergedError;

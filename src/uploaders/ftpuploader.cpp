@@ -16,6 +16,8 @@ FtpUploader::FtpUploader(QWidget *parent, QSettings &settings) :
 	manager.makeInput("ftp/login", ui->loginEdit);
 	manager.makeInput("ftp/password", ui->passwordEdit);
 	manager.makeInput("ftp/url", ui->urlEdit);
+	manager.makeInput("ftp/folder_method", ui->folderMethod, true);
+	manager.makeInput("ftp/folder_name", ui->folderEdit);
 }
 
 FtpUploader::~FtpUploader()
@@ -43,10 +45,9 @@ bool FtpUploader::init(int imageNumber)
 		return false;
 	}
 
-	dirName = QDateTime::currentDateTime().toString(Qt::ISODate);
+	dirName = ui->folderGenerate->isChecked() ? generateFolderName() : ui->folderEdit->text();
 	ftp.mkdir(dirName);
-	if (!advance())
-		return false;
+	advance(); // may already exist
 	ftp.cd(dirName);
 	if (!advance())
 		return false;
@@ -55,7 +56,7 @@ bool FtpUploader::init(int imageNumber)
 
 QString FtpUploader::uploadImage(QString filePath, QIODevice *image)
 {
-	QString fileName = filePath.split(QDir::separator()).last();
+	QString fileName = filePath.split('/').last();
 
 	image->open(QIODevice::ReadOnly);
 	ftp.put(image, fileName);

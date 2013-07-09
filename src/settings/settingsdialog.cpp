@@ -122,6 +122,8 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::copyDescriptions(QWidget *parent)
 {
+	if (parent->property("descriptionsCopied").toBool())
+		return;
 	foreach (QObject *obj, parent->children())
 	{
 		if (obj->isWidgetType())
@@ -143,6 +145,7 @@ void SettingsDialog::copyDescriptions(QWidget *parent)
 			copyDescriptions(widget);
 		}
 	}
+	parent->setProperty("descriptionsCopied", true);
 }
 
 void SettingsDialog::setSelectedThread(QString threadId, int number)

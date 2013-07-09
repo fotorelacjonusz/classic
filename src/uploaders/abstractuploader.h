@@ -41,6 +41,7 @@ signals:
 	void abortRequested();
 
 protected:
+	QString generateFolderName() const;
 	QString queryPassword(QString sourceDsc, bool *ok = 0);
 
 //	void fixLayout(QBoxLayout *child);
