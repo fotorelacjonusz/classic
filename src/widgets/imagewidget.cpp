@@ -112,6 +112,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 
 ImageWidget::~ImageWidget()
 {
+	QPixmapCache::remove(filePath);
 	delete gpsData;
 }
 

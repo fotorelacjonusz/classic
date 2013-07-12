@@ -138,6 +138,7 @@
     <addaction name="separator"/>
     <addaction name="action_settings"/>
     <addaction name="separator"/>
+    <addaction name="action_remove_photos"/>
     <addaction name="action_close"/>
    </widget>
    <widget class="QMenu" name="menuPomoc">
@@ -421,6 +422,27 @@
    </property>
    <property name="text">
     <string>Usuń &amp;położenie</string>
+   </property>
+  </action>
+  <action name="action_undo_colors">
+   <property name="icon">
+    <iconset resource="../../resource.qrc">
+     <normaloff>:/res/edit-undo.png</normaloff>:/res/edit-undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cofnij zmiany koloru</string>
+   </property>
+   <property name="toolTip">
+    <string>Cofnij zmiany koloru</string>
+   </property>
+  </action>
+  <action name="action_remove_photos">
+   <property name="icon">
+    <iconset resource="../../resource.qrc">
+     <normaloff>:/res/edit-delete.png</normaloff>:/res/edit-delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Usu&amp;ń zdjęcia</string>
    </property>
   </action>
  </widget>

@@ -26,3 +26,11 @@ fotorelacjonusz (2.5.3)
   * Branching arrows
 
  -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>
+
+fotorelacjonusz (2.5.4)
+
+  * Fixed no map on readded photo bug
+  * Added colors undo button
+  * Added remove all images menu entry
+
+ -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>

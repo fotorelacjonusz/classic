@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->imageToolBar->setEnabled(false);
 	ui->arrowToolBar->setEnabled(false);
 	ui->colorManipulationBar->setEnabled(false);
+	ui->colorManipulationBar->addAction(ui->action_undo_colors);
+	connect(ui->action_undo_colors, SIGNAL(triggered()), ui->colorManipulationBar, SLOT(on_action_undo_colors()));
 	ui->menu_Fotorelacja->insertMenu(ui->menu_Fotorelacja->actions()[2], &recentThreads);
 	ui->commonMap->setFirstWidget(ui->header);
 	settingsDialog.copyDescriptions(this);
@@ -136,6 +138,24 @@ void MainWindow::on_action_save_photorelation_triggered()
 	file.close();
 }
 
+void MainWindow::on_action_settings_triggered()
+{
+	settingsDialog.exec();
+}
+
+void MainWindow::on_action_remove_photos_triggered()
+{
+	ui->imageToolBar->setEnabled(false);
+	while (!ui->postLayout->isEmpty())
+	{
+		QWidget *widget = ui->postLayout->itemAt(0)->widget();
+		ui->postLayout->removeWidget(widget);
+		delete widget;
+	}
+	selectedImage = 0;
+	updateCommonMap();
+}
+
 void MainWindow::on_action_add_photos_triggered()
 {
 	QStringList files = QFileDialog::getOpenFileNames(this, tr("Wybierz zdjęcia"), dirName, tr("Zdjęcia (*.png *.gif *.jpg *.jpeg)"));
@@ -156,11 +176,6 @@ void MainWindow::on_action_add_photos_triggered()
 	Application::idle();
 
 	updateCommonMap();
-}
-
-void MainWindow::on_action_settings_triggered()
-{
-	settingsDialog.exec();
 }
 
 void MainWindow::on_action_import_gpx_triggered()

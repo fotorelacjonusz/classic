@@ -16,6 +16,7 @@ public:
 	
 public slots:
 	void setWidget(ImageWidget *widget);
+	void on_action_undo_colors();
 	
 private slots:
 	void on_colorManipulationBar_orientationChanged(Qt::Orientation orientation);

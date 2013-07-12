@@ -71,6 +71,13 @@ void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 	}
 }
 
+void ColorManipulationToolBar::on_action_undo_colors()
+{
+	contrastSlider->setValue(CONTRAST_DEFAULT);
+	brightnessSlider->setValue(BRIGHTNESS_DEFAULT);
+	gammaSlider->setValue(GAMMA_DEFAULT);
+}
+
 void ColorManipulationToolBar::on_colorManipulationBar_orientationChanged(Qt::Orientation orientation)
 {
 	contrastSlider->setOrientation(orientation);

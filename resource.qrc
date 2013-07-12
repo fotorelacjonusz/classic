@@ -35,5 +35,6 @@
         <file>res/remove-location.png</file>
         <file>res/ssc_logo.png</file>
         <file>fotorelacjonusz_en_US.qm</file>
+        <file>res/edit-undo.png</file>
     </qresource>
 </RCC>

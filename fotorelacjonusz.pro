@@ -63,8 +63,7 @@ SOURCES += src/main.cpp \
     src/myexif/exifrational.cpp \
     src/myexif/exifvalue.cpp \
     src/myexif/exififd.cpp \
-    src/myexif/exifmarker.cpp \
-    src/myexif/exifexception.cpp
+    src/myexif/exifmarker.cpp
 
 HEADERS += \
     src/networkcookiejar.h \
@@ -118,8 +117,7 @@ HEADERS += \
     src/myexif/exififd.h \
     src/myexif/exifvalue.h \
     src/myexif/exifmarker.h \
-    src/myexif/exifimageheader.h \
-    src/myexif/exifexception.h
+    src/myexif/exifimageheader.h
 
 FORMS += \
     src/widgets/replydialog.ui \
