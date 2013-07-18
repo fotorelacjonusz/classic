@@ -17,6 +17,7 @@
 #include <QtAlgorithms>
 #include <QVector2D>
 #include <QMatrix4x4>
+#include <qmath.h>
 #include <cmath>
 
 #define DOC_KML "doc.kml"
@@ -267,10 +268,17 @@ void Overlay::writeThumbnail(QIODevice *device) const
 			QRectF footer = QRect(QPoint(0, innerPartsRect.bottom()), thumbnailRect.bottomRight()).adjusted(10, 10, -10, -10);
 			QRectF bounding;
 			painter.setFont(QFont(fontFamily, 10));
-			painter.drawText(footer, Qt::AlignLeft | Qt::AlignTop, names.join("\n"), &bounding);
-			qreal bottom = bounding.bottom();
-			painter.drawText(footer.adjusted(bounding.right(), 0, 0, 0), Qt::AlignLeft | Qt::AlignTop, techs.join("\n"), &bounding);
-			bottom = qMax(bottom, bounding.bottom());
+			qreal bottom = 0;
+			
+			for (int i = 0; i < qCeil(names.size() / 10.0); ++i)
+			{
+				QStringList currentNames = names.mid(i * 10, 10);
+				QStringList currentTechs = techs.mid(i * 10, 10);
+				painter.drawText(footer.adjusted(bounding.right(), 0, 0, 0), Qt::AlignLeft | Qt::AlignTop, currentNames.join("\n"), &bounding);
+				bottom = qMax(bottom, bounding.bottom());
+				painter.drawText(footer.adjusted(bounding.right(), 0, 0, 0), Qt::AlignLeft | Qt::AlignTop, currentTechs.join("\n"), &bounding);
+				bottom = qMax(bottom, bounding.bottom());
+			}
 			painter.drawText(footer.adjusted(bounding.right(), 0, 0, 0), Qt::AlignRight | Qt::AlignTop, description, &bounding);
 			bottom = qMax(bottom, bounding.bottom());
 			
