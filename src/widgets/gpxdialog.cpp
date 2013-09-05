@@ -13,8 +13,8 @@
 
 GpxDialog::GpxDialog(QWidget *parent) :
 	QDialog(parent),
-	ui(new Ui::GpxDialog),
-	validator(new ThreadedValidator(QUrl("http://www.topografix.com/GPX/1/1/gpx.xsd")))
+	ui(new Ui::GpxDialog)
+//	, validator(new ThreadedValidator(QUrl("http://www.topografix.com/GPX/1/1/gpx.xsd")))
 {
 	ui->setupUi(this);
 	timer.setInterval(1000);
@@ -25,14 +25,14 @@ GpxDialog::GpxDialog(QWidget *parent) :
 	qRegisterMetaType<QtMsgType>("QtMsgType");
 	qRegisterMetaType<QSourceLocation>("QSourceLocation");
 	
-	connect(validator, SIGNAL(validated(bool)), this, SLOT(validated(bool)));
-	connect(validator, SIGNAL(message(QtMsgType,QString,QUrl,QSourceLocation)), this, SLOT(message(QtMsgType,QString,QUrl,QSourceLocation)));
+//	connect(validator, SIGNAL(validated(bool)), this, SLOT(validated(bool)));
+//	connect(validator, SIGNAL(message(QtMsgType,QString,QUrl,QSourceLocation)), this, SLOT(message(QtMsgType,QString,QUrl,QSourceLocation)));
 }
 
 GpxDialog::~GpxDialog()
 {
 	delete ui;
-	delete validator;
+//	delete validator;
 }
 
 void GpxDialog::setVisible(bool visible)
@@ -147,5 +147,8 @@ void GpxDialog::on_loadButton_clicked()
 	ui->gpxFile->setText(filePath);
 	ui->loadButton->setEnabled(false);
 		
-	validator->validate(QUrl::fromLocalFile(filePath));
+//	validator->validate(QUrl::fromLocalFile(filePath));
+	
+	ui->loadButton->setEnabled(true);
+	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }

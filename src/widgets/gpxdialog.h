@@ -47,7 +47,7 @@ private:
 	QList<Segment> track;
 
 	NtpClient ntpClient;
-	ThreadedValidator *validator;
+//	ThreadedValidator *validator;
 };
 
 #endif // GPXDIALOG_H

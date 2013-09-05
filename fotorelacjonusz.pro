@@ -155,3 +155,6 @@ OTHER_FILES += \
 
 TRANSLATIONS = fotorelacjonusz_en_US.ts
 
+QMAKE_CXXFLAGS_DEBUG += -rdynamic
+QMAKE_LFLAGS_DEBUG += -g -rdynamic
+QMAKE_CXXFLAGS_DEBUG -= -pipe

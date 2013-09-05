@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	connect(&gpsData, SIGNAL(mapReady(QImage)), this, SLOT(commonMapReady(QImage)));
 	
-	SETTINGS->addCommonMap.connect(this, SLOT(updateCommonMap()));
+//	SETTINGS->addCommonMap.connect(this, SLOT(updateCommonMap()));
 	
 	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
 	connect(new SelectableWidget<ImageWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(imageWidgetSelected(QWidget*)));
@@ -202,10 +202,10 @@ void MainWindow::on_action_send_to_SSC_triggered()
 	if (!ui->commonMap->isNull())
 		images.prepend(ui->commonMap);
 
-	images.first()->setHeader(ui->header->toPlainText());
-	images.last()->setFooter(ui->footer->toPlainText());
+//	images.first()->setHeader(ui->header->toPlainText());
+//	images.last()->setFooter(ui->footer->toPlainText());
 
-	ReplyDialog reply(settings, images, this);
+	ReplyDialog reply(settings, images, ui->header->toPlainText(), ui->footer->toPlainText(), this);
 	
 exec_reply:
 	if (reply.exec() == QDialog::Rejected)

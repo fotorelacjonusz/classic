@@ -23,15 +23,8 @@ public:
 	void setUrl(QString url);
 	QString toBBCode() const;
 	
-	void setHeader(QString text);
-	void setFooter(QString text);
-
-protected:
-	QString m_url;
-
 private:
-	QString header;
-	QString footer;
+	QString m_url;
 };
 
 #endif // ABSTRACTIMAGE_H

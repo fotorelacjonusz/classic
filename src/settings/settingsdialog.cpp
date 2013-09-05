@@ -56,7 +56,6 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui->commonMapTypeLabel->setMinimumWidth(maxWidth);	
 	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment() | 
 										 (ui->imageMapTypeLabel->alignment() & 0x00f0));
-	
 
 	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox,  0),   this, &SettingsDialog::uploaderFunc);
 							  makeInput("home_page/tag",              ui->homeTag);
@@ -230,7 +229,7 @@ void SettingsDialog::reject()
 	
 	fixLengthComboBox();
 	
-	ui->logoLabel->setPixmap(logo);
+	ui->logoLabel->setPixmap(QPixmap::fromImage(logo));
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
 	
 	if (ui->imageMapType->currentText().isEmpty())
@@ -255,7 +254,7 @@ void SettingsDialog::on_logoLoad_clicked()
 	{
 		m_settings.setValue("logo/dir", logoFile.section("/", 0, -2));
 		logo.load(logoFile);
-		ui->logoLabel->setPixmap(logo);
+		ui->logoLabel->setPixmap(QPixmap::fromImage(logo));
 	}
 }
 
@@ -315,5 +314,5 @@ void SettingsDialog::proxyOptionsChanged()
 		proxy.setPassword(proxyPass);
 	}
 	QNetworkProxy::setApplicationProxy(proxy);
-//	qDebug() << "proxy set";
+	//	qDebug() << "proxy set";
 }

@@ -104,17 +104,23 @@ void SettingsManager::save(AbstractInput *singleInput)
 	QSet<Listener> listeners; // call each listener only once when multiple options changed
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
 	{		
-		if (input->toVariant() != settings.value(input->key, input->defaultVal))
-		{
-			input->wasChanged = true;
-			listeners.unite(input->listeners);
-		}
-		else
+		if (input->toVariant() == settings.value(input->key, input->defaultVal))
 		{
 			input->wasChanged = false;
 			continue;
 		}
+		
+		input->wasChanged = true;
+		listeners.unite(input->listeners);
 		settings.setValue(input->key, input->toVariant());
+			
+		QStringList listenerNames;
+		foreach (Listener listener, input->listeners)
+		{
+			const QString name = listener.first->objectName().isEmpty() ? listener.first->metaObject()->className() : listener.first->objectName();
+			listenerNames << QString("%2@%1").arg(name).arg(QString(listener.second));
+		}
+		qDebug() << input->key << "triggers:" << listenerNames.join(", ");
 	}
 
 	foreach (Listener listener, listeners)

@@ -31,12 +31,12 @@ void PostWidget::appendImage(AbstractImage *image)
 	images.append(image);
 	
 	QString text;
-	text += openingTags;
+	text += openingTags + header;
 	foreach (AbstractImage *image, images)
 		text += image->toBBCode() + "\n\n";
 	if (SETTINGS->addTBC && !isLast)
 		text += tr("Cdn ...");
-	text += closingTags;
+	text += footer + closingTags;
 	ui->plainTextEdit->setPlainText(text);
 }
 
@@ -60,3 +60,12 @@ bool PostWidget::isFull() const
 	return images.size() == SETTINGS->imagesPerPost;
 }
 
+void PostWidget::setHeader(QString text)
+{
+	header = text.trimmed() + "\n\n";
+}
+
+void PostWidget::setFooter(QString text)
+{
+	footer = text.trimmed();
+}

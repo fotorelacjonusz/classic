@@ -1,16 +1,20 @@
 #include "exififd.h"
+#include "messagehandler.h"
 #include <QBuffer>
+#include <QTextStream>
 
 const QList<ExifIfd::EmbedOffset> ExifIfd::allPointers = 
 		QList<ExifIfd::EmbedOffset>() << ExifIfdPointer << GpsInfoIfdPointer << InteroperabilityIfdPointer;
 
 ExifIfd::ExifIfd():
-	nextIFD(0)
+	nextIFD(0),
+	nextIFDSought(false)
 {
 }
 
 ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
-	nextIFD(0)
+	nextIFD(0),
+	nextIFDSought(false)
 {
 	quint16 size;
 	stream >> size;
@@ -26,8 +30,11 @@ ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
 	foreach (EmbedOffset pointerTag, allPointers)
 		if (contains(pointerTag))
 		{
+			quint32 backupPos = stream.device()->pos();
 			stream.device()->seek(value(pointerTag).toLong()) OR_THROW(SEEK_ERROR(value(pointerTag).toLong()));
 			ifds[pointerTag] = ExifIfd(stream);
+			if (ifds[pointerTag].hasNextIFDError())
+				stream.device()->seek(backupPos);
 		}
 	if (contains(JpegInterchangeFormat) && contains(JpegInterchangeFormatLength))
 	{
@@ -36,7 +43,9 @@ ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
 		stream.device()->seek(thumbnailOffset) OR_THROW(SEEK_ERROR(thumbnailOffset));
 		thumbnailImage.loadFromData(stream.device()->read(thumbnailSize)) OR_THROW("Unable to load thumbnail");
 	}
-	stream.device()->seek(nextIFD) OR_THROW(SEEK_ERROR(nextIFD));
+	Suppress(), nextIFDSought = stream.device()->seek(nextIFD); // OR_THROW(SEEK_ERROR(nextIFD));
+	if (hasNextIFDError())
+		QTextStream(stderr) << "Embedded exif ifd malformed, invalid nextIFD: " << nextIFD << "\n";
 }
 
 void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const
@@ -112,4 +121,9 @@ void ExifIfd::setThumbnail(QImage image)
 //		image = image.scaled(QSize(160, 120), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	
 	thumbnailImage = image;
+}
+
+bool ExifIfd::hasNextIFDError() const
+{
+	return !nextIFDSought;
 }

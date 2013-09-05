@@ -347,7 +347,7 @@ void ImageWidget::updatePixmap()
 	imageLabel->setPixmap(photo);
 	setMaximumWidth(photo.width() + 6);
 
-	m_url = QString();
+	setUrl(QString());
 //	qDebug() << objectName() << time.elapsed() << "total" << QPixmapCache::totalUsed();
 }
 

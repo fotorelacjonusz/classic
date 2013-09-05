@@ -7,9 +7,33 @@
 #include "widgets/mainwindow.h"
 #include "messagehandler.h"
 
+#ifdef Q_OS_UNIX
+
+#include <stdio.h>
+#include <execinfo.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+void handler(int sig) 
+{
+	void *array[10];
+	size_t size = backtrace(array, 10);
+	fprintf(stderr, "Error: signal %d:\n", sig);
+	backtrace_symbols_fd(array, size, STDERR_FILENO);
+	exit(1);
+}
+
+#endif
+
 int main(int argc, char *argv[])
 {
-	const char *version = "2.5.4";
+
+#ifdef Q_OS_UNIX
+	signal(SIGSEGV, handler);
+#endif
+	
+	const char *version = "2.5.5";
 	if (argc >= 2 && QString(argv[1]) == "-v")
 	{
 		fprintf(stdout, "%s\n", version);

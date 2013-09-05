@@ -20,7 +20,7 @@
 const QString ReplyDialog::likePostId = "94354890"; // fotorel
 //const QString ReplyDialog::likePostId = "102485895"; // b
 
-ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, QWidget *parent):
+ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, const QString &header, const QString &footer, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::ReplyDialog),
 	settings(settings),
@@ -45,6 +45,9 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	posts.first()->setTotal(0);
 	posts.last()->object()->setLast();
 	posts.setExtraTotal(posts.size()); // 1 navigation per post
+	
+	posts.first()->object()->setHeader(header);
+	posts.last()->object()->setFooter(footer);
 	
 	if (settings.value(DONT_SHOW_FORUM_INFO).toBool())
 		ui->infoWidget->hide();
@@ -348,7 +351,7 @@ void ReplyDialog::sendPost(int progress)
 	}
 
 	message.setPlainText(post->object()->text());
-	if (post->state != PostWidget::Full) // Incomplete - post not filled with images
+	if (post->state != PostWidget::Full) // Incomplete - post not yet filled with all images
 	{
 		qDebug() << "sendPost()   " << "post niegotowy\n";
 		return;

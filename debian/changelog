@@ -34,3 +34,15 @@ fotorelacjonusz (2.5.4)
   * Added remove all images menu entry
 
  -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>
+
+fotorelacjonusz (2.5.5)
+
+  * Disabled gpx validator
+  * Stack trace printing on crash on linux
+  * Weakened exif parsing rules to accept partly malformed data (next IFD pointer)
+  * Fixed new line insertion in bb code bug
+  * Fixed additional header/footer bug
+  * Fixed unnecessary pixmapUpdate call bug
+  * Fixed unnecessary updateCommonMap call bug
+
+ -- Kamil Ostaszewski <fotorelacjonusz@k14.vdl.pl>

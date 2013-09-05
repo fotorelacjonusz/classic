@@ -30,11 +30,13 @@ public:
 	ExifIfd &embededIfd(EmbedOffset tag);
 	QImage thumbnail() const;
 	void setThumbnail(QImage image);
+	bool hasNextIFDError() const;
 	
 private:
 	QMap<EmbedOffset, ExifIfd> ifds;
 	quint32 nextIFD;
 	QImage thumbnailImage;
+	bool nextIFDSought;
 	
 	static const QList<EmbedOffset> allPointers;
 };

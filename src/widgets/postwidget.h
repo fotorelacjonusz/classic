@@ -25,7 +25,9 @@ public:
 	QString text() const;
 	void setLast(bool last = true);
 	bool isFull() const;
-	
+	void setHeader(QString text);
+	void setFooter(QString text);
+		
 private:
 	Ui::PostWidget *ui;
 	QList<AbstractImage *> images;
@@ -33,6 +35,8 @@ private:
 	QString openingTags;
 	QString closingTags;
 	bool isLast;
+	QString header;
+	QString footer;
 };
 
 #endif // POSTWIDGET_H

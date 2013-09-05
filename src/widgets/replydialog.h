@@ -22,7 +22,7 @@ class ReplyDialog : public QDialog
 	Q_OBJECT
 	
 public:
-	explicit ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, QWidget *parent);
+	explicit ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, const QString &header, const QString &footer, QWidget *parent);
 	virtual ~ReplyDialog();
 	
 	int latestPostedImageNumber() const;
@@ -62,8 +62,7 @@ private:
 	ProgressContainer<AbstractImage> images;
 	ProgressContainer<PostWidget> posts;
 	typedef ProgressContainer<AbstractImage>::Item ImageItem;
-	typedef ProgressContainer<PostWidget>::Item PostItem;
-	
+	typedef ProgressContainer<PostWidget>::Item PostItem;	
 	
 	QPushButton *likeButton;
 	QString m_threadId, m_threadTitle;

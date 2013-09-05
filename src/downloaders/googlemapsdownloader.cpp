@@ -48,7 +48,9 @@ void GoogleMapsDownloader::finished(QNetworkReply *reply)
 		qDebug() << QObject::tr("Błąd otwierania mapy.");
 		return;
 	}
-
+	
 	reply->deleteLater();
-	maps.take(reply->url())->setImage(image);
+	
+	if (maps.contains(reply->url()))
+		maps.take(reply->url())->setImage(image);
 }

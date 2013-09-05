@@ -47,18 +47,11 @@ QString AbstractImage::toBBCode() const
 		(code.*add)("\n");
 	(code.*add)(caption().trimmed());
 	
-	code.prepend(header + "\n");
-	code.append("\n\n" + footer);
+//	code = code.trimmed();
+	
+//	code.prepend(header + "\n\n");
+//	code.append("\n\n" + footer);
 	return code.trimmed();
 }
 
-void AbstractImage::setHeader(QString text)
-{
-	header = text.trimmed();
-}
-
-void AbstractImage::setFooter(QString text)
-{
-	footer = text.trimmed();
-}
 

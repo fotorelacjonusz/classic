@@ -119,7 +119,7 @@ private:
 
 	QSettings &m_settings;
 
-	QPixmap logo;
+	QImage logo;
 	QColor m_imageMapColor;
 	QString tosFormat;
 	UploaderFactory factory;
