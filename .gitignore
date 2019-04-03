@@ -1,0 +1,24 @@
+
+# /
+/*.pro.user
+/*.qm
+/secret*
+/.directory
+
+# /debian/
+/debian/debian
+/debian/*.deb
+/debian/*.rpm
+
+# /mac/
+/mac/*.dmg
+
+# /res/
+/res/*.pro.user
+/res/*.qm
+/res/secret*
+/res/.directory
+
+# /third-party/
+/third-party/zlib
+/third-party/exiv2
