@@ -8,7 +8,7 @@ TEMPLATE = app
 TARGET = fotorelacjonusz
 VERSION = 2.99.0
 
-QT += core gui network webkit webkitwidgets script widgets xml xmlpatterns
+QT += core gui network script webengine webenginewidgets widgets xml xmlpatterns
 
 # Enable C++11 explicitly, which should make proper stdlib available.
 # Required to compile at least on OS X.
