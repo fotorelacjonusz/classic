@@ -20,8 +20,9 @@ Suppress::~Suppress()
 
 void messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)
 {
-	if (type != QtFatalMsg && Suppress::suppress)
-		return;
+//	Disable some old log suppressing (?) by KamilOst
+//	if (type != QtFatalMsg && Suppress::suppress)
+//		return;
 	
 	QByteArray localMsg(msg.toLocal8Bit());
 	switch (type) {
