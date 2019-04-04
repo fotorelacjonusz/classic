@@ -6,9 +6,7 @@
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=4
 
-QT       += core gui network webkit script xml xmlpatterns
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui network webkit script widgets xml xmlpatterns
 
 TARGET = fotorelacjonusz
 TEMPLATE = app
