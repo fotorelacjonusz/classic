@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 	
-	qInstallMsgHandler(messageHandler);
+	qInstallMessageHandler(messageHandler);
 	
 	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 	QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
