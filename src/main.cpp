@@ -42,9 +42,6 @@ int main(int argc, char *argv[])
 	
 	qInstallMessageHandler(messageHandler);
 	
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-	
 	QPixmapCache::setCacheLimit(524288);
 
 	Application a(argc, argv);
