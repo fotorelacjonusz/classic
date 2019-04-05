@@ -9,6 +9,7 @@
 #include <QDesktopServices>
 #include <QDebug>
 #include <QTime>
+#include <QMimeData>
 
 #define FOTORELACJONUSZ_DIR_CSTR ".fotorelacjonusz"
 

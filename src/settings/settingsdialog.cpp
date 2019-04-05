@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QIntValidator>
 #include <QToolButton>
+#include <QAction>
 
 #define ENUM_STR(Enum, Var) QString(metaObject()->enumerator(metaObject()->indexOfEnumerator(#Enum)).valueToKey(Var))
 #define M(x) #x

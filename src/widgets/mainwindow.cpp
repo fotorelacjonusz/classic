@@ -16,6 +16,7 @@
 #include <QDateTime>
 #include <QShortcut>
 #include <QScrollBar>
+#include <QMimeData>
 
 QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://sourceforge.net/projects/fotorelacjonusz/ Author: Kamil Ostaszewski");
 
