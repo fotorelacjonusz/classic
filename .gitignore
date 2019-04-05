@@ -1,9 +1,6 @@
-
 # /
-/*.pro.user
-/*.qm
 /secret*
-/.directory
+/*.qm
 
 # /debian/
 /debian/debian
@@ -14,11 +11,63 @@
 /mac/*.dmg
 
 # /res/
-/res/*.pro.user
-/res/*.qm
 /res/secret*
-/res/.directory
 
 # /third-party/
 /third-party/zlib
 /third-party/exiv2
+
+# -------------------- ONES BELOW COME FROM -------------------- #
+#  https://github.com/github/gitignore/blob/master/Qt.gitignore  #
+# -------------------------------------------------------------- #
+
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt-es
+object_script.*.Release
+object_script.*.Debug
+*_plugin_import.cpp
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.qmlc
+*.jsc
+Makefile*
+*build-*
+
+# Qt unit tests
+target_wrapper.*
+
+# QtCreator
+*.autosave
+
+# QtCreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
+
+# QtCreator CMake
+CMakeLists.txt.user*
+
+# QtCreator 4.8< compilation database
+compile_commands.json
+
+# QtCreator local machine specific files for imported projects
+*creator.user*
+
