@@ -33,16 +33,15 @@ QMAKE_LFLAGS_DEBUG += -g -rdynamic
 QMAKE_CXXFLAGS_DEBUG -= -pipe
 
 INCLUDEPATH += \
-	src \
-	third-party/qtftp/include \
-	third-party/quazip
+	../third-party/qtftp/include \
+	../third-party/quazip
 
 LIBS += \
-	-L$$absolute_path("third-party/qtftp/lib", $$_PRO_FILE_PWD_) \
-	-L$$absolute_path("third-party/quazip/quazip", $$_PRO_FILE_PWD_)
+	-L$$absolute_path(../third-party/qtftp/lib", $$_PRO_FILE_PWD_) \
+	-L$$absolute_path(../third-party/quazip/quazip", $$_PRO_FILE_PWD_)
 
 win32 {
-	INCLUDEPATH += third-party/zlib
+	INCLUDEPATH += ../third-party/zlib
 	LIBS += -lquazip1
 	LIBS += -lQt5Ftp
 }
@@ -55,136 +54,136 @@ unix {
 TRANSLATIONS = fotorelacjonusz_en_US.ts
 
 SOURCES += \
-	src/main.cpp \
-	src/networkcookiejar.cpp \
-	src/messagehandler.cpp \
-	src/exception.cpp \
-	src/application.cpp \
-	src/embeddedjavascript.cpp \
-	src/widgets/threadedvalidator.cpp \
-	src/widgets/selectablewidget.cpp \
-	src/widgets/replydialog.cpp \
-	src/widgets/recentthreadsmenu.cpp \
-	src/widgets/questionbox.cpp \
-	src/widgets/progresscontainer.cpp \
-	src/widgets/postwidget.cpp \
-	src/widgets/ntppacket.cpp \
-	src/widgets/ntpclient.cpp \
-	src/widgets/mainwindow.cpp \
-	src/widgets/lineedit.cpp \
-	src/widgets/imagewidget.cpp \
-	src/widgets/imagemanipulation.cpp \
-	src/widgets/imagelabel.cpp \
-	src/widgets/gpxdialog.cpp \
-	src/widgets/colormanipulationtoolbar.cpp \
-	src/widgets/arrowwidget.cpp \
-	src/widgets/abstractimage.cpp \
-	src/settings/settingsmanager.cpp \
-	src/settings/settingsdialog.cpp \
-	src/settings/overlaylist.cpp \
-	src/settings/overlayimage.cpp \
-	src/settings/overlay.cpp \
-	src/settings/osmlayerdialog.cpp \
-	src/settings/displayslider.cpp \
-	src/downloaders/tilesdownloader.cpp \
-	src/downloaders/throttlednetworkmanager.cpp \
-	src/downloaders/gpsdata.cpp \
-	src/downloaders/googlemapsdownloader.cpp \
-	src/downloaders/geomap.cpp \
-	src/downloaders/abstractmapdownloader.cpp \
-	src/uploaders/uploaderfactory.cpp \
-	src/uploaders/networktransactionquery.cpp \
-	src/uploaders/networktransactionmultipart.cpp \
-	src/uploaders/networktransaction.cpp \
-	src/uploaders/jsonobject.cpp \
-	src/uploaders/isloginuploader.cpp \
-	src/uploaders/iscodeuploader.cpp \
-	src/uploaders/isanonuploader.cpp \
-	src/uploaders/imgurloginuploader.cpp \
-	src/uploaders/imguranonuploader.cpp \
-	src/uploaders/ftpuploader.cpp \
-	src/uploaders/abstractuploader.cpp \
-	src/myexif/exifimageheader.cpp \
-	src/myexif/exifrational.cpp \
-	src/myexif/exifvalue.cpp \
-	src/myexif/exififd.cpp \
-	src/myexif/exifmarker.cpp
+	main.cpp \
+	networkcookiejar.cpp \
+	messagehandler.cpp \
+	exception.cpp \
+	application.cpp \
+	embeddedjavascript.cpp \
+	widgets/threadedvalidator.cpp \
+	widgets/selectablewidget.cpp \
+	widgets/replydialog.cpp \
+	widgets/recentthreadsmenu.cpp \
+	widgets/questionbox.cpp \
+	widgets/progresscontainer.cpp \
+	widgets/postwidget.cpp \
+	widgets/ntppacket.cpp \
+	widgets/ntpclient.cpp \
+	widgets/mainwindow.cpp \
+	widgets/lineedit.cpp \
+	widgets/imagewidget.cpp \
+	widgets/imagemanipulation.cpp \
+	widgets/imagelabel.cpp \
+	widgets/gpxdialog.cpp \
+	widgets/colormanipulationtoolbar.cpp \
+	widgets/arrowwidget.cpp \
+	widgets/abstractimage.cpp \
+	settings/settingsmanager.cpp \
+	settings/settingsdialog.cpp \
+	settings/overlaylist.cpp \
+	settings/overlayimage.cpp \
+	settings/overlay.cpp \
+	settings/osmlayerdialog.cpp \
+	settings/displayslider.cpp \
+	downloaders/tilesdownloader.cpp \
+	downloaders/throttlednetworkmanager.cpp \
+	downloaders/gpsdata.cpp \
+	downloaders/googlemapsdownloader.cpp \
+	downloaders/geomap.cpp \
+	downloaders/abstractmapdownloader.cpp \
+	uploaders/uploaderfactory.cpp \
+	uploaders/networktransactionquery.cpp \
+	uploaders/networktransactionmultipart.cpp \
+	uploaders/networktransaction.cpp \
+	uploaders/jsonobject.cpp \
+	uploaders/isloginuploader.cpp \
+	uploaders/iscodeuploader.cpp \
+	uploaders/isanonuploader.cpp \
+	uploaders/imgurloginuploader.cpp \
+	uploaders/imguranonuploader.cpp \
+	uploaders/ftpuploader.cpp \
+	uploaders/abstractuploader.cpp \
+	myexif/exifimageheader.cpp \
+	myexif/exifrational.cpp \
+	myexif/exifvalue.cpp \
+	myexif/exififd.cpp \
+	myexif/exifmarker.cpp
 
 HEADERS += \
-	src/networkcookiejar.h \
-	src/messagehandler.h \
-	src/exception.h \
-	src/application.h \
-	src/embeddedjavascript.h \
-	src/widgets/threadedvalidator.h \
-	src/widgets/selectablewidget.h \
-	src/widgets/replydialog.h \
-	src/widgets/recentthreadsmenu.h \
-	src/widgets/questionbox.h \
-	src/widgets/progresscontainer.h \
-	src/widgets/postwidget.h \
-	src/widgets/ntppacket.h \
-	src/widgets/ntpclient.h \
-	src/widgets/mainwindow.h \
-	src/widgets/lineedit.h \
-	src/widgets/imagewidget.h \
-	src/widgets/imagemanipulation.h \
-	src/widgets/imagelabel.h \
-	src/widgets/gpxdialog.h \
-	src/widgets/colormanipulationtoolbar.h \
-	src/widgets/arrowwidget.h \
-	src/widgets/abstractimage.h \
-	src/settings/settingsmanager.h \
-	src/settings/settingsdialog.h \
-	src/settings/overlaylist.h \
-	src/settings/overlayimage.h \
-	src/settings/overlay.h \
-	src/settings/osmlayerdialog.h \
-	src/settings/displayslider.h \
-	src/downloaders/tilesdownloader.h \
-	src/downloaders/throttlednetworkmanager.h \
-	src/downloaders/gpsdata.h \
-	src/downloaders/googlemapsdownloader.h \
-	src/downloaders/geomap.h \
-	src/downloaders/abstractmapdownloader.h \
-	src/uploaders/uploaderfactory.h \
-	src/uploaders/networktransactionquery.h \
-	src/uploaders/networktransactionmultipart.h \
-	src/uploaders/networktransaction.h \
-	src/uploaders/jsonobject.h \
-	src/uploaders/isloginuploader.h \
-	src/uploaders/iscodeuploader.h \
-	src/uploaders/isanonuploader.h \
-	src/uploaders/imgurloginuploader.h \
-	src/uploaders/imguranonuploader.h \
-	src/uploaders/ftpuploader.h \
-	src/uploaders/abstractuploader.h \
-	src/myexif/exifrational.h \
-	src/myexif/exififd.h \
-	src/myexif/exifvalue.h \
-	src/myexif/exifmarker.h \
-	src/myexif/exifimageheader.h
+	networkcookiejar.h \
+	messagehandler.h \
+	exception.h \
+	application.h \
+	embeddedjavascript.h \
+	widgets/threadedvalidator.h \
+	widgets/selectablewidget.h \
+	widgets/replydialog.h \
+	widgets/recentthreadsmenu.h \
+	widgets/questionbox.h \
+	widgets/progresscontainer.h \
+	widgets/postwidget.h \
+	widgets/ntppacket.h \
+	widgets/ntpclient.h \
+	widgets/mainwindow.h \
+	widgets/lineedit.h \
+	widgets/imagewidget.h \
+	widgets/imagemanipulation.h \
+	widgets/imagelabel.h \
+	widgets/gpxdialog.h \
+	widgets/colormanipulationtoolbar.h \
+	widgets/arrowwidget.h \
+	widgets/abstractimage.h \
+	settings/settingsmanager.h \
+	settings/settingsdialog.h \
+	settings/overlaylist.h \
+	settings/overlayimage.h \
+	settings/overlay.h \
+	settings/osmlayerdialog.h \
+	settings/displayslider.h \
+	downloaders/tilesdownloader.h \
+	downloaders/throttlednetworkmanager.h \
+	downloaders/gpsdata.h \
+	downloaders/googlemapsdownloader.h \
+	downloaders/geomap.h \
+	downloaders/abstractmapdownloader.h \
+	uploaders/uploaderfactory.h \
+	uploaders/networktransactionquery.h \
+	uploaders/networktransactionmultipart.h \
+	uploaders/networktransaction.h \
+	uploaders/jsonobject.h \
+	uploaders/isloginuploader.h \
+	uploaders/iscodeuploader.h \
+	uploaders/isanonuploader.h \
+	uploaders/imgurloginuploader.h \
+	uploaders/imguranonuploader.h \
+	uploaders/ftpuploader.h \
+	uploaders/abstractuploader.h \
+	myexif/exifrational.h \
+	myexif/exififd.h \
+	myexif/exifvalue.h \
+	myexif/exifmarker.h \
+	myexif/exifimageheader.h
 
 FORMS += \
-	src/widgets/replydialog.ui \
-	src/widgets/postwidget.ui \
-	src/widgets/mainwindow.ui \
-	src/widgets/gpxdialog.ui \
-	src/settings/settingsdialog.ui \
-	src/settings/osmlayerdialog.ui \
-	src/uploaders/isloginuploader.ui \
-	src/uploaders/iscodeuploader.ui \
-	src/uploaders/isanonuploader.ui \
-	src/uploaders/imgurloginuploader.ui \
-	src/uploaders/imguranonuploader.ui \
-	src/uploaders/ftpuploader.ui
+	widgets/replydialog.ui \
+	widgets/postwidget.ui \
+	widgets/mainwindow.ui \
+	widgets/gpxdialog.ui \
+	settings/settingsdialog.ui \
+	settings/osmlayerdialog.ui \
+	uploaders/isloginuploader.ui \
+	uploaders/iscodeuploader.ui \
+	uploaders/isanonuploader.ui \
+	uploaders/imgurloginuploader.ui \
+	uploaders/imguranonuploader.ui \
+	uploaders/ftpuploader.ui
 
 RESOURCES += \
-	resource.qrc \
-	webscripts.qrc
+	../resource.qrc \
+	../webscripts.qrc
 
 # Prevent JavaScripts from being compiled to C++ sources.
 QTQUICK_COMPILER_SKIPPED_RESOURCES += webscripts.qrc
 
 OTHER_FILES += \
-	res/page.html
+	../res/page.html
