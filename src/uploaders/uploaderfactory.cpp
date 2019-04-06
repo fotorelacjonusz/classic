@@ -45,7 +45,8 @@ UploaderFactory::UploaderFactory()
 	UPLOADER(IsAnonyUploader, tr("Imageshack anonimowo"));
 	UPLOADER(IsCodeUploader, tr("Imageshack kod rejestracyjny"));
 	UPLOADER(IsLoginUploader, tr("Imageshack login i hasło"));
-	UPLOADER(FtpUploader, tr("Własne konto FTP"));
+//	TODO Re-enable me!  (See ftpuploader.h)
+//	UPLOADER(FtpUploader, tr("Własne konto FTP"));
 	UPLOADER(ImgurAnonyUploader, tr("Imgur anonimowo"));
 	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 }
