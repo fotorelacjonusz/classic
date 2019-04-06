@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	signal(SIGSEGV, handler);
 #endif
 	
-	const char *version = "2.5.5";
+	const char *version = "2.99.0";
 	if (argc >= 2 && QString(argv[1]) == "-v")
 	{
 		fprintf(stdout, "%s\n", version);
