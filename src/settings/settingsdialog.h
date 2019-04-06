@@ -11,7 +11,7 @@
 #include "osmlayerdialog.h"
 
 #define SETTINGS SettingsDialog::object()
-#define SSC_HOST "http://www.skyscrapercity.com"
+#define SSC_HOST "https://www.skyscrapercity.com"
 
 class AbstractUploader;
 class Overlay;
