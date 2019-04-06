@@ -51,7 +51,7 @@ Version::Version(QString version):
 	format(version.section('.', 1, 1).toInt()),
 	minor (version.section('.', 2, 2).toInt())
 {
-	Q_ASSERT(major * format * minor != 0);
+	Q_ASSERT(QRegExp("\\d+\\.\\d+\\.\\d+").exactMatch(version));
 }
 
 bool Version::isPhrCompatible(const Version &other)
