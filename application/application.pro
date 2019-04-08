@@ -37,8 +37,8 @@ INCLUDEPATH += \
 	../third-party/quazip
 
 LIBS += \
-	-L$$absolute_path(../third-party/qtftp/lib", $$_PRO_FILE_PWD_) \
-	-L$$absolute_path(../third-party/quazip/quazip", $$_PRO_FILE_PWD_)
+	-L$$absolute_path(../target/qtftp/lib", $$_PRO_FILE_PWD_) \
+	-L$$absolute_path("../target", $$_PRO_FILE_PWD_)
 
 win32 {
 	INCLUDEPATH += ../third-party/zlib
