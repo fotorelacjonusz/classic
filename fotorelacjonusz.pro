@@ -4,12 +4,34 @@
 #
 #-------------------------------------------------
 
-DEFINES += QT_DISABLE_DEPRECATED_BEFORE=4
+TEMPLATE = app
+TARGET = fotorelacjonusz
 
 QT += core gui network webkit webkitwidgets script widgets xml xmlpatterns
 
-TARGET = fotorelacjonusz
-TEMPLATE = app
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=4
+
+QMAKE_CXXFLAGS_DEBUG += -rdynamic
+QMAKE_LFLAGS_DEBUG += -g -rdynamic
+QMAKE_CXXFLAGS_DEBUG -= -pipe
+
+INCLUDEPATH += \
+	src \
+	third-party/quazip/quazip
+
+LIBS += \
+	-L../quazip
+
+win32 {
+	INCLUDEPATH += third-party/zlib
+	LIBS += -lquazip1
+}
+
+unix {
+	LIBS += -lquazip
+}
+
+TRANSLATIONS = fotorelacjonusz_en_US.ts
 
 SOURCES += \
 	src/main.cpp \
@@ -137,27 +159,5 @@ FORMS += \
 RESOURCES += \
 	resource.qrc
 
-LIBS += \
-	-L../quazip
-
-INCLUDEPATH += \
-	src \
-	third-party/quazip/quazip
-
-win32 {
-	LIBS += -lquazip1
-	INCLUDEPATH += third-party/zlib
-}
-
-unix {
-	LIBS += -lquazip
-}
-
 OTHER_FILES += \
 	res/page.html
-
-TRANSLATIONS = fotorelacjonusz_en_US.ts
-
-QMAKE_CXXFLAGS_DEBUG += -rdynamic
-QMAKE_LFLAGS_DEBUG += -g -rdynamic
-QMAKE_CXXFLAGS_DEBUG -= -pipe
