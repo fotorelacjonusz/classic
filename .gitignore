@@ -1,6 +1,8 @@
 # /
 /secret*
 /*.qm
+# Here subprojects' target files are written
+/target
 
 # /debian/
 /debian/debian
