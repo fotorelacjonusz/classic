@@ -17,10 +17,10 @@ QMAKE_CXXFLAGS_DEBUG -= -pipe
 
 INCLUDEPATH += \
 	src \
-	third-party/quazip/quazip
+	third-party/quazip
 
 LIBS += \
-	-L../quazip
+	-L$$absolute_path("third-party/quazip/quazip", $$_PRO_FILE_PWD_)
 
 win32 {
 	INCLUDEPATH += third-party/zlib
