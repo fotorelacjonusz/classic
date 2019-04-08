@@ -1,0 +1,55 @@
+# Fotorelacjonusz
+
+It's really easy to use, you only need to:
+
+. Toss some photos into the app
+. Make some captions (or not)
+. Click "Post on SSC"
+. Log in and enter desired thread
+
+Example usage: http://youtube.com/watch?v=v-WCcN0_4YY +
+The "photo report" is here: http://www.skyscrapercity.com/showthread.php?p=94577034#post94577034
+
+link:FEATURES.adoc[Further reading]
+
+## Dependencies, legal
+
+* Application has been made with https://www.qt.io/developers/[Qt]. It needs: core, gui, network, webkit, script and xml modules (version >= 4.8)
+* It depends on https://sourceforge.net/p/quazip/wiki/Home/[QuaZIP library]
+* It uses icons from http://www.oxygen-icons.org/[Oxygen theme]
+* Application license: https://www.gnu.org/licenses/gpl-2.0.html[GNU GPL2]
+
+## Building
+
+To build on **linux** you only need to provide your secrets.h file, which looks like:
+
+[source,c++]
+----
+#ifndef SECRETS_H
+#define SECRETS_H
+
+#define IMGUR_CLIENT_ID "sdfdsfsdf"
+#define IMGUR_CLIENT_SECRET "sdfsdfsdfsd"
+#define IMAGESHACK_KEY "asdfsdfsdffsf"
+#define PASSWORD_RAW_KEY "sdfdsfsdfsd"
+
+#endif // SECRETS_H
+----
+
+To build on **windows** you also need to provide zlib headers in third-party directory.
+
+You should compile projects in following order: quazip (svn external), translations, fotorelacjonusz.
+
+## Help
+
+* You can contact me in these topics on SSC:
+  * http://www.skyscrapercity.com/showthread.php?t=1539539 (polish thread)
+  * http://www.skyscrapercity.com/showthread.php?t=1611281 (international thread)
+* link:FAQ.adoc[FAQ]
+* link:TROUBLESHOOTING.adoc[Troubleshooting]
+
+## TODO
+
+* Mac build
+* other upload methods
+* windows installer

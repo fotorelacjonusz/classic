@@ -1,0 +1,13 @@
+# Frequently Asked Questions
+
+[qanda]
+Is this application paid?::
+    Nope.
+Do I need to register in order to use the application?::
+    Nope. But you might need a SSC account.
+Will the application steal my password?::
+    Nope.
+Does the application have any hardware requirements?::
+    Nope.
+Can I remove "Photo report posted automatically." link?::
+    Yup, in the application itself or by editing the post.

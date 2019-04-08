@@ -1,0 +1,33 @@
+# Troubleshooting
+
+[qanda]
+The posts are shuffled.::
+    It's the forum misbehaving, not the app. See option "Post space" under "General" tab in settings and it's description.
+How to get rid of those maps?::
+    You can disable them in "Maps" tab in settings.
+The application displays error asking if I have enough free memory.::
+    Most probably you don't have enough of it. Try closing other applications, or don't load so many photos at once.
+The application keeps displaying that error no matter what I do.::
+    There are too many images in the application, and no free memory for anything. Solution as above.
+I don't know how to make the application do...::
+    Try looking in File -> Settings. There are many options there. Those potentially unclear have additional explanation shown when you hover mouse above them.
+I still don't know what this settings option does...::
+    Many of them have immediate and visible effect just after you click "Ok". Try loading a few photos and experimenting with settings.
+A logo loaded in settings dialog is too big.::
+    The application doesn't scale the logo. It should be prepared in external graphics editor.
+Settings dialog expands to enormous size after loading a logo::
+    As above.
+I can't click anywhere in the embedded forum browser while posting photo report.::
+    Embedded browser is deliberately disabled during posting.
+Image quality is insufficient.::
+    Check "Jpg quality" option in settings dialog under "Image size" tab.
+I'm getting following error: "undefined symbol: _ZN14QHttpMultiPartC1ENS_11ContentTypeEP7QObject" (linux specyfic)::
+    Application needs Qt 4.8 or later, as QHttpMultiPart class was introduced in this version.
+System says "libquazip.so.4 not found" (linux specyfic)::
+    You need to run the application using fotorelacjonusz2.sh script.
+I've probably done something wrong and the posts are all messed up...::
+    Try again, don't be afraid to mess things up. You can always delete bad posts. The application is patient, hosting services are patient, forum is patient, moderators not always.
+I got some other error, not mentioned on this page.::
+    Check if the error keeps repeating. Make a screenshot and post it on the forum. Describe conditions under which the error occurred.
+I got some other error on loading photos to the application.::
+    As above + reproduce the error with minimal photo number in the application, and attach those photos.

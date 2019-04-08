@@ -1,0 +1,32 @@
+# Overlays
+
+## Create
+
+To make your own map layer you will need google-earth and, of course, an image of the layer. The image has to be saved on the disk (not referenced by a url) and can't be bigger than 8192x8192 px. This constraint is listed in google-earth's Help->GoogleEarth - Information window, as "Texture maximum size" and can vary depending on the machine.
+
+Once in google-earth make an overlay according to https://www.youtube.com/watch?v=D9LcwbwQgzk&feature=player_embedded[these instructions]. **You are encouraged to group overlays in folders**. To do this you only need to create a folder (under "My places" on the left in google-earth) and drag & drop overlays to that folder. You can give description to the created folder/single overlay. It will be visible later in the overlay thumbnail.
+
+Next, right click on the overlay and save it as a kmz file. Kml file only references images on the disk, while kmz file is a zipped kml file + the images. That's what we need. Next open fotorelacjonusz, click File -> Settings -> Overlays, drag & drop your kmz file on the list of overlays. If the import is successful you will see a green ok mark, otherwise a red cross with an error string. Fotorelacjonusz converts kmz to its own file format by rotating included image file, so this action doesn't have to be repeated every time the application starts. Imported overlay will be saved as a jpg file with 1400px in width, representing embedded overlays. Overlay files are stored in "overlays" folder in your fotorelacjonusz main directory, or in "$HOME/.fotorelacjonusz" if the former doesn't exist.
+
+Importing a kmz file may take a second or two as the rotation operation is expensive in time, especially with big image on slow computer.
+
+## Share
+
+Anyone who has made an overlay can host it either in kmz format or jpg format. The jpg format is more suitable for this purpose, as it gives a preview of the overlay. You can access your overlays as files if you click "Manage Overlays" in "Overlays" tab.
+
+I host a gallery of overlays at: http://k14.vdl.pl/ssc/fotorelacjonusz-overlays It is important to force content disposition as attachment on jpg files so the whole file gets downloaded, not only the preview image. If you like my gallery, contact me for sources.
+
+## Download
+
+You can download and import both formats, kmz and jpg. The import of a jpg file is the same as of kmz; open fotorelacjonusz, click File -> Settings -> Overlays, drag & drop your jpg file on the list of overlays.
+
+## Examples
+
+Common map
+TODO missing image: Overlay example common map
+
+1. When photo has no direction tag:
+TODO missing image: Overlay example no direction
+
+2. With direction:
+TODO missing image: Overlay example with direction
