@@ -14,6 +14,8 @@ QT += core gui network webkit webkitwidgets script widgets xml xmlpatterns
 # Required to compile at least on OS X.
 CONFIG += c++11
 
+# Fotorelacjonusz relies on some Qt4 APIs which are now deprecated, but still
+# available for legacy software.  This should be removed at some point.
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=4
 
 # Make version number accessible in the application via PROGRAM_VERSION macro
