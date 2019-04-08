@@ -10,6 +10,10 @@ VERSION = 2.99.0
 
 QT += core gui network webkit webkitwidgets script widgets xml xmlpatterns
 
+# Enable C++11 explicitly, which should make proper stdlib available.
+# Required to compile at least on OS X.
+CONFIG += c++11
+
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=4
 
 # Make version number accessible in the application via PROGRAM_VERSION macro
