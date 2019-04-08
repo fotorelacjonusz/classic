@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QIntValidator>
 #include <QToolButton>
+#include <QAction>
 
 #define ENUM_STR(Enum, Var) QString(metaObject()->enumerator(metaObject()->indexOfEnumerator(#Enum)).valueToKey(Var))
 #define M(x) #x
@@ -89,7 +90,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	imageMapType        .init(makeInput("image_map/type",             ui->imageMapType,          2),   this, &SettingsDialog::imageMapTypeFunc);
 	imageMapOpacity     .init(makeInput("image_map/opacity",          ui->imageMapOpacity,       100), this, &SettingsDialog::imageMapOpacityFunc);
 	imageMapCorner      .init(makeInput("image_map/position",         ui->imageMapPosition,      2),   this, &SettingsDialog::imageMapCornerFunc);
-	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,          Qt::red));
+	imageMapColor       .init(makeInput("image_map/color",            &m_imageMapColor,          QColor(Qt::red)));
 	imageMapZoom        .init(makeInput("image_map/zoom",             ui->imageMapZoom,          14));
 	imageMapCircle      .init(makeInput("image_map/circle",           ui->imageMapCircle,        false));
 	imageMapMargin      .init(makeInput("image_map/margin",           ui->imageMapMargin,        10));

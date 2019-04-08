@@ -40,10 +40,7 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 	
-	qInstallMsgHandler(messageHandler);
-	
-	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-	QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+	qInstallMessageHandler(messageHandler);
 	
 	QPixmapCache::setCacheLimit(524288);
 

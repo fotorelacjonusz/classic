@@ -1,6 +1,7 @@
 #include "exifvalue.h"
 
 #include <QVariant>
+#include <QDataStream>
 
 ExifValueBase::ExifValueBase(quint16 type):
 	type(type)

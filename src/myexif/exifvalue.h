@@ -5,6 +5,7 @@
 #include "exception.h"
 #include <QVector>
 #include <QDateTime>
+#include <QSharedPointer>
 
 typedef quint8 exifbyte;
 typedef quint16 exifshort;

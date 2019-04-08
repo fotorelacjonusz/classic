@@ -18,26 +18,31 @@ Suppress::~Suppress()
 	suppress = false;
 }
 
-void messageHandler(QtMsgType type, const char *msg)
+void messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)
 {
-	if (type != QtFatalMsg && Suppress::suppress)
-		return;
+//	Disable some old log suppressing (?) by KamilOst
+//	if (type != QtFatalMsg && Suppress::suppress)
+//		return;
 	
-	switch (type) 
-	{
+	QByteArray localMsg(msg.toLocal8Bit());
+	switch (type) {
 		case QtDebugMsg:
-			fprintf(stderr, "%s\n", msg);
+			fprintf(stderr, "Debug: %s (%s:%u, %s)\n",    localMsg.constData(), context.file, context.line, context.function);
+			break;
+		case QtInfoMsg:
+			fprintf(stderr, "Info: %s (%s:%u, %s)\n",     localMsg.constData(), context.file, context.line, context.function);
 			break;
 		case QtWarningMsg:
-			fprintf(stderr, "%s\n", msg);
+			fprintf(stderr, "Warning: %s (%s:%u, %s)\n",  localMsg.constData(), context.file, context.line, context.function);
 			break;
 		case QtCriticalMsg:
-			fprintf(stderr, "%s\n", msg);
+			fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
 			break;
 		case QtFatalMsg:
-			fprintf(stderr, "%s\n", msg);
-			abort();
-	}
+			fprintf(stderr, "Fatal: %s (%s:%u, %s)\n",    localMsg.constData(), context.file, context.line, context.function);
+			break;
+		}
+
 #ifdef Q_OS_WIN32
 	fflush(stderr);
 #endif

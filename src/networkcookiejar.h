@@ -2,6 +2,8 @@
 #define NETWORKCOOKIEJAR_H
 
 #include <QNetworkCookieJar>
+#include <QNetworkCookie>
+
 class QSettings;
 
 class NetworkCookieJar : public QNetworkCookieJar
