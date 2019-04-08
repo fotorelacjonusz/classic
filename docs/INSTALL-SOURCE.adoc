@@ -1,0 +1,100 @@
+= Building Fotorelacjonusz from the source code
+
+**This document is certainly a piece of work-in-progress.**
+
+It is assumed that reader has some basic programming experience at least.
+Some hints may be slightly inaccurate or may require adjustments specific
+for the host's system.  In such case, other documentation pages may come handy.
+
+Feedback is welcome.
+
+== Prerequisites
+
+1.  (__Mac-specific__)  Command line tools are not enough.  Install XCode, then
+switch to XCode's compilers.  Typically, following does the latter:
++
+[source,bash]
+--------------------------------------------------------------------------------
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+--------------------------------------------------------------------------------
++
+See also: https://stackoverflow.com/a/35098040/304175.
+
+2.  Install zlib (unless you have it already, which is quite typical).
+
+3.  Obtain Qt 5.5.  Online installer should be preferred, which can be
+    downloaded from https://download.qt.io/official_releases/online_installers/.
+
+== Source code
+
+[start=4]
+4.  Clone this repository.  Don't forget about submodules (`--recursive`):
++
+[source,bash]
+--------------------------------------------------------------------------------
+git clone --recursive https://github.com/skalee/fotorelacjonusz.git
+--------------------------------------------------------------------------------
+
+== API keys
+
+[start=5]
+5.  Obtain API keys for services you need.  For Imgur, see
+    https://apidocs.imgur.com[Imgur docs].
+
+6. Prepare a `secrets.h` header file in the application's root directory.
+It should look like this:
++
+[source,cpp]
+.secrets.h
+--------------------------------------------------------------------------------
+#ifndef SECRETS_H
+#define SECRETS_H
+
+#define IMGUR_CLIENT_ID "sdfdsfsdf"
+#define IMGUR_CLIENT_SECRET "sdfsdfsdfsd"
+#define IMAGESHACK_KEY "asdfsdfsdffsf"
+#define PASSWORD_RAW_KEY "sdfdsfsdfsd"
+
+#endif // SECRETS_H
+--------------------------------------------------------------------------------
+
+== Compilation (console)
+
+NOTE: Following steps assume that Qt build tools (`qmake`, `lrelease`) are in
+path.  Adjust these commands accordingly otherwise.
+
+[start=7]
+7.  Compile QuaZIP, preferably as a static library.  On my computer, some
+    additional options were required as in following example.
++
+[source,bash]
+--------------------------------------------------------------------------------
+cd <fotorelacjousz-root>/third-party/quazip
+qmake CONFIG+=staticlib CONFIG+=c++11 LIBS+=-lz
+make
+--------------------------------------------------------------------------------
+
+8.  Build translations.
++
+[source,bash]
+--------------------------------------------------------------------------------
+cd <fotorelacjousz-root>
+lrelease fotorelacjonusz.pro
+make
+--------------------------------------------------------------------------------
+
+9. Build Fotorelacjonusz
++
+[source,bash]
+--------------------------------------------------------------------------------
+cd <fotorelacjousz-root>
+qmake
+make
+--------------------------------------------------------------------------------
+
+== Compilation (Qt Creator)
+
+Project compiles easily in Qt Creator, no additional tweaks should be required.
+However, it is advised to build QuaZIP and translations in console.  Yes, this
+can be done from Qt Creator as well, but I am not going to document this before
+I simplify it a bit.
