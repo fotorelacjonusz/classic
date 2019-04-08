@@ -1,0 +1,39 @@
+# Features explained
+
+. Photo report preview
+  * numbering photos
+  * photo captions
+  * arrow pointers with captions
+  * branching arrows
+  * color manipulation (contrast/brightness/gamma) + undo
+  * image rotation
+  * arranging photos in any order
+  * maximum number of photos is limited only by free memory
+. Automatic upload of photos to a chosen hosting server
+  * imageshack anonymous
+  * imageshack registration code
+  * imageshack login and password
+  * ftp account
+  * imgur anonymous
+  * imgur authorized
+. Saving photo report to one file as a backup or for later upload
+. Superimposing your logo on photos
+  * adjustable position, margin
+  * inverting colors on dark background
+. Superimposing geo tags based maps on photos
+  * using Google maps
+  * using any OSM-format layer
+  * many configuration options (zoom, size, shape etc.)
+  * common map for all photos
+. Import of google earth's overlays as custom map layer
+  * helpful in visualizing photo location on road's blueprints
+  * how to: [link:OVERLAYS.adoc[Overlays]]
+. Other settings options include, but are not limited to:
+  * photos number per post
+  * adding "Tbc ..." at the end of a post
+  * decorative border around photos
+  * start numbering from given number
+  * time space between posts
+  * extra tags for each post
+  * forum browser home page selection
+  * recent threads menu
