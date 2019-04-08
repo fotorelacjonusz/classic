@@ -3,7 +3,7 @@
 # top-most EditorConfig file
 root = true
 
-[*.{h,hpp,c,cpp,pri,pro,js}]
+[*.{h,hpp,c,cpp,pri,pro,js,sh}]
 charset = utf-8
 end_of_line = lf
 indent_style = tab
@@ -11,6 +11,14 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [*.{adoc,md,html}]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{yml,yaml}]
 charset = utf-8
 end_of_line = lf
 indent_size = 2
