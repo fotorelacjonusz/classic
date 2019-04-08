@@ -32,11 +32,10 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_UNIX
 	signal(SIGSEGV, handler);
 #endif
-	
-	const char *version = "2.99.0";
+
 	if (argc >= 2 && QString(argv[1]) == "-v")
 	{
-		fprintf(stdout, "%s\n", version);
+		fprintf(stdout, "%s\n", PROGRAM_VERSION);
 		return 0;
 	}
 	
@@ -47,7 +46,7 @@ int main(int argc, char *argv[])
 	Application a(argc, argv);
 	a.setApplicationName("fotorelacjonusz");
 	a.setOrganizationName("Kamil Ostaszewski software");
-	a.setApplicationVersion(version);
+	a.setApplicationVersion(PROGRAM_VERSION);
 
 	QString locale = QLocale::system().name();
 	QTranslator translator;

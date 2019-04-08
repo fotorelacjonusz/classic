@@ -6,10 +6,14 @@
 
 TEMPLATE = app
 TARGET = fotorelacjonusz
+VERSION = 2.99.0
 
 QT += core gui network webkit webkitwidgets script widgets xml xmlpatterns
 
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=4
+
+# Make version number accessible in the application via PROGRAM_VERSION macro
+DEFINES += PROGRAM_VERSION=\\\"$$VERSION\\\"
 
 QMAKE_CXXFLAGS_DEBUG += -rdynamic
 QMAKE_LFLAGS_DEBUG += -g -rdynamic
