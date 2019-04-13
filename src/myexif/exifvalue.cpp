@@ -329,5 +329,3 @@ void ExifValue::writeUndefined(QDataStream &stream, QDataStream &valueStream) co
 	memcpy(vector.data(), data.constData(), data.size());
 	writeVector(stream, valueStream, vector);
 }
-
-

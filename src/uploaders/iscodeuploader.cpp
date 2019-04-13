@@ -23,4 +23,3 @@ QString IsCodeUploader::uploadImage(QString filePath, QIODevice *image)
 	tr->addHttpPart("cookie", ui->codeEdit->text().toAscii());
 	return postTransaction(tr, image);
 }
-

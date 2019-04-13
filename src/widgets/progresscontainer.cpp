@@ -104,4 +104,3 @@ void ProgressContainerBase::increaseExtraProgress(qreal progress)
 	m_progress += progress;
 	update();
 }
-

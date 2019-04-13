@@ -91,4 +91,3 @@ void ColorManipulationToolBar::on_colorManipulationBar_orientationChanged(Qt::Or
 	brightnessSlider->setFixedSize(w, h);
 	gammaSlider->setFixedSize(w, h);
 }
-

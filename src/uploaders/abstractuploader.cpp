@@ -120,4 +120,3 @@ void AbstractUploader::fixLayout(QFormLayout *child)
 				parent->setWidget(parentRows + row, role, child->itemAt(row, role)->widget());
 	}
 }
-

@@ -113,4 +113,3 @@ void OSMLayerDialog::accept()
 		QDialog::accept();
 	}
 }
-

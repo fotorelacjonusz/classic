@@ -55,5 +55,3 @@ UploaderFactory::~UploaderFactory()
 {
 	qDeleteAll(uploaders);
 }
-
-

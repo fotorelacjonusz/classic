@@ -232,4 +232,3 @@ void GeoMap::blur(QImage &image, QRect src, QRect dst)
     label.setPixmap(QPixmap::fromImage(image.copy(src)));
     label.render(&image, dst.topLeft());
 }
-

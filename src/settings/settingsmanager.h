@@ -259,15 +259,3 @@ template<>void     SettingsManager::Field<>::fromVariant(QVariant variant);
 
 
 #endif // SETTINGSMANAGER_H
-
-
-
-
-
-
-
-
-
-
-
-

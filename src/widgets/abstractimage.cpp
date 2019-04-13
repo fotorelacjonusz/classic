@@ -53,5 +53,3 @@ QString AbstractImage::toBBCode() const
 //	code.append("\n\n" + footer);
 	return code.trimmed();
 }
-
-

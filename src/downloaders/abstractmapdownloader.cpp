@@ -72,5 +72,3 @@ QRect resized(const QRect &rect, QSize size)
 {
 	return centered(rect.center(), size);
 }
-
-
