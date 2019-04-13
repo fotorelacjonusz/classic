@@ -5,7 +5,7 @@
 
 #include <QMetaType>
 
-//	const int maxWidth = SETTINGS->imageLength + (SETTINGS->imageMapCorner >= SettingsDialog::Expand ? SETTINGS->imageMapSize : 0), 
+//	const int maxWidth = SETTINGS->imageLength + (SETTINGS->imageMapCorner >= SettingsDialog::Expand ? SETTINGS->imageMapSize : 0),
 //			maxHeight = maxWidth * 0.75, margin = 50;
 
 // common map options:
@@ -34,7 +34,7 @@ void AbstractMapDownloader::finished(QNetworkReply *reply)
 QSize AbstractMapDownloader::maxSize() const
 {
 	int width = SETTINGS->imageLength;
-	if (SETTINGS->imageMapCorner == SettingsDialog::ExpandLeft || 
+	if (SETTINGS->imageMapCorner == SettingsDialog::ExpandLeft ||
 		SETTINGS->imageMapCorner == SettingsDialog::ExpandRight)
 		width += SETTINGS->imageMapSize;
 	return QSize(width, width * 0.6);

@@ -13,17 +13,17 @@ class ColorManipulationToolBar : public QToolBar
 public:
 	explicit ColorManipulationToolBar(QWidget *parent = 0);
 	~ColorManipulationToolBar();
-	
+
 public slots:
 	void setWidget(ImageWidget *widget);
 	void on_action_undo_colors();
-	
+
 private slots:
 	void on_colorManipulationBar_orientationChanged(Qt::Orientation orientation);
 
 private:
 	QSlider *contrastSlider, *brightnessSlider, *gammaSlider;
-	
+
 };
 
 #endif // COLORMANIPULATIONTOOLBAR_H

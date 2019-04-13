@@ -151,17 +151,17 @@ public:
 		MirroredAntidiagonally = 7,
 		RotatedLeft = 8
 	};
-	
+
 	ExifImageHeader();
 	explicit ExifImageHeader(const QString &filePath);
     ~ExifImageHeader();
-	
+
 	bool loadFromJpeg(const QString &filePath);
     bool loadFromJpeg(QIODevice *device);
-    
+
 	bool saveToJpeg(const QString &filePath) const;
     bool saveToJpeg(QIODevice *device) const;
-	
+
 	QList<ImageTag> imageTags() const;
     QList<ExtendedTag> extendedTags() const;
     QList<GpsTag> gpsTags() const;
@@ -184,31 +184,31 @@ public:
 
     QImage thumbnail() const;
 	void setThumbnail(const QImage &thumbnail = QImage());
-	
+
 	OrientationTag orientation() const;
 	void setOrientation(OrientationTag orientation = Horizontal);
 	QMatrix reverseMatrixForOrientation() const;
-	
+
 	QPointF gpsPosition() const;
 	void setGpsPosition(QPointF position);
-	
+
 private:
 	static qreal dmsToReal(const ExifValue &dms, const ExifValue &ref);
 	static ExifValue realToDms(qreal real);
 //	static ExifValue realtoRef(qreal real, bool lon);
-	
+
 	const ExifIfd exifIFD() const;
 	const ExifIfd gpsIFD() const;
 	ExifIfd &exifIFD();
 	ExifIfd &gpsIFD();
-	
+
 	void loadFromJpeg(QDataStream &fileStream) throw (Exception);
 	void saveToJpeg(QDataStream &fileStream) const throw (Exception);
 	void saveToJpeg(ExifMarker app1) const throw (Exception);
-	
+
 	typedef QMap<int, ExifIfd> ExifIfdMap;
 	ExifIfdMap ifds;
-	
+
 	QDataStream::ByteOrder byteOrder;
 	static const QByteArray exifHeader;
 };

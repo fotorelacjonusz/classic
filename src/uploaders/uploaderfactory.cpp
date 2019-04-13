@@ -23,7 +23,7 @@ public:
 	Wrapper(QString name):
 		AbstractWrapper(name)
 	{}
-	
+
 	virtual ~Wrapper()
 	{
 		delete object;

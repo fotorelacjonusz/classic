@@ -12,18 +12,18 @@ class QNetworkReply;
 class ThrottledNetworkManager : public QObject
 {
 	Q_OBJECT
-	
+
 public:
 	explicit ThrottledNetworkManager(int limit = 100, QObject *parent = 0);
 	void get(QNetworkRequest request, AbstractMapDownloader *downloader);
-	
+
 	QNetworkAccessManager *manager();
 public slots:
 	void finished(QNetworkReply *reply);
-	
+
 protected:
 	void start();
-		
+
 private:
 	QNetworkAccessManager m_manager;
 	QNetworkDiskCache cache;

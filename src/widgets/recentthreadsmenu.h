@@ -12,17 +12,17 @@ class RecentThreadsMenu : public QMenu
 public:
 	explicit RecentThreadsMenu(QSettings &settings, QWidget *parent = 0);
 	virtual ~RecentThreadsMenu();
-	
+
 protected:
 	QAction *addUpdateAction(QString threadId);
-	
+
 public slots:
 	void threadPosted(QString threadId, QString threadTitle, int imageNumber);
 	void unselect();
-	
+
 private slots:
 	void actionTriggered(bool checked);
-	
+
 protected:
 	QSettings &settings;
 	QVariantHash threadTitles;

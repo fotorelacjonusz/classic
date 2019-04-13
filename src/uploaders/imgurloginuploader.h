@@ -12,7 +12,7 @@ class ImgurLoginUploader;
 class ImgurLoginUploader : public ImgurAnonyUploader
 {
 	Q_OBJECT
-	
+
 public:
 	explicit ImgurLoginUploader(QWidget *parent, QSettings &settings);
 	~ImgurLoginUploader();

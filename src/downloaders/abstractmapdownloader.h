@@ -11,23 +11,23 @@ class GpsData;
 class GeoMap;
 class OverlayImage;
 
-class AbstractMapDownloader 
+class AbstractMapDownloader
 {
 protected:
 	typedef QPair<OverlayImage *, qreal> DistancePair;
 	AbstractMapDownloader();
-	
+
 public:
 	virtual ~AbstractMapDownloader();
 	virtual void finished(QNetworkReply *reply);
 	virtual bool makeMap(GeoMap *map) = 0;
-	
+
 protected:
 	QSize maxSize() const;
 	static const int margin;
 };
 
-/* 
+/*
  * Class bypasses direct calling of makeMap using signal-slot connection,
  * so the subclass can block in makeMapSlot using QEventLoop.
  * It assumes map creation will always succeed.
@@ -35,16 +35,16 @@ protected:
 class AsyncMapDownloader : public QObject, public AbstractMapDownloader
 {
 	Q_OBJECT
-	
+
 protected:
 	AsyncMapDownloader();
 
 public:
 	virtual bool makeMap(GeoMap *map); // final
-	
+
 signals:
 	void makeMapSignal(GeoMap *map);
-		
+
 protected slots:
 	virtual void makeMapSlot(GeoMap *map) = 0;
 };

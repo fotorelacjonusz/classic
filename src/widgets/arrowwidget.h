@@ -14,7 +14,7 @@ public:
 	explicit ArrowWidget(QPoint start, QPoint end, QWidget *parent, QString initialText);
 	void invert();
 	void setColor(QColor newColor);
-	
+
 public slots:
 	void setEnd(QPoint _end);
 	void showEdit(QString text = QString());

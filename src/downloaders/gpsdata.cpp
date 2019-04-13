@@ -32,7 +32,7 @@ GpsData::GpsData(QIODevice *image, const int *const number):
 {
 	if (!exifHeader->loadFromJpeg(image))
 		return;
-	
+
 	QPointF position = exifHeader->gpsPosition();
 	if (!position.isNull())
 	{
@@ -65,7 +65,7 @@ GpsData::GpsData():
 	tilesDownloader(new TilesDownloader()),
 	exifHeader(new ExifImageHeader())
 {
-	SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->numberImages, &SETTINGS->startingNumber, &SETTINGS->addCommonMap, 
+	SETTINGS->connectMany(this, SLOT(downloadMap()), &SETTINGS->numberImages, &SETTINGS->startingNumber, &SETTINGS->addCommonMap,
 						  &SETTINGS->commonMapType, &SETTINGS->imageMapColor, &SETTINGS->useOverlayCommonMap, &SETTINGS->imageLength,
 						  &SETTINGS->imageMapCorner, &SETTINGS->imageMapSize);
 }
@@ -108,12 +108,12 @@ bool GpsData::setPosition(GpxDialog *gpxDialog)
 	QPointF position = gpxDialog->position(dt);
 	if (position.isNull())
 		return false;
-	
+
 	hasPosition = true;
 	longitude = position.x();
 	latitude = position.y();
 	allCoords[this] = position;
-	
+
 	exifHeader->setGpsPosition(position);
 	downloadMap();
 	return true;
@@ -161,22 +161,22 @@ void GpsData::updateMapSize()
 			break;
 		default:
 			mapSize = QSize(SETTINGS->imageMapSize, SETTINGS->imageMapSize);
-	}	
+	}
 }
 
 void GpsData::downloadMap()
 {
 	updateMapSize();
-	
+
 	if (isCommon)
 	{
 		if (!SETTINGS->addCommonMap || allCoords.isEmpty())
 			return mapReady(QImage());
-		
+
 		GeoMap::CoordMap coords;
 		for (QHash<GpsData *, QPointF>::Iterator i = allCoords.begin(); i != allCoords.end(); ++i)
 			coords[*i.key()->number] = i.value(); // QList with indexes same as images' numbers
-		
+
 		GeoMap *map = new GeoMap(coords);
 		connect(map, SIGNAL(ready(QImage)), this, SIGNAL(mapReady(QImage)));
 		if (!(SETTINGS->useOverlayCommonMap && SETTINGS->makeMap(map)))
@@ -186,7 +186,7 @@ void GpsData::downloadMap()
 	{
 		if (!SETTINGS->addImageMap)
 			return mapReady(QImage());
-		
+
 		GeoMap *map = new GeoMap(QPointF(longitude, latitude), hasDirection, direction, mapSize);
 		connect(map, SIGNAL(ready(QImage)), this, SIGNAL(mapReady(QImage)));
 		if (!(SETTINGS->useOverlays && SETTINGS->makeMap(map)))

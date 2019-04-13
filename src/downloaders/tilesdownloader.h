@@ -10,33 +10,33 @@
 
 class QPainter;
 
-class TilesDownloader : public AsyncMapDownloader 
+class TilesDownloader : public AsyncMapDownloader
 {
 public:
 	TilesDownloader(QString urlPattern = QString());
 	static bool validateUrlPattern(QWidget *parent, QString urlPattern);
 	void makeMapSlot(GeoMap *map);
-	
-protected:	
+
+protected:
 	QImage render(QPointF coord, int zoom, QSize size);
-	
+
 	static inline qreal lon2tilex(qreal lon);
 	static inline qreal lon2tilex(qreal lon, int z);
 	static inline qreal lat2tiley(qreal lat);
 	static inline qreal lat2tiley(qreal lat, int z);
 	static void calculateDimension(qreal value, qreal halfDimension, int &begin, int &size, qreal &cropBegin);
-	
+
 	QNetworkRequest createRequest(int zoom, int x, int y, QPoint begin);
 	void finished(QNetworkReply *reply);
-	
-private:	
+
+private:
 	QString urlPattern;
-	
+
 	QPainter *painter;
 	int downloadCount;
 	QHash<QUrl, QPoint> urlToTilePos;
 	QEventLoop loop;
-		
+
 	static const int tileSize;
 	static const QStringList varNames;
 };

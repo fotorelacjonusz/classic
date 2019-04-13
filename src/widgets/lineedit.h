@@ -9,10 +9,10 @@ class LineEdit : public QLineEdit
 	Q_OBJECT
 public:
 	explicit LineEdit(QWidget *parent = 0);
-	
+
 	void focusInEvent(QFocusEvent *event);
 	void focusOutEvent(QFocusEvent *event);
-	
+
 signals:
 	void focusIn();
 	void focusOut();
@@ -23,10 +23,10 @@ class PlainTextEdit : public QPlainTextEdit
 	Q_OBJECT
 public:
 	explicit PlainTextEdit(QWidget *parent = 0);
-	
+
 	void focusInEvent(QFocusEvent *event);
 	void focusOutEvent(QFocusEvent *event);
-	
+
 signals:
 	void focusIn();
 	void focusOut();

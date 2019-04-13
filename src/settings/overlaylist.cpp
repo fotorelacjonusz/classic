@@ -39,7 +39,7 @@ bool OverlayList::makeMap(GeoMap *map)
 		if (best.first && best.first->makeMap(map))
 			return true;
 	}
-	
+
 	foreach (Overlay *overlay, overlays)
 		if (overlay->makeMap(map))
 			return true;

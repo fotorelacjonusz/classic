@@ -70,7 +70,7 @@ void ArrowWidget::showEdit(QString text)
 		connect(lineEdit, SIGNAL(textEdited(QString)), this, SLOT(updateGeometries()));
 		updateGeometries();
 	}
-	
+
 	QString background = QString("rgba(%1, %1, %1, 150)").arg(qGray(color.rgb()) < 128 ? 255 : 0);
 	lineEdit->setStyleSheet(QString("background: %2; border: transparent; color: %1").arg(color.name()).arg(background));
 }
@@ -83,23 +83,23 @@ void ArrowWidget::paintEvent(QPaintEvent *event)
 	QPainter p(this);
 	// draw applied stylesheet
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
-	
+
 	p.setRenderHint(QPainter::Antialiasing);
 
 	QPen pen(color, 2, Qt::SolidLine, Qt::RoundCap, Qt::MiterJoin);
 	p.setBrush(color);
 	p.setPen(pen);
-	
+
 	qreal angle = atan2(end.y() - start.y(), end.x() - start.x());
 	qreal r = 20, da = 7 * M_PI / 180, a1 = angle + da, a2 = angle - da;
 	QPointF arrowTip = mapFromParent(end);
-	
+
 	QPolygonF polygon;
-	
+
 
 	if (lineEdit->isVisible())
 		polygon << QPoint(0, 3) + (left ? lineEdit->geometry().bottomLeft() : lineEdit->geometry().bottomRight());
-	
+
 //		p.drawLine(lineEdit->geometry().bottomLeft() + QPoint(0, 3), lineEdit->geometry().bottomRight() + QPoint(0, 3));
 //	p.drawLine(mapFromParent(start + QPoint(0, 2)), mapFromParent(end));
 	polygon << mapFromParent(start + QPoint(0, 2)) << arrowTip;

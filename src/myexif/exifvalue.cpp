@@ -18,21 +18,21 @@ class ExifValueTemplate : public ExifValueBase
 public:
 	typedef T Type;
 	typedef TInner TypeInner;
-	
+
 	ExifValueTemplate(const T &values, quint16 type):
 		ExifValueBase(type),
 		values(values)
 	{
 	}
-	
+
 	virtual quint32 count() const
 	{
 		return type == ExifValue::Ascii ? values.count() + 1 : values.count();
 	}
-	
+
 private:
 	T values;
-	
+
 	friend class ExifValue;
 };
 
@@ -245,7 +245,7 @@ QVector<T> ExifValue::readVector(QDataStream &stream) throw (Exception)
 	quint32 count;
 	quint32 offset;
 	stream >> count;
-	
+
 	QVector<T> vector(count);
 	if (count * sizeof(T) <= 4)
 	{
@@ -292,7 +292,7 @@ void ExifValue::writeVector(QDataStream &stream, QDataStream &valueStream, QVect
 	quint32 count = vector.count();
 	quint32 offset = valueStream.device()->pos();
 	stream << count;
-	
+
 	if (count * sizeof(T) <= 4)
 	{
 		vector.resize(4);

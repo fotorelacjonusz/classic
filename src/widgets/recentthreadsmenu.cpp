@@ -17,11 +17,11 @@ RecentThreadsMenu::RecentThreadsMenu(QSettings &settings, QWidget *parent):
 	threadTitles = settings.value(RECENT_THREAD_TITLES_CSTR).toHash();
 	imageNumbers = settings.value(RECENT_THREAD_NUMBERS_CSTR).toHash();
 	settings.endGroup();
-	
+
 	threadTitles.remove("");
 	imageNumbers.remove("");
 //	qDebug() << threadTitles << imageNumbers;
-	
+
 	setTitle(tr("Kontynuuj numerację"));
 	firstAction = addSeparator();
 	actionGroup = new QActionGroup(this);
@@ -29,7 +29,7 @@ RecentThreadsMenu::RecentThreadsMenu(QSettings &settings, QWidget *parent):
 	actions["none"] = new QAction(tr("Żaden"), this);
 	connect(actions["none"], SIGNAL(triggered()), this, SLOT(unselect()));
 	addAction(actions["none"]);
-	
+
 	foreach (QString threadId, threadTitles.keys())
 		addUpdateAction(threadId);
 }
@@ -65,7 +65,7 @@ void RecentThreadsMenu::threadPosted(QString threadId, QString threadTitle, int 
 	threadTitles[threadId] = threadTitle;
 	imageNumbers[threadId] = imageNumber + SETTINGS->startingNumber + 1;
 	addUpdateAction(threadId);
-	
+
 	SETTINGS->setSelectedThread(threadId, imageNumbers[threadId].toInt());
 	qDebug() << "RecentThreadsMenu: nowe zdjęcia w wątku zaczną się od" << SETTINGS->startingNumber.v();
 }

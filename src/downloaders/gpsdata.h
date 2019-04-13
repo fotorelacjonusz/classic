@@ -22,16 +22,16 @@ public:
 	void writeExif(QIODevice *device) const;
 	QString toString() const;
 	void serialize(QDataStream &stream) const;
-		
+
 	bool setPosition(GpxDialog *gpxDialog);
 	void removePosition();
-	
+
 	QMatrix reverseMatrixForOrientation() const;
 public slots:
 	void setPhotoSize(QSize size);
 	void updateMapSize();
 	void downloadMap();
-	
+
 signals:
 	void mapReady(QImage map);
 
@@ -45,7 +45,7 @@ private:
 
 	static Points allCoords;
 	static QString binName;
-	
+
 	AbstractMapDownloader *googleDownloader, *tilesDownloader;
 	ExifImageHeader *exifHeader;
 };

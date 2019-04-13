@@ -29,17 +29,17 @@ class QMainWindow;
 class SettingsManager
 {
 	typedef QPair<QPointer<QObject>, QByteArray> Listener;
-	
+
 	class AbstractInput
 	{
 	protected:
-		AbstractInput(QString name, QVariant defaultVal); //QObject *receiver, const char *member, 
-		
+		AbstractInput(QString name, QVariant defaultVal); //QObject *receiver, const char *member,
+
 	public:
 		virtual ~AbstractInput();
 		virtual QVariant toVariant() const = 0;
 		virtual void fromVariant(QVariant variant) = 0;
-		
+
 		void connect(QObject *receiver, const char *member);
 		void changedRemotely() const;
 
@@ -62,8 +62,8 @@ class SettingsManager
 	class Input : public AbstractInput
 	{
 	public:
-		Input(QString key, T *object, QVariant defaultVal): //QObject *receiver, const char *member, 
-			AbstractInput(key, defaultVal), object(object) {} // receiver, member, 
+		Input(QString key, T *object, QVariant defaultVal): //QObject *receiver, const char *member,
+			AbstractInput(key, defaultVal), object(object) {} // receiver, member,
 		inline QVariant toVariant() const
 		{
 			return *object;
@@ -131,7 +131,7 @@ protected:
 	public:
 		virtual void connect(QObject *receiver, const char *member) = 0;
 	};
-	
+
 	template <typename V>
 	class Field : public AbstractField
 	{
@@ -194,11 +194,11 @@ public:
 	template <typename T>
 	inline AbstractInput *makeInput(QString key, T *object, QVariant defaultVal = QVariant())
 	{
-		return (inputs << new Input<T>(key, object, defaultVal)).last(); // 0, 0, 
+		return (inputs << new Input<T>(key, object, defaultVal)).last(); // 0, 0,
 	}
-	
-	void connectMany(QObject *receiver, const char *member, AbstractField *f0, AbstractField *f1 = 0, 
-					 AbstractField *f2 = 0, AbstractField *f3 = 0, AbstractField *f4 = 0, AbstractField *f5 = 0, 
+
+	void connectMany(QObject *receiver, const char *member, AbstractField *f0, AbstractField *f1 = 0,
+					 AbstractField *f2 = 0, AbstractField *f3 = 0, AbstractField *f4 = 0, AbstractField *f5 = 0,
 					 AbstractField *f6 = 0, AbstractField *f7 = 0, AbstractField *f8 = 0, AbstractField *f9 = 0);
 
 public:

@@ -20,23 +20,23 @@ class ReplyDialog;
 class ReplyDialog : public QDialog
 {
 	Q_OBJECT
-	
+
 public:
 	explicit ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, const QString &header, const QString &footer, QWidget *parent);
 	virtual ~ReplyDialog();
-	
+
 	int latestPostedImageNumber() const;
 	QString threadId() const;
 	QString threadTitle() const;
-	
+
 protected slots:
 	void appendTable(QString cell0, QString cell1);
 	void setVisible(bool visible);
-	
+
 	void upload();
 	void accept();
 	void reject();
-	
+
 private slots:
 	bool isElement(QString query, QString *variable = 0, int up = 0, QString attr = QString()) const;
 	bool isElementRemove(QString query, QString *variable, QString pattern, QString attr = QString()) const;
@@ -50,7 +50,7 @@ private slots:
 
 	void likeClicked();
 	void on_hideInfoButton_clicked();
-	
+
 private:
 	void likeProgress(int progress);
 
@@ -58,12 +58,12 @@ private:
 	QSettings &settings;
 	QWebFrame *frame;
 	AbstractUploader *const uploader;
-	
+
 	ProgressContainer<AbstractImage> images;
 	ProgressContainer<PostWidget> posts;
 	typedef ProgressContainer<AbstractImage>::Item ImageItem;
-	typedef ProgressContainer<PostWidget>::Item PostItem;	
-	
+	typedef ProgressContainer<PostWidget>::Item PostItem;
+
 	QPushButton *likeButton;
 	QString m_threadId, m_threadTitle;
 	QString userName;

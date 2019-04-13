@@ -10,7 +10,7 @@
 
 const qreal OverlayImage::R = 6371000;
 
-template <class T> 
+template <class T>
 int sgn(T v)
 {
     return (T(0) < v) - (v < T(0));
@@ -42,26 +42,26 @@ OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteA
 
 	files.contains(m_href) OR_THROW(TR("Brak pliku '%1' w archiwum kmz").arg(m_href));
 	imageData = files.value(m_href);
-	
+
 	if (isKmz) // rotate imageData
 	{
 		QImage image;
 		image.loadFromData(imageData) OR_THROW(TR("Nieudane ładowanie pliku z mapą, pamięć wyczerpana?"));
-				
+
 		QTransform transform;
 		transform.rotate(-rotation);
 		image = image.transformed(transform, Qt::SmoothTransformation);
-		
+
 		QBuffer buffer(&imageData);
 		buffer.open(QIODevice::WriteOnly | QIODevice::Truncate);
 		image.save(&buffer, "jpg") OR_THROW(TR("Nieudane zapisanie mapy do bufora, pamięć wyczerpana?"));
 	}
-	
+
 	QBuffer buffer(&imageData);
 	buffer.open(QIODevice::ReadOnly);
 	QImageReader reader(&buffer);
-	imageSize = reader.size();	
-	
+	imageSize = reader.size();
+
 	const qreal hPpm = distance(left, top, right, top, &OverlayImage::coordToPoint) /  // [px] /
 					   distance(left, top, right, top, &OverlayImage::orthoProjection); // [m]
 	const qreal vPpm = distance(left, top, left, bottom, &OverlayImage::coordToPoint) /
@@ -74,14 +74,14 @@ OverlayImage::OverlayImage(QRectF latLongBox, QSize maxSize)
 {
 	lon0 = latLongBox.center().x() * M_PI / 180;
 	lat0 = latLongBox.center().y() * M_PI / 180;
-	
+
 	rotation = 0.0;
-	
+
 	poly << orthoProjection(latLongBox.topLeft()) << orthoProjection(latLongBox.topRight())
 		 << orthoProjection(latLongBox.bottomRight()) << orthoProjection(latLongBox.bottomLeft()); // clockwise
 	poly << poly.first(); // close
 	box = poly.boundingRect();
-	
+
 	QSizeF size = box.size();
 	size.scale(maxSize, Qt::KeepAspectRatio);
 	imageSize = size.toSize();
@@ -92,7 +92,7 @@ bool OverlayImage::makeMap(GeoMap *map)
 	foreach (QPointF coord, map->distinctCoords)
 		if (!poly.containsPoint(orthoProjection(coord), Qt::OddEvenFill))
 			return false;
-	
+
 	if (!map->isCommon)
 		map->setImage(render(coordToPoint(map->first()), map->size, 22 - SETTINGS->imageMapZoom, true));
 	else if (map->isSingle)
@@ -132,7 +132,7 @@ QString OverlayImage::tech() const
 	const QPointF p1 = posToPointF(poly[1]);
 	const QPointF p2 = posToPointF(poly[2]);
 	const qreal area = QVector2D(p0 - p1).length() * QVector2D(p1 - p2).length();
-	
+
 	return QString("%1 MB, %2 MP, %3 ppm").arg(megaToString(imageData.size())).arg(megaToString(area)).arg(ppm, 0, 'f', 1);
 }
 
@@ -160,12 +160,12 @@ QImage OverlayImage::render(QPoint center, QSize size, qreal scale, bool include
 	// the bigger the ppm, the more pixels should be copied
 	if (includePpm)
 		scale *= ppm / 10.0;
-	
+
 	const QRect oversizeRect = centered(center, size * scale);
 	const QRect clipRect = QRect(QPoint(), imageSize) & oversizeRect;
 	const QSize scaledSize = clipRect.size() / scale;
 	const QPoint rectTr = (clipRect.topLeft() - oversizeRect.topLeft()) / scale;
-		
+
 	QBuffer buffer(const_cast<QByteArray *>(&imageData));
 	buffer.open(QIODevice::ReadOnly);
 	QImageReader reader(&buffer);
@@ -176,7 +176,7 @@ QImage OverlayImage::render(QPoint center, QSize size, qreal scale, bool include
 		qDebug() << "Can't read ImageReader";
 		return QImage();
 	}
-	
+
 	QImage result(size, QImage::Format_ARGB32);
 	result.fill(Qt::black);
 	QPainter(&result).drawImage(rectTr, reader.read());
@@ -201,7 +201,7 @@ QPointF OverlayImage::posToPointF(QPointF pos) const
 {
 	pos.setY(pos.y() * -1);
 //	Q_ASSERT(box.contains(pos));
-	
+
 	pos -= box.topLeft();
 	pos.rx() *= imageSize.width() / box.width();
 	pos.ry() *= imageSize.height() / box.height();
@@ -250,7 +250,7 @@ qreal OverlayImage::distance(QPointF p, QLineF l)
 	const qreal pa = QVector2D(p      - l.p1()).lengthSquared();
 	const qreal pb = QVector2D(p      - l.p2()).lengthSquared();
 	const qreal ab = QVector2D(l.p1() - l.p2()).lengthSquared();
-	
+
 	if (pb > pa + ab) // point a is the nearest
 		return sqrt(pa) * sgn(lineDist);
 	else if (pa > pb + ab) // point b is the nearest
@@ -275,7 +275,7 @@ qreal OverlayImage::distance(const GeoMap *map) const
 	return distance(orthoProjection(map->first()), poly) * ppm;
 }
 
-template <typename T> 
+template <typename T>
 qreal OverlayImage::distance(qreal x1, qreal y1, qreal x2, qreal y2, T transform) const
 {
 	return QVector2D((this->*transform)(QPointF(x1, y1)) - (this->*transform)(QPoint(x2, y2))).length();

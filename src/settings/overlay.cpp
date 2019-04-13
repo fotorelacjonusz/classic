@@ -35,7 +35,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 			THROW(TR("To nie jest plik podkładu mapowego."));
 		file.seek(thumbnailSize);
 	}
-	
+
 	QMap<QString, QByteArray> files;
 	{
 //		QuaZip kmz(absoluteFilePath);
@@ -59,16 +59,16 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 //	qDebug() << files.keys();
 	files.contains(DOC_KML) OR_THROW(TR("Brak pliku '%1'").arg(DOC_KML));
 	bool isKmz = absoluteFilePath.endsWith(".kmz");
-	
+
 	QDomDocument doc;
 	doc.setContent(files[DOC_KML]) OR_THROW(TR("Niepoprawna składnia kml"));
 	QDomElement kml = doc.documentElement();
 	QDomElement firstChild = kml.firstChild().toElement();
 	(!kml.isNull() && !firstChild.isNull()) OR_THROW(TR("Brak tagu kml i/lub podrzędnego w pliku kml"));
-	
+
 	name = firstChild.firstChildElement("name").text();
 	description = firstChild.firstChildElement("description").text();
-	
+
 	if (firstChild.tagName() == "GroundOverlay")
 		images << new OverlayImage(firstChild, files, isKmz);
 	else if (firstChild.tagName() == "Folder")
@@ -80,25 +80,25 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 	}
 	else
 		THROW(TR("Brak tagu Folder lub GroundOverlay"));
-	
+
 	if (isKmz)
 	{
 		QString jpgFilePath = absoluteFilePath.section(".", 0, -2) + ".jpg";
 		QFile jpg(jpgFilePath);
 		jpg.open(QIODevice::ReadWrite);
-		writeThumbnail(&jpg);		
+		writeThumbnail(&jpg);
 		thumbnailSize = jpg.size();
-		
+
 		{
 			QuaZip kmr(&jpg);
 			(Suppress(), kmr.open(QuaZip::mdCreate)) OR_THROW(TR("kmr.open(): %1").arg(kmr.getZipError()));
-			
+
 			QuaZipFile outFileKml(&kmr);
 			outFileKml.open(QIODevice::WriteOnly, QuaZipNewInfo(DOC_KML, absoluteFilePath)) OR_THROW(TR("outFileKml.open(): %1").arg(outFileKml.getZipError()));
 			outFileKml.write(doc.toByteArray());
 			outFileKml.close();
 			outFileKml.getZipError() == UNZ_OK OR_THROW(TR("outFileKml.close(): %1").arg(outFileKml.getZipError()));
-			
+
 			foreach (OverlayImage *image, images)
 			{
 				QuaZipFile outFileMap(&kmr);
@@ -107,7 +107,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 				outFileMap.close();
 				outFileMap.getZipError() == UNZ_OK OR_THROW(TR("outFileMap.close(): %1").arg(outFileMap.getZipError()));
 			}
-			
+
 			kmr.close();
 			kmr.getZipError() == UNZ_OK OR_THROW(TR("kmr.close(): %1").arg(kmr.getZipError()));
 		}
@@ -115,7 +115,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 		jpg.seek(jpg.size());
 		QDataStream(&jpg) << thumbnailSize; // BigEndian by default
 		jpg.close();
-		
+
 		QFile::remove(absoluteFilePath);
 	}
 }
@@ -130,7 +130,7 @@ QString Overlay::toString() const
 	QStringList names;
 	foreach (OverlayImage *image, images)
 		names << image->name();
-	
+
 	if (names.size() == 1)
 		return names.first();
 	else
@@ -140,7 +140,7 @@ QString Overlay::toString() const
 bool Overlay::makeMap(GeoMap *map)
 {
 	foreach (OverlayImage *image, images)
-		if (image->makeMap(map))		
+		if (image->makeMap(map))
 			return true;
 	return false;
 }
@@ -163,25 +163,25 @@ void Overlay::writeThumbnail(QIODevice *device) const
 	foreach (OverlayImage *image, images)
 		coordPolygon = coordPolygon.united(image->coordPolygon());
 	const QRectF coordBox = coordPolygon.boundingRect();
-	
+
 //	qDebug() << name;
-	
+
 	const QString fontFamily = "Ubuntu";
 	const QRect thumbnailRect(QPoint(), QSize(1400, 1050));
 	const QRect partsRect = thumbnailRect.adjusted(10, 40, -10, -150);
 	const QRegion region = QRegion(thumbnailRect).xored(QRegion(partsRect));
 	const QRect header = region.rects().first().adjusted(10, 0, -10, 0);
-	
+
 	QPolygonF pointPolygon;
 	QPolygonF boundingPoly;
 	{
 		const OverlayImage partsOverlay(coordBox, partsRect.size()); // for calculations only
-		
+
 		foreach (QPointF coord, coordPolygon)
 			pointPolygon.append(partsOverlay.coordToPoint(coord));
 		boundingPoly = minimumBoundingBox(pointPolygon.toList());
 	}
-	
+
 	qreal angle;
 	{
 		const qreal l1 = QVector2D(boundingPoly[0] - boundingPoly[1]).length();
@@ -191,24 +191,24 @@ void Overlay::writeThumbnail(QIODevice *device) const
 		while (angle > 90.0)
 			angle -= 180.0;
 	}
-	
+
 	qreal scaleFactor;
 	QRectF partsRectScaled;
 	{
 		QRectF boundingRect = QMatrix().rotate(angle).map(boundingPoly).boundingRect();
 		boundingRect.moveTopLeft(QPointF());
-				
+
 		QSizeF boundingSizeScaled = boundingRect.size();
 		boundingSizeScaled.scale(partsRect.size(), Qt::KeepAspectRatio);
 //		qDebug() << boundingRect.size() << boundingSizeScaled;
-		
+
 		scaleFactor = boundingSizeScaled.width() / boundingRect.width();
 		partsRectScaled = QMatrix().scale(scaleFactor, scaleFactor).map(pointPolygon).boundingRect();
 //		qDebug() << scaleFactor << maxRect;
 	}
-	
+
 	const OverlayImage thumbnailOverlay(coordBox, partsRectScaled.size().toSize()); // for calculations only
-	
+
 	QImage parts(thumbnailOverlay.size(), QImage::Format_RGB32);
 	parts.fill(Qt::black);
 	{
@@ -221,42 +221,42 @@ void Overlay::writeThumbnail(QIODevice *device) const
 			QPolygon pointPoly;
 			foreach (QPointF coord, image->coordPolygon())
 				pointPoly << thumbnailOverlay.coordToPoint(coord);
-			
+
 			QPainterPath path;
 			path.addPolygon(pointPoly);
 			painter.setClipPath(path);
-						
+
 			QImage part = image->render(pointPoly.boundingRect().size());
 			painter.drawImage(pointPoly.boundingRect().topLeft(), part);
 			painter.drawPolygon(pointPoly);
-		}	
+		}
 	}
-	
+
 	QImage result(thumbnailRect.size(), QImage::Format_RGB32);
 	result.fill(Qt::black);
 	{
 		QPainter painter(&result);
 		painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
-		
+
 		{
-			const QRect partsClipRect = (QMatrix().scale(scaleFactor, scaleFactor) * 
+			const QRect partsClipRect = (QMatrix().scale(scaleFactor, scaleFactor) *
 										 QImage::trueMatrix(QMatrix().rotate(angle), parts.width(), parts.height()))
 										.map(boundingPoly).boundingRect().toRect();
-			
+
 			parts = parts.transformed(QMatrix().rotate(angle), Qt::SmoothTransformation).copy(partsClipRect);
 		}
-	
+
 		QRect innerPartsRect = centered(partsRect.center(), parts.size());
 		innerPartsRect.moveTop(partsRect.top());
 		painter.drawImage(innerPartsRect, parts);
-		
+
 		painter.setPen(Qt::white);
 		painter.setFont(QFont(fontFamily, 18));
 		painter.drawText(header, name, Qt::AlignCenter | Qt::AlignVCenter);
 		painter.setFont(QFont(fontFamily, 10));
 		painter.drawText(header, coordsToString(coordBox.center()), Qt::AlignLeft | Qt::AlignVCenter);
 		painter.drawText(header, QString("%1 - podkład mapowy").arg(qApp->applicationName()), Qt::AlignRight | Qt::AlignVCenter);
-		
+
 		{
 			QStringList names;
 			for (int i = 0; i < images.size(); ++i)
@@ -264,12 +264,12 @@ void Overlay::writeThumbnail(QIODevice *device) const
 			QStringList techs;
 			for (int i = 0; i < images.size(); ++i)
 				techs << images[i]->tech();
-			
+
 			QRectF footer = QRect(QPoint(0, innerPartsRect.bottom()), thumbnailRect.bottomRight()).adjusted(10, 10, -10, -10);
 			QRectF bounding;
 			painter.setFont(QFont(fontFamily, 10));
 			qreal bottom = 0;
-			
+
 			for (int i = 0; i < qCeil(names.size() / 10.0); ++i)
 			{
 				QStringList currentNames = names.mid(i * 10, 10);
@@ -281,27 +281,27 @@ void Overlay::writeThumbnail(QIODevice *device) const
 			}
 			painter.drawText(footer.adjusted(bounding.right(), 0, 0, 0), Qt::AlignRight | Qt::AlignTop, description, &bounding);
 			bottom = qMax(bottom, bounding.bottom());
-			
+
 			painter.setPen(QPen(Qt::gray, 1, Qt::DashLine));
 			painter.drawRect(innerPartsRect);
-			
+
 			drawCompassRose(painter, QRectF(innerPartsRect.topLeft() + QPointF(10, 10), QSize(100, 100)), angle);
 			painter.end();
-			
+
 			result = result.copy(QRect(thumbnailRect.topLeft(), QPoint(thumbnailRect.right(), bottom + 10)));
 		}
 	}
-	
+
 //	if (!device)
 //	{
 //		static int counter = 0;
 //		result.save(QString("/home/kamil/Dokumenty/ssc-fotorelacje/overlays/thumbnail%1.jpeg").arg(++counter), "jpg", 90);
 //		return;
 //	}
-	
+
 	result.save(device, "jpg", 90);
 	device->seek(0);
-	
+
 	ExifImageHeader exifHeader;
 	exifHeader.setGpsPosition(coordBox.center());
 	exifHeader.setValue(ExifImageHeader::Software, Application::applicationNameAndVersion());
@@ -340,10 +340,10 @@ QPolygonF Overlay::minimumBoundingBox(QList<QPointF> points) //, QPainter *paint
 {
 	if (points.isEmpty())
 		return QPolygonF();
-	
+
 	points = points.toSet().toList();
 	qSort(points);
-	
+
 	QList<QPointF> left; // left (left top) contour
 	{
 		left << points.first();
@@ -355,7 +355,7 @@ QPolygonF Overlay::minimumBoundingBox(QList<QPointF> points) //, QPainter *paint
 				left.append(points[i]);
 		}
 	}
-	
+
 	QList<QPointF> right; // right (right bottom) contour
 	{
 		right << points.last();
@@ -367,15 +367,15 @@ QPolygonF Overlay::minimumBoundingBox(QList<QPointF> points) //, QPainter *paint
 				right.append(points[i]);
 		}
 	}
-	
+
 	Q_ASSERT(left.last() == right.first() && left.first() == right.last());
-	
+
 	left.takeLast();
-	
+
 	QPolygonF convexPolygon = (left + right).toVector();
 //	qDebug();
 //	qDebug() << convexPolygon;
-	
+
 	// make polygon convex by removing points concave points
 	int oldSize;
 	do
@@ -392,7 +392,7 @@ QPolygonF Overlay::minimumBoundingBox(QList<QPointF> points) //, QPainter *paint
 		}
 	}
 	while (convexPolygon.size() != oldSize);
-	
+
 //	qDebug() << convexPolygon;
 
 	// iterate over convex polygon and find MBR
@@ -412,15 +412,15 @@ void Overlay::drawCompassRose(QPainter &painter, QRectF rect, qreal angle)
 	painter.setWorldMatrix(QMatrix().translate(rect.center().x(), rect.center().y()).rotate(angle).scale(rect.width() / 2, rect.height() / 2));
 	painter.setWorldMatrixEnabled(true);
 	painter.setPen(QPen(Qt::gray, 0.015, Qt::SolidLine));
-	
+
 	QPolygonF right, left;
 	right << QPointF() << QPointF(0.15, -0.15) << QPointF(0, -1) << QPointF();
 	left << QPointF() << QPointF(-0.15, -0.15) << QPointF(0, -1) << QPointF();
 
 	qreal scale = 0.6;
 	painter.setWorldMatrix(QMatrix(painter.worldMatrix()).rotate(-45).scale(scale, scale));
-	
-	for (int j = 0; j < 2; ++j)	
+
+	for (int j = 0; j < 2; ++j)
 	{
 		for (int i = 0; i < 4; ++i)
 		{

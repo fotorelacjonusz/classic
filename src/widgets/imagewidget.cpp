@@ -56,12 +56,12 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 		if (sourceFile.size() != ba)
 			THROW(tr("Nie można załadować zdjęcia do pamięci. Pamięć wyczerpana?"));
 	}
-	
+
 	QBuffer buff(&sourceFile);
 	buff.open(QIODevice::ReadOnly);
 	gpsData = new GpsData(&buff, &num);
 	buff.close();
-	
+
 	if (!stream)
 	{
 		QMatrix reverse = gpsData->reverseMatrixForOrientation();
@@ -72,7 +72,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 			buff.open(QIODevice::WriteOnly | QIODevice::Truncate);
 			pixmap.save(&buff, "JPG");
 			buff.close();
-			
+
 			if (QuestionBox::question(this, tr("Orientacja zdjęcia"), tr("Zdjęcie %1 zostało obrócone zgodnie z jego orientacją zapisaną w nagłówku exif.<br>"
 																		 "Czy chcesz obrócić również oryginalne zdjęcie na dysku?").arg(filePath), "original_file/orientate_horizontally"))
 			{
@@ -85,13 +85,13 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 			}
 		}
 	}
-	
+
 	connect(gpsData, SIGNAL(mapReady(QImage)), this, SLOT(mapDownloaded(QImage)));
-	
+
 	SETTINGS->connectMany(this, SLOT(imageSizeChanged()), &SETTINGS->setImageWidth, &SETTINGS->imageLength, &SETTINGS->dontScalePanoramas);
 	SETTINGS->connectMany(this, SLOT(updateNumber()), &SETTINGS->numberImages, &SETTINGS->startingNumber);
 	SETTINGS->connectMany(this, SLOT(updateLayout()), &SETTINGS->captionsUnder, &SETTINGS->extraSpace);
-	SETTINGS->connectMany(this, SLOT(updatePixmap()), &SETTINGS->addImageBorder, &SETTINGS->addLogo, &SETTINGS->logoPixmap, 
+	SETTINGS->connectMany(this, SLOT(updatePixmap()), &SETTINGS->addImageBorder, &SETTINGS->addLogo, &SETTINGS->logoPixmap,
 						  &SETTINGS->logoCorner, &SETTINGS->logoMargin, &SETTINGS->logoInvert);
 
 	setFocusPolicy(Qt::NoFocus);
@@ -105,7 +105,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 	updatePixmap();
 	updateNumber();
 	updateLayout();
-	
+
 //	if (SETTINGS->addImageMap)
 //		gpsData->downloadMap();
 }
@@ -141,7 +141,7 @@ void ImageWidget::serialize(QDataStream &stream) const
 	buffer.open(QIODevice::ReadWrite);
 	gpsData->writeExif(&buffer);
 	buffer.close();
-	
+
 	stream << filePath << num << captionEdit->text() << buffer.buffer() << *imageLabel;
 }
 
@@ -272,7 +272,7 @@ void ImageWidget::updatePixmap()
 		QPixmapCache::insert(filePath, photo);
 //		qDebug() << "after makecache" << time.elapsed();
 	}
-	
+
 	if (m_brightness != BRIGHTNESS_DEFAULT || m_contrast != CONTRAST_DEFAULT || m_gamma != GAMMA_DEFAULT)
 	{
 		QImage img = photo.toImage();
@@ -317,13 +317,13 @@ void ImageWidget::updatePixmap()
 			QRect expandedRect = expandedRectangle(photoRect, mapRect, SETTINGS->imageMapCorner, 0); // SETTINGS->imageMapMargin
 			QPixmap expanded(expandedRect.size());
 //			expanded.fill(Qt::white);
-			
+
 			QPainter painter(&expanded);
 			painter.drawPixmap(photoRect, photo);
 			painter.drawImage(mapRect, gpsMap);
 			painter.end();
 			photo = expanded;
-		} 
+		}
 		else
 		{
 			QRect mapRect = alignedRectangle(gpsMap.size(), photo.rect(), SETTINGS->imageMapCorner, SETTINGS->imageMapMargin);

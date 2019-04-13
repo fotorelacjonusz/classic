@@ -59,7 +59,7 @@ void ProgressItemBase::setProgressScaleToOne(qint64 progress, qint64 total)
 {
 	if (!qFuzzyCompare(m_total, 1.0))
 		setTotal(1.0);
-	
+
 	setProgress(qreal(progress) / total);
 }
 
@@ -103,5 +103,5 @@ void ProgressContainerBase::increaseExtraProgress(qreal progress)
 {
 	m_progress += progress;
 	update();
-}	
+}
 

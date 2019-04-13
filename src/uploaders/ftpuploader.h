@@ -29,7 +29,7 @@ class FtpUploader;
 class FtpUploader : public AbstractUploader
 {
 	Q_OBJECT
-	
+
 public:
 	explicit FtpUploader(QWidget *parent, QSettings &settings);
 	virtual ~FtpUploader();

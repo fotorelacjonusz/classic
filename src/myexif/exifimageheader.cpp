@@ -174,11 +174,11 @@ ExifImageHeader::OrientationTag ExifImageHeader::orientation() const
 {
 	if (!contains(Orientation))
 		return Horizontal;
-	
+
 	OrientationTag orientation = OrientationTag(value(Orientation).toShort());
 	if (Horizontal <= orientation && orientation <= RotatedLeft)
 		return orientation;
-	
+
 	qDebug() << "Exif header Orientation has invalid value:" << orientation << "Defaulting to Horizontal";
 	return Horizontal;
 }
@@ -190,29 +190,29 @@ void ExifImageHeader::setOrientation(ExifImageHeader::OrientationTag orientation
 
 QMatrix ExifImageHeader::reverseMatrixForOrientation() const
 {
-	static const int matrices[8][4] = 
+	static const int matrices[8][4] =
 	{
 		{ 1, 0, 0, 1}, // identity
 		{-1, 0, 0, 1}, // horizontal mirror
 		{-1, 0, 0,-1}, // rotation 180
-		{ 1, 0, 0,-1}, // vertical mirror 
-		{ 0, 1, 1, 0}, // diagonal mirror 
+		{ 1, 0, 0,-1}, // vertical mirror
+		{ 0, 1, 1, 0}, // diagonal mirror
 		{ 0,-1, 1, 0}, // rotation 90 left
 		{ 0,-1,-1, 0}, // antidiagonal mirror
 		{ 0, 1,-1, 0}  // rotation 90 right
 	};
-	
+
 	const int *matrix = matrices[orientation() - 1];
 	return QMatrix(matrix[0], matrix[1], matrix[2], matrix[3], 0, 0);
 }
 
 QPointF ExifImageHeader::gpsPosition() const
 {
-	if (contains(GpsLatitude)  && contains(GpsLatitudeRef) && 
+	if (contains(GpsLatitude)  && contains(GpsLatitudeRef) &&
 		contains(GpsLongitude) && contains(GpsLongitudeRef))
 		return QPointF(dmsToReal(value(GpsLongitude), value(GpsLongitudeRef)),
 					   dmsToReal(value(GpsLatitude),  value(GpsLatitudeRef)));
-	return QPointF();	
+	return QPointF();
 }
 
 void ExifImageHeader::setGpsPosition(QPointF position)
@@ -279,7 +279,7 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
 {
 	fileStream.setByteOrder(QDataStream::BigEndian);
 	ExifMarker(fileStream).isSOI() OR_THROW("First marker is not SOI");
-	
+
 	while (!fileStream.atEnd())
 	{
 		ExifMarker marker(fileStream);
@@ -287,7 +287,7 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
 		{
 			QByteArray data = marker.readData(exifHeader);
 			QDataStream stream(data);
-			
+
 			QByteArray align = stream.device()->read(2);
 			if (align == "II")
 				byteOrder = QDataStream::LittleEndian;
@@ -295,7 +295,7 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
 				byteOrder = QDataStream::BigEndian;
 			else
 				THROW("Unknown align");
-			
+
 			stream.setByteOrder(byteOrder);
 			quint16 id;
 		    quint32 offset;
@@ -317,10 +317,10 @@ void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const throw (Exception
 {
 	fileStream.setByteOrder(QDataStream::BigEndian);
 	ExifMarker(fileStream).isSOI() OR_THROW("First marker is not SOI");
-	
+
 	ExifMarker m1(fileStream);
 	ExifMarker m2(fileStream);
-	
+
 	if (m1.isAPP1())      // SOI -> APP1
 		saveToJpeg(m1);
 	else if (m2.isAPP1()) // SOI -> APP0? -> APP1

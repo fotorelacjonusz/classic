@@ -14,17 +14,17 @@ class NtpClient : public QObject
 public:
 	explicit NtpClient(QObject *parent = 0);
 	QDateTime utcTime() const;
-	
+
 signals:
 	void utcTimeFound(QDateTime);
-	
+
 public slots:
 	void updateTime();
-	
+
 private slots:
 	void sendRequest(QHostInfo host);
 	void readPendingDatagrams();
-	
+
 private:
 	QString pool;
 	QUdpSocket socket;

@@ -20,7 +20,7 @@ QuestionBox::QuestionBox(const QString &title, const QString &question, const QS
 		qDebug() << "QMessageBox.layout() is not of type QGridLayout!";
 		return;
 	}
-		
+
 	QWidget *widget = new QWidget(this);
 	checkBoxForever = new QCheckBox(tr("Zapamiętaj na zawsze"), widget);
 	checkBoxSession = new QCheckBox(tr("Zapamiętaj w tej sesji"), widget);
@@ -29,9 +29,9 @@ QuestionBox::QuestionBox(const QString &title, const QString &question, const QS
 	layout->addWidget(checkBoxSession);
 	layout->setContentsMargins(5, 5, 5, 5);
 	widget->setLayout(layout);
-	
+
 	gridLayout->addWidget(widget, 1, 1, 1, 1); // only empty cell i grid, under the text
-	
+
 	connect(checkBoxForever, SIGNAL(toggled(bool)), checkBoxSession, SLOT(setDisabled(bool)));
 	connect(checkBoxForever, SIGNAL(toggled(bool)), checkBoxSession, SLOT(setChecked(bool)));
 	connect(this, SIGNAL(finished(int)), this, SLOT(setAnswer(int)));

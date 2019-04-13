@@ -26,20 +26,20 @@ class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage
 public:
 	explicit ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream = 0) throw (Exception);
 	~ImageWidget();
-	
+
 	virtual QString fileName() const;
 	virtual QString caption() const;
 	virtual int number() const;
 	virtual void serialize(QDataStream &stream) const;
 	virtual	void write(QIODevice *device) const;
-	
+
 	void setPosition(GpxDialog *gpxDialog);
 	void removePosition();
-	
+
 	QWidget *firstWidget() const;
 	QWidget *lastWidget() const;
 	void rotate(bool left);
-	
+
 	QPixmap sourcePixmap() const;
 	QPixmap scaledSourcePixmap() const;
 	QByteArray scaledSourceFile() const;
@@ -59,7 +59,7 @@ public slots:
 	int gamma() const;
 
 	static bool isPanoramic(QSize size);
-	
+
 protected:
 	void paintEvent(QPaintEvent *event);
 

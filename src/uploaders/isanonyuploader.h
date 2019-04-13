@@ -12,7 +12,7 @@ class IsAnonyUploader;
 class IsAnonyUploader : public AbstractUploader
 {
 	Q_OBJECT
-	
+
 public:
 	explicit IsAnonyUploader(QWidget *parent, QSettings &settings);
 	virtual ~IsAnonyUploader();

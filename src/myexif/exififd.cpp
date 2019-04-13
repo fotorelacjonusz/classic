@@ -3,7 +3,7 @@
 #include <QBuffer>
 #include <QTextStream>
 
-const QList<ExifIfd::EmbedOffset> ExifIfd::allPointers = 
+const QList<ExifIfd::EmbedOffset> ExifIfd::allPointers =
 		QList<ExifIfd::EmbedOffset>() << ExifIfdPointer << GpsInfoIfdPointer << InteroperabilityIfdPointer;
 
 ExifIfd::ExifIfd():
@@ -18,7 +18,7 @@ ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
 {
 	quint16 size;
 	stream >> size;
-	
+
 	quint16 tag;
 	for (int i = 0; i < size; ++i)
 	{
@@ -26,7 +26,7 @@ ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
 		insert(tag, ExifValue(stream));
 	}
 	stream >> nextIFD;
-	
+
 	foreach (EmbedOffset pointerTag, allPointers)
 		if (contains(pointerTag))
 		{
@@ -51,12 +51,12 @@ ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
 void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const
 {
 	stream << quint16(size());
-	
+
 	QDataStream valueStream(&data, QIODevice::WriteOnly);
 	valueStream.setByteOrder(stream.byteOrder());
 	valueStream.device()->seek(stream.device()->pos() + 12 * size() + sizeof(nextIFD));
 	exiflong imageLength = 0;
-		
+
 	for (ValueMap::ConstIterator i = constBegin(); i != constEnd(); ++i)
 	{
 		quint16 tag = i.key();
@@ -76,7 +76,7 @@ void ExifIfd::write(QDataStream &stream, QByteArray &data, bool hasNext) const
 		else if (tag == JpegInterchangeFormatLength)
 			ExifValue(exiflong(imageLength)).write(stream, valueStream);
 		else
-			i.value().write(stream, valueStream);	
+			i.value().write(stream, valueStream);
 	}
 
 	quint32 nextIFD = hasNext ? valueStream.device()->pos() : 0;
@@ -116,10 +116,10 @@ void ExifIfd::setThumbnail(QImage image)
 	}
 	insert(JpegInterchangeFormat, ExifValue(exiflong(0)));
 	insert(JpegInterchangeFormatLength, ExifValue(exiflong(0)));
-	
+
 //	if (image.width() > 160 || image.height() > 120)
 //		image = image.scaled(QSize(160, 120), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-	
+
 	thumbnailImage = image;
 }
 

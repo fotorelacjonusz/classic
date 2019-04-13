@@ -72,7 +72,7 @@ QString AbstractUploader::removeAccents(QString diacritical)
 {
 	static const QString diacriticals = "ŧþðđŋħĸÐŁØ¥łøðßμŒ œ Æ æ ";
 	static const QString replacements = "tbodnnkDLOYloosuOEoeAEae";
-	
+
 	QString result;
 	foreach (QChar c, diacritical.normalized(QString::NormalizationForm_KD))
 	{
@@ -90,10 +90,10 @@ QString AbstractUploader::removeAccents(QString diacritical)
 					if (diacriticals[pos + 1] == ' ')
 						result.append(replacements[pos + 1]);
 				}
-			}				
+			}
 		}
 	}
-		
+
 	return result;
 }
 

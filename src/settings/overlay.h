@@ -14,16 +14,16 @@ public:
 	QString toString() const;
 	bool makeMap(GeoMap *map);
 	DistancePair bestDistance(GeoMap *map) const;
-	
+
 	void writeThumbnail(QIODevice *device) const;
-	
+
 	static QString coordsToString(QPointF coords);
 	static QString coordToQString(qreal coord, QString dir);
-	
+
 	static QPolygonF minimumBoundingBox(QList<QPointF> points);
 	static void drawCompassRose(QPainter &painter, QRectF rect, qreal angle);
-	
-private:	
+
+private:
 	QString name, description;
 	QList<OverlayImage *> images;
 };

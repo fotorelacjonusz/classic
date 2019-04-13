@@ -24,27 +24,27 @@ Q_DECLARE_METATYPE(OSMLayer)
 class OSMLayerDialog : public QDialog
 {
 	Q_OBJECT
-	
+
 public:
 	explicit OSMLayerDialog(QSettings &settings, QWidget *parent = 0);
 	~OSMLayerDialog();
 	void init(Ui::SettingsDialog *settingsUi);
 	OSMLayer currentLayer(bool common) const;
-	
+
 protected slots:
 	void comboBox2Changed(int currentIndex);
 	void removeOSMLayerClicked();
-	
+
 	void accept();
-	
-private:	
+
+private:
 	Ui::OSMLayerDialog *ui;
 	QSettings &settings;
 	QComboBox *comboBox1, *comboBox2;
 	QPushButton *removeButton;
 	QSlider *slider;
 	int sliderMaxBak;
-	
+
 	QList<OSMLayer> layers;
 };
 
