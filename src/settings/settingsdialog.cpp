@@ -45,7 +45,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 		foreach (QString key, settings.allKeys())
 			if (key.startsWith("watermark"))
 				settings.setValue(key.repeated(1).replace("watermark/", "logo/"), settings.value(key));
-	
+
 	// fix alignment between two form layouts in two group boxes
 	int maxWidth = 0;
 	foreach (QObject *object, ui->commonMapBox->children() + ui->imageMapBox->children())
@@ -54,8 +54,8 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 		if (label)
 			maxWidth = qMax(maxWidth, label->sizeHint().width());
 	}
-	ui->commonMapTypeLabel->setMinimumWidth(maxWidth);	
-	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment() | 
+	ui->commonMapTypeLabel->setMinimumWidth(maxWidth);
+	ui->commonMapTypeLabel->setAlignment(qobject_cast<QFormLayout *>(ui->commonMapBox->layout())->labelAlignment() |
 										 (ui->imageMapTypeLabel->alignment() & 0x00f0));
 
 	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox,  0),   this, &SettingsDialog::uploaderFunc);
@@ -98,13 +98,13 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 
 	useOverlays         .init(makeInput("overlays/use",	              ui->useOverlays,           true));
 	useOverlayCommonMap .init(makeInput("overlays/use_on_common",	  ui->useOverlayCommonMap,   true));
-	
+
 	useProxy            .init(makeInput("proxy/use",                  ui->useProxy,              false));
 	proxyHost           .init(makeInput("proxy/host",                 ui->proxyHost));
 	proxyPort			.init(makeInput("proxy/port",                 ui->proxyPort,			 8080));
 	proxyUser           .init(makeInput("proxy/user",                 ui->proxyUser));
 	proxyPass           .init(makeInput("proxy/pass",                 ui->proxyPass));
-	
+
 	connectMany(this, SLOT(proxyOptionsChanged()), &useProxy, &proxyHost, &proxyPort, &proxyUser, &proxyPass);
 
 	for (int i = 0; i < factory.uploaders.size(); ++i)
@@ -214,7 +214,7 @@ void SettingsDialog::fixLengthComboBox()
 void SettingsDialog::accept()
 {
 	fixLengthComboBox();
-	
+
 	if (ui->imageMapType->currentText().isEmpty())
 		ui->imageMapType->setCurrentIndex(0);
 	if (ui->commonMapType->currentText().isEmpty())
@@ -227,12 +227,12 @@ void SettingsDialog::accept()
 void SettingsDialog::reject()
 {
 	load();
-	
+
 	fixLengthComboBox();
-	
+
 	ui->logoLabel->setPixmap(QPixmap::fromImage(logo));
 	ui->imageMapColor->setStyleSheet("background-color: " + m_imageMapColor.name());
-	
+
 	if (ui->imageMapType->currentText().isEmpty())
 	{
 		ui->imageMapType->setCurrentIndex(0);
@@ -243,7 +243,7 @@ void SettingsDialog::reject()
 		ui->commonMapType->setCurrentIndex(0);
 		save(commonMapType.getInput());
 	}
-	
+
 	QDialog::reject();
 }
 

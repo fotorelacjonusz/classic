@@ -71,7 +71,7 @@ public:
 
 	Field<bool> useOverlays;
 	Field<bool> useOverlayCommonMap;
-	
+
 	Field<bool> useProxy;
 	Field<QString> proxyHost;
 	Field<int> proxyPort;
@@ -98,7 +98,7 @@ protected:
 	inline qreal imageMapOpacityFunc() const;
 	inline Corner imageMapCornerFunc() const;
 	QUrl homeUrlFunc() const;
-	
+
 	void fixLengthComboBox();
 
 protected slots:
@@ -110,7 +110,7 @@ private slots:
 	void on_uploadMethodComboBox_currentIndexChanged(int index);
 	void on_imageMapColor_clicked();
 	void on_imageMapPosition_currentIndexChanged(int index);
-	
+
 	void proxyOptionsChanged();
 
 private:
@@ -128,7 +128,7 @@ private:
 	QList<QWidget *> cornerSpecyficImageMapOptions;
 
 	static SettingsDialog *objectInstance;
-	
+
 	QNetworkProxy proxy;
 	OSMLayerDialog osmDialog;
 };

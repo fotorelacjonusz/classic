@@ -69,6 +69,3 @@ void JsonObject::debug() const
 	debug << "}\n";
 	debug.space();
 }
-
-
-

@@ -31,27 +31,27 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 {
 	ui->setupUi(this);
 	ui->toolBox->removeItem(0);
-	
+
 	images.setProgressBar(ui->progressBarAllImages);
 	images.setFormat(tr("Wszystkie obrazki: %p%"));
 	posts.setProgressBar(ui->progressBar);
 	posts.setFormat(SETTINGS->isSelectedThread() ? tr("Przechodzę do wątku...") : tr("Czekam na wybranie wątku..."));
-	
+
 	foreach (AbstractImage *image, imageList)
 		images.append(image, 1.0, ui->progressBarImage);
 	for (int i = 0; i < qCeil((qreal)imageList.count() / SETTINGS->imagesPerPost); ++i)
 		posts.append(new PostWidget(ui->toolBox), SETTINGS->postSpace);
-	
+
 	posts.first()->setTotal(0);
 	posts.last()->object()->setLast();
 	posts.setExtraTotal(posts.size()); // 1 navigation per post
-	
+
 	posts.first()->object()->setHeader(header);
 	posts.last()->object()->setFooter(footer);
-	
+
 	if (settings.value(DONT_SHOW_FORUM_INFO).toBool())
 		ui->infoWidget->hide();
-				
+
 #ifdef Q_OS_WIN
 	ui->progressBar->setStyleSheet("QProgressBar { color: black; }");
 	ui->progressBarImage->setStyleSheet("QProgressBar { color: black; }");
@@ -124,18 +124,18 @@ void ReplyDialog::upload()
 {
 	delegate = &ReplyDialog::parseThread;
 	ui->webView->load(SETTINGS->homeUrl);
-	
+
 	if (!uploader->init(images.count()))
 	{
 		reject();
 		QMessageBox::critical(this, tr("Błąd"), tr("Nie można było rozpocząć wysyłania z powodu:\n%1").arg(uploader->lastError()));
 		return;
 	}
-	
+
 	for (ImageItem *item; (item = images.first(AbstractImage::Ready));)
 	{
 		QString fileName = item->object()->fileName();
-		
+
 		if (!item->object()->url().isEmpty())
 		{
 			item->setFormat(tr("Zdjęcie %1 już wysłane").arg(fileName));
@@ -145,7 +145,7 @@ void ReplyDialog::upload()
 		{
 			//		qDebug() << "wysyłam" << fileName;
 			item->setFormat(tr("Wysyłam %1: %p%").arg(fileName));
-			
+
 			connect(uploader, SIGNAL(uploadProgress(qint64,qint64)), item, SLOT(setProgressScaleToOne(qint64,qint64)));
 			QBuffer buffer;
 			buffer.open(QIODevice::ReadWrite);
@@ -154,27 +154,27 @@ void ReplyDialog::upload()
 			const QString url = uploader->uploadImage(fileName, &buffer);
 			buffer.close();
 			disconnect(uploader, SIGNAL(uploadProgress(qint64,qint64)), 0, 0);
-			
+
 			if (url.isEmpty())
 			{
 				reject();
 				QMessageBox::critical(this, tr("Błąd"), tr("Nie można było wysłać obrazka %1 z powodu:\n%2").arg(fileName).arg(uploader->lastError()));
 				return;
 			}
-			
+
 			item->object()->setUrl(url);
 		}
 		item->state = AbstractImage::Uploaded;
-		
+
 		appendTable(fileName, item->object()->url());
-		
+
 		PostItem *post = posts.first(PostWidget::Incomplete);
 		Q_ASSERT(post);
 		post->object()->appendImage(item->object());
 		item->state = AbstractImage::Assigned;
 		if (post->object()->isFull() || images.all(AbstractImage::Assigned))
 			post->state = PostWidget::Full;
-		
+
 		loadProgress(100);
 	}
 
@@ -231,14 +231,14 @@ void ReplyDialog::tick()
 		loadProgress(0);
 		return;
 	}
-	
+
 	qreal elapsed = time.elapsed() / 1000.0;
 	nextPost->setProgress(elapsed);
 	int second = qCeil(nextPost->total() - elapsed);
 	static const QStringList secondStrings = QStringList() << tr("sekund", "0") << tr("sekundę", "1") << tr("sekundy", "2")
 														   << tr("sekundy", "3") << tr("sekundy", "4") << tr("sekund", "5");
 	posts.setFormat(tr("Czekam %1 %2... %p%").arg(second).arg(secondStrings[qBound(0, second, 5)]));
-	
+
 //	qDebug() << "tick()       " << posts.progress() << posts.total();
 }
 
@@ -251,14 +251,14 @@ void ReplyDialog::loadProgress(int progress)
 void ReplyDialog::parseThread(int progress)
 {
 	Q_UNUSED(progress);
-//	qDebug() << "parseThread()" << ui->webView->url() << progress;	
+//	qDebug() << "parseThread()" << ui->webView->url() << progress;
 //	qDebug() << "parseThread()" << posts.progress() << posts.total();
-	
+
 	PostItem *sentPost = posts.first(PostWidget::Sent);
 	if (sentPost && ui->webView->url().path().startsWith("/newreply.php"))
 	{
 		// error occurred - too early?
-		QRegExp errorExp("Please try again in ([0-9]+) seconds.");		
+		QRegExp errorExp("Please try again in ([0-9]+) seconds.");
 		QWebElement errorElement = frame->findFirstElement("html > body > center > div > div.page > div > script + table > tbody > tr + tr > td > ol > li");
 		qDebug() << "error element" << errorElement.isNull();
 		if (!errorElement.isNull() && errorElement.toPlainText().contains(errorExp))
@@ -267,7 +267,7 @@ void ReplyDialog::parseThread(int progress)
 			delegate = &ReplyDialog::sendPost;
 			int secs = errorExp.cap(1).toInt();
 			qDebug() << "parseThread()" << "za wcześnie o" << secs << "sekund";
-			
+
 			sentPost->state = PostWidget::Full; // -1
 			sentPost->setTotal(secs);
 			sentPost->setProgress(0);
@@ -276,7 +276,7 @@ void ReplyDialog::parseThread(int progress)
 			return;
 		}
 	}
-	
+
 //	qDebug() << "parseThread()" << posts.progress() << posts.total();
 
 	// extract userName
@@ -292,7 +292,7 @@ void ReplyDialog::parseThread(int progress)
 	// extract thread id, this must be done after extracting imgReply
 	if (!isElementRemove("div#threadtools_menu img[alt=\"Subscription\"] + a", &m_threadId, "[^0-9]+", "href"))
 		return;
-	
+
 	// confirm post, this must be done after extracting imgReply
 	if (sentPost)
 	{
@@ -312,7 +312,7 @@ void ReplyDialog::parseThread(int progress)
 		connect(likeButton, SIGNAL(clicked()), this, SLOT(likeClicked()));
 		return;
 	}
-	
+
 	delegate = &ReplyDialog::sendPost;
 	ui->webView->setEnabled(false);
 	ui->webView->stop();
@@ -398,20 +398,20 @@ void ReplyDialog::likeProgress(int progress)
 		QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
 		ui->webView->setEnabled(true);
 		delegate = 0;
-		
+
 		foreach (QWebElement href, frame->findFirstElement(QString("td[id=\"dbtech_thanks_entries_%1\"]").arg(likePostId)).findAll("a"))
 			if (href.toPlainText() == userName)
 			{
 				QMessageBox::information(this, tr("Lubię ten program"), tr("Wygląda na to, że już polubiłeś program."));
 				return;
 			}
-		
+
 		QWebElement likeLink = frame->findFirstElement(QString("a[data-postid=\"%1\"]").arg(likePostId));
 //		if (!likeLink.isNull())
 		likeLink.evaluateJavaScript("var evObj = document.createEvent('MouseEvents'); evObj.initEvent('click', true, true); this.dispatchEvent(evObj);");
 
 		qDebug() << "likeProgress(100) likeLink:" << !likeLink.isNull();
-		likeButton->setEnabled(true);		
+		likeButton->setEnabled(true);
 	}
 }
 

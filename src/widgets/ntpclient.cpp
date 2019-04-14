@@ -37,11 +37,11 @@ void NtpClient::sendRequest(QHostInfo host)
 		return;
 	}
 	qDebug() << QString("Quering NTP server %1...").arg(host.addresses().first().toString());
-	
+
 	socket.bind(123);
 	socket.connectToHost(host.addresses().first(), 123);
 	socket.waitForConnected(1000);
-	
+
 	NtpHeader ntpHeader;
 	ntpHeader.mode = 3; // Client
 	ntpHeader.versionNumber = 4; // Ntp v4
@@ -56,7 +56,7 @@ void NtpClient::readPendingDatagrams()
 	{
 		NtpHeader ntpHeader;
 		if (socket.readDatagram(reinterpret_cast<char *>(&ntpHeader), sizeof(ntpHeader)) < sizeof(ntpHeader))
-			continue;		
+			continue;
 		msCurrentToNtp = QDateTime::currentDateTimeUtc().msecsTo(ntpHeader.transmit.dateTime()) + requestReplyTime.elapsed() / 2;
 		retryTimer.stop();
 		qDebug() << QString("Current UTC time is %1, off by %2 ms from current system time").arg(utcTime().toString("hh:mm:ss.zzz")).arg(msCurrentToNtp);

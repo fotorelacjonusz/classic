@@ -11,7 +11,7 @@ bool GoogleMapsDownloader::makeMap(GeoMap *map)
 	QStringList markers;
 	foreach (QPointF point, map->coords.values())
 		markers << QString("%1,%2").arg(point.y(), 0, 'f', 8).arg(point.x(), 0, 'f', 8);
-	
+
 	QUrl url("http://maps.googleapis.com/maps/api/staticmap");
 	url.addQueryItem("sensor", "false");
 	url.addQueryItem("language", "pl");
@@ -28,7 +28,7 @@ bool GoogleMapsDownloader::makeMap(GeoMap *map)
 		url.addQueryItem("zoom", QString("%1").arg(SETTINGS->imageMapZoom));
 		url.addQueryItem("center", markers.first());
 	}
-	
+
 	static ThrottledNetworkManager manager(100);
 	manager.get(QNetworkRequest(url), this);
 	maps[url] = map;
@@ -48,9 +48,9 @@ void GoogleMapsDownloader::finished(QNetworkReply *reply)
 		qDebug() << QObject::tr("Błąd otwierania mapy.");
 		return;
 	}
-	
+
 	reply->deleteLater();
-	
+
 	if (maps.contains(reply->url()))
 		maps.take(reply->url())->setImage(image);
 }

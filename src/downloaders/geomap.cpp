@@ -21,7 +21,7 @@ GeoMap::GeoMap(QPointF coord, bool hasDirection, qreal direction, QSize size):
 }
 
 GeoMap::GeoMap(CoordMap coords):
-	isCommon(true), hasDirection(false), direction(0), 
+	isCommon(true), hasDirection(false), direction(0),
 	coords(coords),
 	distinctCoords(coords.values().toSet().toList()),
 	coordBox(QPolygonF(coords.values().toVector()).boundingRect()),
@@ -46,11 +46,11 @@ QPointF GeoMap::first() const
 void GeoMap::setImage(QImage image, QSize size)
 {
 	if (!image.isNull())
-	{		
+	{
 		if (image.format() != QImage::Format_ARGB32 &&
 			image.format() != QImage::Format_ARGB32_Premultiplied)
 			image = image.convertToFormat(QImage::Format_ARGB32);
-		
+
 		if (isCommon)
 		{
 			if (size.isValid())
@@ -71,7 +71,7 @@ QPoint GeoMap::coordToPoint(QPointF coord) const
 {
 	const qreal sx = coordBox.width()  ? mapBox.width()  / coordBox.width()  : 1.0;
 	const qreal sy = coordBox.height() ? mapBox.height() / coordBox.height() : 1.0;
-	
+
 	return QPoint((coord.x() - coordBox.left()) * sx, (coordBox.bottom() - coord.y()) * sy) + mapBox.topLeft();
 }
 
@@ -84,7 +84,7 @@ void GeoMap::processCommonMap(QImage &map) const
 
 	//	for (int i = 0; i < coords.size(); ++i)
 	//		merged[coords[i]].append(QString::number(i + SETTINGS->startingNumber));
-	
+
 	// group near points
 	QHash<QPoint, QList<int> > grouped;
 	for (CoordMap::ConstIterator i = coords.constBegin(); i != coords.constEnd(); ++i)
@@ -98,7 +98,7 @@ void GeoMap::processCommonMap(QImage &map) const
 			}
 		grouped[thisPoint].append(i.key() + SETTINGS->startingNumber);
 	}
-	
+
 	// change incrementing numbers to ranges ("1, 2, 3, 4" becomes "1-4")
 	QHash<QPoint, QStringList> ranged;
 	for (QHash<QPoint, QList<int> >::Iterator i = grouped.begin(); i != grouped.end(); ++i)
@@ -116,7 +116,7 @@ void GeoMap::processCommonMap(QImage &map) const
 				ranged[i.key()] << QString("%1-%2").arg(l[_j]).arg(l[j]);
 		}
 	}
-	
+
 	for (QHash<QPoint, QStringList>::Iterator i = ranged.begin(); i != ranged.end(); ++i)
 		textBaloon(&painter, i.key(), SETTINGS->numberImages ? i.value().join(", ") : "✖"); ; // "●"
 }
@@ -125,7 +125,7 @@ void GeoMap::textBaloon(QPainter *painter, QPoint pos, QString text)
 {
 	QRectF bounding = painter->boundingRect(QRectF(0, 0, 1000, 1000), text);
 	bounding.setWidth(qMax(bounding.width() + 8, 20.0));
-	
+
 	QPainterPath path;
 	path.moveTo(5, bounding.height() - 6);
 	path.lineTo(0, bounding.height() + 4);
@@ -147,9 +147,9 @@ void GeoMap::textBaloon(QPainter *painter, QPoint pos, QString text)
 void GeoMap::processMap(QImage &map) const
 {
 	// if map was clipped, e.g. because of google's size constraint of 640px, we need to expand
-	if (map.size() != size) 
+	if (map.size() != size)
 		map = expanded(map, size);
-		
+
 	QColor color = SETTINGS->imageMapColor;
 	color.setAlpha(200);
 	QPainter painter(&map);
@@ -170,7 +170,7 @@ void GeoMap::processMap(QImage &map) const
 		painter.setBrush(QBrush(color));
 		painter.drawEllipse(map.rect().center(), 7, 7);
 	}
-	
+
 	if (SETTINGS->imageMapCircle && SETTINGS->imageMapCorner < SettingsDialog::Expand)
 	{
 		painter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
@@ -199,7 +199,7 @@ QImage GeoMap::mask(QSize size)
 QImage GeoMap::expanded(const QImage &map, QSize requestedSize)
 {
 	QImage result(requestedSize, QImage::Format_RGB32);
-	
+
 	QRect mapRect = centered(result.rect().center(), map.size());
 	QPainter(&result).drawImage(mapRect, map);
 
@@ -213,7 +213,7 @@ QImage GeoMap::expanded(const QImage &map, QSize requestedSize)
 void GeoMap::blur(QImage &image, QRect src, QRect dst)
 {
 //	qDebug() << src << dst;
-	
+
 	int count = 0, sumR = 0, sumG = 0, sumB = 0;
 	for (int x = src.left(); x <= src.right(); x += 10)
 		for (int y = src.top(); y <= src.bottom(); y += 10, ++count)
@@ -224,12 +224,11 @@ void GeoMap::blur(QImage &image, QRect src, QRect dst)
 		}
 	QColor avg(sumR / count, sumG / count, sumB / count);
 	QPainter(&image).fillRect(dst, avg);
-	
-    QLabel label;
+
+	QLabel label;
 	QGraphicsBlurEffect *effect = new QGraphicsBlurEffect();
 	effect->setBlurRadius(10);
 	label.setGraphicsEffect(effect);
-    label.setPixmap(QPixmap::fromImage(image.copy(src)));
-    label.render(&image, dst.topLeft());
+	label.setPixmap(QPixmap::fromImage(image.copy(src)));
+	label.render(&image, dst.topLeft());
 }
-

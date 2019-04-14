@@ -18,10 +18,10 @@ public:
 	ExifValueBase(quint16 type = 0);
 	virtual ~ExifValueBase();
 	virtual exiflong count() const = 0;
-	
+
 protected:
 	quint16 type;
-	
+
 	friend class ExifValue;
 };
 
@@ -39,19 +39,19 @@ public:
 		SLong		= 9,
 		SRational	= 10
 	};
-	
+
 	ExifValue();
 	ExifValue(QDataStream &stream);
 	~ExifValue();
 	void write(QDataStream &stream, QDataStream &valueStream) const;
-	
-	
+
+
 	bool operator ==(const ExifValue &other) const;
-	
+
 	bool isNull() const;
 	int type() const;
 	int count() const;
-	
+
 	ExifValue(exifbyte value);
 	ExifValue(const QVector<exifbyte> &value);
 	ExifValue(const QString &value);
@@ -68,7 +68,7 @@ public:
 	ExifValue(const ExifSRational &value);
 	ExifValue(const QVector<ExifSRational> &value);
 	ExifValue(const QDateTime &dateTime);
-	
+
 	exifbyte toByte() const;
 	QVector<exifbyte> toByteVector() const;
 	QString toString() const;
@@ -84,7 +84,7 @@ public:
 	ExifSRational toSignedRational() const;
 	QVector<ExifSRational> toSignedRationalVector() const;
 	QDateTime toDateTime() const;
-	
+
 private:
 	template <class T>
 	QVector<T> readVector(QDataStream &stream) throw (Exception);
@@ -92,14 +92,14 @@ private:
 	void readValue(QDataStream &stream, quint16 type);
 	void readString(QDataStream &stream, quint16 type);
 	void readUndefined(QDataStream &stream, quint16 type);
-	
+
 	template <class T>
 	void writeVector(QDataStream &stream, QDataStream &valueStream, QVector<T> vector) const;
 	template <class T>
 	void writeValue(QDataStream &stream, QDataStream &valueStream) const;
 	void writeString(QDataStream &stream, QDataStream &valueStream) const;
 	void writeUndefined(QDataStream &stream, QDataStream &valueStream) const;
-	
+
 	QSharedPointer<ExifValueBase> value;
 };
 

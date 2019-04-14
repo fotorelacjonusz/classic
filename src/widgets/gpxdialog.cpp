@@ -21,10 +21,10 @@ GpxDialog::GpxDialog(QWidget *parent) :
 	connect(&timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 	connect(&ntpClient, SIGNAL(utcTimeFound(QDateTime)), ui->gpsTime, SLOT(setDateTime(QDateTime)));
 	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-	
+
 	qRegisterMetaType<QtMsgType>("QtMsgType");
 	qRegisterMetaType<QSourceLocation>("QSourceLocation");
-	
+
 //	connect(validator, SIGNAL(validated(bool)), this, SLOT(validated(bool)));
 //	connect(validator, SIGNAL(message(QtMsgType,QString,QUrl,QSourceLocation)), this, SLOT(message(QtMsgType,QString,QUrl,QSourceLocation)));
 }
@@ -55,16 +55,16 @@ void GpxDialog::accept()
 		done(Rejected);
 		return;
 	}
-	
+
 	qint64 diff = ntpClient.utcTime().msecsTo(ui->cameraTime->dateTime().toUTC()); // camera - gps
-	
+
 	track.clear();
-	
+
 	QFile gpxFile(ui->gpxFile->text());
 	gpxFile.open(QIODevice::ReadOnly);
 	QDomDocument doc;
 	doc.setContent(&gpxFile);
-	
+
 	for QDomFor(trk, "trk", doc.documentElement())
 		for QDomFor(trkseg, "trkseg", trk)
 		{
@@ -80,7 +80,7 @@ void GpxDialog::accept()
 			track.append(segment);
 		}
 //	qDebug() << track;
-	
+
 	done(Accepted);
 }
 
@@ -91,7 +91,7 @@ void GpxDialog::reject()
 
 QPointF GpxDialog::position(QDateTime dateTime) const
 {
-	dateTime = dateTime.toLocalTime(); 
+	dateTime = dateTime.toLocalTime();
 	if (!dateTime.isValid())
 		return QPointF();
 	foreach (Segment segment, track)
@@ -141,14 +141,14 @@ void GpxDialog::on_loadButton_clicked()
 	QString filePath = QFileDialog::getOpenFileName(this, tr("Wybierz plik"), dirPath, tr("Track (*.gpx)"));
 	if (filePath.isEmpty())
 		return;
-	
+
 	SETTINGS->settings().setValue("gpx_dir", filePath.section('/', 0, -2));
-		
+
 	ui->gpxFile->setText(filePath);
 	ui->loadButton->setEnabled(false);
-		
+
 //	validator->validate(QUrl::fromLocalFile(filePath));
-	
+
 	ui->loadButton->setEnabled(true);
 	ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }

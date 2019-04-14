@@ -9,7 +9,7 @@
 #include <QImage>
 #include <QDomElement>
 
-/* 
+/*
  * This class has three coordinate systems:
  * 1. Geographic coordinates (longitude, latitude), aka coordinates, coord    (positive y points up)
  * 2. Position in meters with center (0, 0) at image center aka position, pos (positive y points up)
@@ -24,14 +24,14 @@ public:
 	// dummy overlay for calculations only
 	OverlayImage(QRectF latLongBox, QSize maxSize);
 	bool makeMap(GeoMap *map);
-	
+
 	const QByteArray &data() const;
 	const QString &href() const;
 	static inline QString megaToString(qreal number);
 	QString name() const;
 	QString tech() const;
 	QSize size() const;
-	
+
 	// coord polygon
 	QPolygonF coordPolygon() const;
 	// coord center
@@ -71,11 +71,11 @@ private:
 	// center
 	qreal lat0, lon0;
 	// radius of the earth [m]
-	static const qreal R; 
+	static const qreal R;
 	// image data for QImageReader
 	QByteArray imageData;
 	// image size in px
-	QSize imageSize;	
+	QSize imageSize;
 	// pixels per meter
 	qreal ppm;
 };

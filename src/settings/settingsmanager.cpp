@@ -29,8 +29,8 @@ uint qHash(const QPointer<QObject> &pointer)
 	return qHash(pointer.data());
 }
 
-SettingsManager::AbstractInput::AbstractInput(QString name, QVariant defaultVal): //QObject *receiver, const char *member, 
-	key(name), defaultVal(defaultVal), //receiver(receiver), member(member), 
+SettingsManager::AbstractInput::AbstractInput(QString name, QVariant defaultVal): //QObject *receiver, const char *member,
+	key(name), defaultVal(defaultVal), //receiver(receiver), member(member),
 	wasChanged(false),
 	pasKey(QByteArray::fromHex(PASSWORD_RAW_KEY))
 {
@@ -45,7 +45,7 @@ void SettingsManager::AbstractInput::connect(QObject *receiver, const char *memb
 	QString string(member);
 	string.remove(QRegExp("^[0-9]+"));
 	string.remove(QRegExp("\\(\\)$"));
-	
+
 	listeners.insert(qMakePair(QPointer<QObject>(receiver), string.toAscii()));
 }
 
@@ -100,20 +100,20 @@ void SettingsManager::load(AbstractInput *singleInput)
 void SettingsManager::save(AbstractInput *singleInput)
 {
 	Application::busy();
-	
+
 	QSet<Listener> listeners; // call each listener only once when multiple options changed
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
-	{		
+	{
 		if (input->toVariant() == settings.value(input->key, input->defaultVal))
 		{
 			input->wasChanged = false;
 			continue;
 		}
-		
+
 		input->wasChanged = true;
 		listeners.unite(input->listeners);
 		settings.setValue(input->key, input->toVariant());
-			
+
 		QStringList listenerNames;
 		foreach (Listener listener, input->listeners)
 		{
@@ -126,7 +126,7 @@ void SettingsManager::save(AbstractInput *singleInput)
 	foreach (Listener listener, listeners)
 		if (listener.first)
 			QMetaObject::invokeMethod(listener.first, listener.second.constData());
-	
+
 	Application::idle();
 }
 
@@ -173,7 +173,7 @@ template<>QVariant SettingsManager::Input<QComboBox>::toVariant() const
 {
 	if (object->isEditable())
 		return object->currentText();
-	else 
+	else
 		return object->currentIndex();
 }
 

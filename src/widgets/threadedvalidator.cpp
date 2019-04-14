@@ -12,12 +12,12 @@ public:
 		validator(parent)
 	{
 	}
-	
+
 	void handleMessage(QtMsgType type, const QString &description, const QUrl &identifier, const QSourceLocation &sourceLocation)
 	{
 		validator->message(type, description, identifier, sourceLocation);
 	}
-	
+
 private:
 	ThreadedValidator *validator;
 };

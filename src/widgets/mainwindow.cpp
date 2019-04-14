@@ -46,15 +46,15 @@ MainWindow::MainWindow(QWidget *parent) :
 	manager.load();
 
 	connect(&gpsData, SIGNAL(mapReady(QImage)), this, SLOT(commonMapReady(QImage)));
-	
+
 //	SETTINGS->addCommonMap.connect(this, SLOT(updateCommonMap()));
-	
+
 	connect(new SelectableWidget<ArrowWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(arrowWidgetSelected(QWidget*)));
 	connect(new SelectableWidget<ImageWidget>::Listener(this), SIGNAL(selected(QWidget*)), this, SLOT(imageWidgetSelected(QWidget*)));
-	
+
 	connect(ui->header, SIGNAL(focusIn()), this, SLOT(unselectWidgets()));
 	connect(ui->footer, SIGNAL(focusIn()), this, SLOT(unselectWidgets()));
-	
+
 	new QShortcut(Qt::Key_PageUp, this, SLOT(scrollUp()));
 	new QShortcut(Qt::Key_PageDown, this, SLOT(scrollDown()));
 //	new QShortcut(Qt::ALT + Qt::Key_Delete, this, SLOT(removeBoth()));
@@ -94,7 +94,7 @@ void MainWindow::on_action_open_photorelation_triggered()
 		QMessageBox::critical(this, tr("Błąd"), tr("Nie można otworzyć. Tę fotorelację zapisano inną wersją programu."));
 		return;
 	}
-	
+
 	in >> head >> foot >> count >> *ui->commonMap;
 
 	Application::busy();
@@ -181,7 +181,7 @@ void MainWindow::on_action_add_photos_triggered()
 
 void MainWindow::on_action_import_gpx_triggered()
 {
-    if (gpxDialog.exec() == QDialog::Accepted)
+	if (gpxDialog.exec() == QDialog::Accepted)
 	{
 		Application::busy();
 		for (int i = 0; i < ui->postLayout->count(); ++i)
@@ -207,14 +207,14 @@ void MainWindow::on_action_send_to_SSC_triggered()
 //	images.last()->setFooter(ui->footer->toPlainText());
 
 	ReplyDialog reply(settings, images, ui->header->toPlainText(), ui->footer->toPlainText(), this);
-	
+
 exec_reply:
 	if (reply.exec() == QDialog::Rejected)
 		if (QMessageBox::question(this, tr("Jeszcze raz"), tr("Czy spróbować dokończyć wysyłanie fotorelacji?"),
 								  QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes)
 			goto exec_reply;
-	
-	// update thread numbering 
+
+	// update thread numbering
 	recentThreads.threadPosted(reply.threadId(), reply.threadTitle(), reply.latestPostedImageNumber());
 	//		if (code == QDialog::Accepted)
 	recentThreads.unselect();
@@ -338,7 +338,7 @@ void MainWindow::imageWidgetSelected(QWidget *widget)
 	selectedImage = image;
 	ui->imageToolBar->setEnabled(selectedImage);
 	ui->colorManipulationBar->setWidget(selectedImage);
-	
+
 	if (selectedArrow && selectedImage)
 		selectedArrow->unselect();
 }
@@ -349,7 +349,7 @@ void MainWindow::arrowWidgetSelected(QWidget *widget)
 //	qDebug() << "arrowWidgetSelected" << widget << arrow;
 	selectedArrow = arrow;
 	ui->arrowToolBar->setEnabled(selectedArrow);
-	
+
 	if (selectedImage && selectedArrow)
 		selectedImage->unselect();
 }
@@ -457,7 +457,7 @@ void MainWindow::dropEvent(QDropEvent *event)
 	Application::idle();
 
 //	qDebug() << time.msecsTo(QDateTime::currentDateTime());
-	
+
 	event->acceptProposedAction();
 	updateCommonMap();
 }

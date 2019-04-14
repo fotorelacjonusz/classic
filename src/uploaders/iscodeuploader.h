@@ -10,12 +10,12 @@ class IsCodeUploader;
 class IsCodeUploader : public IsAnonyUploader
 {
 	Q_OBJECT
-	
+
 public:
 	explicit IsCodeUploader(QWidget *parent, QSettings &settings);
 	virtual ~IsCodeUploader();
 	virtual QString uploadImage(QString filePath, QIODevice *image);
-	
+
 private:
 	Ui::IsCodeUploader *ui;
 };

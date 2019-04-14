@@ -33,5 +33,3 @@ void PlainTextEdit::focusOutEvent(QFocusEvent *event)
 	emit focusOut();
 	return QPlainTextEdit::focusOutEvent(event);
 }
-
-

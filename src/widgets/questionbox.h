@@ -11,19 +11,19 @@ class QuestionBox : public QMessageBox
 public:
 	explicit QuestionBox(const QString &title, const QString &question, const QString &settingsKey, QWidget *parent = 0);
 	static bool question(QWidget *parent, const QString &title, const QString &question, const QString &settingsKey);
-	
+
 	virtual void setVisible(bool visible);
-	
+
 private slots:
 	void checkAnswer();
 	void setAnswer(int result);
-	
-private:	
+
+private:
 	const QString settingsKey;
-	
+
 	QCheckBox *checkBoxForever;
 	QCheckBox *checkBoxSession;
-	
+
 	static QMap<QString, bool> answers;
 };
 

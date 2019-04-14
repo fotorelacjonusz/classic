@@ -13,10 +13,10 @@ class PostWidget;
 class PostWidget : public QWidget
 {
 	Q_OBJECT
-	
+
 public:
 	enum State { Incomplete, Full, Sent, Posted };
-	
+
 	explicit PostWidget(QToolBox *parent = 0);
 	~PostWidget();
 
@@ -27,11 +27,11 @@ public:
 	bool isFull() const;
 	void setHeader(QString text);
 	void setFooter(QString text);
-		
+
 private:
 	Ui::PostWidget *ui;
 	QList<AbstractImage *> images;
-	
+
 	QString openingTags;
 	QString closingTags;
 	bool isLast;

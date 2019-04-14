@@ -43,7 +43,7 @@ bool TilesDownloader::validateUrlPattern(QWidget *parent, QString urlPattern)
 void TilesDownloader::makeMapSlot(GeoMap *map)
 {
 	urlPattern = SETTINGS->currentOsmLayer(map->isCommon).urlPattern;
-	
+
 	if (!map->isCommon)
 		map->setImage(render(map->first(), SETTINGS->imageMapZoom, map->size));
 	else if (map->isSingle)
@@ -55,39 +55,39 @@ void TilesDownloader::makeMapSlot(GeoMap *map)
 		const int zy = qFloor(log2((maxSize().height() - 2 * margin) / (tileSize * qAbs(lat2tiley(map->coordBox.bottom()) - lat2tiley(map->coordBox.top())))));
 		const int zoom = qMin(qMin(zx, zy), SETTINGS->currentOsmLayer(true).maxZoom);
 		const int width =  qAbs(lon2tilex(map->coordBox.right(),  zoom) - lon2tilex(map->coordBox.left(), zoom)) * tileSize;
-		const int height = qAbs(lat2tiley(map->coordBox.bottom(), zoom) - lat2tiley(map->coordBox.top(),  zoom)) * tileSize;		
+		const int height = qAbs(lat2tiley(map->coordBox.bottom(), zoom) - lat2tiley(map->coordBox.top(),  zoom)) * tileSize;
 		map->setImage(render(map->coordBox.center(), zoom, maxSize()), QSize(width, height));
 	}
 }
 
 QImage TilesDownloader::render(QPointF coord, int zoom, QSize size)
 {
-	QPoint tileTopLeft; 
+	QPoint tileTopLeft;
 	QSize tileCount;
 	QPointF cropBegin;
 
 	// calculate which tiles we need and how to crop them later
 	calculateDimension(lon2tilex(coord.x(), zoom), size.width()  * 0.5, tileTopLeft.rx(), tileCount.rwidth(),  cropBegin.rx());
 	calculateDimension(lat2tiley(coord.y(), zoom), size.height() * 0.5, tileTopLeft.ry(), tileCount.rheight(), cropBegin.ry());
-	
+
 	QRect tileRect(tileTopLeft, tileCount);
 	QImage image(tileCount * tileSize, QImage::Format_RGB32);
 	painter = new QPainter(&image);
 	painter->setCompositionMode(QPainter::CompositionMode_SourceOver);
-	
+
 	// enqueue all tiles and start two
 	static ThrottledNetworkManager manager(2);
 	downloadCount = tileCount.width() * tileCount.height();
 	for (int x = tileRect.left(); x <= tileRect.right(); ++x)
 		for (int y = tileRect.top(); y <= tileRect.bottom(); ++y)
 			manager.get(createRequest(zoom, x, y, tileTopLeft), this);
-	
+
 	// wait for all tiles being downloaded and painted with painter
 	loop.exec();
-	
+
 	delete painter;
 	painter = 0;
-	
+
 	// crop
 	QRect cropRect(cropBegin.toPoint(), size);
 	return image.copy(cropRect);
@@ -98,18 +98,18 @@ qreal TilesDownloader::lon2tilex(qreal lon)
 	return (lon + 180.0) / 360.0;
 }
 
-qreal TilesDownloader::lon2tilex(qreal lon, int z) 
-{ 
-	return lon2tilex(lon) * (1 << z); 
+qreal TilesDownloader::lon2tilex(qreal lon, int z)
+{
+	return lon2tilex(lon) * (1 << z);
 }
 
 qreal TilesDownloader::lat2tiley(qreal lat)
 {
 	return (1.0 - qLn(qTan(lat * M_PI / 180.0) + 1.0 / qCos(lat * M_PI / 180.0)) / M_PI) / 2.0;
 }
- 
+
 qreal TilesDownloader::lat2tiley(qreal lat, int z)
-{ 
+{
 	 return lat2tiley(lat) * (1 << z);
 }
 
@@ -152,7 +152,7 @@ void TilesDownloader::finished(QNetworkReply *reply)
 		tile.loadFromData(reply->readAll());
 		painter->drawImage(urlToTilePos[reply->url()], tile);
 	}
-	
+
 	if (--downloadCount == 0)
 		loop.exit();
 	reply->deleteLater();

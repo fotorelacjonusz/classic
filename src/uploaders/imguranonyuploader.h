@@ -13,7 +13,7 @@ class ImgurAnonyUploader;
 class ImgurAnonyUploader : public AbstractUploader
 {
 	Q_OBJECT
-	
+
 public:
 	explicit ImgurAnonyUploader(QWidget *parent, QSettings &settings);
 	~ImgurAnonyUploader();
@@ -22,7 +22,7 @@ public:
 	virtual bool init(int imageNumber);
 	virtual QString uploadImage(QString filePath, QIODevice *image);
 	virtual QString tosUrl() const;
-	
+
 protected:
 	void updateCredits();
 	bool checkCredits(int imageNumber, int extra = 0);

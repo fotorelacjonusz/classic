@@ -20,19 +20,19 @@ public:
 
 protected:
 	void run();
-	
+
 signals:
 	void validated(bool valid);
 	void message(QtMsgType type, const QString &description, const QUrl &identifier, const QSourceLocation &sourceLocation);
-	
+
 private:
 	QUrl fileUrl;
 	QAbstractMessageHandler *handler;
-	
+
 	QXmlSchema schema;
 	QXmlSchemaValidator validator;
-	
-	
+
+
 	friend class MessageHandler;
 };
 

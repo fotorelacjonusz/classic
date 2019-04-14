@@ -10,14 +10,14 @@ PostWidget::PostWidget(QToolBox *parent) :
 	isLast(false)
 {
 	ui->setupUi(this);
-	
+
 	openingTags = SETTINGS->extraTags.v().remove('\n');
 	QRegExp tagExp("\\[([^=\\]]+)(=.+)?\\]");
 	tagExp.setMinimal(true);
 //	closingTags.replace(tagExp, "[/\\1]");
 	for (int pos = 0; (pos = tagExp.indexIn(openingTags, pos)) != -1; pos += tagExp.matchedLength())
 		closingTags.prepend("[/" + tagExp.cap(1) + "]");
-	
+
 	parent->addItem(this, tr("Post %1").arg(parent->count() + 1));
 }
 
@@ -29,7 +29,7 @@ PostWidget::~PostWidget()
 void PostWidget::appendImage(AbstractImage *image)
 {
 	images.append(image);
-	
+
 	QString text;
 	text += openingTags + header;
 	foreach (AbstractImage *image, images)

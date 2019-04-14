@@ -10,7 +10,7 @@ class IsLoginUploader;
 class IsLoginUploader : public IsAnonyUploader
 {
 	Q_OBJECT
-	
+
 public:
 	explicit IsLoginUploader(QWidget *parent, QSettings &settings);
 	virtual ~IsLoginUploader();

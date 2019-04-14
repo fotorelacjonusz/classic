@@ -39,19 +39,17 @@ void AbstractImage::setUrl(QString url)
 QString AbstractImage::toBBCode() const
 {
 	AddFunc add = (SETTINGS->captionsUnder ? (AddFunc)&QString::append : (AddFunc)&QString::prepend);
-	
+
 	QString code = QString("[img]%1[/img]").arg(m_url);
-		
+
 	(code.*add)("\n");
 	if (SETTINGS->extraSpace)
 		(code.*add)("\n");
 	(code.*add)(caption().trimmed());
-	
+
 //	code = code.trimmed();
-	
+
 //	code.prepend(header + "\n\n");
 //	code.append("\n\n" + footer);
 	return code.trimmed();
 }
-
-

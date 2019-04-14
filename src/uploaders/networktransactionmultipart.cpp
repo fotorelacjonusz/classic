@@ -40,4 +40,3 @@ bool NetworkTransactionMultiPart::put()
 {
 	return finish(manager.put(request, &multiPart));
 }
-

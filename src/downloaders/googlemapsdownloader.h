@@ -12,7 +12,7 @@ class GoogleMapsDownloader : public AbstractMapDownloader
 public:
 	bool makeMap(GeoMap *map);
 	void finished(QNetworkReply *reply);
-	
+
 protected:
 	QHash<QUrl, GeoMap *> maps;
 };

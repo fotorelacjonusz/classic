@@ -57,8 +57,8 @@ void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 {
 	disconnect(brightnessSlider, SIGNAL(valueChanged(int)), 0, 0);
 	disconnect(contrastSlider, SIGNAL(valueChanged(int)), 0, 0);
-	disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);	
-	
+	disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);
+
 	setEnabled(widget);
 	if (widget)
 	{
@@ -91,4 +91,3 @@ void ColorManipulationToolBar::on_colorManipulationBar_orientationChanged(Qt::Or
 	brightnessSlider->setFixedSize(w, h);
 	gammaSlider->setFixedSize(w, h);
 }
-

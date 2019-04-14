@@ -51,7 +51,7 @@ void ImageLabel::mousePressEvent(QMouseEvent *event)
 {
 	if (isNull())
 		return QLabel::mousePressEvent(event);
-	
+
 	start = event->pos();
 	event->accept();
 

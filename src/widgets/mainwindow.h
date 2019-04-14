@@ -22,7 +22,7 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
 	Q_OBJECT
-	
+
 public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
@@ -32,7 +32,7 @@ private slots:
 	void on_action_save_photorelation_triggered();
 	void on_action_settings_triggered();
 	void on_action_remove_photos_triggered();
-	
+
 	void on_action_add_photos_triggered();
 	void on_action_import_gpx_triggered();
 	void on_action_send_to_SSC_triggered();
@@ -61,11 +61,11 @@ private slots:
 
 	void updateCommonMap();
 	void commonMapReady(QImage map);
-	
+
 	void scrollUp();
 	void scrollDown();
 	void removeBoth();
-	
+
 protected:
 	void processEvents() const;
 	ImageWidget *newImage(QString filePath, QDataStream *stream) throw(Exception);

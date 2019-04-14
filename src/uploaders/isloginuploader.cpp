@@ -32,4 +32,3 @@ QString IsLoginUploader::uploadImage(QString filePath, QIODevice *image)
 	tr->addHttpPart("a_password", password.toAscii());
 	return postTransaction(tr, image);
 }
-
