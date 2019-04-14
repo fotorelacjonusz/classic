@@ -27,10 +27,10 @@ ExifImageHeader::~ExifImageHeader()
 bool ExifImageHeader::loadFromJpeg(const QString &filePath)
 {
 	QFile file(filePath);
-    if (file.open(QIODevice::ReadOnly))
-        return loadFromJpeg(&file);
-    else
-        return false;
+	if (file.open(QIODevice::ReadOnly))
+		return loadFromJpeg(&file);
+	else
+		return false;
 }
 
 bool ExifImageHeader::loadFromJpeg(QIODevice *device)
@@ -53,10 +53,10 @@ bool ExifImageHeader::loadFromJpeg(QIODevice *device)
 bool ExifImageHeader::saveToJpeg(const QString &filePath) const
 {
 	QFile file(filePath);
-    if (file.open(QIODevice::ReadWrite))
-        return saveToJpeg(&file);
-    else
-        return false;
+	if (file.open(QIODevice::ReadWrite))
+		return saveToJpeg(&file);
+	else
+		return false;
 }
 
 bool ExifImageHeader::saveToJpeg(QIODevice *device) const
@@ -298,7 +298,7 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
 
 			stream.setByteOrder(byteOrder);
 			quint16 id;
-		    quint32 offset;
+			quint32 offset;
 			stream >> id >> offset;
 			id == 0x002a OR_THROW("Bad TIFF header");
 			stream.device()->seek(offset) OR_THROW(SEEK_ERROR(offset));

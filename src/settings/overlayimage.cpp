@@ -13,7 +13,7 @@ const qreal OverlayImage::R = 6371000;
 template <class T>
 int sgn(T v)
 {
-    return (T(0) < v) - (v < T(0));
+	return (T(0) < v) - (v < T(0));
 }
 
 OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) throw (Exception)

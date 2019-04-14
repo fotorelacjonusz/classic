@@ -225,10 +225,10 @@ void GeoMap::blur(QImage &image, QRect src, QRect dst)
 	QColor avg(sumR / count, sumG / count, sumB / count);
 	QPainter(&image).fillRect(dst, avg);
 
-    QLabel label;
+	QLabel label;
 	QGraphicsBlurEffect *effect = new QGraphicsBlurEffect();
 	effect->setBlurRadius(10);
 	label.setGraphicsEffect(effect);
-    label.setPixmap(QPixmap::fromImage(image.copy(src)));
-    label.render(&image, dst.topLeft());
+	label.setPixmap(QPixmap::fromImage(image.copy(src)));
+	label.render(&image, dst.topLeft());
 }

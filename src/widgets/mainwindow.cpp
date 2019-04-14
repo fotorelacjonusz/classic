@@ -181,7 +181,7 @@ void MainWindow::on_action_add_photos_triggered()
 
 void MainWindow::on_action_import_gpx_triggered()
 {
-    if (gpxDialog.exec() == QDialog::Accepted)
+	if (gpxDialog.exec() == QDialog::Accepted)
 	{
 		Application::busy();
 		for (int i = 0; i < ui->postLayout->count(); ++i)

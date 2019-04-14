@@ -61,8 +61,8 @@ ExifValue::ExifValue(QDataStream &stream)
 		case Long:		readValue<ExifValueLong>		(stream, type); break;
 		case Rational:	readValue<ExifValueRational>	(stream, type); break;
 		case Undefined:	readUndefined					(stream, type); break;
-        case SLong:		readValue<ExifValueSLong>		(stream, type); break;
-        case SRational:	readValue<ExifValueSRational>	(stream, type); break;
+		case SLong:		readValue<ExifValueSLong>		(stream, type); break;
+		case SRational:	readValue<ExifValueSRational>	(stream, type); break;
 	}
 }
 
@@ -96,8 +96,8 @@ void ExifValue::write(QDataStream &stream, QDataStream &valueStream) const
 		case Long:		writeValue<ExifValueLong>		(stream, valueStream); break;
 		case Rational:	writeValue<ExifValueRational>	(stream, valueStream); break;
 		case Undefined:	writeUndefined					(stream, valueStream); break;
-        case SLong:		writeValue<ExifValueSLong>		(stream, valueStream); break;
-        case SRational:	writeValue<ExifValueSRational>	(stream, valueStream); break;
+		case SLong:		writeValue<ExifValueSLong>		(stream, valueStream); break;
+		case SRational:	writeValue<ExifValueSRational>	(stream, valueStream); break;
 	}
 }
 

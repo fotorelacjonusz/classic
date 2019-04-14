@@ -12,13 +12,13 @@ class ExifIfd : public ValueMap
 {
 public:
 	enum EmbedOffset
-    {
-        ExifIfdPointer              = 0x8769,
-        GpsInfoIfdPointer           = 0x8825,
-        InteroperabilityIfdPointer  = 0xA005,
-        JpegInterchangeFormat       = 0x0201,
-        JpegInterchangeFormatLength = 0x0202
-    };
+	{
+		ExifIfdPointer              = 0x8769,
+		GpsInfoIfdPointer           = 0x8825,
+		InteroperabilityIfdPointer  = 0xA005,
+		JpegInterchangeFormat       = 0x0201,
+		JpegInterchangeFormatLength = 0x0202
+	};
 
 	ExifIfd();
 	ExifIfd(QDataStream &stream) throw (Exception);
