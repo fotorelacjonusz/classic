@@ -48,7 +48,8 @@ UploaderFactory::UploaderFactory()
 //	TODO Re-enable me!  (See ftpuploader.h)
 //	UPLOADER(FtpUploader, tr("Własne konto FTP"));
 	UPLOADER(ImgurAnonUploader, tr("Imgur anonimowo"));
-	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
+//	TODO Re-enable me!  (See imgurloginuploader.h)
+//	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 }
 
 UploaderFactory::~UploaderFactory()
