@@ -4,11 +4,11 @@
 #include <QDialog>
 #include <QTimer>
 #include <QTime>
+#include <QWebEnginePage>
 #include "progresscontainer.h"
 #include "abstractimage.h"
 #include "postwidget.h"
 
-class QWebFrame;
 class SettingsDialog;
 class AbstractUploader;
 class QSettings;
@@ -53,7 +53,7 @@ private slots:
 private:
 	Ui::ReplyDialog *ui;
 	QSettings &settings;
-	QWebFrame *frame;
+	QWebEnginePage *frame;
 	AbstractUploader *const uploader;
 
 	ProgressContainer<AbstractImage> images;

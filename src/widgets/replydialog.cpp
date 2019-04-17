@@ -4,8 +4,7 @@
 #include "uploaders/abstractuploader.h"
 #include "networkcookiejar.h"
 
-#include <QWebFrame>
-#include <QWebElement>
+#include <QWebEnginePage>
 #include <QDebug>
 #include <QMessageBox>
 #include <QNetworkCookieJar>
