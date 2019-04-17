@@ -4,7 +4,7 @@
 #include <QSettings>
 
 IsCodeUploader::IsCodeUploader(QWidget *parent, QSettings &settings) :
-	IsAnonyUploader(parent, settings),
+	IsAnonUploader(parent, settings),
 	ui(new Ui::IsCodeUploader)
 {
 	ui->setupUi(this);

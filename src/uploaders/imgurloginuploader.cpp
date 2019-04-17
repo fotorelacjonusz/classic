@@ -1,5 +1,5 @@
 #include "imgurloginuploader.h"
-#include "ui_imguranonyuploader.h"
+#include "ui_imguranonuploader.h"
 #include "ui_imgurloginuploader.h"
 #include "networkcookiejar.h"
 #include "jsonobject.h"
@@ -24,7 +24,7 @@
 const QString ImgurLoginUploader::resPage = "qrc:/res/page.html";
 
 ImgurLoginUploader::ImgurLoginUploader(QWidget *parent, QSettings &settings) :
-	ImgurAnonyUploader(parent, settings),
+	ImgurAnonUploader(parent, settings),
 	ui(new Ui::ImgurLoginUploader)
 {
 	ui->setupUi(this);
@@ -71,7 +71,7 @@ QString ImgurLoginUploader::uploadImage(QString filePath, QIODevice *image)
 	if (!checkToken())
 		return "";
 
-	return ImgurAnonyUploader::uploadImage(filePath, image);
+	return ImgurAnonUploader::uploadImage(filePath, image);
 }
 
 bool ImgurLoginUploader::checkToken()
