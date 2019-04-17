@@ -38,8 +38,8 @@ protected slots:
 	void reject();
 
 private slots:
-	bool isElement(QString query, QString *variable = 0, int up = 0, QString attr = QString()) const;
-	bool isElementRemove(QString query, QString *variable, QString pattern, QString attr = QString()) const;
+//	bool isElement(QString query, QString *variable = 0, int up = 0, QString attr = QString()) const;
+//	bool isElementRemove(QString query, QString *variable, QString pattern, QString attr = QString()) const;
 
 	void startTimer();
 	void tick();

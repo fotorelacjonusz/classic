@@ -62,15 +62,11 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	timer.setInterval(50);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(tick()));
 
-	QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, false);
-	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
 	connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(loadProgress(int)));
 
-	frame = ui->webView->page()->mainFrame();
+	frame = ui->webView->page();
 	QNetworkDiskCache *cache = new QNetworkDiskCache();
 	cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
-	ui->webView->page()->networkAccessManager()->setCache(cache);
-	ui->webView->page()->networkAccessManager()->setCookieJar(new NetworkCookieJar());
 }
 
 ReplyDialog::~ReplyDialog()
@@ -192,6 +188,8 @@ void ReplyDialog::reject()
 	done(Rejected);
 }
 
+// Deliberately to remove.
+#if 0
 bool ReplyDialog::isElement(QString query, QString *variable, int up, QString attr) const
 {
 	if (variable && !variable->isEmpty())
@@ -211,6 +209,7 @@ bool ReplyDialog::isElementRemove(QString query, QString *variable, QString patt
 {
 	return isElement(query, variable, 0, attr) && !(*variable = variable->remove(QRegExp(pattern)).trimmed()).isEmpty();
 }
+#endif
 
 void ReplyDialog::startTimer()
 {
@@ -246,6 +245,7 @@ void ReplyDialog::loadProgress(int progress)
 void ReplyDialog::parseThread(int progress)
 {
 	Q_UNUSED(progress);
+#if 0
 //	qDebug() << "parseThread()" << ui->webView->url() << progress;
 //	qDebug() << "parseThread()" << posts.progress() << posts.total();
 
@@ -320,11 +320,13 @@ void ReplyDialog::parseThread(int progress)
 	qDebug() << "parseThread()" << "przechodzę do formularza\n";
 	posts.setFormat(tr("Przechodzę do formularza... %p%"));
 	ui->webView->load(QString(SSC_HOST) + "/" + replyLink);
+#endif
 }
 
 void ReplyDialog::sendPost(int progress)
 {
 	Q_UNUSED(progress);
+#if 0
 	QWebElement title = frame->findFirstElement("input[name=title]");
 	QWebElement message = frame->findFirstElement("textarea[name=message]");
 	QWebElement submit = frame->findFirstElement("input[name=sbutton]");
@@ -361,6 +363,7 @@ void ReplyDialog::sendPost(int progress)
 	delegate = &ReplyDialog::parseThread;
 	posts.setFormat(tr("Wysyłam posta... %p%"));
 	submit.evaluateJavaScript("this.click()");
+#endif
 }
 
 void ReplyDialog::on_hideInfoButton_clicked()
