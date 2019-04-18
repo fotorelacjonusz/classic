@@ -49,6 +49,7 @@ SOURCES += \
 	src/messagehandler.cpp \
 	src/exception.cpp \
 	src/application.cpp \
+	src/embeddedjavascript.cpp \
 	src/widgets/threadedvalidator.cpp \
 	src/widgets/selectablewidget.cpp \
 	src/widgets/replydialog.cpp \
@@ -103,6 +104,7 @@ HEADERS += \
 	src/messagehandler.h \
 	src/exception.h \
 	src/application.h \
+	src/embeddedjavascript.h \
 	src/widgets/threadedvalidator.h \
 	src/widgets/selectablewidget.h \
 	src/widgets/replydialog.h \
