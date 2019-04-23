@@ -44,8 +44,8 @@ int main(int argc, char *argv[])
 	QPixmapCache::setCacheLimit(524288);
 
 	Application a(argc, argv);
-	a.setApplicationName("fotorelacjonusz");
-	a.setOrganizationName("Kamil Ostaszewski software");
+	a.setApplicationName("Fotorelacjonusz");
+	a.setOrganizationName("FPW Community");
 	a.setApplicationVersion(PROGRAM_VERSION);
 
 	QString locale = QLocale::system().name();
