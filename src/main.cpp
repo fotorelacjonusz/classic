@@ -6,6 +6,7 @@
 #include <cstdio>
 #include "widgets/mainwindow.h"
 #include "messagehandler.h"
+#include "embeddedjavascript.h"
 
 #ifdef Q_OS_UNIX
 
@@ -58,6 +59,8 @@ int main(int argc, char *argv[])
 		qDebug() << "Loading :/fotorelacjonusz_en_US:" << translator.load(":/fotorelacjonusz_en_US");
 
 	a.installTranslator(&translator);
+
+	EmbeddedJavascript::insertIntoProfile(":/src/web/ssc.js");
 
 	MainWindow w;
 	w.setWindowTitle(a.applicationName());
