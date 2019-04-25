@@ -7,16 +7,16 @@
 
 
 namespace Ui {
-class ImgurAnonyUploader;
+class ImgurAnonUploader;
 }
 
-class ImgurAnonyUploader : public AbstractUploader
+class ImgurAnonUploader : public AbstractUploader
 {
 	Q_OBJECT
 
 public:
-	explicit ImgurAnonyUploader(QWidget *parent, QSettings &settings);
-	~ImgurAnonyUploader();
+	explicit ImgurAnonUploader(QWidget *parent, QSettings &settings);
+	~ImgurAnonUploader();
 
 	virtual void load();
 	virtual bool init(int imageNumber);
@@ -36,7 +36,7 @@ protected:
 
 	QString albumId;
 
-	Ui::ImgurAnonyUploader *ui;
+	Ui::ImgurAnonUploader *ui;
 
 };
 

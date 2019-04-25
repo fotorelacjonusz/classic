@@ -1,5 +1,5 @@
-#include "imguranonyuploader.h"
-#include "ui_imguranonyuploader.h"
+#include "imguranonuploader.h"
+#include "ui_imguranonuploader.h"
 #include "jsonobject.h"
 #include "networktransactionmultipart.h"
 #include "secrets.h"
@@ -13,35 +13,35 @@
 #define APP_REMAINING_CSTR  "ClientRemaining"  // Total credits remaining for the application in a day.
 
 
-ImgurAnonyUploader::Credits::Credits():
+ImgurAnonUploader::Credits::Credits():
 	userLimit(-1), userRemaining(-1), appLimit(-1), appRemaining(-1)
 {
 }
 
-ImgurAnonyUploader::ImgurAnonyUploader(QWidget *parent, QSettings &settings) :
+ImgurAnonUploader::ImgurAnonUploader(QWidget *parent, QSettings &settings) :
 	AbstractUploader(parent, settings),
-	ui(new Ui::ImgurAnonyUploader)
+	ui(new Ui::ImgurAnonUploader)
 {
 	ui->setupUi(this);
 }
 
-ImgurAnonyUploader::~ImgurAnonyUploader()
+ImgurAnonUploader::~ImgurAnonUploader()
 {
 	delete ui;
 }
 
-void ImgurAnonyUploader::load()
+void ImgurAnonUploader::load()
 {
 	AbstractUploader::load();
 	updateCredits();
 }
 
-bool ImgurAnonyUploader::init(int imageNumber)
+bool ImgurAnonUploader::init(int imageNumber)
 {
 	return checkCredits(imageNumber);
 }
 
-QString ImgurAnonyUploader::uploadImage(QString filePath, QIODevice *image)
+QString ImgurAnonUploader::uploadImage(QString filePath, QIODevice *image)
 {
 	image->open(QIODevice::ReadOnly);
 	NetworkTransactionMultiPart tr(this, "https://api.imgur.com/3/image");
@@ -59,12 +59,12 @@ QString ImgurAnonyUploader::uploadImage(QString filePath, QIODevice *image)
 	return json.success ? json.data["link"] : "";
 }
 
-QString ImgurAnonyUploader::tosUrl() const
+QString ImgurAnonUploader::tosUrl() const
 {
 	return "http://imgur.com/tos";
 }
 
-void ImgurAnonyUploader::updateCredits()
+void ImgurAnonUploader::updateCredits()
 {
 	NetworkTransaction tr(this, "https://api.imgur.com/3/credits");
 	setAuthorization(&tr);
@@ -89,7 +89,7 @@ void ImgurAnonyUploader::updateCredits()
 	}
 }
 
-bool ImgurAnonyUploader::checkCredits(int imageNumber, int extra)
+bool ImgurAnonUploader::checkCredits(int imageNumber, int extra)
 {
 	updateCredits();
 	int remaining = qMin(credits.userRemaining, credits.appRemaining);
@@ -102,7 +102,7 @@ bool ImgurAnonyUploader::checkCredits(int imageNumber, int extra)
 	return true;
 }
 
-void ImgurAnonyUploader::setAuthorization(NetworkTransaction *tr)
+void ImgurAnonUploader::setAuthorization(NetworkTransaction *tr)
 {
 	tr->setRawHeader("Authorization", QString("Client-ID " IMGUR_CLIENT_ID).toAscii());
 }

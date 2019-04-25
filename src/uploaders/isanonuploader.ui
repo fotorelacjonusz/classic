@@ -2,8 +2,8 @@
  <author/>
  <comment/>
  <exportmacro/>
- <class>IsAnonyUploader</class>
- <widget class="QWidget" name="IsAnonyUploader">
+ <class>IsAnonUploader</class>
+ <widget class="QWidget" name="IsAnonUploader">
   <property name="geometry">
    <rect>
     <x>0</x>

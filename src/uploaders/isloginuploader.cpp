@@ -4,7 +4,7 @@
 #include <QSettings>
 
 IsLoginUploader::IsLoginUploader(QWidget *parent, QSettings &settings) :
-	IsAnonyUploader(parent, settings),
+	IsAnonUploader(parent, settings),
 	ui(new Ui::IsLoginUploader)
 {
 	ui->setupUi(this);

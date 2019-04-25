@@ -6,16 +6,16 @@
 class NetworkTransactionMultiPart;
 
 namespace Ui {
-class IsAnonyUploader;
+class IsAnonUploader;
 }
 
-class IsAnonyUploader : public AbstractUploader
+class IsAnonUploader : public AbstractUploader
 {
 	Q_OBJECT
 
 public:
-	explicit IsAnonyUploader(QWidget *parent, QSettings &settings);
-	virtual ~IsAnonyUploader();
+	explicit IsAnonUploader(QWidget *parent, QSettings &settings);
+	virtual ~IsAnonUploader();
 	virtual QString uploadImage(QString filePath, QIODevice *image);
 	virtual QString tosUrl() const;
 
@@ -24,7 +24,7 @@ protected:
 	QString postTransaction(NetworkTransactionMultiPart *tr, QIODevice *image);
 
 private:
-	Ui::IsAnonyUploader *ui;
+	Ui::IsAnonUploader *ui;
 };
 
 #endif // ISANONYUPLOADER_H

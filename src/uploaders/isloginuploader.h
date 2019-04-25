@@ -1,13 +1,13 @@
 #ifndef ISLOGINUPLOADER_H
 #define ISLOGINUPLOADER_H
 
-#include "isanonyuploader.h"
+#include "isanonuploader.h"
 
 namespace Ui {
 class IsLoginUploader;
 }
 
-class IsLoginUploader : public IsAnonyUploader
+class IsLoginUploader : public IsAnonUploader
 {
 	Q_OBJECT
 

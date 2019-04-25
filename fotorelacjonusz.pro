@@ -87,9 +87,9 @@ SOURCES += \
 	src/uploaders/jsonobject.cpp \
 	src/uploaders/isloginuploader.cpp \
 	src/uploaders/iscodeuploader.cpp \
-	src/uploaders/isanonyuploader.cpp \
+	src/uploaders/isanonuploader.cpp \
 	src/uploaders/imgurloginuploader.cpp \
-	src/uploaders/imguranonyuploader.cpp \
+	src/uploaders/imguranonuploader.cpp \
 	src/uploaders/ftpuploader.cpp \
 	src/uploaders/abstractuploader.cpp \
 	src/myexif/exifimageheader.cpp \
@@ -141,9 +141,9 @@ HEADERS += \
 	src/uploaders/jsonobject.h \
 	src/uploaders/isloginuploader.h \
 	src/uploaders/iscodeuploader.h \
-	src/uploaders/isanonyuploader.h \
+	src/uploaders/isanonuploader.h \
 	src/uploaders/imgurloginuploader.h \
-	src/uploaders/imguranonyuploader.h \
+	src/uploaders/imguranonuploader.h \
 	src/uploaders/ftpuploader.h \
 	src/uploaders/abstractuploader.h \
 	src/myexif/exifrational.h \
@@ -161,9 +161,9 @@ FORMS += \
 	src/settings/osmlayerdialog.ui \
 	src/uploaders/isloginuploader.ui \
 	src/uploaders/iscodeuploader.ui \
-	src/uploaders/isanonyuploader.ui \
+	src/uploaders/isanonuploader.ui \
 	src/uploaders/imgurloginuploader.ui \
-	src/uploaders/imguranonyuploader.ui \
+	src/uploaders/imguranonuploader.ui \
 	src/uploaders/ftpuploader.ui
 
 RESOURCES += \

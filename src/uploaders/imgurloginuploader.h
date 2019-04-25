@@ -1,7 +1,7 @@
 #ifndef IMGURLOGINUPLOADER_H
 #define IMGURLOGINUPLOADER_H
 
-#include "imguranonyuploader.h"
+#include "imguranonuploader.h"
 #include <QWidget>
 #include <QWebView>
 
@@ -9,7 +9,7 @@ namespace Ui {
 class ImgurLoginUploader;
 }
 
-class ImgurLoginUploader : public ImgurAnonyUploader
+class ImgurLoginUploader : public ImgurAnonUploader
 {
 	Q_OBJECT
 

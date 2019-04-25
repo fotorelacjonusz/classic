@@ -1,5 +1,5 @@
-#include "isanonyuploader.h"
-#include "ui_isanonyuploader.h"
+#include "isanonuploader.h"
+#include "ui_isanonuploader.h"
 #include "networktransaction.h"
 #include "networktransactionmultipart.h"
 #include "secrets.h"
@@ -8,30 +8,30 @@
 #include <QEventLoop>
 #include <QNetworkReply>
 
-IsAnonyUploader::IsAnonyUploader(QWidget *parent, QSettings &settings) :
+IsAnonUploader::IsAnonUploader(QWidget *parent, QSettings &settings) :
 	AbstractUploader(parent, settings),
-	ui(new Ui::IsAnonyUploader)
+	ui(new Ui::IsAnonUploader)
 {
 	ui->setupUi(this);
 }
 
-IsAnonyUploader::~IsAnonyUploader()
+IsAnonUploader::~IsAnonUploader()
 {
 	delete ui;
 }
 
-QString IsAnonyUploader::uploadImage(QString filePath, QIODevice *image)
+QString IsAnonUploader::uploadImage(QString filePath, QIODevice *image)
 {
 	NetworkTransactionMultiPart *tr = createTransaction(filePath, image);
 	return postTransaction(tr, image);
 }
 
-QString IsAnonyUploader::tosUrl() const
+QString IsAnonUploader::tosUrl() const
 {
 	return "http://imageshack.us/p/rules/";
 }
 
-NetworkTransactionMultiPart *IsAnonyUploader::createTransaction(QString fileName, QIODevice *image)
+NetworkTransactionMultiPart *IsAnonUploader::createTransaction(QString fileName, QIODevice *image)
 {
 	image->open(QIODevice::ReadOnly);
 	NetworkTransactionMultiPart *tr = new NetworkTransactionMultiPart(this, "http://load5.imageshack.us/upload_api.php");
@@ -44,7 +44,7 @@ NetworkTransactionMultiPart *IsAnonyUploader::createTransaction(QString fileName
 	return tr;
 }
 
-QString IsAnonyUploader::postTransaction(NetworkTransactionMultiPart *tr, QIODevice *image)
+QString IsAnonUploader::postTransaction(NetworkTransactionMultiPart *tr, QIODevice *image)
 {
 	tr->post();
 	error = tr->error;

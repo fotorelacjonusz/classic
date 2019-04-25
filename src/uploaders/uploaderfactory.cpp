@@ -1,10 +1,10 @@
 #include "uploaderfactory.h"
 
-#include "isanonyuploader.h"
+#include "isanonuploader.h"
 #include "iscodeuploader.h"
 #include "isloginuploader.h"
 #include "ftpuploader.h"
-#include "imguranonyuploader.h"
+#include "imguranonuploader.h"
 #include "imgurloginuploader.h"
 
 UploaderFactory::AbstractWrapper::AbstractWrapper(QString name):
@@ -42,12 +42,12 @@ private:
 
 UploaderFactory::UploaderFactory()
 {
-	UPLOADER(IsAnonyUploader, tr("Imageshack anonimowo"));
+	UPLOADER(IsAnonUploader, tr("Imageshack anonimowo"));
 	UPLOADER(IsCodeUploader, tr("Imageshack kod rejestracyjny"));
 	UPLOADER(IsLoginUploader, tr("Imageshack login i hasło"));
 //	TODO Re-enable me!  (See ftpuploader.h)
 //	UPLOADER(FtpUploader, tr("Własne konto FTP"));
-	UPLOADER(ImgurAnonyUploader, tr("Imgur anonimowo"));
+	UPLOADER(ImgurAnonUploader, tr("Imgur anonimowo"));
 	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 }
 
