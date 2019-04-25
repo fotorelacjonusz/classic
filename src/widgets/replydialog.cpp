@@ -2,6 +2,7 @@
 #include "ui_replydialog.h"
 #include "settings/settingsdialog.h"
 #include "uploaders/abstractuploader.h"
+#include "embeddedjavascript.h"
 #include "networkcookiejar.h"
 
 #include <QWebEnginePage>
@@ -11,6 +12,7 @@
 #include <QNetworkDiskCache>
 #include <QDesktopServices>
 #include <QBuffer>
+#include <QWebChannel>
 #include <QtCore/qmath.h>
 
 #define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
@@ -65,6 +67,10 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(loadProgress(int)));
 
 	frame = ui->webView->page();
+
+	frame->setWebChannel(&webChannel, EmbeddedJavascript::worldId);
+	webChannel.registerObject("replyDialog", this);
+
 	QNetworkDiskCache *cache = new QNetworkDiskCache();
 	cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
 }
@@ -88,6 +94,11 @@ QString ReplyDialog::threadId() const
 QString ReplyDialog::threadTitle() const
 {
 	return m_threadTitle;
+}
+
+void ReplyDialog::forumPageLoaded(QString url)
+{
+	qDebug() << "Browser on page" << url;
 }
 
 void ReplyDialog::appendTable(QString cell0, QString cell1)

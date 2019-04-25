@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QTime>
 #include <QWebEnginePage>
+#include <QWebChannel>
 #include "progresscontainer.h"
 #include "abstractimage.h"
 #include "postwidget.h"
@@ -28,6 +29,9 @@ public:
 	int latestPostedImageNumber() const;
 	QString threadId() const;
 	QString threadTitle() const;
+
+public slots:
+	void forumPageLoaded(QString url);
 
 protected slots:
 	void appendTable(QString cell0, QString cell1);
@@ -69,6 +73,8 @@ private:
 	QTimer timer;
 	PostItem *nextPost;
 	QTime time;
+
+	QWebChannel webChannel;
 
 	static const QString likePostId;
 };

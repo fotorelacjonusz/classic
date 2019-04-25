@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
 
 	a.installTranslator(&translator);
 
+	EmbeddedJavascript::insertIntoProfile(":/qtwebchannel/qwebchannel.js");
 	EmbeddedJavascript::insertIntoProfile(":/src/web/ssc.js");
 
 	MainWindow w;
