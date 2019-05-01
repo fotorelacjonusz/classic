@@ -42,13 +42,13 @@ private:
 
 UploaderFactory::UploaderFactory()
 {
-	UPLOADER(IsAnonUploader, tr("Imageshack anonimowo"));
-	UPLOADER(IsCodeUploader, tr("Imageshack kod rejestracyjny"));
-	UPLOADER(IsLoginUploader, tr("Imageshack login i hasło"));
-//	TODO Re-enable me!  (See ftpuploader.h)
+//	TODO Re-enable uploaders!  (See respective header files)
+
+//	UPLOADER(IsAnonUploader, tr("Imageshack anonimowo"));
+//	UPLOADER(IsCodeUploader, tr("Imageshack kod rejestracyjny"));
+//	UPLOADER(IsLoginUploader, tr("Imageshack login i hasło"));
 //	UPLOADER(FtpUploader, tr("Własne konto FTP"));
 	UPLOADER(ImgurAnonUploader, tr("Imgur anonimowo"));
-//	TODO Re-enable me!  (See imgurloginuploader.h)
 //	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 }
 

@@ -1,3 +1,6 @@
+/* TODO Re-enable me!  (See respective header file) */
+#if 0
+
 #include "isanonuploader.h"
 #include "ui_isanonuploader.h"
 #include "networktransaction.h"
@@ -60,3 +63,5 @@ QString IsAnonUploader::postTransaction(NetworkTransactionMultiPart *tr, QIODevi
 	image->close();
 	return link;
 }
+
+#endif // 0
