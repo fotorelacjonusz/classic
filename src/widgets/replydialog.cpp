@@ -308,8 +308,6 @@ void ReplyDialog::parseThread(int progress)
 		ui->webView->setEnabled(true);
 		ui->buttonBox->clear();
 		ui->buttonBox->addButton(QDialogButtonBox::Ok);
-		likeButton = ui->buttonBox->addButton(tr("Lubię ten program"), QDialogButtonBox::ActionRole);
-		connect(likeButton, SIGNAL(clicked()), this, SLOT(likeClicked()));
 		return;
 	}
 
@@ -368,51 +366,6 @@ void ReplyDialog::sendPost(int progress)
 	delegate = &ReplyDialog::parseThread;
 	posts.setFormat(tr("Wysyłam posta... %p%"));
 	submit.evaluateJavaScript("this.click()");
-}
-
-void ReplyDialog::likeClicked()
-{
-//	qDebug() << "like clicked";
-	ui->webView->stop();
-	delegate = &ReplyDialog::likeProgress;
-	likeButton->setEnabled(false);
-
-	QUrl url = "http://www.skyscrapercity.com/showthread.php?p=" + likePostId;
-	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, false);
-	// if already loaded
-	if (ui->webView->url() == url)
-		likeProgress(100);
-	else
-	{
-		ui->webView->setEnabled(false);
-		ui->webView->stop();
-		ui->webView->load(url);
-	}
-}
-
-void ReplyDialog::likeProgress(int progress)
-{
-	qDebug() << progress;
-	if (progress == 100)
-	{
-		QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
-		ui->webView->setEnabled(true);
-		delegate = 0;
-
-		foreach (QWebElement href, frame->findFirstElement(QString("td[id=\"dbtech_thanks_entries_%1\"]").arg(likePostId)).findAll("a"))
-			if (href.toPlainText() == userName)
-			{
-				QMessageBox::information(this, tr("Lubię ten program"), tr("Wygląda na to, że już polubiłeś program."));
-				return;
-			}
-
-		QWebElement likeLink = frame->findFirstElement(QString("a[data-postid=\"%1\"]").arg(likePostId));
-//		if (!likeLink.isNull())
-		likeLink.evaluateJavaScript("var evObj = document.createEvent('MouseEvents'); evObj.initEvent('click', true, true); this.dispatchEvent(evObj);");
-
-		qDebug() << "likeProgress(100) likeLink:" << !likeLink.isNull();
-		likeButton->setEnabled(true);
-	}
 }
 
 void ReplyDialog::on_hideInfoButton_clicked()

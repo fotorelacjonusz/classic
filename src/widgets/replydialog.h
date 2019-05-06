@@ -48,12 +48,9 @@ private slots:
 	void parseThread(int progress);
 	void sendPost(int progress);
 
-	void likeClicked();
 	void on_hideInfoButton_clicked();
 
 private:
-	void likeProgress(int progress);
-
 	Ui::ReplyDialog *ui;
 	QSettings &settings;
 	QWebFrame *frame;
