@@ -48,12 +48,9 @@ private slots:
 	void parseThread(int progress);
 	void sendPost(int progress);
 
-	void likeClicked();
 	void on_hideInfoButton_clicked();
 
 private:
-	void likeProgress(int progress);
-
 	Ui::ReplyDialog *ui;
 	QSettings &settings;
 	QWebFrame *frame;
@@ -64,7 +61,6 @@ private:
 	typedef ProgressContainer<AbstractImage>::Item ImageItem;
 	typedef ProgressContainer<PostWidget>::Item PostItem;
 
-	QPushButton *likeButton;
 	QString m_threadId, m_threadTitle;
 	QString userName;
 
