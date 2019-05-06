@@ -50,10 +50,6 @@ protected slots:
 private slots:
 	void startTimer();
 	void tick();
-	void loadProgress(int progress = 0);
-
-	void parseThread(int progress);
-	void sendPost(int progress);
 
 	void on_hideInfoButton_clicked();
 
@@ -70,8 +66,6 @@ private:
 
 	QString m_threadId, m_threadTitle;
 	QString userName;
-
-	void (ReplyDialog::*delegate)(int);
 
 	QTimer timer;
 	PostItem *nextPost;

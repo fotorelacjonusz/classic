@@ -26,7 +26,6 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	ui(new Ui::ReplyDialog),
 	settings(settings),
 	uploader(SETTINGS->uploader),
-	delegate(&ReplyDialog::parseThread),
 	nextPost(0)
 {
 	ui->setupUi(this);
@@ -63,8 +62,6 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 
 	timer.setInterval(50);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(tick()));
-
-	connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(loadProgress(int)));
 
 	frame = ui->webView->page();
 
@@ -124,7 +121,6 @@ void ReplyDialog::setVisible(bool visible)
 
 void ReplyDialog::upload()
 {
-	delegate = &ReplyDialog::parseThread;
 	ui->webView->load(SETTINGS->homeUrl);
 
 	if (!uploader->init(images.count()))
@@ -176,8 +172,6 @@ void ReplyDialog::upload()
 		item->state = AbstractImage::Assigned;
 		if (post->object()->isFull() || images.all(AbstractImage::Assigned))
 			post->state = PostWidget::Full;
-
-		loadProgress(100);
 	}
 
 	uploader->finalize();
@@ -190,9 +184,6 @@ void ReplyDialog::accept()
 
 void ReplyDialog::reject()
 {
-	if (!delegate) // reject has already been called
-		return;
-	delegate = 0;
 	uploader->abort();
 	ui->webView->stop();
 //	timer.stop();
@@ -210,7 +201,6 @@ void ReplyDialog::tick()
 	if (nextPost->isProgressComplete())
 	{
 		timer.stop();
-		loadProgress(0);
 		return;
 	}
 
@@ -223,20 +213,6 @@ void ReplyDialog::tick()
 
 //	qDebug() << "tick()       " << posts.progress() << posts.total();
 }
-
-void ReplyDialog::loadProgress(int progress)
-{
-	if (delegate)
-		(this->*delegate)(progress);
-}
-
-/**
- * @deprecated This method was not removed yet only because its name is
- * still referenced elsewhere.
- * @todo To be removed.
- */
-void ReplyDialog::parseThread(int progress)
-{}
 
 /**
  * @brief Handles reply submission failure.
@@ -262,7 +238,6 @@ void ReplyDialog::forumReplySubmissionFailed()
 		if (true)
 		{
 			// rollback
-			delegate = &ReplyDialog::sendPost;
 			// TODO Constantize it
 			int secs = 10; // Hardcode 10 secs wait
 			qDebug() << "Throttled, waiting" << secs << "seconds";
@@ -302,7 +277,6 @@ void ReplyDialog::forumThreadVisited(QString replyLink)
 
 	if (posts.all(PostWidget::Posted))
 	{
-		delegate = 0;
 		qDebug() << "parseThread()" << "koniec\n";
 		posts.setFormat(tr("Koniec. %p%"));
 		ui->webView->setEnabled(true);
@@ -311,7 +285,6 @@ void ReplyDialog::forumThreadVisited(QString replyLink)
 		return;
 	}
 
-	delegate = &ReplyDialog::sendPost;
 	ui->webView->setEnabled(false);
 	ui->webView->stop();
 
@@ -326,14 +299,6 @@ void ReplyDialog::forumThreadVisited(QString replyLink)
 	posts.setFormat(tr("Przechodzę do formularza... %p%"));
 	ui->webView->load(replyLink);
 }
-
-/**
- * @deprecated This method was not removed yet only because its name is
- * still referenced elsewhere.
- * @todo To be removed.
- */
-void ReplyDialog::sendPost(int progress)
-{}
 
 /**
  * @brief Checks if obtainNextPost() can be called.
@@ -385,7 +350,6 @@ QString ReplyDialog::obtainNextPost()
 	QString postBody = post->object()->text();
 	post->state = PostWidget::Sent; // Full -> Sent
 	qDebug() << "sendPost()   " << "wysyłam posta\n";
-	delegate = &ReplyDialog::parseThread;
 	posts.setFormat(tr("Wysyłam posta... %p%"));
 
 	return postBody;
