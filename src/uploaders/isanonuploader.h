@@ -1,6 +1,15 @@
 #ifndef ISANONYUPLOADER_H
 #define ISANONYUPLOADER_H
 
+/* TODO Fix and re-enable me!
+ *
+ * All ImageShack uploaders are all totally broken, and have been disabled:
+ * - They do not work.
+ * - They do not use current API.
+ * - Amount of required changes is unknown.
+ */
+#if 0
+
 #include "abstractuploader.h"
 
 class NetworkTransactionMultiPart;
@@ -27,4 +36,5 @@ private:
 	Ui::IsAnonUploader *ui;
 };
 
+#endif // 0
 #endif // ISANONYUPLOADER_H

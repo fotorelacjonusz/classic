@@ -1,3 +1,6 @@
+/* TODO Re-enable me!  (See respective header file) */
+#if 0
+
 #include "isloginuploader.h"
 #include "ui_isloginuploader.h"
 #include "networktransactionmultipart.h"
@@ -32,3 +35,5 @@ QString IsLoginUploader::uploadImage(QString filePath, QIODevice *image)
 	tr->addHttpPart("a_password", password.toAscii());
 	return postTransaction(tr, image);
 }
+
+#endif // 0
