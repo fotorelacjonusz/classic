@@ -199,29 +199,6 @@ void ReplyDialog::reject()
 	done(Rejected);
 }
 
-// Deliberately to remove.
-#if 0
-bool ReplyDialog::isElement(QString query, QString *variable, int up, QString attr) const
-{
-	if (variable && !variable->isEmpty())
-		return true;
-	QWebElement element = frame->findFirstElement(query);
-	if (element.isNull())
-		return false;
-	for (int i = 0; i < up; ++i)
-		element = element.parent();
-	if (variable)
-		*variable = attr.isEmpty() ? element.toPlainText() : element.attribute(attr);
-	qDebug() << "jest element" << (variable ? *variable : 0);
-	return true;
-}
-
-bool ReplyDialog::isElementRemove(QString query, QString *variable, QString pattern, QString attr) const
-{
-	return isElement(query, variable, 0, attr) && !(*variable = variable->remove(QRegExp(pattern)).trimmed()).isEmpty();
-}
-#endif
-
 void ReplyDialog::startTimer()
 {
 	time.restart();
