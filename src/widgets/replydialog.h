@@ -32,6 +32,12 @@ public:
 
 public slots:
 	void forumPageLoaded(QString url);
+	void forumThreadVisited(QString replyUrl);
+	void forumReplySubmissionFailed();
+
+public:
+	Q_INVOKABLE bool isNextPostAvailable();
+	Q_INVOKABLE QString obtainNextPost();
 
 protected slots:
 	void appendTable(QString cell0, QString cell1);
