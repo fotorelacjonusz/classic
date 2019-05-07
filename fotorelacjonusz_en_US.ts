@@ -34,7 +34,6 @@
     <message>
         <location filename="src/widgets/colormanipulationtoolbar.cpp" line="28"/>
         <source>Jasność</source>
-        <oldsource>JasnoÅÄ</oldsource>
         <translation type="unfinished">Brightness</translation>
     </message>
     <message>
@@ -74,8 +73,6 @@
         <location filename="src/uploaders/ftpuploader.ui" line="82"/>
         <source>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie jest słabe.
 Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</source>
-        <oldsource>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie nie jest silne.
-Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</oldsource>
         <translation>Password stored in configuration is not plain text, but encoding algorithm used is weak.
 If you don&apos;t want your password stored leave this field empty, application will ask you for your password next time you post photo report.</translation>
     </message>
@@ -132,7 +129,6 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/gpxdialog.ui" line="67"/>
         <source>Aktualny czas UTC</source>
-        <oldsource>Aktualny czas w odbiorniku GPS</oldsource>
         <translation>Current UTC time</translation>
     </message>
     <message>
@@ -144,7 +140,6 @@ Wrong url will make all links corrupted.</translation>
         <location filename="src/widgets/gpxdialog.cpp" line="54"/>
         <location filename="src/widgets/gpxdialog.cpp" line="120"/>
         <source>Błąd</source>
-        <oldsource>BÅÄ&#x85;d</oldsource>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
@@ -159,7 +154,6 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/gpxdialog.cpp" line="117"/>
         <source>Błąd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
-        <oldsource>BÅÄ&#x85;d %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</oldsource>
         <translation type="unfinished">Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
     </message>
     <message>
@@ -178,13 +172,11 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="57"/>
         <source>Nie można załadować zdjęcia do pamięci. Pamięć wyczerpana?</source>
-        <oldsource>Nie moÅ¼na zaÅadowaÄ zdjÄcia do pamiÄci. PamiÄÄ wyczerpana?</oldsource>
         <translation type="unfinished">Unable to load an image to the memory. Out of memory?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="76"/>
         <source>Orientacja zdjęcia</source>
-        <oldsource>Orientacja zdjÄcia</oldsource>
         <translation type="unfinished">Photo orientation</translation>
     </message>
     <message>
@@ -209,13 +201,11 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="101"/>
         <source>Podpis zdjęcia</source>
-        <oldsource>Podpis zdjÄcia</oldsource>
         <translation type="unfinished">Image caption</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="170"/>
         <source>Usunięcie pozycji</source>
-        <oldsource>UsuniÄcie pozycji</oldsource>
         <translation type="unfinished">Removing position</translation>
     </message>
     <message>
@@ -225,7 +215,6 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="198"/>
         <source>Obrót zdjęcia</source>
-        <oldsource>ObrÃ³t zdjÄcia</oldsource>
         <translation type="unfinished">Rotate image</translation>
     </message>
     <message>
@@ -235,13 +224,11 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="214"/>
         <source>Nie można załadować zdjęcia. Pamięć wyczerpana?</source>
-        <oldsource>Nie moÅ¼na zaÅadowaÄ zdjÄcia. PamiÄÄ wyczerpana?</oldsource>
         <translation type="unfinished">Can&apos;t load photo.Out of memory? </translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="270"/>
         <source>Nie można utworzyć pixmapy ze zdjęcia. Pamięć wyczerpana?</source>
-        <oldsource>Nie moÅ¼na utworzyÄ pixmapy ze zdjÄcia. PamiÄÄ wyczerpana?</oldsource>
         <translation type="unfinished">Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
 </context>
@@ -422,8 +409,6 @@ Wrong url will make all links corrupted.</translation>
         <location filename="src/uploaders/isloginuploader.ui" line="49"/>
         <source>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie jest słabe.
 Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</source>
-        <oldsource>Zapisywane w konfiguracji hasło nie jest czystym tekstem, jednak jego kodowanie nie jest silne.
-Jeśli nie chcesz zapisywać hasła pozostaw to pole puste, program zapyta o nie przy wysyłaniu fororelacji.</oldsource>
         <translation>Password stored in configuration is not plain text, but encoding algorithm used is weak.
 If you don&apos;t want your password stored leave this field empty, application will ask you for your password next time you post photo report.</translation>
     </message>
@@ -814,7 +799,6 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message>
         <location filename="src/settings/osmlayerdialog.cpp" line="89"/>
         <source>Którą warstwę usunąć?</source>
-        <oldsource>KtÃ³rÄ&#x85; warstwÄ usunÄ&#x85;Ä?</oldsource>
         <translation type="unfinished">Which layer to remove?</translation>
     </message>
     <message>
@@ -843,7 +827,6 @@ If you don&apos;t want your password stored leave this field empty, application 
     </message>
     <message>
         <source>Brak pliku %1</source>
-        <oldsource>Brak pliku </oldsource>
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
@@ -961,7 +944,6 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message>
         <location filename="src/exception.cpp" line="16"/>
         <source>Błąd</source>
-        <oldsource>BÅÄ&#x85;d</oldsource>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
@@ -1010,13 +992,11 @@ Error at:
     <message>
         <location filename="src/downloaders/googlemapsdownloader.cpp" line="42"/>
         <source>Błąd pobierania mapy: %1 %2</source>
-        <oldsource>BÅÄ&#x85;d pobierania mapy: %1 %2</oldsource>
         <translation type="unfinished">Error while downloading a map: %1 %2 </translation>
     </message>
     <message>
         <location filename="src/downloaders/googlemapsdownloader.cpp" line="48"/>
         <source>Błąd otwierania mapy.</source>
-        <oldsource>BÅÄ&#x85;d otwierania mapy.</oldsource>
         <translation type="unfinished">Error while loading map data.</translation>
     </message>
     <message>
@@ -1034,13 +1014,11 @@ Error at:
     <message>
         <location filename="src/widgets/questionbox.cpp" line="25"/>
         <source>Zapamiętaj na zawsze</source>
-        <oldsource>ZapamiÄtaj na zawsze</oldsource>
         <translation type="unfinished">Remember always</translation>
     </message>
     <message>
         <location filename="src/widgets/questionbox.cpp" line="26"/>
         <source>Zapamiętaj w tej sesji</source>
-        <oldsource>ZapamiÄtaj w tej sesji</oldsource>
         <translation type="unfinished">Remember during this session</translation>
     </message>
 </context>
@@ -1049,13 +1027,11 @@ Error at:
     <message>
         <location filename="src/widgets/recentthreadsmenu.cpp" line="25"/>
         <source>Kontynuuj numerację</source>
-        <oldsource>Kontynuuj numeracjÄ</oldsource>
         <translation type="unfinished">Continue numbering</translation>
     </message>
     <message>
         <location filename="src/widgets/recentthreadsmenu.cpp" line="29"/>
         <source>Żaden</source>
-        <oldsource>Å»aden</oldsource>
         <translation type="unfinished">None</translation>
     </message>
 </context>
@@ -1335,7 +1311,6 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="194"/>
         <source>Dodatkowe tagi w poście</source>
-        <oldsource>Dodatkowe tagi w każdym poście</oldsource>
         <translation>Extra tags is posts</translation>
     </message>
     <message>
@@ -1366,7 +1341,6 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="230"/>
         <source>Np. dla Forum Polskich Wieżowców wpisz 45</source>
-        <oldsource>Dla Forum Polskich Wieżowców wpisz 45</oldsource>
         <translation>E.g. for Forum Polskich Wieżowców put 45</translation>
     </message>
     <message>
@@ -1472,7 +1446,6 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="426"/>
         <source>Podczas zapisywania fotorelacji do pliku zachowuj oryginalny rozmiar zdjęć</source>
-        <oldsource>Podczas zapisywania fotorelacji zachowuj oryginalny rozmiar zdjęć</oldsource>
         <translation>Keep photos&apos; original size when saving photo report to file</translation>
     </message>
     <message>
@@ -1493,7 +1466,6 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="470"/>
         <source>Dodawaj logo</source>
-        <oldsource>Dodawaj znak wodny</oldsource>
         <translation>Add logo</translation>
     </message>
     <message>
@@ -1562,7 +1534,6 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="646"/>
         <source>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt;</source>
-        <oldsource>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: %2</oldsource>
         <translation>By using %1 you agree to comply with its regulations: &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt;</translation>
     </message>
     <message>
@@ -1766,13 +1737,11 @@ You can add and remove files from this directory, changes will become visible af
         <location filename="src/settings/settingsdialog.ui" line="1013"/>
         <location filename="src/settings/settingsdialog.ui" line="1022"/>
         <source>Podkłady mapowe</source>
-        <oldsource>Własne mapy</oldsource>
         <translation>Overlays</translation>
     </message>
     <message>
         <location filename="src/settings/settingsdialog.cpp" line="253"/>
         <source>Wczytaj logo</source>
-        <oldsource>Wczytaj znak wodny</oldsource>
         <translation>Load logo</translation>
     </message>
     <message>
@@ -1791,7 +1760,6 @@ You can add and remove files from this directory, changes will become visible af
         <location filename="src/downloaders/tilesdownloader.cpp" line="31"/>
         <location filename="src/downloaders/tilesdownloader.cpp" line="37"/>
         <source>Błąd</source>
-        <oldsource>BÅÄ&#x85;d</oldsource>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
@@ -1811,7 +1779,6 @@ You can add and remove files from this directory, changes will become visible af
     <message>
         <location filename="src/downloaders/tilesdownloader.cpp" line="146"/>
         <source>Błąd pobierania mapy: %1 %2</source>
-        <oldsource>BÅÄ&#x85;d pobierania mapy: %1 %2</oldsource>
         <translation type="unfinished">Error while downloading a map: %1 %2 </translation>
     </message>
 </context>
