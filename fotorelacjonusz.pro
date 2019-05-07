@@ -8,7 +8,7 @@ TEMPLATE = app
 TARGET = fotorelacjonusz
 VERSION = 2.99.0
 
-QT += core gui network webkit webkitwidgets script widgets xml xmlpatterns
+QT += core gui network script webchannel webengine webenginewidgets widgets xml xmlpatterns
 
 # Enable C++11 explicitly, which should make proper stdlib available.
 # Required to compile at least on OS X.
@@ -49,6 +49,7 @@ SOURCES += \
 	src/messagehandler.cpp \
 	src/exception.cpp \
 	src/application.cpp \
+	src/embeddedjavascript.cpp \
 	src/widgets/threadedvalidator.cpp \
 	src/widgets/selectablewidget.cpp \
 	src/widgets/replydialog.cpp \
@@ -103,6 +104,7 @@ HEADERS += \
 	src/messagehandler.h \
 	src/exception.h \
 	src/application.h \
+	src/embeddedjavascript.h \
 	src/widgets/threadedvalidator.h \
 	src/widgets/selectablewidget.h \
 	src/widgets/replydialog.h \
@@ -167,7 +169,11 @@ FORMS += \
 	src/uploaders/ftpuploader.ui
 
 RESOURCES += \
-	resource.qrc
+	resource.qrc \
+	webscripts.qrc
+
+# Prevent JavaScripts from being compiled to C++ sources.
+QTQUICK_COMPILER_SKIPPED_RESOURCES += webscripts.qrc
 
 OTHER_FILES += \
 	res/page.html

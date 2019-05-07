@@ -2,16 +2,17 @@
 #include "ui_replydialog.h"
 #include "settings/settingsdialog.h"
 #include "uploaders/abstractuploader.h"
+#include "embeddedjavascript.h"
 #include "networkcookiejar.h"
 
-#include <QWebFrame>
-#include <QWebElement>
+#include <QWebEnginePage>
 #include <QDebug>
 #include <QMessageBox>
 #include <QNetworkCookieJar>
 #include <QNetworkDiskCache>
 #include <QDesktopServices>
 #include <QBuffer>
+#include <QWebChannel>
 #include <QtCore/qmath.h>
 
 #define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
@@ -25,7 +26,6 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	ui(new Ui::ReplyDialog),
 	settings(settings),
 	uploader(SETTINGS->uploader),
-	delegate(&ReplyDialog::parseThread),
 	nextPost(0)
 {
 	ui->setupUi(this);
@@ -63,15 +63,13 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	timer.setInterval(50);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(tick()));
 
-	QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, false);
-	QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
-	connect(ui->webView, SIGNAL(loadProgress(int)), this, SLOT(loadProgress(int)));
+	frame = ui->webView->page();
 
-	frame = ui->webView->page()->mainFrame();
+	frame->setWebChannel(&webChannel, EmbeddedJavascript::worldId);
+	webChannel.registerObject("replyDialog", this);
+
 	QNetworkDiskCache *cache = new QNetworkDiskCache();
 	cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
-	ui->webView->page()->networkAccessManager()->setCache(cache);
-	ui->webView->page()->networkAccessManager()->setCookieJar(new NetworkCookieJar());
 }
 
 ReplyDialog::~ReplyDialog()
@@ -93,6 +91,11 @@ QString ReplyDialog::threadId() const
 QString ReplyDialog::threadTitle() const
 {
 	return m_threadTitle;
+}
+
+void ReplyDialog::forumPageLoaded(QString url)
+{
+	qDebug() << "Browser on page" << url;
 }
 
 void ReplyDialog::appendTable(QString cell0, QString cell1)
@@ -118,7 +121,6 @@ void ReplyDialog::setVisible(bool visible)
 
 void ReplyDialog::upload()
 {
-	delegate = &ReplyDialog::parseThread;
 	ui->webView->load(SETTINGS->homeUrl);
 
 	if (!uploader->init(images.count()))
@@ -170,8 +172,6 @@ void ReplyDialog::upload()
 		item->state = AbstractImage::Assigned;
 		if (post->object()->isFull() || images.all(AbstractImage::Assigned))
 			post->state = PostWidget::Full;
-
-		loadProgress(100);
 	}
 
 	uploader->finalize();
@@ -184,33 +184,10 @@ void ReplyDialog::accept()
 
 void ReplyDialog::reject()
 {
-	if (!delegate) // reject has already been called
-		return;
-	delegate = 0;
 	uploader->abort();
 	ui->webView->stop();
 //	timer.stop();
 	done(Rejected);
-}
-
-bool ReplyDialog::isElement(QString query, QString *variable, int up, QString attr) const
-{
-	if (variable && !variable->isEmpty())
-		return true;
-	QWebElement element = frame->findFirstElement(query);
-	if (element.isNull())
-		return false;
-	for (int i = 0; i < up; ++i)
-		element = element.parent();
-	if (variable)
-		*variable = attr.isEmpty() ? element.toPlainText() : element.attribute(attr);
-	qDebug() << "jest element" << (variable ? *variable : 0);
-	return true;
-}
-
-bool ReplyDialog::isElementRemove(QString query, QString *variable, QString pattern, QString attr) const
-{
-	return isElement(query, variable, 0, attr) && !(*variable = variable->remove(QRegExp(pattern)).trimmed()).isEmpty();
 }
 
 void ReplyDialog::startTimer()
@@ -224,7 +201,6 @@ void ReplyDialog::tick()
 	if (nextPost->isProgressComplete())
 	{
 		timer.stop();
-		loadProgress(0);
 		return;
 	}
 
@@ -238,56 +214,59 @@ void ReplyDialog::tick()
 //	qDebug() << "tick()       " << posts.progress() << posts.total();
 }
 
-void ReplyDialog::loadProgress(int progress)
+/**
+ * @brief Handles reply submission failure.
+ *
+ * This typically happens due to throttling.  Forum requires some wait between
+ * posts.
+ *
+ * Original application used to extract a message displayed to user in order to
+ * determine required wait time.  However, it could break if they change message
+ * format or user switches to localized interface.  This is why the wait time
+ * has been hardcoded.
+ *
+ * Extracted from https://github.com/skalee/fotorelacjonusz/blob/4aefec4e3086ee2c2682ad0905073f1da63f1727/src/widgets/replydialog.cpp#L257-L278.
+ *
+ * @todo Old method structure has been preserved for better git diffs.
+ * Further clean-ups may be needed.
+ */
+void ReplyDialog::forumReplySubmissionFailed()
 {
-	if (delegate)
-		(this->*delegate)(progress);
-}
-
-void ReplyDialog::parseThread(int progress)
-{
-	Q_UNUSED(progress);
-//	qDebug() << "parseThread()" << ui->webView->url() << progress;
-//	qDebug() << "parseThread()" << posts.progress() << posts.total();
-
 	PostItem *sentPost = posts.first(PostWidget::Sent);
-	if (sentPost && ui->webView->url().path().startsWith("/newreply.php"))
+	if (sentPost)
 	{
-		// error occurred - too early?
-		QRegExp errorExp("Please try again in ([0-9]+) seconds.");
-		QWebElement errorElement = frame->findFirstElement("html > body > center > div > div.page > div > script + table > tbody > tr + tr > td > ol > li");
-		qDebug() << "error element" << errorElement.isNull();
-		if (!errorElement.isNull() && errorElement.toPlainText().contains(errorExp))
+		if (true)
 		{
 			// rollback
-			delegate = &ReplyDialog::sendPost;
-			int secs = errorExp.cap(1).toInt();
-			qDebug() << "parseThread()" << "za wcześnie o" << secs << "sekund";
+			// TODO Constantize it
+			int secs = 10; // Hardcode 10 secs wait
+			qDebug() << "Throttled, waiting" << secs << "seconds";
 
 			sentPost->state = PostWidget::Full; // -1
 			sentPost->setTotal(secs);
 			sentPost->setProgress(0);
-			errorElement.removeFromDocument();
 			startTimer();
 			return;
 		}
 	}
+}
 
-//	qDebug() << "parseThread()" << posts.progress() << posts.total();
+/**
+ * @brief Handles visit on show thread page.
+ *
+ * Determines whether there are any posts left, and opens reply page if so.
+ * Ends submission process otherwise.
+ *
+ * @param QString link to reply page.
+ *
+ * @todo Old method structure has been preserved for better git diffs.
+ * Further clean-ups may be needed.
+ */
+void ReplyDialog::forumThreadVisited(QString replyLink)
+{
+	qDebug() << "Visited thread page!";
 
-	// extract userName
-	if (!isElement("html > body > center > div > div.page > div > table.tborder > tbody > tr > td.alt2 > div.smallfont > strong > a", &userName))
-		return;
-	// extract imgReply button with link to reply, so we know we are ia a thread actually, not on the forum
-	QString replyLink;
-	if (!isElement("html > body > center > div > div.page > div > table > tbody > tr > td > a > img[alt=Reply]", &replyLink, 1, "href"))
-		return;
-	// extract thread title, this must be done after extracting imgReply
-	if (!isElementRemove("html > head > title", &m_threadTitle, "(- Page [0-9]+ )?- SkyscraperCity"))
-		return;
-	// extract thread id, this must be done after extracting imgReply
-	if (!isElementRemove("div#threadtools_menu img[alt=\"Subscription\"] + a", &m_threadId, "[^0-9]+", "href"))
-		return;
+	PostItem *sentPost = posts.first(PostWidget::Sent);
 
 	// confirm post, this must be done after extracting imgReply
 	if (sentPost)
@@ -298,7 +277,6 @@ void ReplyDialog::parseThread(int progress)
 
 	if (posts.all(PostWidget::Posted))
 	{
-		delegate = 0;
 		qDebug() << "parseThread()" << "koniec\n";
 		posts.setFormat(tr("Koniec. %p%"));
 		ui->webView->setEnabled(true);
@@ -307,7 +285,6 @@ void ReplyDialog::parseThread(int progress)
 		return;
 	}
 
-	delegate = &ReplyDialog::sendPost;
 	ui->webView->setEnabled(false);
 	ui->webView->stop();
 
@@ -320,48 +297,62 @@ void ReplyDialog::parseThread(int progress)
 
 	qDebug() << "parseThread()" << "przechodzę do formularza\n";
 	posts.setFormat(tr("Przechodzę do formularza... %p%"));
-	ui->webView->load(QString(SSC_HOST) + "/" + replyLink);
+	ui->webView->load(replyLink);
 }
 
-void ReplyDialog::sendPost(int progress)
+/**
+ * @brief Checks if obtainNextPost() can be called.
+ * @retval true At least one post is ready to be sent to forum (i.e. photos have
+ * been uploaded, and links to them are available).
+ * @retval false Otherwise.
+ *
+ * @todo Old method structure has been preserved for better git diffs.
+ * Further clean-ups may be needed.
+ */
+bool ReplyDialog::isNextPostAvailable()
 {
-	Q_UNUSED(progress);
-	QWebElement title = frame->findFirstElement("input[name=title]");
-	QWebElement message = frame->findFirstElement("textarea[name=message]");
-	QWebElement submit = frame->findFirstElement("input[name=sbutton]");
-	if (title.isNull() || message.isNull() || submit.isNull()) // page not loaded enough
-		return;
-
-	qDebug() << "sendPost()   " << "jest formularz";
-	QWebElement href = frame->findFirstElement("form[name=vbform] > table.tborder > tbody > tr > td.tcat > span.smallfont > a");
-	href.setAttribute("name", "scrollTo");
-	frame->scrollToAnchor("scrollTo");
-
 	PostItem *post = posts.firstAtBest(PostWidget::Full); // first Incomplete or Full
+
 	if (!post) // no posts
 	{
 		qDebug() << "sendPost()   " << "nie ma postów\n";
-		return;
+		return false;
 	}
 
-	message.setPlainText(post->object()->text());
 	if (post->state != PostWidget::Full) // Incomplete - post not yet filled with all images
 	{
 		qDebug() << "sendPost()   " << "post niegotowy\n";
-		return;
+		return false;
 	}
 
 	if (!post->isProgressComplete()) // post time not passed
 	{
 		qDebug() << "sendPost()   " << "timer niezakończony\n";
-		return;
+		return false;
 	}
 
+	return true;
+}
+
+/**
+ * @brief Obtains text of the next reply to be posted, and marks that post as
+ * sent.
+ * @note Undefined behaviour unless there is any complete post of which body
+ * can be returned.
+ * @return QString containing BBCode which is about to be posted.
+ *
+ * @todo Old method structure has been preserved for better git diffs.
+ * Further clean-ups may be needed.
+ */
+QString ReplyDialog::obtainNextPost()
+{
+	PostItem *post = posts.firstAtBest(PostWidget::Full); // first Incomplete or Full
+	QString postBody = post->object()->text();
 	post->state = PostWidget::Sent; // Full -> Sent
 	qDebug() << "sendPost()   " << "wysyłam posta\n";
-	delegate = &ReplyDialog::parseThread;
 	posts.setFormat(tr("Wysyłam posta... %p%"));
-	submit.evaluateJavaScript("this.click()");
+
+	return postBody;
 }
 
 void ReplyDialog::on_hideInfoButton_clicked()

@@ -4,11 +4,12 @@
 #include <QDialog>
 #include <QTimer>
 #include <QTime>
+#include <QWebEnginePage>
+#include <QWebChannel>
 #include "progresscontainer.h"
 #include "abstractimage.h"
 #include "postwidget.h"
 
-class QWebFrame;
 class SettingsDialog;
 class AbstractUploader;
 class QSettings;
@@ -29,6 +30,15 @@ public:
 	QString threadId() const;
 	QString threadTitle() const;
 
+public slots:
+	void forumPageLoaded(QString url);
+	void forumThreadVisited(QString replyUrl);
+	void forumReplySubmissionFailed();
+
+public:
+	Q_INVOKABLE bool isNextPostAvailable();
+	Q_INVOKABLE QString obtainNextPost();
+
 protected slots:
 	void appendTable(QString cell0, QString cell1);
 	void setVisible(bool visible);
@@ -38,22 +48,15 @@ protected slots:
 	void reject();
 
 private slots:
-	bool isElement(QString query, QString *variable = 0, int up = 0, QString attr = QString()) const;
-	bool isElementRemove(QString query, QString *variable, QString pattern, QString attr = QString()) const;
-
 	void startTimer();
 	void tick();
-	void loadProgress(int progress = 0);
-
-	void parseThread(int progress);
-	void sendPost(int progress);
 
 	void on_hideInfoButton_clicked();
 
 private:
 	Ui::ReplyDialog *ui;
 	QSettings &settings;
-	QWebFrame *frame;
+	QWebEnginePage *frame;
 	AbstractUploader *const uploader;
 
 	ProgressContainer<AbstractImage> images;
@@ -64,11 +67,11 @@ private:
 	QString m_threadId, m_threadTitle;
 	QString userName;
 
-	void (ReplyDialog::*delegate)(int);
-
 	QTimer timer;
 	PostItem *nextPost;
 	QTime time;
+
+	QWebChannel webChannel;
 
 	static const QString likePostId;
 };
