@@ -11,13 +11,11 @@
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasło</source>
-        <oldsource>Podaj hasÅo</oldsource>
         <translation type="unfinished">Input password</translation>
     </message>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
-        <source>Podaj hasło</source>
-        <oldsource>Podaj hasÅo do %1</oldsource>
+        <source>Podaj hasło do %1</source>
         <translation type="unfinished">Input password for %1</translation>
     </message>
     <message>
