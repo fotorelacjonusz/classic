@@ -24,4 +24,4 @@ matrix:
   include:
     - os: osx
       osx_image: xcode10.2
-      env: EXE=./fotorelacjonusz.app/Contents/MacOS/fotorelacjonusz
+      env: EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz

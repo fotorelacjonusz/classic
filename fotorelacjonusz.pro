@@ -6,6 +6,7 @@
 
 TEMPLATE = app
 TARGET = fotorelacjonusz
+macx:TARGET = Fotorelacjonusz
 VERSION = 2.99.0
 
 QT += core gui network script webchannel webengine webenginewidgets widgets xml xmlpatterns
