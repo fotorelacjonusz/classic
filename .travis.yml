@@ -1,0 +1,27 @@
+language: cpp
+
+addons:
+  homebrew:
+    brewfile: ci/Brewfile
+
+install:
+  # QuaZIP
+  - pushd third-party/quazip
+  - qmake CONFIG+=staticlib CONFIG+=c++11 LIBS+=-lz
+  - make
+  - popd
+
+  # Fotorelacjonusz
+  - ci/write_secrets_h.sh
+  - lrelease fotorelacjonusz.pro
+  - qmake
+  - make
+
+script:
+  - ${EXE} -v
+
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode10.2
+      env: EXE=./fotorelacjonusz.app/Contents/MacOS/fotorelacjonusz
