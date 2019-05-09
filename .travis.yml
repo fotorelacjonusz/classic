@@ -4,6 +4,10 @@ addons:
   homebrew:
     brewfile: ci/Brewfile
 
+env:
+  global:
+    PATH="/usr/local/opt/qt/bin:${PATH}"
+
 install:
   # QuaZIP
   - pushd third-party/quazip
