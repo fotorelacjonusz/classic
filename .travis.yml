@@ -7,21 +7,43 @@ addons:
 install:
   # QuaZIP
   - pushd third-party/quazip
-  - qmake CONFIG+=staticlib CONFIG+=c++11 LIBS+=-lz
+  - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
   - make
   - popd
 
   # Fotorelacjonusz
   - ci/write_secrets_h.sh
   - lrelease fotorelacjonusz.pro
-  - qmake
+  - qmake CONFIG+=release
   - make
 
 script:
   - ${EXE} -v
 
+before_deploy:
+  - export TRAVIS_TAG=nightly
+  - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
+  - macdeployqt Fotorelacjonusz.app -verbose=2
+  - ci/fix_dyld_install_paths.sh
+  - tar czf Fotorelacjonusz-nightly-macos.tar.gz Fotorelacjonusz.app
+
+deploy:
+  provider: releases
+  prerelease: true
+  overwrite: true
+  skip_cleanup: true
+  name: Fotorelacjonusz nightly
+  body: Built from master branch on $(date -u '+%Y-%m-%d %H:%M %Z'). Potentially broken. May eat your dog.
+  api_key:
+    secure: Pl1eq4L1Na7+2e9c3zEK3RG1a+CLR4b68k0ye2zl5h8z7wVVPPsn0FrfPvZZWk48jgI9HXDhR0zzctV1dh1ykZmowIZJZsBUguhlaIlyWsCSuCf1uIBXQG8naWu3AjJxefz8/KYF6aOJACU4sZFviW1e2vMtKF+Q6BXrjEhLQlc0pflTwBxOnlq2fTmt0uP9UuSP62Py0XbbaybAJAMEfSDb4lAZ5bwVXmOvCREP+vnSTlj/uiPxmw74jxYAmhX6kzgwN0i8XOwEjMSDmjtDyvr8dNN52GKDzpEt2R2UP8Z4ybYM7blyYj97GBi2ICPIh/IIE++R9qsMUDeR8OT28CVvrqd92cFZlNMC8YvTl4fvhzqJirWecGWqdCuhgSinMIIoplhqv48rtLtvrXHlNTSzFiElKodU2hbQrAjqZmFpugco21A3MreDt7BwL5HJvtr86bANpIqYuCOQNkpoNTpX1+4w6wwRAMv4Z5bhVbwkJK6Z8p3tJNBl9kBxfU5/YssOzY/x1pO9Ya14G6T0+YlH1+TNivPbfEPdNsSwXKKnH2A/CHZylQo0asmZV7ckDW3kAO2AASiYA3svi1IFMJUPASd01sQLwEGsZTTN8J6FKL9NauKd5QFtATTTOHRi0trARRak4L7lPI7E0LoGfzjOmIJn8dm43f+nMp4a8vU=
+  on:
+    repo: skalee/fotorelacjonusz
+    branch: master
+  file:
+    - Fotorelacjonusz-nightly-macos.tar.gz
+
 matrix:
   include:
     - os: osx
       osx_image: xcode10.2
-      env: EXE=./fotorelacjonusz.app/Contents/MacOS/fotorelacjonusz
+      env: EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz PATH="/usr/local/opt/qt/bin:${PATH}"
