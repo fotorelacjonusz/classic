@@ -24,6 +24,7 @@ before_deploy:
   - export TRAVIS_TAG=nightly
   - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
   - macdeployqt Fotorelacjonusz.app -verbose=2
+  - ci/fix_dyld_install_paths.sh
   - tar czf Fotorelacjonusz-nightly-macos.tar.gz Fotorelacjonusz.app
 
 deploy:
