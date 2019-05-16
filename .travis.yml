@@ -4,6 +4,9 @@ addons:
   homebrew:
     brewfile: ci/Brewfile
 
+before_install:
+  - export -f travis_fold
+
 install:
   # QtFtp
   - pushd third-party/qtftp
