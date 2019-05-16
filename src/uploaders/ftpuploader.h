@@ -2,7 +2,7 @@
 #define FTPUPLOADER_H
 
 #include "abstractuploader.h"
-#include <QFtp>
+#include <QtFtp/QFtp>
 #include <QEventLoop>
 
 namespace Ui {
