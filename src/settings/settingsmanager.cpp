@@ -104,6 +104,14 @@ void SettingsManager::save(AbstractInput *singleInput)
 	QSet<Listener> listeners; // call each listener only once when multiple options changed
 	foreach (AbstractInput *input, singleInput ? QList<AbstractInput *>() << singleInput : inputs)
 	{
+		// FIXME Something is terribly wrong with one of the proxy settings, probably proxy/pass.
+		// Application crashes when saving that setting somewhere in condition below:
+		// (input->toVariant() == settings.value(input->key, input->defaultVal))
+		if (input->key.startsWith("proxy/"))
+		{
+			continue;
+		}
+
 		if (input->toVariant() == settings.value(input->key, input->defaultVal))
 		{
 			input->wasChanged = false;
