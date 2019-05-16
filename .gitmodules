@@ -2,3 +2,7 @@
 	path = third-party/quazip
 	url = https://github.com/stachenov/quazip.git
 	ignore = untracked
+[submodule "third-party/qtftp"]
+	path = third-party/qtftp
+	url = https://code.qt.io/qt/qtftp.git
+	ignore = untracked

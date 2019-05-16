@@ -1,5 +1,3 @@
-/* TODO Re-enable me!  (See ftpuploader.h) */
-#if 0
 #include "ftpuploader.h"
 #include "ui_ftpuploader.h"
 #include <QSettings>
@@ -90,4 +88,3 @@ bool FtpUploader::advance()
 	}
 	return true;
 }
-#endif // 0
