@@ -47,7 +47,7 @@ UploaderFactory::UploaderFactory()
 //	UPLOADER(IsAnonUploader, tr("Imageshack anonimowo"));
 //	UPLOADER(IsCodeUploader, tr("Imageshack kod rejestracyjny"));
 //	UPLOADER(IsLoginUploader, tr("Imageshack login i hasło"));
-//	UPLOADER(FtpUploader, tr("Własne konto FTP"));
+	UPLOADER(FtpUploader, tr("Własne konto FTP"));
 	UPLOADER(ImgurAnonUploader, tr("Imgur anonimowo"));
 //	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 }
