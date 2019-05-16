@@ -5,6 +5,12 @@ addons:
     brewfile: ci/Brewfile
 
 install:
+  # QtFtp
+  - pushd third-party/qtftp
+  - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
+  - make
+  - popd
+
   # QuaZIP
   - pushd third-party/quazip
   - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
