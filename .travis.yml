@@ -52,4 +52,6 @@ matrix:
   include:
     - os: osx
       osx_image: xcode10.2
-      env: EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz PATH="/usr/local/opt/qt/bin:${PATH}"
+      env:
+        - EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz
+        - PATH="/usr/local/opt/qt/bin:${PATH}"
