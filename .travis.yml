@@ -27,25 +27,19 @@ script:
   - ${EXE} -v
 
 before_deploy:
-  - export TRAVIS_TAG=nightly
-  - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
   - macdeployqt Fotorelacjonusz.app -verbose=2
   - tar czf Fotorelacjonusz-nightly-macos.tar.gz Fotorelacjonusz.app
 
 deploy:
-  provider: releases
-  prerelease: true
-  overwrite: true
-  skip_cleanup: true
-  name: Fotorelacjonusz nightly
-  body: Built from master branch on $(date -u '+%Y-%m-%d %H:%M %Z'). Potentially broken. May eat your dog.
-  api_key:
-    secure: Pl1eq4L1Na7+2e9c3zEK3RG1a+CLR4b68k0ye2zl5h8z7wVVPPsn0FrfPvZZWk48jgI9HXDhR0zzctV1dh1ykZmowIZJZsBUguhlaIlyWsCSuCf1uIBXQG8naWu3AjJxefz8/KYF6aOJACU4sZFviW1e2vMtKF+Q6BXrjEhLQlc0pflTwBxOnlq2fTmt0uP9UuSP62Py0XbbaybAJAMEfSDb4lAZ5bwVXmOvCREP+vnSTlj/uiPxmw74jxYAmhX6kzgwN0i8XOwEjMSDmjtDyvr8dNN52GKDzpEt2R2UP8Z4ybYM7blyYj97GBi2ICPIh/IIE++R9qsMUDeR8OT28CVvrqd92cFZlNMC8YvTl4fvhzqJirWecGWqdCuhgSinMIIoplhqv48rtLtvrXHlNTSzFiElKodU2hbQrAjqZmFpugco21A3MreDt7BwL5HJvtr86bANpIqYuCOQNkpoNTpX1+4w6wwRAMv4Z5bhVbwkJK6Z8p3tJNBl9kBxfU5/YssOzY/x1pO9Ya14G6T0+YlH1+TNivPbfEPdNsSwXKKnH2A/CHZylQo0asmZV7ckDW3kAO2AASiYA3svi1IFMJUPASd01sQLwEGsZTTN8J6FKL9NauKd5QFtATTTOHRi0trARRak4L7lPI7E0LoGfzjOmIJn8dm43f+nMp4a8vU=
+  provider: bintray
+  file: "ci/bintray_nightly.json"
+  user: "skalee"
+  key:
+    secure: NLhO90y/IC0XOnj19U5ZZleKhfs7bo1KCXQgRz1W6Vr9q2DRVFdcnNrdcVpnNagwbvrFFqmG1SHDnuZwTAnq1WUlMXTVEE+XfuBINc0soKdr9gy48Qryhrx8cixrEeQE4JTJQ+J1wOvNN9qVzgj3XqAguD+WyU/LPKAbm/iXmyhzlrAE++MyvXJi3tTc0tgtA9Ek/UHVriZPdwMktIR8SZ4THHUwi/tkn1Yxr94gICH/sKmOUi+po2XO3q+xorabXw+tn+5t58HyD0L+6QUfkY0WZLvwWaEM5+tel4Ltp5Bg5oMUZeD36J3TKptksLUmYQpbUkNI17fzeq/hJHbX5G+1gK0Ch+Khre91Ol0YZv0BVAB74aqgvfDxyUT4cFE2o82x7zQetzVAMNN2Njj6VNVlXlFoQqPzWl6XzATi/p0yb6ZkQXkvXjQ+3JF67XvAXWakyjqf8h0K6cgRSgAXBl9NXCn9p0TF8p8ZYC9N0pUYIrVS6v7T7QmZeSg1Czav2rQQgw7Z36/nOtxVKUzVgLPRZZC8nLCCH9FPbmAsYV2j9d8j0oQwH+FcAXzPV925s5e23r9RnAgeF8cprrJB9GvGdWEgA06StHEvYXbAzG6oP78IfXb+uenicVoCaxmfEg/qucVCCwg5XiA+JFMJUFHybRoyAGz4az7+Dwfij+s=
+  skip_cleanup: true # to upload artifacts created during the build
   on:
     repo: skalee/fotorelacjonusz
     branch: master
-  file:
-    - Fotorelacjonusz-nightly-macos.tar.gz
 
 matrix:
   include:

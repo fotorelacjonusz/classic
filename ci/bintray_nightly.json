@@ -1,0 +1,24 @@
+{
+    "package": {
+        "name": "Fotorelacjonusz",
+        "repo": "Main",
+        "subject": "skalee",
+        "licenses": ["GPL-2.0"],
+        "vcs_url": "https://github.com/skalee/fotorelacjonusz.git"
+    },
+
+    "version": {
+        "name": "nightly",
+        "desc": "Built from master branch. Potentially broken. May eat your dog.",
+        "gpgSign": false
+    },
+
+    "files": [
+        {
+            "includePattern": "Fotorelacjonusz-nightly-macos.tar.gz",
+            "uploadPattern": "Fotorelacjonusz-nightly-macos.tar.gz",
+            "matrixParams": {"override": 1}
+        }
+    ],
+    "publish": true
+}
