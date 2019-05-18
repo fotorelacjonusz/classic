@@ -39,7 +39,7 @@ deploy:
   skip_cleanup: true # to upload artifacts created during the build
   on:
     repo: skalee/fotorelacjonusz
-    branch: master
+    branch: bintray
 
 matrix:
   include:
