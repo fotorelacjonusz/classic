@@ -1,11 +1,8 @@
 language: cpp
 
-addons:
-  homebrew:
-    brewfile: ci/Brewfile
-
 before_install:
   - export -f travis_fold
+  - third-party/qt_installer/qt_installer.sh
 
 install:
   # QtFtp
@@ -57,4 +54,6 @@ matrix:
       osx_image: xcode10.2
       env:
         - EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz
-        - PATH="/usr/local/opt/qt/bin:${PATH}"
+        - PATH="/opt/Qt/5.12.3/clang_64/bin:${PATH}"
+        - QT_INSTALLER_DOWNLOAD_NAME="qt-unified-mac-x64-online.dmg"
+        - QT_INSTALLER_VARS="${TRAVIS_BUILD_DIR}/ci/qt_installer_vars_mac.js"
