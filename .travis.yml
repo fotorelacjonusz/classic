@@ -28,9 +28,11 @@ script:
 
 before_deploy:
   - export TRAVIS_TAG=nightly
+  # Substitute TAG with $TRAVIS_TAG.
+  - export PACKAGE_NAME="${PACKAGE_NAME/TAG/${TRAVIS_TAG}}"
   - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
   - macdeployqt Fotorelacjonusz.app -verbose=2
-  - tar czf Fotorelacjonusz-nightly-macos.tar.gz Fotorelacjonusz.app
+  - tar czf "${PACKAGE_NAME}" Fotorelacjonusz.app
 
 deploy:
   provider: releases
@@ -45,7 +47,7 @@ deploy:
     repo: skalee/fotorelacjonusz
     branch: master
   file:
-    - Fotorelacjonusz-nightly-macos.tar.gz
+    - "${PACKAGE_NAME}"
 
 matrix:
   include:
@@ -53,6 +55,7 @@ matrix:
       osx_image: xcode10.2
       env:
         - EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz
+        - PACKAGE_NAME="Fotorelacjonusz-TAG-macos.tar.gz"
         - PATH="/opt/Qt/5.12.3/clang_64/bin:${PATH}"
         - QT_INSTALLER_DOWNLOAD_NAME="qt-unified-mac-x64-online.dmg"
         - QT_INSTALLER_VARS="${TRAVIS_BUILD_DIR}/ci/qt_installer_vars_mac.js"
