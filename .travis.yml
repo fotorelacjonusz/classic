@@ -27,7 +27,8 @@ script:
   - ${EXE} -v
 
 before_deploy:
-  - export TRAVIS_TAG=nightly
+  # Set TRAVIS_TAG to "nightly" if blank (i.e. triggered by push to master).
+  - export TRAVIS_TAG=${TRAVIS_TAG:-nightly}
   # Substitute TAG with $TRAVIS_TAG.
   - export PACKAGE_NAME="${PACKAGE_NAME/TAG/${TRAVIS_TAG}}"
   - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
@@ -42,7 +43,8 @@ deploy:
     secure: Pl1eq4L1Na7+2e9c3zEK3RG1a+CLR4b68k0ye2zl5h8z7wVVPPsn0FrfPvZZWk48jgI9HXDhR0zzctV1dh1ykZmowIZJZsBUguhlaIlyWsCSuCf1uIBXQG8naWu3AjJxefz8/KYF6aOJACU4sZFviW1e2vMtKF+Q6BXrjEhLQlc0pflTwBxOnlq2fTmt0uP9UuSP62Py0XbbaybAJAMEfSDb4lAZ5bwVXmOvCREP+vnSTlj/uiPxmw74jxYAmhX6kzgwN0i8XOwEjMSDmjtDyvr8dNN52GKDzpEt2R2UP8Z4ybYM7blyYj97GBi2ICPIh/IIE++R9qsMUDeR8OT28CVvrqd92cFZlNMC8YvTl4fvhzqJirWecGWqdCuhgSinMIIoplhqv48rtLtvrXHlNTSzFiElKodU2hbQrAjqZmFpugco21A3MreDt7BwL5HJvtr86bANpIqYuCOQNkpoNTpX1+4w6wwRAMv4Z5bhVbwkJK6Z8p3tJNBl9kBxfU5/YssOzY/x1pO9Ya14G6T0+YlH1+TNivPbfEPdNsSwXKKnH2A/CHZylQo0asmZV7ckDW3kAO2AASiYA3svi1IFMJUPASd01sQLwEGsZTTN8J6FKL9NauKd5QFtATTTOHRi0trARRak4L7lPI7E0LoGfzjOmIJn8dm43f+nMp4a8vU=
   on:
     repo: skalee/fotorelacjonusz
-    branch: master
+    all_branches: true
+    condition: ("x${TRAVIS_TAG}" != "x") || ("${TRAVIS_BRANCH}" = master)
   file:
     - "${PACKAGE_NAME}"
 
