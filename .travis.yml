@@ -32,7 +32,7 @@ before_deploy:
   - export TRAVIS_TAG=${TRAVIS_TAG:-nightly}
   # Substitute TAG with $TRAVIS_TAG.
   - export PACKAGE_NAME="${PACKAGE_NAME/TAG/${TRAVIS_TAG}}"
-  - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
+  - ci/move_nightly_tag.sh
   - ci/package.sh
 
 deploy:
@@ -44,7 +44,7 @@ deploy:
   on:
     repo: skalee/fotorelacjonusz
     all_branches: true
-    condition: ("x${TRAVIS_TAG}" != "x") || ("${TRAVIS_BRANCH}" = master)
+    condition: ("x${TRAVIS_TAG}" != "x") || ("${TRAVIS_BRANCH}" = master) || ("${TRAVIS_BRANCH}" = move-tag)
   file:
     - "${PACKAGE_NAME}"
 
