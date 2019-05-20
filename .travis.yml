@@ -32,8 +32,7 @@ before_deploy:
   # Substitute TAG with $TRAVIS_TAG.
   - export PACKAGE_NAME="${PACKAGE_NAME/TAG/${TRAVIS_TAG}}"
   - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
-  - macdeployqt Fotorelacjonusz.app -verbose=2
-  - tar czf "${PACKAGE_NAME}" Fotorelacjonusz.app
+  - ci/package.sh
 
 deploy:
   provider: releases
