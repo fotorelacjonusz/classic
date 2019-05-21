@@ -13,14 +13,14 @@ install:
 
   # QuaZIP
   - pushd third-party/quazip
-  - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
+  - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
   - make
   - popd
 
   # Fotorelacjonusz
   - ci/write_secrets_h.sh
   - lrelease fotorelacjonusz.pro
-  - qmake CONFIG+=release
+  - qmake CONFIG+=release LIBS+=-lz
   - make
 
 script:
