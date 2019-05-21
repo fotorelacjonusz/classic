@@ -2,11 +2,14 @@
 #define EXCEPTION_H
 
 #include <QString>
+#include <QCoreApplication>
 
 class QWidget;
 
 class Exception
 {
+	Q_DECLARE_TR_FUNCTIONS(Exception)
+
 public:
 	Exception(const char *file, int line, const char *func, QString what);
 	void showMessage(QWidget *parent) const;

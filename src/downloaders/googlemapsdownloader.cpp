@@ -39,13 +39,13 @@ void GoogleMapsDownloader::finished(QNetworkReply *reply)
 {
 	if (reply->error() != QNetworkReply::NoError)
 	{
-		qDebug() << QObject::tr("Błąd pobierania mapy: %1 %2").arg(reply->error()).arg(reply->errorString());
+		qDebug() << tr("Błąd pobierania mapy: %1 %2").arg(reply->error()).arg(reply->errorString());
 		return;
 	}
 	QImage image;
 	if (!image.loadFromData(reply->readAll()))
 	{
-		qDebug() << QObject::tr("Błąd otwierania mapy.");
+		qDebug() << tr("Błąd otwierania mapy.");
 		return;
 	}
 

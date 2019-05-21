@@ -2,11 +2,14 @@
 #define ABSTRACTIMAGE_H
 
 #include <QString>
+#include <QCoreApplication>
 
 class QIODevice;
 
 class AbstractImage
 {
+	Q_DECLARE_TR_FUNCTIONS(AbstractImage)
+
 public:
 	enum State { Ready, Uploaded, Assigned };
 	typedef QString &(QString::*AddFunc)(const QString &);
