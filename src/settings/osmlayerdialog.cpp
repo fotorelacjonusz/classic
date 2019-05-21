@@ -18,7 +18,7 @@ OSMLayerDialog::OSMLayerDialog(QSettings &settings, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::OSMLayerDialog),
 	settings(settings),
-	comboBox1(0), comboBox2(0), removeButton(0), slider(0)
+	comboBox1(nullptr), comboBox2(nullptr), removeButton(nullptr), slider(nullptr)
 {
 	ui->setupUi(this);
 	int size = settings.beginReadArray("osm_layers");

@@ -14,7 +14,7 @@ class ThrottledNetworkManager : public QObject
 	Q_OBJECT
 
 public:
-	explicit ThrottledNetworkManager(int limit = 100, QObject *parent = 0);
+	explicit ThrottledNetworkManager(int limit = 100, QObject *parent = nullptr);
 	void get(QNetworkRequest request, AbstractMapDownloader *downloader);
 
 	QNetworkAccessManager *manager();

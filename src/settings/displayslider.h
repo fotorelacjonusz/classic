@@ -9,7 +9,7 @@ class DisplaySlider : public QSlider
 	Q_OBJECT
 
 public:
-	explicit DisplaySlider(QWidget *parent = 0);
+	explicit DisplaySlider(QWidget *parent = nullptr);
 	void setFormat(QString format);
 
 protected:

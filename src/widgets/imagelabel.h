@@ -9,7 +9,7 @@ class ImageLabel : public QLabel, public AbstractImage
 {
 	Q_OBJECT
 public:
-	explicit ImageLabel(QWidget *parent, QWidget *firstWidget = 0);
+	explicit ImageLabel(QWidget *parent, QWidget *firstWidget = nullptr);
 
 	bool isNull() const;
 	QPixmap mergedPixmap() const;

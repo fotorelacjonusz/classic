@@ -12,7 +12,7 @@ class NtpClient : public QObject
 {
 	Q_OBJECT
 public:
-	explicit NtpClient(QObject *parent = 0);
+	explicit NtpClient(QObject *parent = nullptr);
 	QDateTime utcTime() const;
 
 signals:

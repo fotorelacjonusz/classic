@@ -44,7 +44,7 @@ protected:
 	static QString generateFolderName();
 	static QString removeAccents(QString diacritical);
 
-	QString queryPassword(QString sourceDsc, bool *ok = 0);
+	QString queryPassword(QString sourceDsc, bool *ok = nullptr);
 
 //	void fixLayout(QBoxLayout *child);
 	void fixLayout(QFormLayout *child);

@@ -137,7 +137,7 @@ protected:
 	{
 	public:
 		Field():
-			wrapper(0) {}
+			wrapper(nullptr) {}
 		virtual ~Field()
 		{
 			delete wrapper;
@@ -197,13 +197,13 @@ public:
 		return (inputs << new Input<T>(key, object, defaultVal)).last(); // 0, 0,
 	}
 
-	void connectMany(QObject *receiver, const char *member, AbstractField *f0, AbstractField *f1 = 0,
-					 AbstractField *f2 = 0, AbstractField *f3 = 0, AbstractField *f4 = 0, AbstractField *f5 = 0,
-					 AbstractField *f6 = 0, AbstractField *f7 = 0, AbstractField *f8 = 0, AbstractField *f9 = 0);
+	void connectMany(QObject *receiver, const char *member, AbstractField *f0, AbstractField *f1 = nullptr,
+					 AbstractField *f2 = nullptr, AbstractField *f3 = nullptr, AbstractField *f4 = nullptr, AbstractField *f5 = nullptr,
+					 AbstractField *f6 = nullptr, AbstractField *f7 = nullptr, AbstractField *f8 = nullptr, AbstractField *f9 = nullptr);
 
 public:
-	void load(AbstractInput *singleInput = 0);
-	void save(AbstractInput *singleInput = 0);
+	void load(AbstractInput *singleInput = nullptr);
+	void save(AbstractInput *singleInput = nullptr);
 
 private:
 	QSettings &settings;

@@ -20,7 +20,7 @@ class GpxDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit GpxDialog(QWidget *parent = 0);
+	explicit GpxDialog(QWidget *parent = nullptr);
 	~GpxDialog();
 
 	virtual void setVisible(bool visible);

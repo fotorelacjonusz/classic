@@ -41,7 +41,7 @@ bool Application::notify(QObject *object, QEvent *event)
 	}
 	catch (const Exception &e)
 	{
-		e.showMessage(0);
+		e.showMessage(nullptr);
 	}
 	return false;
 }

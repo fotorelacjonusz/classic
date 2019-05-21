@@ -55,9 +55,9 @@ ColorManipulationToolBar::~ColorManipulationToolBar()
 
 void ColorManipulationToolBar::setWidget(ImageWidget *widget)
 {
-	disconnect(brightnessSlider, SIGNAL(valueChanged(int)), 0, 0);
-	disconnect(contrastSlider, SIGNAL(valueChanged(int)), 0, 0);
-	disconnect(gammaSlider, SIGNAL(valueChanged(int)), 0, 0);
+	disconnect(brightnessSlider, SIGNAL(valueChanged(int)), nullptr, nullptr);
+	disconnect(contrastSlider, SIGNAL(valueChanged(int)), nullptr, nullptr);
+	disconnect(gammaSlider, SIGNAL(valueChanged(int)), nullptr, nullptr);
 
 	setEnabled(widget);
 	if (widget)

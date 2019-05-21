@@ -24,7 +24,7 @@ class ImageWidget : public SelectableWidget<ImageWidget>, public AbstractImage
 	Q_OBJECT
 
 public:
-	explicit ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream = 0) throw (Exception);
+	explicit ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream = nullptr) throw (Exception);
 	~ImageWidget();
 
 	virtual QString fileName() const;

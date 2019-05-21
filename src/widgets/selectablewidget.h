@@ -14,7 +14,7 @@ class SelectableWidgetListenerParent : public QObject
 	Q_OBJECT
 
 protected:
-	SelectableWidgetListenerParent(QObject *parent = 0):
+	SelectableWidgetListenerParent(QObject *parent = nullptr):
 		QObject(parent)
 	{}
 
@@ -30,7 +30,7 @@ template <class Type>
 class SelectableWidgetListener : public SelectableWidgetListenerParent
 {
 public:
-	SelectableWidgetListener(QObject *parent = 0):
+	SelectableWidgetListener(QObject *parent = nullptr):
 		SelectableWidgetListenerParent(parent)
 	{
 		listeners.insert(this);
@@ -84,7 +84,7 @@ public:
 	typedef SelectableWidgetListener<Type> Listener;
 
 protected:
-	explicit SelectableWidget(QWidget *parent = 0):
+	explicit SelectableWidget(QWidget *parent = nullptr):
 		SelectableWidgetParent(parent),
 		borderColor(20, 80, 200)
 	{
@@ -142,11 +142,11 @@ public:
 	{
 		if (!isSelected())
 			return;
-		selectedWidget = 0;
+		selectedWidget = nullptr;
 		lineEdit->clearFocus();
 		setStyleSheet(QString("QWidget#%1 { }").arg(objectName()));
 		if (tellAll)
-			Listener::tellAllWidgetSelected(0);
+			Listener::tellAllWidgetSelected(nullptr);
 		unselectEvent();
 	}
 
@@ -163,7 +163,7 @@ private:
 };
 
 template <class Type>
-SelectableWidget<Type> *SelectableWidget<Type>::selectedWidget = 0;
+SelectableWidget<Type> *SelectableWidget<Type>::selectedWidget = nullptr;
 
 
 #endif // SELECTABLEWIDGET_H

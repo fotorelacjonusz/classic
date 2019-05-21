@@ -12,7 +12,7 @@ class ProgressItemBase : public QObject
 	Q_OBJECT
 
 public:
-	ProgressItemBase(ProgressContainerBase *container, qreal total = 1.0, QProgressBar *progressBar = 0);
+	ProgressItemBase(ProgressContainerBase *container, qreal total = 1.0, QProgressBar *progressBar = nullptr);
 	virtual ~ProgressItemBase();
 
 	qreal progress() const;
@@ -38,7 +38,7 @@ class ProgressItem : public ProgressItemBase
 public:
 	typedef typename T::State State;
 
-	ProgressItem(ProgressContainerBase *container, T *object, qreal total = 1.0, QProgressBar *progressBar = 0):
+	ProgressItem(ProgressContainerBase *container, T *object, qreal total = 1.0, QProgressBar *progressBar = nullptr):
 		ProgressItemBase(container, total, progressBar),
 		state(State(0)),
 		m_object(object)
@@ -108,7 +108,7 @@ public:
 		return total;
 	}
 
-	void append(T *t, qreal total = 1.0, QProgressBar *progressBar = 0)
+	void append(T *t, qreal total = 1.0, QProgressBar *progressBar = nullptr)
 	{
 		List::append(new ProgressItem<T>(this, t, total, progressBar));
 		update();
@@ -120,7 +120,7 @@ public:
 		for (int i = 0; i < List::size(); ++i)
 			if (List::at(i)->state == state)
 				return List::at(i);
-		return 0;
+		return nullptr;
 	}
 
 	ProgressItem<T> *firstAtBest(State state) const
@@ -128,7 +128,7 @@ public:
 		for (int i = 0; i < List::size(); ++i)
 			if (List::at(i)->state <= state)
 				return List::at(i);
-		return 0;
+		return nullptr;
 	}
 
 	using List::last;
@@ -137,7 +137,7 @@ public:
 		for (int i = List::size() - 1; i >= 0; --i)
 			if (List::at(i)->state == state)
 				return List::at(i);
-		return 0;
+		return nullptr;
 	}
 
 	bool contains(State state) const

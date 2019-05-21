@@ -17,7 +17,7 @@ class PostWidget : public QWidget
 public:
 	enum State { Incomplete, Full, Sent, Posted };
 
-	explicit PostWidget(QToolBox *parent = 0);
+	explicit PostWidget(QToolBox *parent = nullptr);
 	~PostWidget();
 
 	void appendImage(AbstractImage *image);

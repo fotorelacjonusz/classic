@@ -17,7 +17,7 @@ const QStringList TilesDownloader::varNames = QStringList() << "${z}" << "${x}" 
 const int TilesDownloader::tileSize = 256;
 
 TilesDownloader::TilesDownloader(QString urlPattern):
-	urlPattern(urlPattern), painter(0)
+	urlPattern(urlPattern), painter(nullptr)
 {
 	connect(this, SIGNAL(makeMapSignal(GeoMap*)), this, SLOT(makeMapSlot(GeoMap*)));
 }
@@ -86,7 +86,7 @@ QImage TilesDownloader::render(QPointF coord, int zoom, QSize size)
 	loop.exec();
 
 	delete painter;
-	painter = 0;
+	painter = nullptr;
 
 	// crop
 	QRect cropRect(cropBegin.toPoint(), size);
