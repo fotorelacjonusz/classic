@@ -22,7 +22,7 @@ See also: https://stackoverflow.com/a/35098040/304175.
 
 2.  Install zlib (unless you have it already, which is quite typical).
 
-3.  Obtain Qt 5.5.  Online installer should be preferred, which can be
+3.  Obtain Qt 5.12.  Online installer should be preferred, which can be
     downloaded from https://download.qt.io/official_releases/online_installers/.
 
 == Source code

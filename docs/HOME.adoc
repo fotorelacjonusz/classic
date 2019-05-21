@@ -14,7 +14,9 @@ link:FEATURES.adoc[Further reading]
 
 == Dependencies, legal
 
-* Application has been made with https://www.qt.io/developers/[Qt]. It needs: core, gui, network, webkit, script and xml modules (version >= 4.8)
+* Application has been made with https://www.qt.io/developers/[Qt]. It needs:
+  core, gui, network, script, webchannel, webengine, webenginewidgets, xml
+  and xmlpatterns modules (version >= 5.6)
 * It depends on https://sourceforge.net/p/quazip/wiki/Home/[QuaZIP library]
 * It depends on https://github.com/qt/qtftp[QtFtp library]
 * It uses icons from http://www.oxygen-icons.org/[Oxygen theme]
