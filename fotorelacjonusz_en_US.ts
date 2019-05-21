@@ -245,29 +245,6 @@ Wrong url will make all links corrupted.</translation>
     </message>
 </context>
 <context>
-    <name>ImgurAnonyUploader</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
-        <source>Kredyty na użytkownika</source>
-        <translation type="vanished">User credits</translation>
-    </message>
-    <message>
-        <source>Kredyty na aplikację</source>
-        <translation type="vanished">Application credits</translation>
-    </message>
-    <message>
-        <source>Odnowienie kredytów</source>
-        <translation type="vanished">Credits reset</translation>
-    </message>
-    <message>
-        <source>Pozostała liczba kredytów: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i spróbuj jeszcze raz.</source>
-        <translation type="vanished">Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
-    </message>
-</context>
-<context>
     <name>ImgurLoginUploader</name>
     <message>
         <location filename="src/uploaders/imgurloginuploader.ui" line="14"/>
@@ -330,13 +307,6 @@ Wrong url will make all links corrupted.</translation>
         <location filename="src/uploaders/isanonuploader.ui" line="16"/>
         <source>Form</source>
         <translation type="unfinished">Form</translation>
-    </message>
-</context>
-<context>
-    <name>IsAnonyUploader</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
 </context>
 <context>
