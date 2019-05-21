@@ -143,7 +143,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
-        <source>Nie udało się ustalić czasu UTC poprzez protokÃ³ł NTP.</source>
+        <source>Nie udało się ustalić czasu UTC poprzez protokół NTP.</source>
         <translation type="vanished">Quering UTC time with NTP protocol failed.</translation>
     </message>
     <message>
@@ -195,7 +195,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zdjęcie %1 zostało obrÃ³cone zgodnie z jego orientacją zapisaną w nagłÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnież oryginalne zdjęcie na dysku?</source>
+        <source>Zdjęcie %1 zostało obrócone zgodnie z jego orientacją zapisaną w nagłówku exif.&lt;br&gt;Czy chcesz obrócić również oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -209,7 +209,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Removing position</translation>
     </message>
     <message>
-        <source>Czy usunąć pozycję rÃ³wnież z pliku na dysku?</source>
+        <source>Czy usunąć pozycję również z pliku na dysku?</source>
         <translation type="vanished">Do you want to remove position from the original file as well?</translation>
     </message>
     <message>
@@ -218,7 +218,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Rotate image</translation>
     </message>
     <message>
-        <source>Czy obrÃ³cić rÃ³wnież oryginalne zdjęcie na dysku?</source>
+        <source>Czy obrócić również oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -279,7 +279,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Credits reset</translation>
     </message>
     <message>
-        <source>Pozostała liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i sprÃ³buj jeszcze raz.</source>
+        <source>Pozostała liczba kredytów: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i spróbuj jeszcze raz.</source>
         <translation type="vanished">Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
     </message>
 </context>
@@ -647,7 +647,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Delete arrow</translation>
     </message>
     <message>
-        <source>OtwÃ³rz fotorelację</source>
+        <source>Otwórz fotorelację</source>
         <translation type="vanished">Open photo report</translation>
     </message>
     <message>
@@ -677,7 +677,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Once more</translation>
     </message>
     <message>
-        <source>Czy sprÃ³bować dokończyć wysyłanie fotorelacji?</source>
+        <source>Czy spróbować dokończyć wysyłanie fotorelacji?</source>
         <translation type="vanished">Try finishing photo report upload?</translation>
     </message>
     <message>
