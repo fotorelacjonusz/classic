@@ -667,10 +667,6 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Try finishing photo report upload?</translation>
     </message>
     <message>
-        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation type="obsolete">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
-    </message>
-    <message>
         <location filename="src/widgets/mainwindow.cpp" line="70"/>
         <location filename="src/widgets/mainwindow.cpp" line="125"/>
         <source>Fotorelacje (*.phr)</source>
@@ -890,35 +886,6 @@ If you don&apos;t want your password stored leave this field empty, application 
         <location filename="src/widgets/postwidget.cpp" line="38"/>
         <source>Cdn ...</source>
         <translation>Tbc ...</translation>
-    </message>
-</context>
-<context>
-    <name>QObject</name>
-    <message>
-        <source>%1:%2
-%3
-
-Miejsce błędu:
-%4</source>
-        <translation type="obsolete">%1:%2
-%3
-
-Error at:
-%4</translation>
-    </message>
-    <message>
-        <source>%1
-
-Miejsce błędu:
-%2</source>
-        <translation type="obsolete">%1
-
-Error at:
-%2</translation>
-    </message>
-    <message>
-        <source>Mapa dla wszystkich zdjęć.</source>
-        <translation type="obsolete">Common map.</translation>
     </message>
 </context>
 <context>
