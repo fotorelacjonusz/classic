@@ -99,7 +99,7 @@ Wrong url will make all links corrupted.</translation>
         <translation>Use following folder</translation>
     </message>
     <message>
-        <location filename="src/uploaders/ftpuploader.cpp" line="36"/>
+        <location filename="src/uploaders/ftpuploader.cpp" line="34"/>
         <source>%1 na %2</source>
         <translation>%1 at %2</translation>
     </message>
@@ -1801,7 +1801,7 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="vanished">Own FTP account</translation>
     </message>
     <message>
-        <location filename="src/uploaders/uploaderfactory.cpp" line="51"/>
+        <location filename="src/uploaders/uploaderfactory.cpp" line="47"/>
         <source>Imgur anonimowo</source>
         <translation>Imgur anonymous</translation>
     </message>
