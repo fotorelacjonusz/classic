@@ -195,7 +195,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zdjęcie %1 zostało obrÃ³cone zgodnie z jego orientacją zapisaną w nagłÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
+        <source>Zdjęcie %1 zostało obrÃ³cone zgodnie z jego orientacją zapisaną w nagłÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnież oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -209,7 +209,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Removing position</translation>
     </message>
     <message>
-        <source>Czy usunąć pozycję rÃ³wnieÅ¼ z pliku na dysku?</source>
+        <source>Czy usunąć pozycję rÃ³wnież z pliku na dysku?</source>
         <translation type="vanished">Do you want to remove position from the original file as well?</translation>
     </message>
     <message>
@@ -218,7 +218,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Rotate image</translation>
     </message>
     <message>
-        <source>Czy obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
+        <source>Czy obrÃ³cić rÃ³wnież oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -655,7 +655,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na otworzyć. Tę fotorelację zapisano inną wersją programu.</source>
+        <source>Nie można otworzyć. Tę fotorelację zapisano inną wersją programu.</source>
         <translation type="vanished">Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
@@ -664,7 +664,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <source>Fotorelacja nie zawiera Å¼adnego zdjęcia.</source>
+        <source>Fotorelacja nie zawiera żadnego zdjęcia.</source>
         <translation type="vanished">Photo report contains no photo.</translation>
     </message>
     <message>
@@ -1116,12 +1116,12 @@ Error at:
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na było rozpocząć wysyłania z powodu:
+        <source>Nie można było rozpocząć wysyłania z powodu:
 %1</source>
         <translation type="vanished">Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <source>Zdjęcie %1 juÅ¼ wysłane</source>
+        <source>Zdjęcie %1 już wysłane</source>
         <translation type="vanished">Photo %1 already uploaded</translation>
     </message>
     <message>
@@ -1129,7 +1129,7 @@ Error at:
         <translation type="vanished">Sending %1: %p%</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na było wysłać obrazka %1 z powodu:
+        <source>Nie można było wysłać obrazka %1 z powodu:
 %2</source>
         <translation type="vanished">Photo %1 upload failed: %2</translation>
     </message>
@@ -1237,7 +1237,7 @@ Error at:
         <translation type="vanished">Like this app</translation>
     </message>
     <message>
-        <source>Wygląda na to, Å¼e juÅ¼ polubiłeś program.</source>
+        <source>Wygląda na to, że już polubiłeś program.</source>
         <translation type="vanished">It seems you have already liked this app.</translation>
     </message>
     <message>
