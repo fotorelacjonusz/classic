@@ -236,6 +236,7 @@ void MainWindow::on_action_about_triggered()
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
 						   "Aplikacja wykorzystuje:<br/>"
 						   "Qt (LGPL2)<br/>"
+						   "QtFtp (LGPL2)<br/>"
 						   "QuaZIP (LGPL2)<br/>"
 						   "Oxygen theme (LGPL)<br/><br/>"
 						   "%1")
