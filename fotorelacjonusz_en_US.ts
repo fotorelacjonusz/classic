@@ -661,17 +661,6 @@ If you don&apos;t want your password stored leave this field empty, application 
     </message>
 </context>
 <context>
-    <name>MessageHandler</name>
-    <message>
-        <source>Błąd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
-        <translation type="obsolete">Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
-    </message>
-    <message>
-        <source>Błąd</source>
-        <translation type="obsolete">Error</translation>
-    </message>
-</context>
-<context>
     <name>OSMLayerDialog</name>
     <message>
         <location filename="src/settings/osmlayerdialog.ui" line="14"/>
