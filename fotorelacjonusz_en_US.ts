@@ -143,7 +143,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
-        <source>Nie udaÅo się ustaliÄ czasu UTC poprzez protokÃ³Å NTP.</source>
+        <source>Nie udaÅo się ustalić czasu UTC poprzez protokÃ³Å NTP.</source>
         <translation type="vanished">Quering UTC time with NTP protocol failed.</translation>
     </message>
     <message>
@@ -195,7 +195,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zdjęcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ&#x85; zapisanÄ&#x85; w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
+        <source>Zdjęcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ&#x85; zapisanÄ&#x85; w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -209,7 +209,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Removing position</translation>
     </message>
     <message>
-        <source>Czy usunÄ&#x85;Ä pozycję rÃ³wnieÅ¼ z pliku na dysku?</source>
+        <source>Czy usunÄ&#x85;ć pozycję rÃ³wnieÅ¼ z pliku na dysku?</source>
         <translation type="vanished">Do you want to remove position from the original file as well?</translation>
     </message>
     <message>
@@ -218,7 +218,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Rotate image</translation>
     </message>
     <message>
-        <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
+        <source>Czy obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -279,7 +279,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Credits reset</translation>
     </message>
     <message>
-        <source>PozostaÅa liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjęÄ. Zredukuj liczbę zdjęÄ do %3 i sprÃ³buj jeszcze raz.</source>
+        <source>PozostaÅa liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i sprÃ³buj jeszcze raz.</source>
         <translation type="vanished">Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
     </message>
 </context>
@@ -655,7 +655,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na otworzyÄ. Tę fotorelację zapisano innÄ&#x85; wersjÄ&#x85; programu.</source>
+        <source>Nie moÅ¼na otworzyć. Tę fotorelację zapisano innÄ&#x85; wersjÄ&#x85; programu.</source>
         <translation type="vanished">Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
@@ -677,7 +677,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Once more</translation>
     </message>
     <message>
-        <source>Czy sprÃ³bowaÄ dokoÅczyÄ wysyÅanie fotorelacji?</source>
+        <source>Czy sprÃ³bować dokoÅczyć wysyÅanie fotorelacji?</source>
         <translation type="vanished">Try finishing photo report upload?</translation>
     </message>
     <message>
@@ -905,11 +905,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">No &apos;%1&apos; file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;, pamięÄ wyczerpana?</source>
+        <source>Nieudane Åadowanie pliku z mapÄ&#x85;, pamięć wyczerpana?</source>
         <translation type="vanished">Map file loading failed, memory exhausted?</translation>
     </message>
     <message>
-        <source>Nieudane zapisanie mapy do bufora, pamięÄ wyczerpana?</source>
+        <source>Nieudane zapisanie mapy do bufora, pamięć wyczerpana?</source>
         <translation type="vanished">Saving map to buffor failed, memory exhausted?</translation>
     </message>
     <message>
@@ -959,7 +959,7 @@ Treść błędu:
         <source>%1:%2
 %3
 
-TreÅÄ bÅędu:
+TreÅć bÅędu:
 %4</source>
         <translation type="vanished">%1:%2
 %3
@@ -1000,7 +1000,7 @@ Error at:
         <translation type="unfinished">Error while loading map data.</translation>
     </message>
     <message>
-        <source>Mapa dla wszystkich zdjęÄ.</source>
+        <source>Mapa dla wszystkich zdjęć.</source>
         <translation type="obsolete">Common map.</translation>
     </message>
     <message>
@@ -1116,7 +1116,7 @@ Error at:
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo rozpoczÄ&#x85;Ä wysyÅania z powodu:
+        <source>Nie moÅ¼na byÅo rozpoczÄ&#x85;ć wysyÅania z powodu:
 %1</source>
         <translation type="vanished">Can&apos;t start upload, because: %1</translation>
     </message>
@@ -1129,7 +1129,7 @@ Error at:
         <translation type="vanished">Sending %1: %p%</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo wysÅaÄ obrazka %1 z powodu:
+        <source>Nie moÅ¼na byÅo wysÅać obrazka %1 z powodu:
 %2</source>
         <translation type="vanished">Photo %1 upload failed: %2</translation>
     </message>
