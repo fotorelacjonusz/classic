@@ -195,7 +195,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zdjęcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ&#x85; zapisanÄ&#x85; w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
+        <source>Zdjęcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacją zapisaną w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -209,7 +209,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Removing position</translation>
     </message>
     <message>
-        <source>Czy usunÄ&#x85;ć pozycję rÃ³wnieÅ¼ z pliku na dysku?</source>
+        <source>Czy usunąć pozycję rÃ³wnieÅ¼ z pliku na dysku?</source>
         <translation type="vanished">Do you want to remove position from the original file as well?</translation>
     </message>
     <message>
@@ -352,11 +352,11 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
     </message>
     <message>
-        <source>BÅÄ&#x85;d</source>
+        <source>BÅąd</source>
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Podczas kontaktowania się z Imgur wystÄ&#x85;piÅ bÅÄ&#x85;d.</source>
+        <source>Podczas kontaktowania się z Imgur wystąpiÅ bÅąd.</source>
         <translation type="vanished">Error while connecting with Imgur. </translation>
     </message>
 </context>
@@ -651,11 +651,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">Open photo report</translation>
     </message>
     <message>
-        <source>BÅÄ&#x85;d</source>
+        <source>BÅąd</source>
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na otworzyć. Tę fotorelację zapisano innÄ&#x85; wersjÄ&#x85; programu.</source>
+        <source>Nie moÅ¼na otworzyć. Tę fotorelację zapisano inną wersją programu.</source>
         <translation type="vanished">Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
@@ -761,11 +761,11 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>MessageHandler</name>
     <message>
-        <source>BÅÄ&#x85;d %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
+        <source>BÅąd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
         <translation type="obsolete">Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
     </message>
     <message>
-        <source>BÅÄ&#x85;d</source>
+        <source>BÅąd</source>
         <translation type="obsolete">Error</translation>
     </message>
 </context>
@@ -842,7 +842,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;</source>
+        <source>Nieudane Åadowanie pliku z mapą</source>
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
@@ -878,11 +878,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">outFileMap.open(): %1</translation>
     </message>
     <message>
-        <source>outFileMap.write(): BÅÄ&#x85;d zapisu danych do archiwum</source>
+        <source>outFileMap.write(): BÅąd zapisu danych do archiwum</source>
         <translation type="vanished">outFileMap.write(): Error while writing data to archive</translation>
     </message>
     <message>
-        <source>map.save(): BÅÄ&#x85;d zapisu pixmapy do archiwum</source>
+        <source>map.save(): BÅąd zapisu pixmapy do archiwum</source>
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
@@ -905,7 +905,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">No &apos;%1&apos; file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;, pamięć wyczerpana?</source>
+        <source>Nieudane Åadowanie pliku z mapą, pamięć wyczerpana?</source>
         <translation type="vanished">Map file loading failed, memory exhausted?</translation>
     </message>
     <message>
@@ -917,7 +917,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;</source>
+        <source>Nieudane Åadowanie pliku z mapą</source>
         <translation type="obsolete">Map file loading failed</translation>
     </message>
 </context>
@@ -1104,19 +1104,19 @@ Error at:
         <translation>All photos: %p%</translation>
     </message>
     <message>
-        <source>Czekam na wybranie wÄ&#x85;tku...</source>
+        <source>Czekam na wybranie wątku...</source>
         <translation type="vanished">Waiting for thread selection...</translation>
     </message>
     <message>
-        <source>Przechodzę do wÄ&#x85;tku...</source>
+        <source>Przechodzę do wątku...</source>
         <translation type="vanished">Navigating to thread...</translation>
     </message>
     <message>
-        <source>BÅÄ&#x85;d</source>
+        <source>BÅąd</source>
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo rozpoczÄ&#x85;ć wysyÅania z powodu:
+        <source>Nie moÅ¼na byÅo rozpocząć wysyÅania z powodu:
 %1</source>
         <translation type="vanished">Can&apos;t start upload, because: %1</translation>
     </message>
@@ -1237,7 +1237,7 @@ Error at:
         <translation type="vanished">Like this app</translation>
     </message>
     <message>
-        <source>WyglÄ&#x85;da na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
+        <source>Wygląda na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
         <translation type="vanished">It seems you have already liked this app.</translation>
     </message>
     <message>
