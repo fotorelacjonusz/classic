@@ -143,7 +143,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
-        <source>Nie udaÅo się ustalić czasu UTC poprzez protokÃ³Å NTP.</source>
+        <source>Nie udało się ustalić czasu UTC poprzez protokÃ³ł NTP.</source>
         <translation type="vanished">Quering UTC time with NTP protocol failed.</translation>
     </message>
     <message>
@@ -195,7 +195,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zdjęcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacją zapisaną w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
+        <source>Zdjęcie %1 zostało obrÃ³cone zgodnie z jego orientacją zapisaną w nagłÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³cić rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -279,7 +279,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Credits reset</translation>
     </message>
     <message>
-        <source>PozostaÅa liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i sprÃ³buj jeszcze raz.</source>
+        <source>Pozostała liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i sprÃ³buj jeszcze raz.</source>
         <translation type="vanished">Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
     </message>
 </context>
@@ -330,7 +330,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskaÅa dostęp do Twoich danych na Imgur.</source>
+        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskała dostęp do Twoich danych na Imgur.</source>
         <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; gained access to your data on Imgur.</translation>
     </message>
     <message>
@@ -339,7 +339,7 @@ Wrong url will make all links corrupted.</translation>
         <translation>Authorization denied</translation>
     </message>
     <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskaÅa dostępu do Twoich danych na Imgur.</source>
+        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskała dostępu do Twoich danych na Imgur.</source>
         <translation type="vanished">Application  &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; didn&apos;t gain access to your data on Imgur.</translation>
     </message>
     <message>
@@ -352,11 +352,11 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
     </message>
     <message>
-        <source>BÅąd</source>
+        <source>Błąd</source>
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Podczas kontaktowania się z Imgur wystąpiÅ bÅąd.</source>
+        <source>Podczas kontaktowania się z Imgur wystąpił błąd.</source>
         <translation type="vanished">Error while connecting with Imgur. </translation>
     </message>
 </context>
@@ -651,7 +651,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">Open photo report</translation>
     </message>
     <message>
-        <source>BÅąd</source>
+        <source>Błąd</source>
         <translation type="vanished">Error</translation>
     </message>
     <message>
@@ -677,7 +677,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Once more</translation>
     </message>
     <message>
-        <source>Czy sprÃ³bować dokoÅczyć wysyÅanie fotorelacji?</source>
+        <source>Czy sprÃ³bować dokoÅczyć wysyłanie fotorelacji?</source>
         <translation type="vanished">Try finishing photo report upload?</translation>
     </message>
     <message>
@@ -761,11 +761,11 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>MessageHandler</name>
     <message>
-        <source>BÅąd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
+        <source>Błąd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
         <translation type="obsolete">Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
     </message>
     <message>
-        <source>BÅąd</source>
+        <source>Błąd</source>
         <translation type="obsolete">Error</translation>
     </message>
 </context>
@@ -830,7 +830,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
-        <source>Niepoprawna skÅadnia kml</source>
+        <source>Niepoprawna składnia kml</source>
         <translation type="vanished">Kml syntax error</translation>
     </message>
     <message>
@@ -842,11 +842,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapą</source>
+        <source>Nieudane ładowanie pliku z mapą</source>
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
-        <source>To nie jest plik podkÅadu mapowego.</source>
+        <source>To nie jest plik podkładu mapowego.</source>
         <translation type="vanished">This is not an overlay file.</translation>
     </message>
     <message>
@@ -878,11 +878,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">outFileMap.open(): %1</translation>
     </message>
     <message>
-        <source>outFileMap.write(): BÅąd zapisu danych do archiwum</source>
+        <source>outFileMap.write(): Błąd zapisu danych do archiwum</source>
         <translation type="vanished">outFileMap.write(): Error while writing data to archive</translation>
     </message>
     <message>
-        <source>map.save(): BÅąd zapisu pixmapy do archiwum</source>
+        <source>map.save(): Błąd zapisu pixmapy do archiwum</source>
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
@@ -905,7 +905,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">No &apos;%1&apos; file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapą, pamięć wyczerpana?</source>
+        <source>Nieudane ładowanie pliku z mapą, pamięć wyczerpana?</source>
         <translation type="vanished">Map file loading failed, memory exhausted?</translation>
     </message>
     <message>
@@ -917,7 +917,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapą</source>
+        <source>Nieudane ładowanie pliku z mapą</source>
         <translation type="obsolete">Map file loading failed</translation>
     </message>
 </context>
@@ -959,7 +959,7 @@ Treść błędu:
         <source>%1:%2
 %3
 
-TreÅć bÅędu:
+TreÅć błędu:
 %4</source>
         <translation type="vanished">%1:%2
 %3
@@ -971,7 +971,7 @@ Error message:
         <source>%1:%2
 %3
 
-Miejsce bÅędu:
+Miejsce błędu:
 %4</source>
         <translation type="obsolete">%1:%2
 %3
@@ -982,7 +982,7 @@ Error at:
     <message>
         <source>%1
 
-Miejsce bÅędu:
+Miejsce błędu:
 %2</source>
         <translation type="obsolete">%1
 
@@ -1112,24 +1112,24 @@ Error at:
         <translation type="vanished">Navigating to thread...</translation>
     </message>
     <message>
-        <source>BÅąd</source>
+        <source>Błąd</source>
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo rozpocząć wysyÅania z powodu:
+        <source>Nie moÅ¼na było rozpocząć wysyłania z powodu:
 %1</source>
         <translation type="vanished">Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <source>Zdjęcie %1 juÅ¼ wysÅane</source>
+        <source>Zdjęcie %1 juÅ¼ wysłane</source>
         <translation type="vanished">Photo %1 already uploaded</translation>
     </message>
     <message>
-        <source>WysyÅam %1: %p%</source>
+        <source>Wysyłam %1: %p%</source>
         <translation type="vanished">Sending %1: %p%</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo wysÅać obrazka %1 z powodu:
+        <source>Nie moÅ¼na było wysłać obrazka %1 z powodu:
 %2</source>
         <translation type="vanished">Photo %1 upload failed: %2</translation>
     </message>
@@ -1237,7 +1237,7 @@ Error at:
         <translation type="vanished">Like this app</translation>
     </message>
     <message>
-        <source>Wygląda na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
+        <source>Wygląda na to, Å¼e juÅ¼ polubiłeÅ program.</source>
         <translation type="vanished">It seems you have already liked this app.</translation>
     </message>
     <message>
@@ -1245,7 +1245,7 @@ Error at:
         <translation type="vanished">Navigating to form... %p%</translation>
     </message>
     <message>
-        <source>WysyÅam posta... %p%</source>
+        <source>Wysyłam posta... %p%</source>
         <translation type="vanished">Sending post... %p%</translation>
     </message>
 </context>
@@ -1793,11 +1793,11 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="vanished">Imageshack registration code</translation>
     </message>
     <message>
-        <source>Imageshack login i hasÅo</source>
+        <source>Imageshack login i hasło</source>
         <translation type="vanished">Imageshack login and password</translation>
     </message>
     <message>
-        <source>WÅasne konto FTP</source>
+        <source>Własne konto FTP</source>
         <translation type="vanished">Own FTP account</translation>
     </message>
     <message>
