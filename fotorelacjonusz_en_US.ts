@@ -959,7 +959,7 @@ Treść błędu:
         <source>%1:%2
 %3
 
-TreÅć błędu:
+Treść błędu:
 %4</source>
         <translation type="vanished">%1:%2
 %3
@@ -1237,7 +1237,7 @@ Error at:
         <translation type="vanished">Like this app</translation>
     </message>
     <message>
-        <source>Wygląda na to, Å¼e juÅ¼ polubiłeÅ program.</source>
+        <source>Wygląda na to, Å¼e juÅ¼ polubiłeś program.</source>
         <translation type="vanished">It seems you have already liked this app.</translation>
     </message>
     <message>
