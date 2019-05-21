@@ -16,6 +16,7 @@ link:FEATURES.adoc[Further reading]
 
 * Application has been made with https://www.qt.io/developers/[Qt]. It needs: core, gui, network, webkit, script and xml modules (version >= 4.8)
 * It depends on https://sourceforge.net/p/quazip/wiki/Home/[QuaZIP library]
+* It depends on https://github.com/qt/qtftp[QtFtp library]
 * It uses icons from http://www.oxygen-icons.org/[Oxygen theme]
 * Application license: https://www.gnu.org/licenses/gpl-2.0.html[GNU GPL2]
 

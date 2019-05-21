@@ -231,9 +231,15 @@ void MainWindow::on_action_about_triggered()
 		dateTime = QLocale(QLocale::C).toDateTime(dateString, "MMM dd yyyy HH:mm:ss").toString("dd.MM.yy, HH:mm");
 	}
 	QMessageBox::about(this, tr("O programie"), tr(
-						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>Wersja: %2 (kompilacja %3)<br/>"
+						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>"
+						   "Wersja: %2 (kompilacja %3)<br/>"
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
-						   "Aplikacja wykorzystuje:<br/>Qt (LGPL2)<br/>QuaZIP (LGPL2)<br/>Oxygen theme (LGPL)<br/><br/>%1")
+						   "Aplikacja wykorzystuje:<br/>"
+						   "Qt (LGPL2)<br/>"
+						   "QtFtp (LGPL2)<br/>"
+						   "QuaZIP (LGPL2)<br/>"
+						   "Oxygen theme (LGPL)<br/><br/>"
+						   "%1")
 					   .arg(QString(LICENSE).replace("\n", "<br/>")).arg(QApplication::applicationVersion()).arg(dateTime)
 					   .replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
 }
