@@ -208,7 +208,7 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="214"/>
         <source>Nie można załadować zdjęcia. Pamięć wyczerpana?</source>
-        <translation type="unfinished">Can&apos;t load photo.Out of memory? </translation>
+        <translation type="unfinished">Can&apos;t load photo.Out of memory?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="270"/>
@@ -311,7 +311,7 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="168"/>
         <source>Podczas kontaktowania się z Imgur wystąpił błąd.</source>
-        <translation type="unfinished">Error while connecting with Imgur. </translation>
+        <translation type="unfinished">Error while connecting with Imgur.</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="166"/>
@@ -721,7 +721,7 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message>
         <location filename="src/settings/osmlayerdialog.ui" line="49"/>
         <source>Adres musi zawierać zmienne ${x}, ${y}, ${z} oraz kończyć się na .png</source>
-        <translation>Addres has to contain variables ${x}, ${y}, ${z} and it has to end with .png </translation>
+        <translation>Addres has to contain variables ${x}, ${y}, ${z} and it has to end with .png</translation>
     </message>
     <message>
         <location filename="src/settings/osmlayerdialog.ui" line="56"/>
@@ -916,7 +916,7 @@ Error at:
     <message>
         <location filename="src/downloaders/googlemapsdownloader.cpp" line="42"/>
         <source>Błąd pobierania mapy: %1 %2</source>
-        <translation type="unfinished">Error while downloading a map: %1 %2 </translation>
+        <translation type="unfinished">Error while downloading a map: %1 %2</translation>
     </message>
     <message>
         <location filename="src/downloaders/googlemapsdownloader.cpp" line="48"/>
@@ -1470,7 +1470,7 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="738"/>
         <source>Źródło danych Google Maps: &lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</source>
-        <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt; </translation>
+        <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="748"/>
@@ -1652,7 +1652,7 @@ You can add and remove files from this directory, changes will become visible af
     <message>
         <location filename="src/downloaders/tilesdownloader.cpp" line="146"/>
         <source>Błąd pobierania mapy: %1 %2</source>
-        <translation type="unfinished">Error while downloading a map: %1 %2 </translation>
+        <translation type="unfinished">Error while downloading a map: %1 %2</translation>
     </message>
 </context>
 <context>
