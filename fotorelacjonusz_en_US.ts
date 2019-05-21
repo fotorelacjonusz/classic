@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="pl_PL">
 <context>
+    <name>AbstractImage</name>
+    <message>
+        <location filename="src/widgets/abstractimage.cpp" line="11"/>
+        <source>mapa.jpg</source>
+        <translation>map.jpg</translation>
+    </message>
+</context>
+<context>
     <name>AbstractUploader</name>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="68"/>
@@ -11,12 +19,12 @@
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasło</source>
-        <translation type="unfinished">Input password</translation>
+        <translation>Enter password</translation>
     </message>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasło do %1</source>
-        <translation type="unfinished">Input password for %1</translation>
+        <translation>Enter password for %1</translation>
     </message>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="112"/>
@@ -34,12 +42,33 @@
     <message>
         <location filename="src/widgets/colormanipulationtoolbar.cpp" line="28"/>
         <source>Jasność</source>
-        <translation type="unfinished">Brightness</translation>
+        <translation>Brightness</translation>
     </message>
     <message>
         <location filename="src/widgets/colormanipulationtoolbar.cpp" line="38"/>
         <source>Gamma</source>
         <translation>Gamma</translation>
+    </message>
+</context>
+<context>
+    <name>Exception</name>
+    <message>
+        <location filename="src/exception.cpp" line="16"/>
+        <source>Błąd</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="src/exception.cpp" line="16"/>
+        <source>%1:%2
+%3
+
+Treść błędu:
+%4</source>
+        <translation>%1:%2
+%3
+
+Error message:
+%4</translation>
     </message>
 </context>
 <context>
@@ -99,9 +128,22 @@ Wrong url will make all links corrupted.</translation>
         <translation>Use following folder</translation>
     </message>
     <message>
-        <location filename="src/uploaders/ftpuploader.cpp" line="36"/>
+        <location filename="src/uploaders/ftpuploader.cpp" line="34"/>
         <source>%1 na %2</source>
         <translation>%1 at %2</translation>
+    </message>
+</context>
+<context>
+    <name>GoogleMapsDownloader</name>
+    <message>
+        <location filename="src/downloaders/googlemapsdownloader.cpp" line="42"/>
+        <source>Błąd pobierania mapy: %1 %2</source>
+        <translation>Error while downloading a map: %1 %2</translation>
+    </message>
+    <message>
+        <location filename="src/downloaders/googlemapsdownloader.cpp" line="48"/>
+        <source>Błąd otwierania mapy.</source>
+        <translation>Error while loading map data.</translation>
     </message>
 </context>
 <context>
@@ -140,21 +182,17 @@ Wrong url will make all links corrupted.</translation>
         <location filename="src/widgets/gpxdialog.cpp" line="54"/>
         <location filename="src/widgets/gpxdialog.cpp" line="120"/>
         <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
-    </message>
-    <message>
-        <source>Nie udaÅo siÄ ustaliÄ czasu UTC poprzez protokÃ³Å NTP.</source>
-        <translation type="vanished">Quering UTC time with NTP protocol failed.</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="src/widgets/gpxdialog.cpp" line="54"/>
         <source>Nie udało się ustalić czasu UTC poprzez protokół NTP.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quering UTC time with NTP protocol failed.</translation>
     </message>
     <message>
         <location filename="src/widgets/gpxdialog.cpp" line="117"/>
         <source>Błąd %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
-        <translation type="unfinished">Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
+        <translation>Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
     </message>
     <message>
         <location filename="src/widgets/gpxdialog.cpp" line="141"/>
@@ -172,64 +210,52 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="57"/>
         <source>Nie można załadować zdjęcia do pamięci. Pamięć wyczerpana?</source>
-        <translation type="unfinished">Unable to load an image to the memory. Out of memory?</translation>
+        <translation>Unable to load an image to the memory. Out of memory?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="76"/>
         <source>Orientacja zdjęcia</source>
-        <translation type="unfinished">Photo orientation</translation>
+        <translation>Photo orientation</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="76"/>
         <source>Zdjęcie %1 zostało obrócone zgodnie z jego orientacją zapisaną w nagłówku exif.&lt;br&gt;Czy chcesz obrócić również oryginalne zdjęcie na dysku?</source>
-        <translation type="unfinished"></translation>
+        <translation>Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="170"/>
         <source>Czy usunąć pozycję również z pliku na dysku?</source>
-        <translation type="unfinished"></translation>
+        <translation>Do you want to remove position from the original file as well?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="198"/>
         <source>Czy obrócić również oryginalne zdjęcie na dysku?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ZdjÄcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ&#x85; zapisanÄ&#x85; w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
-        <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
+        <translation>Do you want to rotate the original file as well?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="101"/>
         <source>Podpis zdjęcia</source>
-        <translation type="unfinished">Image caption</translation>
+        <translation>Image caption</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="170"/>
         <source>Usunięcie pozycji</source>
-        <translation type="unfinished">Removing position</translation>
-    </message>
-    <message>
-        <source>Czy usunÄ&#x85;Ä pozycjÄ rÃ³wnieÅ¼ z pliku na dysku?</source>
-        <translation type="vanished">Do you want to remove position from the original file as well?</translation>
+        <translation>Removing position</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="198"/>
         <source>Obrót zdjęcia</source>
-        <translation type="unfinished">Rotate image</translation>
-    </message>
-    <message>
-        <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
-        <translation type="vanished">Do you want to rotate the original file as well?</translation>
+        <translation>Rotate image</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="214"/>
         <source>Nie można załadować zdjęcia. Pamięć wyczerpana?</source>
-        <translation type="unfinished">Can&apos;t load photo.Out of memory? </translation>
+        <translation>Can&apos;t load photo.Out of memory?</translation>
     </message>
     <message>
         <location filename="src/widgets/imagewidget.cpp" line="270"/>
         <source>Nie można utworzyć pixmapy ze zdjęcia. Pamięć wyczerpana?</source>
-        <translation type="unfinished">Can&apos;t create pixmap from an image. Out of memory?</translation>
+        <translation>Can&apos;t create pixmap from an image. Out of memory?</translation>
     </message>
 </context>
 <context>
@@ -237,50 +263,27 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/uploaders/imguranonuploader.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="src/uploaders/imguranonuploader.ui" line="40"/>
         <source>Odnowienie kredytów</source>
-        <translation type="unfinished">Credits reset</translation>
+        <translation>Credits reset</translation>
     </message>
     <message>
         <location filename="src/uploaders/imguranonuploader.ui" line="57"/>
         <source>Kredyty na użytkownika</source>
-        <translation type="unfinished">User credits</translation>
+        <translation>User credits</translation>
     </message>
     <message>
         <location filename="src/uploaders/imguranonuploader.ui" line="67"/>
         <source>Kredyty na aplikację</source>
-        <translation type="unfinished">Application credits</translation>
+        <translation>Application credits</translation>
     </message>
     <message>
         <location filename="src/uploaders/imguranonuploader.cpp" line="98"/>
         <source>Pozostała liczba kredytów: %1 nie wystarczy na upload %2 zdjęć. Zredukuj liczbę zdjęć do %3 i spróbuj jeszcze raz.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ImgurAnonyUploader</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
-        <source>Kredyty na użytkownika</source>
-        <translation type="vanished">User credits</translation>
-    </message>
-    <message>
-        <source>Kredyty na aplikację</source>
-        <translation type="vanished">Application credits</translation>
-    </message>
-    <message>
-        <source>Odnowienie kredytów</source>
-        <translation type="vanished">Credits reset</translation>
-    </message>
-    <message>
-        <source>PozostaÅa liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjÄÄ. Zredukuj liczbÄ zdjÄÄ do %3 i sprÃ³buj jeszcze raz.</source>
-        <translation type="vanished">Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
+        <translation>Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
     </message>
 </context>
 <context>
@@ -307,31 +310,27 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="165"/>
         <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskała dostęp do Twoich danych na Imgur.</source>
-        <translation type="unfinished"></translation>
+        <translation>Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; gained access to your data on Imgur.</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="166"/>
         <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskała dostępu do Twoich danych na Imgur.</source>
-        <translation type="unfinished"></translation>
+        <translation>Application  &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; didn&apos;t gain access to your data on Imgur.</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="167"/>
         <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; ma dostęp do Twoich danych na Imgur.</source>
-        <translation type="unfinished"></translation>
+        <translation>Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="168"/>
         <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="168"/>
         <source>Podczas kontaktowania się z Imgur wystąpił błąd.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskaÅa dostÄp do Twoich danych na Imgur.</source>
-        <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; gained access to your data on Imgur.</translation>
+        <translation>Error while connecting with Imgur.</translation>
     </message>
     <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="166"/>
@@ -339,25 +338,9 @@ Wrong url will make all links corrupted.</translation>
         <translation>Authorization denied</translation>
     </message>
     <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskaÅa dostÄpu do Twoich danych na Imgur.</source>
-        <translation type="vanished">Application  &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; didn&apos;t gain access to your data on Imgur.</translation>
-    </message>
-    <message>
         <location filename="src/uploaders/imgurloginuploader.cpp" line="167"/>
         <source>Ok</source>
         <translation>Ok</translation>
-    </message>
-    <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; ma dostÄp do Twoich danych na Imgur.</source>
-        <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
-    </message>
-    <message>
-        <source>BÅÄ&#x85;d</source>
-        <translation type="vanished">Error</translation>
-    </message>
-    <message>
-        <source>Podczas kontaktowania siÄ z Imgur wystÄ&#x85;piÅ bÅÄ&#x85;d.</source>
-        <translation type="vanished">Error while connecting with Imgur. </translation>
     </message>
 </context>
 <context>
@@ -365,14 +348,7 @@ Wrong url will make all links corrupted.</translation>
     <message>
         <location filename="src/uploaders/isanonuploader.ui" line="16"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
-    </message>
-</context>
-<context>
-    <name>IsAnonyUploader</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
@@ -647,16 +623,22 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Delete arrow</translation>
     </message>
     <message>
-        <source>OtwÃ³rz fotorelacjÄ</source>
-        <translation type="vanished">Open photo report</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="70"/>
+        <source>Otwórz fotorelację</source>
+        <translation>Open photo report</translation>
     </message>
     <message>
-        <source>BÅÄ&#x85;d</source>
-        <translation type="vanished">Error</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="88"/>
+        <location filename="src/widgets/mainwindow.cpp" line="94"/>
+        <location filename="src/widgets/mainwindow.cpp" line="122"/>
+        <location filename="src/widgets/mainwindow.cpp" line="198"/>
+        <source>Błąd</source>
+        <translation>Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na otworzyÄ. TÄ fotorelacjÄ zapisano innÄ&#x85; wersjÄ&#x85; programu.</source>
-        <translation type="vanished">Can not open. This photo report has been saved using application in different version.</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="94"/>
+        <source>Nie można otworzyć. Tę fotorelację zapisano inną wersją programu.</source>
+        <translation>Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="88"/>
@@ -664,12 +646,15 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
-        <translation type="vanished">Photo report contains no photo.</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="122"/>
+        <location filename="src/widgets/mainwindow.cpp" line="198"/>
+        <source>Fotorelacja nie zawiera żadnego zdjęcia.</source>
+        <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <source>Zapisz fotorelacjÄ</source>
-        <translation type="vanished">Save photo report</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="125"/>
+        <source>Zapisz fotorelację</source>
+        <translation>Save photo report</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="213"/>
@@ -677,12 +662,9 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Once more</translation>
     </message>
     <message>
-        <source>Czy sprÃ³bowaÄ dokoÅczyÄ wysyÅanie fotorelacji?</source>
-        <translation type="vanished">Try finishing photo report upload?</translation>
-    </message>
-    <message>
-        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation type="obsolete">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="213"/>
+        <source>Czy spróbować dokończyć wysyłanie fotorelacji?</source>
+        <translation>Try finishing photo report upload?</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="70"/>
@@ -691,56 +673,14 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <source>Wybierz zdjÄcia</source>
-        <translation type="vanished">Choose photos</translation>
-    </message>
-    <message>
-        <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
-        <translation type="vanished">Photos (*.png *.gif *.jpg *.jpeg)</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="70"/>
-        <source>Otwórz fotorelację</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="88"/>
-        <location filename="src/widgets/mainwindow.cpp" line="94"/>
-        <location filename="src/widgets/mainwindow.cpp" line="122"/>
-        <location filename="src/widgets/mainwindow.cpp" line="198"/>
-        <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="94"/>
-        <source>Nie można otworzyć. Tę fotorelację zapisano inną wersją programu.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="122"/>
-        <location filename="src/widgets/mainwindow.cpp" line="198"/>
-        <source>Fotorelacja nie zawiera żadnego zdjęcia.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="125"/>
-        <source>Zapisz fotorelację</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="src/widgets/mainwindow.cpp" line="162"/>
         <source>Wybierz zdjęcia</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose photos</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="162"/>
         <source>Zdjęcia (*.png *.gif *.jpg *.jpeg)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="213"/>
-        <source>Czy spróbować dokończyć wysyłanie fotorelacji?</source>
-        <translation type="unfinished"></translation>
+        <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="233"/>
@@ -750,23 +690,12 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="233"/>
         <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;Wersja: %2 (kompilacja %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation type="unfinished">&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;Version: %2 (compilation %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;Version: %2 (compilation %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.cpp" line="249"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
-    </message>
-</context>
-<context>
-    <name>MessageHandler</name>
-    <message>
-        <source>BÅÄ&#x85;d %1 w %2&lt;br/&gt;Wiersz %3, kolumna %4:%5</source>
-        <translation type="obsolete">Error %1 in %2&lt;br/&gt;Row %3, column %4:%5</translation>
-    </message>
-    <message>
-        <source>BÅÄ&#x85;d</source>
-        <translation type="obsolete">Error</translation>
     </message>
 </context>
 <context>
@@ -789,7 +718,7 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message>
         <location filename="src/settings/osmlayerdialog.ui" line="49"/>
         <source>Adres musi zawierać zmienne ${x}, ${y}, ${z} oraz kończyć się na .png</source>
-        <translation>Addres has to contain variables ${x}, ${y}, ${z} and it has to end with .png </translation>
+        <translation>Addres has to contain variables ${x}, ${y}, ${z} and it has to end with .png</translation>
     </message>
     <message>
         <location filename="src/settings/osmlayerdialog.ui" line="56"/>
@@ -799,7 +728,7 @@ If you don&apos;t want your password stored leave this field empty, application 
     <message>
         <location filename="src/settings/osmlayerdialog.cpp" line="89"/>
         <source>Którą warstwę usunąć?</source>
-        <translation type="unfinished">Which layer to remove?</translation>
+        <translation>Which layer to remove?</translation>
     </message>
     <message>
         <location filename="src/settings/osmlayerdialog.cpp" line="89"/>
@@ -810,28 +739,33 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>Overlay</name>
     <message>
+        <location filename="src/settings/overlay.cpp" line="44"/>
         <source>kmz.open(): %1</source>
-        <translation type="vanished">kmz.open(): %1</translation>
+        <translation>kmz.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="49"/>
         <source>file.open(): %1</source>
-        <translation type="vanished">file.open(): %1</translation>
+        <translation>file.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="52"/>
         <source>file.close(): %1</source>
-        <translation type="vanished">file.close(): %1</translation>
+        <translation>file.close(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="56"/>
         <source>kmz.close(): %1</source>
-        <translation type="vanished">kmz.close(): %1</translation>
+        <translation>kmz.close(): %1</translation>
     </message>
     <message>
         <source>Brak pliku %1</source>
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
-        <source>Niepoprawna skÅadnia kml</source>
-        <translation type="vanished">Kml syntax error</translation>
+        <location filename="src/settings/overlay.cpp" line="64"/>
+        <source>Niepoprawna składnia kml</source>
+        <translation>Kml syntax error</translation>
     </message>
     <message>
         <source>Brak tagu w pliku kml</source>
@@ -842,82 +776,97 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;</source>
+        <source>Nieudane ładowanie pliku z mapą</source>
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
-        <source>To nie jest plik podkÅadu mapowego.</source>
-        <translation type="vanished">This is not an overlay file.</translation>
+        <location filename="src/settings/overlay.cpp" line="35"/>
+        <source>To nie jest plik podkładu mapowego.</source>
+        <translation>This is not an overlay file.</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="60"/>
         <source>Brak pliku &apos;%1&apos;</source>
-        <translation type="vanished">No &apos;%1&apos; file</translation>
+        <translation>No &apos;%1&apos; file</translation>
     </message>
     <message>
-        <source>Brak tagu kml i/lub podrzÄdnego w pliku kml</source>
-        <translation type="vanished">No kml and/or child tag in kml file</translation>
+        <location filename="src/settings/overlay.cpp" line="67"/>
+        <source>Brak tagu kml i/lub podrzędnego w pliku kml</source>
+        <translation>No kml and/or child tag in kml file</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="82"/>
         <source>Brak tagu Folder lub GroundOverlay</source>
-        <translation type="vanished">No Folder nor GroundOverlay tag</translation>
+        <translation>No Folder nor GroundOverlay tag</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="94"/>
         <source>kmr.open(): %1</source>
-        <translation type="vanished">kmr.open(): %1</translation>
+        <translation>kmr.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="97"/>
         <source>outFileKml.open(): %1</source>
-        <translation type="vanished">outFileKml.open(): %1</translation>
+        <translation>outFileKml.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="100"/>
         <source>outFileKml.close(): %1</source>
-        <translation type="vanished">outFileKml.close(): %1</translation>
+        <translation>outFileKml.close(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="105"/>
         <source>outFileMap.open(): %1</source>
-        <translation type="vanished">outFileMap.open(): %1</translation>
+        <translation>outFileMap.open(): %1</translation>
     </message>
     <message>
-        <source>outFileMap.write(): BÅÄ&#x85;d zapisu danych do archiwum</source>
-        <translation type="vanished">outFileMap.write(): Error while writing data to archive</translation>
+        <location filename="src/settings/overlay.cpp" line="106"/>
+        <source>outFileMap.write(): Błąd zapisu danych do archiwum</source>
+        <translation>outFileMap.write(): Error while writing data to archive</translation>
     </message>
     <message>
-        <source>map.save(): BÅÄ&#x85;d zapisu pixmapy do archiwum</source>
+        <source>map.save(): Błąd zapisu pixmapy do archiwum</source>
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="108"/>
         <source>outFileMap.close(): %1</source>
-        <translation type="vanished">outFileMap.close(): %1</translation>
+        <translation>outFileMap.close(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="112"/>
         <source>kmr.close(): %1</source>
-        <translation type="vanished">kmr.close(): %1</translation>
+        <translation>kmr.close(): %1</translation>
     </message>
 </context>
 <context>
     <name>OverlayImage</name>
     <message>
+        <location filename="src/settings/overlayimage.cpp" line="25"/>
         <source>Brak tagu w pliku kml</source>
-        <translation type="vanished">No tag in kml file</translation>
+        <translation>No tag in kml file</translation>
     </message>
     <message>
+        <location filename="src/settings/overlayimage.cpp" line="43"/>
         <source>Brak pliku &apos;%1&apos; w archiwum kmz</source>
-        <translation type="vanished">No &apos;%1&apos; file in kmz archive</translation>
+        <translation>No &apos;%1&apos; file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;, pamiÄÄ wyczerpana?</source>
-        <translation type="vanished">Map file loading failed, memory exhausted?</translation>
+        <location filename="src/settings/overlayimage.cpp" line="49"/>
+        <source>Nieudane ładowanie pliku z mapą, pamięć wyczerpana?</source>
+        <translation>Map file loading failed, memory exhausted?</translation>
     </message>
     <message>
-        <source>Nieudane zapisanie mapy do bufora, pamiÄÄ wyczerpana?</source>
-        <translation type="vanished">Saving map to buffor failed, memory exhausted?</translation>
+        <location filename="src/settings/overlayimage.cpp" line="57"/>
+        <source>Nieudane zapisanie mapy do bufora, pamięć wyczerpana?</source>
+        <translation>Saving map to buffor failed, memory exhausted?</translation>
     </message>
     <message>
         <source>Brak pliku %1 w archiwum kmz</source>
         <translation type="obsolete">No %1 file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;</source>
+        <source>Nieudane ładowanie pliku z mapą</source>
         <translation type="obsolete">Map file loading failed</translation>
     </message>
 </context>
@@ -940,86 +889,16 @@ If you don&apos;t want your password stored leave this field empty, application 
     </message>
 </context>
 <context>
-    <name>QObject</name>
-    <message>
-        <location filename="src/exception.cpp" line="16"/>
-        <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
-    </message>
-    <message>
-        <location filename="src/exception.cpp" line="16"/>
-        <source>%1:%2
-%3
-
-Treść błędu:
-%4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1:%2
-%3
-
-TreÅÄ bÅÄdu:
-%4</source>
-        <translation type="vanished">%1:%2
-%3
-
-Error message:
-%4</translation>
-    </message>
-    <message>
-        <source>%1:%2
-%3
-
-Miejsce bÅÄdu:
-%4</source>
-        <translation type="obsolete">%1:%2
-%3
-
-Error at:
-%4</translation>
-    </message>
-    <message>
-        <source>%1
-
-Miejsce bÅÄdu:
-%2</source>
-        <translation type="obsolete">%1
-
-Error at:
-%2</translation>
-    </message>
-    <message>
-        <location filename="src/downloaders/googlemapsdownloader.cpp" line="42"/>
-        <source>Błąd pobierania mapy: %1 %2</source>
-        <translation type="unfinished">Error while downloading a map: %1 %2 </translation>
-    </message>
-    <message>
-        <location filename="src/downloaders/googlemapsdownloader.cpp" line="48"/>
-        <source>Błąd otwierania mapy.</source>
-        <translation type="unfinished">Error while loading map data.</translation>
-    </message>
-    <message>
-        <source>Mapa dla wszystkich zdjÄÄ.</source>
-        <translation type="obsolete">Common map.</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/abstractimage.cpp" line="11"/>
-        <source>mapa.jpg</source>
-        <translation>map.jpg</translation>
-    </message>
-</context>
-<context>
     <name>QuestionBox</name>
     <message>
         <location filename="src/widgets/questionbox.cpp" line="25"/>
         <source>Zapamiętaj na zawsze</source>
-        <translation type="unfinished">Remember always</translation>
+        <translation>Remember permanently</translation>
     </message>
     <message>
         <location filename="src/widgets/questionbox.cpp" line="26"/>
         <source>Zapamiętaj w tej sesji</source>
-        <translation type="unfinished">Remember during this session</translation>
+        <translation>Remember for this session only</translation>
     </message>
 </context>
 <context>
@@ -1027,12 +906,12 @@ Error at:
     <message>
         <location filename="src/widgets/recentthreadsmenu.cpp" line="25"/>
         <source>Kontynuuj numerację</source>
-        <translation type="unfinished">Continue numbering</translation>
+        <translation>Continue numbering</translation>
     </message>
     <message>
         <location filename="src/widgets/recentthreadsmenu.cpp" line="29"/>
         <source>Żaden</source>
-        <translation type="unfinished">None</translation>
+        <translation>None</translation>
     </message>
 </context>
 <context>
@@ -1104,34 +983,42 @@ Error at:
         <translation>All photos: %p%</translation>
     </message>
     <message>
-        <source>Czekam na wybranie wÄ&#x85;tku...</source>
-        <translation type="vanished">Waiting for thread selection...</translation>
+        <location filename="src/widgets/replydialog.cpp" line="37"/>
+        <source>Czekam na wybranie wątku...</source>
+        <translation>Waiting for thread selection...</translation>
     </message>
     <message>
-        <source>PrzechodzÄ do wÄ&#x85;tku...</source>
-        <translation type="vanished">Navigating to thread...</translation>
+        <location filename="src/widgets/replydialog.cpp" line="37"/>
+        <source>Przechodzę do wątku...</source>
+        <translation>Navigating to thread...</translation>
     </message>
     <message>
-        <source>BÅÄ&#x85;d</source>
-        <translation type="vanished">Error</translation>
+        <location filename="src/widgets/replydialog.cpp" line="129"/>
+        <location filename="src/widgets/replydialog.cpp" line="159"/>
+        <source>Błąd</source>
+        <translation>Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo rozpoczÄ&#x85;Ä wysyÅania z powodu:
+        <location filename="src/widgets/replydialog.cpp" line="129"/>
+        <source>Nie można było rozpocząć wysyłania z powodu:
 %1</source>
-        <translation type="vanished">Can&apos;t start upload, because: %1</translation>
+        <translation>Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <source>ZdjÄcie %1 juÅ¼ wysÅane</source>
-        <translation type="vanished">Photo %1 already uploaded</translation>
+        <location filename="src/widgets/replydialog.cpp" line="139"/>
+        <source>Zdjęcie %1 już wysłane</source>
+        <translation>Photo %1 already uploaded</translation>
     </message>
     <message>
-        <source>WysyÅam %1: %p%</source>
-        <translation type="vanished">Sending %1: %p%</translation>
+        <location filename="src/widgets/replydialog.cpp" line="145"/>
+        <source>Wysyłam %1: %p%</source>
+        <translation>Sending %1: %p%</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na byÅo wysÅaÄ obrazka %1 z powodu:
+        <location filename="src/widgets/replydialog.cpp" line="159"/>
+        <source>Nie można było wysłać obrazka %1 z powodu:
 %2</source>
-        <translation type="vanished">Photo %1 upload failed: %2</translation>
+        <translation>Photo %1 upload failed: %2</translation>
     </message>
     <message>
         <location filename="src/widgets/replydialog.cpp" line="210"/>
@@ -1140,59 +1027,16 @@ Error at:
         <translation>seconds</translation>
     </message>
     <message>
-        <source>sekundÄ</source>
+        <location filename="src/widgets/replydialog.cpp" line="210"/>
+        <source>sekundę</source>
         <comment>1</comment>
-        <translation type="vanished">second</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="37"/>
-        <source>Przechodzę do wątku...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="37"/>
-        <source>Czekam na wybranie wątku...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="129"/>
-        <location filename="src/widgets/replydialog.cpp" line="159"/>
-        <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="129"/>
-        <source>Nie można było rozpocząć wysyłania z powodu:
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="139"/>
-        <source>Zdjęcie %1 już wysłane</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="145"/>
-        <source>Wysyłam %1: %p%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="159"/>
-        <source>Nie można było wysłać obrazka %1 z powodu:
-%2</source>
-        <translation type="unfinished"></translation>
+        <translation>second</translation>
     </message>
     <message>
         <location filename="src/widgets/replydialog.cpp" line="210"/>
         <source>sekundy</source>
         <comment>2</comment>
         <translation>seconds</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/replydialog.cpp" line="210"/>
-        <source>sekundę</source>
-        <comment>1</comment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="src/widgets/replydialog.cpp" line="211"/>
@@ -1225,28 +1069,12 @@ Error at:
     <message>
         <location filename="src/widgets/replydialog.cpp" line="299"/>
         <source>Przechodzę do formularza... %p%</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigating to form... %p%</translation>
     </message>
     <message>
         <location filename="src/widgets/replydialog.cpp" line="353"/>
         <source>Wysyłam posta... %p%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>LubiÄ ten program</source>
-        <translation type="vanished">Like this app</translation>
-    </message>
-    <message>
-        <source>WyglÄ&#x85;da na to, Å¼e juÅ¼ polubiÅeÅ program.</source>
-        <translation type="vanished">It seems you have already liked this app.</translation>
-    </message>
-    <message>
-        <source>PrzechodzÄ do formularza... %p%</source>
-        <translation type="vanished">Navigating to form... %p%</translation>
-    </message>
-    <message>
-        <source>WysyÅam posta... %p%</source>
-        <translation type="vanished">Sending post... %p%</translation>
+        <translation>Sending post... %p%</translation>
     </message>
 </context>
 <context>
@@ -1589,7 +1417,7 @@ Most probably short time favors post miximg by the forum.</translation>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="738"/>
         <source>Źródło danych Google Maps: &lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</source>
-        <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt; </translation>
+        <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="src/settings/settingsdialog.ui" line="748"/>
@@ -1747,11 +1575,7 @@ You can add and remove files from this directory, changes will become visible af
     <message>
         <location filename="src/settings/settingsdialog.cpp" line="253"/>
         <source>Zdjęcia (*.png *.gif *.jpg *.jpeg)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
-        <translation type="vanished">Photos (*.png *.gif *.jpg *.jpeg)</translation>
+        <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
 </context>
 <context>
@@ -1760,7 +1584,7 @@ You can add and remove files from this directory, changes will become visible af
         <location filename="src/downloaders/tilesdownloader.cpp" line="31"/>
         <location filename="src/downloaders/tilesdownloader.cpp" line="37"/>
         <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="src/downloaders/tilesdownloader.cpp" line="31"/>
@@ -1770,16 +1594,12 @@ You can add and remove files from this directory, changes will become visible af
     <message>
         <location filename="src/downloaders/tilesdownloader.cpp" line="37"/>
         <source>Podany adres nie kończy się na .png</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Podany adres nie koÅczy siÄ na .png</source>
-        <translation type="vanished">Url does not end with .png</translation>
+        <translation>Url does not end with .png</translation>
     </message>
     <message>
         <location filename="src/downloaders/tilesdownloader.cpp" line="146"/>
         <source>Błąd pobierania mapy: %1 %2</source>
-        <translation type="unfinished">Error while downloading a map: %1 %2 </translation>
+        <translation>Error while downloading a map: %1 %2</translation>
     </message>
 </context>
 <context>
@@ -1793,15 +1613,16 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="vanished">Imageshack registration code</translation>
     </message>
     <message>
-        <source>Imageshack login i hasÅo</source>
+        <source>Imageshack login i hasło</source>
         <translation type="vanished">Imageshack login and password</translation>
     </message>
     <message>
-        <source>WÅasne konto FTP</source>
-        <translation type="vanished">Own FTP account</translation>
+        <location filename="src/uploaders/uploaderfactory.cpp" line="51"/>
+        <source>Własne konto FTP</source>
+        <translation>Own FTP account</translation>
     </message>
     <message>
-        <location filename="src/uploaders/uploaderfactory.cpp" line="51"/>
+        <location filename="src/uploaders/uploaderfactory.cpp" line="47"/>
         <source>Imgur anonimowo</source>
         <translation>Imgur anonymous</translation>
     </message>

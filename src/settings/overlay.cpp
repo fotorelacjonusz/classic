@@ -32,7 +32,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 		file.seek(file.size() - sizeof(thumbnailSize));
 		QDataStream(&file) >> thumbnailSize; // BigEndian by default
 		if (file.size() < thumbnailSize)
-			THROW(TR("To nie jest plik podkładu mapowego."));
+			THROW(tr("To nie jest plik podkładu mapowego."));
 		file.seek(thumbnailSize);
 	}
 
@@ -41,30 +41,30 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 //		QuaZip kmz(absoluteFilePath);
 		QuaZip kmz(&file);
 
-		(Suppress(), kmz.open(QuaZip::mdUnzip)) OR_THROW(TR("kmz.open(): %1").arg(kmz.getZipError()));
+		(Suppress(), kmz.open(QuaZip::mdUnzip)) OR_THROW(tr("kmz.open(): %1").arg(kmz.getZipError()));
 
 		QuaZipFile file(&kmz);
 		for (bool f = kmz.goToFirstFile(); f; f = kmz.goToNextFile())
 		{
-			file.open(QIODevice::ReadOnly) OR_THROW(TR("file.open(): %1").arg(file.getZipError()));
+			file.open(QIODevice::ReadOnly) OR_THROW(tr("file.open(): %1").arg(file.getZipError()));
 			files[file.getActualFileName()] = file.readAll();
 			file.close();
-			file.getZipError() == UNZ_OK OR_THROW(TR("file.close(): %1").arg(file.getZipError()));
+			file.getZipError() == UNZ_OK OR_THROW(tr("file.close(): %1").arg(file.getZipError()));
 		}
 
 		kmz.close();
-		kmz.getZipError() == UNZ_OK OR_THROW(TR("kmz.close(): %1").arg(kmz.getZipError()));
+		kmz.getZipError() == UNZ_OK OR_THROW(tr("kmz.close(): %1").arg(kmz.getZipError()));
 	}
 
 //	qDebug() << files.keys();
-	files.contains(DOC_KML) OR_THROW(TR("Brak pliku '%1'").arg(DOC_KML));
+	files.contains(DOC_KML) OR_THROW(tr("Brak pliku '%1'").arg(DOC_KML));
 	bool isKmz = absoluteFilePath.endsWith(".kmz");
 
 	QDomDocument doc;
-	doc.setContent(files[DOC_KML]) OR_THROW(TR("Niepoprawna składnia kml"));
+	doc.setContent(files[DOC_KML]) OR_THROW(tr("Niepoprawna składnia kml"));
 	QDomElement kml = doc.documentElement();
 	QDomElement firstChild = kml.firstChild().toElement();
-	(!kml.isNull() && !firstChild.isNull()) OR_THROW(TR("Brak tagu kml i/lub podrzędnego w pliku kml"));
+	(!kml.isNull() && !firstChild.isNull()) OR_THROW(tr("Brak tagu kml i/lub podrzędnego w pliku kml"));
 
 	name = firstChild.firstChildElement("name").text();
 	description = firstChild.firstChildElement("description").text();
@@ -79,7 +79,7 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 //		writeThumbnail(0);
 	}
 	else
-		THROW(TR("Brak tagu Folder lub GroundOverlay"));
+		THROW(tr("Brak tagu Folder lub GroundOverlay"));
 
 	if (isKmz)
 	{
@@ -91,25 +91,25 @@ Overlay::Overlay(QString absoluteFilePath) throw (Exception)
 
 		{
 			QuaZip kmr(&jpg);
-			(Suppress(), kmr.open(QuaZip::mdCreate)) OR_THROW(TR("kmr.open(): %1").arg(kmr.getZipError()));
+			(Suppress(), kmr.open(QuaZip::mdCreate)) OR_THROW(tr("kmr.open(): %1").arg(kmr.getZipError()));
 
 			QuaZipFile outFileKml(&kmr);
-			outFileKml.open(QIODevice::WriteOnly, QuaZipNewInfo(DOC_KML, absoluteFilePath)) OR_THROW(TR("outFileKml.open(): %1").arg(outFileKml.getZipError()));
+			outFileKml.open(QIODevice::WriteOnly, QuaZipNewInfo(DOC_KML, absoluteFilePath)) OR_THROW(tr("outFileKml.open(): %1").arg(outFileKml.getZipError()));
 			outFileKml.write(doc.toByteArray());
 			outFileKml.close();
-			outFileKml.getZipError() == UNZ_OK OR_THROW(TR("outFileKml.close(): %1").arg(outFileKml.getZipError()));
+			outFileKml.getZipError() == UNZ_OK OR_THROW(tr("outFileKml.close(): %1").arg(outFileKml.getZipError()));
 
 			foreach (OverlayImage *image, images)
 			{
 				QuaZipFile outFileMap(&kmr);
-				outFileMap.open(QIODevice::WriteOnly, QuaZipNewInfo(image->href(), absoluteFilePath)) OR_THROW(TR("outFileMap.open(): %1").arg(outFileMap.getZipError()));
-				outFileMap.write(image->data()) == image->data().size() OR_THROW(TR("outFileMap.write(): Błąd zapisu danych do archiwum"));
+				outFileMap.open(QIODevice::WriteOnly, QuaZipNewInfo(image->href(), absoluteFilePath)) OR_THROW(tr("outFileMap.open(): %1").arg(outFileMap.getZipError()));
+				outFileMap.write(image->data()) == image->data().size() OR_THROW(tr("outFileMap.write(): Błąd zapisu danych do archiwum"));
 				outFileMap.close();
-				outFileMap.getZipError() == UNZ_OK OR_THROW(TR("outFileMap.close(): %1").arg(outFileMap.getZipError()));
+				outFileMap.getZipError() == UNZ_OK OR_THROW(tr("outFileMap.close(): %1").arg(outFileMap.getZipError()));
 			}
 
 			kmr.close();
-			kmr.getZipError() == UNZ_OK OR_THROW(TR("kmr.close(): %1").arg(kmr.getZipError()));
+			kmr.getZipError() == UNZ_OK OR_THROW(tr("kmr.close(): %1").arg(kmr.getZipError()));
 		}
 		jpg.open(QIODevice::Append);
 		jpg.seek(jpg.size());

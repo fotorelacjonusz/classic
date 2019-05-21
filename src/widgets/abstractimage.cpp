@@ -8,7 +8,7 @@ AbstractImage::~AbstractImage()
 
 QString AbstractImage::fileName() const
 {
-	return QObject::tr("mapa.jpg");
+	return tr("mapa.jpg");
 }
 
 QString AbstractImage::caption() const

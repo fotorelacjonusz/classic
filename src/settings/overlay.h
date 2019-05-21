@@ -4,9 +4,12 @@
 #include "overlayimage.h"
 #include "exception.h"
 #include <QString>
+#include <QCoreApplication>
 
 class Overlay : public AbstractMapDownloader
 {
+	Q_DECLARE_TR_FUNCTIONS(Overlay)
+
 public:
 	Overlay(QString absoluteFilePath) throw (Exception);
 	~Overlay();

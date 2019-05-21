@@ -13,7 +13,7 @@ Exception::Exception(const char *file, int line, const char *func, QString what)
 
 void Exception::showMessage(QWidget *parent) const
 {
-	QMessageBox::critical(parent, QObject::tr("Błąd"), QObject::tr("%1:%2\n%3\n\nTreść błędu:\n%4").arg(file).arg(line).arg(func).arg(what));
+	QMessageBox::critical(parent, tr("Błąd"), tr("%1:%2\n%3\n\nTreść błędu:\n%4").arg(file).arg(line).arg(func).arg(what));
 }
 
 QString Exception::message() const

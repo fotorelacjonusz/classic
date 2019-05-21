@@ -8,6 +8,7 @@
 #include <QPolygonF>
 #include <QImage>
 #include <QDomElement>
+#include <QCoreApplication>
 
 /*
  * This class has three coordinate systems:
@@ -18,6 +19,8 @@
  */
 class OverlayImage : public AbstractMapDownloader
 {
+	Q_DECLARE_TR_FUNCTIONS(OverlayImage)
+
 public:
 	// the overlay
 	OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) throw (Exception);

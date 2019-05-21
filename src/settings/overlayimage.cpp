@@ -22,7 +22,7 @@ OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteA
 	QDomElement latLonBox = groundOverlay.firstChildElement("LatLonBox");
 	m_name = groundOverlay.firstChildElement("name").text();
 
-	(!icon.isNull() && !latLonBox.isNull()) OR_THROW(TR("Brak tagu w pliku kml"));
+	(!icon.isNull() && !latLonBox.isNull()) OR_THROW(tr("Brak tagu w pliku kml"));
 	m_href = icon.firstChildElement("href").text();
 
 	const qreal left = latLonBox.firstChildElement("west").text().toDouble();
@@ -40,13 +40,13 @@ OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteA
 	poly << poly.first(); // close
 	box = poly.boundingRect();
 
-	files.contains(m_href) OR_THROW(TR("Brak pliku '%1' w archiwum kmz").arg(m_href));
+	files.contains(m_href) OR_THROW(tr("Brak pliku '%1' w archiwum kmz").arg(m_href));
 	imageData = files.value(m_href);
 
 	if (isKmz) // rotate imageData
 	{
 		QImage image;
-		image.loadFromData(imageData) OR_THROW(TR("Nieudane ładowanie pliku z mapą, pamięć wyczerpana?"));
+		image.loadFromData(imageData) OR_THROW(tr("Nieudane ładowanie pliku z mapą, pamięć wyczerpana?"));
 
 		QTransform transform;
 		transform.rotate(-rotation);
@@ -54,7 +54,7 @@ OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteA
 
 		QBuffer buffer(&imageData);
 		buffer.open(QIODevice::WriteOnly | QIODevice::Truncate);
-		image.save(&buffer, "jpg") OR_THROW(TR("Nieudane zapisanie mapy do bufora, pamięć wyczerpana?"));
+		image.save(&buffer, "jpg") OR_THROW(tr("Nieudane zapisanie mapy do bufora, pamięć wyczerpana?"));
 	}
 
 	QBuffer buffer(&imageData);
