@@ -677,7 +677,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Once more</translation>
     </message>
     <message>
-        <source>Czy sprÃ³bować dokoÅczyć wysyłanie fotorelacji?</source>
+        <source>Czy sprÃ³bować dokończyć wysyłanie fotorelacji?</source>
         <translation type="vanished">Try finishing photo report upload?</translation>
     </message>
     <message>
@@ -1773,7 +1773,7 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Podany adres nie koÅczy się na .png</source>
+        <source>Podany adres nie kończy się na .png</source>
         <translation type="vanished">Url does not end with .png</translation>
     </message>
     <message>
