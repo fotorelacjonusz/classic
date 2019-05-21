@@ -11,12 +11,12 @@
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasło</source>
-        <translation type="unfinished">Input password</translation>
+        <translation>Enter password</translation>
     </message>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="104"/>
         <source>Podaj hasło do %1</source>
-        <translation type="unfinished">Input password for %1</translation>
+        <translation>Enter password for %1</translation>
     </message>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="112"/>
@@ -908,12 +908,12 @@ Error at:
     <message>
         <location filename="src/widgets/questionbox.cpp" line="25"/>
         <source>Zapamiętaj na zawsze</source>
-        <translation type="unfinished">Remember always</translation>
+        <translation>Remember permanently</translation>
     </message>
     <message>
         <location filename="src/widgets/questionbox.cpp" line="26"/>
         <source>Zapamiętaj w tej sesji</source>
-        <translation type="unfinished">Remember during this session</translation>
+        <translation>Remember for this session only</translation>
     </message>
 </context>
 <context>
