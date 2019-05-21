@@ -701,28 +701,33 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>Overlay</name>
     <message>
+        <location filename="src/settings/overlay.cpp" line="44"/>
         <source>kmz.open(): %1</source>
-        <translation type="vanished">kmz.open(): %1</translation>
+        <translation>kmz.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="49"/>
         <source>file.open(): %1</source>
-        <translation type="vanished">file.open(): %1</translation>
+        <translation>file.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="52"/>
         <source>file.close(): %1</source>
-        <translation type="vanished">file.close(): %1</translation>
+        <translation>file.close(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="56"/>
         <source>kmz.close(): %1</source>
-        <translation type="vanished">kmz.close(): %1</translation>
+        <translation>kmz.close(): %1</translation>
     </message>
     <message>
         <source>Brak pliku %1</source>
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="64"/>
         <source>Niepoprawna składnia kml</source>
-        <translation type="vanished">Kml syntax error</translation>
+        <translation>Kml syntax error</translation>
     </message>
     <message>
         <source>Brak tagu w pliku kml</source>
@@ -737,71 +742,86 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="35"/>
         <source>To nie jest plik podkładu mapowego.</source>
-        <translation type="vanished">This is not an overlay file.</translation>
+        <translation>This is not an overlay file.</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="60"/>
         <source>Brak pliku &apos;%1&apos;</source>
-        <translation type="vanished">No &apos;%1&apos; file</translation>
+        <translation>No &apos;%1&apos; file</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="67"/>
         <source>Brak tagu kml i/lub podrzędnego w pliku kml</source>
-        <translation type="vanished">No kml and/or child tag in kml file</translation>
+        <translation>No kml and/or child tag in kml file</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="82"/>
         <source>Brak tagu Folder lub GroundOverlay</source>
-        <translation type="vanished">No Folder nor GroundOverlay tag</translation>
+        <translation>No Folder nor GroundOverlay tag</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="94"/>
         <source>kmr.open(): %1</source>
-        <translation type="vanished">kmr.open(): %1</translation>
+        <translation>kmr.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="97"/>
         <source>outFileKml.open(): %1</source>
-        <translation type="vanished">outFileKml.open(): %1</translation>
+        <translation>outFileKml.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="100"/>
         <source>outFileKml.close(): %1</source>
-        <translation type="vanished">outFileKml.close(): %1</translation>
+        <translation>outFileKml.close(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="105"/>
         <source>outFileMap.open(): %1</source>
-        <translation type="vanished">outFileMap.open(): %1</translation>
+        <translation>outFileMap.open(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="106"/>
         <source>outFileMap.write(): Błąd zapisu danych do archiwum</source>
-        <translation type="vanished">outFileMap.write(): Error while writing data to archive</translation>
+        <translation>outFileMap.write(): Error while writing data to archive</translation>
     </message>
     <message>
         <source>map.save(): Błąd zapisu pixmapy do archiwum</source>
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="108"/>
         <source>outFileMap.close(): %1</source>
-        <translation type="vanished">outFileMap.close(): %1</translation>
+        <translation>outFileMap.close(): %1</translation>
     </message>
     <message>
+        <location filename="src/settings/overlay.cpp" line="112"/>
         <source>kmr.close(): %1</source>
-        <translation type="vanished">kmr.close(): %1</translation>
+        <translation>kmr.close(): %1</translation>
     </message>
 </context>
 <context>
     <name>OverlayImage</name>
     <message>
+        <location filename="src/settings/overlayimage.cpp" line="25"/>
         <source>Brak tagu w pliku kml</source>
-        <translation type="vanished">No tag in kml file</translation>
+        <translation>No tag in kml file</translation>
     </message>
     <message>
+        <location filename="src/settings/overlayimage.cpp" line="43"/>
         <source>Brak pliku &apos;%1&apos; w archiwum kmz</source>
-        <translation type="vanished">No &apos;%1&apos; file in kmz archive</translation>
+        <translation>No &apos;%1&apos; file in kmz archive</translation>
     </message>
     <message>
+        <location filename="src/settings/overlayimage.cpp" line="49"/>
         <source>Nieudane ładowanie pliku z mapą, pamięć wyczerpana?</source>
-        <translation type="vanished">Map file loading failed, memory exhausted?</translation>
+        <translation>Map file loading failed, memory exhausted?</translation>
     </message>
     <message>
+        <location filename="src/settings/overlayimage.cpp" line="57"/>
         <source>Nieudane zapisanie mapy do bufora, pamięć wyczerpana?</source>
-        <translation type="vanished">Saving map to buffor failed, memory exhausted?</translation>
+        <translation>Saving map to buffor failed, memory exhausted?</translation>
     </message>
     <message>
         <source>Brak pliku %1 w archiwum kmz</source>
