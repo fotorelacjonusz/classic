@@ -143,7 +143,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
-        <source>Nie udaÅo siÄ ustaliÄ czasu UTC poprzez protokÃ³Å NTP.</source>
+        <source>Nie udaÅo się ustaliÄ czasu UTC poprzez protokÃ³Å NTP.</source>
         <translation type="vanished">Quering UTC time with NTP protocol failed.</translation>
     </message>
     <message>
@@ -195,7 +195,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>ZdjÄcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ&#x85; zapisanÄ&#x85; w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
+        <source>Zdjęcie %1 zostaÅo obrÃ³cone zgodnie z jego orientacjÄ&#x85; zapisanÄ&#x85; w nagÅÃ³wku exif.&lt;br&gt;Czy chcesz obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Photo %1 was rotated according to its orientation setting in exif.&lt;br&gt;Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -209,7 +209,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Removing position</translation>
     </message>
     <message>
-        <source>Czy usunÄ&#x85;Ä pozycjÄ rÃ³wnieÅ¼ z pliku na dysku?</source>
+        <source>Czy usunÄ&#x85;Ä pozycję rÃ³wnieÅ¼ z pliku na dysku?</source>
         <translation type="vanished">Do you want to remove position from the original file as well?</translation>
     </message>
     <message>
@@ -218,7 +218,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished">Rotate image</translation>
     </message>
     <message>
-        <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjÄcie na dysku?</source>
+        <source>Czy obrÃ³ciÄ rÃ³wnieÅ¼ oryginalne zdjęcie na dysku?</source>
         <translation type="vanished">Do you want to rotate the original file as well?</translation>
     </message>
     <message>
@@ -279,7 +279,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Credits reset</translation>
     </message>
     <message>
-        <source>PozostaÅa liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjÄÄ. Zredukuj liczbÄ zdjÄÄ do %3 i sprÃ³buj jeszcze raz.</source>
+        <source>PozostaÅa liczba kredytÃ³w: %1 nie wystarczy na upload %2 zdjęÄ. Zredukuj liczbę zdjęÄ do %3 i sprÃ³buj jeszcze raz.</source>
         <translation type="vanished">Remaining credits number: %1 is not enough for uploading %2 images. Decrease image number to %3 and try again.</translation>
     </message>
 </context>
@@ -330,7 +330,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskaÅa dostÄp do Twoich danych na Imgur.</source>
+        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskaÅa dostęp do Twoich danych na Imgur.</source>
         <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; gained access to your data on Imgur.</translation>
     </message>
     <message>
@@ -339,7 +339,7 @@ Wrong url will make all links corrupted.</translation>
         <translation>Authorization denied</translation>
     </message>
     <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskaÅa dostÄpu do Twoich danych na Imgur.</source>
+        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskaÅa dostępu do Twoich danych na Imgur.</source>
         <translation type="vanished">Application  &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; didn&apos;t gain access to your data on Imgur.</translation>
     </message>
     <message>
@@ -348,7 +348,7 @@ Wrong url will make all links corrupted.</translation>
         <translation>Ok</translation>
     </message>
     <message>
-        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; ma dostÄp do Twoich danych na Imgur.</source>
+        <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; ma dostęp do Twoich danych na Imgur.</source>
         <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
     </message>
     <message>
@@ -356,7 +356,7 @@ Wrong url will make all links corrupted.</translation>
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Podczas kontaktowania siÄ z Imgur wystÄ&#x85;piÅ bÅÄ&#x85;d.</source>
+        <source>Podczas kontaktowania się z Imgur wystÄ&#x85;piÅ bÅÄ&#x85;d.</source>
         <translation type="vanished">Error while connecting with Imgur. </translation>
     </message>
 </context>
@@ -647,7 +647,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Delete arrow</translation>
     </message>
     <message>
-        <source>OtwÃ³rz fotorelacjÄ</source>
+        <source>OtwÃ³rz fotorelację</source>
         <translation type="vanished">Open photo report</translation>
     </message>
     <message>
@@ -655,7 +655,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">Error</translation>
     </message>
     <message>
-        <source>Nie moÅ¼na otworzyÄ. TÄ fotorelacjÄ zapisano innÄ&#x85; wersjÄ&#x85; programu.</source>
+        <source>Nie moÅ¼na otworzyÄ. Tę fotorelację zapisano innÄ&#x85; wersjÄ&#x85; programu.</source>
         <translation type="vanished">Can not open. This photo report has been saved using application in different version.</translation>
     </message>
     <message>
@@ -664,11 +664,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>This is not a photo report file!</translation>
     </message>
     <message>
-        <source>Fotorelacja nie zawiera Å¼adnego zdjÄcia.</source>
+        <source>Fotorelacja nie zawiera Å¼adnego zdjęcia.</source>
         <translation type="vanished">Photo report contains no photo.</translation>
     </message>
     <message>
-        <source>Zapisz fotorelacjÄ</source>
+        <source>Zapisz fotorelację</source>
         <translation type="vanished">Save photo report</translation>
     </message>
     <message>
@@ -691,11 +691,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <source>Wybierz zdjÄcia</source>
+        <source>Wybierz zdjęcia</source>
         <translation type="vanished">Choose photos</translation>
     </message>
     <message>
-        <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
+        <source>Zdjęcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation type="vanished">Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
@@ -854,7 +854,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">No &apos;%1&apos; file</translation>
     </message>
     <message>
-        <source>Brak tagu kml i/lub podrzÄdnego w pliku kml</source>
+        <source>Brak tagu kml i/lub podrzędnego w pliku kml</source>
         <translation type="vanished">No kml and/or child tag in kml file</translation>
     </message>
     <message>
@@ -905,11 +905,11 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="vanished">No &apos;%1&apos; file in kmz archive</translation>
     </message>
     <message>
-        <source>Nieudane Åadowanie pliku z mapÄ&#x85;, pamiÄÄ wyczerpana?</source>
+        <source>Nieudane Åadowanie pliku z mapÄ&#x85;, pamięÄ wyczerpana?</source>
         <translation type="vanished">Map file loading failed, memory exhausted?</translation>
     </message>
     <message>
-        <source>Nieudane zapisanie mapy do bufora, pamiÄÄ wyczerpana?</source>
+        <source>Nieudane zapisanie mapy do bufora, pamięÄ wyczerpana?</source>
         <translation type="vanished">Saving map to buffor failed, memory exhausted?</translation>
     </message>
     <message>
@@ -959,7 +959,7 @@ Treść błędu:
         <source>%1:%2
 %3
 
-TreÅÄ bÅÄdu:
+TreÅÄ bÅędu:
 %4</source>
         <translation type="vanished">%1:%2
 %3
@@ -971,7 +971,7 @@ Error message:
         <source>%1:%2
 %3
 
-Miejsce bÅÄdu:
+Miejsce bÅędu:
 %4</source>
         <translation type="obsolete">%1:%2
 %3
@@ -982,7 +982,7 @@ Error at:
     <message>
         <source>%1
 
-Miejsce bÅÄdu:
+Miejsce bÅędu:
 %2</source>
         <translation type="obsolete">%1
 
@@ -1000,7 +1000,7 @@ Error at:
         <translation type="unfinished">Error while loading map data.</translation>
     </message>
     <message>
-        <source>Mapa dla wszystkich zdjÄÄ.</source>
+        <source>Mapa dla wszystkich zdjęÄ.</source>
         <translation type="obsolete">Common map.</translation>
     </message>
     <message>
@@ -1108,7 +1108,7 @@ Error at:
         <translation type="vanished">Waiting for thread selection...</translation>
     </message>
     <message>
-        <source>PrzechodzÄ do wÄ&#x85;tku...</source>
+        <source>Przechodzę do wÄ&#x85;tku...</source>
         <translation type="vanished">Navigating to thread...</translation>
     </message>
     <message>
@@ -1121,7 +1121,7 @@ Error at:
         <translation type="vanished">Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <source>ZdjÄcie %1 juÅ¼ wysÅane</source>
+        <source>Zdjęcie %1 juÅ¼ wysÅane</source>
         <translation type="vanished">Photo %1 already uploaded</translation>
     </message>
     <message>
@@ -1140,7 +1140,7 @@ Error at:
         <translation>seconds</translation>
     </message>
     <message>
-        <source>sekundÄ</source>
+        <source>sekundę</source>
         <comment>1</comment>
         <translation type="vanished">second</translation>
     </message>
@@ -1233,7 +1233,7 @@ Error at:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>LubiÄ ten program</source>
+        <source>Lubię ten program</source>
         <translation type="vanished">Like this app</translation>
     </message>
     <message>
@@ -1241,7 +1241,7 @@ Error at:
         <translation type="vanished">It seems you have already liked this app.</translation>
     </message>
     <message>
-        <source>PrzechodzÄ do formularza... %p%</source>
+        <source>Przechodzę do formularza... %p%</source>
         <translation type="vanished">Navigating to form... %p%</translation>
     </message>
     <message>
@@ -1750,7 +1750,7 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>ZdjÄcia (*.png *.gif *.jpg *.jpeg)</source>
+        <source>Zdjęcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation type="vanished">Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
 </context>
@@ -1773,7 +1773,7 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Podany adres nie koÅczy siÄ na .png</source>
+        <source>Podany adres nie koÅczy się na .png</source>
         <translation type="vanished">Url does not end with .png</translation>
     </message>
     <message>
