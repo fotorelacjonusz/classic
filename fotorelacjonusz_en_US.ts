@@ -1080,14 +1080,6 @@ Error at:
         <source>Wysyłam posta... %p%</source>
         <translation type="unfinished">Sending post... %p%</translation>
     </message>
-    <message>
-        <source>Lubię ten program</source>
-        <translation type="vanished">Like this app</translation>
-    </message>
-    <message>
-        <source>Wygląda na to, że już polubiłeś program.</source>
-        <translation type="vanished">It seems you have already liked this app.</translation>
-    </message>
 </context>
 <context>
     <name>SettingsDialog</name>
