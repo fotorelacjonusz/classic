@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="pl_PL">
 <context>
+    <name>AbstractImage</name>
+    <message>
+        <location filename="src/widgets/abstractimage.cpp" line="11"/>
+        <source>mapa.jpg</source>
+        <translation>map.jpg</translation>
+    </message>
+</context>
+<context>
     <name>AbstractUploader</name>
     <message>
         <location filename="src/uploaders/abstractuploader.cpp" line="68"/>
@@ -40,6 +48,27 @@
         <location filename="src/widgets/colormanipulationtoolbar.cpp" line="38"/>
         <source>Gamma</source>
         <translation>Gamma</translation>
+    </message>
+</context>
+<context>
+    <name>Exception</name>
+    <message>
+        <location filename="src/exception.cpp" line="16"/>
+        <source>Błąd</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="src/exception.cpp" line="16"/>
+        <source>%1:%2
+%3
+
+Treść błędu:
+%4</source>
+        <translation>%1:%2
+%3
+
+Error message:
+%4</translation>
     </message>
 </context>
 <context>
@@ -102,6 +131,19 @@ Wrong url will make all links corrupted.</translation>
         <location filename="src/uploaders/ftpuploader.cpp" line="34"/>
         <source>%1 na %2</source>
         <translation>%1 at %2</translation>
+    </message>
+</context>
+<context>
+    <name>GoogleMapsDownloader</name>
+    <message>
+        <location filename="src/downloaders/googlemapsdownloader.cpp" line="42"/>
+        <source>Błąd pobierania mapy: %1 %2</source>
+        <translation>Error while downloading a map: %1 %2</translation>
+    </message>
+    <message>
+        <location filename="src/downloaders/googlemapsdownloader.cpp" line="48"/>
+        <source>Błąd otwierania mapy.</source>
+        <translation>Error while loading map data.</translation>
     </message>
 </context>
 <context>
@@ -853,24 +895,6 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>QObject</name>
     <message>
-        <location filename="src/exception.cpp" line="16"/>
-        <source>Błąd</source>
-        <translation type="unfinished">Error</translation>
-    </message>
-    <message>
-        <location filename="src/exception.cpp" line="16"/>
-        <source>%1:%2
-%3
-
-Treść błędu:
-%4</source>
-        <translation type="unfinished">%1:%2
-%3
-
-Error message:
-%4</translation>
-    </message>
-    <message>
         <source>%1:%2
 %3
 
@@ -893,23 +917,8 @@ Error at:
 %2</translation>
     </message>
     <message>
-        <location filename="src/downloaders/googlemapsdownloader.cpp" line="42"/>
-        <source>Błąd pobierania mapy: %1 %2</source>
-        <translation type="unfinished">Error while downloading a map: %1 %2</translation>
-    </message>
-    <message>
-        <location filename="src/downloaders/googlemapsdownloader.cpp" line="48"/>
-        <source>Błąd otwierania mapy.</source>
-        <translation type="unfinished">Error while loading map data.</translation>
-    </message>
-    <message>
         <source>Mapa dla wszystkich zdjęć.</source>
         <translation type="obsolete">Common map.</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/abstractimage.cpp" line="11"/>
-        <source>mapa.jpg</source>
-        <translation>map.jpg</translation>
     </message>
 </context>
 <context>
