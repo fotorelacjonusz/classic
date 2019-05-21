@@ -147,7 +147,7 @@ bool Overlay::makeMap(GeoMap *map)
 
 Overlay::DistancePair Overlay::bestDistance(GeoMap *map) const
 {
-	DistancePair best = qMakePair((OverlayImage *)0, 10000.0);
+	DistancePair best = qMakePair((OverlayImage *)nullptr, 10000.0);
 	foreach (OverlayImage *image, images)
 	{
 		qreal current = image->distance(map);

@@ -8,7 +8,7 @@
 
 ImageLabel::ImageLabel(QWidget *parent, QWidget *firstWidget) :
 	QLabel(parent),
-	grabbedArrow(0),
+	grabbedArrow(nullptr),
 	firstWidget(firstWidget)
 {
 }
@@ -34,7 +34,7 @@ QPixmap ImageLabel::mergedPixmap() const
 
 QWidget *ImageLabel::lastArrow() const
 {
-	return arrows.isEmpty() ? 0 : arrows.last();
+	return arrows.isEmpty() ? nullptr : arrows.last();
 }
 
 void ImageLabel::setFirstWidget(QWidget *widget)
@@ -102,7 +102,7 @@ void ImageLabel::mouseReleaseEvent(QMouseEvent *event)
 		connect(grabbedArrow, SIGNAL(destroyed(QObject*)), this, SLOT(remove(QObject*)));
 		arrows << grabbedArrow;
 		grabbedArrow->showEdit();
-		grabbedArrow = 0;
+		grabbedArrow = nullptr;
 		return event->accept();
 	}
 	start = QPoint();

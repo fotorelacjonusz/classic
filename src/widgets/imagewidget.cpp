@@ -29,7 +29,7 @@ ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream
 	SelectableWidget<ImageWidget>(parent),
 	filePath(_filePath),
 	m_brightness(BRIGHTNESS_DEFAULT), m_contrast(CONTRAST_DEFAULT), m_gamma(GAMMA_DEFAULT),
-	gpsData(0)
+	gpsData(nullptr)
 {
 	numberLabel = new QLabel(this);
 	captionEdit = lineEdit;

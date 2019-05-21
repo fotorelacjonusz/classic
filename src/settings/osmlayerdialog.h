@@ -26,7 +26,7 @@ class OSMLayerDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit OSMLayerDialog(QSettings &settings, QWidget *parent = 0);
+	explicit OSMLayerDialog(QSettings &settings, QWidget *parent = nullptr);
 	~OSMLayerDialog();
 	void init(Ui::SettingsDialog *settingsUi);
 	OSMLayer currentLayer(bool common) const;

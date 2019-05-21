@@ -64,7 +64,7 @@ void ProgressItemBase::setProgressScaleToOne(qint64 progress, qint64 total)
 }
 
 ProgressContainerBase::ProgressContainerBase():
-	m_progressBar(0), m_progress(0.0), m_total(0.0)
+	m_progressBar(nullptr), m_progress(0.0), m_total(0.0)
 {
 }
 

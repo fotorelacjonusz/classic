@@ -9,7 +9,7 @@ class QuestionBox : public QMessageBox
 {
 	Q_OBJECT
 public:
-	explicit QuestionBox(const QString &title, const QString &question, const QString &settingsKey, QWidget *parent = 0);
+	explicit QuestionBox(const QString &title, const QString &question, const QString &settingsKey, QWidget *parent = nullptr);
 	static bool question(QWidget *parent, const QString &title, const QString &question, const QString &settingsKey);
 
 	virtual void setVisible(bool visible);

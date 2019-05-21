@@ -17,13 +17,13 @@
 #define ENUM_STR(Enum, Var) QString(metaObject()->enumerator(metaObject()->indexOfEnumerator(#Enum)).valueToKey(Var))
 #define M(x) #x
 
-SettingsDialog *SettingsDialog::objectInstance = 0;
+SettingsDialog *SettingsDialog::objectInstance = nullptr;
 
 SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	QDialog(parent),
 	SettingsManager(settings),
 	ui(new Ui::SettingsDialog),
-	m_uploader(0),
+	m_uploader(nullptr),
 	m_settings(settings),
 	osmDialog(settings, this)
 {
@@ -115,7 +115,7 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 
 SettingsDialog::~SettingsDialog()
 {
-	objectInstance = 0;
+	objectInstance = nullptr;
 	delete m_uploader;
 	delete ui;
 }

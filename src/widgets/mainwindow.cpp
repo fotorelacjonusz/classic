@@ -26,8 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	settings(Application::organizationName(), Application::applicationSettingsName()),
 	manager(settings),
 	settingsDialog(this, settings),
-	selectedImage(0),
-	selectedArrow(0),
+	selectedImage(nullptr),
+	selectedArrow(nullptr),
 	recentThreads(settings, this)
 {
 	ui->setupUi(this);
@@ -153,7 +153,7 @@ void MainWindow::on_action_remove_photos_triggered()
 		ui->postLayout->removeWidget(widget);
 		delete widget;
 	}
-	selectedImage = 0;
+	selectedImage = nullptr;
 	updateCommonMap();
 }
 
@@ -168,7 +168,7 @@ void MainWindow::on_action_add_photos_triggered()
 	try
 	{
 		foreach (QString file, files)
-			newImage(file, 0);
+			newImage(file, nullptr);
 	}
 	catch (const Exception &e)
 	{
@@ -302,7 +302,7 @@ void MainWindow::on_action_remove_image_triggered()
 	for (int i = selectedImage->number(); i < ui->postLayout->count(); ++i)
 		imageAt(i)->updateNumber(i);
 	delete selectedImage;
-	selectedImage = 0;
+	selectedImage = nullptr;
 	updateCommonMap();
 }
 
@@ -320,7 +320,7 @@ void MainWindow::on_action_remove_arrow_triggered()
 {
 	ui->arrowToolBar->setEnabled(false);
 	delete selectedArrow;
-	selectedArrow = 0;
+	selectedArrow = nullptr;
 }
 
 void MainWindow::unselectWidgets()
@@ -448,7 +448,7 @@ void MainWindow::dropEvent(QDropEvent *event)
 	{
 		foreach (QUrl url, event->mimeData()->urls())
 			if (url.scheme() == "file" && isImageExtension(url.toLocalFile()))
-				newImage(url.toLocalFile(), 0);
+				newImage(url.toLocalFile(), nullptr);
 	}
 	catch (const Exception &e)
 	{

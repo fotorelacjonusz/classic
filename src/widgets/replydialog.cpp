@@ -26,7 +26,7 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	ui(new Ui::ReplyDialog),
 	settings(settings),
 	uploader(SETTINGS->uploader),
-	nextPost(0)
+	nextPost(nullptr)
 {
 	ui->setupUi(this);
 	ui->toolBox->removeItem(0);
@@ -151,7 +151,7 @@ void ReplyDialog::upload()
 			buffer.seek(0);
 			const QString url = uploader->uploadImage(fileName, &buffer);
 			buffer.close();
-			disconnect(uploader, SIGNAL(uploadProgress(qint64,qint64)), 0, 0);
+			disconnect(uploader, SIGNAL(uploadProgress(qint64,qint64)), nullptr, nullptr);
 
 			if (url.isEmpty())
 			{

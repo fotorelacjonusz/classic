@@ -26,7 +26,7 @@ public:
 	bool get();
 
 	bool deleteResource();
-	bool sendCustomRequest(const QByteArray &verb, QIODevice *data = 0);
+	bool sendCustomRequest(const QByteArray &verb, QIODevice *data = nullptr);
 
 	QString error;
 	QString data;

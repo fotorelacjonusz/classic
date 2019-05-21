@@ -48,7 +48,7 @@ bool OverlayList::makeMap(GeoMap *map)
 
 OverlayList::DistancePair OverlayList::bestDistance(GeoMap *map) const
 {
-	DistancePair best = qMakePair((OverlayImage *)0, 10000.0);
+	DistancePair best = qMakePair((OverlayImage *)nullptr, 10000.0);
 	foreach (Overlay *overlay, overlays)
 	{
 		DistancePair current = overlay->bestDistance(map);

@@ -11,7 +11,7 @@ class ColorManipulationToolBar : public QToolBar
 	Q_OBJECT
 
 public:
-	explicit ColorManipulationToolBar(QWidget *parent = 0);
+	explicit ColorManipulationToolBar(QWidget *parent = nullptr);
 	~ColorManipulationToolBar();
 
 public slots:

@@ -57,7 +57,7 @@ GpsData::GpsData(QIODevice *image, const int *const number):
 }
 
 GpsData::GpsData():
-	number(0),
+	number(nullptr),
 	hasPosition(false),
 	hasDirection(false),
 	isCommon(true),

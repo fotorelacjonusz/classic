@@ -10,7 +10,7 @@ class RecentThreadsMenu : public QMenu
 {
 	Q_OBJECT
 public:
-	explicit RecentThreadsMenu(QSettings &settings, QWidget *parent = 0);
+	explicit RecentThreadsMenu(QSettings &settings, QWidget *parent = nullptr);
 	virtual ~RecentThreadsMenu();
 
 protected:

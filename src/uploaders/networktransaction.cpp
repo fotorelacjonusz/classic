@@ -9,7 +9,7 @@ NetworkTransaction::NetworkTransaction(AbstractUploader *parent, QString url):
 	QObject(parent),
 	success(false),
 	request(QUrl(url)),
-	reply(0)
+	reply(nullptr)
 {
 	connect(parent, SIGNAL(abortRequested()), this, SLOT(abort()));
 }
@@ -69,6 +69,6 @@ bool NetworkTransaction::finish(QNetworkReply *_reply)
 
 	data = reply->readAll();
 	delete reply;
-	reply = 0;
+	reply = nullptr;
 	return success;
 }

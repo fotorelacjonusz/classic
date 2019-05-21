@@ -8,7 +8,7 @@ class LineEdit : public QLineEdit
 {
 	Q_OBJECT
 public:
-	explicit LineEdit(QWidget *parent = 0);
+	explicit LineEdit(QWidget *parent = nullptr);
 
 	void focusInEvent(QFocusEvent *event);
 	void focusOutEvent(QFocusEvent *event);
@@ -22,7 +22,7 @@ class PlainTextEdit : public QPlainTextEdit
 {
 	Q_OBJECT
 public:
-	explicit PlainTextEdit(QWidget *parent = 0);
+	explicit PlainTextEdit(QWidget *parent = nullptr);
 
 	void focusInEvent(QFocusEvent *event);
 	void focusOutEvent(QFocusEvent *event);

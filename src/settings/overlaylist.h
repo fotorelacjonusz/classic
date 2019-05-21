@@ -12,7 +12,7 @@ class OverlayList : public QListWidget, public AbstractMapDownloader
 	Q_OBJECT
 
 public:
-	explicit OverlayList(QWidget *parent = 0);
+	explicit OverlayList(QWidget *parent = nullptr);
 	virtual ~OverlayList();
 	bool makeMap(GeoMap *map);
 	DistancePair bestDistance(GeoMap *map) const;

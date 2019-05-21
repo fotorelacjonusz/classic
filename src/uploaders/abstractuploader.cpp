@@ -46,9 +46,9 @@ void AbstractUploader::finalize()
 QWidget *AbstractUploader::lastInputWidget() const
 {
 	if (!layout() || layout()->isEmpty())
-		return 0;
+		return nullptr;
 
-	QWidget *last = 0;
+	QWidget *last = nullptr;
 	for (int i = layout()->count() - 1; i >= 0 && (last = layout()->itemAt(i)->widget()) && last->inherits("QLabel"); --i);
 	return last;
 }
