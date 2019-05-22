@@ -9,6 +9,7 @@
 
 # /mac/
 /mac/*.dmg
+/appicon.icns
 
 # /res/
 /res/secret*
