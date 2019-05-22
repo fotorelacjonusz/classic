@@ -19,6 +19,7 @@ install:
 
   # Fotorelacjonusz
   - ci/write_secrets_h.sh
+  - ci/compile_icon_set.sh
   - lrelease fotorelacjonusz.pro
   - qmake CONFIG+=release LIBS+=-lz
   - make
