@@ -24,24 +24,7 @@ link:FEATURES.adoc[Further reading]
 
 == Building
 
-To build on **linux** you only need to provide your secrets.h file, which looks like:
-
-[source,c++]
-----
-#ifndef SECRETS_H
-#define SECRETS_H
-
-#define IMGUR_CLIENT_ID "sdfdsfsdf"
-#define IMGUR_CLIENT_SECRET "sdfsdfsdfsd"
-#define IMAGESHACK_KEY "asdfsdfsdffsf"
-#define PASSWORD_RAW_KEY "sdfdsfsdfsd"
-
-#endif // SECRETS_H
-----
-
-To build on **windows** you also need to provide zlib headers in third-party directory.
-
-You should compile projects in following order: quazip (svn external), translations, fotorelacjonusz.
+See: link:INSTALL-SOURCE.adoc[Building Fotorelacjonusz from the source code].
 
 == Help
 
