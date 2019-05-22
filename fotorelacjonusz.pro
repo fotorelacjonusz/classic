@@ -9,6 +9,9 @@ TARGET = fotorelacjonusz
 macx:TARGET = Fotorelacjonusz
 VERSION = 2.99.0
 
+# Used in CFBundleIdentifier in Info.plist on Mac
+QMAKE_TARGET_BUNDLE_PREFIX = org.forumpolskichwiezowcow
+
 QT += core gui network script webchannel webengine webenginewidgets widgets xml xmlpatterns
 
 # Enable C++11 explicitly, which should make proper stdlib available.
