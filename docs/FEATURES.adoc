@@ -1,4 +1,4 @@
-# Features explained
+= Features explained
 
 . Photo report preview
   * numbering photos

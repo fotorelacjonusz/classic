@@ -1,6 +1,6 @@
-# Overlays
+= Overlays
 
-## Create
+== Create
 
 To make your own map layer you will need google-earth and, of course, an image of the layer. The image has to be saved on the disk (not referenced by a url) and can't be bigger than 8192x8192 px. This constraint is listed in google-earth's Help->GoogleEarth - Information window, as "Texture maximum size" and can vary depending on the machine.
 
@@ -10,17 +10,17 @@ Next, right click on the overlay and save it as a kmz file. Kml file only refere
 
 Importing a kmz file may take a second or two as the rotation operation is expensive in time, especially with big image on slow computer.
 
-## Share
+== Share
 
 Anyone who has made an overlay can host it either in kmz format or jpg format. The jpg format is more suitable for this purpose, as it gives a preview of the overlay. You can access your overlays as files if you click "Manage Overlays" in "Overlays" tab.
 
 I host a gallery of overlays at: http://k14.vdl.pl/ssc/fotorelacjonusz-overlays It is important to force content disposition as attachment on jpg files so the whole file gets downloaded, not only the preview image. If you like my gallery, contact me for sources.
 
-## Download
+== Download
 
 You can download and import both formats, kmz and jpg. The import of a jpg file is the same as of kmz; open fotorelacjonusz, click File -> Settings -> Overlays, drag & drop your jpg file on the list of overlays.
 
-## Examples
+== Examples
 
 Common map
 TODO missing image: Overlay example common map

@@ -1,4 +1,4 @@
-# Troubleshooting
+= Troubleshooting
 
 [qanda]
 The posts are shuffled.::
@@ -21,8 +21,6 @@ I can't click anywhere in the embedded forum browser while posting photo report.
     Embedded browser is deliberately disabled during posting.
 Image quality is insufficient.::
     Check "Jpg quality" option in settings dialog under "Image size" tab.
-I'm getting following error: "undefined symbol: _ZN14QHttpMultiPartC1ENS_11ContentTypeEP7QObject" (linux specyfic)::
-    Application needs Qt 4.8 or later, as QHttpMultiPart class was introduced in this version.
 System says "libquazip.so.4 not found" (linux specyfic)::
     You need to run the application using fotorelacjonusz2.sh script.
 I've probably done something wrong and the posts are all messed up...::
