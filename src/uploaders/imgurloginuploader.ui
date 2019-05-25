@@ -18,8 +18,8 @@
     <enum>QFormLayout::ExpandingFieldsGrow</enum>
    </property>
    <item row="0" column="0" colspan="2">
-    <widget class="QWebEngineView" name="webView">
-     <property name="url">
+    <widget class="QWebEngineView" name="webView" native="true">
+     <property name="url" stdset="0">
       <url>
        <string>about:blank</string>
       </url>

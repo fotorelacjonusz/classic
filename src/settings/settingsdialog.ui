@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>714</width>
-    <height>534</height>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -211,7 +211,16 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <item row="6" column="1">
              <widget class="QWidget" name="homeForumWidget" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout">
-               <property name="margin">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
@@ -240,7 +249,16 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
             <item row="5" column="1">
              <widget class="QWidget" name="homeTagWidget" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <property name="margin">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
@@ -660,7 +678,16 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
        <item row="2" column="0" alignment="Qt::AlignRight">
         <widget class="QWidget" name="widget" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -1022,13 +1049,31 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
           <string>Podkłady mapowe</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,1">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>1</number>
+          </property>
+          <property name="topMargin">
+           <number>1</number>
+          </property>
+          <property name="rightMargin">
+           <number>1</number>
+          </property>
+          <property name="bottomMargin">
            <number>1</number>
           </property>
           <item>
            <widget class="QWidget" name="widget_2" native="true">
             <layout class="QFormLayout" name="formLayout_8">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item row="1" column="1">
@@ -1067,7 +1112,16 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
        <item alignment="Qt::AlignRight">
         <widget class="QWidget" name="widget_3" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item alignment="Qt::AlignRight">
@@ -1324,8 +1378,8 @@ Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczn
   </connection>
  </connections>
  <buttongroups>
+  <buttongroup name="captionsPositionGroup"/>
   <buttongroup name="homePageGroup"/>
   <buttongroup name="imageScaleMethodGroup"/>
-  <buttongroup name="captionsPositionGroup"/>
  </buttongroups>
 </ui>
