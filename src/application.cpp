@@ -8,6 +8,9 @@
 Application::Application(int &argc, char **argv):
 	QApplication(argc, argv)
 {
+	#if defined(Q_OS_MACOS)
+	this->setAttribute(Qt::AA_DontShowIconsInMenus, true);
+	#endif
 }
 
 QString Application::applicationSettingsName()
