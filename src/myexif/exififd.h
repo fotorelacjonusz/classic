@@ -21,7 +21,7 @@ public:
 	};
 
 	ExifIfd();
-	ExifIfd(QDataStream &stream) throw (Exception);
+	ExifIfd(QDataStream &stream) noexcept(false);
 	void write(QDataStream &stream, QByteArray &data, bool hasNext) const;
 
 	bool hasNext() const;

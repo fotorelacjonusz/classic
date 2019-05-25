@@ -202,9 +202,9 @@ private:
 	ExifIfd &exifIFD();
 	ExifIfd &gpsIFD();
 
-	void loadFromJpeg(QDataStream &fileStream) throw (Exception);
-	void saveToJpeg(QDataStream &fileStream) const throw (Exception);
-	void saveToJpeg(ExifMarker app1) const throw (Exception);
+	void loadFromJpeg(QDataStream &fileStream) noexcept(false);
+	void saveToJpeg(QDataStream &fileStream) const noexcept(false);
+	void saveToJpeg(ExifMarker app1) const noexcept(false);
 
 	typedef QMap<int, ExifIfd> ExifIfdMap;
 	ExifIfdMap ifds;

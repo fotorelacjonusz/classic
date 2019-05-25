@@ -404,7 +404,7 @@ void MainWindow::processEvents() const
 	ui->scrollArea->ensureVisible(0, 1000000);
 }
 
-ImageWidget *MainWindow::newImage(QString filePath, QDataStream *stream) throw(Exception)
+ImageWidget *MainWindow::newImage(QString filePath, QDataStream *stream) noexcept(false)
 {
 	ImageWidget *widget = new ImageWidget(ui->postWidget, filePath, stream);
 	ui->postLayout->addWidget(widget);

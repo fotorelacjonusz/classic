@@ -68,7 +68,7 @@ private slots:
 
 protected:
 	void processEvents() const;
-	ImageWidget *newImage(QString filePath, QDataStream *stream) throw(Exception);
+	ImageWidget *newImage(QString filePath, QDataStream *stream) noexcept(false);
 	ImageWidget *imageAt(int i) const;
 	QList<AbstractImage *> imageList() const;
 	void closeEvent(QCloseEvent *event);

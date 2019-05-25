@@ -25,7 +25,7 @@
 #include <QCheckBox>
 #include <QTime>
 
-ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) throw(Exception):
+ImageWidget::ImageWidget(QWidget *parent, QString _filePath, QDataStream *stream) noexcept(false):
 	SelectableWidget<ImageWidget>(parent),
 	filePath(_filePath),
 	m_brightness(BRIGHTNESS_DEFAULT), m_contrast(CONTRAST_DEFAULT), m_gamma(GAMMA_DEFAULT),

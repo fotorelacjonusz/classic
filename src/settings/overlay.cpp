@@ -22,7 +22,7 @@
 
 #define DOC_KML "doc.kml"
 
-Overlay::Overlay(QString absoluteFilePath) throw (Exception)
+Overlay::Overlay(QString absoluteFilePath) noexcept(false)
 {
 	quint32 thumbnailSize;
 	QFile file(absoluteFilePath);

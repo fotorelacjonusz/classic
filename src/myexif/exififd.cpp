@@ -12,7 +12,7 @@ ExifIfd::ExifIfd():
 {
 }
 
-ExifIfd::ExifIfd(QDataStream &stream) throw (Exception):
+ExifIfd::ExifIfd(QDataStream &stream) noexcept(false):
 	nextIFD(0),
 	nextIFDSought(false)
 {
