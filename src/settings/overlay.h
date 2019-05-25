@@ -11,7 +11,7 @@ class Overlay : public AbstractMapDownloader
 	Q_DECLARE_TR_FUNCTIONS(Overlay)
 
 public:
-	Overlay(QString absoluteFilePath) throw (Exception);
+	Overlay(QString absoluteFilePath) noexcept(false);
 	~Overlay();
 
 	QString toString() const;

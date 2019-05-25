@@ -3,7 +3,7 @@
 #include <QFile>
 #include <QDebug>
 
-ExifMarker::ExifMarker(QDataStream &stream) throw (Exception):
+ExifMarker::ExifMarker(QDataStream &stream) noexcept(false):
 	stream(stream),
 	start(stream.device()->pos()),
 	size(0)
@@ -52,7 +52,7 @@ bool ExifMarker::isSOS() const
 	return number == SOS;
 }
 
-QByteArray ExifMarker::readData(const QByteArray &header) const throw (Exception)
+QByteArray ExifMarker::readData(const QByteArray &header) const noexcept(false)
 {
 	const int pos = stream.device()->pos();
 	stream.device()->seek(start + sizeof(ff) + sizeof(number) + sizeof(size));

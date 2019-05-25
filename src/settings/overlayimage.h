@@ -23,7 +23,7 @@ class OverlayImage : public AbstractMapDownloader
 
 public:
 	// the overlay
-	OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) throw (Exception);
+	OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) noexcept(false);
 	// dummy overlay for calculations only
 	OverlayImage(QRectF latLongBox, QSize maxSize);
 	bool makeMap(GeoMap *map);

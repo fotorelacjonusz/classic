@@ -275,7 +275,7 @@ ExifIfd &ExifImageHeader::gpsIFD()
 	return ifds[0].embededIfd(ExifIfd::GpsInfoIfdPointer);
 }
 
-void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
+void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) noexcept(false)
 {
 	fileStream.setByteOrder(QDataStream::BigEndian);
 	ExifMarker(fileStream).isSOI() OR_THROW("First marker is not SOI");
@@ -313,7 +313,7 @@ void ExifImageHeader::loadFromJpeg(QDataStream &fileStream) throw (Exception)
 	!fileStream.atEnd() OR_THROW("APP1 marker not found");
 }
 
-void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const throw (Exception)
+void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const noexcept(false)
 {
 	fileStream.setByteOrder(QDataStream::BigEndian);
 	ExifMarker(fileStream).isSOI() OR_THROW("First marker is not SOI");
@@ -331,7 +331,7 @@ void ExifImageHeader::saveToJpeg(QDataStream &fileStream) const throw (Exception
 		saveToJpeg(ExifMarker(m1, ExifMarker::APP1));
 }
 
-void ExifImageHeader::saveToJpeg(ExifMarker app1) const throw (Exception)
+void ExifImageHeader::saveToJpeg(ExifMarker app1) const noexcept(false)
 {
 	QByteArray data;
 	QDataStream stream(&data, QIODevice::WriteOnly);

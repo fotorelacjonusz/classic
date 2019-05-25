@@ -87,7 +87,7 @@ public:
 
 private:
 	template <class T>
-	QVector<T> readVector(QDataStream &stream) throw (Exception);
+	QVector<T> readVector(QDataStream &stream) noexcept(false);
 	template <class T>
 	void readValue(QDataStream &stream, quint16 type);
 	void readString(QDataStream &stream, quint16 type);

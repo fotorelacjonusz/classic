@@ -15,14 +15,14 @@ public:
 		SOS  = 0xda
 	};
 
-	ExifMarker(QDataStream &stream) throw (Exception);
+	ExifMarker(QDataStream &stream) noexcept(false);
 	ExifMarker(const ExifMarker &other, MarkerNumber number); // insert before
 	bool isAPP0() const;
 	bool isAPP1() const;
 	bool isSOI() const;
 	bool isSOS() const;
 
-	QByteArray readData(const QByteArray &header = QByteArray()) const throw (Exception);
+	QByteArray readData(const QByteArray &header = QByteArray()) const noexcept(false);
 	void writeData(const QByteArray &data, const QByteArray &header = QByteArray());
 
 private:

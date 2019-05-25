@@ -16,7 +16,7 @@ int sgn(T v)
 	return (T(0) < v) - (v < T(0));
 }
 
-OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) throw (Exception)
+OverlayImage::OverlayImage(QDomElement groundOverlay, const QMap<QString, QByteArray> &files, bool isKmz) noexcept(false)
 {
 	QDomElement icon = groundOverlay.firstChildElement("Icon");
 	QDomElement latLonBox = groundOverlay.firstChildElement("LatLonBox");
