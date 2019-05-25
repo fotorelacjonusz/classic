@@ -348,6 +348,9 @@
    <property name="text">
     <string>&amp;Ustawienia</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
   </action>
   <action name="action_close">
    <property name="icon">
@@ -360,6 +363,9 @@
    <property name="toolTip">
     <string>Zamknij</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="action_about">
    <property name="icon">
@@ -368,6 +374,9 @@
    </property>
    <property name="text">
     <string>&amp;O programie</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="action_Qt_information">
@@ -380,6 +389,9 @@
    </property>
    <property name="toolTip">
     <string>Informacje o Qt</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutQtRole</enum>
    </property>
   </action>
   <action name="action_open_photorelation">
