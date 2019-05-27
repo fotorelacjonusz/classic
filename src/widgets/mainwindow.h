@@ -27,6 +27,9 @@ public:
 	explicit MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 
+	void loadDraft(QString filePath);
+	void saveDraft(QString filePath);
+
 private slots:
 	void on_action_open_photorelation_triggered();
 	void on_action_save_photorelation_triggered();

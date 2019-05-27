@@ -65,16 +65,8 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
-void MainWindow::on_action_open_photorelation_triggered()
+void MainWindow::loadDraft(QString filePath)
 {
-	QString filePath = QFileDialog::getOpenFileName(this, tr("Otwórz fotorelację"), dirName, tr("Fotorelacje (*.phr)"));
-	if (filePath.isEmpty())
-		return;
-	dirName = filePath.section(QDir::separator(), 0, -2);
-
-	while (!ui->postLayout->isEmpty())
-		delete ui->postLayout->takeAt(0)->widget();
-
 	QFile file(filePath);
 	file.open(QIODevice::ReadOnly);
 	QDataStream in(&file);
@@ -115,6 +107,33 @@ void MainWindow::on_action_open_photorelation_triggered()
 	updateCommonMap();
 }
 
+void MainWindow::saveDraft(QString filePath)
+{
+	QFile file(filePath);
+	file.open(QIODevice::WriteOnly);
+	QDataStream out(&file);
+	out << phrFileHeader << qApp->applicationVersion() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
+
+	Application::busy();
+	foreach (AbstractImage *image, imageList())
+		image->serialize(out);
+	Application::idle();
+	file.close();
+}
+
+void MainWindow::on_action_open_photorelation_triggered()
+{
+	QString filePath = QFileDialog::getOpenFileName(this, tr("Otwórz fotorelację"), dirName, tr("Fotorelacje (*.phr)"));
+	if (filePath.isEmpty())
+		return;
+	dirName = filePath.section(QDir::separator(), 0, -2);
+
+	while (!ui->postLayout->isEmpty())
+		delete ui->postLayout->takeAt(0)->widget();
+
+	loadDraft(filePath);
+}
+
 void MainWindow::on_action_save_photorelation_triggered()
 {
 	if (ui->postLayout->isEmpty())
@@ -127,16 +146,7 @@ void MainWindow::on_action_save_photorelation_triggered()
 		return;
 	dirName = filePath.section(QDir::separator(), 0, -2);
 
-	QFile file(filePath);
-	file.open(QIODevice::WriteOnly);
-	QDataStream out(&file);
-	out << phrFileHeader << qApp->applicationVersion() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
-
-	Application::busy();
-	foreach (AbstractImage *image, imageList())
-		image->serialize(out);
-	Application::idle();
-	file.close();
+	saveDraft(filePath);
 }
 
 void MainWindow::on_action_settings_triggered()
