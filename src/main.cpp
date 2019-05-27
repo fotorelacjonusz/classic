@@ -11,10 +11,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void handler(int sig) 
+/**
+ * @brief Handles segmentation foult singal on POSIX systems.
+ * @param sig
+ */
+[[ noreturn ]] void segfaultHandler(int sig)
 {
 	void *array[10];
-	size_t size = backtrace(array, 10);
+	int size = backtrace(array, 10);
 	fprintf(stderr, "Error: signal %d:\n", sig);
 	backtrace_symbols_fd(array, size, STDERR_FILENO);
 	exit(1);
@@ -26,7 +30,7 @@ int main(int argc, char *argv[])
 {
 
 #ifdef Q_OS_UNIX
-	signal(SIGSEGV, handler);
+	signal(SIGSEGV, segfaultHandler);
 #endif
 
 	if (argc >= 2 && QString(argv[1]) == "-v")
