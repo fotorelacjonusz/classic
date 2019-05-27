@@ -8,6 +8,9 @@ class Application : public QApplication
 	Q_OBJECT
 public:
 	explicit Application(int &argc, char **argv);
+
+	int showWindowAndExec();
+
 	static QString applicationSettingsName();
 	static QString applicationNameAndVersion();
 	

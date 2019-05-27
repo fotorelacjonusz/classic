@@ -1,11 +1,7 @@
 #include "application.h"
-#include <QTranslator>
-#include <QLocale>
 #include <QPixmapCache>
 #include <cstdio>
-#include "widgets/mainwindow.h"
 #include "messagehandler.h"
-#include "embeddedjavascript.h"
 
 #ifdef Q_OS_UNIX
 
@@ -44,27 +40,5 @@ int main(int argc, char *argv[])
 	QPixmapCache::setCacheLimit(524288);
 
 	Application a(argc, argv);
-	a.setApplicationName("Fotorelacjonusz");
-	a.setOrganizationName("FPW Community");
-	a.setApplicationVersion(PROGRAM_VERSION);
-
-	QString locale = QLocale::system().name();
-	QTranslator translator;
-
-	qDebug() << "Locale:" << locale;
-	if (locale == "pl_PL")
-		qDebug() << "Loading qt_pl:" << (translator.load("qt_pl", "/usr/share/qt4/translations") or translator.load("qt_pl"));
-	else
-		qDebug() << "Loading :/fotorelacjonusz_en_US:" << translator.load(":/fotorelacjonusz_en_US");
-
-	a.installTranslator(&translator);
-
-	EmbeddedJavascript::insertIntoProfile(":/qtwebchannel/qwebchannel.js");
-	EmbeddedJavascript::insertIntoProfile(":/src/web/ssc.js");
-
-	MainWindow w;
-	w.setWindowTitle(a.applicationName());
-	w.show();
-
-	return a.exec();
+	return a.showWindowAndExec();
 }
