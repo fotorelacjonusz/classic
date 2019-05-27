@@ -1,5 +1,4 @@
 #include "application.h"
-#include <QTextCodec>
 #include <QTranslator>
 #include <QLocale>
 #include <QPixmapCache>
