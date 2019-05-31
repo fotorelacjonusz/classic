@@ -96,16 +96,3 @@ bool Application::notify(QObject *object, QEvent *event)
 	}
 	return false;
 }
-
-Version::Version(QString version):
-	major (version.section('.', 0, 0).toInt()),
-	format(version.section('.', 1, 1).toInt()),
-	minor (version.section('.', 2, 2).toInt())
-{
-	Q_ASSERT(QRegExp("\\d+\\.\\d+\\.\\d+").exactMatch(version));
-}
-
-bool Version::isPhrCompatible(const Version &other)
-{
-	return major == other.major && format == other.format;
-}
