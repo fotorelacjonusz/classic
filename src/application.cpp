@@ -1,4 +1,4 @@
-#define _SYS_SYSMACROS_H // conflicts with major() and minor() 
+#define _SYS_SYSMACROS_H // conflicts with major() and minor()
 
 #include "application.h"
 #include "embeddedjavascript.h"
