@@ -18,7 +18,15 @@
 #include <QScrollBar>
 #include <QMimeData>
 
-QByteArray MainWindow::phrFileHeader("PHR PHotoRelation file. Program info: http://sourceforge.net/projects/fotorelacjonusz/ Author: Kamil Ostaszewski");
+/**
+ * @brief File header which must be present at the very begining of every draft file saved in format version 3A.
+ */
+const QByteArray MainWindow::fileFormatIdentifier3A("FOTORELACJONUSZ.3A.");
+
+/**
+ * @brief An informational comment which is written to draft files.
+ */
+const QByteArray MainWindow::photoReportFileComment("<https://github.com/skalee/fotorelacjonusz>\n");
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -65,28 +73,44 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
+/**
+ * @brief Loads a work-in-progress photo report from a file.
+ * @param filePath
+ * @todo Should show a message box if file can't be handled (now it's responsibility of the called method, but it won't
+ * work well when more format versions are instroduced.
+ */
 void MainWindow::loadDraft(QString filePath)
+{
+	loadDraftFormat3A(filePath);
+}
+
+/**
+ * @brief Attempts to load a work-in-progress photo report from a file with assumption that draft is saved in a 3A
+ * file format.
+ * @param filePath
+ * @todo Should raise exception on file format mismatch instead of showing a message box.
+ */
+void MainWindow::loadDraftFormat3A(QString filePath)
 {
 	QFile file(filePath);
 	file.open(QIODevice::ReadOnly);
 	QDataStream in(&file);
 	QString head, foot;
 	qint32 count;
-	QByteArray fileHeader;
-	QString version;
-	in >> fileHeader;
-	if (fileHeader != phrFileHeader)
-	{
-		QMessageBox::critical(this, tr("Błąd"), tr("To nie jest plik fotorelacji!"));
-		return;
-	}
-	in >> version;
-	if (!Version(qApp->applicationVersion()).isPhrCompatible(version))
-	{
-		QMessageBox::critical(this, tr("Błąd"), tr("Nie można otworzyć. Tę fotorelację zapisano inną wersją programu."));
-		return;
+	QByteArray fileFormatIdentifier;
+	QByteArray photoReportFileComment;
+
+	in >> fileFormatIdentifier;
+
+	if (fileFormatIdentifier != QByteArray("FOTORELACJONUSZ.3A.")) {
+		QMessageBox::critical(
+			this,
+			tr("Błąd"),
+			tr("Nie można otworzyć. Tę fotorelację zapisano ze zbyt starą wersją programu lub nie jest to plik fotorelacji.")
+		);
 	}
 
+	in >> photoReportFileComment; // Meaningless, skip it.
 	in >> head >> foot >> count >> *ui->commonMap;
 
 	Application::busy();
@@ -107,12 +131,17 @@ void MainWindow::loadDraft(QString filePath)
 	updateCommonMap();
 }
 
+/**
+ * @brief Saves a work-in-progress photo report to a file.
+ * @param filePath
+ */
 void MainWindow::saveDraft(QString filePath)
 {
 	QFile file(filePath);
 	file.open(QIODevice::WriteOnly);
 	QDataStream out(&file);
-	out << phrFileHeader << qApp->applicationVersion() << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
+	out << QByteArray("FOTORELACJONUSZ.3A.");
+	out << photoReportFileComment << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
 
 	Application::busy();
 	foreach (AbstractImage *image, imageList())

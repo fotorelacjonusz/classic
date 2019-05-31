@@ -28,6 +28,7 @@ public:
 	~MainWindow();
 
 	void loadDraft(QString filePath);
+	void loadDraftFormat3A(QString filePath);
 	void saveDraft(QString filePath);
 
 private slots:
@@ -87,7 +88,8 @@ private:
 	ImageWidget *selectedImage;
 	ArrowWidget *selectedArrow;
 	QString dirName;
-	static QByteArray phrFileHeader;
+	static const QByteArray fileFormatIdentifier3A;
+	static const QByteArray photoReportFileComment;
 	GpsData gpsData;
 	RecentThreadsMenu recentThreads;
 	GpxDialog gpxDialog;
