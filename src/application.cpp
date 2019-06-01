@@ -1,4 +1,4 @@
-#define _SYS_SYSMACROS_H // conflicts with major() and minor() 
+#define _SYS_SYSMACROS_H // conflicts with major() and minor()
 
 #include "application.h"
 #include "embeddedjavascript.h"
@@ -53,12 +53,22 @@ int Application::showWindowAndExec()
 
 QString Application::applicationSettingsName()
 {
-	return applicationName() + QString::number(Version(applicationVersion()).major);
+	return applicationName() + QString::number(applicationVersionNumber().majorVersion());
 }
 
 QString Application::applicationNameAndVersion()
 {
 	return applicationName() + " " + applicationVersion();
+}
+
+/**
+ * @brief Basically applicationVersion(), but as a QVersionNumber.
+ * @return application version number
+ * @see QVersionNumber, QCoreApplication::applicationVersion()
+ */
+QVersionNumber Application::applicationVersionNumber()
+{
+	return QVersionNumber::fromString(applicationVersion());
 }
 
 void Application::busy()
@@ -85,17 +95,4 @@ bool Application::notify(QObject *object, QEvent *event)
 		e.showMessage(nullptr);
 	}
 	return false;
-}
-
-Version::Version(QString version):
-	major (version.section('.', 0, 0).toInt()),
-	format(version.section('.', 1, 1).toInt()),
-	minor (version.section('.', 2, 2).toInt())
-{
-	Q_ASSERT(QRegExp("\\d+\\.\\d+\\.\\d+").exactMatch(version));
-}
-
-bool Version::isPhrCompatible(const Version &other)
-{
-	return major == other.major && format == other.format;
 }
