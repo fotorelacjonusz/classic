@@ -53,12 +53,22 @@ int Application::showWindowAndExec()
 
 QString Application::applicationSettingsName()
 {
-	return applicationName() + QString::number(Version(applicationVersion()).major);
+	return applicationName() + QString::number(applicationVersionNumber().majorVersion());
 }
 
 QString Application::applicationNameAndVersion()
 {
 	return applicationName() + " " + applicationVersion();
+}
+
+/**
+ * @brief Basically applicationVersion(), but as a QVersionNumber.
+ * @return application version number
+ * @see QVersionNumber, QCoreApplication::applicationVersion()
+ */
+QVersionNumber Application::applicationVersionNumber()
+{
+	return QVersionNumber::fromString(applicationVersion());
 }
 
 void Application::busy()
