@@ -23,5 +23,5 @@ void NtpTimestamp::setDateTime(QDateTime dateTime)
 
 NtpHeader::NtpHeader()
 {
-	qMemSet(reinterpret_cast<void *>(this), 0, sizeof(NtpHeader));
+	memset(reinterpret_cast<void *>(this), 0, sizeof(NtpHeader));
 }
