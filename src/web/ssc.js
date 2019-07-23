@@ -105,9 +105,8 @@
 
 	function postReply(postBody) {
 		let msgArea = document.querySelector("textarea[name=message]")
-		let submitBtn = document.querySelector("input[name=sbutton]")
 
 		msgArea.value = postBody
-		submitBtn.click()
+		msgArea.closest("form").submit()
 	}
 })()
