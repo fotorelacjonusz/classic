@@ -100,7 +100,7 @@ void MainWindow::loadDraftFormat3A(QString filePath)
 	QByteArray fileFormatIdentifier;
 	QByteArray photoReportFileComment;
 
-	in.setVersion(QDataStream::Qt_5_12);
+	in.setVersion(QDataStream::Qt_5_6);
 	in >> fileFormatIdentifier;
 
 	if (fileFormatIdentifier != QByteArray("FOTORELACJONUSZ.3A.")) {
@@ -141,7 +141,7 @@ void MainWindow::saveDraft(QString filePath)
 	QFile file(filePath);
 	file.open(QIODevice::WriteOnly);
 	QDataStream out(&file);
-	out.setVersion(QDataStream::Qt_5_12);
+	out.setVersion(QDataStream::Qt_5_6);
 	out << QByteArray("FOTORELACJONUSZ.3A.");
 	out << photoReportFileComment << ui->header->toPlainText() << ui->footer->toPlainText() << ui->postLayout->count() << *ui->commonMap;
 
