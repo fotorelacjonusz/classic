@@ -14,13 +14,13 @@ script:
 before_deploy:
   # Set TRAVIS_TAG to "nightly" if blank (i.e. triggered by push to master).
   - export TRAVIS_TAG=${TRAVIS_TAG:-nightly}
-  # Substitute TAG with $TRAVIS_TAG.
-  - export PACKAGE_NAME="${PACKAGE_NAME/TAG/${TRAVIS_TAG}}"
   - git tag -a -f -m "Created by Travis" $TRAVIS_TAG
   - ci/package.sh
 
 deploy:
   provider: releases
+  file_glob: true
+  file: release/*
   overwrite: true
   skip_cleanup: true
   api_key:
@@ -29,15 +29,12 @@ deploy:
     repo: skalee/fotorelacjonusz
     all_branches: true
     condition: ("x${TRAVIS_TAG}" != "x") || ("${TRAVIS_BRANCH}" = master)
-  file:
-    - "${PACKAGE_NAME}"
 
 matrix:
   include:
     - os: osx
       osx_image: xcode10.2
       env:
-        - PACKAGE_NAME="Fotorelacjonusz-TAG-macos.tar.gz"
         - PATH="/opt/Qt/5.12.3/clang_64/bin:${PATH}"
         - QT_INSTALLER_DOWNLOAD_NAME="qt-unified-mac-x64-online.dmg"
         - QT_INSTALLER_VARS="${TRAVIS_BUILD_DIR}/ci/qt_installer_vars_mac.js"
