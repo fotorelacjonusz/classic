@@ -39,3 +39,8 @@ matrix:
         - PATH="/opt/Qt/5.12.3/clang_64/bin:${PATH}"
         - QT_INSTALLER_DOWNLOAD_NAME="qt-unified-mac-x64-online.dmg"
         - QT_INSTALLER_VARS="${TRAVIS_BUILD_DIR}/ci/qt_installer_vars_mac.js"
+
+    - os: linux
+      env:
+        - DOCKER_IMAGE="fotorelacjonusz:ubuntu"
+        - ARCH="amd64"
