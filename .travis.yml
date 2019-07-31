@@ -5,27 +5,11 @@ before_install:
   - third-party/qt_installer/qt_installer.sh
 
 install:
-  # QtFtp
-  - pushd third-party/qtftp
-  - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
-  - make
-  - popd
-
-  # QuaZIP
-  - pushd third-party/quazip
-  - qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
-  - make
-  - popd
-
-  # Fotorelacjonusz
   - ci/write_secrets_h.sh
-  - ci/compile_icon_set.sh
-  - lrelease fotorelacjonusz.pro
-  - qmake CONFIG+=release LIBS+=-lz
-  - make
+  - ci/build_on_${TRAVIS_OS_NAME}.sh
 
 script:
-  - ${EXE} -v
+  - ci/run_checks.sh
 
 before_deploy:
   # Set TRAVIS_TAG to "nightly" if blank (i.e. triggered by push to master).
@@ -53,7 +37,6 @@ matrix:
     - os: osx
       osx_image: xcode10.2
       env:
-        - EXE=./Fotorelacjonusz.app/Contents/MacOS/Fotorelacjonusz
         - PACKAGE_NAME="Fotorelacjonusz-TAG-macos.tar.gz"
         - PATH="/opt/Qt/5.12.3/clang_64/bin:${PATH}"
         - QT_INSTALLER_DOWNLOAD_NAME="qt-unified-mac-x64-online.dmg"
