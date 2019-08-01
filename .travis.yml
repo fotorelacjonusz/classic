@@ -44,3 +44,10 @@ matrix:
       env:
         - DOCKER_IMAGE="fotorelacjonusz:ubuntu"
         - ARCH="amd64"
+        - BASE_DOCKER_IMAGE=ubuntu
+
+    - os: linux
+      env:
+        - DOCKER_IMAGE="fotorelacjonusz:ubuntu"
+        - ARCH="i386"
+        - BASE_DOCKER_IMAGE=i386/ubuntu
