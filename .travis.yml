@@ -2,7 +2,7 @@ language: cpp
 
 before_install:
   - export -f travis_fold
-  - third-party/qt_installer/qt_installer.sh
+  - if [[ $INSTALL_QT = yes ]]; then third-party/qt_installer/qt_installer.sh; fi
 
 install:
   - ci/write_secrets_h.sh
@@ -35,6 +35,19 @@ matrix:
     - os: osx
       osx_image: xcode10.2
       env:
+        - INSTALL_QT=yes
         - PATH="/opt/Qt/5.12.3/clang_64/bin:${PATH}"
         - QT_INSTALLER_DOWNLOAD_NAME="qt-unified-mac-x64-online.dmg"
         - QT_INSTALLER_VARS="${TRAVIS_BUILD_DIR}/ci/qt_installer_vars_mac.js"
+
+    - os: linux
+      env:
+        - DOCKER_IMAGE="fotorelacjonusz:ubuntu"
+        - ARCH="amd64"
+        - BASE_DOCKER_IMAGE=ubuntu
+
+    - os: linux
+      env:
+        - DOCKER_IMAGE="fotorelacjonusz:ubuntu"
+        - ARCH="i386"
+        - BASE_DOCKER_IMAGE=i386/ubuntu
