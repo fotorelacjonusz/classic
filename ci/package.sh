@@ -16,7 +16,7 @@ case "${TRAVIS_OS_NAME}" in
 		;;
 
 	linux)
-		PACKAGE_NAME="Fotorelacjonusz-${TRAVIS_TAG}-${ARCH}"
+		PACKAGE_NAME="Fotorelacjonusz-${TRAVIS_TAG}-linux-${ARCH}"
 		# Build artifacts in a container
 		docker run -t --name dummy ${DOCKER_IMAGE} deploy-utils/debian/make_bundles.sh
 		docker cp dummy:/build/release ./release
