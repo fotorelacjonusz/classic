@@ -7,7 +7,7 @@
 #include <QNetworkReply>
 #include <QMessageBox>
 #include <QApplication>
-#include <qmath.h>
+#include <QtMath>
 
 #include "settings/settingsdialog.h"
 #include "gpsdata.h"

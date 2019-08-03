@@ -6,7 +6,7 @@
 #include <QBuffer>
 #include <QImageReader>
 #include <QVector2D>
-#include <cmath>
+#include <QtMath>
 
 const qreal OverlayImage::R = 6371000;
 
