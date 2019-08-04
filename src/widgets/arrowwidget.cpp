@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QDebug>
 #include <QMouseEvent>
-#include <cmath>
+#include <QtMath>
 
 const int ArrowWidget::margin = 7;
 

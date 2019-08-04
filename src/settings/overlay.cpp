@@ -17,8 +17,7 @@
 #include <QtAlgorithms>
 #include <QVector2D>
 #include <QMatrix4x4>
-#include <qmath.h>
-#include <cmath>
+#include <QtMath>
 
 #define DOC_KML "doc.kml"
 

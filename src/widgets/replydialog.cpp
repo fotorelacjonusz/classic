@@ -13,7 +13,7 @@
 #include <QDesktopServices>
 #include <QBuffer>
 #include <QWebChannel>
-#include <QtCore/qmath.h>
+#include <QtMath>
 
 #define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
 #define DONT_SHOW_FORUM_INFO "dont_show_forum_info"

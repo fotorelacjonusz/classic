@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QBuffer>
 #include <QIODevice>
-#include <qmath.h>
+#include <QtMath>
 
 const QByteArray ExifImageHeader::exifHeader("Exif\0\0", 6);
 
