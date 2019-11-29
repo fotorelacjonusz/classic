@@ -1,7 +1,7 @@
 var InstallComponents = [
-    "qt.qt5.5123.clang_64",
-    "qt.qt5.5123.qtscript",
-    "qt.qt5.5123.qtwebengine"
+    "qt.qt5.5126.clang_64",
+    "qt.qt5.5126.qtscript",
+    "qt.qt5.5126.qtwebengine"
 ]
 
 var InstallPath = "/opt/Qt"
