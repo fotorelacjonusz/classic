@@ -1,0 +1,85 @@
+= Fotorelacjonusz
+
+:lang: pl
+:gh-root: https://github.com/skalee/fotorelacjonusz
+:gh-docs: {gh-root}/tree/master/docs
+:gh-readme-pl: link:README.pl.adoc
+:gh-releases: {gh-root}/releases
+:gh-nightly: {gh-root}/releases/tag/nightly
+:gh-dload-nightly-mac: {gh-releases}/download/nightly/Fotorelacjonusz-nightly-macos.tar.gz
+:sf-dload: https://sourceforge.net/projects/fotorelacjonusz/files
+:yt-tutorial: http://youtube.com/watch?v=v-WCcN0_4YY
+
+ifdef::env-github[]
+image:https://img.shields.io/travis/skalee/fotorelacjonusz/master.svg?style=for-the-badge[
+  Build Status, link="https://travis-ci.org/skalee/fotorelacjonusz/branches"]
+endif::[]
+
+Dzieło forumowej społeczności, które ma ułatwić wrzucanie fotorelacji
+na Forum Polskich Wieżowców.
+
+== Instrukcja
+
+=== Skąd pobrać
+
+* Aktualne wersje (na razie tylko dla MacOS i Linuksa) stąd: +
+  {gh-releases}.
+* Stare wersje Fotorelacjonusza (tylko dla Windowsa i Linuksa) stąd: +
+  {sf-dload}.
+* Najświeższą, potencjalnie niestabilną wersję rozwojową stąd: +
+  {gh-nightly}.
+
+=== Budowanie na własną rękę
+
+Zobacz link:docs/INSTALL-SOURCE.adoc[tutaj] (w języku angielskim).
+
+=== Podstawy użytkowania
+
+. Dodaj zdjęcia
+. Opcjonalnie opisz je
+. Wciśnij "Wyślij na SSC"
+. Zaloguj się na forum i wybierz właściwy wątek
+
+=== Dodatkowe informacje
+
+Znajdziesz je na {gh-docs}[stronach dokumentacji], które zostały wyciągnięte
+ze starego wiki.  Z tym zastrzeżeniem, że nie zostały sprawdzone ani tym
+bardziej zaktualizowane od tamtej pory, więc mogą występować drobne nieścisłości
+lub różnice z rzeczywistością, ale z grubsza powinny być w porządku.
+
+Jest też {yt-tutorial}[tutorial wideo] na YouTube.
+
+== Podziękowania
+
+Niniejszy program został napisany przez Kamila Ostaszewskiego, który przygotował
+kompletny program działający z Qt 4.8.
+
+== Prawa autorskie
+
+Copyright (C) 2012-2013 Kamil Ostaszewski +
+Copyright (C) 2019      Sebastian Skałacki
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses.
+
+=== Wykorzystane biblioteki i zasoby
+
+* https://www.qt.io[Qt] (LGPL 2.1)
+* https://github.com/stachenov/quazip[QuaZIP library] (LGPL 2.1 with static
+  linking exception)
+* https://github.com/qt/qtftp[QtFtp library] (LGPL 2.1)
+* Oxygen icons theme
+
+=== Zawartość niewolna
+
+Wykorzystano logo SkyscraperCity.com.
