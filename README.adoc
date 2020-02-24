@@ -1,6 +1,6 @@
 = Fotorelacjonusz
 
-:gh-repo: skalee/fotorelacjonusz
+:gh-repo: fotorelacjonusz/classic
 :gh-root: https://github.com/{gh-repo}
 :gh-docs: {gh-root}/tree/master/docs
 :gh-readme-pl: link:README.pl.adoc
