@@ -1,7 +1,8 @@
 = Fotorelacjonusz
 
 :lang: pl
-:gh-root: https://github.com/skalee/fotorelacjonusz
+:gh-repo: skalee/fotorelacjonusz
+:gh-root: https://github.com/{gh-repo}
 :gh-docs: {gh-root}/tree/master/docs
 :gh-readme-pl: link:README.pl.adoc
 :gh-releases: {gh-root}/releases
@@ -11,8 +12,8 @@
 :yt-tutorial: http://youtube.com/watch?v=v-WCcN0_4YY
 
 ifdef::env-github[]
-image:https://img.shields.io/travis/skalee/fotorelacjonusz/master.svg?style=for-the-badge[
-  Build Status, link="https://travis-ci.org/skalee/fotorelacjonusz/branches"]
+image:https://img.shields.io/travis/{gh-repo}/master.svg?style=for-the-badge[
+  Build Status, link="https://travis-ci.org/{gh-repo}/branches"]
 endif::[]
 
 Dzieło forumowej społeczności, które ma ułatwić wrzucanie fotorelacji
