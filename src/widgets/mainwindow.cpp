@@ -283,7 +283,7 @@ void MainWindow::on_action_about_triggered()
 						   "Oxygen theme (LGPL)<br/><br/>"
 						   "%1")
 					   .arg(QString(LICENSE).replace("\n", "<br/>")).arg(QApplication::applicationVersion()).arg(dateTime)
-					   .replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
+					   .replace(QRegExp("<(https://[^>]+)>"), "<a href='\\1'>\\1</a>"));
 }
 
 void MainWindow::on_action_Qt_information_triggered()
