@@ -275,7 +275,7 @@ void MainWindow::on_action_about_triggered()
 						   "<h3>Fotorelacjonusz</h3><br/>"
 						   "Autorzy: Kamil Ostaszewski, Sebastian Skałacki<br/>"
 						   "Wersja: %2 (kompilacja %3)<br/>"
-						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
+						   "<https://fotorelacjonusz.github.io/><br/><br/>"
 						   "Aplikacja wykorzystuje:<br/>"
 						   "Qt (LGPL2)<br/>"
 						   "QtFtp (LGPL2)<br/>"
