@@ -178,11 +178,7 @@ FORMS += \
 	src/uploaders/ftpuploader.ui
 
 RESOURCES += \
-	resource.qrc \
-	webscripts.qrc
-
-# Prevent JavaScripts from being compiled to C++ sources.
-QTQUICK_COMPILER_SKIPPED_RESOURCES += webscripts.qrc
+	resource.qrc
 
 OTHER_FILES += \
 	res/page.html
