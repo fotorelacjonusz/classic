@@ -31,27 +31,6 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="linkTab">
-      <attribute name="title">
-       <string>Linki</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QTableWidget" name="tableWidget">
-         <column>
-          <property name="text">
-           <string>Zdjęcie</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Link</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="postTab">
       <attribute name="title">
        <string>Posty</string>
@@ -87,6 +66,27 @@
            <string>Page</string>
           </attribute>
          </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="linkTab">
+      <attribute name="title">
+       <string>Linki</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <column>
+          <property name="text">
+           <string>Zdjęcie</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Link</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
