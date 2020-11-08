@@ -272,12 +272,7 @@ void ReplyDialog::forumThreadVisited(QString replyLink)
 
 	if (posts.all(PostWidget::Posted))
 	{
-		qDebug() << "parseThread()" << "koniec\n";
-		posts.setFormat(tr("Koniec. %p%"));
-		ui->webView->setEnabled(true);
-		ui->buttonBox->clear();
-		ui->buttonBox->addButton(QDialogButtonBox::Ok);
-		return;
+		this->finishSubmission();
 	}
 
 	ui->webView->setEnabled(false);
@@ -355,4 +350,17 @@ void ReplyDialog::on_hideInfoButton_clicked()
 	if (ui->dontShowAgain->isChecked())
 		settings.setValue(DONT_SHOW_FORUM_INFO, true);
 	ui->infoWidget->hide();
+}
+
+/**
+ * @brief Changes UI when submission is done.
+ */
+void ReplyDialog::finishSubmission()
+{
+	qDebug() << "parseThread()" << "koniec\n";
+	posts.setFormat(tr("Koniec. %p%"));
+	ui->webView->setEnabled(true);
+	ui->buttonBox->clear();
+	ui->buttonBox->addButton(QDialogButtonBox::Ok);
+	return;
 }

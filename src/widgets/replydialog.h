@@ -28,6 +28,7 @@ public:
 	int latestPostedImageNumber() const;
 	QString threadId() const;
 	QString threadTitle() const;
+	void finishSubmission();
 
 public slots:
 	void forumPageLoaded(QString url);
