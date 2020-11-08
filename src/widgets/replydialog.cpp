@@ -156,6 +156,8 @@ void ReplyDialog::upload()
 	}
 
 	uploader->finalize();
+
+	this->finishSubmission();
 }
 
 void ReplyDialog::accept()
