@@ -75,39 +75,6 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="postSpaceLabel">
-              <property name="text">
-               <string>Odstęp między postami</string>
-              </property>
-              <property name="buddy">
-               <cstring>postSpace</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="postSpace">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="toolTip">
-               <string>Jest to czas, przez który program czeka z wysłaniem kolejnego posta. Minimalna wartość to 30 sekund - wymuszona przez forum.
-Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejności przez forum.</string>
-              </property>
-              <property name="suffix">
-               <string> s</string>
-              </property>
-              <property name="minimum">
-               <number>30</number>
-              </property>
-              <property name="maximum">
-               <number>600</number>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
              <widget class="QLabel" name="captionsPositionLabel">
               <property name="text">
                <string>Podpis</string>
@@ -117,7 +84,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="7" column="1">
+            <item row="1" column="1">
              <widget class="QRadioButton" name="captionsAbove">
               <property name="text">
                <string>nad zdjęciem</string>
@@ -130,7 +97,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </attribute>
              </widget>
             </item>
-            <item row="8" column="1">
+            <item row="2" column="1">
              <widget class="QRadioButton" name="captionsUnder">
               <property name="text">
                <string>pod zdjęciem</string>
@@ -140,14 +107,14 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </attribute>
              </widget>
             </item>
-            <item row="9" column="1">
+            <item row="3" column="1">
              <widget class="QCheckBox" name="numberImages">
               <property name="text">
                <string>Numeruj zdjęcia</string>
               </property>
              </widget>
             </item>
-            <item row="10" column="0">
+            <item row="4" column="0">
              <widget class="QLabel" name="startingNumberLabel">
               <property name="text">
                <string>Zaczynaj numerację od</string>
@@ -157,7 +124,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="10" column="1">
+            <item row="4" column="1">
              <widget class="QSpinBox" name="startingNumber">
               <property name="minimum">
                <number>1</number>
@@ -167,28 +134,28 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="11" column="1">
+            <item row="5" column="1">
              <widget class="QCheckBox" name="addTBC">
               <property name="text">
                <string>Dodawaj &quot;Cdn ...&quot; na końcu postów</string>
               </property>
              </widget>
             </item>
-            <item row="12" column="1">
+            <item row="6" column="1">
              <widget class="QCheckBox" name="extraSpace">
               <property name="text">
                <string>Dodatkowy odstęp pomiędzy opisem, a zdjęciem</string>
               </property>
              </widget>
             </item>
-            <item row="13" column="1">
+            <item row="7" column="1">
              <widget class="QCheckBox" name="addImageBorder">
               <property name="text">
                <string>Dodawaj czarną ramkę wokół zdjęcia</string>
               </property>
              </widget>
             </item>
-            <item row="14" column="0">
+            <item row="8" column="0">
              <widget class="QLabel" name="extraTagsLabel">
               <property name="text">
                <string>Dodatkowe tagi w poście</string>
@@ -198,7 +165,7 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               </property>
              </widget>
             </item>
-            <item row="14" column="1">
+            <item row="8" column="1">
              <widget class="QPlainTextEdit" name="extraTags">
               <property name="toolTip">
                <string>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</string>
@@ -206,115 +173,6 @@ Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejnośc
               <property name="tabChangesFocus">
                <bool>true</bool>
               </property>
-             </widget>
-            </item>
-            <item row="6" column="1">
-             <widget class="QWidget" name="homeForumWidget" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QRadioButton" name="homeForumRadio">
-                 <property name="text">
-                  <string>forum o id</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">homePageGroup</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <widget class="QSpinBox" name="homeForumId">
-                 <property name="toolTip">
-                  <string>Np. dla Forum Polskich Wieżowców wpisz 45</string>
-                 </property>
-                 <property name="maximum">
-                  <number>9999</number>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QWidget" name="homeTagWidget" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QRadioButton" name="homeTagRadio">
-                 <property name="text">
-                  <string>tagu</string>
-                 </property>
-                 <attribute name="buttonGroup">
-                  <string notr="true">homePageGroup</string>
-                 </attribute>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="homeTag"/>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QRadioButton" name="homeMainRadio">
-              <property name="text">
-               <string>skyscrapercity.com</string>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">homePageGroup</string>
-              </attribute>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="homePageLabel">
-              <property name="text">
-               <string>Otwórz przeglądarkę na</string>
-              </property>
-              <property name="buddy">
-               <cstring>homeMainRadio</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QRadioButton" name="homeUserCPRadio">
-              <property name="text">
-               <string>user CP</string>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">homePageGroup</string>
-              </attribute>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QRadioButton" name="homeSubscriptionList">
-              <property name="text">
-               <string>liście subskrypcji</string>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">homePageGroup</string>
-              </attribute>
              </widget>
             </item>
            </layout>
@@ -1257,13 +1115,6 @@ Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczn
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>imagesPerPost</tabstop>
-  <tabstop>postSpace</tabstop>
-  <tabstop>homeMainRadio</tabstop>
-  <tabstop>homeUserCPRadio</tabstop>
-  <tabstop>homeTagRadio</tabstop>
-  <tabstop>homeTag</tabstop>
-  <tabstop>homeForumRadio</tabstop>
-  <tabstop>homeForumId</tabstop>
   <tabstop>captionsAbove</tabstop>
   <tabstop>captionsUnder</tabstop>
   <tabstop>numberImages</tabstop>
@@ -1341,38 +1192,6 @@ Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczn
     <hint type="destinationlabel">
      <x>354</x>
      <y>440</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>homeTag</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>homeTagRadio</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>467</x>
-     <y>149</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>210</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>homeForumId</sender>
-   <signal>valueChanged(QString)</signal>
-   <receiver>homeForumRadio</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>297</x>
-     <y>186</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>240</x>
-     <y>185</y>
     </hint>
    </hints>
   </connection>

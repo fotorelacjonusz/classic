@@ -97,7 +97,6 @@ protected:
 	inline MapType imageMapTypeFunc() const;
 	inline qreal imageMapOpacityFunc() const;
 	inline Corner imageMapCornerFunc() const;
-	QUrl homeUrlFunc() const;
 
 	void fixLengthComboBox();
 
