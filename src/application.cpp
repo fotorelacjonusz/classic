@@ -1,7 +1,6 @@
 #define _SYS_SYSMACROS_H // conflicts with major() and minor()
 
 #include "application.h"
-#include "embeddedjavascript.h"
 #include "exception.h"
 #include "widgets/mainwindow.h"
 #include <QCursor>
@@ -32,10 +31,6 @@ Application::Application(int &argc, char **argv):
 		qDebug() << "Loading :/fotorelacjonusz_en_US:" << translator.load(":/fotorelacjonusz_en_US");
 
 	installTranslator(&translator);
-
-	// Insert JavaScripts for WebEngine
-	EmbeddedJavascript::insertIntoProfile(":/qtwebchannel/qwebchannel.js");
-	EmbeddedJavascript::insertIntoProfile(":/src/web/ssc.js");
 }
 
 /**

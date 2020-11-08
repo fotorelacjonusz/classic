@@ -2,7 +2,6 @@
 #include "ui_replydialog.h"
 #include "settings/settingsdialog.h"
 #include "uploaders/abstractuploader.h"
-#include "embeddedjavascript.h"
 #include "networkcookiejar.h"
 
 #include <QWebEnginePage>
