@@ -12,7 +12,6 @@
 #include <QNetworkDiskCache>
 #include <QDesktopServices>
 #include <QBuffer>
-#include <QWebChannel>
 #include <QtMath>
 
 #define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
@@ -64,9 +63,6 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	connect(&timer, SIGNAL(timeout()), this, SLOT(tick()));
 
 	frame = ui->webView->page();
-
-	frame->setWebChannel(&webChannel, EmbeddedJavascript::worldId);
-	webChannel.registerObject("replyDialog", this);
 
 	QNetworkDiskCache *cache = new QNetworkDiskCache();
 	cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));

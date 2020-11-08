@@ -5,7 +5,6 @@
 #include <QTimer>
 #include <QTime>
 #include <QWebEnginePage>
-#include <QWebChannel>
 #include "progresscontainer.h"
 #include "abstractimage.h"
 #include "postwidget.h"
@@ -70,8 +69,6 @@ private:
 	QTimer timer;
 	PostItem *nextPost;
 	QTime time;
-
-	QWebChannel webChannel;
 
 	static const QString likePostId;
 };
