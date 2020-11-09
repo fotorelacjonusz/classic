@@ -4,8 +4,6 @@
 #include <QDialog>
 #include <QTimer>
 #include <QTime>
-#include <QWebEnginePage>
-#include <QWebChannel>
 #include "progresscontainer.h"
 #include "abstractimage.h"
 #include "postwidget.h"
@@ -29,15 +27,7 @@ public:
 	int latestPostedImageNumber() const;
 	QString threadId() const;
 	QString threadTitle() const;
-
-public slots:
-	void forumPageLoaded(QString url);
-	void forumThreadVisited(QString replyUrl);
-	void forumReplySubmissionFailed();
-
-public:
-	Q_INVOKABLE bool isNextPostAvailable();
-	Q_INVOKABLE QString obtainNextPost();
+	void finishSubmission();
 
 protected slots:
 	void appendTable(QString cell0, QString cell1);
@@ -51,12 +41,9 @@ private slots:
 	void startTimer();
 	void tick();
 
-	void on_hideInfoButton_clicked();
-
 private:
 	Ui::ReplyDialog *ui;
 	QSettings &settings;
-	QWebEnginePage *frame;
 	AbstractUploader *const uploader;
 
 	ProgressContainer<AbstractImage> images;
@@ -70,8 +57,6 @@ private:
 	QTimer timer;
 	PostItem *nextPost;
 	QTime time;
-
-	QWebChannel webChannel;
 
 	static const QString likePostId;
 };

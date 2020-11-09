@@ -32,7 +32,6 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	ui->setupUi(this);
 	ui->jpgQuality->setFormat("%1 %");
 	ui->imageMapOpacity->setFormat("%1 %");
-	ui->homePageGroup->setId(ui->homeMainRadio, 0);
 	ui->lengthComboBox->setValidator(new QIntValidator(300, 1920, this));
 	tosFormat = ui->tosLabel->text();
 	connect(ui->openFolderButton, SIGNAL(clicked()), ui->overlayList, SLOT(openFolder()));
@@ -59,9 +58,6 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 										 (ui->imageMapTypeLabel->alignment() & 0x00f0));
 
 	uploader			.init(makeInput("upload_method",              ui->uploadMethodComboBox,  0),   this, &SettingsDialog::uploaderFunc);
-							  makeInput("home_page/tag",              ui->homeTag);
-							  makeInput("home_page/forum_id",         ui->homeForumId);
-	homeUrl             .init(makeInput("home_page/method",           ui->homePageGroup,         0),   this, &SettingsDialog::homeUrlFunc);
 	captionsUnder       .init(makeInput("captions_under",             ui->captionsPositionGroup, -1),  this, &SettingsDialog::captionsUnderFunc);
 	extraSpace          .init(makeInput("caption_extra_space",        ui->extraSpace,			 false));
 	numberImages        .init(makeInput("number_images",              ui->numberImages,	         true));
@@ -69,7 +65,6 @@ SettingsDialog::SettingsDialog(QWidget *parent, QSettings &settings) :
 	addImageBorder      .init(makeInput("image_add_border",           ui->addImageBorder,		 false));
 	addTBC              .init(makeInput("add_tbc",                    ui->addTBC,                true));
 	imagesPerPost       .init(makeInput("images_per_post",            ui->imagesPerPost,         5));
-	postSpace			.init(makeInput("post_space",                 ui->postSpace,             60));
 	extraTags           .init(makeInput("post_extra_tags",            ui->extraTags));
 
 	setImageWidth       .init(makeInput("image_size/set_width",       ui->imageScaleMethodGroup, -1),  this, &SettingsDialog::setImageWidthFunc);
@@ -172,37 +167,6 @@ SettingsDialog::MapType SettingsDialog::commonMapTypeFunc()           const { re
 SettingsDialog::MapType SettingsDialog::imageMapTypeFunc()            const { return (MapType)ui->imageMapType->currentIndex(); }
 qreal SettingsDialog::imageMapOpacityFunc()                           const { return ui->imageMapOpacity->value() / 100.0; }
 SettingsDialog::Corner SettingsDialog::imageMapCornerFunc()           const { return (Corner)ui->imageMapPosition->currentIndex(); }
-
-QUrl SettingsDialog::homeUrlFunc() const
-{
-	QUrl url(SSC_HOST);
-	if (!selectedThreadId.isEmpty())
-	{
-		url.setPath("/showthread.php");
-		url.addQueryItem("t", selectedThreadId);
-	}
-	else if (ui->homeMainRadio->isChecked())
-		return url;
-	else if (ui->homeUserCPRadio->isChecked())
-		url.setPath("/usercp.php");
-	else if (ui->homeSubscriptionList->isChecked())
-		url.setPath("/subscription.php");
-	else if (ui->homeForumRadio->isChecked())
-	{
-		url.setPath("/forumdisplay.php");
-		url.addQueryItem("f", ui->homeForumId->cleanText());
-	}
-	else if (ui->homeTagRadio->isChecked())
-	{
-		QString homeTag;
-		foreach (uint i, ui->homeTag->text().toUcs4())
-			homeTag.append(i <= 255 ? QString(QChar(i)) : QString("&#%1;").arg(i));
-
-		url.setPath("/tags.php");
-		url.addEncodedQueryItem("tag", homeTag.toLatin1().toPercentEncoding());
-	}
-	return url;
-}
 
 void SettingsDialog::fixLengthComboBox()
 {

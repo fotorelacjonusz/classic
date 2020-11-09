@@ -31,97 +31,6 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="forumTab">
-      <attribute name="title">
-       <string>Forum</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QWidget" name="infoWidget" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLabel" name="infoLabel">
-            <property name="text">
-             <string>Instrukcja postępowania:
-   - zaloguj się
-   - otwórz wątek
-   - posty zostaną wstawione automatycznie</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="widget" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item alignment="Qt::AlignRight">
-              <widget class="QPushButton" name="hideInfoButton">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>Ukryj info</string>
-               </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignRight">
-              <widget class="QCheckBox" name="dontShowAgain">
-               <property name="text">
-                <string>Nie pokazuj więcej</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWebEngineView" name="webView" native="true">
-         <property name="url" stdset="0">
-          <url>
-           <string>about:blank</string>
-          </url>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="linkTab">
-      <attribute name="title">
-       <string>Linki</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QTableWidget" name="tableWidget">
-         <column>
-          <property name="text">
-           <string>Zdjęcie</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Link</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="postTab">
       <attribute name="title">
        <string>Posty</string>
@@ -157,6 +66,27 @@
            <string>Page</string>
           </attribute>
          </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="linkTab">
+      <attribute name="title">
+       <string>Linki</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <column>
+          <property name="text">
+           <string>Zdjęcie</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Link</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -208,16 +138,8 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QWebEngineView</class>
-   <extends>QWidget</extends>
-   <header>QWebEngineView</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>webView</tabstop>
   <tabstop>tableWidget</tabstop>
   <tabstop>buttonBox</tabstop>
  </tabstops>

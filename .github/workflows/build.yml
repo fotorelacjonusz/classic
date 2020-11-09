@@ -44,7 +44,7 @@ jobs:
         with:
           version: "5.12.9"
           target: desktop
-          modules: "qtscript qtwebengine"
+          modules: "qtscript"
 
       - name: Write secrets
         run: |
