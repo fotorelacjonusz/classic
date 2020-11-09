@@ -1,0 +1,118 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build application
+    runs-on: ${{ matrix.system }}
+    timeout-minutes: 45
+
+    defaults:
+      run:
+        shell: bash
+
+    strategy:
+      fail-fast: false
+      matrix:
+        system:
+          - macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Detect version name
+        run: |
+          echo "VERSION_NAME=${GITHUB_REF#*refs/*/}" | \
+            tr '/' '-' | \
+            tee -a $GITHUB_ENV
+
+      - name: Prepare artifacts directory
+        run: |
+          mkdir -p "${GITHUB_WORKSPACE}/artifacts"
+          echo "ARTIFACTS=${GITHUB_WORKSPACE}/artifacts" | tee -a $GITHUB_ENV
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: "5.12.6"
+          target: desktop
+          modules: "qtscript qtwebengine"
+
+      - name: Write secrets
+        run: |
+          cp secrets.h.example secrets.h
+          sed -i -- "s/IMGUR_CLIENT_ID .*/IMGUR_CLIENT_ID \"${IMGUR_CLIENT_ID}\"/g" secrets.h
+          sed -i -- "s/IMGUR_CLIENT_SECRET .*/IMGUR_CLIENT_SECRET \"${IMGUR_CLIENT_SECRET}\"/g" secrets.h
+          sed -i -- "s/PASSWORD_RAW_KEY .*/PASSWORD_RAW_KEY \"${PASSWORD_RAW_KEY}\"/g" secrets.h
+        env:
+          IMGUR_CLIENT_ID: ${{ secrets.IMGUR_CLIENT_ID }}
+          IMGUR_CLIENT_SECRET: ${{ secrets.IMGUR_CLIENT_SECRET }}
+          PASSWORD_RAW_KEY: ${{ secrets.PASSWORD_RAW_KEY }}
+
+      - name: Process translations
+        run: lrelease fotorelacjonusz.pro
+
+      - name: Compile icons (MacOS)
+        if: matrix.system == 'macos-latest'
+        run: iconutil -c icns appicon.iconset
+
+      - name: Build QtFTP
+        run: |
+          qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
+          make
+        working-directory: ./third-party/qtftp
+
+      - name: Build QuaZIP
+        run: |
+          qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
+          make
+        working-directory: ./third-party/quazip
+
+      - name: Build Fotorelacjonusz
+        run: |
+          qmake CONFIG+=release
+          make
+        timeout-minutes: 15
+
+      - name: Verify build (MacOS)
+        if: matrix.system == 'macos-latest'
+        run: open ./Fotorelacjonusz.app --args -v
+
+      - name: Package (MacOS)
+        if: matrix.system == 'macos-latest'
+        run: |
+          macdeployqt Fotorelacjonusz.app -verbose=2
+          tar czf "${PACKAGE_NAME}.tar.gz" Fotorelacjonusz.app
+          mv "${PACKAGE_NAME}.tar.gz" "${ARTIFACTS}"
+        env:
+          PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-macos"
+
+      - name: List artifacts
+        if: ${{ always() }}
+        run: ls -lh
+        working-directory: ${{ env.ARTIFACTS }}
+
+      - name: Upload artifacts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts-${{ matrix.system }}
+          path: ${{ env.ARTIFACTS }}
+
+      - name: Upload release assets
+        if: github.event_name == 'release'
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.ARTIFACTS }}/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
