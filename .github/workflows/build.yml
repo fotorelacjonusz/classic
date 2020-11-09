@@ -31,6 +31,10 @@ jobs:
             system: ubuntu-latest
             docker: true
 
+          - target: windows
+            system: windows-latest
+            qt-arch: win64_mingw73
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -63,6 +67,7 @@ jobs:
         with:
           version: "5.12.10"
           target: desktop
+          arch: ${{ matrix.qt-arch }}
 
       - name: Process translations
         if: '! matrix.docker'
@@ -89,7 +94,7 @@ jobs:
       - name: Build Fotorelacjonusz
         if: '! matrix.docker'
         run: |
-          qmake CONFIG+=release
+          qmake CONFIG+=release DEFINES+=QUAZIP_STATIC
           make
         timeout-minutes: 15
 
@@ -109,6 +114,12 @@ jobs:
       - name: Verify build (Linux)
         if: matrix.system == 'ubuntu-latest'
         run: docker run -t fotorelacjonusz ./fotorelacjonusz -v
+
+      - name: Verify build (Windows)
+        if: matrix.system == 'windows-latest'
+        shell: cmd
+        run: fotorelacjonusz.exe -v
+        working-directory: release
 
       - name: Package (MacOS)
         if: matrix.system == 'macos-latest'
@@ -130,6 +141,41 @@ jobs:
           mv *.rpm "${ARTIFACTS}/${PACKAGE_NAME}.rpm"
         env:
           PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-${{ matrix.target }}"
+
+      - name: Package (Windows, ZIP)
+        if: matrix.system == 'windows-latest'
+        run: |
+          mkdir Fotorelacjonusz
+          pushd Fotorelacjonusz
+
+          cp ../Fotorelacjonusz.exe .
+          windeployqt Fotorelacjonusz.exe --compiler-runtime --verbose=2
+          echo "Copying additional files"
+          cp "${Qt5_Dir}/bin/libgcc_s_seh-1.dll" .
+          cp "${Qt5_Dir}/bin/libstdc++-6.dll" .
+          cp "${Qt5_Dir}/bin/libwinpthread-1.dll" .
+          cp "${GITHUB_WORKSPACE}/COPYING.txt" .
+          cp "${GITHUB_WORKSPACE}/README.adoc" .
+          cp "${GITHUB_WORKSPACE}/README.pl.adoc" .
+          cp -r "${GITHUB_WORKSPACE}/docs" .
+
+          popd
+          7z a -tzip "${PACKAGE_NAME}.zip" Fotorelacjonusz
+          mv "${PACKAGE_NAME}.zip" "${ARTIFACTS}"
+        working-directory: release
+        env:
+          PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-windows-64bit"
+
+      - name: Package (Windows, installer)
+        if: matrix.system == 'windows-latest'
+        run: |
+          cp "${GITHUB_WORKSPACE}/deploy-utils/installer.iss" .
+          iscc "//DAPP_ARCH=x64" "//DAPP_VERSION=${VERSION_NAME}" installer.iss
+          mv mysetup.exe "${PACKAGE_NAME}.exe"
+          mv "${PACKAGE_NAME}.exe" "${ARTIFACTS}"
+        working-directory: release
+        env:
+          PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-windows-64bit"
 
       - name: List artifacts
         if: ${{ always() }}
