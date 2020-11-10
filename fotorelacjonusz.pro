@@ -15,7 +15,7 @@ QMAKE_TARGET_BUNDLE_PREFIX = org.forumpolskichwiezowcow
 # MacOS icon set
 ICON = appicon.icns
 
-QT += core gui network script widgets xml xmlpatterns
+QT += core gui network widgets xml xmlpatterns
 
 # Enable C++11 explicitly, which should make proper stdlib available.
 # Required to compile at least on OS X.
