@@ -1,8 +1,8 @@
 #include "imgurresponse.h"
 #include "networktransaction.h"
 
-#include <QScriptEngine>
-#include <QScriptValueIterator>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QStringList>
 #include <QDebug>
 
@@ -37,31 +37,30 @@ void ImgurResponse::debug() const
  */
 void ImgurResponse::parseResponse(const NetworkTransaction &tr)
 {
-	QScriptEngine se;
-	QScriptValue val = se.evaluate("(" + tr.data + ")");
+	QJsonDocument jsonDoc = QJsonDocument::fromJson(tr.data.toUtf8());
+	QJsonObject jsonRoot = jsonDoc.object();
 
-	QScriptValueIterator i(val);
-	while (i.hasNext())
-	{
-		i.next();
-		if (i.name() == "data")
-		{
-			QScriptValueIterator j(i.value());
-			while (j.hasNext())
-			{
-				j.next();
-				data.insert(j.name(), j.value().toString());
-			}
-		}
-		else if (i.name() == "error")
-			error = i.value().toString();
-		else if (i.name() == "success")
-			success = i.value().toBool();
-		else if (i.name() == "status")
-			status = i.value().toInt32();
-		else
-			insert(i.name(), i.value().toString());
+	if (jsonRoot.contains("error")) {
+		error = jsonRoot["error"].toString();
 	}
+
+	if (jsonRoot.contains("success")) {
+		success = jsonRoot["success"].toBool();
+	}
+
+	if (jsonRoot.contains("status")) {
+		status = jsonRoot["status"].toInt();
+	}
+
+	if (jsonRoot.contains("data")) {
+		QJsonObject jsonData = jsonRoot["data"].toObject();
+		QJsonObject::const_iterator it;
+
+		for(it = jsonData.constBegin(); it != jsonData.constEnd(); it++) {
+			data.insert(it.key(), it.value().toVariant().toString());
+		}
+	}
+
 	if (data.contains("error") && error.isEmpty())
 		error = data.take("error");
 

@@ -6,6 +6,7 @@
 
 class NetworkTransaction;
 
+// TODO: Make it <QString, QVariant> to avoid unnecessary data conversions.
 typedef QMap<QString, QString> ParamMap;
 
 class ImgurResponse : public ParamMap
