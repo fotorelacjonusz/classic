@@ -8,10 +8,10 @@ class NetworkTransaction;
 
 typedef QMap<QString, QString> ParamMap;
 
-class JsonObject : public ParamMap
+class ImgurResponse : public ParamMap
 {
 public:
-	JsonObject(const NetworkTransaction &tr);
+	ImgurResponse(const NetworkTransaction &tr);
 	void debug() const;
 
 	ParamMap data;

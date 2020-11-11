@@ -60,6 +60,7 @@ SOURCES += \
 	src/messagehandler.cpp \
 	src/exception.cpp \
 	src/application.cpp \
+	src/uploaders/imgurresponse.cpp \
 	src/widgets/threadedvalidator.cpp \
 	src/widgets/selectablewidget.cpp \
 	src/widgets/replydialog.cpp \
@@ -95,7 +96,6 @@ SOURCES += \
 	src/uploaders/networktransactionquery.cpp \
 	src/uploaders/networktransactionmultipart.cpp \
 	src/uploaders/networktransaction.cpp \
-	src/uploaders/jsonobject.cpp \
 	src/uploaders/isloginuploader.cpp \
 	src/uploaders/iscodeuploader.cpp \
 	src/uploaders/isanonuploader.cpp \
@@ -114,6 +114,7 @@ HEADERS += \
 	src/messagehandler.h \
 	src/exception.h \
 	src/application.h \
+	src/uploaders/imgurresponse.h \
 	src/widgets/threadedvalidator.h \
 	src/widgets/selectablewidget.h \
 	src/widgets/replydialog.h \
@@ -149,7 +150,6 @@ HEADERS += \
 	src/uploaders/networktransactionquery.h \
 	src/uploaders/networktransactionmultipart.h \
 	src/uploaders/networktransaction.h \
-	src/uploaders/jsonobject.h \
 	src/uploaders/isloginuploader.h \
 	src/uploaders/iscodeuploader.h \
 	src/uploaders/isanonuploader.h \

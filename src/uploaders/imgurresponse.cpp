@@ -1,4 +1,4 @@
-#include "jsonobject.h"
+#include "imgurresponse.h"
 #include "networktransaction.h"
 
 #include <QScriptEngine>
@@ -6,7 +6,7 @@
 #include <QStringList>
 #include <QDebug>
 
-JsonObject::JsonObject(const NetworkTransaction &tr):
+ImgurResponse::ImgurResponse(const NetworkTransaction &tr):
 	success(false),
 	status(0)
 {
@@ -51,7 +51,7 @@ JsonObject::JsonObject(const NetworkTransaction &tr):
 	mergedError = errors.join("\n");
 }
 
-void JsonObject::debug() const
+void ImgurResponse::debug() const
 {
 	QDebug debug(QtDebugMsg);
 	debug.nospace() << "{\n";
