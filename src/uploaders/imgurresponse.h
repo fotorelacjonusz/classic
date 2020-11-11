@@ -19,6 +19,9 @@ public:
 	int status;
 	QString error;
 	QString mergedError;
+
+private:
+	void parseResponse(const NetworkTransaction &tr);
 };
 
 #endif // JSONOBJECT_H

@@ -10,6 +10,33 @@ ImgurResponse::ImgurResponse(const NetworkTransaction &tr):
 	success(false),
 	status(0)
 {
+	parseResponse(tr);
+}
+
+void ImgurResponse::debug() const
+{
+	QDebug debug(QtDebugMsg);
+	debug.nospace() << "{\n";
+	debug << "  success:     " << success << "\n";
+	debug << "  status:      " << status << "\n";
+	debug << "  error:       " << error << "\n";
+	debug << "  mergedError: " << mergedError << "\n";
+	debug << "  data:\n";
+	debug << "  {\n";
+	for (ParamMap::ConstIterator i = data.begin(); i != data.end(); ++i)
+		debug << "    " << i.key() << ":\t" << i.value() << "\n";
+	debug << "  }\n";
+	for (ParamMap::ConstIterator i = begin(); i != end(); ++i)
+		debug << "  " << i.key() << ":\t" << i.value() << "\n";
+	debug << "}\n";
+	debug.space();
+}
+
+/**
+ * @brief Parses network transaction which contains a JSON response from Imgur.
+ */
+void ImgurResponse::parseResponse(const NetworkTransaction &tr)
+{
 	QScriptEngine se;
 	QScriptValue val = se.evaluate("(" + tr.data + ")");
 
@@ -49,23 +76,4 @@ ImgurResponse::ImgurResponse(const NetworkTransaction &tr):
 		errors << data["message"];
 
 	mergedError = errors.join("\n");
-}
-
-void ImgurResponse::debug() const
-{
-	QDebug debug(QtDebugMsg);
-	debug.nospace() << "{\n";
-	debug << "  success:     " << success << "\n";
-	debug << "  status:      " << status << "\n";
-	debug << "  error:       " << error << "\n";
-	debug << "  mergedError: " << mergedError << "\n";
-	debug << "  data:\n";
-	debug << "  {\n";
-	for (ParamMap::ConstIterator i = data.begin(); i != data.end(); ++i)
-		debug << "    " << i.key() << ":\t" << i.value() << "\n";
-	debug << "  }\n";
-	for (ParamMap::ConstIterator i = begin(); i != end(); ++i)
-		debug << "  " << i.key() << ":\t" << i.value() << "\n";
-	debug << "}\n";
-	debug.space();
 }
