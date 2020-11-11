@@ -1,15 +1,5 @@
 #pragma once
 
-/* TODO Re-enable me!
- *
- * Imgur uploader for logged in users has been disabled due to removal of WebKit
- * module from Qt.
- *
- * Possible solutions:
- * - This uploader should use WebEngine (Chromium) instead of WebKit.
- */
-#if 0
-
 #include "imguranonuploader.h"
 #include <QWidget>
 #include <QWebView>
@@ -50,4 +40,3 @@ protected:
 
 };
 
-#endif // 0

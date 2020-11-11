@@ -1,5 +1,3 @@
-/* TODO Re-enable me!  (See imgurloginuploader.h) */
-#if 0
 #include "imgurloginuploader.h"
 #include "ui_imguranonuploader.h"
 #include "ui_imgurloginuploader.h"
@@ -189,4 +187,3 @@ void ImgurLoginUploader::setAuthorization(NetworkTransaction *tr)
 {
 	tr->setRawHeader("Authorization", QString("Bearer " + accessToken).toAscii());
 }
-#endif // 0

@@ -45,11 +45,11 @@ UploaderFactory::UploaderFactory()
 //	TODO Re-enable uploaders!  (See respective header files)
 
 	UPLOADER(ImgurAnonUploader, tr("Imgur anonimowo"));
+	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 //	UPLOADER(IsAnonUploader, tr("Imageshack anonimowo"));
 //	UPLOADER(IsCodeUploader, tr("Imageshack kod rejestracyjny"));
 //	UPLOADER(IsLoginUploader, tr("Imageshack login i hasło"));
 	UPLOADER(FtpUploader, tr("Własne konto FTP"));
-//	UPLOADER(ImgurLoginUploader, tr("Imgur konto"));
 }
 
 UploaderFactory::~UploaderFactory()
