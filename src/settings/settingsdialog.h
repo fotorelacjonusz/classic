@@ -34,7 +34,6 @@ public:
 	static void copyDescriptions(QWidget *parent);
 
 	Field<AbstractUploader *> uploader;
-	Field<QUrl> homeUrl;
 	Field<bool> captionsUnder;
 	Field<bool> extraSpace;
 	Field<bool> numberImages;
@@ -42,7 +41,6 @@ public:
 	Field<bool> addImageBorder;
 	Field<bool> addTBC;
 	Field<int> imagesPerPost;
-	Field<int> postSpace;
 	Field<QString> extraTags;
 
 	Field<bool> setImageWidth;

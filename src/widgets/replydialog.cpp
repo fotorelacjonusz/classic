@@ -35,7 +35,7 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 	foreach (AbstractImage *image, imageList)
 		images.append(image, 1.0, ui->progressBarImage);
 	for (int i = 0; i < qCeil((qreal)imageList.count() / SETTINGS->imagesPerPost); ++i)
-		posts.append(new PostWidget(ui->toolBox), SETTINGS->postSpace);
+		posts.append(new PostWidget(ui->toolBox));
 
 	posts.first()->setTotal(0);
 	posts.last()->object()->setLast();
