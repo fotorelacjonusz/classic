@@ -44,7 +44,6 @@ jobs:
         with:
           version: "5.12.10"
           target: desktop
-          modules: "qtscript"
 
       - name: Write secrets
         run: |

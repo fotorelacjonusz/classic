@@ -1,6 +1,6 @@
 #include "imguranonuploader.h"
 #include "ui_imguranonuploader.h"
-#include "jsonobject.h"
+#include "imgurresponse.h"
 #include "networktransactionmultipart.h"
 #include "secrets.h"
 
@@ -53,7 +53,7 @@ QString ImgurAnonUploader::uploadImage(QString filePath, QIODevice *image)
 		tr.addHttpPart("album_id", albumId.toAscii());
 	tr.post();
 
-	JsonObject json(tr);
+	ImgurResponse json(tr);
 	error = json.mergedError;
 	image->close();
 	return json.success ? json.data["link"] : "";
@@ -70,7 +70,7 @@ void ImgurAnonUploader::updateCredits()
 	setAuthorization(&tr);
 	tr.get();
 	qDebug() << "credits updated";
-	JsonObject json(tr);
+	ImgurResponse json(tr);
 
 	credits.userLimit = json.data[USER_LIMIT_CSTR].toInt();
 	credits.userRemaining = json.data[USER_REMAINING_CSTR].toInt();

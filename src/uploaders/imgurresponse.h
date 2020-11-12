@@ -6,12 +6,13 @@
 
 class NetworkTransaction;
 
+// TODO: Make it <QString, QVariant> to avoid unnecessary data conversions.
 typedef QMap<QString, QString> ParamMap;
 
-class JsonObject : public ParamMap
+class ImgurResponse : public ParamMap
 {
 public:
-	JsonObject(const NetworkTransaction &tr);
+	ImgurResponse(const NetworkTransaction &tr);
 	void debug() const;
 
 	ParamMap data;
@@ -19,6 +20,9 @@ public:
 	int status;
 	QString error;
 	QString mergedError;
+
+private:
+	void parseResponse(const NetworkTransaction &tr);
 };
 
 #endif // JSONOBJECT_H
