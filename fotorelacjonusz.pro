@@ -7,6 +7,7 @@
 TEMPLATE = app
 TARGET = fotorelacjonusz
 macx:TARGET = Fotorelacjonusz
+win32:TARGET = Fotorelacjonusz
 VERSION = 3.2.0
 
 # Used in CFBundleIdentifier in Info.plist on Mac
