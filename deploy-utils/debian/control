@@ -3,7 +3,7 @@ Version: x.x.x
 Section: net
 Priority: optional
 Architecture: amd64
-Depends: libqt5core5a (>= 5.6.0), libqt5gui5 (>= 5.6.0), libqt5script5 (>= 5.6.0), libqt5webenginewidgets5 (>= 5.6.0), libqt5xmlpatterns5 (>= 5.6.0), libc6
+Depends: libqt5core5a (>= 5.6.0), libqt5gui5 (>= 5.6.0), libqt5xmlpatterns5 (>= 5.6.0), libc6
 Maintainer: Sebastian Skalacki <skalee@gmail.com>
 Homepage: https://github.com/skalee/fotorelacjonusz
 Vcs-Git: https://github.com/skalee/fotorelacjonusz.git
