@@ -40,12 +40,6 @@ jobs:
           mkdir -p "${GITHUB_WORKSPACE}/artifacts"
           echo "ARTIFACTS=${GITHUB_WORKSPACE}/artifacts" | tee -a $GITHUB_ENV
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          version: "5.12.10"
-          target: desktop
-
       - name: Write secrets
         run: |
           cp secrets.h.example secrets.h
@@ -56,6 +50,12 @@ jobs:
           IMGUR_CLIENT_ID: ${{ secrets.IMGUR_CLIENT_ID }}
           IMGUR_CLIENT_SECRET: ${{ secrets.IMGUR_CLIENT_SECRET }}
           PASSWORD_RAW_KEY: ${{ secrets.PASSWORD_RAW_KEY }}
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: "5.12.10"
+          target: desktop
 
       - name: Process translations
         run: lrelease fotorelacjonusz.pro
