@@ -420,10 +420,10 @@ If you don&apos;t want your password stored leave this field empty, application 
         <location filename="src/widgets/mainwindow.ui" line="111"/>
         <source>
 
-[url=&quot;http://www.skyscrapercity.com/showthread.php?t=1539539&quot;]Fotorelacja wstawiona automatycznie.[/url]</source>
+[url=&quot;https://fotorelacjonusz.github.io&quot;]Fotorelacja wstawiona automatycznie.[/url]</source>
         <translation>
 
-[url=&quot;http://sourceforge.net/projects/fotorelacjonusz/&quot;]Photo report posted automatically.[/url]</translation>
+[url=&quot;https://fotorelacjonusz.github.io&quot;]Photo report posted automatically.[/url]</translation>
     </message>
     <message>
         <location filename="src/widgets/mainwindow.ui" line="134"/>
