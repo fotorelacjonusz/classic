@@ -23,6 +23,14 @@ jobs:
           - target: macos
             system: macos-latest
 
+          - target: linux-64bit
+            system: ubuntu-latest
+            docker: true
+
+          - target: linux-32bit
+            system: ubuntu-latest
+            docker: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -87,9 +95,22 @@ jobs:
           make
         timeout-minutes: 15
 
+      - name: Build in Docker (Linux)
+        if: matrix.docker
+        run: |
+          docker build \
+            -t fotorelacjonusz \
+            -f deploy-utils/ubuntu.dockerfile \
+            .
+        timeout-minutes: 25
+
       - name: Verify build (MacOS)
         if: matrix.system == 'macos-latest'
         run: open ./Fotorelacjonusz.app --args -v
+
+      - name: Verify build (Linux)
+        if: matrix.system == 'ubuntu-latest'
+        run: docker run -t fotorelacjonusz ./fotorelacjonusz -v
 
       - name: Package (MacOS)
         if: matrix.system == 'macos-latest'
@@ -99,6 +120,18 @@ jobs:
           mv "${PACKAGE_NAME}.tar.gz" "${ARTIFACTS}"
         env:
           PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-macos"
+
+      - name: Package (Linux)
+        if: matrix.system == 'ubuntu-latest'
+        run: |
+          docker run -t --name dummy fotorelacjonusz deploy-utils/make-linux-packages.sh
+          docker cp dummy:/build/packages/. .
+          docker rm -fv dummy
+
+          mv *.deb "${ARTIFACTS}/${PACKAGE_NAME}.deb"
+          mv *.rpm "${ARTIFACTS}/${PACKAGE_NAME}.rpm"
+        env:
+          PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-${{ matrix.target }}"
 
       - name: List artifacts
         if: ${{ always() }}
