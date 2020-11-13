@@ -26,7 +26,7 @@ const QByteArray MainWindow::fileFormatIdentifier3A("FOTORELACJONUSZ.3A.");
 /**
  * @brief An informational comment which is written to draft files.
  */
-const QByteArray MainWindow::photoReportFileComment("<https://github.com/skalee/fotorelacjonusz>\n");
+const QByteArray MainWindow::photoReportFileComment("<https://fotorelacjonusz.github.io>\n");
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
