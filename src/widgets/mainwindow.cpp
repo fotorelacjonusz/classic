@@ -272,7 +272,8 @@ void MainWindow::on_action_about_triggered()
 		dateTime = QLocale(QLocale::C).toDateTime(dateString, "MMM dd yyyy HH:mm:ss").toString("dd.MM.yy, HH:mm");
 	}
 	QMessageBox::about(this, tr("O programie"), tr(
-						   "<h3>Fotorelacjonusz</h3><br/>Autor: Kamil Ostaszewski<br/>"
+						   "<h3>Fotorelacjonusz</h3><br/>"
+						   "Autorzy: Kamil Ostaszewski, Sebastian Skałacki<br/>"
 						   "Wersja: %2 (kompilacja %3)<br/>"
 						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
 						   "Aplikacja wykorzystuje:<br/>"
