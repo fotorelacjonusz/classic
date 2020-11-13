@@ -52,12 +52,14 @@ jobs:
           PASSWORD_RAW_KEY: ${{ secrets.PASSWORD_RAW_KEY }}
 
       - name: Install Qt
+        if: '! matrix.docker'
         uses: jurplel/install-qt-action@v2
         with:
           version: "5.12.10"
           target: desktop
 
       - name: Process translations
+        if: '! matrix.docker'
         run: lrelease fotorelacjonusz.pro
 
       - name: Compile icons (MacOS)
@@ -65,18 +67,21 @@ jobs:
         run: iconutil -c icns appicon.iconset
 
       - name: Build QtFTP
+        if: '! matrix.docker'
         run: |
           qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
           make
         working-directory: ./third-party/qtftp
 
       - name: Build QuaZIP
+        if: '! matrix.docker'
         run: |
           qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
           make
         working-directory: ./third-party/quazip
 
       - name: Build Fotorelacjonusz
+        if: '! matrix.docker'
         run: |
           qmake CONFIG+=release
           make
