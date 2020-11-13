@@ -26,7 +26,7 @@ const QByteArray MainWindow::fileFormatIdentifier3A("FOTORELACJONUSZ.3A.");
 /**
  * @brief An informational comment which is written to draft files.
  */
-const QByteArray MainWindow::photoReportFileComment("<https://github.com/skalee/fotorelacjonusz>\n");
+const QByteArray MainWindow::photoReportFileComment("<https://fotorelacjonusz.github.io>\n");
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -275,7 +275,7 @@ void MainWindow::on_action_about_triggered()
 						   "<h3>Fotorelacjonusz</h3><br/>"
 						   "Autorzy: Kamil Ostaszewski, Sebastian Skałacki<br/>"
 						   "Wersja: %2 (kompilacja %3)<br/>"
-						   "<http://sourceforge.net/projects/fotorelacjonusz><br/><br/>"
+						   "<https://fotorelacjonusz.github.io/><br/><br/>"
 						   "Aplikacja wykorzystuje:<br/>"
 						   "Qt (LGPL2)<br/>"
 						   "QtFtp (LGPL2)<br/>"
@@ -283,7 +283,7 @@ void MainWindow::on_action_about_triggered()
 						   "Oxygen theme (LGPL)<br/><br/>"
 						   "%1")
 					   .arg(QString(LICENSE).replace("\n", "<br/>")).arg(QApplication::applicationVersion()).arg(dateTime)
-					   .replace(QRegExp("<(http://[^>]+)>"), "<a href='\\1'>\\1</a>"));
+					   .replace(QRegExp("<(https://[^>]+)>"), "<a href='\\1'>\\1</a>"));
 }
 
 void MainWindow::on_action_Qt_information_triggered()

@@ -1,7 +1,7 @@
 = Fotorelacjonusz
 
 :lang: pl
-:gh-root: https://github.com/skalee/fotorelacjonusz
+:gh-root: https://github.com/fotorelacjonusz/classic
 :gh-docs: {gh-root}/tree/master/docs
 :gh-readme-pl: link:README.pl.adoc
 :gh-releases: {gh-root}/releases
