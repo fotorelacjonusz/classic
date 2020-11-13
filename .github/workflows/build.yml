@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build application
+    name: Build application (${{ matrix.target }})
     runs-on: ${{ matrix.system }}
     timeout-minutes: 45
 
@@ -19,8 +19,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        system:
-          - macos-latest
+        include:
+          - target: macos
+            system: macos-latest
+
+          - target: linux-64bit
+            system: ubuntu-latest
+            docker: true
+
+          - target: linux-32bit
+            system: ubuntu-latest
+            docker: true
 
     steps:
       - name: Checkout
@@ -39,12 +48,6 @@ jobs:
           mkdir -p "${GITHUB_WORKSPACE}/artifacts"
           echo "ARTIFACTS=${GITHUB_WORKSPACE}/artifacts" | tee -a $GITHUB_ENV
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          version: "5.12.10"
-          target: desktop
-
       - name: Write secrets
         run: |
           cp secrets.h.example secrets.h
@@ -56,7 +59,15 @@ jobs:
           IMGUR_CLIENT_SECRET: ${{ secrets.IMGUR_CLIENT_SECRET }}
           PASSWORD_RAW_KEY: ${{ secrets.PASSWORD_RAW_KEY }}
 
+      - name: Install Qt
+        if: '! matrix.docker'
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: "5.12.10"
+          target: desktop
+
       - name: Process translations
+        if: '! matrix.docker'
         run: lrelease fotorelacjonusz.pro
 
       - name: Compile icons (MacOS)
@@ -64,26 +75,42 @@ jobs:
         run: iconutil -c icns appicon.iconset
 
       - name: Build QtFTP
+        if: '! matrix.docker'
         run: |
           qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release
           make
         working-directory: ./third-party/qtftp
 
       - name: Build QuaZIP
+        if: '! matrix.docker'
         run: |
           qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
           make
         working-directory: ./third-party/quazip
 
       - name: Build Fotorelacjonusz
+        if: '! matrix.docker'
         run: |
           qmake CONFIG+=release
           make
         timeout-minutes: 15
 
+      - name: Build in Docker (Linux)
+        if: matrix.docker
+        run: |
+          docker build \
+            -t fotorelacjonusz \
+            -f deploy-utils/ubuntu.dockerfile \
+            .
+        timeout-minutes: 25
+
       - name: Verify build (MacOS)
         if: matrix.system == 'macos-latest'
         run: open ./Fotorelacjonusz.app --args -v
+
+      - name: Verify build (Linux)
+        if: matrix.system == 'ubuntu-latest'
+        run: docker run -t fotorelacjonusz ./fotorelacjonusz -v
 
       - name: Package (MacOS)
         if: matrix.system == 'macos-latest'
@@ -94,6 +121,18 @@ jobs:
         env:
           PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-macos"
 
+      - name: Package (Linux)
+        if: matrix.system == 'ubuntu-latest'
+        run: |
+          docker run -t --name dummy fotorelacjonusz deploy-utils/make-linux-packages.sh
+          docker cp dummy:/build/packages/. .
+          docker rm -fv dummy
+
+          mv *.deb "${ARTIFACTS}/${PACKAGE_NAME}.deb"
+          mv *.rpm "${ARTIFACTS}/${PACKAGE_NAME}.rpm"
+        env:
+          PACKAGE_NAME: "Fotorelacjonusz-${{ env.VERSION_NAME }}-${{ matrix.target }}"
+
       - name: List artifacts
         if: ${{ always() }}
         run: ls -lh
@@ -103,7 +142,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: artifacts-${{ matrix.system }}
+          name: artifacts-${{ matrix.target }}
           path: ${{ env.ARTIFACTS }}
 
       - name: Upload release assets
