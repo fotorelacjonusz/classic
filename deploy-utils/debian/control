@@ -5,7 +5,7 @@ Priority: optional
 Architecture: amd64
 Depends: libqt5core5a (>= 5.6.0), libqt5gui5 (>= 5.6.0), libqt5xmlpatterns5 (>= 5.6.0), libc6
 Maintainer: Sebastian Skalacki <skalee@gmail.com>
-Homepage: https://github.com/skalee/fotorelacjonusz
-Vcs-Git: https://github.com/skalee/fotorelacjonusz.git
+Homepage: https://fotorelacjonusz.github.io
+Vcs-Git: https://github.com/fotorelacjonusz/classic.git
 Description: Community application for posting photos to skyscrapercity.com forum.
  The typical thing of FPW (polish section on skyscrapercity.com) is posting extensive "photo reports" of road construction progress and other building sites. This application is made to facilitate process of preparation and posting photos on SSC. It does everything for you. Just toss your photos straight from a memory card into the application, click a few times and photos end up on the forum.
