@@ -6,7 +6,3 @@
 	path = third-party/qtftp
 	url = https://code.qt.io/qt/qtftp.git
 	ignore = untracked
-[submodule "third-party/qt_installer"]
-	path = third-party/qt_installer
-	url = https://github.com/skalee/non-interactive-qt-installer.git
-	ignore = untracked
