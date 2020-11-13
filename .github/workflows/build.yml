@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build application
+    name: Build application (${{ matrix.target }})
     runs-on: ${{ matrix.system }}
     timeout-minutes: 45
 
@@ -19,8 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        system:
-          - macos-latest
+        include:
+          - target: macos
+            system: macos-latest
 
     steps:
       - name: Checkout
@@ -103,7 +104,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: artifacts-${{ matrix.system }}
+          name: artifacts-${{ matrix.target }}
           path: ${{ env.ARTIFACTS }}
 
       - name: Upload release assets
