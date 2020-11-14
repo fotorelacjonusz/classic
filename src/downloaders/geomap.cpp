@@ -5,6 +5,7 @@
 #include <QSet>
 #include <QPolygonF>
 #include <QPainter>
+#include <QPainterPath>
 #include <QLabel>
 #include <QGraphicsBlurEffect>
 #include <QVector2D>

@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QPainter>
+#include <QPainterPath>
 #include <QApplication>
 #include <QtAlgorithms>
 #include <QVector2D>
