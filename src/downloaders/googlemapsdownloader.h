@@ -1,5 +1,4 @@
-#ifndef GOOGLEMAPSDOWNLOADER_H
-#define GOOGLEMAPSDOWNLOADER_H
+#pragma once
 
 #include <QObject>
 #include <QPixmap>
@@ -19,5 +18,3 @@ public:
 protected:
 	QHash<QUrl, GeoMap *> maps;
 };
-
-#endif // GOOGLEMAPSDOWNLOADER_H

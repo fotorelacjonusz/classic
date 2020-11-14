@@ -1,5 +1,4 @@
-#ifndef NETWORKTRANSACTION_H
-#define NETWORKTRANSACTION_H
+#pragma once
 
 #include <QString>
 #include <QObject>
@@ -48,5 +47,3 @@ protected:
 
 	QEventLoop loop;
 };
-
-#endif // NETWORKTRANSACTION_H

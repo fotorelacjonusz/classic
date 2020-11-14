@@ -1,5 +1,4 @@
-#ifndef DISPLAYSLIDER_H
-#define DISPLAYSLIDER_H
+#pragma once
 
 #include "settingsmanager.h"
 #include <QSlider>
@@ -24,5 +23,3 @@ private:
 
 template<>QVariant SettingsManager::Input<DisplaySlider>::toVariant() const;
 template<>void SettingsManager::Input<DisplaySlider>::fromVariant(QVariant variant);
-
-#endif // DISPLAYSLIDER_H

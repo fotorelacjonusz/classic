@@ -1,5 +1,4 @@
-#ifndef NETWORKTRANSACTIONMULTIPART_H
-#define NETWORKTRANSACTIONMULTIPART_H
+#pragma once
 
 #include "networktransaction.h"
 
@@ -20,5 +19,3 @@ public:
 protected:
 	QHttpMultiPart multiPart;
 };
-
-#endif // NETWORKTRANSACTIONMULTIPART_H

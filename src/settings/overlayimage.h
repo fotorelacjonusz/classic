@@ -1,5 +1,4 @@
-#ifndef OVERLAYIMAGE_H
-#define OVERLAYIMAGE_H
+#pragma once
 
 #include "downloaders/abstractmapdownloader.h"
 #include "exception.h"
@@ -82,5 +81,3 @@ private:
 	// pixels per meter
 	qreal ppm;
 };
-
-#endif // OVERLAYIMAGE_H

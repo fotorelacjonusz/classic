@@ -1,5 +1,4 @@
-#ifndef EXIFMARKER_H
-#define EXIFMARKER_H
+#pragma once
 
 #include <QDataStream>
 #include "exception.h"
@@ -32,6 +31,3 @@ private:
 	quint8 ff, number;
 	quint16 size;
 };
-
-
-#endif // EXIFMARKER_H

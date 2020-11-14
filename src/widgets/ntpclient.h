@@ -1,5 +1,4 @@
-#ifndef NTPCLIENT_H
-#define NTPCLIENT_H
+#pragma once
 
 #include <QObject>
 #include <QHostAddress>
@@ -32,5 +31,3 @@ private:
 	QTime requestReplyTime;
 	QTimer retryTimer;
 };
-
-#endif // NTPCLIENT_H

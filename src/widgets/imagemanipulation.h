@@ -1,5 +1,4 @@
-#ifndef IMAGEMANIPULATION_H
-#define IMAGEMANIPULATION_H
+#pragma once
 
 #include <QImage>
 #include "math.h"
@@ -105,5 +104,3 @@ private:
 		}
 	}
 };
-
-#endif // IMAGEMANIPULATION_H

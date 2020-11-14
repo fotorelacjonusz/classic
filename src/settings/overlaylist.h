@@ -1,5 +1,4 @@
-#ifndef OVERLAYLIST_H
-#define OVERLAYLIST_H
+#pragma once
 
 #include "downloaders/abstractmapdownloader.h"
 #include <QListWidget>
@@ -32,5 +31,3 @@ protected:
 	QList<Overlay *> overlays;
 	QDir overlaysDir;
 };
-
-#endif // OVERLAYLIST_H

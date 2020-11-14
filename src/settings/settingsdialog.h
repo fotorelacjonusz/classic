@@ -1,5 +1,4 @@
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
+#pragma once
 
 #include <QDialog>
 #include <QSettings>
@@ -129,5 +128,3 @@ private:
 	QNetworkProxy proxy;
 	OSMLayerDialog osmDialog;
 };
-
-#endif // SETTINGSDIALOG_H

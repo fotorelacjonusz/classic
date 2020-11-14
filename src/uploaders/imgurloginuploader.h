@@ -1,5 +1,4 @@
-#ifndef IMGURLOGINUPLOADER_H
-#define IMGURLOGINUPLOADER_H
+#pragma once
 
 /* TODO Re-enable me!
  *
@@ -51,5 +50,4 @@ protected:
 
 };
 
-#endif // IMGURLOGINUPLOADER_H
 #endif // 0

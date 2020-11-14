@@ -1,5 +1,4 @@
-#ifndef ISLOGINUPLOADER_H
-#define ISLOGINUPLOADER_H
+#pragma once
 
 /* TODO Fix and re-enable me!
  *
@@ -30,4 +29,3 @@ private:
 };
 
 #endif // 0
-#endif // ISLOGINUPLOADER_H

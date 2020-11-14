@@ -1,5 +1,4 @@
-#ifndef TILESDOWNLOADER_H
-#define TILESDOWNLOADER_H
+#pragma once
 
 #include "abstractmapdownloader.h"
 
@@ -40,5 +39,3 @@ private:
 	static const int tileSize;
 	static const QStringList varNames;
 };
-
-#endif // TILESDOWNLOADER_H

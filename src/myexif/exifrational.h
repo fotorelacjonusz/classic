@@ -1,5 +1,4 @@
-#ifndef EXIFRATIONAL_H
-#define EXIFRATIONAL_H
+#pragma once
 
 #include <QPair>
 
@@ -18,6 +17,3 @@ public:
 	ExifSRational(first_type f, second_type s);
 	qreal toReal() const;
 };
-
-
-#endif // EXIFRATIONAL_H

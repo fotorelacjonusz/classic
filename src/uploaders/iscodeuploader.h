@@ -1,5 +1,4 @@
-#ifndef ISCODEUPLOADER_H
-#define ISCODEUPLOADER_H
+#pragma once
 
 /* TODO Fix and re-enable me!
  *
@@ -30,4 +29,3 @@ private:
 };
 
 #endif // 0
-#endif // ISCODEUPLOADER_H

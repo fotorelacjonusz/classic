@@ -1,5 +1,4 @@
-#ifndef EXCEPTION_H
-#define EXCEPTION_H
+#pragma once
 
 #include <QString>
 #include <QCoreApplication>
@@ -30,6 +29,3 @@ static inline bool throw_func(const char *file, int line, const char *func, QStr
 #define OR_THROW(x)	or throw_func(__FILE__, __LINE__, Q_FUNC_INFO, x);
 
 #define SEEK_ERROR(x) (QString("Wrong offset: %1").arg(x))
-
-
-#endif // EXCEPTION_H

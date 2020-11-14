@@ -1,5 +1,4 @@
-#ifndef COLORMANIPULATIONTOOLBAR_H
-#define COLORMANIPULATIONTOOLBAR_H
+#pragma once
 
 #include <QToolBar>
 
@@ -25,5 +24,3 @@ private:
 	QSlider *contrastSlider, *brightnessSlider, *gammaSlider;
 
 };
-
-#endif // COLORMANIPULATIONTOOLBAR_H

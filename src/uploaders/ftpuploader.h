@@ -1,5 +1,4 @@
-#ifndef FTPUPLOADER_H
-#define FTPUPLOADER_H
+#pragma once
 
 #include "abstractuploader.h"
 #include <QtFtp/QFtp>
@@ -30,5 +29,3 @@ private:
 	QEventLoop loop;
 	QString dirName;
 };
-
-#endif // FTPUPLOADER_H

@@ -1,5 +1,4 @@
-#ifndef SELECTABLEWIDGET_H
-#define SELECTABLEWIDGET_H
+#pragma once
 
 #include <QWidget>
 #include <QSet>
@@ -164,6 +163,3 @@ private:
 
 template <class Type>
 SelectableWidget<Type> *SelectableWidget<Type>::selectedWidget = nullptr;
-
-
-#endif // SELECTABLEWIDGET_H

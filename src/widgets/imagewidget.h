@@ -1,5 +1,4 @@
-#ifndef IMAGEWIDGET_H
-#define IMAGEWIDGET_H
+#pragma once
 
 #include <QWidget>
 #include <QBuffer>
@@ -83,5 +82,3 @@ private:
 	QImage gpsMap;
 	GpsData *gpsData;
 };
-
-#endif // IMAGEWIDGET_H

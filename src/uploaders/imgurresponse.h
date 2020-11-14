@@ -1,5 +1,4 @@
-#ifndef JSONOBJECT_H
-#define JSONOBJECT_H
+#pragma once
 
 #include <QString>
 #include <QMap>
@@ -24,5 +23,3 @@ public:
 private:
 	void parseResponse(const NetworkTransaction &tr);
 };
-
-#endif // JSONOBJECT_H
