@@ -1,5 +1,4 @@
-#ifndef ABSTRACTMAPDOWNLOADER_H
-#define ABSTRACTMAPDOWNLOADER_H
+#pragma once
 
 #include <QObject>
 #include <QPointF>
@@ -59,5 +58,3 @@ QRect centered(const QPoint &center, const int size);
 
 QRect resized(const QRect &rect, const qreal factor);
 QRect resized(const QRect &rect, QSize size);
-
-#endif // ABSTRACTMAPDOWNLOADER_H

@@ -1,5 +1,4 @@
-#ifndef THREADEDVALIDATOR_H
-#define THREADEDVALIDATOR_H
+#pragma once
 
 #include <QThread>
 #include <QUrl>
@@ -35,5 +34,3 @@ private:
 
 	friend class MessageHandler;
 };
-
-#endif // THREADEDVALIDATOR_H

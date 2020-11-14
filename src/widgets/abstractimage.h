@@ -1,5 +1,4 @@
-#ifndef ABSTRACTIMAGE_H
-#define ABSTRACTIMAGE_H
+#pragma once
 
 #include <QString>
 #include <QCoreApplication>
@@ -29,5 +28,3 @@ public:
 private:
 	QString m_url;
 };
-
-#endif // ABSTRACTIMAGE_H

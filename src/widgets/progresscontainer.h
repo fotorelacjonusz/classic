@@ -1,5 +1,4 @@
-#ifndef PROGRESSCONTAINER_H
-#define PROGRESSCONTAINER_H
+#pragma once
 
 #include <QList>
 #include <QObject>
@@ -164,5 +163,3 @@ public:
 };
 
 //#include "progresscontainer.cpp"
-
-#endif // PROGRESSCONTAINER_H

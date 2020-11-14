@@ -1,5 +1,4 @@
-#ifndef LINEEDIT_H
-#define LINEEDIT_H
+#pragma once
 
 #include <QLineEdit>
 #include <QPlainTextEdit>
@@ -31,5 +30,3 @@ signals:
 	void focusIn();
 	void focusOut();
 };
-
-#endif // LINEEDIT_H

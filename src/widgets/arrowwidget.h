@@ -1,5 +1,4 @@
-#ifndef ARROWWIDGET_H
-#define ARROWWIDGET_H
+#pragma once
 
 #include <QWidget>
 #include "selectablewidget.h"
@@ -39,5 +38,3 @@ private:
 	friend QDataStream &operator << (QDataStream &stream, const ImageLabel &imageLabel);
 	friend class ImageLabel;
 };
-
-#endif // ARROWWIDGET_H

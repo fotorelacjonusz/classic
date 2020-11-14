@@ -1,5 +1,4 @@
-#ifndef SETTINGSMANAGER_H
-#define SETTINGSMANAGER_H
+#pragma once
 
 #include <QString>
 #include <QVariant>
@@ -255,7 +254,3 @@ template<>void     SettingsManager::Input<QMainWindow>::fromVariant(QVariant var
 template<>QVariant SettingsManager::Field<>::toVariant() const;
 template<>void     SettingsManager::Field<>::fromVariant(QVariant variant);
 */
-
-
-
-#endif // SETTINGSMANAGER_H

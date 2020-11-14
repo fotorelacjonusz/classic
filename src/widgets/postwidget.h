@@ -1,5 +1,4 @@
-#ifndef POSTWIDGET_H
-#define POSTWIDGET_H
+#pragma once
 
 #include <QWidget>
 
@@ -38,5 +37,3 @@ private:
 	QString header;
 	QString footer;
 };
-
-#endif // POSTWIDGET_H

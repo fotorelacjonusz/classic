@@ -1,5 +1,4 @@
-#ifndef THROTTLEDNETWORKMANAGER_H
-#define THROTTLEDNETWORKMANAGER_H
+#pragma once
 
 #include <QQueue>
 #include <QNetworkRequest>
@@ -31,5 +30,3 @@ private:
 	int running;
 	QQueue<QNetworkRequest> requests;
 };
-
-#endif // THROTTLEDNETWORKMANAGER_H

@@ -1,5 +1,4 @@
-#ifndef UPLOADERFACTORY_H
-#define UPLOADERFACTORY_H
+#pragma once
 
 #include <QString>
 #include <QList>
@@ -30,5 +29,3 @@ public:
 	QList <AbstractWrapper *> uploaders;
 
 };
-
-#endif // UPLOADERFACTORY_H

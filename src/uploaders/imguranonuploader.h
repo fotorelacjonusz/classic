@@ -1,5 +1,4 @@
-#ifndef IMGURANONYUPLOADER_H
-#define IMGURANONYUPLOADER_H
+#pragma once
 
 #include "abstractuploader.h"
 #include <QWidget>
@@ -39,5 +38,3 @@ protected:
 	Ui::ImgurAnonUploader *ui;
 
 };
-
-#endif // IMGURANONYUPLOADER_H

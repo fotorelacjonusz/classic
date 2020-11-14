@@ -1,5 +1,4 @@
-#ifndef OSMLAYERDIALOG_H
-#define OSMLAYERDIALOG_H
+#pragma once
 
 #include <QDialog>
 #include <QMetaType>
@@ -47,5 +46,3 @@ private:
 
 	QList<OSMLayer> layers;
 };
-
-#endif // OSMLAYERDIALOG_H

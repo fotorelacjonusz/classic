@@ -1,5 +1,4 @@
-#ifndef MESSAGEHANDLER_H
-#define MESSAGEHANDLER_H
+#pragma once
 
 #include <QtGlobal>
 #include <QString>
@@ -18,5 +17,3 @@ private:
 };
 
 void messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg);
-
-#endif // MESSAGEHANDLER_H

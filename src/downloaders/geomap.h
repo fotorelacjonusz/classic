@@ -1,5 +1,4 @@
-#ifndef GEOMAP_H
-#define GEOMAP_H
+#pragma once
 
 #include <QObject>
 #include <QPointF>
@@ -51,5 +50,3 @@ private:
 	QRect mapBox;
 	static QHash<int, QImage> maskCache;
 };
-
-#endif // GEOMAP_H

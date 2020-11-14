@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 #include <QSettings>
@@ -94,5 +93,3 @@ private:
 	RecentThreadsMenu recentThreads;
 	GpxDialog gpxDialog;
 };
-
-#endif // MAINWINDOW_H

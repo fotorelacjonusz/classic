@@ -1,5 +1,4 @@
-#ifndef REPLYDIALOG_H
-#define REPLYDIALOG_H
+#pragma once
 
 #include <QDialog>
 #include <QTimer>
@@ -60,5 +59,3 @@ private:
 
 	static const QString likePostId;
 };
-
-#endif // REPLYDIALOG_H

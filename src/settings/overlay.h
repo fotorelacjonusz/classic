@@ -1,5 +1,4 @@
-#ifndef OVERLAY_H
-#define OVERLAY_H
+#pragma once
 
 #include "overlayimage.h"
 #include "exception.h"
@@ -30,5 +29,3 @@ private:
 	QString name, description;
 	QList<OverlayImage *> images;
 };
-
-#endif // OVERLAY_H

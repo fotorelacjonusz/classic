@@ -1,5 +1,4 @@
-#ifndef NTPPACKET_H
-#define NTPPACKET_H
+#pragma once
 
 #include <QtGlobal>
 #include <QDateTime>
@@ -44,5 +43,3 @@ struct NtpHeader
 };
 
 #pragma pack(pop)
-
-#endif // NTPPACKET_H

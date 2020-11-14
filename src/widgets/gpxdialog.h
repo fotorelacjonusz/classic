@@ -1,5 +1,4 @@
-#ifndef GPXDIALOG_H
-#define GPXDIALOG_H
+#pragma once
 
 #include "ntpclient.h"
 
@@ -49,5 +48,3 @@ private:
 	NtpClient ntpClient;
 //	ThreadedValidator *validator;
 };
-
-#endif // GPXDIALOG_H

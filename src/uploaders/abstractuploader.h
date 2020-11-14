@@ -1,5 +1,4 @@
-#ifndef ABSTRACTUPLOADER_H
-#define ABSTRACTUPLOADER_H
+#pragma once
 
 #include "settings/settingsmanager.h"
 #include <QWidget>
@@ -57,6 +56,3 @@ protected:
 	QString error;
 	QString tempPassword;
 };
-
-
-#endif // ABSTRACTUPLOADER_H

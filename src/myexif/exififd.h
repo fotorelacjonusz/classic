@@ -1,5 +1,4 @@
-#ifndef EXIFIFD_H
-#define EXIFIFD_H
+#pragma once
 
 #include "exifvalue.h"
 #include "exception.h"
@@ -40,5 +39,3 @@ private:
 
 	static const QList<EmbedOffset> allPointers;
 };
-
-#endif // EXIFIFD_H

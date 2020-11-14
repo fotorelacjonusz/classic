@@ -1,5 +1,4 @@
-#ifndef NETWORKCOOKIEJAR_H
-#define NETWORKCOOKIEJAR_H
+#pragma once
 
 #include <QNetworkCookieJar>
 #include <QNetworkCookie>
@@ -18,5 +17,3 @@ private:
 	QString key;
 	QSettings &settings;
 };
-
-#endif // NETWORKCOOKIEJAR_H

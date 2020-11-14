@@ -1,5 +1,4 @@
-#ifndef QUESTIONBOX_H
-#define QUESTIONBOX_H
+#pragma once
 
 #include <QMessageBox>
 
@@ -26,5 +25,3 @@ private:
 
 	static QMap<QString, bool> answers;
 };
-
-#endif // QUESTIONBOX_H

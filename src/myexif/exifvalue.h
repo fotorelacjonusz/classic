@@ -1,5 +1,4 @@
-#ifndef EXIFVALUE_H
-#define EXIFVALUE_H
+#pragma once
 
 #include "exifrational.h"
 #include "exception.h"
@@ -102,5 +101,3 @@ private:
 
 	QSharedPointer<ExifValueBase> value;
 };
-
-#endif // EXIFVALUE_H

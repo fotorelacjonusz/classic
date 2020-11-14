@@ -1,5 +1,4 @@
-#ifndef NETWORKTRANSACTIONQUERY_H
-#define NETWORKTRANSACTIONQUERY_H
+#pragma once
 
 #include "networktransaction.h"
 
@@ -18,5 +17,3 @@ public:
 protected:
 	QUrl queryData;
 };
-
-#endif // NETWORKTRANSACTIONQUERY_H

@@ -1,5 +1,4 @@
-#ifndef IMAGELABEL_H
-#define IMAGELABEL_H
+#pragma once
 
 #include "abstractimage.h"
 #include <QLabel>
@@ -38,5 +37,3 @@ private:
 
 QDataStream &operator >> (QDataStream &stream, ImageLabel &imageLabel);
 QDataStream &operator << (QDataStream &stream, const ImageLabel &imageLabel);
-
-#endif // IMAGELABEL_H

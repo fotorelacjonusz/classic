@@ -1,5 +1,4 @@
-#ifndef ISANONYUPLOADER_H
-#define ISANONYUPLOADER_H
+#pragma once
 
 /* TODO Fix and re-enable me!
  *
@@ -37,4 +36,3 @@ private:
 };
 
 #endif // 0
-#endif // ISANONYUPLOADER_H

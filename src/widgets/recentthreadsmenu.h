@@ -1,5 +1,4 @@
-#ifndef RECENTTHREADSMENU_H
-#define RECENTTHREADSMENU_H
+#pragma once
 
 #include <QMenu>
 class QSettings;
@@ -31,5 +30,3 @@ protected:
 	QActionGroup *actionGroup;
 	QAction *firstAction;
 };
-
-#endif // RECENTTHREADSMENU_H

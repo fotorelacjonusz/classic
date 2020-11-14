@@ -1,5 +1,4 @@
-#ifndef EXIFIMAGEHEADER_H
-#define EXIFIMAGEHEADER_H
+#pragma once
 
 #include "exifvalue.h"
 #include "exception.h"
@@ -212,5 +211,3 @@ private:
 	QDataStream::ByteOrder byteOrder;
 	static const QByteArray exifHeader;
 };
-
-#endif // EXIFIMAGEHEADER_H

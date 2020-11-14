@@ -1,5 +1,4 @@
-#ifndef GPSDATA_H
-#define GPSDATA_H
+#pragma once
 
 #include <QObject>
 #include <QImage>
@@ -49,5 +48,3 @@ private:
 	AbstractMapDownloader *googleDownloader, *tilesDownloader;
 	ExifImageHeader *exifHeader;
 };
-
-#endif // GPSDATA_H

@@ -1,5 +1,4 @@
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#pragma once
 
 #include <QApplication>
 #include <QVersionNumber>
@@ -23,5 +22,3 @@ protected:
 	bool notify(QObject *object, QEvent *event);
 
 };
-
-#endif // APPLICATION_H
