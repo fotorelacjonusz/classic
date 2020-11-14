@@ -47,15 +47,13 @@ LIBS += \
 	-L$$absolute_path("third-party/quazip/quazip", $$_PRO_FILE_PWD_)
 
 win32 {
-	INCLUDEPATH += third-party/zlib
-	LIBS += -lquazip1
-	LIBS += -lQt5Ftp
+	# Strangely, QuaZIP for Windows is built in a different location.
+	LIBS += -L$$absolute_path("third-party/quazip/quazip/release", $$_PRO_FILE_PWD_)
+
 }
 
-unix {
-	LIBS += -lquazip
-	LIBS += -lQt5Ftp
-}
+LIBS += -lquazip
+LIBS += -lQt5Ftp
 
 TRANSLATIONS = fotorelacjonusz_en.ts
 
