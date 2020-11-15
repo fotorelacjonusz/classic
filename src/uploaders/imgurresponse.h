@@ -2,6 +2,7 @@
 
 #include <QString>
 #include <QMap>
+#include <QVariant>
 
 class NetworkTransaction;
 
@@ -31,8 +32,7 @@ public:
 	void debug() const;
 
 	/// @brief Key-value pairs found in "data" object of server's response.
-	/// @todo Consider making it <QString, QVariant> to avoid type conversions.
-	QMap<QString, QString> data;
+	QMap<QString, QVariant> data;
 	bool success;
 	int status;
 	QString error;
