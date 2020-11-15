@@ -8,11 +8,6 @@
 #include <QBuffer>
 #include <QtMath>
 
-#define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
-
-const QString ReplyDialog::likePostId = "94354890"; // fotorel
-//const QString ReplyDialog::likePostId = "102485895"; // b
-
 ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, const QString &header, const QString &footer, QWidget *parent):
 	QDialog(parent),
 	ui(new Ui::ReplyDialog),
