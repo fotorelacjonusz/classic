@@ -7,7 +7,7 @@
 TEMPLATE = app
 TARGET = fotorelacjonusz
 macx:TARGET = Fotorelacjonusz
-VERSION = 3.0.0
+VERSION = 3.1.0
 
 # Used in CFBundleIdentifier in Info.plist on Mac
 QMAKE_TARGET_BUNDLE_PREFIX = org.skalee.fotorelacjonusz
