@@ -2,20 +2,11 @@
 #include "ui_replydialog.h"
 #include "settings/settingsdialog.h"
 #include "uploaders/abstractuploader.h"
-#include "networkcookiejar.h"
 
 #include <QDebug>
 #include <QMessageBox>
-#include <QNetworkCookieJar>
-#include <QNetworkDiskCache>
-#include <QDesktopServices>
 #include <QBuffer>
 #include <QtMath>
-
-#define ALL_IMAGES_PROGRESS_MULTIPLIER 10000
-
-const QString ReplyDialog::likePostId = "94354890"; // fotorel
-//const QString ReplyDialog::likePostId = "102485895"; // b
 
 ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, const QString &header, const QString &footer, QWidget *parent):
 	QDialog(parent),
@@ -55,9 +46,6 @@ ReplyDialog::ReplyDialog(QSettings &settings, QList<AbstractImage *> imageList, 
 
 	timer.setInterval(50);
 	connect(&timer, SIGNAL(timeout()), this, SLOT(tick()));
-
-	QNetworkDiskCache *cache = new QNetworkDiskCache();
-	cache->setCacheDirectory(QDesktopServices::storageLocation(QDesktopServices::CacheLocation));
 }
 
 ReplyDialog::~ReplyDialog()

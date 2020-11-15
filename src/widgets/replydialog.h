@@ -51,11 +51,8 @@ private:
 	typedef ProgressContainer<PostWidget>::Item PostItem;
 
 	QString m_threadId, m_threadTitle;
-	QString userName;
 
 	QTimer timer;
 	PostItem *nextPost;
 	QTime time;
-
-	static const QString likePostId;
 };
