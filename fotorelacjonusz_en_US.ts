@@ -159,22 +159,22 @@ Wrong url will make all links corrupted.</translation>
         <translation>GPX file</translation>
     </message>
     <message>
-        <location filename="src/widgets/gpxdialog.ui" line="43"/>
+        <location filename="src/widgets/gpxdialog.ui" line="52"/>
         <source>Otwórz</source>
         <translation>Open</translation>
     </message>
     <message>
-        <location filename="src/widgets/gpxdialog.ui" line="57"/>
+        <location filename="src/widgets/gpxdialog.ui" line="66"/>
         <source>Aktualny czas w aparacie</source>
         <translation>Current camera time</translation>
     </message>
     <message>
-        <location filename="src/widgets/gpxdialog.ui" line="67"/>
+        <location filename="src/widgets/gpxdialog.ui" line="76"/>
         <source>Aktualny czas UTC</source>
         <translation>Current UTC time</translation>
     </message>
     <message>
-        <location filename="src/widgets/gpxdialog.ui" line="81"/>
+        <location filename="src/widgets/gpxdialog.ui" line="90"/>
         <source>Zaktualizuj pliki</source>
         <translation>Update files</translation>
     </message>
@@ -346,7 +346,7 @@ Wrong url will make all links corrupted.</translation>
 <context>
     <name>IsAnonUploader</name>
     <message>
-        <location filename="src/uploaders/isanonuploader.ui" line="16"/>
+        <location filename="src/uploaders/isanonuploader.ui" line="14"/>
         <source>Form</source>
         <translation>Form</translation>
     </message>
@@ -407,17 +407,17 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="67"/>
+        <location filename="src/widgets/mainwindow.ui" line="85"/>
         <source>Nagłówek - do pierwszego posta</source>
         <translation>Header - first post</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="105"/>
+        <location filename="src/widgets/mainwindow.ui" line="132"/>
         <source>Stopka - do ostatniego posta</source>
         <translation>Footer - last post</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="111"/>
+        <location filename="src/widgets/mainwindow.ui" line="138"/>
         <source>
 
 [url=&quot;https://fotorelacjonusz.github.io&quot;]Fotorelacja wstawiona automatycznie.[/url]</source>
@@ -426,274 +426,272 @@ If you don&apos;t want your password stored leave this field empty, application 
 [url=&quot;https://fotorelacjonusz.github.io&quot;]Photo report posted automatically.[/url]</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="134"/>
+        <location filename="src/widgets/mainwindow.ui" line="161"/>
         <source>&amp;Plik</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="146"/>
+        <location filename="src/widgets/mainwindow.ui" line="173"/>
         <source>Pomo&amp;c</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="153"/>
+        <location filename="src/widgets/mainwindow.ui" line="180"/>
         <source>&amp;Fotorelacja</source>
         <translation>&amp;Photo report</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="166"/>
+        <location filename="src/widgets/mainwindow.ui" line="193"/>
         <source>Edycja zdjęcia</source>
         <translation>Image edition</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="188"/>
+        <location filename="src/widgets/mainwindow.ui" line="215"/>
         <source>Edycja strzałki</source>
         <translation>Arrow edition</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="202"/>
+        <location filename="src/widgets/mainwindow.ui" line="229"/>
         <source>Edycja kolorów zdjęcia</source>
         <translation>Image colors edition</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="217"/>
+        <location filename="src/widgets/mainwindow.ui" line="244"/>
         <source>&amp;Dodaj zdjęcia</source>
         <translation>&amp;Add photo</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="226"/>
+        <location filename="src/widgets/mainwindow.ui" line="253"/>
         <source>Przenieś na &amp;górę</source>
         <translation>Move &amp;top</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="229"/>
+        <location filename="src/widgets/mainwindow.ui" line="256"/>
         <source>Przenieś na górę</source>
         <translation>Move top</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="238"/>
+        <location filename="src/widgets/mainwindow.ui" line="265"/>
         <source>Przenieś &amp;wyżej</source>
         <translation>Move &amp;up</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="241"/>
+        <location filename="src/widgets/mainwindow.ui" line="268"/>
         <source>Przenieś wyżej</source>
         <translation>Move up</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="250"/>
+        <location filename="src/widgets/mainwindow.ui" line="277"/>
         <source>Przenieś &amp;niżej</source>
         <translation>Move &amp;down</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="253"/>
+        <location filename="src/widgets/mainwindow.ui" line="280"/>
         <source>Przenieś niżej</source>
         <translation>Move down</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="262"/>
+        <location filename="src/widgets/mainwindow.ui" line="289"/>
         <source>Przenieś na &amp;spód</source>
         <translation>Move &amp;bottom</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="265"/>
+        <location filename="src/widgets/mainwindow.ui" line="292"/>
         <source>Przenieś na spód</source>
         <translation>Move bottom</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="274"/>
+        <location filename="src/widgets/mainwindow.ui" line="301"/>
         <source>Obróć w &amp;lewo</source>
         <translation>Rotate &amp;left</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="277"/>
+        <location filename="src/widgets/mainwindow.ui" line="304"/>
         <source>Obróć w lewo</source>
         <translation>Rotate left</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="286"/>
+        <location filename="src/widgets/mainwindow.ui" line="313"/>
         <source>Obróć w &amp;prawo</source>
         <translation>Rotate &amp;right</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="289"/>
+        <location filename="src/widgets/mainwindow.ui" line="316"/>
         <source>Obróć w prawo</source>
         <translation>Rotate right</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="298"/>
+        <location filename="src/widgets/mainwindow.ui" line="325"/>
         <source>&amp;Usuń z fotorelacji</source>
         <translation>&amp;Remove from photo report</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="301"/>
+        <location filename="src/widgets/mainwindow.ui" line="328"/>
         <source>Usuń z fotorelacji</source>
         <translation>Delete photo</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="304"/>
-        <location filename="src/widgets/mainwindow.ui" line="388"/>
+        <location filename="src/widgets/mainwindow.ui" line="331"/>
+        <location filename="src/widgets/mainwindow.ui" line="427"/>
         <source>Alt+Del</source>
         <translation>Alt+Del</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="397"/>
+        <location filename="src/widgets/mainwindow.ui" line="436"/>
         <source>&amp;Odwróć kolory</source>
         <translation>&amp;Inverse colors</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="406"/>
+        <location filename="src/widgets/mainwindow.ui" line="445"/>
         <source>Wybierz &amp;kolor</source>
         <translation>Choose &amp;color</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="415"/>
+        <location filename="src/widgets/mainwindow.ui" line="454"/>
         <source>Importuj ślad &amp;GPX</source>
         <translation>Import &amp;GPX track</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="424"/>
+        <location filename="src/widgets/mainwindow.ui" line="463"/>
         <source>Usuń &amp;położenie</source>
         <translation>Remove &amp;position</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="433"/>
-        <location filename="src/widgets/mainwindow.ui" line="436"/>
+        <location filename="src/widgets/mainwindow.ui" line="472"/>
+        <location filename="src/widgets/mainwindow.ui" line="475"/>
         <source>Cofnij zmiany koloru</source>
         <translation>Undo color changes</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="445"/>
+        <location filename="src/widgets/mainwindow.ui" line="484"/>
         <source>Usu&amp;ń zdjęcia</source>
         <translation>&amp;Remove photos</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="313"/>
+        <location filename="src/widgets/mainwindow.ui" line="340"/>
         <source>&amp;Wyślij na SSC</source>
         <translation>&amp;Post on SSC</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="322"/>
+        <location filename="src/widgets/mainwindow.ui" line="349"/>
         <source>&amp;Ustawienia</source>
         <translation>Se&amp;ttings</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="331"/>
+        <location filename="src/widgets/mainwindow.ui" line="361"/>
         <source>&amp;Zamknij</source>
         <translation>&amp;Close</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="334"/>
+        <location filename="src/widgets/mainwindow.ui" line="364"/>
         <source>Zamknij</source>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="343"/>
+        <location filename="src/widgets/mainwindow.ui" line="376"/>
         <source>&amp;O programie</source>
         <translation>&amp;About</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="352"/>
+        <location filename="src/widgets/mainwindow.ui" line="388"/>
         <source>Informacje o &amp;Qt</source>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="355"/>
+        <location filename="src/widgets/mainwindow.ui" line="391"/>
         <source>Informacje o Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="364"/>
+        <location filename="src/widgets/mainwindow.ui" line="403"/>
         <source>&amp;Otwórz</source>
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="373"/>
+        <location filename="src/widgets/mainwindow.ui" line="412"/>
         <source>Zapi&amp;sz</source>
         <translation>&amp;Save</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="382"/>
+        <location filename="src/widgets/mainwindow.ui" line="421"/>
         <source>&amp;Usuń strzałkę</source>
         <translation>&amp;Delete arrow</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.ui" line="385"/>
+        <location filename="src/widgets/mainwindow.ui" line="424"/>
         <source>Usuń strzałkę</source>
         <translation>Delete arrow</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="70"/>
+        <location filename="src/widgets/mainwindow.cpp" line="157"/>
         <source>Otwórz fotorelację</source>
         <translation>Open photo report</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="88"/>
-        <location filename="src/widgets/mainwindow.cpp" line="94"/>
-        <location filename="src/widgets/mainwindow.cpp" line="122"/>
-        <location filename="src/widgets/mainwindow.cpp" line="198"/>
+        <location filename="src/widgets/mainwindow.cpp" line="109"/>
+        <location filename="src/widgets/mainwindow.cpp" line="172"/>
+        <location filename="src/widgets/mainwindow.cpp" line="239"/>
         <source>Błąd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="94"/>
-        <source>Nie można otworzyć. Tę fotorelację zapisano inną wersją programu.</source>
-        <translation>Can not open. This photo report has been saved using application in different version.</translation>
-    </message>
-    <message>
-        <location filename="src/widgets/mainwindow.cpp" line="88"/>
         <source>To nie jest plik fotorelacji!</source>
-        <translation>This is not a photo report file!</translation>
+        <translation type="vanished">This is not a photo report file!</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="122"/>
-        <location filename="src/widgets/mainwindow.cpp" line="198"/>
+        <location filename="src/widgets/mainwindow.cpp" line="172"/>
+        <location filename="src/widgets/mainwindow.cpp" line="239"/>
         <source>Fotorelacja nie zawiera żadnego zdjęcia.</source>
         <translation>Photo report contains no photo.</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="125"/>
+        <location filename="src/widgets/mainwindow.cpp" line="175"/>
         <source>Zapisz fotorelację</source>
         <translation>Save photo report</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="213"/>
+        <location filename="src/widgets/mainwindow.cpp" line="254"/>
         <source>Jeszcze raz</source>
         <translation>Once more</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="213"/>
+        <location filename="src/widgets/mainwindow.cpp" line="254"/>
         <source>Czy spróbować dokończyć wysyłanie fotorelacji?</source>
         <translation>Try finishing photo report upload?</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="70"/>
-        <location filename="src/widgets/mainwindow.cpp" line="125"/>
+        <location filename="src/widgets/mainwindow.cpp" line="157"/>
+        <location filename="src/widgets/mainwindow.cpp" line="175"/>
         <source>Fotorelacje (*.phr)</source>
         <translation>Photo reports (*.phr)</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="162"/>
+        <location filename="src/widgets/mainwindow.cpp" line="110"/>
+        <source>Nie można otworzyć. Tę fotorelację zapisano ze zbyt starą wersją programu lub nie jest to plik fotorelacji.</source>
+        <translation>Cannot open. This photo report has been saved using application in different version or this is not a photo report file.</translation>
+    </message>
+    <message>
+        <location filename="src/widgets/mainwindow.cpp" line="203"/>
         <source>Wybierz zdjęcia</source>
         <translation>Choose photos</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="162"/>
+        <location filename="src/widgets/mainwindow.cpp" line="203"/>
         <source>Zdjęcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="233"/>
+        <location filename="src/widgets/mainwindow.cpp" line="274"/>
         <source>O programie</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="233"/>
-        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autor: Kamil Ostaszewski&lt;br/&gt;Wersja: %2 (kompilacja %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
-        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Author: Kamil Ostaszewski&lt;br/&gt;Version: %2 (compilation %3)&lt;br/&gt;&lt;http://sourceforge.net/projects/fotorelacjonusz&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
+        <location filename="src/widgets/mainwindow.cpp" line="274"/>
+        <source>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Autorzy: Kamil Ostaszewski, Sebastian Skałacki&lt;br/&gt;Wersja: %2 (kompilacja %3)&lt;br/&gt;&lt;https://fotorelacjonusz.github.io/&gt;&lt;br/&gt;&lt;br/&gt;Aplikacja wykorzystuje:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</source>
+        <translation>&lt;h3&gt;Fotorelacjonusz&lt;/h3&gt;&lt;br/&gt;Authors: Kamil Ostaszewski, Sebastian Skałacki&lt;br/&gt;Version: %2 (compilation %3)&lt;br/&gt;&lt;https://fotorelacjonusz.github.io/&gt;&lt;br/&gt;&lt;br/&gt;Application uses:&lt;br/&gt;Qt (LGPL2)&lt;br/&gt;QtFtp (LGPL2)&lt;br/&gt;QuaZIP (LGPL2)&lt;br/&gt;Oxygen theme (LGPL)&lt;br/&gt;&lt;br/&gt;%1</translation>
     </message>
     <message>
-        <location filename="src/widgets/mainwindow.cpp" line="249"/>
+        <location filename="src/widgets/mainwindow.cpp" line="291"/>
         <source>Wersja Qt</source>
         <translation>Qt version</translation>
     </message>
@@ -722,7 +720,8 @@ If you don&apos;t want your password stored leave this field empty, application 
     </message>
     <message>
         <location filename="src/settings/osmlayerdialog.ui" line="56"/>
-        <source>Maksmalny zoom</source>
+        <source>Maksymalny zoom</source>
+        <oldsource>Maksmalny zoom</oldsource>
         <translation>Maximum zoom</translation>
     </message>
     <message>
@@ -739,22 +738,22 @@ If you don&apos;t want your password stored leave this field empty, application 
 <context>
     <name>Overlay</name>
     <message>
-        <location filename="src/settings/overlay.cpp" line="44"/>
+        <location filename="src/settings/overlay.cpp" line="43"/>
         <source>kmz.open(): %1</source>
         <translation>kmz.open(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="49"/>
+        <location filename="src/settings/overlay.cpp" line="48"/>
         <source>file.open(): %1</source>
         <translation>file.open(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="52"/>
+        <location filename="src/settings/overlay.cpp" line="51"/>
         <source>file.close(): %1</source>
         <translation>file.close(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="56"/>
+        <location filename="src/settings/overlay.cpp" line="55"/>
         <source>kmz.close(): %1</source>
         <translation>kmz.close(): %1</translation>
     </message>
@@ -763,7 +762,7 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">No %1 file</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="64"/>
+        <location filename="src/settings/overlay.cpp" line="63"/>
         <source>Niepoprawna składnia kml</source>
         <translation>Kml syntax error</translation>
     </message>
@@ -780,47 +779,47 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">Map file loading failed</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="35"/>
+        <location filename="src/settings/overlay.cpp" line="34"/>
         <source>To nie jest plik podkładu mapowego.</source>
         <translation>This is not an overlay file.</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="60"/>
+        <location filename="src/settings/overlay.cpp" line="59"/>
         <source>Brak pliku &apos;%1&apos;</source>
         <translation>No &apos;%1&apos; file</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="67"/>
+        <location filename="src/settings/overlay.cpp" line="66"/>
         <source>Brak tagu kml i/lub podrzędnego w pliku kml</source>
         <translation>No kml and/or child tag in kml file</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="82"/>
+        <location filename="src/settings/overlay.cpp" line="81"/>
         <source>Brak tagu Folder lub GroundOverlay</source>
         <translation>No Folder nor GroundOverlay tag</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="94"/>
+        <location filename="src/settings/overlay.cpp" line="93"/>
         <source>kmr.open(): %1</source>
         <translation>kmr.open(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="97"/>
+        <location filename="src/settings/overlay.cpp" line="96"/>
         <source>outFileKml.open(): %1</source>
         <translation>outFileKml.open(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="100"/>
+        <location filename="src/settings/overlay.cpp" line="99"/>
         <source>outFileKml.close(): %1</source>
         <translation>outFileKml.close(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="105"/>
+        <location filename="src/settings/overlay.cpp" line="104"/>
         <source>outFileMap.open(): %1</source>
         <translation>outFileMap.open(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="106"/>
+        <location filename="src/settings/overlay.cpp" line="105"/>
         <source>outFileMap.write(): Błąd zapisu danych do archiwum</source>
         <translation>outFileMap.write(): Error while writing data to archive</translation>
     </message>
@@ -829,12 +828,12 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation type="obsolete">map.save(): Error while saving pixmap in archive</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="108"/>
+        <location filename="src/settings/overlay.cpp" line="107"/>
         <source>outFileMap.close(): %1</source>
         <translation>outFileMap.close(): %1</translation>
     </message>
     <message>
-        <location filename="src/settings/overlay.cpp" line="112"/>
+        <location filename="src/settings/overlay.cpp" line="111"/>
         <source>kmr.close(): %1</source>
         <translation>kmr.close(): %1</translation>
     </message>
@@ -922,159 +921,152 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Post photo report</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="27"/>
         <source>Forum</source>
-        <translation>Forum</translation>
+        <translation type="vanished">Forum</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="39"/>
         <source>Instrukcja postępowania:
    - zaloguj się
    - otwórz wątek
    - posty zostaną wstawione automatycznie</source>
-        <translation>Instruction manual:
+        <translation type="vanished">Instruction manual:
    - log in
    - open thread
    - posts will be sent automatically</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="58"/>
         <source>Ukryj info</source>
-        <translation>Hide this</translation>
+        <translation type="vanished">Hide this</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="65"/>
         <source>Nie pokazuj więcej</source>
-        <translation>Don&apos;t show this again</translation>
+        <translation type="vanished">Don&apos;t show this again</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="79"/>
         <source>about:blank</source>
-        <translation>about:blank</translation>
+        <translation type="vanished">about:blank</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="88"/>
+        <location filename="src/widgets/replydialog.ui" line="75"/>
         <source>Linki</source>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="95"/>
+        <location filename="src/widgets/replydialog.ui" line="82"/>
         <source>Zdjęcie</source>
         <translation>Image</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="100"/>
+        <location filename="src/widgets/replydialog.ui" line="87"/>
         <source>Link</source>
         <translation>Link</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="109"/>
+        <location filename="src/widgets/replydialog.ui" line="36"/>
         <source>Posty</source>
         <translation>Posts</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.ui" line="130"/>
+        <location filename="src/widgets/replydialog.ui" line="66"/>
         <source>Page</source>
         <translation>Strona</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="35"/>
+        <location filename="src/widgets/replydialog.cpp" line="22"/>
         <source>Wszystkie obrazki: %p%</source>
         <translation>All photos: %p%</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="37"/>
+        <location filename="src/widgets/replydialog.cpp" line="24"/>
         <source>Czekam na wybranie wątku...</source>
         <translation>Waiting for thread selection...</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="37"/>
+        <location filename="src/widgets/replydialog.cpp" line="24"/>
         <source>Przechodzę do wątku...</source>
         <translation>Navigating to thread...</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="129"/>
-        <location filename="src/widgets/replydialog.cpp" line="159"/>
+        <location filename="src/widgets/replydialog.cpp" line="98"/>
+        <location filename="src/widgets/replydialog.cpp" line="128"/>
         <source>Błąd</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="129"/>
+        <location filename="src/widgets/replydialog.cpp" line="98"/>
         <source>Nie można było rozpocząć wysyłania z powodu:
 %1</source>
         <translation>Can&apos;t start upload, because: %1</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="139"/>
+        <location filename="src/widgets/replydialog.cpp" line="108"/>
         <source>Zdjęcie %1 już wysłane</source>
         <translation>Photo %1 already uploaded</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="145"/>
+        <location filename="src/widgets/replydialog.cpp" line="114"/>
         <source>Wysyłam %1: %p%</source>
         <translation>Sending %1: %p%</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="159"/>
+        <location filename="src/widgets/replydialog.cpp" line="128"/>
         <source>Nie można było wysłać obrazka %1 z powodu:
 %2</source>
         <translation>Photo %1 upload failed: %2</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="210"/>
+        <location filename="src/widgets/replydialog.cpp" line="180"/>
         <source>sekund</source>
         <comment>0</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="210"/>
+        <location filename="src/widgets/replydialog.cpp" line="180"/>
         <source>sekundę</source>
         <comment>1</comment>
         <translation>second</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="210"/>
+        <location filename="src/widgets/replydialog.cpp" line="180"/>
         <source>sekundy</source>
         <comment>2</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="211"/>
+        <location filename="src/widgets/replydialog.cpp" line="181"/>
         <source>sekundy</source>
         <comment>3</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="211"/>
+        <location filename="src/widgets/replydialog.cpp" line="181"/>
         <source>sekundy</source>
         <comment>4</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="211"/>
+        <location filename="src/widgets/replydialog.cpp" line="181"/>
         <source>sekund</source>
         <comment>5</comment>
         <translation>seconds</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="212"/>
+        <location filename="src/widgets/replydialog.cpp" line="182"/>
         <source>Czekam %1 %2... %p%</source>
         <translation>Waiting %1 %2... %p%</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="281"/>
+        <location filename="src/widgets/replydialog.cpp" line="194"/>
         <source>Koniec. %p%</source>
         <translation>Done. %p%</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="299"/>
         <source>Przechodzę do formularza... %p%</source>
-        <translation>Navigating to form... %p%</translation>
+        <translation type="vanished">Navigating to form... %p%</translation>
     </message>
     <message>
-        <location filename="src/widgets/replydialog.cpp" line="353"/>
         <source>Wysyłam posta... %p%</source>
-        <translation>Sending post... %p%</translation>
+        <translation type="vanished">Sending post... %p%</translation>
     </message>
 </context>
 <context>
@@ -1095,485 +1087,475 @@ If you don&apos;t want your password stored leave this field empty, application 
         <translation>Photos per post</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="80"/>
         <source>Odstęp między postami</source>
-        <translation>Post time space</translation>
+        <translation type="vanished">Post time space</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="96"/>
         <source>Jest to czas, przez który program czeka z wysłaniem kolejnego posta. Minimalna wartość to 30 sekund - wymuszona przez forum.
 Najprawdopodobniej mała wartość sprzyja wstawianiu postów w złej kolejności przez forum.</source>
-        <translation>Time for which application waits before sending next post. Minimum value is 30 seconds - required by the forum.
+        <translation type="vanished">Time for which application waits before sending next post. Minimum value is 30 seconds - required by the forum.
 Most probably short time favors post miximg by the forum.</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="100"/>
         <source> s</source>
-        <translation> s</translation>
+        <translation type="vanished"> s</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="146"/>
+        <location filename="src/settings/settingsdialog.ui" line="113"/>
         <source>Numeruj zdjęcia</source>
         <translation>Number photos</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="153"/>
+        <location filename="src/settings/settingsdialog.ui" line="120"/>
         <source>Zaczynaj numerację od</source>
         <translation>Number photos from</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="173"/>
+        <location filename="src/settings/settingsdialog.ui" line="140"/>
         <source>Dodawaj &quot;Cdn ...&quot; na końcu postów</source>
         <translation>Add &quot;Tbc...&quot; at the end of a post</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="180"/>
+        <location filename="src/settings/settingsdialog.ui" line="147"/>
         <source>Dodatkowy odstęp pomiędzy opisem, a zdjęciem</source>
         <translation>Additional space between caption and photo</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="187"/>
+        <location filename="src/settings/settingsdialog.ui" line="154"/>
         <source>Dodawaj czarną ramkę wokół zdjęcia</source>
         <translation>Add black border around photos</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="194"/>
+        <location filename="src/settings/settingsdialog.ui" line="161"/>
         <source>Dodatkowe tagi w poście</source>
         <translation>Extra tags is posts</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="204"/>
+        <location filename="src/settings/settingsdialog.ui" line="171"/>
         <source>Wpisz tylko tagi początkowe, zostaną one automatycznie zamknięte.</source>
         <translation>Input only opening tags, they will be automatically closed.</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="113"/>
+        <location filename="src/settings/settingsdialog.ui" line="80"/>
         <source>Podpis</source>
         <translation>Captions</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="123"/>
+        <location filename="src/settings/settingsdialog.ui" line="90"/>
         <source>nad zdjęciem</source>
         <translation>above photos</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="136"/>
+        <location filename="src/settings/settingsdialog.ui" line="103"/>
         <source>pod zdjęciem</source>
         <translation>under photos</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="220"/>
         <source>forum o id</source>
-        <translation>forum of id</translation>
+        <translation type="vanished">forum of id</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="230"/>
         <source>Np. dla Forum Polskich Wieżowców wpisz 45</source>
-        <translation>E.g. for Forum Polskich Wieżowców put 45</translation>
+        <translation type="vanished">E.g. for Forum Polskich Wieżowców put 45</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="249"/>
         <source>tagu</source>
-        <translation>threads tagged</translation>
+        <translation type="vanished">threads tagged</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="275"/>
         <source>Otwórz przeglądarkę na</source>
-        <translation>Start browser with</translation>
+        <translation type="vanished">Start browser with</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="285"/>
         <source>user CP</source>
-        <translation>user CP</translation>
+        <translation type="vanished">user CP</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="311"/>
+        <location filename="src/settings/settingsdialog.ui" line="187"/>
         <source>Rozmiar zdjęć</source>
         <translation>Image size</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="329"/>
+        <location filename="src/settings/settingsdialog.ui" line="205"/>
         <source>Zmień</source>
         <translation>Change</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="339"/>
+        <location filename="src/settings/settingsdialog.ui" line="215"/>
         <source>Zdjęcia pionowe będą większe od zdjęć poziomych (ta sama szerokość, większa wysokość)</source>
         <translation>Vertical photos will be bigger than horizontal photos (the same width, higher)</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="342"/>
+        <location filename="src/settings/settingsdialog.ui" line="218"/>
         <source>szerokość</source>
         <translation>width</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="265"/>
         <source>skyscrapercity.com</source>
-        <translation>skyscrapercity.com</translation>
+        <translation type="vanished">skyscrapercity.com</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="295"/>
         <source>liście subskrypcji</source>
-        <translation>subscription list</translation>
+        <translation type="vanished">subscription list</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="355"/>
+        <location filename="src/settings/settingsdialog.ui" line="231"/>
         <source>Zdjęcia pionowe będą miały taką samą wielkość jak poziome</source>
         <translation>Vertical photos will be the same size as horizontal</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="358"/>
+        <location filename="src/settings/settingsdialog.ui" line="234"/>
         <source>większy z wymiarów</source>
         <translation>bigger dimension</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="368"/>
+        <location filename="src/settings/settingsdialog.ui" line="244"/>
         <source>na długość</source>
         <translation>to</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="385"/>
+        <location filename="src/settings/settingsdialog.ui" line="261"/>
         <source>640</source>
         <translation>640</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="390"/>
+        <location filename="src/settings/settingsdialog.ui" line="266"/>
         <source>800</source>
         <translation>800</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="395"/>
+        <location filename="src/settings/settingsdialog.ui" line="271"/>
         <source>1024</source>
         <translation>1024</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="400"/>
+        <location filename="src/settings/settingsdialog.ui" line="276"/>
         <source>1280</source>
         <translation>1280</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="405"/>
+        <location filename="src/settings/settingsdialog.ui" line="281"/>
         <source>1440</source>
         <translation>1440</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="410"/>
+        <location filename="src/settings/settingsdialog.ui" line="286"/>
         <source>1600</source>
         <translation>1600</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="415"/>
+        <location filename="src/settings/settingsdialog.ui" line="291"/>
         <source>1920</source>
         <translation>1920</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="423"/>
+        <location filename="src/settings/settingsdialog.ui" line="299"/>
         <source>Domyślnie zdjęcia zapisywane są po przeskalowaniu do mniejszych rozmiarów.</source>
         <translation>By default.photos are scaled down before saving.</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="426"/>
+        <location filename="src/settings/settingsdialog.ui" line="302"/>
         <source>Podczas zapisywania fotorelacji do pliku zachowuj oryginalny rozmiar zdjęć</source>
         <translation>Keep photos&apos; original size when saving photo report to file</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="433"/>
+        <location filename="src/settings/settingsdialog.ui" line="309"/>
         <source>Jakość JPG</source>
         <translation>JPG quality</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="453"/>
+        <location filename="src/settings/settingsdialog.ui" line="329"/>
         <source>Nie skaluj zdjęć panoramicznych</source>
         <translation>Don&apos;t scale panoramas</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="464"/>
+        <location filename="src/settings/settingsdialog.ui" line="340"/>
         <source>Logo</source>
         <translation>Logo</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="470"/>
+        <location filename="src/settings/settingsdialog.ui" line="346"/>
         <source>Dodawaj logo</source>
         <translation>Add logo</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="487"/>
+        <location filename="src/settings/settingsdialog.ui" line="363"/>
         <source>Brak pliku</source>
         <translation>No file</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="503"/>
+        <location filename="src/settings/settingsdialog.ui" line="379"/>
         <source>Wczytaj</source>
         <translation>Load</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="514"/>
+        <location filename="src/settings/settingsdialog.ui" line="390"/>
         <source>Umieść w rogu zdjęcia</source>
         <translation>Place in corner</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="531"/>
+        <location filename="src/settings/settingsdialog.ui" line="407"/>
         <source>Prawy dolny</source>
         <translation>Bottom right</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="540"/>
+        <location filename="src/settings/settingsdialog.ui" line="416"/>
         <source>Lewy dolny</source>
         <translation>Bottom left</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="549"/>
+        <location filename="src/settings/settingsdialog.ui" line="425"/>
         <source>Prawy górny</source>
         <translation>Top right</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="558"/>
+        <location filename="src/settings/settingsdialog.ui" line="434"/>
         <source>Lewy górny</source>
         <translation>Top left</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="570"/>
-        <location filename="src/settings/settingsdialog.ui" line="884"/>
+        <location filename="src/settings/settingsdialog.ui" line="446"/>
+        <location filename="src/settings/settingsdialog.ui" line="769"/>
         <source>Odstęp od krawędzi</source>
         <translation>Distance from the edge</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="586"/>
-        <location filename="src/settings/settingsdialog.ui" line="894"/>
-        <location filename="src/settings/settingsdialog.ui" line="914"/>
+        <location filename="src/settings/settingsdialog.ui" line="462"/>
+        <location filename="src/settings/settingsdialog.ui" line="779"/>
+        <location filename="src/settings/settingsdialog.ui" line="799"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="596"/>
+        <location filename="src/settings/settingsdialog.ui" line="472"/>
         <source>Odwróć kolory na ciemnym tle</source>
         <translation>Invert colors on dark background</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="609"/>
+        <location filename="src/settings/settingsdialog.ui" line="485"/>
         <source>Wysyłanie</source>
         <translation>Upload</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="623"/>
+        <location filename="src/settings/settingsdialog.ui" line="499"/>
         <source>Wybierz metodę wysyłania</source>
         <translation>Choose upload method</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="646"/>
+        <location filename="src/settings/settingsdialog.ui" line="522"/>
         <source>Korzystając z %1 zgadzasz się przestrzegać jego regulaminu: &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt;</source>
         <translation>By using %1 you agree to comply with its regulations: &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="657"/>
+        <location filename="src/settings/settingsdialog.ui" line="533"/>
         <source>Mapy</source>
         <translation>Maps</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="669"/>
+        <location filename="src/settings/settingsdialog.ui" line="554"/>
         <source>Dodaj warstwę OSM</source>
         <translation>Add OSM layer</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="676"/>
+        <location filename="src/settings/settingsdialog.ui" line="561"/>
         <source>Usuń warstwę OSM</source>
         <translation>Remove OSM layer</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="686"/>
+        <location filename="src/settings/settingsdialog.ui" line="571"/>
         <source>Wspólna mapa dla wszystkich zdjęć</source>
         <translation>Common map for all photos</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="701"/>
-        <location filename="src/settings/settingsdialog.ui" line="766"/>
+        <location filename="src/settings/settingsdialog.ui" line="586"/>
+        <location filename="src/settings/settingsdialog.ui" line="651"/>
         <source>Rodzaj mapy</source>
         <translation>Map type</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="712"/>
-        <location filename="src/settings/settingsdialog.ui" line="777"/>
+        <location filename="src/settings/settingsdialog.ui" line="597"/>
+        <location filename="src/settings/settingsdialog.ui" line="662"/>
         <source>Google Drogi</source>
         <translation>Google Roadmap</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="717"/>
-        <location filename="src/settings/settingsdialog.ui" line="782"/>
+        <location filename="src/settings/settingsdialog.ui" line="602"/>
+        <location filename="src/settings/settingsdialog.ui" line="667"/>
         <source>Google Satelita</source>
         <translation>Google Satellite</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="722"/>
-        <location filename="src/settings/settingsdialog.ui" line="787"/>
+        <location filename="src/settings/settingsdialog.ui" line="607"/>
+        <location filename="src/settings/settingsdialog.ui" line="672"/>
         <source>Google Hybryda</source>
         <translation>Google Hybrid</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="727"/>
-        <location filename="src/settings/settingsdialog.ui" line="792"/>
+        <location filename="src/settings/settingsdialog.ui" line="612"/>
+        <location filename="src/settings/settingsdialog.ui" line="677"/>
         <source>Google Teren</source>
         <translation>Google Terrain</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="738"/>
+        <location filename="src/settings/settingsdialog.ui" line="623"/>
         <source>Źródło danych Google Maps: &lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</source>
         <translation>Google Maps data source:&lt;a href=&quot;https://developers.google.com/maps/documentation/staticmaps/&quot;&gt;https://developers.google.com/maps/documentation/staticmaps/&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="748"/>
+        <location filename="src/settings/settingsdialog.ui" line="633"/>
         <source>Mapa na każdym zdjęciu</source>
         <translation>Map on each photo</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="800"/>
+        <location filename="src/settings/settingsdialog.ui" line="685"/>
         <source>Kolor</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="817"/>
+        <location filename="src/settings/settingsdialog.ui" line="702"/>
         <source>Nieprzeźroczystość</source>
         <translation>Opacity</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="837"/>
+        <location filename="src/settings/settingsdialog.ui" line="722"/>
         <source>Zbliżenie</source>
         <translation>Zoom</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="857"/>
+        <location filename="src/settings/settingsdialog.ui" line="742"/>
         <source>Kształt</source>
         <translation>Shape</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="874"/>
+        <location filename="src/settings/settingsdialog.ui" line="759"/>
         <source>Umieść na zdjęciu</source>
         <translation>Placement</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="934"/>
+        <location filename="src/settings/settingsdialog.ui" line="819"/>
         <source>Prawy dolny róg</source>
         <translation>Bottom right corner</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="943"/>
+        <location filename="src/settings/settingsdialog.ui" line="828"/>
         <source>Lewy dolny róg</source>
         <translation>Bottom left corner</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="952"/>
+        <location filename="src/settings/settingsdialog.ui" line="837"/>
         <source>Prawy górny róg</source>
         <translation>Top right corner</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="961"/>
+        <location filename="src/settings/settingsdialog.ui" line="846"/>
         <source>Lewy górny róg</source>
         <translation>Top left corner</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="970"/>
+        <location filename="src/settings/settingsdialog.ui" line="855"/>
         <source>Rozszerz z lewej</source>
         <translation>Expand to the left</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="979"/>
+        <location filename="src/settings/settingsdialog.ui" line="864"/>
         <source>Rozszerz z prawej</source>
         <translation>Expand to the right</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="988"/>
+        <location filename="src/settings/settingsdialog.ui" line="873"/>
         <source>Rozszerz u góry</source>
         <translation>Expand to the top</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="997"/>
+        <location filename="src/settings/settingsdialog.ui" line="882"/>
         <source>Rozszerz u dołu</source>
         <translation>Expand to the bottom</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1037"/>
+        <location filename="src/settings/settingsdialog.ui" line="940"/>
         <source>Jeśli nie ma podkładu zawierającego pozycje wszystkich zdjęć użyte będzie źródło określone w zakładce mapy</source>
         <translation>If there is no overlay containing all photos&apos; positions, map source specyfied in the &quot;Maps&quot; tab will be used</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1040"/>
+        <location filename="src/settings/settingsdialog.ui" line="943"/>
         <source>Używaj na mapie wspólnej</source>
         <translation>Use on common map</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1047"/>
+        <location filename="src/settings/settingsdialog.ui" line="950"/>
         <source>Jeśli nie ma podkładu zawierającego pozycję zdjęcia użyte będzie źródło określone w zakładce mapy</source>
         <translation>If there is no overlay containing photo&apos;s position, map source specyfied in the &quot;Maps&quot; tab will be used</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1050"/>
+        <location filename="src/settings/settingsdialog.ui" line="953"/>
         <source>Używaj na zdjęciach</source>
         <translation>Use on photos</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1076"/>
+        <location filename="src/settings/settingsdialog.ui" line="988"/>
         <source>Przycisk prowadzi do folderu, w którym przechowywane są podkłady. 
 Można do tego folderu dodawać lub usuwać z niego pliki, zmiany będą widoczne po ponownym uruchomieniu programu.</source>
         <translation>This button opens directory where overlays are stored.
 You can add and remove files from this directory, changes will become visible after application restart.</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1080"/>
+        <location filename="src/settings/settingsdialog.ui" line="992"/>
         <source>Zarządzaj podkładami</source>
         <translation>Manage overlays</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1091"/>
+        <location filename="src/settings/settingsdialog.ui" line="1003"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1097"/>
+        <location filename="src/settings/settingsdialog.ui" line="1009"/>
         <source>Używaj proxy</source>
         <translation>Use proxy</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1135"/>
+        <location filename="src/settings/settingsdialog.ui" line="1047"/>
         <source>Host</source>
         <translation>Host</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1145"/>
+        <location filename="src/settings/settingsdialog.ui" line="1057"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1155"/>
+        <location filename="src/settings/settingsdialog.ui" line="1067"/>
         <source>Użytkownik</source>
         <translation>Username</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1165"/>
+        <location filename="src/settings/settingsdialog.ui" line="1077"/>
         <source>Hasło</source>
         <translation>Password</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="904"/>
+        <location filename="src/settings/settingsdialog.ui" line="789"/>
         <source>Rozmiar</source>
         <translation>Size</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="867"/>
+        <location filename="src/settings/settingsdialog.ui" line="752"/>
         <source>okrągły</source>
         <translation>circular</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.ui" line="1013"/>
-        <location filename="src/settings/settingsdialog.ui" line="1022"/>
+        <location filename="src/settings/settingsdialog.ui" line="898"/>
+        <location filename="src/settings/settingsdialog.ui" line="907"/>
         <source>Podkłady mapowe</source>
         <translation>Overlays</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.cpp" line="253"/>
+        <location filename="src/settings/settingsdialog.cpp" line="217"/>
         <source>Wczytaj logo</source>
         <translation>Load logo</translation>
     </message>
     <message>
-        <location filename="src/settings/settingsdialog.cpp" line="253"/>
+        <location filename="src/settings/settingsdialog.cpp" line="217"/>
         <source>Zdjęcia (*.png *.gif *.jpg *.jpeg)</source>
         <translation>Photos (*.png *.gif *.jpg *.jpeg)</translation>
     </message>
