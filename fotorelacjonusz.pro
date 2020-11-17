@@ -58,6 +58,7 @@ SOURCES += \
 	src/messagehandler.cpp \
 	src/exception.cpp \
 	src/application.cpp \
+	src/uploaders/imgurauthenticator.cpp \
 	src/uploaders/imgurresponse.cpp \
 	src/widgets/threadedvalidator.cpp \
 	src/widgets/selectablewidget.cpp \
@@ -112,6 +113,7 @@ HEADERS += \
 	src/messagehandler.h \
 	src/exception.h \
 	src/application.h \
+	src/uploaders/imgurauthenticator.h \
 	src/uploaders/imgurresponse.h \
 	src/widgets/threadedvalidator.h \
 	src/widgets/selectablewidget.h \
