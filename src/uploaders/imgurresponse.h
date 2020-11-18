@@ -10,6 +10,8 @@ typedef QMap<QString, QString> ParamMap;
 
 class ImgurResponse : public ParamMap
 {
+	void parseResponse(const NetworkTransaction &tr);
+
 public:
 	ImgurResponse(const NetworkTransaction &tr);
 	void debug() const;
@@ -19,7 +21,4 @@ public:
 	int status;
 	QString error;
 	QString mergedError;
-
-private:
-	void parseResponse(const NetworkTransaction &tr);
 };
