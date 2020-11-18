@@ -82,7 +82,7 @@ jobs:
       - name: Build QuaZIP
         if: '! matrix.docker'
         run: |
-          qmake CONFIG+=staticlib CONFIG+=c++11 CONFIG+=release LIBS+=-lz
+          cmake -S . -DBUILD_SHARED_LIBS:BOOL=OFF
           make
         working-directory: ./third-party/quazip
 
