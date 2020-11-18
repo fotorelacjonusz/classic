@@ -8,6 +8,15 @@ namespace Ui {
 class ImgurLoginUploader;
 }
 
+/**
+ * @brief Handles authenticated uploads to Imgur.
+ *
+ * This class is responsible for uploader configuration as well as very uploads.
+ * This class inerits a lot of commmon behaviour from ImgurAnonUploader.
+ *
+ * Uploaded pictures are coupled with user's account, and aggregated in
+ * an album.
+ */
 class ImgurLoginUploader : public ImgurAnonUploader
 {
 	Q_OBJECT
@@ -32,6 +41,7 @@ public slots:
 	void finalizeAuthorization(Credentials);
 
 protected:
+	/// Checks if credentials are present and valid.
 	bool checkToken();
 
 protected:

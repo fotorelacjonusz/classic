@@ -8,6 +8,16 @@ namespace Ui {
 class FtpUploader;
 }
 
+/**
+ * @brief Handles uploads to FTP servers.
+ *
+ * This class is responsible for uploader configuration as well as very uploads.
+ *
+ * It relies on QtFtp module, which has been removed from Qt, but is still
+ * available for legacy software.
+ *
+ * @todo Migrate to supported Qt API.
+ */
 class FtpUploader : public AbstractUploader
 {
 	Q_OBJECT

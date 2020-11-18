@@ -47,6 +47,8 @@ bool ImgurLoginUploader::init(int imageNumber)
 		return false;
 
 	qDebug() << "proceeding";
+
+	// TODO Extract album creation.
 	NetworkTransactionQuery transaction(this, "https://api.imgur.com/3/album/");
 	setAuthorization(&transaction);
 	transaction.addQueryItem("title", generateFolderName());
