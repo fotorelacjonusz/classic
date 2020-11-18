@@ -15,7 +15,7 @@ QMAKE_TARGET_BUNDLE_PREFIX = org.skalee.fotorelacjonusz
 # MacOS icon set
 ICON = appicon.icns
 
-QT += core gui network widgets xml xmlpatterns
+QT += core gui network websockets widgets xml xmlpatterns
 
 # Enable C++11 explicitly, which should make proper stdlib available.
 # Required to compile at least on OS X.
@@ -58,6 +58,7 @@ SOURCES += \
 	src/messagehandler.cpp \
 	src/exception.cpp \
 	src/application.cpp \
+	src/uploaders/imgurauthenticator.cpp \
 	src/uploaders/imgurresponse.cpp \
 	src/widgets/threadedvalidator.cpp \
 	src/widgets/selectablewidget.cpp \
@@ -112,6 +113,7 @@ HEADERS += \
 	src/messagehandler.h \
 	src/exception.h \
 	src/application.h \
+	src/uploaders/imgurauthenticator.h \
 	src/uploaders/imgurresponse.h \
 	src/widgets/threadedvalidator.h \
 	src/widgets/selectablewidget.h \

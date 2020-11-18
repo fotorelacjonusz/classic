@@ -294,53 +294,59 @@ Wrong url will make all links corrupted.</translation>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.ui" line="24"/>
+        <location filename="src/uploaders/imgurloginuploader.ui" line="23"/>
+        <source>Zalogowany jako</source>
+        <translation>Signed in as</translation>
+    </message>
+    <message>
+        <location filename="src/uploaders/imgurloginuploader.ui" line="37"/>
+        <source>Zaloguj do Imgura</source>
+        <translation>Sign in to Imgur</translation>
+    </message>
+    <message>
         <source>about:blank</source>
-        <translation>about:blank</translation>
+        <translation type="vanished">about:blank</translation>
     </message>
     <message>
         <source>Fotorelacja_</source>
         <translation type="obsolete">Photo_report_</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="165"/>
         <source>Autoryzacja udana</source>
-        <translation>Authorized</translation>
+        <translation type="vanished">Authorized</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="165"/>
         <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; uzyskała dostęp do Twoich danych na Imgur.</source>
-        <translation>Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; gained access to your data on Imgur.</translation>
+        <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; gained access to your data on Imgur.</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="166"/>
         <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; nie uzyskała dostępu do Twoich danych na Imgur.</source>
-        <translation>Application  &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; didn&apos;t gain access to your data on Imgur.</translation>
+        <translation type="vanished">Application  &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; didn&apos;t gain access to your data on Imgur.</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="167"/>
         <source>Aplikacja &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; ma dostęp do Twoich danych na Imgur.</source>
-        <translation>Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
+        <translation type="vanished">Application &lt;span class=&quot;accent green&quot;&gt;fotorelacjonusz&lt;/span&gt; has access to your data on Imgur.</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="168"/>
         <source>Błąd</source>
-        <translation>Error</translation>
+        <translation type="vanished">Error</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="168"/>
         <source>Podczas kontaktowania się z Imgur wystąpił błąd.</source>
-        <translation>Error while connecting with Imgur.</translation>
+        <translation type="vanished">Error while connecting with Imgur.</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="166"/>
         <source>Odmowa autoryzacji</source>
-        <translation>Authorization denied</translation>
+        <translation type="vanished">Authorization denied</translation>
     </message>
     <message>
-        <location filename="src/uploaders/imgurloginuploader.cpp" line="167"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation type="vanished">Ok</translation>
+    </message>
+    <message>
+        <location filename="src/uploaders/imgurloginuploader.cpp" line="56"/>
+        <source>Wejdź w ustawienia programu, zaloguj się do Imgura i spróbuj raz jeszcze</source>
+        <translation>Open program settings, sign in to Imgur there, and try again</translation>
     </message>
 </context>
 <context>
@@ -1599,7 +1605,7 @@ You can add and remove files from this directory, changes will become visible af
         <translation type="vanished">Imageshack login and password</translation>
     </message>
     <message>
-        <location filename="src/uploaders/uploaderfactory.cpp" line="51"/>
+        <location filename="src/uploaders/uploaderfactory.cpp" line="52"/>
         <source>Własne konto FTP</source>
         <translation>Own FTP account</translation>
     </message>
@@ -1609,8 +1615,9 @@ You can add and remove files from this directory, changes will become visible af
         <translation>Imgur anonymous</translation>
     </message>
     <message>
+        <location filename="src/uploaders/uploaderfactory.cpp" line="48"/>
         <source>Imgur konto</source>
-        <translation type="vanished">Imgur account</translation>
+        <translation>Imgur account</translation>
     </message>
 </context>
 </TS>

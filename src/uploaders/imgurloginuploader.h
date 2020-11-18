@@ -1,18 +1,8 @@
 #pragma once
 
-/* TODO Re-enable me!
- *
- * Imgur uploader for logged in users has been disabled due to removal of WebKit
- * module from Qt.
- *
- * Possible solutions:
- * - This uploader should use WebEngine (Chromium) instead of WebKit.
- */
-#if 0
-
 #include "imguranonuploader.h"
+#include "imgurauthenticator.h"
 #include <QWidget>
-#include <QWebView>
 
 namespace Ui {
 class ImgurLoginUploader;
@@ -21,6 +11,8 @@ class ImgurLoginUploader;
 class ImgurLoginUploader : public ImgurAnonUploader
 {
 	Q_OBJECT
+
+	typedef ImgurAuthenticator::Credentials Credentials;
 
 public:
 	explicit ImgurLoginUploader(QWidget *parent, QSettings &settings);
@@ -31,23 +23,23 @@ public:
 	virtual bool init(int imageNumber);
 	virtual QString uploadImage(QString filePath, QIODevice *image);
 
+	void refreshAuthorization();
+
+	void updateLoginInfo();
+
+public slots:
+	void requestAuthorization();
+	void finalizeAuthorization(Credentials);
+
 protected:
 	bool checkToken();
-	void authorize();
-
-private slots:
-	void pageFinished();
 
 protected:
 	virtual void setAuthorization(NetworkTransaction *tr);
 
+	ImgurAuthenticator auth;
+	Credentials credentials;
+
 	Ui::ImgurLoginUploader *ui;
-	static const QString resPage;
-
-	QString accessToken;
-	QString refreshToken;
-	QDateTime expires;
-
 };
 
-#endif // 0

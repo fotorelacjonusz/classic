@@ -52,11 +52,9 @@ jobs:
         run: |
           cp secrets.h.example secrets.h
           sed -i -- "s/IMGUR_CLIENT_ID .*/IMGUR_CLIENT_ID \"${IMGUR_CLIENT_ID}\"/g" secrets.h
-          sed -i -- "s/IMGUR_CLIENT_SECRET .*/IMGUR_CLIENT_SECRET \"${IMGUR_CLIENT_SECRET}\"/g" secrets.h
           sed -i -- "s/PASSWORD_RAW_KEY .*/PASSWORD_RAW_KEY \"${PASSWORD_RAW_KEY}\"/g" secrets.h
         env:
           IMGUR_CLIENT_ID: ${{ secrets.IMGUR_CLIENT_ID }}
-          IMGUR_CLIENT_SECRET: ${{ secrets.IMGUR_CLIENT_SECRET }}
           PASSWORD_RAW_KEY: ${{ secrets.PASSWORD_RAW_KEY }}
 
       - name: Install Qt
