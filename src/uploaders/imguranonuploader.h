@@ -9,6 +9,11 @@ namespace Ui {
 class ImgurAnonUploader;
 }
 
+/**
+ * @brief Handles anonymous uploads to Imgur.
+ *
+ * This class is responsible for uploader configuration as well as very uploads.
+ */
 class ImgurAnonUploader : public AbstractUploader
 {
 	Q_OBJECT
