@@ -23,7 +23,7 @@ void ImgurResponse::debug() const
 	debug << "  mergedError: " << mergedError << "\n";
 	debug << "  data:\n";
 	debug << "  {\n";
-	for (ParamMap::ConstIterator i = data.begin(); i != data.end(); ++i)
+	for (auto i = data.begin(); i != data.end(); ++i)
 		debug << "    " << i.key() << ":\t" << i.value() << "\n";
 	debug << "  }\n";
 	debug << "}\n";

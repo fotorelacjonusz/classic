@@ -5,9 +5,6 @@
 
 class NetworkTransaction;
 
-// TODO: Make it <QString, QVariant> to avoid unnecessary data conversions.
-typedef QMap<QString, QString> ParamMap;
-
 class ImgurResponse
 {
 	void parseResponse(const NetworkTransaction &tr);
@@ -16,7 +13,8 @@ public:
 	ImgurResponse(const NetworkTransaction &tr);
 	void debug() const;
 
-	ParamMap data;
+	// TODO: Make it <QString, QVariant> to avoid unnecessary data conversions.
+	QMap<QString, QString> data;
 	bool success;
 	int status;
 	QString error;
