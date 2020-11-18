@@ -23,11 +23,9 @@ void ImgurResponse::debug() const
 	debug << "  mergedError: " << mergedError << "\n";
 	debug << "  data:\n";
 	debug << "  {\n";
-	for (ParamMap::ConstIterator i = data.begin(); i != data.end(); ++i)
+	for (auto i = data.begin(); i != data.end(); ++i)
 		debug << "    " << i.key() << ":\t" << i.value() << "\n";
 	debug << "  }\n";
-	for (ParamMap::ConstIterator i = begin(); i != end(); ++i)
-		debug << "  " << i.key() << ":\t" << i.value() << "\n";
 	debug << "}\n";
 	debug.space();
 }
@@ -69,8 +67,6 @@ void ImgurResponse::parseResponse(const NetworkTransaction &tr)
 		errors << tr.error;
 	if (!error.isEmpty())
 		errors << error;
-	if (contains("message"))
-		errors << value("message");
 	if (data.contains("message"))
 		errors << data["message"];
 
