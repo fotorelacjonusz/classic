@@ -1,6 +1,6 @@
 = Building Fotorelacjonusz from the source code
 
-:mac_specific: (__Mac-specific__)
+:mac_specific: pass:[(<em>Mac-specific</em>)]
 
 **This document is certainly a piece of work-in-progress.**
 
