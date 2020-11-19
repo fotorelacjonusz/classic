@@ -38,7 +38,9 @@ link:docs/INSTALL-SOURCE.adoc[Read this].
 . Toss some photos into the app
 . Make some captions (or not)
 . Click "Post on SSC"
-. Log in and enter desired thread
+. Wait for posts to be generated
+. Copy prepared posts and and paste them into a web browser, in a desired thread
+on forum
 
 === Further reading
 
@@ -46,12 +48,19 @@ Further information can be found in {gh-docs}[documentation pages], which have
 been extracted from the old wiki.  Be informed that it wasn't carefully reviewed
 since then, and some pieces may be outdated, but it should be valid in general.
 
-There is also a {yt-tutorial}[video tutorial] on YouTube.
+There is also a {yt-tutorial}[video tutorial] on YouTube (for older program
+versions, but still largely relevant).
 
 == Credits
 
 This application has been initially developed by Kamil Ostaszewski, who has
 contributed a fully-featured application for Qt 4.8.
+
+== See also
+
+* https://github.com/fotorelacjonusz/fotorelacjonusz-ng[Fotorelacjonusz-NG] —
+  Fotorelacjonusz rewritten from scratch for Linux, MacOS, and Windows
+* https://github.com/marteczek/photo-reporter[Photo Reporter] — Android app
 
 == Legal
 
