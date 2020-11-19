@@ -12,6 +12,8 @@
 ifdef::env-github[]
 image:https://img.shields.io/github/workflow/status/fotorelacjonusz/classic/Build?style=for-the-badge[
   Build Status, link="https://github.com/fotorelacjonusz/classic/actions"]
+image:https://img.shields.io/github/v/release/fotorelacjonusz/classic?label=version&sort=semver&style=for-the-badge[
+  Latest Release, link="https://github.com/fotorelacjonusz/classic/releases/latest"]
 endif::[]
 
 ({gh-readme-pl}[This document is also available in Polish])
