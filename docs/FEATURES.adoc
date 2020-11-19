@@ -10,9 +10,6 @@
   * arranging photos in any order
   * maximum number of photos is limited only by free memory
 . Automatic upload of photos to a chosen hosting server
-  * imageshack anonymous
-  * imageshack registration code
-  * imageshack login and password
   * ftp account
   * imgur anonymous
   * imgur authorized

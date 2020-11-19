@@ -6,14 +6,16 @@
 
 It is assumed that reader has some basic programming experience at least.
 Some hints may be slightly inaccurate or may require adjustments specific
-for the host's system.  In such case, other documentation pages may come handy.
+for the host's system.  In such case, other documentation pages may come handy,
+so do continuous integration configuration.
 
 Feedback is welcome.
 
 == Prerequisites
 
-1.  {mac_specific} Command line tools are not enough.  Install XCode, then
-switch to XCode's compilers.  Typically, following does the latter:
+1.  {mac_specific} Command line tools are not enough for compiling QuaZIP.
+Install XCode, then switch to XCode's compilers.  Typically, following does
+the latter:
 +
 [source,bash]
 --------------------------------------------------------------------------------
@@ -24,11 +26,16 @@ See also: https://stackoverflow.com/a/35098040/304175.
 
 2.  Install zlib (unless you have it already, which is quite typical).
 +
+Note that zlib is also distributed along with Qt, and this is probably enough
+if you use Qt from the online installer.
++
 TODO: Precisely describe what to do on Windows.  From the old wiki: "To build on
 Windows you also need to provide zlib headers in third-party directory".
 
-3.  Obtain Qt 5.12.  Online installer should be preferred, which can be
-    downloaded from https://download.qt.io/official_releases/online_installers/.
+3.  Obtain Qt 5.12.  Online installer is preferred, which can be downloaded from
+https://download.qt.io/official_releases/online_installers/.  On Windows, prefer
+MinGW toolset over MSVC.  Fotorelacjonusz seems unready to compile with
+the latter one, contributions are welcome.
 
 == Source code
 
@@ -61,7 +68,7 @@ path.  Adjust these commands accordingly otherwise.
 [source,bash]
 --------------------------------------------------------------------------------
 cd <fotorelacjousz-root>/third-party/quazip
-qmake CONFIG+=staticlib CONFIG+=c++11
+qmake CONFIG+=staticlib CONFIG+=c++11 LIBS+=-lz
 make
 --------------------------------------------------------------------------------
 
@@ -96,9 +103,12 @@ iconutil -c icns appicon.iconset
 [source,bash]
 --------------------------------------------------------------------------------
 cd <fotorelacjousz-root>
-qmake LIBS+=-lz
+qmake
 make
 --------------------------------------------------------------------------------
++
+On Windows, it may be necessary to parametrize `qmake` with
+`DEFINES+=QUAZIP_STATIC`.
 
 == Compilation (Qt Creator)
 
