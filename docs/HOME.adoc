@@ -1,41 +1,40 @@
 = Fotorelacjonusz
 
+== Installing & building
+
+It's easiest to use link:/releases[precompiled packages].  If you want to build
+from the source code, read on link:INSTALL-SOURCE.adoc[this].
+
+== User guide
+
 It's really easy to use, you only need to:
 
 . Toss some photos into the app
 . Make some captions (or not)
 . Click "Post on SSC"
-. Log in and enter desired thread
+. Wait for posts to be generated, then copy and paste them into a web browser,
+  in desired thread on forum.
 
-Example usage: http://youtube.com/watch?v=v-WCcN0_4YY +
-The "photo report" is here: http://www.skyscrapercity.com/showthread.php?p=94577034#post94577034
+Example usage (for older program versions, but still largely relevant):
+http://youtube.com/watch?v=v-WCcN0_4YY
 
-link:FEATURES.adoc[Further reading]
+== Security considerations
+
+See: link:SECURITY.adoc[SECURITY].
 
 == Dependencies, legal
 
-* Application has been made with https://www.qt.io/developers/[Qt]. It needs:
-  core, gui, network, script, webchannel, webengine, webenginewidgets, xml
-  and xmlpatterns modules (version >= 5.6)
+* Application has been made with https://www.qt.io/developers/[Qt5]
 * It depends on https://sourceforge.net/p/quazip/wiki/Home/[QuaZIP library]
 * It depends on https://github.com/qt/qtftp[QtFtp library]
 * It uses icons from http://www.oxygen-icons.org/[Oxygen theme]
 * Application license: https://www.gnu.org/licenses/gpl-2.0.html[GNU GPL2]
 
-== Building
-
-See: link:INSTALL-SOURCE.adoc[Building Fotorelacjonusz from the source code].
-
 == Help
 
-* You can contact me in these topics on SSC:
-  * http://www.skyscrapercity.com/showthread.php?t=1539539 (polish thread)
-  * http://www.skyscrapercity.com/showthread.php?t=1611281 (international thread)
-* link:FAQ.adoc[FAQ]
+* link:FEATURES.adoc[List of features]
 * link:TROUBLESHOOTING.adoc[Troubleshooting]
-
-== TODO
-
-* Mac build
-* other upload methods
-* windows installer
+* link:.[All documentation pages]
+* You can also get help or reach me in these topics on SSC:
+** https://www.skyscrapercity.com/threads/automatyzacja-fotorelacji-fotorelacjonusz.1539539[Polish thread]
+** http://www.skyscrapercity.com/showthread.php?t=1611281[international thread]

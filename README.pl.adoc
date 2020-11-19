@@ -13,6 +13,8 @@
 ifdef::env-github[]
 image:https://img.shields.io/github/workflow/status/fotorelacjonusz/classic/Build?style=for-the-badge[
   Build Status, link="https://github.com/fotorelacjonusz/classic/actions"]
+image:https://img.shields.io/github/v/release/fotorelacjonusz/classic?label=version&sort=semver&style=for-the-badge[
+  Latest Release, link="https://github.com/fotorelacjonusz/classic/releases/latest"]
 endif::[]
 
 Dzieło forumowej społeczności, które ma ułatwić wrzucanie fotorelacji
@@ -38,7 +40,8 @@ Zobacz link:docs/INSTALL-SOURCE.adoc[tutaj] (w języku angielskim).
 . Dodaj zdjęcia
 . Opcjonalnie opisz je
 . Wciśnij "Wyślij na SSC"
-. Zaloguj się na forum i wybierz właściwy wątek
+. Poczekaj chwilkę, aż posty się wygenerują
+. Włącz przeglądarkę internetową, wejdź w wybrany wątek i przeklej posty
 
 === Dodatkowe informacje
 
@@ -53,6 +56,12 @@ Jest też {yt-tutorial}[tutorial wideo] na YouTube.
 
 Niniejszy program został napisany przez Kamila Ostaszewskiego, który przygotował
 kompletny program działający z Qt 4.8.
+
+== Zobacz też
+
+* https://github.com/fotorelacjonusz/fotorelacjonusz-ng[Fotorelacjonusz-NG] —
+  Fotorelacjonusz napisany od nowa dla Linuksa, MacOSa oraz Windowsa
+* https://github.com/marteczek/photo-reporter[Photo Reporter] — aplikacja na Androida
 
 == Prawa autorskie
 

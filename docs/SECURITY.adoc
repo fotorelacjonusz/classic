@@ -1,0 +1,22 @@
+= Security considerations
+
+== FTP password
+
+If present, password to FTP server is stored on disk, and "encrypted" with XOR
+algorithm.
+
+This is not very secure, be aware that ten-year-old can break it, really.
+Though it's better than nothing...
+
+== Imgur tokens
+
+Imgur authorization is performed according to OAuth2 Implicit Grant flow and
+happens in an external browser.  This is as secure as your browser.  However,
+authorization token (which allows to do things on Imgur on behalf of user
+and which is valid for ten years, but can be revoked in Imgur on user's demand)
+is then sent unencrypted over localhost.  This kind of communication does not
+leave your computer, but in theory it can leak if your computer is infected.
+Passwords won't leak this way though.
+
+For most users, this is probably an acceptable security risk, not bigger than
+they are taking every day on.

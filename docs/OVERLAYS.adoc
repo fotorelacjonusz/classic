@@ -1,5 +1,7 @@
 = Overlays
 
+NOTE: This document wasn't updated for a while.  Instructions _should_ be mostly relevant, but they need a review.
+
 == Create
 
 To make your own map layer you will need google-earth and, of course, an image of the layer. The image has to be saved on the disk (not referenced by a url) and can't be bigger than 8192x8192 px. This constraint is listed in google-earth's Help->GoogleEarth - Information window, as "Texture maximum size" and can vary depending on the machine.

@@ -1,5 +1,7 @@
 = Troubleshooting
 
+NOTE: This document wasn't updated for a while.  Instructions _should_ be mostly relevant, but they need a review.
+
 [qanda]
 The posts are shuffled.::
     It's the forum misbehaving, not the app. See option "Post space" under "General" tab in settings and it's description.
