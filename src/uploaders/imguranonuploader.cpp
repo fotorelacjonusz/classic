@@ -79,7 +79,7 @@ void ImgurAnonUploader::updateCredits()
 
 	auto creditsResetInSecs = json.data[USER_RESET_CSTR].toInt();
 
-	ui->userReset->setDateTime(QDateTime::fromTime_t(creditsResetInSecs));
+	ui->userReset->setDateTime(QDateTime::fromSecsSinceEpoch(creditsResetInSecs));
 	ui->userCredits->setText(QString("%1 / %2").arg(credits.userRemaining).arg(credits.userLimit));
 	ui->appCredits->setText(QString("%1 / %2").arg(credits.appRemaining).arg(credits.appLimit));
 
