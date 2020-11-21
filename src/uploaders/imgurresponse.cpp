@@ -51,12 +51,7 @@ void ImgurResponse::parseResponse(const NetworkTransaction &tr)
 	}
 
 	if (jsonRoot.contains("data")) {
-		QJsonObject jsonData = jsonRoot["data"].toObject();
-		QJsonObject::const_iterator it;
-
-		for(it = jsonData.constBegin(); it != jsonData.constEnd(); it++) {
-			data.insert(it.key(), it.value().toVariant());
-		}
+		data = jsonRoot["data"].toObject().toVariantMap();
 	}
 
 	if (data.contains("error") && error.isEmpty())
