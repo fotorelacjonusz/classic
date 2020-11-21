@@ -56,7 +56,7 @@ QString ImgurAnonUploader::uploadImage(QString filePath, QIODevice *image)
 	ImgurResponse json(tr);
 	error = json.mergedError;
 	image->close();
-	return json.success ? json.data["link"] : "";
+	return json.success ? json.data["link"].toString() : "";
 }
 
 QString ImgurAnonUploader::tosUrl() const

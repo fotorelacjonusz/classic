@@ -56,7 +56,7 @@ bool ImgurLoginUploader::init(int imageNumber)
 	ImgurResponse json(transaction);
 	error = json.mergedError;
 	if (transaction.success)
-		albumId = json.data["id"];
+		albumId = json.data["id"].toString();
 	return transaction.success;
 }
 

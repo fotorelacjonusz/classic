@@ -51,16 +51,11 @@ void ImgurResponse::parseResponse(const NetworkTransaction &tr)
 	}
 
 	if (jsonRoot.contains("data")) {
-		QJsonObject jsonData = jsonRoot["data"].toObject();
-		QJsonObject::const_iterator it;
-
-		for(it = jsonData.constBegin(); it != jsonData.constEnd(); it++) {
-			data.insert(it.key(), it.value().toVariant().toString());
-		}
+		data = jsonRoot["data"].toObject().toVariantMap();
 	}
 
 	if (data.contains("error") && error.isEmpty())
-		error = data.take("error");
+		error = data.take("error").toString();
 
 	QStringList errors;
 	if (!tr.error.isEmpty())
@@ -68,7 +63,7 @@ void ImgurResponse::parseResponse(const NetworkTransaction &tr)
 	if (!error.isEmpty())
 		errors << error;
 	if (data.contains("message"))
-		errors << data["message"];
+		errors << data["message"].toString();
 
 	mergedError = errors.join("\n");
 }
