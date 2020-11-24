@@ -46,7 +46,7 @@ void SettingsManager::AbstractInput::connect(QObject *receiver, const char *memb
 	string.remove(QRegExp("^[0-9]+"));
 	string.remove(QRegExp("\\(\\)$"));
 
-	listeners.insert(qMakePair(QPointer<QObject>(receiver), string.toAscii()));
+	listeners.insert(qMakePair(QPointer<QObject>(receiver), string.toLatin1()));
 }
 
 void SettingsManager::AbstractInput::changedRemotely() const
@@ -57,7 +57,7 @@ void SettingsManager::AbstractInput::changedRemotely() const
 
 QByteArray SettingsManager::AbstractInput::encode(QString pass) const
 {
-	return qCompress(pass.toAscii()) ^ pasKey;
+	return qCompress(pass.toLatin1()) ^ pasKey;
 }
 
 QString SettingsManager::AbstractInput::decode(QByteArray pass) const

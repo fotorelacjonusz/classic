@@ -235,7 +235,7 @@ void ExifImageHeader::setGpsPosition(QPointF position)
 
 qreal ExifImageHeader::dmsToReal(const ExifValue &dms, const ExifValue &ref)
 {
-	char c = ref.toString().toAscii()[0];
+	char c = ref.toString().toLatin1()[0];
 	const QVector<ExifURational> vector = dms.toRationalVector();
 	return (vector[0].toReal() + vector[1].toReal() / 60 + vector[2].toReal() / 3600) * ((c == 'S' || c == 'W') ? -1 : 1);
 }

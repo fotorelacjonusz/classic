@@ -99,5 +99,5 @@ void ImgurLoginUploader::updateLoginInfo()
 
 void ImgurLoginUploader::setAuthorization(NetworkTransaction *tr)
 {
-	tr->setRawHeader("Authorization", QString("Bearer " + credentials.accessToken).toAscii());
+	tr->setRawHeader("Authorization", QString("Bearer " + credentials.accessToken).toLatin1());
 }

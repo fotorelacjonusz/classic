@@ -23,7 +23,7 @@ IsCodeUploader::~IsCodeUploader()
 QString IsCodeUploader::uploadImage(QString filePath, QIODevice *image)
 {
 	NetworkTransactionMultiPart *tr = createTransaction(filePath, image);
-	tr->addHttpPart("cookie", ui->codeEdit->text().toAscii());
+	tr->addHttpPart("cookie", ui->codeEdit->text().toLatin1());
 	return postTransaction(tr, image);
 }
 

@@ -78,11 +78,11 @@ QString AbstractUploader::removeAccents(QString diacritical)
 	{
 		if (c.category() > QChar::Mark_Enclosing)
 		{
-			if ((int)c.toAscii() >= 0)
+			if ((int)c.toLatin1() >= 0)
 				result.append(c);
 			else
 			{
-//				qDebug() << c << c.cell() << c.row() << c.unicode() << (int)c.toAscii() << (int)c.toLatin1() << c.decomposition().length();
+//				qDebug() << c << c.cell() << c.row() << c.unicode() << (int)c.toLatin1() << (int)c.toLatin1() << c.decomposition().length();
 				int pos = diacriticals.indexOf(c);
 				if (pos >= 0)
 				{

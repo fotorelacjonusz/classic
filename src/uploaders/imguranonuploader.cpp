@@ -50,7 +50,7 @@ QString ImgurAnonUploader::uploadImage(QString filePath, QIODevice *image)
 	tr.addHttpPart("image", filePath, image);
 	tr.addHttpPart("type", "file");
 	if (!albumId.isEmpty())
-		tr.addHttpPart("album_id", albumId.toAscii());
+		tr.addHttpPart("album_id", albumId.toLatin1());
 	tr.post();
 
 	ImgurResponse json(tr);
@@ -106,5 +106,5 @@ bool ImgurAnonUploader::checkCredits(int imageNumber, int extra)
 
 void ImgurAnonUploader::setAuthorization(NetworkTransaction *tr)
 {
-	tr->setRawHeader("Authorization", QString("Client-ID " IMGUR_CLIENT_ID).toAscii());
+	tr->setRawHeader("Authorization", QString("Client-ID " IMGUR_CLIENT_ID).toLatin1());
 }

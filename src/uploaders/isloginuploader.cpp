@@ -31,8 +31,8 @@ QString IsLoginUploader::uploadImage(QString filePath, QIODevice *image)
 		return QString();
 
 	NetworkTransactionMultiPart *tr = createTransaction(filePath, image);
-	tr->addHttpPart("a_username", login.toAscii());
-	tr->addHttpPart("a_password", password.toAscii());
+	tr->addHttpPart("a_username", login.toLatin1());
+	tr->addHttpPart("a_password", password.toLatin1());
 	return postTransaction(tr, image);
 }
 
