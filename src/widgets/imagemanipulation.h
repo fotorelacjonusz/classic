@@ -63,7 +63,7 @@ private:
 	template<int operation(int, int)>
 	static void changeImage(QImage &im, int value)
 	{
-		if (im.numColors() == 0)
+		if (im.colorCount() == 0)
 		{
 			if (im.format() != QImage::Format_RGB32)
 				im = im.convertToFormat(QImage::Format_RGB32);
@@ -97,7 +97,7 @@ private:
 		else
 		{
 			QVector<QRgb> colors = im.colorTable();
-			for (int i = 0; i < im.numColors(); ++i)
+			for (int i = 0; i < im.colorCount(); ++i)
 				colors[i] = qRgb(operation(qRed(colors[i]), value),
 								 operation(qGreen(colors[i]), value),
 								 operation(qBlue(colors[i]), value));
