@@ -316,7 +316,7 @@ void ExifValue::writeValue(QDataStream &stream, QDataStream &valueStream) const
 
 void ExifValue::writeString(QDataStream &stream, QDataStream &valueStream) const
 {
-	QByteArray data = toString().toAscii() + QByteArray("\0", 1);
+	QByteArray data = toString().toLatin1() + QByteArray("\0", 1);
 	QVector<qint8> vector(data.size());
 	memcpy(vector.data(), data.constData(), data.size());
 	writeVector(stream, valueStream, vector);

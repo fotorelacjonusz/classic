@@ -132,7 +132,7 @@ QNetworkRequest TilesDownloader::createRequest(int zoom, int x, int y, QPoint be
 		url.replace(varNames[i], QString::number(vars[i]));
 
 	QNetworkRequest request(url);
-	request.setRawHeader("User-Agent", (qApp->applicationName() + " " + qApp->applicationVersion()).toAscii());
+	request.setRawHeader("User-Agent", (qApp->applicationName() + " " + qApp->applicationVersion()).toLatin1());
 	urlToTilePos[request.url()] = (QPoint(x, y) - begin) * tileSize;
 	return request;
 }
