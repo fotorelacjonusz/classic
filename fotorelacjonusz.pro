@@ -30,6 +30,7 @@ CONFIG += embed_translations
 # Fotorelacjonusz relies on some Qt4 APIs which are now deprecated, but still
 # available for legacy software.  This should be changed at some point.
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
+DEFINES += QT_NO_DEPRECATED_WARNINGS
 
 # Make version number accessible in the application via PROGRAM_VERSION macro
 DEFINES += PROGRAM_VERSION=\\\"$$VERSION\\\"
