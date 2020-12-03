@@ -20,11 +20,16 @@ Application::Application(int &argc, char **argv):
 	this->setAttribute(Qt::AA_DontShowIconsInMenus, true);
 	#endif
 
-	// Set locale and translator
+	setUpTranslations();
+}
+
+void Application::setUpTranslations()
+{
 	QString locale = QLocale::system().name();
 	QTranslator translator;
 
 	qDebug() << "Locale:" << locale;
+
 	if (locale == "pl_PL")
 		qDebug() << "Loading qt_pl:" << (translator.load("qt_pl", "/usr/share/qt4/translations") or translator.load("qt_pl"));
 	else

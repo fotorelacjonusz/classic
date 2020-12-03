@@ -10,6 +10,7 @@ public:
 	explicit Application(int &argc, char **argv);
 
 	int showWindowAndExec();
+	void setUpTranslations();
 
 	static QString applicationSettingsName();
 	static QString applicationNameAndVersion();
