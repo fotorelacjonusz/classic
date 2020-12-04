@@ -56,7 +56,7 @@ unix {
 	LIBS += -lQt5Ftp
 }
 
-TRANSLATIONS = fotorelacjonusz_en_US.ts
+TRANSLATIONS = fotorelacjonusz_en.ts
 
 EXTRA_TRANSLATIONS = \
 	$$absolute_path("qtbase_en.qm", $$[QT_INSTALL_TRANSLATIONS]) \
