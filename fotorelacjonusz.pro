@@ -21,6 +21,12 @@ QT += core gui network websockets widgets xml xmlpatterns
 # Required to compile at least on OS X.
 CONFIG += c++11
 
+# Run lrelease when building the project.
+CONFIG += lrelease
+
+# Bundle translations in the i18n.qrc resource.
+CONFIG += embed_translations
+
 # Fotorelacjonusz relies on some Qt4 APIs which are now deprecated, but still
 # available for legacy software.  This should be changed at some point.
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
@@ -50,7 +56,11 @@ unix {
 	LIBS += -lQt5Ftp
 }
 
-TRANSLATIONS = fotorelacjonusz_en_US.ts
+TRANSLATIONS = fotorelacjonusz_en.ts
+
+EXTRA_TRANSLATIONS = \
+	$$absolute_path("qtbase_en.qm", $$[QT_INSTALL_TRANSLATIONS]) \
+	$$absolute_path("qtbase_pl.qm", $$[QT_INSTALL_TRANSLATIONS])
 
 SOURCES += \
 	src/main.cpp \

@@ -7,7 +7,6 @@
 #include <QDebug>
 #include <QLocale>
 #include <QStringList>
-#include <QTranslator>
 
 Application::Application(int &argc, char **argv):
 	QApplication(argc, argv)
@@ -20,17 +19,26 @@ Application::Application(int &argc, char **argv):
 	this->setAttribute(Qt::AA_DontShowIconsInMenus, true);
 	#endif
 
-	// Set locale and translator
-	QString locale = QLocale::system().name();
-	QTranslator translator;
+	setUpTranslations();
+}
 
-	qDebug() << "Locale:" << locale;
-	if (locale == "pl_PL")
-		qDebug() << "Loading qt_pl:" << (translator.load("qt_pl", "/usr/share/qt4/translations") or translator.load("qt_pl"));
-	else
-		qDebug() << "Loading :/fotorelacjonusz_en_US:" << translator.load(":/fotorelacjonusz_en_US");
+void Application::setUpTranslations()
+{
+	QLocale locale = QLocale::system();
+	qDebug() << "Locale:" << locale.name();
 
-	installTranslator(&translator);
+	if (locale.name() != "pl_PL") {
+		// TODO: Load translations according to locale variable.  En_US should
+		// stay as fallback.  This can't be reliably implemented before adding
+		// more supported languages though.
+		appTranslator.load("fotorelacjonusz_en_US", ":/i18n");
+	}
+
+	sysTranslator.load(locale, "qtbase", "_", "/usr/share/qt5/translations") or
+			sysTranslator.load(locale, "qtbase", "_", ":/i18n");
+
+	installTranslator(&sysTranslator);
+	installTranslator(&appTranslator);
 }
 
 /**
