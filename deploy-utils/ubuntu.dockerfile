@@ -1,5 +1,6 @@
 ARG BASE_IMAGE=ubuntu
 ARG BASE_IMAGE_VERSION=focal
+ARG DEBIAN_FRONTEND=noninteractive
 
 FROM ${BASE_IMAGE}:${BASE_IMAGE_VERSION}
 RUN apt-get update
