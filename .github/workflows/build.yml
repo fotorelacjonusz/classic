@@ -94,7 +94,7 @@ jobs:
       - name: Build Fotorelacjonusz
         if: '! matrix.docker'
         run: |
-          qmake CONFIG+=release DEFINES+=QUAZIP_STATIC
+          qmake DEFINES+=QUAZIP_STATIC
           make
         timeout-minutes: 15
 
