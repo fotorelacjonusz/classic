@@ -82,14 +82,14 @@ jobs:
       - name: Build QuaZIP
         if: '! matrix.docker'
         run: |
-          cmake -S . -DBUILD_SHARED_LIBS:BOOL=OFF
+          cmake -S . -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=10.12
           make
         working-directory: ./third-party/quazip
 
       - name: Build Fotorelacjonusz
         if: '! matrix.docker'
         run: |
-          qmake CONFIG+=release
+          qmake CONFIG+=release LIBS+=-lz
           make
         timeout-minutes: 15
 
